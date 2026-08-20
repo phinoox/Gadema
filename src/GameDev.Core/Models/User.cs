@@ -1,6 +1,9 @@
 // =============================================================================
+using Microsoft.EntityFrameworkCore;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
+
+using System.ComponentModel.DataAnnotations;
 
 namespace GameDev.Core.Models;
 

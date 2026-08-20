@@ -1,4 +1,8 @@
 // =============================================================================
+using GameDev.Core.Enums;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 

@@ -1,4 +1,6 @@
 // =============================================================================
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -8,7 +10,7 @@ namespace GameDev.Core.Models;
 /// Represents a task in the project workflow.
 /// Flat structure for ADHD-friendly task management (no hierarchical epics/stories).
 /// </summary>
-public class Task
+public class ProjectTask
 {
     /// <summary>
     /// Unique identifier for the task.

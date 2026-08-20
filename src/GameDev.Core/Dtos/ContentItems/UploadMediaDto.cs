@@ -1,5 +1,7 @@
 // =============================================================================
-// GameDev.Core - Shared Domain Models & Interfaces
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+
 // =============================================================================
 
 namespace GameDev.Core.Dtos.ContentItems;

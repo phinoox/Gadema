@@ -1,6 +1,8 @@
 // =============================================================================
-// GameDev.Core - Shared Domain Models & Interfaces
-// =============================================================================
+using System.ComponentModel.DataAnnotations;
+
+using System.ComponentModel.DataAnnotations;
+using GameDev.Core.Enums;
 
 namespace GameDev.Core.Dtos.ContentItems;
 
