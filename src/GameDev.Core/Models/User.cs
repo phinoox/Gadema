@@ -1,0 +1,73 @@
+// =============================================================================
+// GameDev.Core - Shared Domain Models & Interfaces
+// =============================================================================
+
+namespace GameDev.Core.Models;
+
+/// <summary>
+/// Represents a user account in the GaDeMa system.
+/// Supports Google OAuth, password login, and two-factor authentication.
+/// </summary>
+public class User
+{
+    /// <summary>
+    /// Unique identifier for the user.
+    /// </summary>
+    public Guid Id { get; set; } = Guid.NewGuid();
+    
+    /// <summary>
+    /// Username for login (unique).
+    /// </summary>
+    [Required, Display(Name = "Username")]
+    public string UserName { get; set; } = "";
+    
+    /// <summary>
+    /// Email address for account recovery and notifications (unique).
+    /// </summary>
+    [Required, MaxLength(256), EmailAddress, Display(Name = "Email Address")]
+    public string Email { get; set; } = "";
+    
+    /// <summary>
+    /// Full name of the user.
+    /// </summary>
+    [MaxLength(4096), Display(Name = "Full Name")]
+    public string? FullName { get; set; } = null!;
+    
+    /// <summary>
+    /// URL to user profile image.
+    /// </summary>
+    [MaxLength(1024)]
+    public string? ImageUri { get; set; }
+    
+    /// <summary>
+    /// Google OAuth subject ID for linked accounts.
+    /// </summary>
+    [MaxLength(512)]
+    public string? GoogleSubjectId { get; set; }
+    
+    /// <summary>
+    /// Indicates if two-factor authentication is enabled.
+    /// </summary>
+    public bool TwoFactorEnabled { get; set; } = false;
+    
+    /// <summary>
+    /// Hashed recovery code for account access.
+    /// </summary>
+    [MaxLength(2048)]
+    public string? RecoveryCodeHash { get; set; }
+    
+    /// <summary>
+    /// Account creation timestamp.
+    /// </summary>
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    /// <summary>
+    /// Last login timestamp.
+    /// </summary>
+    public DateTime? LastLogin { get; set; }
+    
+    /// <summary>
+    /// Indicates if the account is active.
+    /// </summary>
+    public bool IsActive { get; set; } = true;
+}
