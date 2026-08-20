@@ -1,0 +1,258 @@
+// =============================================================================
+// GameDev.Data - EF Core DbContext and Migrations Configuration
+// =============================================================================
+
+namespace GameDev.Data;
+
+/// <summary>
+/// Main database context for GaDeMa application.
+/// Supports SQLite (MVP) and PostgreSQL (Production) migration.
+/// </summary>
+public class GameDbContext : DbContext
+{
+    /// <summary>
+    /// User entity set.
+    /// </summary>
+    public DbSet<User> Users { get; set; }
+    
+    /// <summary>
+    /// Team entity set.
+    /// </summary>
+    public DbSet<Team> Teams { get; set; }
+    
+    /// <summary>
+    /// TeamMember entity set.
+    /// </summary>
+    public DbSet<TeamMember> TeamMembers { get; set; }
+    
+    /// <summary>
+    /// ContentItem entity set.
+    /// </summary>
+    public DbSet<ContentItem> ContentItems { get; set; }
+    
+    /// <summary>
+    /// StoryOutline entity set.
+    /// </summary>
+    public DbSet<StoryOutline> StoryOutlines { get; set; }
+    
+    /// <summary>
+    /// DialogueBranch entity set.
+    /// </summary>
+    public DbSet<DialogueBranch> DialogueBranches { get; set; }
+    
+    /// <summary>
+    /// DialogueNode entity set.
+    /// </summary>
+    public DbSet<DialogueNode> DialogueNodes { get; set; }
+    
+    /// <summary>
+    /// ExternalReference entity set.
+    /// </summary>
+    public DbSet<ExternalReference> ExternalReferences { get; set; }
+    
+    /// <summary>
+    /// MediaAttachment entity set.
+    /// </summary>
+    public DbSet<MediaAttachment> MediaAttachments { get; set; }
+    
+    /// <summary>
+    /// Tag entity set.
+    /// </summary>
+    public DbSet<Tag> Tags { get; set; }
+    
+    /// <summary>
+    /// ContentTags junction table.
+    /// </summary>
+    public DbSet<ContentTags> ContentTags { get; set; }
+    
+    /// <summary>
+    /// MediaTags junction table.
+    /// </summary>
+    public DbSet<MediaTags> MediaTags { get; set; }
+    
+    /// <summary>
+    /// StorySequence entity set.
+    /// </summary>
+    public DbSet<StorySequence> StorySequences { get; set; }
+    
+    /// <summary>
+    /// StoryBeat entity set.
+    /// </summary>
+    public DbSet<StoryBeat> StoryBeats { get; set; }
+    
+    /// <summary>
+    /// LoreEntry entity set.
+    /// </summary>
+    public DbSet<LoreEntry> LoreEntries { get; set; }
+    
+    /// <summary>
+    /// CharacterDetails child entity.
+    /// </summary>
+    public DbSet<CharacterDetails> CharacterDetails { get; set; }
+    
+    /// <summary>
+    /// CharacterBackground child entity.
+    /// </summary>
+    public DbSet<CharacterBackground> CharacterBackgrounds { get; set; }
+    
+    /// <summary>
+    /// AttributeSet entity set.
+    /// </summary>
+    public DbSet<AttributeSet> AttributeSets { get; set; }
+    
+    /// <summary>
+    /// AttributeDefinition entity set.
+    /// </summary>
+    public DbSet<AttributeDefinition> AttributeDefinitions { get; set; }
+    
+    /// <summary>
+    /// AbilitySet entity set.
+    /// </summary>
+    public DbSet<AbilitySet> AbilitySets { get; set; }
+    
+    /// <summary>
+    /// AbilityDefinition entity set.
+    /// </summary>
+    public DbSet<AbilityDefinition> AbilityDefinitions { get; set; }
+    
+    /// <summary>
+    /// StatusEffectDefinition entity set.
+    /// </summary>
+    public DbSet<StatusEffectDefinition> StatusEffectDefinitions { get; set; }
+    
+    /// <summary>
+    /// Task entity set.
+    /// </summary>
+    public DbSet<Task> Tasks { get; set; }
+    
+    /// <summary>
+    /// TaskComments entity set.
+    /// </summary>
+    public DbSet<TaskComments> TaskComments { get; set; }
+    
+    /// <summary>
+    /// Comment entity set.
+    /// </summary>
+    public DbSet<Comment> Comments { get; set; }
+    
+    /// <summary>
+    /// ContentVersionLog entity set.
+    /// </summary>
+    public DbSet<ContentVersionLog> ContentVersionLogs { get; set; }
+    
+    /// <summary>
+    /// ReviewStatus entity set.
+    /// </summary>
+    public DbSet<ReviewStatus> ReviewStatuses { get; set; }
+    
+    /// <summary>
+    /// ActivityLog entity set.
+    /// </summary>
+    public DbSet<ActivityLog> ActivityLogs { get; set; }
+    
+    /// <summary>
+    /// ProjectToken entity set.
+    /// </summary>
+    public DbSet<ProjectToken> ProjectTokens { get; set; }
+    
+    /// <summary>
+    /// TokenUsageLog entity set.
+    /// </summary>
+    public DbSet<TokenUsageLog> TokenUsageLogs { get; set; }
+    
+    /// <summary>
+    /// ContentSnapshot entity set.
+    /// </summary>
+    public DbSet<ContentSnapshot> ContentSnapshots { get; set; }
+    
+    /// <summary>
+    /// InventoryItem entity set.
+    /// </summary>
+    public DbSet<InventoryItem> InventoryItems { get; set; }
+    
+    /// <summary>
+    /// EndingDefinition entity set.
+    /// </summary>
+    public DbSet<EndingDefinition> EndingDefinitions { get; set; }
+    
+    /// <summary>
+    /// ProjectTemplate entity set.
+    /// </summary>
+    public DbSet<ProjectTemplate> ProjectTemplates { get; set; }
+    
+    /// <summary>
+    /// TemplateAttributeSetDefinition entity set.
+    /// </summary>
+    public DbSet<TemplateAttributeSetDefinition> TemplateAttributeSetDefinitions { get; set; }
+    
+    /// <summary>
+    /// TemplateClassTemplateDefinition entity set.
+    /// </summary>
+    public DbSet<TemplateClassTemplateDefinition> TemplateClassTemplateDefinitions { get; set; }
+    
+    /// <summary>
+    /// TemplateIdentityDefinition entity set.
+    /// </summary>
+    public DbSet<TemplateIdentityDefinition> TemplateIdentityDefinitions { get; set; }
+    
+    /// <summary>
+    /// TemplateNarrativeStructure entity set.
+    /// </summary>
+    public DbSet<TemplateNarrativeStructure> TemplateNarrativeStructures { get; set; }
+    
+    /// <summary>
+    /// ProjectIdentityDefinition entity set.
+    /// </summary>
+    public DbSet<ProjectIdentityDefinition> ProjectIdentityDefinitions { get; set; }
+    
+    /// <summary>
+    /// IdentityValue entity set.
+    /// </summary>
+    public DbSet<IdentityValue> IdentityValues { get; set; }
+    
+    /// <summary>
+    /// CharacterIdentity entity set.
+    /// </summary>
+    public DbSet<CharacterIdentity> CharacterIdentities { get; set; }
+    
+    /// <summary>
+    /// EngineExportConfig entity set.
+    /// </summary>
+    public DbSet<EngineExportConfig> EngineExportConfigs { get; set; }
+    
+    /// <summary>
+    /// EngineFieldMapping entity set.
+    /// </summary>
+    public DbSet<EngineFieldMapping> EngineFieldMappings { get; set; }
+
+    /// <summary>
+    /// Database connection string name.
+    /// </summary>
+    private const string ConnectionStringName = "DefaultConnection";
+
+    /// <summary>
+    /// Constructor with database context options.
+    /// </summary>
+    public GameDbContext(DbContextOptions<GameDbContext> options) : base(options)
+    {
+    }
+
+    /// <summary>
+    /// Database context configuration with Fluent API.
+    /// </summary>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        // Configure all entities here (see SCHEMA.md for full configuration)
+        // This is a placeholder - actual configuration should be in separate files
+        
+        base.OnModelCreating(modelBuilder);
+    }
+
+    /// <summary>
+    /// Database context disposal.
+    /// </summary>
+    public override async Task DisposeAsync()
+    {
+        await base.DisposeAsync();
+    }
+}
