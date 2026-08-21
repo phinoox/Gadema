@@ -102,4 +102,12 @@ public class ContentItem
     /// Creation timestamp.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// Navigation property: Collection of version logs for this content item.
+    /// Enables lazy loading to track all historical changes.
+    /// Foreign key: ContentItemId (matches FK in ContentVersionLog)
+    /// </summary>
+    public virtual ICollection<ContentVersionLog> VersionLogs { get; set; } = new List<ContentVersionLog>();
+
 }
