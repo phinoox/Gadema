@@ -19,11 +19,23 @@ public class TokenUsageLogEntityTypeConfiguration : IEntityTypeConfiguration<Tok
     /// </summary>
     public void Configure(EntityTypeBuilder<TokenUsageLog> builder)
     {
-        // Primary key (composite)
-        builder.HasKey(e => new { e.ProjectTokenId, e.UsageCount });
+        // Primary key (composite: ProjectTokenId + Timestamp for unique usage tracking)
+        builder.HasKey(e => new { e.ProjectTokenId, e.Timestamp });
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectTokenId);
-        builder.HasIndex(e => e.UsedAt);
+        builder.HasIndex(e => e.ProjectTokenId);  // Filter by project
+        builder.HasIndex(e => e.Action);          // Filter by action type
+        builder.HasIndex(e => e.Timestamp);       // Query recent usage
+
+        // Navigation property: ProjectToken (Cascade delete)
+        builder.HasOne(tul => tul.ProjectToken)
+            .WithMany(p => p.UsageLogs)  // Lazy loading navigation
+            .HasForeignKey(tul => tul.ProjectTokenId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Properties configuration
+        builder.Property(e => e.ProjectTokenId).IsRequired();
+        builder.Property(e => e.Action).IsRequired();
     }
 }
+

@@ -60,6 +60,14 @@ public class Project
     [EnumDataType(typeof(ProjectVisibilityEnum)), Required, Display(Name = "Visibility")]
     public ProjectVisibilityEnum Visibility { get; set; } = ProjectVisibilityEnum.Private;
     
+
+    /// <summary>
+    /// Navigation property: Collection of activity logs for this project.
+    /// Enables lazy loading to track all project events.
+    /// Foreign key: ProjectId (matches FK in ActivityLog)
+    /// </summary>
+    public virtual ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
+
     /// <summary>
     /// Project status (Draft = 0, InProgress = 1, Published = 2).
     /// </summary>

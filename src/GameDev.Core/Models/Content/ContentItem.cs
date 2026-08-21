@@ -110,4 +110,11 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<ContentVersionLog> VersionLogs { get; set; } = new List<ContentVersionLog>();
 
+    /// <summary>
+    /// Navigation property: Collection of asset links for this content item.
+    /// Enables lazy loading to track all engine asset connections.
+    /// Foreign key: ContentItemId (matches FK in AssetLink)
+    /// </summary>
+    public virtual ICollection<AssetLink> AssetLinks { get; set; } = new List<AssetLink>();
+
 }

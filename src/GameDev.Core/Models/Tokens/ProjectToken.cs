@@ -55,4 +55,12 @@ public class ProjectToken
     /// Timestamp when the token was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// Navigation property: Collection of usage logs for this project token.
+    /// Enables lazy loading to track all API usage history.
+    /// Foreign key: ProjectTokenId (matches FK in TokenUsageLog)
+    /// </summary>
+    public virtual ICollection<TokenUsageLog> UsageLogs { get; set; } = new List<TokenUsageLog>();
+
 }

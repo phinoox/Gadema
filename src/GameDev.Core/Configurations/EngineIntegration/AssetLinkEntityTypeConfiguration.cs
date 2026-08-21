@@ -23,18 +23,15 @@ public class AssetLinkEntityTypeConfiguration : IEntityTypeConfiguration<AssetLi
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectId);
-        builder.HasIndex(e => e.EngineTypeId);
-        builder.HasIndex(e => e.UpdatedAt);  // Query recent updates
+        builder.HasIndex(e => e.ContentItemId);  // Filter by content item
         
-        // Navigation property: Project (Cascade delete)
-        builder.HasOne(al => al.Project)
-            .WithMany()
-            .HasForeignKey(al => al.ProjectId)
+        // Navigation property: ContentItem (Cascade delete)
+        builder.HasOne(al => al.ContentItem)
+            .WithMany(ci => ci.AssetLinks)  // Lazy loading navigation
+            .HasForeignKey(al => al.ContentItemId)
             .OnDelete(DeleteBehavior.Cascade);
         
         // Properties configuration
-        builder.Property(e => e.Url).IsRequired();
-        builder.Property(e => e.EngineTypeId).IsRequired();
+        builder.Property(e => e.EnginePath).IsRequired();  // Primary field in engine path
     }
 }
