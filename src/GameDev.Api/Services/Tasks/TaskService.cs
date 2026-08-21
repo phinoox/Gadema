@@ -16,9 +16,9 @@ using GameDev.Core.Models;
 namespace GameDev.Api.Services;
 
 /// <summary>
-/// Implementation of task service.
+/// Implementation of task service (renamed to ProjectTaskService).
 /// </summary>
-public class TaskService : ITaskService
+public class ProjectTaskService : ITaskService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<TaskService> _logger;
