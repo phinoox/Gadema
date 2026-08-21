@@ -64,15 +64,15 @@ src/
 
 ---
 
-## **4️⃣ Task Management & ADHD Support**
+## **4️⃣ Projectask Management & ADHD Support**
 
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **TASK-01** | As a user with focus challenges, I want to filter tasks by difficulty (Easy/Medium/Hard), so that I can match workload to my current energy level. *(Note: `Task.Difficulty` enum)* | - Filter by Difficulty<br>- Quick Win badge for short tasks<br>- Focus Mode UI toggle available | **High** | Task filtering logic, difficulty enum, quick win flag |
-| **TASK-02** | As a user, I want to link tasks to specific content items, so that my progress is tied directly to story elements. *(Note: `Task.ContentItemId` FK)* | - Task linked to ContentItem (Character/Scene)<br>- Clicking task opens related item<br>- Progress updates automatically | **Medium** | FK relationship between Task and ContentItem |
-| **TASK-03** | As a writer, I want to see an activity feed of recent changes, so that I can track who worked on what. *(Note: `ActivityLog` table)* | - Unified feed per project<br>- Shows "Who changed What" + Timestamp<br>- Filter by event type (e.g., Outline Updated) | **Medium** | ActivityLog entity, filtering logic |
-| **TASK-04** | As a team member, I want to comment on tasks with controlled visibility, so that feedback can be shared privately or publicly. *(Note: `TaskComments` table)* | - Private comments (Team only)<br>- Public comments (Public View visible)<br>- Rich text editing support | **Medium** | TaskComments entity, visibility control logic |
-| **TASK-05** | As a user, I want to estimate task duration in minutes, so that I can prioritize realistic work sessions. *(Note: `Task.EstimatedMinutes`)* | - Input field for time estimation<br>- Default values for common tasks<br>- Dashboard display with total estimated hours | **Low** | Time estimation input validation |
+| **PROJECTTASK-01** | As a user with focus challenges, I want to filter tasks by difficulty (Easy/Medium/Hard), so that I can match workload to my current energy level. *(Note: `ProjectTask.Difficulty` enum)* | - Filter by Difficulty<br>- Quick Win badge for short tasks<br>- Focus Mode UI toggle available | **High** | Task filtering logic, difficulty enum, quick win flag |
+| **PROJECTTASK-02** | As a user, I want to link tasks to specific content items, so that my progress is tied directly to story elements. *(Note: `ProjectTask.ContentItemId` FK)* | - Task linked to ContentItem (Character/Scene)<br>- Clicking task opens related item<br>- Progress updates automatically | **Medium** | FK relationship between Task and ContentItem |
+| **PROJECTTASK-03** | As a writer, I want to see an activity feed of recent changes, so that I can track who worked on what. *(Note: `ActivityLog` table)* | - Unified feed per project<br>- Shows "Who changed What" + Timestamp<br>- Filter by event type (e.g., Outline Updated) | **Medium** | ActivityLog entity, filtering logic |
+| **PROJECTTASK-04** | As a team member, I want to comment on tasks with controlled visibility, so that feedback can be shared privately or publicly. *(Note: `TaskComments` table)* | - Private comments (Team only)<br>- Public comments (Public View visible)<br>- Rich text editing support | **Medium** | TaskComments entity, visibility control logic |
+| **PROJECTTASK-05** | As a user, I want to estimate task duration in minutes, so that I can prioritize realistic work sessions. *(Note: `ProjectTask.EstimatedMinutes`)* | - Input field for time estimation<br>- Default values for common tasks<br>- Dashboard display with total estimated hours | **Low** | Time estimation input validation |
 
 ---
 
@@ -167,7 +167,7 @@ src/
 | :--- | :--- | :--- | :--- |
 | **Auth & Security** | AUTH-01, AUTH-03, PROJ-03 | PROJ-04 | 5 |
 | **Content Mgmt** | CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06 | - | 6 |
-| **Tasks** | TASK-01 | TASK-02, TASK-03, TASK-04, TASK-05 | 5 |
+| **ProjectTasks** | PROJECTTASK-01 | PROJECTTASK-02, PROJECTTASK-03, PROJECTTASK-04, PROJECTTASK-05 | 5 |
 | **Collaboration** | COLL-01, COLL-02 | COLL-03, COLL-04 | 4 |
 | **Export** | EXP-01 | EXP-02, EXP-03 | 3 |
 | **Narrative Structure** | NARR-01, NARR-02, NARR-03 | NARR-04 | 4 |
@@ -265,7 +265,7 @@ Total Stories: ~40 core features
 | :-- | :--- | :--- |
 | AUTH-01 | `User`, `TeamMember` | 1:N relationship with Team |
 | CONT-01 | `ContentItem`, `StoryOutline` | N:1 (ContentItem → StoryOutline) |
-| TASK-01 | `Task` (Flat structure) | N:1 (Task → ContentItem via FK) |
+| PROJECTTASK-01 | `ProjectTask` (Flat structure) | N:1 (Task → ContentItem via FK) |
 | EXP-01 | Multiple entities + Export Service | Aggregation of all published content |
 
 ---
@@ -343,7 +343,7 @@ Based on these user stories, the implementation order should be:
 
 ### **Phase 2: Content Management (Stories 4-6)**
 - Content Creation (CONT-01, CONT-02, CONT-03)
-- Task Management (TASK-01)
+- Task Management (PROJECTTASK-01)
 - External References (CONT-05)
 
 ### **Phase 3: Export & Collaboration (Stories 7-9)**

@@ -289,7 +289,7 @@ public class ExternalReference
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
-    public int ParentType { get; set; }  // Enum: ContentItem(0), Task(1), Comment(2)
+    public int ParentType { get; set; }  // Enum: ContentItem(0), ProjectTask(1), Comment(2)
     public Guid? ParentId { get; set; }
     
     [Required, Display(Name = "External URL")]
@@ -451,7 +451,7 @@ modelBuilder.Entity<ExternalReference>(entity =>
     entity.HasIndex(e => e.ParentId);
     
     // Cascade delete parent reference when external resource is removed
-    entity.HasOne(er => er.Parent)  // Navigation property for content item/task/comment
+    entity.HasOne(er => er.Parent)  // Navigation property for content item/projcettask/comment
         .WithMany()
         .HasForeignKey(e => e.ParentId)
         .OnDelete(DeleteBehavior.Cascade);
@@ -841,12 +841,12 @@ public class AssetLink
 
 ---
 
-## **📂 Section 6: Workflow & Task Entities (6 tables)**
+## **📂 Section 6: Workflow & ProjectTask Entities (6 tables)**
 
 ### **Task Entity**
 
 ```csharp
-public class Task
+public class ProjectTask
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -856,7 +856,7 @@ public class Task
     public Guid? ContentItemId { get; set; }  // Nullable FK to ContentItem
     
     [MaxLength(256), Required]
-    public string TaskTitle { get; set; } = "";
+    public string ProjectTaskTitle { get; set; } = "";
     
     [MaxLength(4096)]
     public string? Description { get; set; }
@@ -884,12 +884,12 @@ public class Task
 ### **TaskComments Entity**
 
 ```csharp
-public class TaskComments
+public class ProjectTaskComments
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid TaskId { get; set; }
+    public Guid ProjectTaskId { get; set; }
     
     [Required]
     public Guid CommentedByUserId { get; set; }
@@ -984,7 +984,7 @@ public class ActivityLog
     
     public Guid? RelatedEntityId { get; set; }  // Nullable FK to related entity
     
-    public int RelatedEntityType { get; set; }  // Enum: ContentItem, Task, etc.
+    public int RelatedEntityType { get; set; }  // Enum: ContentItem, ProjectTask, etc.
     
     [MaxLength(512)]
     public string? Title { get; set; }
@@ -1429,7 +1429,7 @@ modelBuilder.Entity<ContentItem>(entity =>
 | **Narrative Structure** | 8 | StorySequence, StoryBeat, LoreEntry, CharacterDetails/Background |
 | **Attributes & Scaling** | 6 | AttributeSet, AttributeDefinition, ClassTemplate, ClassTemplateAttribute, CharacterAttributes |
 | **Abilities & GAS** | 4 | AbilitySet, AbilityDefinition, StatusEffectDefinition, AssetLink |
-| **Workflow & Tasks** | 6 | Task, TaskComments, Comment, ContentVersionLog, ReviewStatus, ActivityLog |
+| **Workflow & ProjectTasks** | 6 | ProjectTask, ProjectTaskComments, Comment, ContentVersionLog, ReviewStatus, ActivityLog |
 | **API Tokens** | 2 | ProjectToken, TokenUsageLog |
 | **Version Control** | 1 | ContentSnapshot |
 | **Inventory & Endings** | 2 | InventoryItem, EndingDefinition |

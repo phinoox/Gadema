@@ -742,7 +742,7 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
     <div class="admin-panel">
         <button onclick="viewModeService.AddEditButton()">✏️ Edit Content</button>
         <button onclick="viewModeService.AddVersionControl()">📋 Version History</button>
-        <button onclick="viewModeService.AddTaskManagement()">✅ Manage Tasks</button>
+        <button onclick="viewModeService.AddProjectTaskManagement()">✅ Manage ProjectTasks</button>
     </div>
 }
 ```
@@ -756,9 +756,9 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
 
 ```csharp
 // ✅ CORRECT - ADHD-friendly task filtering
-public async Task<List<Task>> GetQuickWinTasksAsync(Guid projectId)
+public async Task<List<ProjectTask>> GetQuickWinTasksAsync(Guid projectId)
 {
-    return await _context.Tasks
+    return await _context.ProjectTasks
         .Where(t => t.ProjectId == projectId && t.IsQuickWin)
         .Include(t => t.Comments)
         .OrderBy(t => t.EstimatedMinutes)  // Show shortest tasks first
@@ -874,15 +874,15 @@ public interface IRepository<T> where T : class {}
 public class ContentItemRepository : IRepository<ContentItem> {}
 ```
 
-### **10.2 No Hierarchical Tasks**
+### **10.2 No Hierarchical ProjectTasks**
 
 | Rule | Why? | Example |
 | :--- | :--- | :--- |
-| **Flat Task Structure** | ✅ ADHD-friendly simplicity | No complex hierarchies |
+| **Flat ProjectTask Structure** | ✅ ADHD-friendly simplicity | No complex hierarchies |
 
 ```csharp
 // ✅ CORRECT - Flat task structure with tags
-public class Task
+public class ProjectTask
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid ProjectId { get; set; }
@@ -932,7 +932,7 @@ public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid
 
 ```csharp
 // ✅ CORRECT - Using enums instead of magic numbers
-public class Task
+public class ProjectTask
 {
     public int Difficulty { get; set; }  // Enum: Easy(0), Medium(1), Hard(2)
     public bool IsQuickWin { get; set; }

@@ -7,7 +7,7 @@
 ## **📋 Overview**
 
 This document contains the complete API contract definition for GaDeMa v0.1, including:
-- ✅ All REST endpoint specifications (Authentication, Projects, Content, Tasks, Export)
+- ✅ All REST endpoint specifications (Authentication, Projects, Content, ProjectTasks, Export)
 - ✅ Request/response formats with examples
 - ✅ Authentication and authorization requirements
 - ✅ Error handling patterns
@@ -884,7 +884,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 
 ## **🔐 13. Task Management Endpoints** (continued)
 
-### **GET /api/v1/tasks** - List All Tasks
+### **GET /api/v1/projecttasks** - List All Tasks
 | Query Param | Type | Default | Notes |
 | :--- | :--- | :--- | :--- |
 | `projectId` | Guid | ❌ No | Filter by project |
@@ -918,11 +918,11 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 
 ---
 
-### **POST /api/v1/tasks** - Create New Task
+### **POST /api/v1/projecttasks** - Create New Task
 | Body Field | Type | Required | Notes |
 | :--- | :--- | :--- | :--- |
 | `projectId` | Guid | ✅ Yes | Project ID |
-| `taskTitle` | string | ✅ Yes | Task title |
+| `projecttaskTitle` | string | ✅ Yes | ProjectTask title |
 | `description` | string | ❌ No | Optional description |
 | `status` | int | Default 0 | Backlog (0), InProgress (1), etc. |
 | `difficulty` | int | Default 0 | Easy (0), Medium (1), Hard (2) |
@@ -932,7 +932,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 ```json
 {
   "projectId": "proj-001",
-  "taskTitle": "Write 3 opening dialogue lines",
+  "projecttaskTitle": "Write 3 opening dialogue lines",
   "description": null,
   "status": 0,
   "difficulty": 0,
@@ -955,7 +955,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 
 ---
 
-### **PUT /api/v1/tasks/{id}** - Update Task
+### **PUT /api/v1/projecttasks/{id}** - Update Task
 | Path Param | Type | Notes |
 | :--- | :--- | :--- |
 | `id` | Guid | Task ID |
@@ -989,7 +989,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 
 ---
 
-### **DELETE /api/v1/tasks/{id}** - Delete Task (Admin Only)
+### **DELETE /api/v1/projecttasks/{id}** - Delete Task (Admin Only)
 | Path Param | Type | Notes |
 | :--- | :--- | :--- |
 | `id` | Guid | Task ID |
@@ -998,7 +998,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 ```json
 {
   "success": true,
-  "message": "Task has been deleted successfully"
+  "message": "ProjectTask has been deleted successfully"
 }
 ```
 
