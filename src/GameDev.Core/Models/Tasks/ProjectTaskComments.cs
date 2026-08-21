@@ -9,7 +9,7 @@ namespace GameDev.Core.Models;
 /// <summary>
 /// Represents a comment on a task.
 /// </summary>
-public class TaskComments
+public class ProjectTaskComments
 {
     /// <summary>
     /// Unique identifier for the task comment.
