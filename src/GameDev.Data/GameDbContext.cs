@@ -4,6 +4,7 @@
 
 using GameDev.Core.Configurations;
 using GameDev.Core.Models;
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameDev.Data;
@@ -178,6 +179,11 @@ public class GameDbContext : DbContext
     /// EndingDefinition entity set.
     /// </summary>
     public DbSet<EndingDefinition> EndingDefinitions { get; set; }
+
+    /// <summary>
+    /// AssetLink entity set.
+    /// </summary>
+    public DbSet<AssetLink> AssetLinks { get; set; }
 
     public DbSet<Project> Projects { get; set; }
     

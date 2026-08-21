@@ -7,6 +7,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using GameDev.Core.Models;
+using GameDev.Core.Models.Projects;
 
 namespace GameDev.Core.Configurations.Projects;
 
