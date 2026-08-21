@@ -4,14 +4,14 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace GameDev.Core.Dtos;
+namespace GameDev.Core.Dtos.Tasks;
 
 /// <summary>
 /// Task list response.
 /// </summary>
-public class TaskListResponseDto
+public class ProjectTaskListResponseDto
 {
-    public IEnumerable<TaskResponseDto> Items { get; set; } = Enumerable.Empty<TaskResponseDto>();
+    public IEnumerable<ProjectTaskResponseDto> Items { get; set; } = Enumerable.Empty<ProjectTaskResponseDto>();
     
     public int TotalCount { get; set; }
     
@@ -23,7 +23,7 @@ public class TaskListResponseDto
 /// <summary>
 /// Single task response.
 /// </summary>
-public class TaskResponseDto
+public class ProjectTaskResponseDto
 {
     public Guid Id { get; set; }
     
@@ -66,7 +66,7 @@ public class TaskResponseDto
 /// <summary>
 /// Create task DTO.
 /// </summary>
-public class CreateTaskDto
+public class ProjectTaskCreateDto
 {
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
@@ -95,7 +95,7 @@ public class CreateTaskDto
 /// <summary>
 /// Update task DTO.
 /// </summary>
-public class UpdateTaskDto
+public class ProjectTaskUpdateDto
 {
     [MaxLength(256)]
     public string? TaskTitle { get; set; }
@@ -118,4 +118,3 @@ public class UpdateTaskDto
     
     public bool IsQuickWin { get; set; } = false;
 }
-
