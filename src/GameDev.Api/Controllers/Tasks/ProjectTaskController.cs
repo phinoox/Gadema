@@ -13,10 +13,10 @@ using GameDev.Core.Dtos;
 namespace GameDev.Api.Controllers;
 
 /// <summary>
-/// Controller for task management endpoints.
+/// Controller for project task management endpoints (renamed to ProjectTaskController).
 /// </summary>
 [ApiController]
-[Route("api/v1/tasks")]
+[Route("api/v1/projects/{projectId}/tasks")]
 public class TasksController : ControllerBase
 {
     private readonly ITaskService _taskService;
@@ -36,7 +36,7 @@ public class TasksController : ControllerBase
     /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetTasksAsync(
-        [FromQuery] Guid? projectId = null,
+        Guid projectId,  // Moved from query param to path param for cleaner routing
         [FromQuery] int? status = null,
         [FromQuery] int? difficulty = null,
         [FromQuery] bool isQuickWin = false)
@@ -48,7 +48,7 @@ public class TasksController : ControllerBase
     /// Create new task.
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> CreateTaskAsync([FromBody] CreateTaskDto createDto)
+    public async Task<IActionResult> CreateTaskAsync([FromBody] ProjectTaskCreateDto createDto)
     {
         return Ok(await _taskService.CreateTaskAsync(createDto));
     }
@@ -57,7 +57,7 @@ public class TasksController : ControllerBase
     /// Update task.
     /// </summary>
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateTaskAsync(Guid id, [FromBody] UpdateTaskDto updateDto)
+    public async Task<IActionResult> UpdateTaskAsync(Guid id, [FromBody] ProjectTaskUpdateDto updateDto)
     {
         return Ok(await _taskService.UpdateTaskAsync(id, updateDto));
     }
