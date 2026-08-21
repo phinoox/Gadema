@@ -2,6 +2,7 @@
 // GameDev.Data - EF Core DbContext and Migrations Configuration
 // =============================================================================
 
+using GameDev.Core.Configurations;
 using GameDev.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -124,14 +125,14 @@ public class GameDbContext : DbContext
     public DbSet<StatusEffectDefinition> StatusEffectDefinitions { get; set; }
     
     /// <summary>
-    /// Task entity set.
+    /// ProjectTask entity set.
     /// </summary>
     public DbSet<ProjectTask> Tasks { get; set; }
     
     /// <summary>
     /// TaskComments entity set.
     /// </summary>
-    public DbSet<TaskComments> TaskComments { get; set; }
+    public DbSet<ProjectTaskComments> TaskComments { get; set; }
     
     /// <summary>
     /// Comment entity set.
@@ -243,12 +244,12 @@ public class GameDbContext : DbContext
     }
 
     /// <summary>
-    /// Database context configuration with Fluent API.
+    /// Database context configuration with Fluent API and auto-discovery from configuration files.
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Configure all entities here (see SCHEMA.md for full configuration)
-        // This is a placeholder - actual configuration should be in separate files
+        // Apply all configurations from domain folders (auto-discovery)
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
         
         base.OnModelCreating(modelBuilder);
     }
