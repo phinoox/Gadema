@@ -10,22 +10,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GameDev.Core.Dtos;
 
-namespace GameDev.Api.Controllers;
+namespace GameDev.Api.Controllers.Tasks;
 
 /// <summary>
 /// Controller for project task management endpoints (renamed to ProjectTaskController).
 /// </summary>
 [ApiController]
 [Route("api/v1/projects/{projectId}/tasks")]
-public class TasksController : ControllerBase
+public class ProjectTaskController : ControllerBase
 {
     private readonly ITaskService _taskService;
-    private readonly ILogger<TasksController> _logger;
+    private readonly ILogger<ProjectTaskController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public TasksController(ITaskService taskService, ILogger<TasksController> logger)
+    public ProjectTaskController(ITaskService taskService, ILogger<ProjectTaskController> logger)
     {
         _taskService = taskService;
         _logger = logger;
