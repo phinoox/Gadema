@@ -1,6 +1,18 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Dtos.Search;
+using GameDev.Core.Dtos.Tags;
+using GameDev.Core.Models;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,20 +36,20 @@ public class TagService : ITagService
     /// <summary>
     /// List tags for content item.
     /// </summary>
-    public async Task<ApiResponseDto<TagListResponse>> GetTagsAsync(Guid contentItemId)
+    public async Task<ApiResponseDto<TagListResponseDto>> GetTagsAsync(Guid contentItemId)
     {
         var junctionRecords = await _context.ContentTags
             .Where(ct => ct.ContentItemId == contentItemId && ct.Tag.IsActive)
             .Select(ct => new { ct.Id, TagId = ct.TagId })
             .ToListAsync();
 
-        return ApiResponseDto.Success<TagListResponse>(new TagListResponse());
+        return ApiResponseDto<TagListResponseDto>.Success(new TagListResponseDto());
     }
 
     /// <summary>
     /// Add tags to content item.
     /// </summary>
-    public async Task<ApiResponseDto<TagListResponse>> AddTagsAsync(Guid contentItemId, AddTagsDto addDto)
+    public async Task<ApiResponseDto<TagListResponseDto>> AddTagsAsync(Guid contentItemId, AddTagsDto addDto)
     {
         var now = DateTime.UtcNow;
 
@@ -57,7 +69,7 @@ public class TagService : ITagService
 
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<TagListResponse>(new TagListResponse());
+        return ApiResponseDto<TagListResponseDto>.Success(new TagListResponseDto());
     }
 }
 
@@ -119,6 +131,6 @@ public class SearchService : ISearchService
                 Version = c.Version
             }).ToListAsync();
 
-        return ApiResponseDto.Success<PaginationResponse<ContentItemResponseDto>>(new PaginationResponse<ContentItemResponseDto>());
+        return ApiResponseDto<PaginationResponse<ContentItemResponseDto>>.Success(new PaginationResponse<ContentItemResponseDto>());
     }
 }

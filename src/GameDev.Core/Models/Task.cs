@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -85,4 +86,10 @@ public class ProjectTask
     /// ID of the user who created this task.
     /// </summary>
     public Guid CreatedByUserId { get; set; }
+
+    /// <summary>
+    /// Last modified timestamp (newly added).
+    /// </summary>
+    [Column("last_modified_at")]
+    public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
 }

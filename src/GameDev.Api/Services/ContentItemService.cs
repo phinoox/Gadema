@@ -1,6 +1,21 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Enums;
+using GameDev.Core.Models;
+using GameDev.Core.Dtos.Response;
+using GameDev.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -53,7 +68,7 @@ public class ContentItemService : IContentService
             query = query.Where(c => c.Published);
         }
         
-        query = query.OrderBy(c => c.CreatedAt, Microsoft.EntityFrameworkCore.Sorting.Order.Descending);
+        query = query.OrderByDescending(c => c.CreatedAt);
         
         var items = await query.Skip(0).Take(20).Select(c => new ContentItemResponseDto
         {
@@ -68,9 +83,9 @@ public class ContentItemService : IContentService
             Status = (int)c.Status,
             ViewMode = viewMode.ToString(),
             Version = c.Version
-        }).ToListAsync();
+        }).ToListAsync<ContentItemResponseDto>();
         
-        return ApiResponseDto.Success<PaginationResponse<ContentItemResponseDto>>(new PaginationResponse<ContentItemResponseDto>());
+        return ApiResponseDto<PaginationResponse<ContentItemResponseDto>>.Success(new PaginationResponse<ContentItemResponseDto>());
     }
 
     /// <summary>
@@ -82,7 +97,7 @@ public class ContentItemService : IContentService
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         var response = new ContentItemResponseDto
@@ -100,7 +115,7 @@ public class ContentItemService : IContentService
             Version = item.Version
         };
         
-        return ApiResponseDto.Success<ContentItemResponseDto>(response);
+        return ApiResponseDto<ContentItemResponseDto>.Success(response);
     }
 
     /// <summary>
@@ -148,7 +163,7 @@ public class ContentItemService : IContentService
             Version = item.Version
         };
         
-        return ApiResponseDto.Success<ContentItemResponseDto>(response);
+        return ApiResponseDto<ContentItemResponseDto>.Success(response);
     }
 
     /// <summary>
@@ -160,7 +175,7 @@ public class ContentItemService : IContentService
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         if (!string.IsNullOrWhiteSpace(updateDto.Description))
@@ -202,25 +217,25 @@ public class ContentItemService : IContentService
             Version = item.Version + 1
         };
         
-        return ApiResponseDto.Success<ContentItemResponseDto>(response);
+        return ApiResponseDto<ContentItemResponseDto>.Success(response);
     }
 
     /// <summary>
     /// Delete content item.
     /// </summary>
-    public async Task<ApiResponseDto<object>> DeleteContentItemAsync(Guid id)
+    public async Task<ApiResponseDto<SimpleResponseDto>> DeleteContentItemAsync(Guid id)
     {
         var item = await _context.ContentItems.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         _context.ContentItems.Remove(item);
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto.Success<object>(new { success = true, message = "Content item has been deleted successfully" });
+        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true, Message = "Content item has been deleted successfully" });
     }
 
     /// <summary>
@@ -232,12 +247,12 @@ public class ContentItemService : IContentService
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<MediaAttachmentResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         if (file.Length > FileConfigurationConstants.MaxFileSize)
         {
-            return ApiResponseDto.BadRequest("File size exceeds maximum allowed (100MB)");
+            return ApiResponseDto<MediaAttachmentResponseDto>.BadRequest("File size exceeds maximum allowed (100MB)");
         }
         
         var uniqueFileName = $"{Guid.NewGuid()}_{file.FileName}";
@@ -262,7 +277,7 @@ public class ContentItemService : IContentService
         _context.MediaAttachments.Add(attachment);
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto.Success<MediaAttachmentResponseDto>(new MediaAttachmentResponseDto
+        return ApiResponseDto<MediaAttachmentResponseDto>.Success(new MediaAttachmentResponseDto
         {
             Id = attachment.Id,
             FileName = attachment.FileName,
@@ -275,13 +290,13 @@ public class ContentItemService : IContentService
     /// <summary>
     /// Auto-save content item snapshot.
     /// </summary>
-    public async Task<ApiResponseDto<object>> AutosaveAsync(Guid id)
+    public async Task<ApiResponseDto<ContentItemResponseDto>> AutosaveAsync(Guid id)
     {
         var item = await _context.ContentItems.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         // Create snapshot for version control
@@ -304,19 +319,19 @@ public class ContentItemService : IContentService
         _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto.Success<object>(new { success = true, version = item.Version });
+        return ApiResponseDto<ContentItemResponseDto>.Success(new ContentItemResponseDto(){Id = id});
     }
 
     /// <summary>
     /// Rollback to previous version.
     /// </summary>
-    public async Task<ApiResponseDto<object>> RollbackAsync(Guid id, RollbackDto rollbackDto)
+    public async Task<ApiResponseDto<SimpleResponseDto>> RollbackAsync(Guid id, RollbackDto rollbackDto)
     {
         var item = await _context.ContentItems.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         // Find the target snapshot
@@ -325,7 +340,7 @@ public class ContentItemService : IContentService
         
         if (snapshot == null)
         {
-            return ApiResponseDto.BadRequest($"No snapshot found for version {rollbackDto.TargetVersion}");
+            return ApiResponseDto<SimpleResponseDto>.BadRequest($"No snapshot found for version {rollbackDto.TargetVersion}");
         }
         
         // Restore from snapshot data
@@ -359,6 +374,21 @@ public class ContentItemService : IContentService
         _context.ContentSnapshots.Add(newSnapshot);
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto.Success<object>(new { success = true, restoredFromVersion = rollbackDto.TargetVersion });
+        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true,Message = "Content Item has been deleted successfully" });
+    }
+
+    Task<ApiResponseDto<SimpleResponseDto>> IContentService.DeleteContentItemAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> IContentService.AutosaveAsync(Guid contentItemId)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponseDto<VersionInfo>> IContentService.RollbackAsync(Guid id, RollbackDto rollbackDto)
+    {
+        throw new NotImplementedException();
     }
 }

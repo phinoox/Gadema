@@ -1,6 +1,14 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 

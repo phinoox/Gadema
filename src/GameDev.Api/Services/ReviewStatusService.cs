@@ -1,6 +1,15 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Reviews;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,23 +33,23 @@ public class ReviewStatusService : IReviewService
     /// <summary>
     /// Get review status for content item.
     /// </summary>
-    public async Task<ApiResponseDto<ReviewStatusResponse>> GetReviewStatusAsync(Guid contentItemId)
+    public async Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid contentItemId)
     {
         var reviewStatus = await _context.ReviewStatuses.FindAsync(contentItemId);
 
-        return ApiResponseDto.Success<ReviewStatusResponse>(new ReviewStatusResponse());
+        return ApiResponseDto<ReviewStatusResponseDto>.Success(new ReviewStatusResponseDto());
     }
 
     /// <summary>
     /// Approve/reject content item.
     /// </summary>
-    public async Task<ApiResponseDto<ReviewStatusResponse>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto)
+    public async Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto)
     {
         var reviewStatus = await _context.ReviewStatuses.FindAsync(contentItemId);
 
         if (reviewStatus == null)
         {
-            return ApiResponseDto.NotFound($"Review status for ContentItem {contentItemId} not found");
+            return ApiResponseDto<ReviewStatusResponseDto>.NotFound($"Review status for ContentItem {contentItemId} not found");
         }
 
         reviewStatus.Status = approveDto.Status;
@@ -56,6 +65,6 @@ public class ReviewStatusService : IReviewService
         _context.Entry(reviewStatus).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<ReviewStatusResponse>(new ReviewStatusResponse());
+        return ApiResponseDto<ReviewStatusResponseDto>.Success(new ReviewStatusResponseDto());
     }
 }

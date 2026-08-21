@@ -2,6 +2,9 @@
 // GameDev.Data - EF Core DbContext and Migrations Configuration
 // =============================================================================
 
+using GameDev.Core.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace GameDev.Data;
 
 /// <summary>
@@ -123,7 +126,7 @@ public class GameDbContext : DbContext
     /// <summary>
     /// Task entity set.
     /// </summary>
-    public DbSet<Task> Tasks { get; set; }
+    public DbSet<ProjectTask> Tasks { get; set; }
     
     /// <summary>
     /// TaskComments entity set.
@@ -174,6 +177,8 @@ public class GameDbContext : DbContext
     /// EndingDefinition entity set.
     /// </summary>
     public DbSet<EndingDefinition> EndingDefinitions { get; set; }
+
+    public DbSet<Project> Projects { get; set; }
     
     /// <summary>
     /// ProjectTemplate entity set.
@@ -251,7 +256,7 @@ public class GameDbContext : DbContext
     /// <summary>
     /// Database context disposal.
     /// </summary>
-    public override async Task DisposeAsync()
+    public override async ValueTask DisposeAsync()
     {
         await base.DisposeAsync();
     }

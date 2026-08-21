@@ -1,6 +1,17 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.ExternalReferences;
+using GameDev.Core.Models;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,19 +35,19 @@ public class ExternalReferenceService : IExternalReferenceService
     /// <summary>
     /// List external references for content item.
     /// </summary>
-    public async Task<ApiResponseDto<ReferenceListResponse>> GetReferencesAsync(Guid contentItemId)
+    public async Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid contentItemId)
     {
         var references = await _context.ExternalReferences
             .Where(r => r.ParentType == 0 && r.ParentId == contentItemId && r.IsActive)
             .ToListAsync();
 
-        return ApiResponseDto.Success<ReferenceListResponse>(new ReferenceListResponse());
+        return ApiResponseDto<ReferenceListResponseDto>.Success(new ReferenceListResponseDto());
     }
 
     /// <summary>
     /// Create external reference.
     /// </summary>
-    public async Task<ApiResponseDto<ReferenceResponse>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto)
+    public async Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto)
     {
         var now = DateTime.UtcNow;
         
@@ -54,6 +65,6 @@ public class ExternalReferenceService : IExternalReferenceService
         _context.ExternalReferences.Add(reference);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<ReferenceResponse>(new ReferenceResponse());
+        return ApiResponseDto<ReferenceResponseDto>.Success(new ReferenceResponseDto());
     }
 }

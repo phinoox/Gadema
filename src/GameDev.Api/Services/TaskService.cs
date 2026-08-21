@@ -1,6 +1,17 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
+using GameDev.Core.Models;
 
 namespace GameDev.Api.Services;
 
@@ -24,7 +35,7 @@ public class TaskService : ITaskService
     /// <summary>
     /// List all tasks (paginated).
     /// </summary>
-    public async Task<ApiResponseDto<PaginationResponse<TaskResponse>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin)
+    public async Task<ApiResponseDto<PaginationResponse<TaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin)
     {
         var query = _context.Tasks.AsQueryable();
         
@@ -48,9 +59,9 @@ public class TaskService : ITaskService
             query = query.Where(t => t.IsQuickWin);
         }
         
-        query = query.OrderBy(t => t.CreatedAt, Microsoft.EntityFrameworkCore.Sorting.Order.Descending);
+        query = query.OrderByDescending(t => t.CreatedAt);
         
-        var tasks = await query.Skip(0).Take(20).Select(t => new TaskResponse
+        var tasks = await query.Skip(0).Take(20).Select(t => new TaskResponseDto
         {
             Id = t.Id,
             ProjectId = t.ProjectId,
@@ -67,17 +78,17 @@ public class TaskService : ITaskService
             CreatedAt = t.CreatedAt
         }).ToListAsync();
 
-        return ApiResponseDto.Success<PaginationResponse<TaskResponse>>(new PaginationResponse<TaskResponse>());
+        return ApiResponseDto<PaginationResponse<TaskResponseDto>>.Success(new PaginationResponse<TaskResponseDto>());
     }
 
     /// <summary>
     /// Create new task.
     /// </summary>
-    public async Task<ApiResponseDto<TaskResponse>> CreateTaskAsync(CreateTaskDto createDto)
+    public async Task<ApiResponseDto<TaskResponseDto>> CreateTaskAsync(CreateTaskDto createDto)
     {
         var now = DateTime.UtcNow;
         
-        var task = new Task
+        var task = new ProjectTask
         {
             Id = Guid.NewGuid(),
             ProjectId = createDto.ProjectId,
@@ -98,19 +109,19 @@ public class TaskService : ITaskService
         _context.Tasks.Add(task);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<TaskResponse>(new TaskResponse());
+        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
     }
 
     /// <summary>
     /// Update task.
     /// </summary>
-    public async Task<ApiResponseDto<TaskResponse>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto)
+    public async Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto)
     {
         var task = await _context.Tasks.FindAsync(id);
 
         if (task == null)
         {
-            return ApiResponseDto.NotFound($"Task with ID {id} not found");
+            return ApiResponseDto<TaskResponseDto>.NotFound($"Task with ID {id} not found");
         }
 
         if (updateDto.Status.HasValue)
@@ -132,24 +143,29 @@ public class TaskService : ITaskService
         _context.Entry(task).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<TaskResponse>(new TaskResponse());
+        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
     }
 
     /// <summary>
     /// Delete task.
     /// </summary>
-    public async Task<ApiResponseDto<object>> DeleteTaskAsync(Guid id)
+    public async Task<ApiResponseDto<TaskResponseDto>> DeleteTaskAsync(Guid id)
     {
         var task = await _context.Tasks.FindAsync(id);
 
         if (task == null)
         {
-            return ApiResponseDto.NotFound($"Task with ID {id} not found");
+            return ApiResponseDto<TaskResponseDto>.NotFound($"Task with ID {id} not found");
         }
 
         _context.Tasks.Remove(task);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<object>(new { success = true, message = "Task has been deleted successfully" });
+        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
+    }
+
+    Task<ApiResponseDto<TaskResponseDto>> ITaskService.DeleteTaskAsync(Guid id)
+    {
+        throw new NotImplementedException();
     }
 }

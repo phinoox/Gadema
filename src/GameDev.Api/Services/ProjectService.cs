@@ -1,6 +1,16 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Projects;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
+using GameDev.Core.Dtos.Response;
 
 namespace GameDev.Api.Services;
 
@@ -33,7 +43,7 @@ public class ProjectService : IProjectService
     {
         // Implement project listing logic
         var projects = await _context.Projects.ToListAsync();
-        return ApiResponseDto.Success<PaginationResponse<ProjectResponseDto>>(new PaginationResponse<ProjectResponseDto>());
+        return ApiResponseDto<PaginationResponse<ProjectResponseDto>>.Success(new PaginationResponse<ProjectResponseDto>());
     }
 
     /// <summary>
@@ -42,7 +52,7 @@ public class ProjectService : IProjectService
     public async Task<ApiResponseDto<ProjectResponseDto>> CreateProjectAsync(CreateProjectDto createDto)
     {
         // Implement project creation logic
-        return ApiResponseDto.Success<ProjectResponseDto>(new ProjectResponseDto());
+        return ApiResponseDto<ProjectResponseDto>.Success(new ProjectResponseDto());
     }
 
     /// <summary>
@@ -51,42 +61,52 @@ public class ProjectService : IProjectService
     public async Task<ApiResponseDto<ProjectResponseDto>> UpdateProjectAsync(Guid id, UpdateProjectDto updateDto)
     {
         // Implement project update logic
-        return ApiResponseDto.Success<ProjectResponseDto>(new ProjectResponseDto());
+        return ApiResponseDto<ProjectResponseDto>.Success(new ProjectResponseDto());
     }
 
     /// <summary>
     /// Transfer or delete a project.
     /// </summary>
-    public async Task<ApiResponseDto<object>> TransferOrDeleteProjectAsync(Guid id)
+    public async Task<ApiResponseDto<SimpleResponseDto>> TransferOrDeleteProjectAsync(Guid id)
     {
         // Implement transfer/delete logic
-        return ApiResponseDto.Success<object>(new { success = true, message = "Project has been transferred successfully" });
+        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true, Message = "Project has been transferred successfully" });
     }
 
     /// <summary>
     /// Create API token for project.
     /// </summary>
-    public async Task<ApiResponseDto<ProjectTokenResponse>> CreateApiTokenAsync(Guid id, ProjectTokenDto tokenDto)
+    public async Task<ApiResponseDto<ProjectTokenResponseDto>> CreateApiTokenAsync(Guid id, ProjectTokenDto tokenDto)
     {
         // Implement API token creation logic
-        return ApiResponseDto.Success<ProjectTokenResponse>(new ProjectTokenResponse());
+        return ApiResponseDto<ProjectTokenResponseDto>.Success(new ProjectTokenResponseDto());
     }
 
     /// <summary>
     /// List API tokens for project.
     /// </summary>
-    public async Task<ApiResponseDto<TokenListResponse>> GetProjectTokensAsync(Guid id)
+    public async Task<ApiResponseDto<TokenListResponseDto>> GetProjectTokensAsync(Guid id)
     {
         // Implement API token listing logic
-        return ApiResponseDto.Success<TokenListResponse>(new TokenListResponse());
+        return ApiResponseDto<TokenListResponseDto>.Success(new TokenListResponseDto());
     }
 
     /// <summary>
     /// Revoke API token for project.
     /// </summary>
-    public async Task<ApiResponseDto<object>> RevokeApiTokenAsync(Guid id, Guid tokenId)
+    public async Task<ApiResponseDto<SimpleResponseDto>> RevokeApiTokenAsync(Guid id, Guid tokenId)
     {
         // Implement API token revocation logic
-        return ApiResponseDto.Success<object>(new { success = true, message = "Token has been revoked successfully" });
+        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true, Message = "Token has been revoked successfully" });
+    }
+
+    Task<ApiResponseDto<object>> IProjectService.TransferOrDeleteProjectAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponseDto<object>> IProjectService.RevokeApiTokenAsync(Guid id, Guid tokenId)
+    {
+        throw new NotImplementedException();
     }
 }

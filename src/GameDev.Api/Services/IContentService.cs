@@ -1,6 +1,17 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Enums;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using GameDev.Core.Dtos.Response;
 
 namespace GameDev.Api.Services;
 
@@ -13,8 +24,8 @@ public interface IContentService
     Task<ApiResponseDto<ContentItemResponseDto>> GetContentItemAsync(Guid id, ViewModeEnum viewMode);
     Task<ApiResponseDto<ContentItemResponseDto>> CreateContentItemAsync(CreateContentItemDto createDto);
     Task<ApiResponseDto<ContentItemResponseDto>> UpdateContentItemAsync(Guid id, UpdateContentItemDto updateDto);
-    Task<ApiResponseDto<object>> DeleteContentItemAsync(Guid id);
+    Task<ApiResponseDto<SimpleResponseDto>> DeleteContentItemAsync(Guid id);
     Task<ApiResponseDto<MediaAttachmentResponseDto>> UploadMediaAsync(Guid id, IFormFile file);
-    Task<ApiResponseDto<object>> AutosaveAsync(Guid id);
-    Task<ApiResponseDto<object>> RollbackAsync(Guid id, RollbackDto rollbackDto);
+    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> AutosaveAsync(Guid contentItemId);
+    Task<ApiResponseDto<VersionInfo>> RollbackAsync(Guid id, RollbackDto rollbackDto);
 }

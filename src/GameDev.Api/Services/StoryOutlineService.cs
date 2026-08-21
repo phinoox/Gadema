@@ -1,6 +1,16 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.StoryOutlining;
+using GameDev.Core.Models;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,7 +34,7 @@ public class StoryOutlineService : IStoryOutlineService
     /// <summary>
     /// List story sequences for project.
     /// </summary>
-    public async Task<ApiResponseDto<SequenceListResponse>> GetSequencesAsync(Guid projectId)
+    public async Task<ApiResponseDto<SequenceListResponseDto>> GetSequencesAsync(Guid projectId)
     {
         var sequences = await _context.StorySequences
             .Where(s => s.ProjectId == projectId)
@@ -32,13 +42,13 @@ public class StoryOutlineService : IStoryOutlineService
             .Include(s => s.OutlineSummary)
             .ToListAsync();
 
-        return ApiResponseDto.Success<SequenceListResponse>(new SequenceListResponse());
+        return ApiResponseDto<SequenceListResponseDto>.Success(new SequenceListResponseDto());
     }
 
     /// <summary>
     /// Create new sequence (chapter).
     /// </summary>
-    public async Task<ApiResponseDto<SequenceResponse>> CreateSequenceAsync(Guid projectId, CreateSequenceDto createDto)
+    public async Task<ApiResponseDto<SequenceResponseDto>> CreateSequenceAsync(Guid projectId, CreateSequenceDto createDto)
     {
         var now = DateTime.UtcNow;
         
@@ -56,6 +66,6 @@ public class StoryOutlineService : IStoryOutlineService
         _context.StorySequences.Add(sequence);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<SequenceResponse>(new SequenceResponse());
+        return ApiResponseDto<SequenceResponseDto>.Success(new SequenceResponseDto());
     }
 }

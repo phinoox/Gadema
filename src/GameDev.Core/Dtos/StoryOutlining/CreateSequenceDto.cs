@@ -1,6 +1,5 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
 // =============================================================================
 
 namespace GameDev.Core.Dtos.StoryOutlining;
@@ -26,5 +25,5 @@ public class CreateSequenceDto
     /// URL-friendly slug for the sequence (optional, auto-generated if not provided).
     /// </summary>
     [MaxLength(128)]
-    public string? Slug { get; set; } = null!;
+    public string? Slug { get; set; }
 }

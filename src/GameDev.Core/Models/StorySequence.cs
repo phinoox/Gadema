@@ -46,4 +46,16 @@ public class StorySequence
     /// Indicates if the sequence is published.
     /// </summary>
     public bool Published { get; set; } = false;
+
+    /// <summary>
+    /// Order index for sorting sequences.
+    /// </summary>
+    [Column("order_index"), Display(Name = "Order Index")]
+    public int OrderIndex { get; set; } = 0;
+
+    /// <summary>
+    /// Outline summary (newly added property).
+    /// </summary>
+    [MaxLength(256)]
+    public string? OutlineSummary { get; set; }
 }

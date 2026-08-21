@@ -1,6 +1,18 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Authentication;
+using GameDev.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+
+using System;
+using System.Linq;
+
 
 namespace GameDev.Api.Services;
 
@@ -29,7 +41,7 @@ public class ApiAuthService : IApiAuthService
     public async Task<ApiResponseDto<AuthResponse>> SignInAsync(SignInDto signInDto)
     {
         // Implement authentication logic
-        return ApiResponseDto.Success<AuthResponse>(new AuthResponse());
+        return ApiResponseDto<AuthResponse>.Success(new AuthResponse());
     }
 
     /// <summary>
@@ -38,7 +50,7 @@ public class ApiAuthService : IApiAuthService
     public async Task<ApiResponseDto<AuthResponse>> GoogleCallbackAsync(string code)
     {
         // Implement Google OAuth logic
-        return ApiResponseDto.Success<AuthResponse>(new AuthResponse());
+        return ApiResponseDto<AuthResponse>.Success(new AuthResponse());
     }
 
     /// <summary>
@@ -47,24 +59,34 @@ public class ApiAuthService : IApiAuthService
     public async Task<ApiResponseDto<AuthResponse>> SignInWith2FAAsync(SignInWith2FADto signInDto)
     {
         // Implement 2FA logic
-        return ApiResponseDto.Success<AuthResponse>(new AuthResponse());
+        return ApiResponseDto<AuthResponse>.Success(new AuthResponse());
     }
 
     /// <summary>
     /// View recovery codes.
     /// </summary>
-    public async Task<ApiResponseDto<RecoveryCodesResponse>> GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto)
+    public async Task<ApiResponseDto<RecoveryCodesResponseDto>> GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto)
     {
         // Implement recovery codes logic
-        return ApiResponseDto.Success<RecoveryCodesResponse>(new RecoveryCodesResponse());
+        return ApiResponseDto<RecoveryCodesResponseDto>.Success(new RecoveryCodesResponseDto());
     }
 
     /// <summary>
     /// Disable two-factor authentication.
     /// </summary>
-    public async Task<ApiResponseDto<object>> Disable2FAAsync(Disable2FADto disableDto)
+    public async Task<ApiResponseDto<AuthResponse>> Disable2FAAsync(Disable2FADto disableDto)
     {
         // Implement 2FA disable logic
-        return ApiResponseDto.Success<object>(new { success = true, message = "2FA has been disabled successfully" });
+        return ApiResponseDto<AuthResponse>.Success(new AuthResponse(){});
+    }
+
+    Task<ApiResponseDto<RecoveryCodesResponseDto>> IApiAuthService.GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<ApiResponseDto<AuthResponse>> IApiAuthService.Disable2FAAsync(Disable2FADto disableDto)
+    {
+        throw new NotImplementedException();
     }
 }

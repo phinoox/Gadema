@@ -1,6 +1,14 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Projects;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -13,7 +21,7 @@ public interface IProjectService
     Task<ApiResponseDto<ProjectResponseDto>> CreateProjectAsync(CreateProjectDto createDto);
     Task<ApiResponseDto<ProjectResponseDto>> UpdateProjectAsync(Guid id, UpdateProjectDto updateDto);
     Task<ApiResponseDto<object>> TransferOrDeleteProjectAsync(Guid id);
-    Task<ApiResponseDto<ProjectTokenResponse>> CreateApiTokenAsync(Guid id, ProjectTokenDto tokenDto);
-    Task<ApiResponseDto<TokenListResponse>> GetProjectTokensAsync(Guid id);
+    Task<ApiResponseDto<ProjectTokenResponseDto>> CreateApiTokenAsync(Guid id, ProjectTokenDto tokenDto);
+    Task<ApiResponseDto<TokenListResponseDto>> GetProjectTokensAsync(Guid id);
     Task<ApiResponseDto<object>> RevokeApiTokenAsync(Guid id, Guid tokenId);
 }

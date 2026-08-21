@@ -1,6 +1,13 @@
 // =============================================================================
+using Microsoft.AspNetCore.Http;
 // GameDev.Api - ASP.NET Core Web API Controllers
 // =============================================================================
+
+using System.Threading.Tasks;
+using GameDev.Api.Services;
+using GameDev.Core.Dtos.Search;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Controllers;
 

@@ -48,6 +48,19 @@ public class TaskResponseDto
     public bool IsQuickWin { get; set; }
     
     public DateTime CreatedAt { get; set; }
+
+    // NEW: Add missing properties from ProjectTask model
+    public Guid ProjectId { get; set; }
+    [MaxLength(256)]
+    public string? TaskDescription { get; set; }  // For ContentItemId compatibility
+/// <summary>
+    /// ID of the content item this task is associated with.
+/// </summary>
+    public Guid? ContentItemId { get; set; }
+    
+    public int? DifficultyValue { get; set; }  // For nullable difficulty
+    [MaxLength(512)]
+    public string? DifficultyName { get; set; }  // Enum name
 }
 
 /// <summary>
@@ -65,7 +78,6 @@ public class CreateTaskDto
     public string? Description { get; set; }
     
     public int Status { get; set; }  // Backlog, InProgress, Review, Done
-    
     public int Priority { get; set; }  // High, Medium, Low
     
     public int Difficulty { get; set; }  // Easy, Medium, Hard
@@ -106,3 +118,4 @@ public class UpdateTaskDto
     
     public bool IsQuickWin { get; set; } = false;
 }
+

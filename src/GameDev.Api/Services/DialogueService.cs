@@ -1,6 +1,17 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq; // Added for LINQ methods like Include, ToListAsync
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.DialogueTrees;
+using GameDev.Core.Models;
+using GameDev.Data;
+using Microsoft.EntityFrameworkCore; // Added for EF Core extension methods
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,7 +35,7 @@ public class DialogueService : IDialogueService
     /// <summary>
     /// List dialogue branches for project.
     /// </summary>
-    public async Task<ApiResponseDto<BranchListResponse>> GetBranchesAsync(Guid projectId)
+    public async Task<ApiResponseDto<BranchListResponseDto>> GetBranchesAsync(Guid projectId)
     {
         var branches = await _context.DialogueBranches
             .Where(b => b.ProjectId == projectId)
@@ -32,13 +43,24 @@ public class DialogueService : IDialogueService
             .ThenBy(b => b.OrderIndex)
             .ToListAsync();
 
-        return ApiResponseDto.Success<BranchListResponse>(new BranchListResponse());
+        // FIX: Pass actual data to DTO, not empty constructor
+        return ApiResponseDto<BranchListResponseDto>.Success(
+            new BranchListResponseDto 
+            { 
+                Items = branches.Select(b => new BranchResponseDto
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Slug = b.Slug,
+                    IsRoot = b.IsRoot
+                })
+            });
     }
 
     /// <summary>
     /// Create new dialogue branch.
     /// </summary>
-    public async Task<ApiResponseDto<BranchResponse>> CreateBranchAsync(Guid projectId, CreateBranchDto createDto)
+    public async Task<ApiResponseDto<BranchResponseDto>> CreateBranchAsync(Guid projectId, CreateBranchDto createDto)
     {
         var now = DateTime.UtcNow;
         
@@ -58,6 +80,13 @@ public class DialogueService : IDialogueService
         _context.DialogueBranches.Add(branch);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<BranchResponse>(new BranchResponse());
+        // FIX: Pass actual data to DTO
+        return ApiResponseDto<BranchResponseDto>.Success(
+            new BranchResponseDto 
+            { 
+                Id = branch.Id,
+                Title = branch.Title,
+                Slug = branch.Slug
+            });
     }
 }

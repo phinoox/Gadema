@@ -1,6 +1,22 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Comments;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Dtos.Export;
+using GameDev.Core.Dtos.Reviews;
+using GameDev.Core.Dtos.Search;
+using GameDev.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using GameDev.Core.Dtos.DialogueTrees;
+using GameDev.Core.Dtos.ExternalReferences;
+using GameDev.Core.Dtos.Tags;
 
 namespace GameDev.Api.Services;
 
@@ -9,8 +25,8 @@ namespace GameDev.Api.Services;
 /// </summary>
 public interface IDialogueService
 {
-    Task<ApiResponseDto<BranchListResponse>> GetBranchesAsync(Guid projectId);
-    Task<ApiResponseDto<BranchResponse>> CreateBranchAsync(Guid projectId, CreateBranchDto createDto);
+    Task<ApiResponseDto<BranchListResponseDto>> GetBranchesAsync(Guid projectId);
+    Task<ApiResponseDto<BranchResponseDto>> CreateBranchAsync(Guid projectId, CreateBranchDto createDto);
 }
 
 /// <summary>
@@ -18,8 +34,8 @@ public interface IDialogueService
 /// </summary>
 public interface IExternalReferenceService
 {
-    Task<ApiResponseDto<ReferenceListResponse>> GetReferencesAsync(Guid contentItemId);
-    Task<ApiResponseDto<ReferenceResponse>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto);
+    Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid contentItemId);
+    Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto);
 }
 
 /// <summary>
@@ -27,10 +43,10 @@ public interface IExternalReferenceService
 /// </summary>
 public interface ITaskService
 {
-    Task<ApiResponseDto<PaginationResponse<TaskResponse>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin);
-    Task<ApiResponseDto<TaskResponse>> CreateTaskAsync(CreateTaskDto createDto);
-    Task<ApiResponseDto<TaskResponse>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto);
-    Task<ApiResponseDto<object>> DeleteTaskAsync(Guid id);
+    Task<ApiResponseDto<PaginationResponse<TaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin);
+    Task<ApiResponseDto<TaskResponseDto>> CreateTaskAsync(CreateTaskDto createDto);
+    Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto);
+    Task<ApiResponseDto<TaskResponseDto>> DeleteTaskAsync(Guid id);
 }
 
 /// <summary>
@@ -49,8 +65,8 @@ public interface IExportService
 /// </summary>
 public interface IReviewService
 {
-    Task<ApiResponseDto<ReviewStatusResponse>> GetReviewStatusAsync(Guid contentItemId);
-    Task<ApiResponseDto<ReviewStatusResponse>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid contentItemId);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto);
 }
 
 /// <summary>
@@ -58,8 +74,8 @@ public interface IReviewService
 /// </summary>
 public interface ICommentService
 {
-    Task<ApiResponseDto<CommentListResponse>> GetCommentsAsync(Guid contentItemId, string? visibility = null);
-    Task<ApiResponseDto<CommentResponse>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto);
+    Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid contentItemId, string? visibility = null);
+    Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto);
 }
 
 /// <summary>
@@ -67,8 +83,8 @@ public interface ICommentService
 /// </summary>
 public interface ITagService
 {
-    Task<ApiResponseDto<TagListResponse>> GetTagsAsync(Guid contentItemId);
-    Task<ApiResponseDto<TagListResponse>> AddTagsAsync(Guid contentItemId, AddTagsDto addDto);
+    Task<ApiResponseDto<TagListResponseDto>> GetTagsAsync(Guid contentItemId);
+    Task<ApiResponseDto<TagListResponseDto>> AddTagsAsync(Guid contentItemId, AddTagsDto addDto);
 }
 
 /// <summary>

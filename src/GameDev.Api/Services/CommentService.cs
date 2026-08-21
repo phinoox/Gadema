@@ -1,6 +1,16 @@
 // =============================================================================
+using GameDev.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Comments;
+using GameDev.Core.Models;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -24,7 +34,7 @@ public class CommentService : ICommentService
     /// <summary>
     /// List comments for content item.
     /// </summary>
-    public async Task<ApiResponseDto<CommentListResponse>> GetCommentsAsync(Guid contentItemId, string? visibility = null)
+    public async Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid contentItemId, string? visibility = null)
     {
         var query = _context.Comments.Where(c => c.ContentItemId == contentItemId);
         
@@ -37,13 +47,13 @@ public class CommentService : ICommentService
             .OrderByDescending(c => c.CreatedAt)
             .ToListAsync();
 
-        return ApiResponseDto.Success<CommentListResponse>(new CommentListResponse());
+        return ApiResponseDto<CommentListResponseDto>.Success(new CommentListResponseDto());
     }
 
     /// <summary>
     /// Create comment on content item.
     /// </summary>
-    public async Task<ApiResponseDto<CommentResponse>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto)
+    public async Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto)
     {
         var now = DateTime.UtcNow;
 
@@ -63,6 +73,6 @@ public class CommentService : ICommentService
         _context.Comments.Add(comment);
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto.Success<CommentResponse>(new CommentResponse());
+        return ApiResponseDto<CommentResponseDto>.Success(new CommentResponseDto());
     }
 }

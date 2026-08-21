@@ -1,4 +1,13 @@
 // =============================================================================
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GameDev.Core.Dtos;
+using GameDev.Data;
+using GameDev.Api.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 // GameDev.Api - ASP.NET Core Web API Entry Point
 // =============================================================================
 
@@ -12,6 +21,15 @@ builder.Services.AddDbContext<GameDbContext>(options =>
 // Register service implementations
 builder.Services.AddScoped<IContentService, ContentItemService>();
 builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IDialogueService, DialogueService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IExternalReferenceService, ExternalReferenceService>();
+builder.Services.AddScoped<IStoryOutlineService, StoryOutlineService>();
+builder.Services.AddScoped<IExportService, ExportService>();
+builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<IReviewStatusService, ReviewStatusService>();
 
 var app = builder.Build();
 

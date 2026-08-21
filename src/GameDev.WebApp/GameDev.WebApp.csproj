@@ -23,8 +23,8 @@
     <ProjectReference Include="..\GameDev.Core\GameDev.Core.csproj" />
     
     <!-- Blazor components -->
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Server" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
     <PackageReference Include="MudBlazor" Version="6.19.0" />
   </ItemGroup>
 

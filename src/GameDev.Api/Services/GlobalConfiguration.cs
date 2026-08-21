@@ -1,6 +1,15 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Configuration Classes
 // =============================================================================
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -43,7 +52,7 @@ public class ApiResponseDto<T> where T : class
     /// <summary>
     /// Whether the request was successful.
     /// </summary>
-    public bool Success { get; set; } = true;
+    public bool Successful { get; set; } = true;
 
     /// <summary>
     /// HTTP status code.
@@ -70,7 +79,7 @@ public class ApiResponseDto<T> where T : class
     /// </summary>
     public static ApiResponseDto<T> Success(T data) => new()
     {
-        Success = true,
+        Successful = true,
         StatusCode = System.Net.HttpStatusCode.OK,
         Message = null!,
         Errors = null!,
@@ -82,7 +91,7 @@ public class ApiResponseDto<T> where T : class
     /// </summary>
     public static ApiResponseDto<T> NotFound(string message) => new()
     {
-        Success = false,
+        Successful = false,
         StatusCode = System.Net.HttpStatusCode.NotFound,
         Message = message,
         Errors = null!,
@@ -94,7 +103,7 @@ public class ApiResponseDto<T> where T : class
     /// </summary>
     public static ApiResponseDto<T> BadRequest(string message) => new()
     {
-        Success = false,
+        Successful = false,
         StatusCode = System.Net.HttpStatusCode.BadRequest,
         Message = message,
         Errors = null!,
@@ -102,31 +111,7 @@ public class ApiResponseDto<T> where T : class
     };
 }
 
-/// <summary>
-/// API response DTO for non-generic types.
-/// </summary>
-public class ApiResponseDto
-{
-    /// <summary>
-    /// Whether the request was successful.
-    /// </summary>
-    public bool Success { get; set; } = true;
 
-    /// <summary>
-    /// HTTP status code.
-    /// </summary>
-    public HttpStatusCode StatusCode { get; set; } = System.Net.HttpStatusCode.OK;
-
-    /// <summary>
-    /// Error message (if failed).
-    /// </summary>
-    public string? Message { get; set; } = null!;
-
-    /// <summary>
-    /// Errors list.
-    /// </summary>
-    public List<string>? Errors { get; set; } = null!;
-}
 
 /// <summary>
 /// Exception for validation errors.

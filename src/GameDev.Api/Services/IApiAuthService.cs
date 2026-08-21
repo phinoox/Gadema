@@ -1,6 +1,14 @@
 // =============================================================================
+using GameDev.Core.Dtos;
 // GameDev.Api - ASP.NET Core Web API Services
 // =============================================================================
+
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using GameDev.Core.Dtos.Authentication;
+using GameDev.Data;
+using Microsoft.Extensions.Logging;
 
 namespace GameDev.Api.Services;
 
@@ -12,6 +20,6 @@ public interface IApiAuthService
     Task<ApiResponseDto<AuthResponse>> SignInAsync(SignInDto signInDto);
     Task<ApiResponseDto<AuthResponse>> GoogleCallbackAsync(string code);
     Task<ApiResponseDto<AuthResponse>> SignInWith2FAAsync(SignInWith2FADto signInDto);
-    Task<ApiResponseDto<RecoveryCodesResponse>> GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto);
-    Task<ApiResponseDto<object>> Disable2FAAsync(Disable2FADto disableDto);
+    Task<ApiResponseDto<RecoveryCodesResponseDto>> GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto);
+    Task<ApiResponseDto<AuthResponse>> Disable2FAAsync(Disable2FADto disableDto);
 }
