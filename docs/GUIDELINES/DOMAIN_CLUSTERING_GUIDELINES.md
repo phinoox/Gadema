@@ -1,0 +1,317 @@
+# 📁 Domain Clustering Guidelines for GaDeMa v0.1
+
+This document defines the file organization structure per domain, ensuring consistency and maintainability across the codebase.
+
+## File Organization Structure
+
+### Model Files per Domain
+
+```bash
+src/
+└── GameDev.Core/Models/
+    ├── Authentication/
+    │   ├── User.cs
+    │   └── TeamMember.cs
+    ├── Projects/
+    │   └── Project.cs
+    ├── Content/
+    │   ├── ContentItem.cs
+    │   ├── StoryOutline.cs
+    │   └── DialogueBranch.cs
+    ├── Tasks/
+    │   └── ProjectTask.cs
+    └── [etc...]
+```
+
+### DTO Files per Domain
+
+```bash
+src/
+└── GameDev.Core/Dtos/
+    ├── Authentication/
+    │   ├── SignInDto.cs
+    │   ├── SignInWith2FADto.cs
+    │   └── GoogleCallbackDto.cs
+    ├── Projects/
+    │   ├── CreateProjectDto.cs
+    │   ├── UpdateProjectDto.cs
+    │   └── ProjectResponseDto.cs
+    ├── Content/
+    │   ├── CreateContentItemDto.cs
+    │   ├── UpdateContentItemDto.cs
+    │   └── ContentItemResponseDto.cs
+    └── Tasks/
+        ├── ProjectTaskCreateDto.cs
+        ├── ProjectTaskUpdateDto.cs
+        └── ProjectTaskResponseDto.cs
+```
+
+### Service Files per Domain
+
+```bash
+src/
+└── GameDev.Api/Services/
+    ├── Authentication/
+    │   ├── ApiAuthService.cs
+    │   ├── TwoFactorAuthService.cs
+    │   └── TokenService.cs
+    ├── Projects/
+    │   └── ProjectService.cs
+    ├── Content/
+    │   └── ContentItemService.cs
+    ├── Tasks/
+    │   └── ProjectTaskService.cs
+```
+
+### Controller Files per Domain
+
+```bash
+src/
+└── GameDev.Api/Controllers/
+    ├── Authentication/
+    │   └── AuthController.cs
+    ├── Projects/
+    │   └── ProjectsController.cs
+    ├── Content/
+    │   └── ContentItemsController.cs
+    ├── Tasks/
+    │   └── TasksController.cs
+```
+
+### Configuration Files per Domain
+
+```bash
+src/
+└── GameDev.Core/Configurations/
+    ├── Authentication/
+    │   ├── UserConfiguration.cs
+    │   └── TeamMemberConfiguration.cs
+    ├── Projects/
+    │   └── ProjectConfiguration.cs
+    ├── Content/
+    │   ├── ContentItemConfiguration.cs
+    │   └── StoryOutlineConfiguration.cs
+    ├── Tasks/
+    │   ├── ProjectTaskConfiguration.cs
+    │   └── TaskCommentsConfiguration.cs
+```
+
+---
+
+## File Naming Conventions per Domain
+
+### Entity Configuration Files
+
+**Pattern**: `[EntityName]EntityTypeConfiguration`
+
+```csharp
+public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User> { }  // ✅ Correct
+public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask> { }  // ✅ Correct (updated from Task)
+```
+
+### DTO Files per Operation Type
+
+| Operation Type | Naming Pattern | Example |
+| :--- | :--- | :--- |
+| **Create** | `Create[Entity]Dto` | `CreateProjectDto.cs`, `CreateContentItemDto.cs` |
+| **Update** | `Update[Entity]Dto` | `UpdateProjectDto.cs`, `UpdateContentItemDto.cs` |
+| **Response** | `[Entity]ResponseDto` | `ProjectResponseDto.cs`, `ContentItemResponseDto.cs` |
+
+### Controller Files
+
+**Pattern**: `[Resource]Controller`
+
+```csharp
+public class ProjectsController : ControllerBase  // ✅ Correct
+public class ContentItemsController : ControllerBase  // ✅ Correct
+public class ProjectTasksController : ControllerBase  // ✅ Correct (updated from Task)
+```
+
+### Service Files
+
+| Type | Naming Pattern | Example |
+| :--- | :--- | :--- |
+| **Implementation** | `[Entity]Service` | `ProjectTaskService.cs`, `ContentItemService.cs` |
+| **Interface** | `I[Entity]Service` | `IProjectTaskService.cs`, `IContentItemService.cs` |
+
+---
+
+## Cross-Domain Service Patterns
+
+### When Services Span Multiple Domains
+
+For services that need access to multiple domain entities, use a dedicated folder:
+
+```bash
+src/
+└── GameDev.Api/Services/CrossDomain/
+    ├── VersionControlService.cs  // Works with snapshots, tasks, content
+    └── SearchService.cs  // Searches across all domains
+```
+
+### Configuration Files for Cross-Domain Services
+
+```csharp
+// ✅ CORRECT - Domain-aware cross-domain service configuration
+public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
+{
+    public void Configure(EntityTypeBuilder<ContentItem> builder)
+    {
+        // ... content configuration here
+        
+        // Include external references (cross-domain entity)
+        builder.HasMany(ci => ci.ExternalReferences)
+            .WithOne(er => er.ParentEntity)
+            .HasForeignKey(er => er.ParentId);
+    }
+}
+```
+
+---
+
+## Sub-Folder Organization for Complex Domains
+
+### Content Domain Example
+
+```bash
+src/
+└── GameDev.Core/Models/Content/
+    ├── ContentItem.cs
+    ├── StoryOutline.cs
+    ├── DialogueBranch.cs
+    ├── ExternalReference.cs
+    ├── MediaAttachment.cs
+    ├── Tag.cs
+    ├── ContentTags.cs
+    └── MediaTags.cs
+```
+
+### DTO Sub-Folders per Operation Type
+
+```bash
+src/
+└── GameDev.Core/Dtos/Content/
+    ├── CreateDto/
+    │   ├── CreateContentItemDto.cs
+    │   └── CreateStoryOutlineDto.cs
+    ├── UpdateDto/
+    │   ├── UpdateContentItemDto.cs
+    │   └── UpdateStoryOutlineDto.cs
+    └── ResponseDto/
+        ├── ContentItemResponseDto.cs
+        └── StoryOutlineResponseDto.cs
+```
+
+---
+
+## Common Files per Domain
+
+### Enums Folder (Shared Across Domains)
+
+```bash
+src/
+└── GameDev.Core/Enums/
+    ├── ContentTypeEnum.cs
+    ├── ContentStatusEnum.cs
+    ├── ViewModeEnum.cs
+    ├── TaskDifficultyEnum.cs
+    └── TaskStatusEnum.cs
+```
+
+### Shared DTOs (Common across all domains)
+
+```bash
+src/
+└── GameDev.Core/Dtos/Common/
+    ├── PaginationResult.cs
+    └── ErrorResponseDto.cs
+```
+
+---
+
+## Example Folder Tree for New Domain
+
+When adding a new domain (e.g., `Inventory`):
+
+```bash
+src/
+├── GameDev.Core/Models/Inventory/
+│   ├── InventoryItem.cs
+│   ├── EndingDefinition.cs
+│   └── Enums/
+│       └── ItemTypeEnum.cs
+│
+├── GameDev.Core/Dtos/Inventory/
+│   ├── CreateDto/
+│   │   └── CreateInventoryItemDto.cs
+│   ├── UpdateDto/
+│   │   └── UpdateInventoryItemDto.cs
+│   └── ResponseDto/
+│       └── InventoryItemResponseDto.cs
+│
+├── GameDev.Api/Controllers/Inventory/
+│   └── InventoryItemsController.cs
+│
+├── GameDev.Api/Services/Inventory/
+│   ├── InventoryService.cs
+│   └── IInventoryService.cs
+│
+└── GameDev.Core/Configurations/Inventory/
+    ├── InventoryItemConfiguration.cs
+    └── EndingDefinitionConfiguration.cs
+```
+
+---
+
+## Anti-Patterns to Avoid in File Organization
+
+| Anti-Pattern | Example | ✅ Correct Approach |
+| :--- | :--- | :--- |
+| **Flat Structure** | All models in `GameDev.Core/Models/` without domain folders | ❌ Don't do this! Use domain folders |
+| **Mixed DTOs** | CreatingDto.cs and UpdateDto.cs in same file | ✅ Separate files per operation type |
+| **Generic Names** | Service.cs, Entity.cs (no context) | ✅ Descriptive names: InventoryService.cs |
+| **Cross-Domain Mixing** | TaskConfiguration.cs with ContentItem properties | ✅ Keep configurations domain-specific |
+
+---
+
+## Configuration File Naming per Domain
+
+### Pattern: `[EntityName]EntityTypeConfiguration`
+
+```csharp
+// ✅ CORRECT - Follows naming convention
+public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User> { }
+public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask> { }  // Updated from Task
+
+// ❌ INCORRECT - Generic or inconsistent naming
+public class TaskConfiguration : IEntityTypeConfiguration<Task> { }  // ❌ Should be ProjectTask now!
+public class Entity1Configuration : IEntityTypeConfiguration<User> { }  // ❌ No context!
+```
+
+---
+
+## Summary: Domain Clustering Checklist
+
+| File Type | Must Cluster by Domain? | Priority | Example |
+| :--- | :--- | :--- | :--- |
+| **Models** | ✅ Yes | Critical | `Tasks/ProjectTask.cs` |
+| **DTOs (Create)** | ✅ Yes | High | `Content/CreateDto/CreateContentItemDto.cs` |
+| **DTOs (Update)** | ✅ Yes | High | `Projects/UpdateDto/UpdateProjectDto.cs` |
+| **DTOs (Response)** | ✅ Yes | High | `Content/ResponseDto/ContentItemResponseDto.cs` |
+| **Services** | ✅ Yes | High | `Tasks/ProjectTaskService.cs` |
+| **Controllers** | ✅ Yes | Critical | `Projects/ProjectsController.cs` |
+| **Configurations** | ✅ Yes | High | `Tasks/ProjectTaskConfiguration.cs` |
+| **Enums** | ⚠️ Optional (group by domain) | Medium | `Enums/ContentTypeEnum.cs` |
+| **Common DTOs** | ✅ Yes (separate Common folder) | Low | `Dtos/Common/PaginationResult.cs` |
+
+---
+
+## Final Reminder
+
+**Follow these domain clustering guidelines to maintain a clean, organized codebase!**
+
+- ✅ Always organize files by domain in their respective folders
+- ✅ Use consistent naming patterns per file type
+- ✅ Keep configurations domain-specific
+- ✅ Separate common/shared DTOs into their own folder
+```

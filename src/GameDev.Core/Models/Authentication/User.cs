@@ -86,4 +86,11 @@ public class User
     /// </summary>
     public virtual ICollection<TeamMember> TeamMemberships { get; set; } = new List<TeamMember>();
 
+    /// <summary>
+    /// Navigation property: Collection of teams this user owns/created.
+    /// Enables lazy loading to access all teams owned by the user.
+    /// Foreign key: CreatedByUserId (matches FK in Team)
+    /// </summary>
+    public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
+
 }
