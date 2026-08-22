@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,6 +22,10 @@ public class ReviewStatus
     /// </summary>
     [Required]
     public Guid ContentItemId { get; set; }
+
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
     /// Status: 0=Pending, 1=Approved, 2=Rejected.
@@ -31,6 +36,10 @@ public class ReviewStatus
     /// ID of the user who reviewed the content.
     /// </summary>
     public Guid? ReviewedByUserId { get; set; }
+
+    // Navigation property: Reviewer (User) - Optional Many-to-One relationship
+    [ForeignKey("ReviewedByUserId")]
+    public virtual User? Reviewer { get; set; }
     
     /// <summary>
     /// Review comments.
@@ -43,5 +52,4 @@ public class ReviewStatus
     /// </summary>
     public DateTime? ReviewedAt { get; set; }
 
-    public virtual ContentItem ContentItem { get; set; }
 }

@@ -21,7 +21,12 @@ public class TokenUsageLog
     /// ID of the project token this usage belongs to.
     /// </summary>
     [Required]
-    public Guid ProjectTokenId { get; set; }
+    public Guid TokenId { get; set; }
+
+    /// <summary>
+    /// ID of the project (for grouping).
+    /// </summary>
+    public Guid? ProjectId { get; set; }
 
     /// <summary>
     /// Client IP address (optional).
@@ -48,7 +53,7 @@ public class TokenUsageLog
     /// <summary>
     /// Timestamp when the action occurred.
     /// </summary>
-    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public DateTime UsedAt { get; set; } = DateTime.UtcNow;
 
     //Navigation Properties
     public virtual ProjectToken ProjectToken { get; set; }

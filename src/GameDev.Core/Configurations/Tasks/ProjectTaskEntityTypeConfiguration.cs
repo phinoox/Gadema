@@ -36,6 +36,12 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
             .HasForeignKey(pt => pt.ContentItemId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, allow task history
         
+        // Navigation property: Comments (Collection)
+        builder.HasMany(pt => pt.Comments)
+            .WithOne(pct => pct.ProjectTask)
+            .HasForeignKey(pct => pct.TaskId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         // Properties configuration
         builder.Property(e => e.TaskTitle).IsRequired();
     }

@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,19 @@ public class StorySequence
     /// </summary>
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
+    // Navigation property: Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
+    
+    /// <summary>
+    /// Parent sequence ID for hierarchical organization.
+    /// </summary>
+    public Guid? ParentSequenceId { get; set; }
+
+    // Navigation property: Parent Sequence (self-referencing)
+    [ForeignKey("ParentSequenceId")]
+    public virtual StorySequence? ParentSequence { get; set; }
     
     /// <summary>
     /// Name of the sequence (e.g., "Chapter 1").
@@ -58,4 +72,18 @@ public class StorySequence
     /// </summary>
     [MaxLength(256)]
     public string? OutlineSummary { get; set; }
+
+    // Collection navigation properties
+    /// <summary>
+    /// Navigation property: Collection of child sequences in this hierarchy.
+    /// Foreign key: ParentSequenceId (matches FK in StorySequence)
+    /// </summary>
+    public virtual ICollection<StorySequence> ChildSequences { get; set; } = new List<StorySequence>();
+
+    /// <summary>
+    /// Navigation property: Collection of beats in this sequence.
+    /// Foreign key: SequenceId (matches FK in StoryBeat)
+    /// </summary>
+    public virtual ICollection<StoryBeat> Beats { get; set; } = new List<StoryBeat>();
+
 }

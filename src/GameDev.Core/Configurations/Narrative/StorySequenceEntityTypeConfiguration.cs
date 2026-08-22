@@ -30,14 +30,20 @@ public class StorySequenceEntityTypeConfiguration : IEntityTypeConfiguration<Sto
         
         // Navigation property: Project (Cascade delete)
         builder.HasOne(s => s.Project)
-            .WithMany()
+            .WithMany(p => p.Sequences)
             .HasForeignKey(s => s.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete sequences when project deleted
         
-        // Optional: Navigation to StorySequences (self-referencing for chapter ordering)
+        // Navigation property: Parent Sequence (self-referencing, restrict delete)
         builder.HasOptional(s => s.ParentSequence)
-            .WithMany()
+            .WithMany(p => p.ChildSequences)
             .HasForeignKey(e => e.ParentSequenceId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain historical data
+
+        // Collection navigation: Child sequences (inverse of parent relationship)
+        builder.HasMany(s => s.ChildSequences)
+            .WithOne(cs => cs.ParentSequence)
+            .HasForeignKey(cs => cs.ParentSequenceId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

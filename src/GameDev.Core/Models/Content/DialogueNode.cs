@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -23,6 +24,10 @@ public class DialogueNode
     [Required, Display(Name = "Branch ID")]
     public Guid BranchId { get; set; }
 
+    // Navigation property: DialogueBranch (Many-to-One)
+    [ForeignKey("BranchId")]
+    public virtual DialogueBranch DialogueBranch { get; set; }
+
     /// <summary>
     /// Text content of the dialogue node.
     /// </summary>
@@ -33,6 +38,10 @@ public class DialogueNode
     /// ID of the speaker (character) for this node.
     /// </summary>
     public Guid? SpeakerId { get; set; }
+
+    // Navigation property: Speaker (User - Many-to-One)
+    [ForeignKey("SpeakerId")]
+    public virtual User? Speaker { get; set; }
 
     /// <summary>
     /// Choice options (JSON array).
@@ -46,6 +55,4 @@ public class DialogueNode
     [MaxLength(4096)]
     public string? Conditions { get; set; }  // JSON conditions
 
-    //Navigation Properties
-    public virtual DialogueBranch DialogueBranch { get; set; }
 }

@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,6 +22,10 @@ public class ProjectTaskComments
     /// </summary>
     [Required]
     public Guid TaskId { get; set; }
+
+    // Navigation property: ProjectTask (Many-to-One)
+    [ForeignKey("TaskId")]
+    public virtual ProjectTask ProjectTask { get; set; }
     
     /// <summary>
     /// ID of the user who commented.
@@ -39,5 +44,4 @@ public class ProjectTaskComments
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public virtual ProjectTask ProjectTask { get; set; }
 }

@@ -1,5 +1,6 @@
 // =============================================================================
-// ProjectIdentityDefinition - Entity for identity definitions linked to projects
+// IdentityDefinition - Base entity for identity definitions linked to projects
+// This is the base class used by IdentityValue navigation property
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ namespace GameDev.Core.Models;
 /// Definition of identity types (race, faction, alignment, guild) for a project.
 /// Configures what character identities can be selected within this specific project.
 /// </summary>
-public class ProjectIdentityDefinition
+public class IdentityDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -31,4 +32,10 @@ public class ProjectIdentityDefinition
     
     [MaxLength(1024)]
     public string? Description { get; set; }
+}
+
+// Keep ProjectIdentityDefinition for specific project-scoped identity definitions
+public class ProjectIdentityDefinition : IdentityDefinition
+{
+    // Inherits from IdentityDefinition but can add project-specific properties if needed
 }

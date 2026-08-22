@@ -38,11 +38,11 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
         // Navigation property: MediaAttachments (Cascade delete)
         builder.HasMany(ci => ci.MediaAttachments)
             .WithOne(m => m.ContentItem)
-            .HasForeignKey(m => m.ContentItemId)
+            .HasForeignKey(m => m.MediaAttachmentId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete attachments when content deleted
         
         // Navigation property: ContentTags (SetNull to preserve tags)
-        builder.HasMany(ci => ci.ContentTags)
+        builder.HasMany(ci => ci.ContentTagAssociations)
             .WithOne(ct => ct.ContentItem)
             .HasForeignKey(ct => ct.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);  // Keep tag entity alive when content deleted
@@ -52,5 +52,17 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
             .WithMany()
             .HasForeignKey(rs => rs.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);  // Preserve review history when content updated
+
+        // Navigation property: Comments (SetNull to preserve comment history)
+        builder.HasMany(ci => ci.Comments)
+            .WithOne(c => c.ContentItem)
+            .HasForeignKey(c => c.ContentItemId)
+            .OnDelete(DeleteBehavior.SetNull);  // Preserve comments when content updated
+
+        // Navigation property: Tasks (SetNull to preserve task history)
+        builder.HasMany(ci => ci.Tasks)
+            .WithOne(pt => pt.ContentItem)
+            .HasForeignKey(pt => pt.ContentItemId)
+            .OnDelete(DeleteBehavior.SetNull);  // Preserve tasks when content deleted
     }
 }

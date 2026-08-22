@@ -1,65 +1,51 @@
 // =============================================================================
+using GameDev.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
 namespace GameDev.Core.Models;
 
 /// <summary>
-/// Child entity for character background (FK as Primary Key pattern).
-/// Stores detailed character biography and personality traits.
+/// Represents a background element for a character.
 /// </summary>
 public class CharacterBackground
 {
     /// <summary>
-    /// FK as Primary Key - links to ContentItem.Id
+    /// Unique identifier for the character background.
     /// </summary>
-    public Guid ContentItemId { get; set; }  // FK as Primary Key
+    public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// Full biography of the character.
+    /// ID of the content item this background belongs to.
     /// </summary>
-    [MaxLength(4096)]
-    public string? FullBiography { get; set; }
+    [Required]
+    public Guid ContentItemId { get; set; }
     
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
+
     /// <summary>
-    /// Personality traits (JSON array).
+    /// ID of the character details this background is associated with.
     /// </summary>
-    [MaxLength(4096)]
-    public string? PersonalityTraits { get; set; }  // JSON array
-    
+    [Required]
+    public Guid CharacterDetailsId { get; set; }
+
+    // Navigation property: CharacterDetails (Many-to-One)
+    [ForeignKey("CharacterDetailsId")]
+    public virtual CharacterDetails CharacterDetails { get; set; }
     /// <summary>
-    /// Character motivation.
+    /// Description of the background.
     /// </summary>
     [MaxLength(2048)]
-    public string? Motivation { get; set; }
-    
-    /// <summary>
-    /// Character conflict.
-    /// </summary>
-    [MaxLength(2048)]
-    public string? Conflict { get; set; }
-    
-    /// <summary>
-    /// Voice notes for character portrayal.
-    /// </summary>
-    [MaxLength(4096)]
-    public string? VoiceNotes { get; set; }
-    
-    /// <summary>
-    /// Key events (JSON array).
-    /// </summary>
-    [MaxLength(4096)]
-    public string? KeyEvents { get; set; }  // JSON array
+    public string? Description { get; set; }
     
     /// <summary>
     /// Indicates if the background is published.
     /// </summary>
     public bool Published { get; set; } = false;
     
-    /// <summary>
-    /// Version number for tracking changes.
-    /// </summary>
-    public int Version { get; set; } = 0;
 }

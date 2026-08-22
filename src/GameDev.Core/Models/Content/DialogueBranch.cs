@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,6 +24,10 @@ public class DialogueBranch
     /// </summary>
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
+    // Navigation property: Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     /// <summary>
     /// Title of the dialogue branch.
@@ -57,9 +62,21 @@ public class DialogueBranch
     /// ID of parent node (for self-referencing FK).
     /// </summary>
     public Guid? ParentNodeId { get; set; }
+
+    // Navigation property: Parent Node (self-referencing)
+    [ForeignKey("ParentNodeId")]
+    public virtual DialogueBranch? ParentNode { get; set; }
     
     /// <summary>
     /// Order index for sorting branches.
     /// </summary>
     public int OrderIndex { get; set; } = 0;
+
+    // Collection navigation properties
+    /// <summary>
+    /// Navigation property: Collection of dialogue nodes in this branch.
+    /// Foreign key: BranchId (matches FK in DialogueNode)
+    /// </summary>
+    public virtual ICollection<DialogueNode> Nodes { get; set; } = new List<DialogueNode>();
+
 }

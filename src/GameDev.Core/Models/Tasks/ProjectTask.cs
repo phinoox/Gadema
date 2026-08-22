@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,10 +25,18 @@ public class ProjectTask
     [Required]
     public Guid ProjectId { get; set; }
     
+    // Navigation property: Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
+
     /// <summary>
     /// Optional FK to ContentItem (nullable).
     /// </summary>
     public Guid? ContentItemId { get; set; }  // Nullable FK to ContentItem
+    
+    // Navigation property: ContentItem (optional)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
     
     /// <summary>
     /// Task title.
@@ -92,4 +101,10 @@ public class ProjectTask
     /// </summary>
     [Column("last_modified_at")]
     public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
+    
+    /// <summary>
+    /// Navigation property: Collection of comments for this task.
+    /// Foreign key: ProjectTaskId (matches FK in ProjectTaskComments)
+    /// </summary>
+    public virtual ICollection<ProjectTaskComments> Comments { get; set; } = new List<ProjectTaskComments>();
 }

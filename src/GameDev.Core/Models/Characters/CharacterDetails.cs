@@ -1,6 +1,8 @@
 // =============================================================================
+using GameDev.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -16,6 +18,10 @@ public class CharacterDetails
     /// FK as Primary Key - links to ContentItem.Id
     /// </summary>
     public Guid ContentItemId { get; set; }  // FK as Primary Key
+
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
 
     /// <summary>
     /// Character name.
@@ -43,5 +49,12 @@ public class CharacterDetails
     /// </summary>
     public int? Status { get; set; }  // Enum: Alive, Deceased, Missing
 
-    public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; }
+    // Collection navigation property
+    /// <summary>
+    /// Navigation property: Collection of character background associations
+    /// via CharacterDetailsCharacterBackground junction table.
+    /// Foreign key: ContentItemId (matches FK in CharacterBackground)
+    /// </summary>
+    public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
+
 }

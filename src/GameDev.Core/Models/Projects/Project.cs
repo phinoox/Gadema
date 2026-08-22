@@ -54,27 +54,14 @@ public class Project
     /// </summary>
     public bool IsActive { get; set; } = true;
 
+    // Reference navigation properties (Many-to-One relationships)
     /// <summary>
-    /// Navigation property: Project that owns this project (User/Team polymorphic ownership).
+    /// Navigation property: User or Team who owns this project (polymorphic ownership).
     /// Note: This is a weak navigation - use OwnerType to determine actual owner entity type.
     /// </summary>
     public virtual Project? Owner { get; set; }
-    /// <summary>
-    /// Optional parent project ID for series tracking.
-    /// </summary>
-    [MaxLength(128)]
-    public string? SeriesId { get; set; }
-    /// <summary>
-    /// Navigation property: Parent project for series tracking (Restrict to maintain history).
-    /// </summary>
-    public virtual Project? SeriesProject { get; set; }
-    /// <summary>
-    /// Project visibility (Private = 0, Public = 1).
-    /// </summary>
-    [EnumDataType(typeof(ProjectVisibilityEnum)), Required, Display(Name = "Visibility")]
-    public ProjectVisibilityEnum Visibility { get; set; } = ProjectVisibilityEnum.Private;
 
-
+    // Collection navigation properties
     /// <summary>
     /// Navigation property: Collection of project tokens for this project.
     /// Enables lazy loading to access all API tokens owned by the project.
@@ -90,11 +77,47 @@ public class Project
     public virtual ICollection<ContentItem> ContentItems { get; set; } = new List<ContentItem>();
     
     /// <summary>
+    /// Navigation property: Collection of sequences for this project.
+    /// Enables lazy loading to access all story sequences/chapters in the project.
+    /// Foreign key: ProjectId (matches FK in StorySequence)
+    /// </summary>
+    public virtual ICollection<StorySequence> Sequences { get; set; } = new List<StorySequence>();
+
+    /// <summary>
+    /// Navigation property: Collection of tasks for this project.
+    /// Enables lazy loading to access all tasks associated with the project.
+    /// Foreign key: ProjectId (matches FK in ProjectTask)
+    /// </summary>
+    public virtual ICollection<ProjectTask> Tasks { get; set; } = new List<ProjectTask>();
+
+    /// <summary>
     /// Navigation property: Collection of activity logs for this project.
     /// Enables lazy loading to track all project events.
     /// Foreign key: ProjectId (matches FK in ActivityLog)
     /// </summary>
     public virtual ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
+
+    /// <summary>
+    /// Navigation property: Collection of team members for this project.
+    /// Enables lazy loading to access all team members associated with the project.
+    /// Foreign key: ProjectId (matches FK in TeamMember)
+    /// </summary>
+    public virtual ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
+
+    /// <summary>
+    /// Navigation property: Collection of tags for this project.
+    /// Enables lazy loading to access all tags associated with the project.
+    /// Foreign key: ProjectId (matches FK in Tag)
+    /// </summary>
+    public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
+
+    /// <summary>
+    /// Navigation property: Collection of media attachments for this project.
+    /// Enables lazy loading to access all media files associated with the project.
+    /// Foreign key: ProjectId (matches FK in MediaAttachment)
+    /// </summary>
+    public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
+
     /// <summary>
     /// Project status (Draft = 0, InProgress = 1, Published = 2).
     /// </summary>
@@ -134,4 +157,3 @@ public class Project
     public DateTime? LastModifiedAt { get; set; } = null!;
 
 }
-

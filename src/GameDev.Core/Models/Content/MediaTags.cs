@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -22,11 +23,17 @@ public class MediaTags
     [Required, Display(Name = "Media Attachment ID")]
     public Guid MediaAttachmentId { get; set; }
 
+    // Navigation property: MediaAttachment (Many-to-One)
+    [ForeignKey("MediaAttachmentId")]
+    public virtual MediaAttachment MediaAttachment { get; set; }
+
     /// <summary>
     /// ID of the tag being applied to the media attachment.
     /// </summary>
     [Required, Display(Name = "Tag ID")]
     public Guid TagId { get; set; }
 
-    public virtual MediaAttachment MediaAttachment { get; set; }
+    // Navigation property: Tag (Many-to-One)
+    public virtual Tag Tag { get; set; }
+
 }

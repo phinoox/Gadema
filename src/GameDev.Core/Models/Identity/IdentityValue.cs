@@ -17,6 +17,10 @@ public class IdentityValue
     
     [Required, Display(Name = "Identity Definition ID")]
     public Guid IdentityDefinitionId { get; set; }
+
+    // Navigation property: IdentityDefinition (Many-to-One)
+    [ForeignKey("IdentityDefinitionId")]
+    public virtual IdentityDefinition IdentityDefinition { get; set; }
     
     [MaxLength(128), Required, Display(Name = "Value Name")]
     public string Name { get; set; } = "";
@@ -30,4 +34,5 @@ public class IdentityValue
     public int OrderIndex { get; set; } = 0;
     
     public bool IsDefault { get; set; } = false;
+
 }

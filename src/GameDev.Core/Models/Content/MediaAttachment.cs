@@ -22,7 +22,11 @@ public class MediaAttachment
     /// ID of the content item this media is attached to.
     /// </summary>
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MediaAttachmentId { get; set; }
+
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("MediaAttachmentId")]
+    public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
     /// Original file name.
@@ -57,4 +61,5 @@ public class MediaAttachment
     /// Upload timestamp.
     /// </summary>
     public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
+
 }

@@ -23,6 +23,10 @@ public class StoryBeat
     /// </summary>
     [Required, Display(Name = "Sequence ID")]
     public Guid SequenceId { get; set; }
+
+    // Navigation property: StorySequence (Many-to-One)
+    [ForeignKey("SequenceId")]
+    public virtual StorySequence StorySequence { get; set; }
     
     /// <summary>
     /// Title of the beat (e.g., "The Discovery").
@@ -52,5 +56,4 @@ public class StoryBeat
     /// </summary>
     public bool Published { get; set; } = false;
 
-    public virtual StorySequence StorySequence { get; set; }
 }

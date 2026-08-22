@@ -1,5 +1,6 @@
 // =============================================================================
 using GameDev.Core.Enums;
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,6 +25,10 @@ public class LoreEntry
     /// </summary>
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
+    // Navigation property: Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     /// <summary>
     /// Type of lore (History, Mythology, Geography, etc.).
@@ -53,4 +58,5 @@ public class LoreEntry
     /// Indicates if the lore entry is published.
     /// </summary>
     public bool Published { get; set; } = false;
+
 }

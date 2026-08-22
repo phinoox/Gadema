@@ -45,7 +45,17 @@ public class Tag
     /// <summary>
     /// Indicates if the tag is active.
     /// </summary>
-    public bool IsActive { get; set; } = true;
+    public bool IsActive { get; set; } 
 
-    public virtual ContentItem ContentItem { get; set; }
+    // Collection navigation properties (Many-to-Many through junction tables)
+    /// <summary>
+    /// Navigation property: Collection of content item associations via ContentTags junction table
+    /// </summary>
+    public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
+
+    /// <summary>
+    /// Navigation property: Collection of media attachment associations via MediaTags junction table
+    /// </summary>
+    public virtual ICollection<MediaTags> MediaTagAssociations { get; set; } = new List<MediaTags>();
+
 }

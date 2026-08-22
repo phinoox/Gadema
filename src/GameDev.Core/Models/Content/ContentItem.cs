@@ -1,5 +1,6 @@
 // =============================================================================
 using GameDev.Core.Enums;
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,6 +26,10 @@ public class ContentItem
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
     
+    // Navigation property: Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
+
     /// <summary>
     /// Content type (Character, World, Mechanic, etc.).
     /// </summary>
@@ -103,6 +108,7 @@ public class ContentItem
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+    // Collection navigation properties
     /// <summary>
     /// Navigation property: Collection of version logs for this content item.
     /// Enables lazy loading to track all historical changes.
@@ -124,6 +130,20 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
 
+    /// <summary>
+    /// Navigation property: Collection of comments for this content item.
+    /// Enables lazy loading to access all comments.
+    /// Foreign key: ContentItemId (matches FK in Comment)
+    /// </summary>
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
+    /// <summary>
+    /// Navigation property: Collection of tasks associated with this content item.
+    /// Foreign key: ContentItemId (matches FK in ProjectTask)
+    /// </summary>
+    public virtual ICollection<ProjectTask> Tasks { get; set; } = new List<ProjectTask>();
+
+    // Reference navigation properties (Many-to-One relationships)
     /// <summary>
     /// Navigation property: Review status for this content item (Many-to-One).
     /// Foreign key: ContentItemId (matches FK in ReviewStatus)

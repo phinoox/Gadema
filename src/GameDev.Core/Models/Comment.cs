@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -22,6 +23,10 @@ public class Comment
     /// </summary>
     [Required]
     public Guid ContentItemId { get; set; }
+
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
     /// ID of the user who commented.
@@ -45,4 +50,5 @@ public class Comment
     /// Timestamp when the comment was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
 }

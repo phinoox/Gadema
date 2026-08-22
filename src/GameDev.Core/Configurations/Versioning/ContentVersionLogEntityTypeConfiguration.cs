@@ -1,11 +1,9 @@
 // =============================================================================
-// GameDev.Core - Shared Domain Models & Interfaces
-
-// =============================================================================
-
+using GameDev.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using GameDev.Core.Models;
+// GameDev.Core - Shared Domain Models & Interfaces
+// =============================================================================
 
 namespace GameDev.Core.Configurations.Versioning;
 
@@ -21,19 +19,16 @@ public class ContentVersionLogEntityTypeConfiguration : IEntityTypeConfiguration
 
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.ContentItemId);
-        builder.HasIndex(e => e.VersionNumber);  // Changed from Version to match model property
-        builder.HasIndex(e => e.CreatedByUserId);  // Changed from SnapshotType (not in ContentVersionLog model)
-
-        // Navigation property: ContentItem (Cascade delete)
+        builder.HasIndex(e => e.VersionNumber);  // Query recent versions
+        
+        // Navigation property: ContentItem (SetNull to preserve version history)
         builder.HasOne(cvl => cvl.ContentItem)
             .WithMany(ci => ci.VersionLogs)
             .HasForeignKey(cvl => cvl.ContentItemId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.SetNull);
 
         // Properties configuration
-        builder.Property(e => e.VersionNumber).IsRequired();  // Changed from Version to VersionNumber
-        builder.Property(e => e.ChangedByUserId).IsRequired();  // Changed from CreatedByUserId to match model
-        builder.Property(e => e.ChangeDescription);  // Added missing property
-
+        builder.Property(e => e.ChangedByUserId).IsRequired();
+        builder.Property(e => e.ChangeDescription).HasMaxLength(2048);
     }
 }

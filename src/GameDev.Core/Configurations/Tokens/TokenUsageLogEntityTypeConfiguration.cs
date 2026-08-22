@@ -19,23 +19,33 @@ public class TokenUsageLogEntityTypeConfiguration : IEntityTypeConfiguration<Tok
     /// </summary>
     public void Configure(EntityTypeBuilder<TokenUsageLog> builder)
     {
-        // Primary key (composite: ProjectTokenId + Timestamp for unique usage tracking)
-        builder.HasKey(e => new { e.ProjectTokenId, e.Timestamp });
+        // Primary key
+        builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectTokenId);  // Filter by project
-        builder.HasIndex(e => e.Action);          // Filter by action type
-        builder.HasIndex(e => e.Timestamp);       // Query recent usage
-
+        builder.HasIndex(e => e.TokenId);  // Filter by project token
+        builder.HasIndex(e => e.ProjectId); // Filter by project
+        builder.HasIndex(e => e.UsedAt);    // Query recent usage
+        
         // Navigation property: ProjectToken (Cascade delete)
         builder.HasOne(tul => tul.ProjectToken)
             .WithMany(p => p.UsageLogs)  // Lazy loading navigation
-            .HasForeignKey(tul => tul.ProjectTokenId)
+            .HasForeignKey(tul => tul.TokenId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        // Navigation properties (no cascade - these are optional references)
+        builder.HasOptional(tul => tul.ContentItem)
+            .WithMany(ci => ci.UsageLogs)
+            .HasForeignKey(tul => tul.ContentId)
+            .OnDelete(DeleteBehavior.SetNull);
+        
+        // Navigation property: Project
+        builder.HasOne(tul => tul.Project)
+            .WithMany()
+            .HasForeignKey(tul => tul.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
         // Properties configuration
-        builder.Property(e => e.ProjectTokenId).IsRequired();
-        builder.Property(e => e.Action).IsRequired();
+        builder.Property(e => e.UsedAt).IsRequired();
     }
 }
-

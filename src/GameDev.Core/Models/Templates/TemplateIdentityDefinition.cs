@@ -3,6 +3,7 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameDev.Core.Models;
 
@@ -16,9 +17,17 @@ public class TemplateIdentityDefinition
     
     [Required, Display(Name = "Project Template ID")]
     public Guid ProjectTemplateId { get; set; }
+
+    // Navigation property: ProjectTemplate (Many-to-One)
+    [ForeignKey("ProjectTemplateId")]
+    public virtual ProjectTemplate ProjectTemplate { get; set; }
     
     [Required, Display(Name = "Identity Definition ID")]
     public Guid IdentityDefinitionId { get; set; }
+
+    // Navigation property: IdentityDefinition (Many-to-One)
+    [ForeignKey("IdentityDefinitionId")]
+    public virtual IdentityDefinition IdentityDefinition { get; set; }
     
     [MaxLength(128)]
     public string? Description { get; set; }
