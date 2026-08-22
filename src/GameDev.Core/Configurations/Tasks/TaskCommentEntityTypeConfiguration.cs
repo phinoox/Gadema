@@ -13,25 +13,25 @@ namespace GameDev.Core.Configurations.Tasks;
 /// <summary>
 /// Configuration for ProjectTaskComments entity in game development management system.
 /// </summary>
-public class TaskCommentEntityTypeConfiguration : IEntityTypeConfiguration<TaskComment>
+public class TaskCommentEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTaskComments>
 {
     /// <summary>
     /// Configure TaskComment entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<TaskComment> builder)
+    public void Configure(EntityTypeBuilder<ProjectTaskComments> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectTaskId);
+        builder.HasIndex(e => e.TaskId);
         builder.HasIndex(e => e.CommentedByUserId);
         builder.HasIndex(e => e.CreatedAt);
         
         // Navigation property: ProjectTask (Cascade delete)
-        builder.HasOne(tc => tc.ProjectTask)
+        builder.HasOne(tc => tc.Task)
             .WithMany(pt => pt.Comments)
-            .HasForeignKey(tc => tc.ProjectTaskId)
+            .HasForeignKey(tc => tc.TaskId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete comments when task deleted
         
         // Properties configuration

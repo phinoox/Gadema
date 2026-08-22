@@ -117,4 +117,24 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<AssetLink> AssetLinks { get; set; } = new List<AssetLink>();
 
+    /// <summary>
+    /// Navigation property: Collection of media attachments for this content item.
+    /// Enables lazy loading to access all attached files/images.
+    /// Foreign key: ContentItemId (matches FK in MediaAttachment)
+    /// </summary>
+    public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
+
+    /// <summary>
+    /// Navigation property: Review status for this content item (Many-to-One).
+    /// Foreign key: ContentItemId (matches FK in ReviewStatus)
+    /// </summary>
+    public virtual ReviewStatus? ReviewStatus { get; set; }
+
+    /// <summary>
+    /// Navigation property: Collection of tag associations for this content item.
+    /// Enables lazy loading to access all tags associated with this content.
+    /// Foreign key: ContentItemId (matches FK in ContentTags junction table)
+    /// </summary>
+    public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
+
 }

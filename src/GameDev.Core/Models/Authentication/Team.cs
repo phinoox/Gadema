@@ -49,4 +49,18 @@ public class Team
     /// Indicates if the team is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
+
+    /// <summary>
+    /// Collection of team members for this team.
+    /// Enables lazy loading to access all members in the team.
+    /// Foreign key: TeamId (matches FK in TeamMember)
+    /// </summary>
+    public virtual ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
+
+    /// <summary>
+    /// Navigation property: User who created this team (Restrict to preserve team history).
+    /// Foreign key: CreatedByUserId (matches FK in configuration)
+    /// </summary>
+    public virtual User CreatedByUser { get; set; }
+
 }

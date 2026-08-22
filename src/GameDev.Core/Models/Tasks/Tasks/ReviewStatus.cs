@@ -42,4 +42,6 @@ public class ReviewStatus
     /// Timestamp when the review was completed.
     /// </summary>
     public DateTime? ReviewedAt { get; set; }
+
+    public virtual ContentItem ContentItem { get; set; }
 }

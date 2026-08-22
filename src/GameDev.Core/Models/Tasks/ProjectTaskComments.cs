@@ -38,4 +38,6 @@ public class ProjectTaskComments
     /// Timestamp when the comment was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public virtual ProjectTask ProjectTask { get; set; }
 }

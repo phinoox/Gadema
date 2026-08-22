@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 // GameDev.Core - Shared Domain Models & Interfaces
@@ -38,4 +39,10 @@ public class AttributeSet
     /// Indicates if the attribute set is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
+
+    /// <summary>
+    /// Navigation property: Project (Cascade delete)
+    /// Foreign key: ProjectId (matches FK in configuration)
+    /// </summary>
+    public virtual Project Project { get; set; }
 }

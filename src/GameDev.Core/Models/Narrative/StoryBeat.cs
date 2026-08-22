@@ -51,4 +51,6 @@ public class StoryBeat
     /// Indicates if the beat is published.
     /// </summary>
     public bool Published { get; set; } = false;
+
+    public virtual StorySequence StorySequence { get; set; }
 }

@@ -78,4 +78,12 @@ public class User
     /// Indicates if the account is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
+
+    /// <summary>
+    /// Collection of team memberships for this user.
+    /// Enables lazy loading to access all teams a user belongs to.
+    /// Foreign key: UserId (matches FK in TeamMember)
+    /// </summary>
+    public virtual ICollection<TeamMember> TeamMemberships { get; set; } = new List<TeamMember>();
+
 }

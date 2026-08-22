@@ -46,4 +46,17 @@ public class TeamMember
     /// Indicates if the invite is still pending acceptance.
     /// </summary>
     public bool IsPendingInvite { get; set; } = true;
+
+    /// <summary>
+    /// Navigation property: Team this member belongs to (Cascade delete).
+    /// Foreign key: TeamId (matches FK in configuration)
+    /// </summary>
+    public virtual Team Team { get; set; }
+
+    /// <summary>
+    /// Navigation property: User who is a member of this team (Restrict to preserve history).
+    /// Foreign key: UserId (matches FK in configuration)
+    /// </summary>
+    public virtual User User { get; set; }
+
 }

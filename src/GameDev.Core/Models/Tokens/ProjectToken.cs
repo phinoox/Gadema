@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 // GameDev.Core - Shared Domain Models & Interfaces
@@ -62,5 +63,11 @@ public class ProjectToken
     /// Foreign key: ProjectTokenId (matches FK in TokenUsageLog)
     /// </summary>
     public virtual ICollection<TokenUsageLog> UsageLogs { get; set; } = new List<TokenUsageLog>();
+
+    /// <summary>
+    /// Navigation property: Project that owns this token.
+    /// Foreign key: ProjectId (matches FK in ProjectToken)
+    /// </summary>
+    public virtual Project Project { get; set; }
 
 }

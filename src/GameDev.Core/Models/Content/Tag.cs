@@ -46,4 +46,6 @@ public class Tag
     /// Indicates if the tag is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
+
+    public virtual ContentItem ContentItem { get; set; }
 }

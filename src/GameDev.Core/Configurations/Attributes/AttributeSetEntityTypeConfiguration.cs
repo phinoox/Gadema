@@ -28,10 +28,9 @@ public class AttributeSetEntityTypeConfiguration : IEntityTypeConfiguration<Attr
         builder.HasIndex(e => e.Name);
         builder.HasIndex(e => e.DisplayOrder);
         
-        // Navigation property: Project (Cascade delete)
-        builder.HasOne(as => as.Project)
+        builder.HasOne(att => att.Project)
             .WithMany()
-            .HasForeignKey(as => as.ProjectId)
+            .HasForeignKey(att => att.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete attribute sets when project deleted
         
         // Properties configuration
