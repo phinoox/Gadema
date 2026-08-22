@@ -21,24 +21,23 @@ public class TokenUsageLogEntityTypeConfiguration : IEntityTypeConfiguration<Tok
     {
         // Primary key
         builder.HasKey(e => e.Id);
-        
+
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.TokenId);  // Filter by project token
         builder.HasIndex(e => e.ProjectId); // Filter by project
         builder.HasIndex(e => e.UsedAt);    // Query recent usage
-        
+
         // Navigation property: ProjectToken (Cascade delete)
         builder.HasOne(tul => tul.ProjectToken)
             .WithMany(p => p.UsageLogs)  // Lazy loading navigation
             .HasForeignKey(tul => tul.TokenId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // Navigation properties (no cascade - these are optional references)
-        builder.HasOptional(tul => tul.ContentItem)
-            .WithMany(ci => ci.UsageLogs)
-            .HasForeignKey(tul => tul.ContentId)
-            .OnDelete(DeleteBehavior.SetNull);
-        
+        builder.HasOne(tul => tul.ContentItem)  // FK: ContentId, PK: Id
+             .WithMany(ci => ci.UsageLogs)  // If collection exists on ContentItem
+             .HasForeignKey(tul => tul.ContentId)
+             .OnDelete(DeleteBehavior.SetNull);
+
         // Navigation property: Project
         builder.HasOne(tul => tul.Project)
             .WithMany()

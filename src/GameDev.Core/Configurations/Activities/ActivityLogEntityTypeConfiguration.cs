@@ -34,8 +34,8 @@ public class ActivityLogEntityTypeConfiguration : IEntityTypeConfiguration<Activ
             .HasForeignKey(al => al.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
         
-        // Navigation property: User (Optional FK)
-        builder.HasOptional(al => al.User)
+        // Navigation property: User (Optional FK) - Changed from HasOptional to proper navigation
+        builder.HasOne(al => al.User)
             .WithMany()
             .HasForeignKey(al => al.UserId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
