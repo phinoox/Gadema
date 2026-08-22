@@ -166,4 +166,24 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<CharacterIdentity> CharacterIdentities { get; set; } = new List<CharacterIdentity>();
 
+    // Collection navigation for character details and backgrounds (via FK as PK pattern)
+    /// <summary>
+    /// Navigation property: Collection of character details for this content item.
+    /// Enables lazy loading to access all character detail records.
+    /// Foreign key: ContentItemId (matches FK in CharacterDetails - FK as Primary Key pattern)
+    /// Used by eager loading: Include(ci => ci.CharacterDetails)
+    /// </summary>
+    public virtual ICollection<CharacterDetails> CharacterDetailsCollection { get; set; } = new List<CharacterDetails>();
+
+    /// <summary>
+    /// Navigation property: Collection of character backgrounds for this content item.
+    /// Enables lazy loading to access all character background records.
+    /// Foreign key: ContentItemId (matches FK in CharacterBackground - FK as Primary Key pattern)
+    /// Used by eager loading: Include(ci => ci.CharacterBackgrounds)
+    /// </summary>
+    public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
+
 }
+
+
+

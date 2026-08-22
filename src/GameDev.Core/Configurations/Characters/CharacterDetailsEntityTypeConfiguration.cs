@@ -24,13 +24,19 @@ public class CharacterDetailsEntityTypeConfiguration : IEntityTypeConfiguration<
         // Primary key: FK as PK pattern (FK = content item ID)
         builder.HasKey(e => e.ContentItemId);
         
-        // Navigation property: ContentItem (Cascade delete)
-        builder.HasOne(cd => cd)  // Self-referencing FK navigation
-            .WithMany(ci => ci.CharacterDetails)
+        // Navigation property: ContentItem (Cascade delete) - Many-to-One relationship
+        // CharacterDetails has ONE ContentItem, but ContentItem may have zero or many CharacterDetails
+        builder.HasOne(cd => cd.ContentItem)  // ✅ Fixed: Navigate to the actual ContentItem property
+            .WithMany(ci => ci.CharacterDetailsCollection)  // ⚠️ Need to add collection property to ContentItem model
             .HasForeignKey(e => e.ContentItemId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete character details when content deleted
         
         // Properties configuration
         builder.Property(e => e.Name).IsRequired();
+
+        // Collection navigation: CharacterBackgrounds (via junction table pattern or direct FK)
+        // This enables lazy loading to access all background associations for this character
+        builder.HasMany(cd => cd.CharacterBackgrounds);  // Enable lazy loading
     }
 }
+
