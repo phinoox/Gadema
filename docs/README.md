@@ -1,6 +1,6 @@
 # 📘 GaDeMa v0.1 Documentation Index & Usage Guide
 
-**Generated**: Aug 20, 2024  
+**Generated**: August 2024  
 **Status**: Documentation Enhancement Complete  
 **Next Session**: Consolidation Phase - Archive Old Docs  
 
@@ -8,7 +8,7 @@
 
 ## **🎯 DOCUMENTATION STRUCTURE OVERVIEW**
 
-The documentation now exists in **three tiers**:
+The documentation is organized into **three tiers**:
 
 ### **TIER 1: CURRENT & AUTHORITATIVE (v2 + New Guidelines)**
 ✅ These are the documents that reflect the **current, production-ready architecture**
@@ -16,7 +16,7 @@ The documentation now exists in **three tiers**:
 | Document | Purpose | Priority | Status |
 |----------|---------|----------|--------|
 | `docs/README.md` *(this file)* | Master index and navigation guide | 🌟 **HIGHEST** | ✅ New |
-| `docs/STATE_OF_WORK.md` | Build status, critical fixes, next steps | 🌟 **HIGHEST** | ✅ Existing |
+| `docs/entities/*` (4 files) | Entity definitions, workflows, relationships | 🔥 **HIGH** | ✅ NEW STRUCTURE |
 | `docs/GUIDELINES/*` (10 files) | Consolidated anti-patterns, testing, Git, etc. | 🔥 **HIGH** | ✅ New |
 | `docs/PERFORMANCEv2.md` | Redis caching, monitoring, health checks | 🔥 **HIGH** | ✅ Current |
 | `docs/DEPLOYMENTv2.md` | PostgreSQL, Docker, Caddy configuration | 🔥 **HIGH** | ✅ Current |
@@ -24,26 +24,23 @@ The documentation now exists in **three tiers**:
 | `docs/CODING_GUIDELINESv2.md` | Naming conventions, anti-patterns summary | 🔥 **HIGH** | ✅ Current |
 | `docs/API-CONTRACTSv2.md` | All endpoints with hybrid response patterns | 🔥 **HIGHEST** | ✅ Current |
 | `docs/SCHEMAv2.md` | Complete database schema + Fluent API configs | 🔥 **HIGH** | ✅ Current |
-| `docs/USER_STORIESv2.md` | ~50 user stories with ProjectTask renaming | 🔥 **HIGH** | ✅ Current |
+| `docs/USER_STORIESv2.md` | User stories with ProjectTask renaming | 🔥 **HIGH** | ✅ Current |
 | `docs/SUMMARYv2.md` | Overall architecture overview | 📖 **MEDIUM** | ✅ Reference |
 | `docs/WORKFLOWSv2.md` | User workflows with sequence diagrams | 📖 **MEDIUM** | ✅ Reference |
 
 ---
 
-### **🔧 TECHNICAL METADATA LAYER**
+### **🔧 TECHNICAL METADATA LAYER (entities/*)**
 📊 These files provide programmatic access to project structure and code analysis:
 
 | File | Purpose | Usage |
 |------|---------|-------|
-| `docs/class-enum-map.json` | Complete class and enum inventory | ✅ **NEW - Technical Reference** |
-
-**What's in the metadata layer:**
-- 16 enums with namespace, file location, and value definitions
-- 154+ classes categorized by type (controllers, services, models, DTOs)
-- Architecture patterns and layer information
-- File path mappings for IDE auto-completion and code generation tools
-
-
+| `docs/entities/class-enum-map.json` | Complete class and enum inventory | ✅ **NEW - Technical Reference** |
+| `docs/entities/CharacterIdentity.md` | Character identity entity definition | ✅ Entity documentation |
+| `docs/entities/ContentItem.md` | Content item entity definition | ✅ Entity documentation |
+| `docs/entities/SeriesProject.md` | Series project relationship documentation | ✅ Relationship patterns |
+| `docs/entities/ProjectTask.md` | ProjectTask relationship documentation | ✅ Relationship patterns |
+| `docs/entities/StoryOutline.md` | StoryOutline relationship documentation | ✅ Relationship patterns |
 
 ---
 
@@ -52,7 +49,7 @@ The documentation now exists in **three tiers**:
 
 | Document | What's Changed | Action Required |
 |----------|----------------|-----------------|
-| `docs/CODING_GUIDELINES.md` | ❌ Superseded by `CODING_GUIDELINESv2.md` + new `ANTI_PATTERNS.md`, `TESTING_GUIDELINES.md`, etc. | ⚠️ **IGNORE - use v2 + guidelines** |
+| `docs/CODING_GUIDELINES.md` | ❌ Superseded by `CODING_GUIDELINESv2.md` + new `docs/GUIDELINES/*` | ⚠️ **IGNORE - use v2 + guidelines** |
 | `docs/PERFORMANCE.md` | ❌ Superseded by `PERFORMANCEv2.md` (missing Redis, caching, monitoring) | ⚠️ **IGNORE - use PERFORMANCEv2.md** |
 | `docs/SECURITY.md` | ❌ Superseded by `SECURITYv2.md` (missing 2FA, TOTP, domain clustering) | ⚠️ **IGNORE - use SECURITYv2.md** |
 | `docs/API-CONTRACTS.md` | ❌ Superseded by `API-CONTRACTSv2.md` (missing hybrid response patterns) | ⚠️ **IGNORE - use API-CONTRACTSv2.md** |
@@ -77,11 +74,14 @@ The documentation now exists in **three tiers**:
 
 **Start Here in Order:**
 1. 📘 Read `docs/README.md` (this file)
-2. 🔥 Read `docs/STATE_OF_WORK.md` - understand current build status
-3. 🔥 Read `docs/SUMMARYv2.md` - high-level architecture overview
-4. 🔥 Skim `docs/CODING_GUIDELINESv2.md` - get naming conventions
-5. 🔥 Read `docs/API-CONTRACTSv2.md` - understand API structure
-6. 🔥 Read `docs/SCHEMAv2.md` - understand database model
+2. 🔥 Read `docs/entities/SeriesProject.md` - understand series relationships
+3. 🔥 Read `docs/entities/CharacterIdentity.md` - learn identity system patterns
+4. 🔥 Read `docs/entities/ContentItem.md` - core content model
+5. 🔥 Check `docs/entities/class-enum-map.json` - technical reference
+6. 🔥 Read `docs/SUMMARYv2.md` - high-level architecture overview
+7. 🔥 Skim `docs/CODING_GUIDELINESv2.md` - get naming conventions
+8. 🔥 Read `docs/API-CONTRACTSv2.md` - understand API structure
+9. 🔥 Read `docs/SCHEMAv2.md` - understand database model
 
 **Then Dive Deep:**
 - 📘 Refer to specific guideline files when implementing features:
@@ -96,7 +96,7 @@ The documentation now exists in **three tiers**:
 1. What type of feature?
    ├─ Authentication/Security → SECURITYv2.md + domain clustering guidelines
    ├─ API Endpoint Design → API-CONTRACTSv2.md + HYBRID_RESPONSE_PATTERN_GUIDELINES.md
-   ├─ Database Schema Change → SCHEMAv2.md
+   ├─ Database Schema Change → SCHEMAv2.md + docs/entities/* for entity patterns
    ├─ Testing Requirements → TESTING_GUIDELINES.md
    └─ Git Commit Process → GIT_GUIDELINES.md
 
@@ -104,7 +104,7 @@ The documentation now exists in **three tiers**:
    → ANTI_PATTERNS.md (comprehensive list)
 
 3. How should files be organized?
-   → DOMAIN_CLUSTERING_GUIDELINES.md
+   → DOMAIN_CLUSTERING_GUIDELINES.md + docs/entities/ for entity definitions
 
 4. View mode separation needed?
    → VIEW_MODE_IMPLEMENTATION_GUIDELINES.md
@@ -113,10 +113,11 @@ The documentation now exists in **three tiers**:
 ### **For Build/Deployment:**
 
 **Critical Path:**
-1. `docs/STATE_OF_WORK.md` - Current build status and critical fixes
-2. `docs/PERFORMANCEv2.md` - Redis setup, caching strategy
-3. `docs/DEPLOYMENTv2.md` - Docker, PostgreSQL, Caddy configuration
-4. `docs/GUIDELINES/ERROR_HANDLING_GUIDELINES.md` - Exception handling standards
+1. `docs/entities/*` - understand entity relationships and patterns
+2. `docs/STATE_OF_WORK.md` - Current build status and critical fixes
+3. `docs/PERFORMANCEv2.md` - Redis setup, caching strategy
+4. `docs/DEPLOYMENTv2.md` - Docker, PostgreSQL, Caddy configuration
+5. `docs/GUIDELINES/ERROR_HANDLING_GUIDELINES.md` - Exception handling standards
 
 ---
 
@@ -130,11 +131,12 @@ If you see both `PERFORMANCE.md` and `PERFORMANCEv2.md`:
 
 **Same pattern applies to ALL v2 documentation files.**
 
-### **Rule #2: Tier 1 + New Guidelines Override Tier 2**
+### **Rule #2: Tier 1 + docs/entities/ Override Tier 2**
 
 The following are the **authoritative sources**:
 - All `*v2.md` files (Tier 1)
-- All `docs/GUIDELINES/*` files (Tier 1, newly created)
+- All `docs/entities/*` files (Entity definitions and relationships)
+- All `docs/GUIDELINES/*` files (Implementation details)
 
 The following should be **ignored during implementation**:
 - `CODING_GUIDELINES.md` → Use `CODING_GUIDELINESv2.md` + specific guidelines
@@ -144,19 +146,16 @@ The following should be **ignored during implementation**:
 - `SCHEMA.md` → Use `SCHEMAv2.md`
 - `WORKFLOWS.md` → Use `WORKFLOWSv2.md`
 
-### **Rule #3: Domain Clustering Guidelines Apply to Everything**
+### **Rule #3: Entity Documentation Applies to Everything**
 
-All new guideline files in `docs/GUIDELINES/` should be consulted when working with their respective topics:
+All new documentation in `docs/entities/` should be consulted when working with their respective entities:
 
-| Topic | Consult This File |
-|-------|-------------------|
-| Anti-patterns | `ANTI_PATTERNS.md` |
-| Testing approach | `TESTING_GUIDELINES.md` |
-| Error handling | `ERROR_HANDLING_GUIDELINES.md` |
-| File organization | `DOMAIN_CLUSTERING_GUIDELINES.md` |
-| View mode implementation | `VIEW_MODE_IMPLEMENTATION_GUIDELINES.md` |
-| Hybrid response patterns | `HYBRID_RESPONSE_PATTERN_GUIDELINES.md` |
-| Git workflow | `GIT_GUIDELINES.md` |
+| Entity Topic | Consult This File |
+|--------------|-------------------|
+| Character identity system | `CharacterIdentity.md` |
+| Content item structure | `ContentItem.md` |
+| Series project relationships | `SeriesProject.md` |
+| Class and enum mapping | `class-enum-map.json` (technical reference) |
 
 ---
 
@@ -195,7 +194,7 @@ All new guideline files in `docs/GUIDELINES/` should be consulted when working w
 ## **📊 DOCUMENTATION USAGE METRICS**
 
 ### **Primary References (Used Daily):**
-- 📘 `docs/STATE_OF_WORK.md` - Build status
+- 📘 `docs/entities/*` - Entity definitions and relationships
 - 🔥 `docs/API-CONTRACTSv2.md` - API design
 - 🔥 `docs/CODING_GUIDELINESv2.md` - Code standards
 - 🔥 `docs/GUIDELINES/*` (10 files) - Implementation details
@@ -207,12 +206,12 @@ All new guideline files in `docs/GUIDELINES/` should be consulted when working w
 - 🔥 `docs/SCHEMAv2.md` - Database changes
 
 ### **Historical References (Archive Only):**
-- ❌ `docs/CODING_GUIDELINES.md`
-- ❌ `docs/PERFORMANCE.md`
-- ❌ `docs/SECURITY.md`
-- ❌ `docs/API-CONTRACTS.md`
-- ❌ `docs/SCHEMA.md`
-- ❌ `docs/WORKFLOWS.md`
+- ❌ `docs/deprecated//CODING_GUIDELINES.md`
+- ❌ `docs/deprecated//PERFORMANCE.md`
+- ❌ `docs/deprecated//SECURITY.md`
+- ❌ `docs/deprecated//API-CONTRACTS.md`
+- ❌ `docs/deprecated//SCHEMA.md`
+- ❌ `docs/deprecated//WORKFLOWS.md`
 
 ---
 
@@ -220,29 +219,29 @@ All new guideline files in `docs/GUIDELINES/` should be consulted when working w
 
 ```bash
 # For fresh start - check current documentation status:
-ls docs/*.md docs/GUIDELINES/*
+ls docs/*.md docs/entities/* docs/GUIDELINES/*
 
 # Recommended reading order for new contributors:
-cat docs/README.md > /tmp/gadema-guide.txt
-echo "=== READING ORDER ===" >> /tmp/gadema-guide.txt
-echo "1. STATE_OF_WORK.md - Understand build status" >> /tmp/gadema-guide.txt
-echo "2. SUMMARYv2.md - High-level architecture" >> /tmp/gadema-guide.txt
-echo "3. API-CONTRACTSv2.md - API structure" >> /tmp/gadema-guide.txt
-echo "4. CODING_GUIDELINESv2.md - Code standards" >> /tmp/gadema-guide.txt
-echo "5. SCHEMAv2.md - Database model" >> /tmp/gadema-guide.txt
-echo "=== CONSULT THESE WHEN NEEDED ===" >> /tmp/gadema-guide.txt
-cat docs/GUIDELINES/*.md >> /tmp/gadema-guide.txt
+echo "=== READING ORDER ===" > /tmp/gadema-guide.txt
+echo "1. README.md (this file)" >> /tmp/gadema-guide.txt
+echo "2. entities/SeriesProject.md - understand series relationships" >> /tmp/gadema-guide.txt
+echo "3. entities/CharacterIdentity.md - learn identity patterns" >> /tmp/gadema-guide.txt
+echo "4. entities/ContentItem.md - core content model" >> /tmp/gadema-guide.txt
+echo "5. SUMMARYv2.md - high-level architecture" >> /tmp/gadema-guide.txt
+echo "6. API-CONTRACTSv2.md - API structure" >> /tmp/gadema-guide.txt
+echo "7. CODING_GUIDELINESv2.md - code standards" >> /tmp/gadema-guide.txt
+echo "8. SCHEMAv2.md - database model" >> /tmp/gadema-guide.txt
 ```
 
 ---
 
 ## **✅ SUMMARY: KEY TAKEAWAYS**
 
-1. **Trust v2 docs over non-v2 docs** - All `*v2.md` files are current and authoritative
-2. **Consult guideline files first for implementation details** - They contain the most detailed, actionable guidance
+1. **Trust v2 docs and docs/entities/ over non-v2 docs** - All `*v2.md` files and `docs/entities/*` are current and authoritative
+2. **Consult entity documentation first for implementation details** - They contain detailed patterns for each entity type
 3. **Use this README as your navigation map** - Don't navigate via old docs' references
 4. **Ignore old docs during active development** - They are historical context only
-5. **Consolidate/deletes happen after production launch** - Don't rush deletion before v2 is validated
+5. **Consolidation/deletes happen after production launch** - Don't rush deletion before v2 is validated
 
 ---
 
@@ -250,12 +249,12 @@ cat docs/GUIDELINES/*.md >> /tmp/gadema-guide.txt
 
 ### **If you're starting fresh:**
 1. ✅ Read `docs/README.md` first (this file)
-2. ✅ Check `docs/STATE_OF_WORK.md` for build status
+2. ✅ Check `docs/entities/*` for entity definitions and patterns
 3. ✅ Use only `*v2.md` files and `docs/GUIDELINES/*` as references
 4. ❌ Don't reference old docs unless historical context needed
 
 ### **If you're continuing existing work:**
-1. ✅ Follow the same rule: v2 docs + guidelines are authoritative
+1. ✅ Follow the same rule: v2 docs + entity documentation + guidelines are authoritative
 2. ✅ If code examples from old docs need updating, reference new equivalents
 3. ✅ Update any TODO comments or references in code to point to new docs
 
