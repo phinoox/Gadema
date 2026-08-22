@@ -4,6 +4,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GameDev.Core.Enums;
 
 namespace GameDev.Core.Models;
 
@@ -22,19 +23,29 @@ public class CharacterIdentity
     [ForeignKey("ContentItemId")]
     public virtual ContentItem ContentItem { get; set; }
     
-    public Guid? IdentityDefinitionId { get; set; }  // Nullable if project doesn't require identity
+    public Guid? IdentityDefinitionId { get; set; }  // Nullable FK to IdentityDefinition
 
     // Navigation property for IdentityDefinition (Many-to-One)
     [ForeignKey("IdentityDefinitionId")]
     public virtual IdentityDefinition? IdentityDefinition { get; set; }
     
-    public Guid? IdentityValueId { get; set; }  // Nullable FK to IdentityValue selected for character
+    public Guid? IdentityValueId { get; set; }  // Nullable FK to IdentityValue selected
 
     // Navigation property for IdentityValue (Many-to-One)
     [ForeignKey("IdentityValueId")]
     public virtual IdentityValue? IdentityValue { get; set; }
     
     [MaxLength(1024)]
-    public string? DisplayText { get; set; }  // e.g., "Human Male" for race+gender combo
+    public string? DisplayText { get; set; }  // e.g., "Human Male"
 
+    // ⬇️ ADD THESE NEW PROPERTIES ⬇️
+    
+    [EnumDataType(typeof(IdentityTypeEnum)), Required, Display(Name = "Identity Type")]
+    public int IdentityType { get; set; }  // FK to IdentityDefinition.IdentityType
+    
+    [Display(Name = "Identity Type ID")]
+    public Guid? IdentityTypeId { get; set; } 
+    
+    [Display(Name = "Is Primary?")]
+    public bool IsPrimary { get; set; } = false;  // e.g., for race (primary) vs alignment (secondary)
 }

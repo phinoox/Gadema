@@ -183,6 +183,14 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
 
+     /// <summary>
+    /// Collection navigation for review statuses (Many-to-One relationship).
+    /// Enables lazy loading to access all review statuses associated with this content item.
+    /// Foreign key: ContentItemId (matches FK in ReviewStatus)
+    /// Used by eager loading: Include(ci => ci.ReviewStatuses)
+    /// </summary>
+    public virtual ICollection<ReviewStatus> ReviewStatuses { get; set; } = new List<ReviewStatus>();
+
 }
 
 

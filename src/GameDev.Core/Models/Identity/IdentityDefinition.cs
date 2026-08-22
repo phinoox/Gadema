@@ -4,6 +4,8 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using GameDev.Core.Enums;
 
 namespace GameDev.Core.Models;
 
@@ -14,22 +16,22 @@ namespace GameDev.Core.Models;
 public class IdentityDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    
+
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
-    
+
     public int IdentityType { get; set; }  // Enum: Race, Faction, Alignment, Guild
-    
+
     [MaxLength(128), Required, Display(Name = "Identity Type Name")]
     public string IdentityTypeName { get; set; } = "";
-    
+
     public bool IsRequired { get; set; } = false;
-    
+
     [MaxLength(256)]
     public string? DefaultValue { get; set; }
-    
+
     public bool IsActive { get; set; } = true;
-    
+
     [MaxLength(1024)]
     public string? Description { get; set; }
 }
@@ -37,5 +39,24 @@ public class IdentityDefinition
 // Keep ProjectIdentityDefinition for specific project-scoped identity definitions
 public class ProjectIdentityDefinition : IdentityDefinition
 {
-    // Inherits from IdentityDefinition but can add project-specific properties if needed
+    // Add these properties at the end of the class:
+
+    [EnumDataType(typeof(IdentityTypeEnum)), Required, Display(Name = "Identity Type")]
+    public int IdentityType { get; set; }
+
+    /// <summary>
+    /// Name of the identity (e.g., "Human", "Elf").
+    /// </summary>
+    [MaxLength(128), Required, Display(Name = "Identity Name")]
+    public string IdentityName { get; set; } = "";
+
+    /// <summary>
+    /// FK to Project.
+    /// </summary>
+    [Required, Display(Name = "Project ID")]
+    public Guid ProjectId { get; set; }
+
+    // Navigation property: Project
+    [ForeignKey("ProjectId")]
+    public virtual Projects.Project Project { get; set; }
 }
