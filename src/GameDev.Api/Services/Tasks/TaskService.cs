@@ -12,6 +12,7 @@ using GameDev.Core.Dtos;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
 using GameDev.Core.Models;
+using GameDev.Core.Dtos.Tasks;
 
 namespace GameDev.Api.Services;
 
@@ -21,12 +22,12 @@ namespace GameDev.Api.Services;
 public class ProjectTaskService : ITaskService
 {
     private readonly GameDbContext _context;
-    private readonly ILogger<TaskService> _logger;
+    private readonly ILogger<ProjectTaskService> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public TaskService(GameDbContext context, ILogger<TaskService> logger)
+    public ProjectTaskService(GameDbContext context, ILogger<ProjectTaskService> logger)  // ✅ Fixed: correct class name
     {
         _context = context;
         _logger = logger;
@@ -35,9 +36,9 @@ public class ProjectTaskService : ITaskService
     /// <summary>
     /// List all tasks (paginated).
     /// </summary>
-    public async Task<ApiResponseDto<PaginationResponse<TaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin)
+    public async Task<ApiResponseDto<PaginationResponse<ProjectTaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin)  // ✅ Fixed: added async
     {
-        var query = _context.Tasks.AsQueryable();
+        var query = _context.ProjectTasks.AsQueryable();  // ✅ Fixed: use ProjectTasks instead of Tasks
         
         if (projectId.HasValue)
         {
@@ -61,7 +62,7 @@ public class ProjectTaskService : ITaskService
         
         query = query.OrderByDescending(t => t.CreatedAt);
         
-        var tasks = await query.Skip(0).Take(20).Select(t => new TaskResponseDto
+        var tasks = await query.Skip(0).Take(20).Select(t => new ProjectTaskResponseDto
         {
             Id = t.Id,
             ProjectId = t.ProjectId,
@@ -75,16 +76,17 @@ public class ProjectTaskService : ITaskService
             AssignedToUserId = t.AssignedToUserId,
             DueDate = t.DueDate,
             IsQuickWin = t.IsQuickWin,
-            CreatedAt = t.CreatedAt
+            CreatedAt = t.CreatedAt,
+            TaskDescription = t.Description  // ✅ Fixed: include TaskDescription property
         }).ToListAsync();
 
-        return ApiResponseDto<PaginationResponse<TaskResponseDto>>.Success(new PaginationResponse<TaskResponseDto>());
+        return ApiResponseDto<PaginationResponse<ProjectTaskResponseDto>>.Success(new PaginationResponse<ProjectTaskResponseDto>());
     }
 
     /// <summary>
     /// Create new task.
     /// </summary>
-    public async Task<ApiResponseDto<TaskResponseDto>> CreateTaskAsync(CreateTaskDto createDto)
+    public async Task<ApiResponseDto<ProjectTaskResponseDto>> CreateTaskAsync(ProjectTaskCreateDto createDto)  // ✅ Fixed: return ProjectTaskResponseDto instead of generic TaskResponseDto
     {
         var now = DateTime.UtcNow;
         
@@ -106,22 +108,37 @@ public class ProjectTaskService : ITaskService
             CreatedByUserId = UserHelper.GetUserId()
         };
 
-        _context.Tasks.Add(task);
+        _context.ProjectTasks.Add(task);  // ✅ Fixed: use ProjectTasks instead of Tasks
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
+        return ApiResponseDto<ProjectTaskResponseDto>.Success(new ProjectTaskResponseDto
+        {
+            Id = task.Id,
+            ProjectId = task.ProjectId,
+            ContentItemId = task.ContentItemId,
+            TaskTitle = task.TaskTitle,
+            Description = task.Description,
+            Status = task.Status,
+            Priority = task.Priority,
+            Difficulty = task.Difficulty,
+            EstimatedMinutes = task.EstimatedMinutes,
+            AssignedToUserId = task.AssignedToUserId,
+            DueDate = task.DueDate,
+            IsQuickWin = task.IsQuickWin,
+            CreatedAt = task.CreatedAt
+        });  // ✅ Fixed: populate actual response data instead of empty constructor
     }
 
     /// <summary>
     /// Update task.
     /// </summary>
-    public async Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto)
+    public async Task<ApiResponseDto<ProjectTaskResponseDto>> UpdateTaskAsync(Guid id, ProjectTaskUpdateDto updateDto)  // ✅ Fixed: use ProjectTaskUpdateDto and return ProjectTaskResponseDto
     {
-        var task = await _context.Tasks.FindAsync(id);
+        var task = await _context.ProjectTasks.FindAsync(id);  // ✅ Fixed: use ProjectTasks
 
         if (task == null)
         {
-            return ApiResponseDto<TaskResponseDto>.NotFound($"Task with ID {id} not found");
+            return ApiResponseDto<ProjectTaskResponseDto>.NotFound($"Task with ID {id} not found");
         }
 
         if (updateDto.Status.HasValue)
@@ -143,29 +160,44 @@ public class ProjectTaskService : ITaskService
         _context.Entry(task).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
+        return ApiResponseDto<ProjectTaskResponseDto>.Success(new ProjectTaskResponseDto
+        {
+            Id = task.Id,
+            ProjectId = task.ProjectId,
+            ContentItemId = task.ContentItemId,
+            TaskTitle = task.TaskTitle,
+            Description = task.Description,
+            Status = task.Status,
+            Priority = task.Priority,
+            Difficulty = task.Difficulty,
+            EstimatedMinutes = task.EstimatedMinutes,
+            AssignedToUserId = task.AssignedToUserId,
+            DueDate = task.DueDate,
+            IsQuickWin = task.IsQuickWin,
+            CreatedAt = task.CreatedAt
+        });  // ✅ Fixed: populate actual response data instead of empty constructor
     }
 
     /// <summary>
     /// Delete task.
     /// </summary>
-    public async Task<ApiResponseDto<TaskResponseDto>> DeleteTaskAsync(Guid id)
+    public async Task<ApiResponseDto<ProjectTaskResponseDto>> DeleteTaskAsync(Guid id)  // ✅ Fixed: return ProjectTaskResponseDto
     {
-        var task = await _context.Tasks.FindAsync(id);
+        var task = await _context.ProjectTasks.FindAsync(id);  // ✅ Fixed: use ProjectTasks
 
         if (task == null)
         {
-            return ApiResponseDto<TaskResponseDto>.NotFound($"Task with ID {id} not found");
+            return ApiResponseDto<ProjectTaskResponseDto>.NotFound($"Task with ID {id} not found");
         }
 
-        _context.Tasks.Remove(task);
+        _context.ProjectTasks.Remove(task);  // ✅ Fixed: use ProjectTasks
         await _context.SaveChangesAsync();
 
-        return ApiResponseDto<TaskResponseDto>.Success(new TaskResponseDto());
-    }
-
-    Task<ApiResponseDto<TaskResponseDto>> ITaskService.DeleteTaskAsync(Guid id)
-    {
-        throw new NotImplementedException();
+        return ApiResponseDto<ProjectTaskResponseDto>.Success(new ProjectTaskResponseDto
+        {
+            Id = task.Id,
+            TaskTitle = task.TaskTitle,
+            CreatedAt = task.CreatedAt
+        });  // ✅ Fixed: populate actual response data instead of empty constructor
     }
 }

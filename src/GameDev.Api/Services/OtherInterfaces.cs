@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using GameDev.Core.Dtos.DialogueTrees;
 using GameDev.Core.Dtos.ExternalReferences;
 using GameDev.Core.Dtos.Tags;
+using GameDev.Core.Dtos.Tasks;
 
 namespace GameDev.Api.Services;
 
@@ -43,10 +44,10 @@ public interface IExternalReferenceService
 /// </summary>
 public interface ITaskService
 {
-    Task<ApiResponseDto<PaginationResponse<TaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin);
-    Task<ApiResponseDto<TaskResponseDto>> CreateTaskAsync(CreateTaskDto createDto);
-    Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, UpdateTaskDto updateDto);
-    Task<ApiResponseDto<TaskResponseDto>> DeleteTaskAsync(Guid id);
+    Task<ApiResponseDto<PaginationResponse<ProjectTaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin);
+    Task<ApiResponseDto<ProjectTaskResponseDto>> CreateTaskAsync(ProjectTaskCreateDto createDto);
+    Task<ApiResponseDto<ProjectTaskResponseDto>> UpdateTaskAsync(Guid id, ProjectTaskUpdateDto updateDto);
+    Task<ApiResponseDto<ProjectTaskResponseDto>> DeleteTaskAsync(Guid id);
 }
 
 /// <summary>

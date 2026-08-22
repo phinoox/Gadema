@@ -9,6 +9,7 @@ using GameDev.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GameDev.Core.Dtos;
+using GameDev.Core.Dtos.Tasks;
 
 namespace GameDev.Api.Controllers.Tasks;
 

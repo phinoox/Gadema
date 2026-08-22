@@ -128,7 +128,7 @@ public class GameDbContext : DbContext
     /// <summary>
     /// ProjectTask entity set.
     /// </summary>
-    public DbSet<ProjectTask> Tasks { get; set; }
+    public DbSet<ProjectTask> ProjectTasks { get; set; }
     
     /// <summary>
     /// TaskComments entity set.
