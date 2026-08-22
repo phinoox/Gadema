@@ -3,7 +3,9 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using GameDev.Core.Enums;
+using GameDev.Core.Models.Projects;
 
 namespace GameDev.Core.Models;
 
@@ -17,6 +19,10 @@ public class EngineFieldMapping
     
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
+    // Navigation property for Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     [EnumDataType(typeof(ContentTypeEnum))]
     public ContentTypeEnum ContentType { get; set; }
@@ -33,4 +39,5 @@ public class EngineFieldMapping
     
     [MaxLength(1024)]
     public string? Description { get; set; }
+
 }

@@ -29,7 +29,7 @@ public class TaskCommentEntityTypeConfiguration : IEntityTypeConfiguration<Proje
         builder.HasIndex(e => e.CreatedAt);
         
         // Navigation property: ProjectTask (Cascade delete)
-        builder.HasOne(tc => tc.Task)
+        builder.HasOne(tc => tc.ProjectTask)
             .WithMany(pt => pt.Comments)
             .HasForeignKey(tc => tc.TaskId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete comments when task deleted

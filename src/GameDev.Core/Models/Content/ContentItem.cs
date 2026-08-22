@@ -157,4 +157,13 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
 
+    // Reference navigation properties for identity system
+    /// <summary>
+    /// Navigation property: Collection of character identities for this content item.
+    /// Enables lazy loading to access all identity assignments (race, faction, alignment).
+    /// Foreign key: ContentItemId (matches FK in CharacterIdentity)
+    /// Used by eager loading pattern: Include(ci => ci.CharacterIdentities)
+    /// </summary>
+    public virtual ICollection<CharacterIdentity> CharacterIdentities { get; set; } = new List<CharacterIdentity>();
+
 }

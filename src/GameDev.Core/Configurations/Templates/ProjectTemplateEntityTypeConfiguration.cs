@@ -27,6 +27,6 @@ public class ProjectTemplateEntityTypeConfiguration : IEntityTypeConfiguration<P
         builder.HasIndex(e => e.TemplateType).IsUnique();
         
         // Properties configuration
-        builder.Property(e => e.TemplateName).IsRequired().HasMaxLength(128);
+        builder.Property(e => e.Name).IsRequired().HasMaxLength(128);
     }
 }

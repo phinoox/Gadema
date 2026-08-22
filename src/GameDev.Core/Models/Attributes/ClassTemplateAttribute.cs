@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -22,12 +23,20 @@ public class ClassTemplateAttribute
     /// </summary>
     [Required, Display(Name = "Class Template")]
     public Guid ClassTemplateId { get; set; }
+
+    // Navigation property for ClassTemplate (Many-to-One)
+    [ForeignKey("ClassTemplateId")]
+    public virtual ClassTemplate ClassTemplate { get; set; }
     
     /// <summary>
     /// FK to the attribute definition this applies to.
     /// </summary>
     [Required, Display(Name = "Attribute Definition")]
     public Guid AttributeDefinitionId { get; set; }
+
+    // Navigation property for AttributeDefinition (Many-to-One)
+    [ForeignKey("AttributeDefinitionId")]
+    public virtual AttributeDefinition AttributeDefinition { get; set; }
     
     /// <summary>
     /// Optional formula override for this specific attribute in this class.
@@ -44,4 +53,5 @@ public class ClassTemplateAttribute
     /// Default maximum value for the attribute (for template defaults).
     /// </summary>
     public decimal? DefaultMaxValue { get; set; }
+
 }

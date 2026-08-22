@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -17,12 +18,20 @@ public class CharacterAttributes
     /// FK to the content item this belongs to (used as Primary Key).
     /// </summary>
     public Guid ContentItemId { get; set; }
+
+    // Navigation property for ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
     /// FK to the attribute definition being stored.
     /// </summary>
     [Required, Display(Name = "Attribute Definition")]
     public Guid AttributeDefinitionId { get; set; }
+
+    // Navigation property for AttributeDefinition (Many-to-One)
+    [ForeignKey("AttributeDefinitionId")]
+    public virtual AttributeDefinition AttributeDefinition { get; set; }
     
     /// <summary>
     /// Current value of this attribute (can be null).

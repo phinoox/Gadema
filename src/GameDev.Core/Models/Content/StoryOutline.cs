@@ -2,6 +2,7 @@
 using GameDev.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,7 +22,12 @@ public class StoryOutline
     /// <summary>
     /// ID of the sequence this outline belongs to.
     /// </summary>
+    [Required]
     public Guid SequenceId { get; set; }
+
+    // Navigation property: StorySequence (Many-to-One)
+    [ForeignKey("SequenceId")]
+    public virtual StorySequence StorySequence { get; set; }
 
     /// <summary>
     /// Summary of the outline section.
@@ -47,6 +53,4 @@ public class StoryOutline
     [EnumDataType(typeof(OutlineStatusEnum)), Required, Display(Name = "Outline Status")]
     public OutlineStatusEnum OutlineStatus { get; set; } = OutlineStatusEnum.DraftOutline;
 
-    //Navigation Properties
-    public virtual StorySequence StorySequence { get; set; }
 }

@@ -3,6 +3,7 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameDev.Core.Models;
 
@@ -16,6 +17,10 @@ public class TemplateClassTemplateDefinition
     
     [Required, Display(Name = "Project Template ID")]
     public Guid ProjectTemplateId { get; set; }
+
+    // Navigation property for ProjectTemplate (Many-to-One)
+    [ForeignKey("ProjectTemplateId")]
+    public virtual ProjectTemplate ProjectTemplate { get; set; }
     
     [Required, MaxLength(128), Display(Name = "Class Template Name")]
     public string ClassTemplateName { get; set; } = "";
@@ -26,4 +31,5 @@ public class TemplateClassTemplateDefinition
     
     [MaxLength(1024)]
     public string? Description { get; set; }
+
 }

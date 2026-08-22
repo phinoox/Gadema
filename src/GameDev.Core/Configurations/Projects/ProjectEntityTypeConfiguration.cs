@@ -31,7 +31,7 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
         builder.HasIndex(e => e.OwnerId);           // Search by owner
         
         // Navigation property: SeriesProject (Restrict for historical data)
-        builder.HasOptional(p => p.SeriesProject)
+        builder.HasOne(p => p.SeriesProject)
             .WithMany()
             .HasForeignKey(p => p.SeriesId)  // Optional parent project for series tracking
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history

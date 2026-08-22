@@ -24,14 +24,14 @@ public class ProjectTaskCommentsEntityTypeConfiguration : IEntityTypeConfigurati
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectTaskId);
+        builder.HasIndex(e => e.TaskId);
         builder.HasIndex(e => e.CommentedByUserId);
         builder.HasIndex(e => e.CreatedAt);
         
         // Navigation property: ProjectTask (Cascade delete)
         builder.HasOne(pct => pct.ProjectTask)
             .WithMany(pt => pt.Comments)
-            .HasForeignKey(pct => pct.ProjectTaskId)
+            .HasForeignKey(pct => pct.TaskId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete comments when task deleted
         
         // Properties configuration

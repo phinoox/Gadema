@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,10 +22,19 @@ public class TemplateAttributeSetDefinition
     /// </summary>
     [Required]
     public Guid ProjectTemplateId { get; set; }
+
+    // Navigation property for ProjectTemplate (Many-to-One)
+    [ForeignKey("ProjectTemplateId")]
+    public virtual ProjectTemplate ProjectTemplate { get; set; }
     
     /// <summary>
     /// ID of the attribute set definition.
     /// </summary>
     [Required]
     public Guid AttributeSetDefinitionId { get; set; }
+
+    // Navigation property for AttributeSetDefinition (Many-to-One)
+    [ForeignKey("AttributeSetDefinitionId")]
+    public virtual AttributeSetDefinition AttributeSetDefinition { get; set; }
+    public string Name { get;  set; }
 }

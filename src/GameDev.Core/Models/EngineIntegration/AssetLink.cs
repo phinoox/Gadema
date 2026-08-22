@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -22,6 +23,10 @@ public class AssetLink
     /// </summary>
     [Required, Display(Name = "Content Item")]
     public Guid ContentItemId { get; set; }
+
+    // Navigation property for ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
 
     /// <summary>
     /// Path in the game engine's asset directory.

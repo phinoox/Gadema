@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,6 +22,10 @@ public class ContentVersionLog
     /// </summary>
     [Required]
     public Guid ContentItemId { get; set; }
+
+    // Navigation property: ContentItem (Many-to-One)
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
     /// ID of the user who made the change.
@@ -43,4 +48,5 @@ public class ContentVersionLog
     /// Timestamp when the version was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
 }

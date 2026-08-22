@@ -57,4 +57,6 @@ public class CharacterDetails
     /// </summary>
     public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
 
+    
+
 }

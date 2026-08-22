@@ -3,7 +3,9 @@
 // =============================================================================
 
 using GameDev.Core.Enums;
+using GameDev.Core.Models.Projects;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameDev.Core.Models;
 
@@ -17,6 +19,10 @@ public class EngineExportConfig
     
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
+    // Navigation property for Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     public int EngineType { get; set; }  // Enum: Unity(0), Unreal(1), Both(2)
     
@@ -30,4 +36,7 @@ public class EngineExportConfig
     
     [MaxLength(1024)]
     public string? Description { get; set; }
+
+    public bool IsEnabled { get;set;}
+
 }

@@ -26,7 +26,7 @@ public class DialogueNode
 
     // Navigation property: DialogueBranch (Many-to-One)
     [ForeignKey("BranchId")]
-    public virtual DialogueBranch DialogueBranch { get; set; }
+    public virtual DialogueBranch Branch { get; set; }
 
     /// <summary>
     /// Text content of the dialogue node.
@@ -54,5 +54,22 @@ public class DialogueNode
     /// </summary>
     [MaxLength(4096)]
     public string? Conditions { get; set; }  // JSON conditions
+
+    // Self-referencing navigation properties for tree hierarchy
+    /// <summary>
+    /// Parent node ID for hierarchical dialogue structure.
+    /// Used for branching conversations in visual novels.
+    /// </summary>
+    public Guid? ParentNodeId { get; set; }
+
+    // Navigation property: Parent Node (self-referencing, optional)
+    [ForeignKey("ParentNodeId")]
+    public virtual DialogueNode? ParentNode { get; set; }
+    
+    /// <summary>
+    /// Collection of child nodes (for dialogue tree).
+    /// Foreign key: ParentNodeId (matches FK in DialogueNode)
+    /// </summary>
+    public virtual ICollection<DialogueNode> ChildNodes { get; set; } = new List<DialogueNode>();
 
 }

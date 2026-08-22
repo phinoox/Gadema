@@ -30,7 +30,7 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         
         // Navigation property: ContentItem (SetNull to preserve review history)
         builder.HasOne(rs => rs.ContentItem)
-            .WithMany(ci => ci.ReviewStatuses)
+            .WithMany(ci => ci.ReviewStatus)
             .HasForeignKey(rs => rs.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);  // Keep review entity alive when content deleted
         

@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,7 +28,7 @@ public class EndingDefinition
     /// Title of the ending (e.g., "True Ending", "Bad Ending").
     /// </summary>
     [MaxLength(128), Required]
-    public string EndingTitle { get; set; } = "";
+    public string Title { get; set; } = "";
     
     /// <summary>
     /// URL-friendly slug for the ending (unique).
@@ -51,4 +52,7 @@ public class EndingDefinition
     /// Indicates if the ending is published.
     /// </summary>
     public bool Published { get; set; } = false;
+
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
 }

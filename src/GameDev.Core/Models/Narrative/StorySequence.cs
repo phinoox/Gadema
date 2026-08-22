@@ -81,6 +81,12 @@ public class StorySequence
     public virtual ICollection<StorySequence> ChildSequences { get; set; } = new List<StorySequence>();
 
     /// <summary>
+    /// Navigation property: Collection of story outlines/sections within this sequence.
+    /// Foreign key: SequenceId (matches FK in StoryOutline)
+    /// </summary>
+    public virtual ICollection<StoryOutline> Outlines { get; set; } = new List<StoryOutline>();
+
+    /// <summary>
     /// Navigation property: Collection of beats in this sequence.
     /// Foreign key: SequenceId (matches FK in StoryBeat)
     /// </summary>

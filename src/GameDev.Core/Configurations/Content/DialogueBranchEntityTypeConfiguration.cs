@@ -29,7 +29,7 @@ public class DialogueBranchEntityTypeConfiguration : IEntityTypeConfiguration<Di
         builder.HasIndex(e => e.IsRoot);
         
         // Self-referencing FK for tree structure
-        builder.HasOne(db => db.Parent)
+        builder.HasOne(db => db.ParentNode)
             .WithMany()
             .HasForeignKey(e => e.ParentNodeId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain historical data

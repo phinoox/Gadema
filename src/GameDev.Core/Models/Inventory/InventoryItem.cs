@@ -1,6 +1,8 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -21,6 +23,10 @@ public class InventoryItem
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
+
+    // Navigation property for Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     /// <summary>
     /// Name of the inventory item.
@@ -36,10 +42,11 @@ public class InventoryItem
     /// <summary>
     /// Current value/quantity.
     /// </summary>
-    public int CurrentValue { get; set; }
+    public int Quantity { get; set; }
     
     /// <summary>
     /// Indicates if the inventory item is published.
     /// </summary>
     public bool Published { get; set; } = false;
+
 }

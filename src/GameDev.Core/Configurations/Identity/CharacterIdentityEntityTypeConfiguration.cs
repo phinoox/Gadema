@@ -20,12 +20,31 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
     /// </summary>
     public void Configure(EntityTypeBuilder<CharacterIdentity> builder)
     {
-        // Primary key (composite)
-        builder.HasKey(e => new { e.ContentItemId, e.ProjectId, e.IdentityName });
+        builder.HasKey(e => e.Id);
         
-        // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ContentItemId);
-        builder.HasIndex(e => e.ProjectId);
-        builder.HasIndex(e => e.IdentityName);
+        // Link to character (ContentItem)
+        builder.HasOne(ci => ci.ContentItem)
+            .WithMany(c => c.CharacterIdentities)
+            .HasForeignKey(ci => ci.ContentItemId)
+            .OnDelete(DeleteBehavior.Cascade);  // Character identities deleted when content deleted
+        
+        // Link to identity type definition
+        builder.HasOne(ci => ci.IdentityType)
+            .WithMany()
+            .HasForeignKey(ci => ci.IdentityTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
+        
+        // Link to identity value
+        builder.HasOne(ci => ci.IdentityValue)
+            .WithMany()
+            .HasForeignKey(ci => ci.IdentityValueId)
+            .OnDelete(DeleteBehavior.SetNull);  // Allow multiple identity values over time
+        
+        // Properties configuration
+        builder.Property(e => e.ContentItemId).IsRequired();
+        builder.Property(e => e.IdentityTypeId).IsRequired();
+        builder.Property(e => e.IdentityValueId).IsRequired();
+        
+        builder.Property(e => e.IsPrimary).HasDefaultValue(false);  // Primary identity flag
     }
 }

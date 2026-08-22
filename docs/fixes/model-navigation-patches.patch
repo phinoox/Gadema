@@ -1,0 +1,403 @@
+--- a/src/GameDev.Core/Models/Abilities/AbilitySet.cs
++++ b/src/GameDev.Core/Models/Abilities/AbilitySet.cs
+@@ -25,6 +25,9 @@ public class AbilitySet
+     [Required]
+     public Guid ProjectId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
+     /// <summary>
+     /// Type: 0=Combat, 1=Non-Combat, 2=Hybrid.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Content/AssetLink.cs
++++ b/src/GameDev.Core/Models/Content/AssetLink.cs
+@@ -30,6 +30,9 @@ public class AssetLink
+     [Column("content_item_id"), Required]
+     public Guid ContentItemId { get; set; }
+     
++    // Navigation property for ContentItem (Many-to-One)
++    [ForeignKey("ContentItemId")]
++    public virtual ContentItem ContentItem { get; set; }
++    
+     /// <summary>
+     /// File name.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Attributes/CharacterAttributes.cs
++++ b/src/GameDev.Core/Models/Attributes/CharacterAttributes.cs
+@@ -35,6 +35,14 @@ public class CharacterAttributes
+     [Required]
+     public Guid AttributeDefinitionId { get; set; }
+     
++    // Navigation property for ContentItem (Many-to-One)
++    [ForeignKey("ContentItemId")]
++    public virtual ContentItem ContentItem { get; set; }
++    
++    // Navigation property for AttributeDefinition (Many-to-One)
++    [ForeignKey("AttributeDefinitionId")]
++    public virtual AttributeDefinition AttributeDefinition { get; set; }
++    
+     /// <summary>
+     /// Current value.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Characters/CharacterBackground.cs
++++ b/src/GameDev.Core/Models/Characters/CharacterBackground.cs
+@@ -25,6 +25,14 @@ public class CharacterBackground
+     [Required]
+     public Guid CharacterDetailsId { get; set; }
+     
++    // Navigation property for CharacterDetails (Many-to-One)
++    [ForeignKey("CharacterDetailsId")]
++    public virtual CharacterDetails CharacterDetails { get; set; }
++    
++    // Collection navigation (if needed)
++    public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
++    
+     /// <summary>
+     /// Description of the background.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Characters/CharacterDetails.cs
++++ b/src/GameDev.Core/Models/Characters/CharacterDetails.cs
+@@ -35,6 +35,9 @@ public class CharacterDetails
+     public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
+ 
++    // Navigation property for ContentItem (Many-to-One)
++    [ForeignKey("ContentItemId")]
++    public virtual ContentItem ContentItem { get; set; }
++    
+ }
+--- a/src/GameDev.Core/Models/Characters/CharacterIdentity.cs
++++ b/src/GameDev.Core/Models/Characters/CharacterIdentity.cs
+@@ -30,6 +30,14 @@ public class CharacterIdentity
+     [Required]
+     public Guid IdentityTypeId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    // Navigation property for identity type definition
++    [ForeignKey("IdentityTypeId")]
++    public virtual IdentityDefinition IdentityType { get; set; }
++    
+     /// <summary>
+     /// Value (race, faction, etc.).
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/ClassTemplate.cs
++++ b/src/GameDev.Core/Models/Templates/ClassTemplate.cs
+@@ -30,6 +30,9 @@ public class ClassTemplate
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Collection navigation for AttributeSet
++    public virtual ICollection<AttributeSet> AttributeSets { get; set; } = new List<AttributeSet>();
++    
+     /// <summary>
+     /// Order index.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/ClassTemplateAttribute.cs
++++ b/src/GameDev.Core/Models/Templates/ClassTemplateAttribute.cs
+@@ -30,6 +30,14 @@ public class ClassTemplateAttribute
+     [Required]
+     public Guid AttributeDefinitionId { get; set; }
+     
++    // Navigation property for ClassTemplate (Many-to-One)
++    [ForeignKey("ClassTemplateId")]
++    public virtual ClassTemplate ClassTemplate { get; set; }
++    
++    // Navigation property for AttributeDefinition (Many-to-One)
++    [ForeignKey("AttributeDefinitionId")]
++    public virtual AttributeDefinition AttributeDefinition { get; set; }
++    
+     /// <summary>
+     /// Value.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Content/ContentItem.cs
++++ b/src/GameDev.Core/Models/Content/ContentItem.cs
+@@ -130,6 +130,9 @@ public class ContentItem
+ 
+     // Reference navigation properties (Many-to-One relationships)
+     /// <summary>
++    // Navigation property: Collection of tag associations for this content item.
+     Enables lazy loading to access all tags associated with this content.
+     Foreign key: ContentItemId (matches FK in ContentTags junction table)
+     /// </summary>
+@@ -140,6 +143,8 @@ public class ContentItem
+         public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
+ 
++    // Property for junction table FK (if used)
++    public Guid? ContentItemId { get; set; }  // Nullable FK for junction tables
++    
+ }
+--- a/src/GameDev.Core/Models/Versioning/ContentVersionLog.cs
++++ b/src/GameDev.Core/Models/Versioning/ContentVersionLog.cs
+@@ -35,6 +35,9 @@ public class ContentVersionLog
+     public int VersionNumber { get; set; }
+     
++    // Navigation property for ContentItem (Many-to-One)
++    [ForeignKey("ContentItemId")]
++    public virtual ContentItem ContentItem { get; set; }
++    
+     /// <summary>
+     /// Timestamp when the version was created.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Content/DialogueBranch.cs
++++ b/src/GameDev.Core/Models/Content/DialogueBranch.cs
+@@ -70,6 +70,10 @@ public class DialogueBranch
+     /// Order index for sorting branches.
+     /// </summary>
+     public int OrderIndex { get; set; } = 0;
++    
++    // Self-referencing navigation for parent node
++    [ForeignKey("ParentNodeId")]
++    public virtual DialogueBranch? ParentNode { get; set; }
++    
+ }
+--- a/src/GameDev.Core/Models/Inventory/EndingDefinition.cs
++++ b/src/GameDev.Core/Models/Inventory/EndingDefinition.cs
+@@ -30,6 +30,14 @@ public class EndingDefinition
+     [Required]
+     public Guid ProjectId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    /// <summary>
++    /// Title of the ending.
++    /// </summary>
++    [MaxLength(128)]
++    public string Title { get; set; } = "";
++    
+ }
+--- a/src/GameDev.Core/Models/EngineIntegration/EngineExportConfig.cs
++++ b/src/GameDev.Core/Models/EngineIntegration/EngineExportConfig.cs
+@@ -35,6 +35,14 @@ public class EngineExportConfig
+     [Required]
+     public Guid ProjectId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    /// <summary>
++    /// Indicates if the export config is enabled.
++    /// </summary>
++    public bool IsEnabled { get; set; } = true;
++    
+     /// <summary>
+     /// Timestamp when the config was created.
+     /// </summary>
+--- a/src/GameDev.Core/Models/EngineIntegration/EngineFieldMapping.cs
++++ b/src/GameDev.Core/Models/EngineIntegration/EngineFieldMapping.cs
+@@ -30,6 +30,14 @@ public class EngineFieldMapping
+     [Required]
+     public Guid ProjectId { get; set; }
+     
++    // Navigation property for EngineExportConfig (Many-to-One)
++    [ForeignKey("EngineExportConfigId")]
++    public virtual EngineExportConfig EngineExportConfig { get; set; }
++    
++    /// <summary>
++    /// Source column name.
++    /// </summary>
++    [MaxLength(128)]
++    public string SourceColumn { get; set; } = "";
++    
++    /// <summary>
++    /// Target column name.
++    /// </summary>
++    [MaxLength(128)]
++    public string TargetColumn { get; set; } = "";
++    
+     /// <summary>
+     /// Timestamp when the mapping was created.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Content/ExternalReference.cs
++++ b/src/GameDev.Core/Models/Content/ExternalReference.cs
+@@ -35,6 +35,10 @@ public class ExternalReference
+     [Required]
+     public Guid ReferenceId { get; set; }
+     
++    // Self-referencing navigation for parent
++    [ForeignKey("ParentId")]
++    public virtual ExternalReference? Parent { get; set; }
++    
++    /// <summary>
++    /// ID of parent reference.
++    /// </summary>
++    public Guid? ParentId { get; set; }
++    
+     /// <summary>
+     /// Target URL or identifier.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Identity/IdentityValue.cs
++++ b/src/GameDev.Core/Models/Identity/IdentityValue.cs
+@@ -35,6 +35,18 @@ public class IdentityValue
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
++    // Navigation property for IdentityDefinition (Many-to-One)
++    [ForeignKey("IdentityDefinitionId")]
++    public virtual IdentityDefinition IdentityDefinition { get; set; }
++    
++    /// <summary>
++    /// Value name (race, faction, etc.).
++    /// </summary>
++    [MaxLength(128)]
++    public string Name { get; set; } = "";
++    
++    /// <summary>
++    /// Value for database storage.
++    /// </summary>
++    [Column("value")]
++    public string Value { get; set; } = "";
++    
+     /// <summary>
+     /// Indicates if this is a default value.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Inventory/InventoryItem.cs
++++ b/src/GameDev.Core/Models/Inventory/InventoryItem.cs
+@@ -35,6 +35,14 @@ public class InventoryItem
+     [Required]
+     public Guid ProjectId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    /// <summary>
++    /// Quantity of the item.
++    /// </summary>
++    public int Quantity { get; set; }
++    
+     /// <summary>
+     /// Timestamp when the item was created.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Identity/ProjectIdentityDefinition.cs
++++ b/src/GameDev.Core/Models/Identity/ProjectIdentityDefinition.cs
+@@ -35,6 +35,14 @@ public class ProjectIdentityDefinition
+     [Required]
+     public Guid IdentityTypeId { get; set; }
+     
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    /// <summary>
++    /// Name of the identity type.
++    /// </summary>
++    [MaxLength(128)]
++    public string IdentityName { get; set; } = "";
++    
+     /// <summary>
+     /// Indicates if this is required.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
++++ b/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
+@@ -25,6 +25,14 @@ public class TemplateAttributeSetDefinition
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
++    /// <summary>
++    /// Name of the attribute set.
++    /// </summary>
++    [MaxLength(128)]
++    public string Name { get; set; } = "";
++    
+     /// <summary>
+     /// Description.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/TemplateClassTemplateDefinition.cs
++++ b/src/GameDev.Core/Models/Templates/TemplateClassTemplateDefinition.cs
+@@ -25,6 +25,14 @@ public class TemplateClassTemplateDefinition
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
+     /// <summary>
+     /// Description.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/TemplateIdentityDefinition.cs
++++ b/src/GameDev.Core/Models/Templates/TemplateIdentityDefinition.cs
+@@ -30,6 +30,14 @@ public class TemplateIdentityDefinition
+     [Required]
+     public Guid IdentityDefinitionId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
++    /// <summary>
++    /// Name of the identity definition.
++    /// </summary>
++    [MaxLength(128)]
++    public string IdentityName { get; set; } = "";
++    
+     /// <summary>
+     /// Description.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Templates/TemplateNarrativeStructure.cs
++++ b/src/GameDev.Core/Models/Templates/TemplateNarrativeStructure.cs
+@@ -25,6 +25,14 @@ public class TemplateNarrativeStructure
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
+     /// <summary>
+     /// Description.
+     /// </summary>
+--- a/src/GameDev.Core/Models/Tokens/TokenUsageLog.cs
++++ b/src/GameDev.Core/Models/Tokens/TokenUsageLog.cs
+@@ -60,6 +60,14 @@ public class TokenUsageLog
+     //Navigation Properties
+     public virtual ProjectToken ProjectToken { get; set; }
+     public virtual ContentItem? ContentItem { get; set; }
++    
++    // Navigation property for Project (Many-to-One)
++    [ForeignKey("ProjectId")]
++    public virtual Project Project { get; set; }
++    
++    /// <summary>
++    /// Action type (Export, Read, Publish, etc.).
++    /// </summary>
++    public int Action { get; set; }
++    
+     //Navigation Properties
+-    public virtual ProjectToken ProjectToken { get; set; }
+-    public virtual ContentItem? ContentItem { get; set; }
+ }
+--- a/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
++++ b/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
+@@ -25,6 +25,14 @@ public class TemplateAttributeSetDefinition
+     [Required]
+     public Guid ProjectTemplateId { get; set; }
+     
++    // Navigation property for ProjectTemplate (Many-to-One)
++    [ForeignKey("ProjectTemplateId")]
++    public virtual ProjectTemplate ProjectTemplate { get; set; }
++    
++    /// <summary>
++    /// Name of the attribute set.
++    /// </summary>
++    [MaxLength(128)]
++    public string Name { get; set; } = "";
++    
+     /// <summary>
+     /// Description.
+     /// </summary>

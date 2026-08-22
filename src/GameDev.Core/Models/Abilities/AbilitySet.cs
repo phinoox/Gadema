@@ -1,4 +1,5 @@
 // =============================================================================
+using GameDev.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -41,6 +42,10 @@ public class AbilitySet
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
+
+    // Navigation property for Project (Many-to-One)
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     /// <summary>
     /// Type: 0=Combat, 1=Non-Combat, 2=Hybrid.

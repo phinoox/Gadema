@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -26,6 +27,10 @@ public class ExternalReference
     /// ID of the parent entity.
     /// </summary>
     public Guid? ParentId { get; set; }
+
+    // Self-referencing navigation for parent
+    [ForeignKey("ParentId")]
+    public virtual ExternalReference? Parent { get; set; }
     
     /// <summary>
     /// External URL (required).
@@ -48,4 +53,12 @@ public class ExternalReference
     /// Indicates if the reference is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
+
+    // Navigation properties for back-references to parent entities
+    /// <summary>
+    /// Collection of external references for this content item.
+    /// Used by eager loading pattern: Include(ci => ci.ExternalReferences)
+    /// </summary>
+    public virtual ICollection<ExternalReference> ContentItemReferences { get; set; } = new List<ExternalReference>();
+
 }

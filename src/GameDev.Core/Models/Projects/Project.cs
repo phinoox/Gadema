@@ -118,10 +118,20 @@ public class Project
     /// </summary>
     public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
 
+    // Back-reference navigation property for series tracking
     /// <summary>
-    /// Project status (Draft = 0, InProgress = 1, Published = 2).
+    /// Navigation property: Parent project in a series (nullable).
+    /// Used for multi-part narratives (e.g., "Book 2" of "The Elder Scrolls").
+    /// Foreign key: SeriesId matches FK column on child projects.
     /// </summary>
-    public int Status { get; set; } = 0;
+    [ForeignKey("SeriesProjectId")]
+    public virtual Project? SeriesProject { get; set; }
+
+    /// <summary>
+    /// FK to parent project in series (nullable).
+    /// Used for back-referencing parent project in a series.
+    /// </summary>
+    public Guid? SeriesProjectId { get; set; }
     
     /// <summary>
     /// Optional parent series name.
@@ -149,6 +159,8 @@ public class Project
     /// Project creation timestamp.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    public ProjectVisibilityEnum Visibility { get;set;}
     
     /// <summary>
     /// Last modified timestamp.

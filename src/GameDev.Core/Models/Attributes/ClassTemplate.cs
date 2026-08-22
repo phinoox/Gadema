@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -34,6 +35,10 @@ public class ClassTemplate
     /// </summary>
     [Required, Display(Name = "Attribute Set")]
     public Guid AttributeSetId { get; set; }
+
+    // Navigation property for AttributeSet (Many-to-One)
+    [ForeignKey("AttributeSetId")]
+    public virtual AttributeSet AttributeSet { get; set; }
     
     /// <summary>
     /// Base level for all attributes in this class.
@@ -44,4 +49,5 @@ public class ClassTemplate
     /// Maximum level this class can reach (nullable).
     /// </summary>
     public int? MaxLevel { get; set; }
+
 }
