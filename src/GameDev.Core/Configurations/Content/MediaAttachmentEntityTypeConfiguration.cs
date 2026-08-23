@@ -24,15 +24,16 @@ public class MediaAttachmentEntityTypeConfiguration : IEntityTypeConfiguration<M
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.MediaAttachmentId);
+        builder.HasIndex(e => e.ContentItemId);
         
         // Navigation property: ContentItem (SetNull to preserve attachment history)
         builder.HasOne(m => m.ContentItem)
             .WithMany(ci => ci.MediaAttachments)
-            .HasForeignKey(m => m.MediaAttachmentId)
+            .HasForeignKey(m => m.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);  // Keep attachments when content deleted
         
         // Properties configuration
         builder.Property(e => e.FileName).IsRequired();
     }
 }
+

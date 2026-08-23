@@ -103,7 +103,7 @@ public class ProjectTaskService : ITaskService
             EstimatedMinutes = createDto.EstimatedMinutes,
             AssignedToUserId = null!,
             DueDate = null!,
-            IsQuickWin = createDto.IsQuickWin,
+            IsQuickWin = createDto.IsQuickWin ?? false,
             CreatedAt = now,
             CreatedByUserId = UserHelper.GetUserId()
         };

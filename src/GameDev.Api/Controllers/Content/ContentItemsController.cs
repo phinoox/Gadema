@@ -39,7 +39,7 @@ public class ContentItemsController : ControllerBase
     public async Task<IActionResult> GetContentItemsAsync(
         [FromQuery] Guid? projectId = null,
         [FromQuery] ContentTypeEnum? contentType = null,
-        [FromQuery] int? status = null,
+        [FromQuery] ContentStatusEnum? status = null,
         [FromQuery] bool published = true,
         [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
     {

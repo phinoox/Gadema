@@ -42,7 +42,7 @@ public class ContentItemService : IContentService
     public async Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> GetContentItemsAsync(
         Guid? projectId,
         ContentTypeEnum? contentType,
-        int? status,
+        ContentStatusEnum? status,
         bool published,
         ViewModeEnum viewMode)
     {
@@ -80,7 +80,7 @@ public class ContentItemService : IContentService
             ShortDesc = c.ShortDesc,
             Description = viewMode == ViewModeEnum.PrivateWriting ? c.Description : null,
             Published = c.Published,
-            Status = (int)c.Status,
+            Status = c.Status,
             ViewMode = viewMode.ToString(),
             Version = c.Version
         }).ToListAsync<ContentItemResponseDto>();
@@ -110,7 +110,7 @@ public class ContentItemService : IContentService
             ShortDesc = item.ShortDesc,
             Description = viewMode == ViewModeEnum.PrivateWriting ? item.Description : null,
             Published = item.Published,
-            Status = (int)item.Status,
+            Status = item.Status,
             ViewMode = viewMode.ToString(),
             Version = item.Version
         };
@@ -158,7 +158,7 @@ public class ContentItemService : IContentService
             ShortDesc = item.ShortDesc,
             Description = item.Description,
             Published = item.Published,
-            Status = (int)item.Status,
+            Status = item.Status,
             ViewMode = item.ViewMode.ToString(),
             Version = item.Version
         };
@@ -212,7 +212,7 @@ public class ContentItemService : IContentService
             ShortDesc = item.ShortDesc,
             Description = updateDto.ViewMode?.ToString() == "Presentation" ? null : item.Description,
             Published = item.Published,
-            Status = (int)item.Status,
+            Status = item.Status,
             ViewMode = item.ViewMode.ToString(),
             Version = item.Version + 1
         };

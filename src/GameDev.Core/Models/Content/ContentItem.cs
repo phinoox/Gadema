@@ -141,7 +141,7 @@ public class ContentItem
     /// Navigation property: Collection of tasks associated with this content item.
     /// Foreign key: ContentItemId (matches FK in ProjectTask)
     /// </summary>
-    public virtual ICollection<ProjectTask> Tasks { get; set; } = new List<ProjectTask>();
+    public virtual ICollection<ProjectTask> ProjectTasks { get; set; } = new List<ProjectTask>();
 
     // Reference navigation properties (Many-to-One relationships)
     /// <summary>

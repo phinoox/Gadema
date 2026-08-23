@@ -44,7 +44,7 @@ public static class SlugHelper
                 .Replace("'", "").Replace("\"", "")
                 .Replace("<", "").Replace(">", "")
                 .Replace("[", "").Replace("]", "")
-                .TrimEnd("-"));
+                .TrimEnd("-").ToString());
     }
 }
 

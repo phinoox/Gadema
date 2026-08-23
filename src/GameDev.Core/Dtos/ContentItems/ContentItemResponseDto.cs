@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 using System.ComponentModel.DataAnnotations;
+using GameDev.Core.Enums;
 
 namespace GameDev.Core.Dtos.ContentItems;
 
@@ -60,7 +61,7 @@ public class ContentItemResponseDto
     /// Current status (Draft, InProgress, Published, Archived).
     /// </summary>
     [Display(Name = "Status")]
-    public int Status { get; set; }
+    public ContentStatusEnum Status { get; set; }
     
     /// <summary>
     /// View mode: PrivateWriting or Presentation.

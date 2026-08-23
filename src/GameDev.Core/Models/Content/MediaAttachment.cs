@@ -18,14 +18,15 @@ public class MediaAttachment
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
     
+    // ⭐ FIX: Change MediaAttachmentId to ContentItemId (FK to ContentItems)
     /// <summary>
     /// ID of the content item this media is attached to.
     /// </summary>
     [Required, Display(Name = "Content Item ID")]
-    public Guid MediaAttachmentId { get; set; }
+    public Guid ContentItemId { get; set; }  // ✅ FIX: Changed from MediaAttachmentId
 
     // Navigation property: ContentItem (Many-to-One)
-    [ForeignKey("MediaAttachmentId")]
+    [ForeignKey("ContentItemId")]
     public virtual ContentItem ContentItem { get; set; }
     
     /// <summary>
@@ -62,4 +63,6 @@ public class MediaAttachment
     /// </summary>
     public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
 
+    // ⭐ FIX: Add ExternalReferences collection for media attachments
+    public ICollection<ExternalReference> ExternalReferences { get; set; }
 }

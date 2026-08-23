@@ -32,7 +32,7 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
         
         // Navigation property: ContentItem (Optional FK)
         builder.HasOne(pt => pt.ContentItem)  // ContentItemId is nullable
-            .WithMany(ci => ci.Tasks)
+            .WithMany(ci => ci.ProjectTasks)
             .HasForeignKey(pt => pt.ContentItemId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, allow task history
         

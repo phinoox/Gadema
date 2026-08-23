@@ -20,54 +20,61 @@ namespace GameDev.Api.Controllers;
 public class ExportController : ControllerBase
 {
     private readonly IExportService _exportService;
-    private readonly ILogger<ExportController> _logger;
+    private readonly IExportContentService _contentService;
 
-    /// <summary>
-    /// Constructor with dependency injection.
-    /// </summary>
-    public ExportController(IExportService exportService, ILogger<ExportController> logger)
+    public ExportController(IExportService exportService, IExportContentService contentService)
     {
         _exportService = exportService;
-        _logger = logger;
+        _contentService = contentService;
     }
 
-    /// <summary>
-    /// Export to JSON format.
-    /// </summary>
     [HttpPost("json")]
-    public async Task<IActionResult> ExportToJsonAsync(Guid id, [FromBody] ExportJsonDto exportDto)
+    public async Task<IActionResult> ExportToJsonAsync(Guid id, [FromBody] ExportJsonDto dto)
     {
-        var response = await _exportService.ExportToJsonAsync(id, exportDto);
-        return Ok(response);
+        var response = await _exportService.ExportToJsonAsync(id, dto);
+        
+        // Generate file content using ContentService (reusable elsewhere)
+        var jsonContent = await _contentService.GenerateJsonExportAsync(id, dto);
+        
+        return File(
+            System.Text.Encoding.UTF8.GetBytes(jsonContent),
+            response.ContentType,
+            response.FileName
+        );
     }
 
-    /// <summary>
-    /// Export to CSV format (Unity compatible).
-    /// </summary>
     [HttpPost("csv")]
-    public async Task<IActionResult> ExportToCsvAsync(Guid id, [FromBody] ExportCsvDto exportDto)
+    public async Task<IActionResult> ExportToCsvAsync(Guid id, [FromBody] ExportCsvDto dto)
     {
-        var response = await _exportService.ExportToCsvAsync(id, exportDto);
-        return Ok(response);
+        var response = await _exportService.ExportToCsvAsync(id, dto);
+        var csvContent = await _contentService.GenerateCsvExportAsync(id, dto);
+
+        return File(
+            System.Text.Encoding.UTF8.GetBytes(csvContent),
+            response.ContentType,
+            response.FileName
+        );
     }
 
-    /// <summary>
-    /// Export to XML GDD format (Unreal compatible).
-    /// </summary>
     [HttpPost("xml-gdd")]
-    public async Task<IActionResult> ExportToXmlGddAsync(Guid id, [FromBody] ExportXmlGddDto exportDto)
+    public async Task<IActionResult> ExportToXmlGddAsync(Guid id, [FromBody] ExportXmlGddDto dto)
     {
-        var response = await _exportService.ExportToXmlGddAsync(id, exportDto);
-        return Ok(response);
+        var response = await _exportService.ExportToXmlGddAsync(id, dto);
+        var xmlContent = await _contentService.GenerateXmlExportAsync(id, dto);
+
+        return File(
+            System.Text.Encoding.UTF8.GetBytes(xmlContent),
+            response.ContentType,
+            response.FileName
+        );
     }
 
-    /// <summary>
-    /// Export to PDF format (GDD document).
-    /// </summary>
     [HttpPost("pdf")]
-    public async Task<IActionResult> ExportToPdfAsync(Guid id, [FromBody] ExportPdfDto exportDto)
+    public async Task<IActionResult> ExportToPdfAsync(Guid id, [FromBody] ExportPdfDto dto)
     {
-        var response = await _exportService.ExportToPdfAsync(id, exportDto);
-        return Ok(response);
+        var response = await _exportService.ExportToPdfAsync(id, dto);
+        // In production: return QuestPDF-generated PDF bytes
+        // For now: placeholder
+        return Ok("PDF generation endpoint");
     }
 }

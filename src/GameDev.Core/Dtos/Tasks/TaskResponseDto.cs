@@ -77,10 +77,10 @@ public class ProjectTaskCreateDto
     [MaxLength(4096)]
     public string? Description { get; set; }
     
-    public int Status { get; set; }  // Backlog, InProgress, Review, Done
-    public int Priority { get; set; }  // High, Medium, Low
+    public int? Status { get; set; }  // Backlog, InProgress, Review, Done
+    public int? Priority { get; set; }  // High, Medium, Low
     
-    public int Difficulty { get; set; }  // Easy, Medium, Hard
+    public int? Difficulty { get; set; }  // Easy, Medium, Hard
     
     [MaxLength(512)]
     public decimal? EstimatedMinutes { get; set; }
@@ -89,7 +89,7 @@ public class ProjectTaskCreateDto
     
     public DateTime? DueDate { get; set; }
     
-    public bool IsQuickWin { get; set; } = false;
+    public bool? IsQuickWin { get; set; } = false;
 }
 
 /// <summary>
@@ -103,11 +103,11 @@ public class ProjectTaskUpdateDto
     [MaxLength(4096)]
     public string? Description { get; set; }
     
-    public int Status { get; set; }
+    public int? Status { get; set; }
     
-    public int Priority { get; set; }
+    public int? Priority { get; set; }
     
-    public int Difficulty { get; set; }
+    public int? Difficulty { get; set; }
     
     [MaxLength(512)]
     public decimal? EstimatedMinutes { get; set; }
@@ -116,5 +116,5 @@ public class ProjectTaskUpdateDto
     
     public DateTime? DueDate { get; set; }
     
-    public bool IsQuickWin { get; set; } = false;
+    public bool? IsQuickWin { get; set; } = false;
 }

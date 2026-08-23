@@ -1,6 +1,7 @@
 // =============================================================================
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // GameDev.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -39,5 +40,15 @@ public class ContentTags
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+    /// <summary>
+    /// Navigation property: ContentItem (Many-to-Many through junction table)
+    /// </summary>
+    [ForeignKey("ContentItemId")]
     public virtual ContentItem ContentItem { get; set; }
+
+    /// <summary>
+    /// Navigation property: Tag (Many-to-Many through junction table)
+    /// </summary>
+    [ForeignKey("TagId")]
+    public virtual Tag Tag { get; set; }  // ✅ FIX: Added Tag navigation property
 }

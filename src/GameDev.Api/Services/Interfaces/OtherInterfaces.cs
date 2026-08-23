@@ -55,11 +55,12 @@ public interface ITaskService
 /// </summary>
 public interface IExportService
 {
-    Task<IActionResult> ExportToJsonAsync(Guid projectId, ExportJsonDto exportDto);
-    Task<IActionResult> ExportToCsvAsync(Guid projectId, ExportCsvDto exportDto);
-    Task<IActionResult> ExportToXmlGddAsync(Guid projectId, ExportXmlGddDto exportDto);
-    Task<IActionResult> ExportToPdfAsync(Guid projectId, ExportPdfDto exportDto);
+    Task<ExportJsonResponseDto> ExportToJsonAsync(Guid projectId, ExportJsonDto exportDto);
+    Task<ExportCsvResponseDto> ExportToCsvAsync(Guid projectId, ExportCsvDto exportDto);
+    Task<ExportXmlGddResponseDto> ExportToXmlGddAsync(Guid projectId, ExportXmlGddDto exportDto);
+    Task<ExportPdfResponseDto> ExportToPdfAsync(Guid projectId, ExportPdfDto exportDto);
 }
+
 
 /// <summary>
 /// Interface for review service.

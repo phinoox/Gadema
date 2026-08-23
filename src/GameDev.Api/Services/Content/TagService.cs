@@ -101,7 +101,7 @@ public class SearchService : ISearchService
         {
             var searchQuery = $"*%{searchDto.Query}%*";
             query = query.Where(c => c.Title.Contains(searchDto.Query) || 
-                                      c.Description?.Contains(searchDto.Query) == true ||
+                                      (c.Description != null && c.Description.Contains(searchDto.Query) == true )||
                                       c.Slug.Contains(searchDto.Query));
         }
 
@@ -126,7 +126,7 @@ public class SearchService : ISearchService
                 ShortDesc = c.ShortDesc,
                 Description = null,
                 Published = c.Published,
-                Status = (int)c.Status,
+                Status = c.Status,
                 ViewMode = c.ViewMode.ToString(),
                 Version = c.Version
             }).ToListAsync();

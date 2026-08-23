@@ -20,7 +20,7 @@ namespace GameDev.Api.Services;
 /// </summary>
 public interface IContentService
 {
-    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> GetContentItemsAsync(Guid? projectId, ContentTypeEnum? contentType, int? status, bool published, ViewModeEnum viewMode);
+    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> GetContentItemsAsync(Guid? projectId, ContentTypeEnum? contentType, ContentStatusEnum? status, bool published, ViewModeEnum viewMode);
     Task<ApiResponseDto<ContentItemResponseDto>> GetContentItemAsync(Guid id, ViewModeEnum viewMode);
     Task<ApiResponseDto<ContentItemResponseDto>> CreateContentItemAsync(CreateContentItemDto createDto);
     Task<ApiResponseDto<ContentItemResponseDto>> UpdateContentItemAsync(Guid id, UpdateContentItemDto updateDto);

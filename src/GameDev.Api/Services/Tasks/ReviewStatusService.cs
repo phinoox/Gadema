@@ -11,12 +11,13 @@ using GameDev.Core.Dtos.Reviews;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
 
+
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of review status service.
 /// </summary>
-public class ReviewStatusService : IReviewService
+public class ReviewStatusService : IReviewStatusService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ReviewStatusService> _logger;
