@@ -8,6 +8,15 @@ using Xunit;
 using FluentAssertions;
 using Moq;
 using System.Net.Http;
+using Microsoft.Extensions.Logging;
+using GameDev.Api.Services;
+using GameDev.Core.Dtos.Authentication;
+using GameDev.Core.Dtos.Projects;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Enums;
+using GameDev.Core.Dtos.Tasks;
+using GameDev.Core.Dtos.Export;
+using GameDev.Core.Dtos.Reviews;
 
 /// <summary>
 /// Integration tests for authentication service.
@@ -25,10 +34,10 @@ public class ApiAuthServiceIntegrationTests
     }
 
     /// <summary>
-    /// Test: Google callback should return success.
+    /// Test: Google callback should return Successful.
     /// </summary>
     [Fact]
-    public async Task GoogleCallbackAsync_ShouldReturnSuccess()
+    public async Task GoogleCallbackAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var authService = new ApiAuthService(null!, null!, _mockLogger.Object);
@@ -37,14 +46,14 @@ public class ApiAuthServiceIntegrationTests
         var result = await authService.GoogleCallbackAsync("test_code");
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Disable 2FA should return success.
+    /// Test: Disable 2FA should return Successful.
     /// </summary>
     [Fact]
-    public async Task Disable2FAAsync_ShouldReturnSuccess()
+    public async Task Disable2FAAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var authService = new ApiAuthService(null!, null!, _mockLogger.Object);
@@ -56,7 +65,7 @@ public class ApiAuthServiceIntegrationTests
         });
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 }
 
@@ -76,10 +85,10 @@ public class ProjectServiceIntegrationTests
     }
 
     /// <summary>
-    /// Test: Create project should return success.
+    /// Test: Create project should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateProjectAsync_ShouldReturnSuccess()
+    public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ProjectService(null!, _mockLogger.Object);
@@ -93,14 +102,14 @@ public class ProjectServiceIntegrationTests
         var result = await service.CreateProjectAsync(createDto);
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Update project should return success.
+    /// Test: Update project should return Successful.
     /// </summary>
     [Fact]
-    public async Task UpdateProjectAsync_ShouldReturnSuccess()
+    public async Task UpdateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ProjectService(null!, _mockLogger.Object);
@@ -109,7 +118,7 @@ public class ProjectServiceIntegrationTests
         var result = await service.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 }
 
@@ -129,10 +138,10 @@ public class ContentItemServiceIntegrationTests
     }
 
     /// <summary>
-    /// Test: Create content item should return success.
+    /// Test: Create content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateContentItemAsync_ShouldReturnSuccess()
+    public async Task CreateContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ContentItemService(null!, _mockLogger.Object);
@@ -150,14 +159,14 @@ public class ContentItemServiceIntegrationTests
         var result = await service.CreateContentItemAsync(createDto);
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Get content item should return success.
+    /// Test: Get content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task GetContentItemAsync_ShouldReturnSuccess()
+    public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ContentItemService(null!, _mockLogger.Object);
@@ -166,14 +175,14 @@ public class ContentItemServiceIntegrationTests
         var result = await service.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Delete content item should return success.
+    /// Test: Delete content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task DeleteContentItemAsync_ShouldReturnSuccess()
+    public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ContentItemService(null!, _mockLogger.Object);
@@ -182,7 +191,7 @@ public class ContentItemServiceIntegrationTests
         var result = await service.DeleteContentItemAsync(Guid.NewGuid());
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 }
 
@@ -191,25 +200,25 @@ public class ContentItemServiceIntegrationTests
 /// </summary>
 public class TaskServiceIntegrationTests
 {
-    private readonly Mock<ILogger<TaskService>> _mockLogger;
+    private readonly Mock<ILogger<ProjectTaskService>> _mockLogger;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
     public TaskServiceIntegrationTests()
     {
-        _mockLogger = new Mock<ILogger<TaskService>>();
+        _mockLogger = new Mock<ILogger<ProjectTaskService>>();
     }
 
     /// <summary>
-    /// Test: Create task should return success.
+    /// Test: Create task should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateTaskAsync_ShouldReturnSuccess()
+    public async Task CreateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new TaskService(null!, _mockLogger.Object);
-        var createDto = new CreateTaskDto
+        var service = new ProjectTaskService(null!, _mockLogger.Object);
+        var createDto = new ProjectTaskCreateDto
         {
             ProjectId = Guid.NewGuid(),
             TaskTitle = "Test Task",
@@ -223,39 +232,39 @@ public class TaskServiceIntegrationTests
         var result = await service.CreateTaskAsync(createDto);
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Update task should return success.
+    /// Test: Update task should return Successful.
     /// </summary>
     [Fact]
-    public async Task UpdateTaskAsync_ShouldReturnSuccess()
+    public async Task UpdateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new TaskService(null!, _mockLogger.Object);
+        var service = new ProjectTaskService(null!, _mockLogger.Object);
 
         // Act
-        var result = await service.UpdateTaskAsync(Guid.NewGuid(), new UpdateTaskDto());
+        var result = await service.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Delete task should return success.
+    /// Test: Delete task should return Successful.
     /// </summary>
     [Fact]
-    public async Task DeleteTaskAsync_ShouldReturnSuccess()
+    public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new TaskService(null!, _mockLogger.Object);
+        var service = new ProjectTaskService(null!, _mockLogger.Object);
 
         // Act
         var result = await service.DeleteTaskAsync(Guid.NewGuid());
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 }
 
@@ -281,7 +290,7 @@ public class ExportServiceIntegrationTests
     public async Task ExportToJsonAsync_ShouldReturnOk()
     {
         // Arrange
-        var service = new ExportService(null!, null!, _mockLogger.Object);
+        var service = new ExportService(_mockLogger.Object);
 
         // Act
         var result = await service.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
@@ -297,7 +306,7 @@ public class ExportServiceIntegrationTests
     public async Task ExportToCsvAsync_ShouldReturnFile()
     {
         // Arrange
-        var service = new ExportService(null!, null!, _mockLogger.Object);
+        var service = new ExportService(_mockLogger.Object);
 
         // Act
         var result = await service.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
@@ -323,10 +332,10 @@ public class ReviewStatusServiceIntegrationTests
     }
 
     /// <summary>
-    /// Test: Get review status should return success.
+    /// Test: Get review status should return Successful.
     /// </summary>
     [Fact]
-    public async Task GetReviewStatusAsync_ShouldReturnSuccess()
+    public async Task GetReviewStatusAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ReviewStatusService(null!, _mockLogger.Object);
@@ -335,14 +344,14 @@ public class ReviewStatusServiceIntegrationTests
         var result = await service.GetReviewStatusAsync(Guid.NewGuid());
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Approve content should return success.
+    /// Test: Approve content should return Successful.
     /// </summary>
     [Fact]
-    public async Task ApproveContentAsync_ShouldReturnSuccess()
+    public async Task ApproveContentAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var service = new ReviewStatusService(null!, _mockLogger.Object);
@@ -355,6 +364,6 @@ public class ReviewStatusServiceIntegrationTests
         });
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
     }
 }

@@ -7,14 +7,19 @@ namespace GameDev.Tests.Services;
 using Xunit;
 using FluentAssertions;
 using System.Net;
+using GameDev.Data;
+using GameDev.Api.Services;
+using Microsoft.EntityFrameworkCore;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Enums;
 
 /// <summary>
 /// Tests for ContentItemService business logic.
 /// </summary>
 public class ContentItemServiceTests
 {
-    private readonly GameDbContext _context;
-    private readonly ContentItemService _service;
+    private  GameDbContext _context;
+    private  ContentItemService _service;
 
     /// <summary>
     /// Setup test environment.
@@ -33,10 +38,10 @@ public class ContentItemServiceTests
     }
 
     /// <summary>
-    /// Test: Create content item should return success.
+    /// Test: Create content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateContentItemAsync_ShouldReturnSuccess()
+    public async Task CreateContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var createDto = new CreateContentItemDto
@@ -53,7 +58,7 @@ public class ContentItemServiceTests
         var result = await _service.CreateContentItemAsync(createDto);
 
         // Assert
-        result.Success.Should().BeTrue();
+        result.Successful.Should().BeTrue();
         result.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 
@@ -80,7 +85,7 @@ public class ContentItemServiceTests
         var getResult = await _service.GetContentItemAsync(result.Data!.Id, ViewModeEnum.PrivateWriting);
 
         // Assert
-        getResult.Success.Should().BeTrue();
+        getResult.Successful.Should().BeTrue();
     }
 
     /// <summary>
@@ -113,14 +118,14 @@ public class ContentItemServiceTests
         var updateResult = await _service.UpdateContentItemAsync(createResult.Data!.Id, updateDto);
 
         // Assert
-        updateResult.Success.Should().BeTrue();
+        updateResult.Successful.Should().BeTrue();
     }
 
     /// <summary>
-    /// Test: Delete content item should return success.
+    /// Test: Delete content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task DeleteContentItemAsync_ShouldReturnSuccess()
+    public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
         var createDto = new CreateContentItemDto
@@ -139,6 +144,6 @@ public class ContentItemServiceTests
         var deleteResult = await _service.DeleteContentItemAsync(createResult.Data!.Id);
 
         // Assert
-        deleteResult.Success.Should().BeTrue();
+        deleteResult.Successful.Should().BeTrue();
     }
 }

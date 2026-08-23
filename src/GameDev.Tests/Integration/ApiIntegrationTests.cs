@@ -9,6 +9,16 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System.Net.Http;
 using FluentAssertions;
+using Microsoft.AspNetCore.Builder;
+using GameDev.Core.Dtos.Projects;
+using System.Net.Http.Json;
+using GameDev.Core.Dtos.ContentItems;
+using GameDev.Core.Enums;
+using GameDev.Core.Dtos.Tasks;
+using GameDev.Core.Dtos.Export;
+using GameDev.Core.Dtos.ExternalReferences;
+using Microsoft.Extensions.Hosting;
+using GameDev.Data;
 
 /// <summary>
 /// Integration tests for API endpoints using WebApplicationFactory.
@@ -22,18 +32,22 @@ public class ApiIntegrationTests
     /// </summary>
     public ApiIntegrationTests()
     {
-        var hostBuilder = new HostBuilder();
-        hostBuilder.UseWebApplication<Program>();
-        hostBuilder.Build();
-        
-        _httpClient = new TestServer(new WebHostBuilder().Configure(app => 
+         using var host = new HostBuilder()
+        .ConfigureWebHost(builder =>
         {
-            app.MapWhen(context => context.Request.Path.StartsWithSegments("/api/v1"), 
-                webAppBuilder => webAppBuilder.UseRouting())
-            .MapControllers()
-            .UseAuthentication()
-            .UseAuthorization());
-        }).CreateClient();
+            builder.UseTestServer()
+                .Configure(app =>
+                {
+                    app.UseRouting();
+                    app.UseEndpoints(endpoints =>
+                    {
+                        endpoints.MapControllers();
+                    });
+                });
+        })
+        .Build();
+
+    _httpClient = host.GetTestClient();
     }
 
     /// <summary>
@@ -100,7 +114,7 @@ public class ApiIntegrationTests
     public async Task CreateTask_ShouldReturnOk()
     {
         // Arrange
-        var createTaskDto = new CreateTaskDto
+        var createTaskDto = new ProjectTaskCreateDto
         {
             ProjectId = Guid.NewGuid(),
             TaskTitle = "Test Task",

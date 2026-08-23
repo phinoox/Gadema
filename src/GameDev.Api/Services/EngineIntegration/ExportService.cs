@@ -19,6 +19,9 @@ namespace GameDev.Api.Services;
 /// </summary>
 public class ExportService : IExportService
 {
+    private readonly ILogger<ExportService> _logger;
+
+    public ExportService(ILogger<ExportService> logger) => _logger = logger;
     public async Task<ExportJsonResponseDto> ExportToJsonAsync(Guid projectId, ExportJsonDto dto)
     {
         var response = new ExportJsonResponseDto

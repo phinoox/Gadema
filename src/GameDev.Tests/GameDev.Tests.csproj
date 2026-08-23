@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <!-- Reference to Core, Api, and Data projects -->
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.11" />
     <ProjectReference Include="..\GameDev.Core\GameDev.Core.csproj" />
     <ProjectReference Include="..\GameDev.Api\GameDev.Api.csproj" />
     <ProjectReference Include="..\GameDev.Data\GameDev.Data.csproj" />
@@ -28,6 +29,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.6.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.11" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="Moq" Version="4.18.4" />
   </ItemGroup>
