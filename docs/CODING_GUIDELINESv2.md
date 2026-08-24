@@ -142,12 +142,12 @@ public class TaskController : ControllerBase         // ❌ Avoid! Can be confus
 // ✅ CORRECT - Service layer naming with domain clustering (NEW!)
 public interface IProjectTaskService { }              // src/GameDev.Api/Services/Tasks/
 
-public class ProjectTaskService : IProjectTaskService // ✅ Renamed from TaskService
+public class ProjectTaskService : IGademaService,  IProjectTaskService // ✅ Renamed from TaskService
 {                                                     // (avoids ambiguity with System.Threading.Task)
 }
 
 // ❌ INCORRECT - Ambiguous naming
-public class TaskService : ITaskService               // ❌ Avoid! Can be confused with System.Threading.Task
+public class TaskService : IGademaService,  ITaskService               // ❌ Avoid! Can be confused with System.Threading.Task
 ```
 
 ### **1.5 Configuration Files** (Updated with Domain Clustering - ⭐ NEW!)
@@ -954,7 +954,7 @@ public async Task<IActionResult> CreateProjectTaskAsync(Guid projectId, [FromBod
 
 ```csharp
 // ✅ CORRECT - Password hashing implementation with hybrid response patterns (NEW!)
-public class PasswordHashService : IPasswordHashingService
+public class PasswordHashService : IGademaService,  IPasswordHashingService
 {
     private const int SaltRounds = 10;  // Security: High salt rounds in domain-clustered code
     
@@ -975,7 +975,7 @@ public class PasswordHashService : IPasswordHashingService
 }
 
 // ❌ INCORRECT - Don't store plain text passwords in domain-clustered code (NEW!)
-public class PasswordStorageService : IPasswordStorageService
+public class PasswordStorageService : IGademaService,  IPasswordStorageService
 {
     public async Task<string> StorePasswordAsync(string password)
     {
@@ -1353,7 +1353,7 @@ public async Task<IActionResult> UploadMediaFileAsync(Guid id, IFormFile file)  
 
 ```csharp
 // ✅ CORRECT - HTML sanitization to prevent XSS with hybrid response patterns (NEW!)
-public class InputSanitizerService : IInputSanitizationService
+public class InputSanitizerService : IGademaService,  IInputSanitizationService
 {
     private readonly HtmlEncoder _encoder = new HtmlEncoder();  // ✅ HTML escaping in domain-clustered code!
     
@@ -1602,7 +1602,7 @@ services.AddAuthentication()
     });
 
 // ✅ CORRECT - Use hybrid response patterns for JWT token generation (NEW!)
-public class JwtTokenService : IJwtTokenService
+public class JwtTokenService : IGademaService,  IJwtTokenService
 {
     private readonly IConfiguration _configuration;
     private const int TokenExpiryHours = 1;  // ✅ 1 hour expiration in domain-clustered code!
@@ -1649,7 +1649,7 @@ public class JwtTokenService : IJwtTokenService
 }
 
 // ❌ INCORRECT - Don't set appropriate expiration for JWT tokens in domain-clustered code (security violation) (NEW!)
-public class JwtTokenService : IJwtTokenService
+public class JwtTokenService : IGademaService,  IJwtTokenService
 {
     private readonly IConfiguration _configuration;
     private const int TokenExpiryHours = 24;  // ❌ Avoid! 24-hour expiration is too long in domain-clustered code! Security violation!
@@ -2364,7 +2364,7 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
 
 ```csharp
 // ✅ CORRECT - Focus mode UI pattern with hybrid response patterns (NEW!)
-public class ProjectTaskService : IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
+public class ProjectTaskService : IGademaService,  IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
 {
     private readonly GameDbContext _context;
     
@@ -2376,7 +2376,7 @@ public class ProjectTaskService : IProjectTaskService  // ✅ Updated service na
 }
 
 // ✅ CORRECT - Focus mode UI pattern with hybrid response patterns (NEW!)
-public class AdhdFriendlyTaskService : IAdhdFriendlyTaskService  // ✅ Updated service name! Domain-aware pattern!
+public class AdhdFriendlyTaskService : IGademaService,  IAdhdFriendlyTaskService  // ✅ Updated service name! Domain-aware pattern!
 {
     private readonly GameDbContext _context;
     
@@ -2411,7 +2411,7 @@ public class AdhdFriendlyTaskService : IAdhdFriendlyTaskService  // ✅ Updated 
 }
 
 // ❌ INCORRECT - Don't use hybrid response patterns for focus mode UI (domain-clustered code violation) (NEW!)
-public class ProjectTaskService : IProjectTaskService  // ❌ Avoid! Can be confused with System.Threading.Task!
+public class ProjectTaskService : IGademaService,  IProjectTaskService  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     public async Task<List<Task>> GetQuickWinTasksAsync(Guid projectId)  // ❌ Avoid! Can be confused with System.Threading.Task!
     {
@@ -2420,7 +2420,7 @@ public class ProjectTaskService : IProjectTaskService  // ❌ Avoid! Can be conf
 }
 
 // ✅ CORRECT - Use hybrid response patterns for focus mode UI (NEW!)
-public class ProjectTaskService : IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
+public class ProjectTaskService : IGademaService,  IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
 {
     public async Task<List<ProjectTask>> GetQuickWinTasksAsync(Guid projectId)  // ✅ Updated method name in domain-clustered code!
     {
@@ -2440,7 +2440,7 @@ public class ProjectTaskService : IProjectTaskService  // ✅ Updated service na
 }
 
 // ❌ INCORRECT - Don't use hybrid response patterns for focus mode UI (domain-clustered code violation) (NEW!)
-public class ProjectTaskService : IProjectTaskService  // ❌ Avoid! Can be confused with System.Threading.Task!
+public class ProjectTaskService : IGademaService,  IProjectTaskService  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     public async Task<List<Task>> GetQuickWinTasksAsync(Guid projectId)  // ❌ Avoid! Can be confused with System.Threading.Task!
     {
@@ -2451,7 +2451,7 @@ public class ProjectTaskService : IProjectTaskService  // ❌ Avoid! Can be conf
 }
 
 // ✅ CORRECT - Use hybrid response patterns for focus mode UI (NEW!)
-public class ProjectTaskService : IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
+public class ProjectTaskService : IGademaService,  IProjectTaskService  // ✅ Updated service name! Domain-aware pattern!
 {
     public async Task<IActionResult> GetQuickWinTasksAsync(Guid projectId)  // ✅ Updated method name in domain-clustered code!
     {
@@ -2929,7 +2929,7 @@ public async Task GetProjectTasksAsync_ReturnsRawResponse()  // ❌ Avoid! Can b
 
 ```csharp
 // ✅ CORRECT - Direct EF Core access (No Repository Pattern) in domain-clustered code (NEW!)
-public class ContentItemService : IContentItemService
+public class ContentItemService : IGademaService,  IContentItemService
 {
     private readonly GameDbContext _context;
     

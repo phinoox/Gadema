@@ -61,7 +61,7 @@ src/
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Domain-aware authentication service with password hashing
-public class ApiAuthService : IApiAuthService
+public class ApiAuthService : IGademaService,  IApiAuthService
 {
     private readonly IConfiguration _configuration;
     private readonly GameDbContext _context;
@@ -170,7 +170,7 @@ public class ApiAuthService : IApiAuthService
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Password hashing service with domain-aware patterns and hybrid response pattern
-public class PasswordHashService : IPasswordHashingService
+public class PasswordHashService : IGademaService,  IPasswordHashingService
 {
     private const int SaltRounds = 10;  // Security: High salt rounds with domain-aware patterns
     
@@ -435,7 +435,7 @@ public async Task<IActionResult> AdminDeleteContentAsync(Guid id, Guid userId)
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - API Token creation service with domain-aware patterns and hybrid response pattern
-public class ProjectTokenService : IProjectTokenService
+public class ProjectTokenService : IGademaService,  IProjectTokenService
 {
     private readonly GameDbContext _context;
     
@@ -567,7 +567,7 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
 }
 
 // ✅ CORRECT - Password hashing service implementation (domain-aware patterns and hybrid response pattern)
-public class PasswordHashService : IPasswordHashingService
+public class PasswordHashService : IGademaService,  IPasswordHashingService
 {
     private const int SaltRounds = 10;  // ✅ Security: High salt rounds with domain-aware patterns
     
@@ -672,7 +672,7 @@ public async Task<IActionResult> RegisterUserAsync(RegisterDto registerDto)
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Secure file upload handling service (domain-aware patterns and hybrid response pattern)
-public class FileUploadService : IFileUploadService
+public class FileUploadService : IGademaService,  IFileUploadService
 {
     private const int MaxFileSize = 100 * 1024 * 1024;  // 100MB in bytes with domain-aware patterns
     
@@ -807,7 +807,7 @@ public class FileUploadSecurityMiddleware : IMiddleware
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Input sanitization service (domain-aware patterns and hybrid response pattern)
-public class InputSanitizerService : IInputSanitizationService
+public class InputSanitizerService : IGademaService,  IInputSanitizationService
 {
     private readonly HtmlEncoder _encoder = new HtmlEncoder();  // ✅ HTML escaping with domain-aware patterns
     
@@ -940,7 +940,7 @@ public async Task<IActionResult> CreateContentItemAsync(Guid projectId, [FromBod
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - JWT Token service implementation (domain-aware patterns and hybrid response pattern)
-public class JwtTokenService : IJwtTokenService
+public class JwtTokenService : IGademaService,  IJwtTokenService
 {
     private readonly IConfiguration _configuration;
     private const int TokenExpiryHours = 1;  // ✅ 1 hour expiration with domain-aware patterns

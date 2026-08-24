@@ -11,16 +11,19 @@ using GameDev.Core.Dtos.Comments;
 using GameDev.Core.Models;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of comment service.
 /// </summary>
-public class CommentService : ICommentService
+public class CommentService : IGademaService,  ICommentService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<CommentService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.CommentService;
 
     /// <summary>
     /// Constructor with dependency injection.

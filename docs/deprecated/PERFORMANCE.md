@@ -643,7 +643,7 @@ public class GCHandler
 }
 
 // Usage Example: Monitor memory in background service
-public class MemoryMonitoringBackgroundService : BackgroundService
+public class MemoryMonitoringBackgroundService : IGademaService,  BackgroundService
 {
     private readonly ILogger<MemoryMonitoringBackgroundService> _logger;
     
@@ -866,7 +866,7 @@ public class PerformanceMonitoringService
 }
 
 // Usage Example: Monitor performance metrics in background service
-public class PerformanceMonitoringBackgroundService : BackgroundService
+public class PerformanceMonitoringBackgroundService : IGademaService,  BackgroundService
 {
     private readonly ILogger<PerformanceMonitoringBackgroundService> _logger;
     

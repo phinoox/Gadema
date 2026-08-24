@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 
 using System;
 using System.Linq;
+using GameDev.Core.Services;
 
 
 namespace GameDev.Api.Services;
@@ -19,11 +20,13 @@ namespace GameDev.Api.Services;
 /// <summary>
 /// Implementation of authentication service.
 /// </summary>
-public class ApiAuthService : IApiAuthService
+public class ApiAuthService : IGademaService,  IApiAuthService
 {
     private readonly GameDbContext _context;
     private readonly IConfiguration _configuration;
     private readonly ILogger<ApiAuthService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.AuthService;
 
     /// <summary>
     /// Constructor with dependency injection.

@@ -271,24 +271,24 @@
       "category": "controller"
     },
     {
-      "name": "ProjectTaskService : ITaskService",
-      "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : ITaskServiceService.cs",
+      "name": "ProjectTaskService : IGademaService,  ITaskService",
+      "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ITaskService"
     },
     {
-      "name": "ReviewStatusService : IReviewService",
-      "file": "./src/GameDev.Api/Services/ReviewStatusService : IReviewServiceService.cs",
+      "name": "ReviewStatusService : IGademaService,  IReviewService",
+      "file": "./src/GameDev.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IReviewService"
     },
     {
-      "name": "CommentService : ICommentService",
-      "file": "./src/GameDev.Api/Services/CommentService : ICommentServiceService.cs",
+      "name": "CommentService : IGademaService,  ICommentService",
+      "file": "./src/GameDev.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
@@ -337,48 +337,48 @@
       "category": "entity"
     },
     {
-      "name": "TagService : ITagService",
-      "file": "./src/GameDev.Api/Services/TagService : ITagServiceService.cs",
+      "name": "TagService : IGademaService,  ITagService",
+      "file": "./src/GameDev.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ITagService"
     },
     {
-      "name": "SearchService : ISearchService",
-      "file": "./src/GameDev.Api/Services/SearchService : ISearchServiceService.cs",
+      "name": "SearchService : IGademaService,  ISearchService",
+      "file": "./src/GameDev.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ISearchService"
     },
     {
-      "name": "ExternalReferenceService : IExternalReferenceService",
-      "file": "./src/GameDev.Api/Services/ExternalReferenceService : IExternalReferenceServiceService.cs",
+      "name": "ExternalReferenceService : IGademaService,  IExternalReferenceService",
+      "file": "./src/GameDev.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IExternalReferenceService"
     },
     {
-      "name": "DialogueService : IDialogueService",
-      "file": "./src/GameDev.Api/Services/DialogueService : IDialogueServiceService.cs",
+      "name": "DialogueService : IGademaService,  IDialogueService",
+      "file": "./src/GameDev.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IDialogueService"
     },
     {
-      "name": "ContentItemService : IContentService",
-      "file": "./src/GameDev.Api/Services/Content/ContentItemService : IContentServiceService.cs",
+      "name": "ContentItemService : IGademaService,  IContentService",
+      "file": "./src/GameDev.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IContentService"
     },
     {
-      "name": "StoryOutlineService : IStoryOutlineService",
-      "file": "./src/GameDev.Api/Services/StoryOutlineService : IStoryOutlineServiceService.cs",
+      "name": "StoryOutlineService : IGademaService,  IStoryOutlineService",
+      "file": "./src/GameDev.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
@@ -399,24 +399,24 @@
       "category": "entity"
     },
     {
-      "name": "ProjectService : IProjectService",
-      "file": "./src/GameDev.Api/Services/Projects/ProjectService : IProjectServiceService.cs",
+      "name": "ProjectService : IGademaService,  IProjectService",
+      "file": "./src/GameDev.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IProjectService"
     },
     {
-      "name": "ApiAuthService : IApiAuthService",
-      "file": "./src/GameDev.Api/Services/ApiAuthService : IApiAuthServiceService.cs",
+      "name": "ApiAuthService : IGademaService,  IApiAuthService",
+      "file": "./src/GameDev.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IApiAuthService"
     },
     {
-      "name": "ExportService : IExportService",
-      "file": "./src/GameDev.Api/Services/ExportService : IExportServiceService.cs",
+      "name": "ExportService : IGademaService,  IExportService",
+      "file": "./src/GameDev.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
       "namespace": "GameDev.Api.Services",
       "type": "class",
       "category": "service",
@@ -1329,72 +1329,72 @@
           "category": "service"
         },
         {
-          "name": "ProjectTaskService : ITaskService",
-          "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : ITaskServiceService.cs",
+          "name": "ProjectTaskService : IGademaService,  ITaskService",
+          "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ITaskService"
         },
         {
-          "name": "ReviewStatusService : IReviewService",
-          "file": "./src/GameDev.Api/Services/ReviewStatusService : IReviewServiceService.cs",
+          "name": "ReviewStatusService : IGademaService,  IReviewService",
+          "file": "./src/GameDev.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IReviewService"
         },
         {
-          "name": "CommentService : ICommentService",
-          "file": "./src/GameDev.Api/Services/CommentService : ICommentServiceService.cs",
+          "name": "CommentService : IGademaService,  ICommentService",
+          "file": "./src/GameDev.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ICommentService"
         },
         {
-          "name": "TagService : ITagService",
-          "file": "./src/GameDev.Api/Services/TagService : ITagServiceService.cs",
+          "name": "TagService : IGademaService,  ITagService",
+          "file": "./src/GameDev.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ITagService"
         },
         {
-          "name": "SearchService : ISearchService",
-          "file": "./src/GameDev.Api/Services/SearchService : ISearchServiceService.cs",
+          "name": "SearchService : IGademaService,  ISearchService",
+          "file": "./src/GameDev.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ISearchService"
         },
         {
-          "name": "ExternalReferenceService : IExternalReferenceService",
-          "file": "./src/GameDev.Api/Services/ExternalReferenceService : IExternalReferenceServiceService.cs",
+          "name": "ExternalReferenceService : IGademaService,  IExternalReferenceService",
+          "file": "./src/GameDev.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IExternalReferenceService"
         },
         {
-          "name": "DialogueService : IDialogueService",
-          "file": "./src/GameDev.Api/Services/DialogueService : IDialogueServiceService.cs",
+          "name": "DialogueService : IGademaService,  IDialogueService",
+          "file": "./src/GameDev.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IDialogueService"
         },
         {
-          "name": "ContentItemService : IContentService",
-          "file": "./src/GameDev.Api/Services/Content/ContentItemService : IContentServiceService.cs",
+          "name": "ContentItemService : IGademaService,  IContentService",
+          "file": "./src/GameDev.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IContentService"
         },
         {
-          "name": "StoryOutlineService : IStoryOutlineService",
-          "file": "./src/GameDev.Api/Services/StoryOutlineService : IStoryOutlineServiceService.cs",
+          "name": "StoryOutlineService : IGademaService,  IStoryOutlineService",
+          "file": "./src/GameDev.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
@@ -1408,24 +1408,24 @@
           "category": "service"
         },
         {
-          "name": "ProjectService : IProjectService",
-          "file": "./src/GameDev.Api/Services/Projects/ProjectService : IProjectServiceService.cs",
+          "name": "ProjectService : IGademaService,  IProjectService",
+          "file": "./src/GameDev.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IProjectService"
         },
         {
-          "name": "ApiAuthService : IApiAuthService",
-          "file": "./src/GameDev.Api/Services/ApiAuthService : IApiAuthServiceService.cs",
+          "name": "ApiAuthService : IGademaService,  IApiAuthService",
+          "file": "./src/GameDev.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IApiAuthService"
         },
         {
-          "name": "ExportService : IExportService",
-          "file": "./src/GameDev.Api/Services/ExportService : IExportServiceService.cs",
+          "name": "ExportService : IGademaService,  IExportService",
+          "file": "./src/GameDev.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
           "namespace": "GameDev.Api.Services",
           "type": "class",
           "category": "service",

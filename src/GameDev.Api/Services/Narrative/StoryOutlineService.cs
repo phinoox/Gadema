@@ -11,16 +11,19 @@ using GameDev.Core.Dtos.StoryOutlining;
 using GameDev.Core.Models;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of story outline service.
 /// </summary>
-public class StoryOutlineService : IStoryOutlineService
+public class StoryOutlineService : IGademaService,  IStoryOutlineService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<StoryOutlineService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.StoryOutlineService;
 
     /// <summary>
     /// Constructor with dependency injection.

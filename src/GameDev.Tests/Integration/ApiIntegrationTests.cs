@@ -19,20 +19,30 @@ using GameDev.Core.Dtos.Export;
 using GameDev.Core.Dtos.ExternalReferences;
 using Microsoft.Extensions.Hosting;
 using GameDev.Data;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 /// <summary>
 /// Integration tests for API endpoints using WebApplicationFactory.
 /// </summary>
-public class ApiIntegrationTests
+public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly HttpClient _httpClient;
 
+    private readonly ApiWebApplicationFactory _factory;
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ApiIntegrationTests()
+    public ApiIntegrationTests(ApiWebApplicationFactory factory)
     {
-         using var host = new HostBuilder()
+        _factory = factory;
+        
+        if(_factory == null)
+            throw new Exception("factory was null you dumbass");
+        _httpClient = _factory.CreateClient();
+
+
+/*
+         _host = new HostBuilder()
         .ConfigureWebHost(builder =>
         {
             builder.UseTestServer()
@@ -46,8 +56,9 @@ public class ApiIntegrationTests
                 });
         })
         .Build();
-
-    _httpClient = host.GetTestClient();
+    _host.Start();
+    _httpClient = _host.GetTestClient();*/
+    
     }
 
     /// <summary>
@@ -158,6 +169,8 @@ public class ApiIntegrationTests
     [Fact]
     public async Task CreateExternalReference_ShouldReturnOk()
     {
+         if(_httpClient == null)
+            throw new Exception("client was null you dumbass");
         // Arrange
         var createReferenceDto = new CreateExternalReferenceDto
         {

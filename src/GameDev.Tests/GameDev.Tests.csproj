@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <!-- Reference to Core, Api, and Data projects -->
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.11" />
     <ProjectReference Include="..\GameDev.Core\GameDev.Core.csproj" />
     <ProjectReference Include="..\GameDev.Api\GameDev.Api.csproj" />

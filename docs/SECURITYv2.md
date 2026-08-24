@@ -809,7 +809,7 @@ public class GCHandler
 }
 
 // Usage Example: Monitor memory in background service with domain-aware patterns for ProjectTask entity
-public class MemoryMonitoringBackgroundService : BackgroundService
+public class MemoryMonitoringBackgroundService : IGademaService,  BackgroundService
 {
     private readonly ILogger<MemoryMonitoringBackgroundService> _logger;
     
@@ -835,7 +835,7 @@ public class MemoryMonitoringBackgroundService : BackgroundService
 }
 
 // ✅ CORRECT - Domain-aware memory monitoring service with ProjectTask entity queries
-public class DomainAwareMemoryMonitorService : BackgroundService
+public class DomainAwareMemoryMonitorService : IGademaService,  BackgroundService
 {
     private readonly GameDbContext _context;
     private readonly IRedisCache _redisCache;
@@ -1087,7 +1087,7 @@ public class PerformanceMonitoringService
 }
 
 // Usage Example: Monitor performance metrics in background service with domain-aware patterns for ProjectTask entity
-public class PerformanceMonitoringBackgroundService : BackgroundService
+public class PerformanceMonitoringBackgroundService : IGademaService,  BackgroundService
 {
     private readonly ILogger<PerformanceMonitoringBackgroundService> _logger;
     

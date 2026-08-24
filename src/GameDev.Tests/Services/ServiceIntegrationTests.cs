@@ -17,20 +17,21 @@ using GameDev.Core.Enums;
 using GameDev.Core.Dtos.Tasks;
 using GameDev.Core.Dtos.Export;
 using GameDev.Core.Dtos.Reviews;
+using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Integration tests for authentication service.
 /// </summary>
-public class ApiAuthServiceIntegrationTests
+public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ApiAuthService>> _mockLogger;
+    private readonly IApiAuthService _authService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ApiAuthServiceIntegrationTests()
+    public ApiAuthServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ApiAuthService>>();
+         _authService = factory.Services.GetRequiredService<IApiAuthService>();
     }
 
     /// <summary>
@@ -40,10 +41,9 @@ public class ApiAuthServiceIntegrationTests
     public async Task GoogleCallbackAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var authService = new ApiAuthService(null!, null!, _mockLogger.Object);
 
         // Act
-        var result = await authService.GoogleCallbackAsync("test_code");
+        var result = await _authService.GoogleCallbackAsync("test_code");
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -56,10 +56,9 @@ public class ApiAuthServiceIntegrationTests
     public async Task Disable2FAAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var authService = new ApiAuthService(null!, null!, _mockLogger.Object);
 
         // Act
-        var result = await authService.Disable2FAAsync(new Disable2FADto
+        var result = await _authService.Disable2FAAsync(new Disable2FADto
         {
             TwoFactorToken = "123456"
         });
@@ -72,16 +71,16 @@ public class ApiAuthServiceIntegrationTests
 /// <summary>
 /// Integration tests for project service.
 /// </summary>
-public class ProjectServiceIntegrationTests
+public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ProjectService>> _mockLogger;
+    private readonly IProjectService _projectService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ProjectServiceIntegrationTests()
+    public ProjectServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ProjectService>>();
+         _projectService = factory.Services.GetRequiredService<IProjectService>();
     }
 
     /// <summary>
@@ -91,7 +90,7 @@ public class ProjectServiceIntegrationTests
     public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ProjectService(null!, _mockLogger.Object);
+       
         var createDto = new CreateProjectDto
         {
             Title = "Test Project",
@@ -99,7 +98,7 @@ public class ProjectServiceIntegrationTests
         };
 
         // Act
-        var result = await service.CreateProjectAsync(createDto);
+        var result = await _projectService.CreateProjectAsync(createDto);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -112,10 +111,9 @@ public class ProjectServiceIntegrationTests
     public async Task UpdateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ProjectService(null!, _mockLogger.Object);
-
+       
         // Act
-        var result = await service.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
+        var result = await _projectService.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -125,16 +123,17 @@ public class ProjectServiceIntegrationTests
 /// <summary>
 /// Integration tests for content item service.
 /// </summary>
-public class ContentItemServiceIntegrationTests
+public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ContentItemService>> _mockLogger;
+    private readonly IContentService _contentItemService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ContentItemServiceIntegrationTests()
+    public ContentItemServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ContentItemService>>();
+        _contentItemService = factory.Services.GetRequiredService<IContentService>();
+        
     }
 
     /// <summary>
@@ -144,7 +143,7 @@ public class ContentItemServiceIntegrationTests
     public async Task CreateContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ContentItemService(null!, _mockLogger.Object);
+       
         var createDto = new CreateContentItemDto
         {
             ProjectId = Guid.NewGuid(),
@@ -156,7 +155,7 @@ public class ContentItemServiceIntegrationTests
         };
 
         // Act
-        var result = await service.CreateContentItemAsync(createDto);
+        var result = await _contentItemService.CreateContentItemAsync(createDto);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -169,10 +168,8 @@ public class ContentItemServiceIntegrationTests
     public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ContentItemService(null!, _mockLogger.Object);
-
         // Act
-        var result = await service.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
+        var result = await _contentItemService.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -185,10 +182,10 @@ public class ContentItemServiceIntegrationTests
     public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ContentItemService(null!, _mockLogger.Object);
+      
 
         // Act
-        var result = await service.DeleteContentItemAsync(Guid.NewGuid());
+        var result = await _contentItemService.DeleteContentItemAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -198,16 +195,17 @@ public class ContentItemServiceIntegrationTests
 /// <summary>
 /// Integration tests for task service.
 /// </summary>
-public class TaskServiceIntegrationTests
+public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ProjectTaskService>> _mockLogger;
+    private readonly IProjectTaskService _projectTaskService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public TaskServiceIntegrationTests()
+    public TaskServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ProjectTaskService>>();
+        _projectTaskService = factory.Services.GetRequiredService<IProjectTaskService>();
+        
     }
 
     /// <summary>
@@ -217,7 +215,7 @@ public class TaskServiceIntegrationTests
     public async Task CreateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ProjectTaskService(null!, _mockLogger.Object);
+     
         var createDto = new ProjectTaskCreateDto
         {
             ProjectId = Guid.NewGuid(),
@@ -229,7 +227,7 @@ public class TaskServiceIntegrationTests
         };
 
         // Act
-        var result = await service.CreateTaskAsync(createDto);
+        var result = await _projectTaskService.CreateTaskAsync(createDto);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -241,11 +239,9 @@ public class TaskServiceIntegrationTests
     [Fact]
     public async Task UpdateTaskAsync_ShouldReturnSuccessful()
     {
-        // Arrange
-        var service = new ProjectTaskService(null!, _mockLogger.Object);
-
+     
         // Act
-        var result = await service.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
+        var result = await _projectTaskService.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -258,10 +254,9 @@ public class TaskServiceIntegrationTests
     public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ProjectTaskService(null!, _mockLogger.Object);
-
+      
         // Act
-        var result = await service.DeleteTaskAsync(Guid.NewGuid());
+        var result = await _projectTaskService.DeleteTaskAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -271,16 +266,17 @@ public class TaskServiceIntegrationTests
 /// <summary>
 /// Integration tests for export service.
 /// </summary>
-public class ExportServiceIntegrationTests
+public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ExportService>> _mockLogger;
+    private readonly IExportService _exportService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ExportServiceIntegrationTests()
+    public ExportServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ExportService>>();
+        _exportService = factory.Services.GetRequiredService<IExportService>();
+        
     }
 
     /// <summary>
@@ -290,10 +286,10 @@ public class ExportServiceIntegrationTests
     public async Task ExportToJsonAsync_ShouldReturnOk()
     {
         // Arrange
-        var service = new ExportService(_mockLogger.Object);
+     
 
         // Act
-        var result = await service.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
+        var result = await _exportService.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
 
         // Assert
         result.Should().NotBeNull();
@@ -306,10 +302,10 @@ public class ExportServiceIntegrationTests
     public async Task ExportToCsvAsync_ShouldReturnFile()
     {
         // Arrange
-        var service = new ExportService(_mockLogger.Object);
+    
 
         // Act
-        var result = await service.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
+        var result = await _exportService.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
 
         // Assert
         result.Should().NotBeNull();
@@ -319,16 +315,20 @@ public class ExportServiceIntegrationTests
 /// <summary>
 /// Integration tests for review status service.
 /// </summary>
-public class ReviewStatusServiceIntegrationTests
+public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly Mock<ILogger<ReviewStatusService>> _mockLogger;
+    private readonly IReviewStatusService _reviewStatusService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ReviewStatusServiceIntegrationTests()
+    public ReviewStatusServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _mockLogger = new Mock<ILogger<ReviewStatusService>>();
+        _reviewStatusService = factory.Services.GetRequiredService<IReviewStatusService>();
+        if(_reviewStatusService == null)
+        {
+            throw new Exception("ReviewService was null damnit");
+        }
     }
 
     /// <summary>
@@ -338,10 +338,10 @@ public class ReviewStatusServiceIntegrationTests
     public async Task GetReviewStatusAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ReviewStatusService(null!, _mockLogger.Object);
+       
 
         // Act
-        var result = await service.GetReviewStatusAsync(Guid.NewGuid());
+        var result = await _reviewStatusService.GetReviewStatusAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -354,10 +354,10 @@ public class ReviewStatusServiceIntegrationTests
     public async Task ApproveContentAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var service = new ReviewStatusService(null!, _mockLogger.Object);
+       
 
         // Act
-        var result = await service.ApproveContentAsync(Guid.NewGuid(), new ApproveContentDto
+        var result = await _reviewStatusService.ApproveContentAsync(Guid.NewGuid(), new ApproveContentDto
         {
             Status = 1,
             ReviewComments = "Approved"

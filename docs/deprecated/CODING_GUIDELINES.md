@@ -107,7 +107,7 @@ public class ContentItemsController : ControllerBase {}
 // ✅ CORRECT - Service layer naming
 public interface IContentService { }
 
-public class ContentItemService : IContentService { }
+public class ContentItemService : IGademaService,  IContentService { }
 ```
 
 ### **1.5 Method Naming**

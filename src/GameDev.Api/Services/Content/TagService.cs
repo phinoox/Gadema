@@ -13,16 +13,19 @@ using GameDev.Core.Dtos.Tags;
 using GameDev.Core.Models;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of tag service.
 /// </summary>
-public class TagService : ITagService
+public class TagService : IGademaService,  ITagService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<TagService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.TagService;
 
     /// <summary>
     /// Constructor with dependency injection.
@@ -76,7 +79,7 @@ public class TagService : ITagService
 /// <summary>
 /// Implementation of search service.
 /// </summary>
-public class SearchService : ISearchService
+public class SearchService : IGademaService,  ISearchService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<SearchService> _logger;
@@ -89,6 +92,8 @@ public class SearchService : ISearchService
         _context = context;
         _logger = logger;
     }
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.SearchService;
 
     /// <summary>
     /// Search content items.

@@ -12,16 +12,19 @@ using GameDev.Core.Models;
 using GameDev.Data;
 using Microsoft.EntityFrameworkCore; // Added for EF Core extension methods
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of dialogue service.
 /// </summary>
-public class DialogueService : IDialogueService
+public class DialogueService : IGademaService,  IDialogueService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<DialogueService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.DialogueService;
 
     /// <summary>
     /// Constructor with dependency injection.

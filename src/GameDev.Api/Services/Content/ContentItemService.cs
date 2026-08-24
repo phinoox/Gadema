@@ -16,16 +16,19 @@ using GameDev.Core.Dtos.Response;
 using GameDev.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of content item service.
 /// </summary>
-public class ContentItemService : IContentService
+public class ContentItemService : IGademaService,  IContentService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ContentItemService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ContentService;
 
     /// <summary>
     /// Constructor with dependency injection.

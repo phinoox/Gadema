@@ -23,7 +23,7 @@ builder.Services.AddScoped<IContentService, ContentItemService>();
 builder.Services.AddScoped<IApiAuthService, ApiAuthService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IDialogueService, DialogueService>();
-builder.Services.AddScoped<ITaskService, ProjectTaskService>();
+builder.Services.AddScoped<IProjectTaskService, ProjectTaskService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IExternalReferenceService, ExternalReferenceService>();
 builder.Services.AddScoped<IStoryOutlineService, StoryOutlineService>();

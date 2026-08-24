@@ -20,13 +20,13 @@ namespace GameDev.Api.Controllers.Tasks;
 [Route("api/v1/projects/{projectId}/tasks")]
 public class ProjectTaskController : ControllerBase
 {
-    private readonly ITaskService _taskService;
+    private readonly IProjectTaskService _taskService;
     private readonly ILogger<ProjectTaskController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ProjectTaskController(ITaskService taskService, ILogger<ProjectTaskController> logger)
+    public ProjectTaskController(IProjectTaskService taskService, ILogger<ProjectTaskController> logger)
     {
         _taskService = taskService;
         _logger = logger;

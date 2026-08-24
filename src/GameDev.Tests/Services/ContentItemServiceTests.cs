@@ -12,29 +12,18 @@ using GameDev.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using GameDev.Core.Dtos.ContentItems;
 using GameDev.Core.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
 /// Tests for ContentItemService business logic.
 /// </summary>
 public class ContentItemServiceTests
 {
-    private  GameDbContext _context;
-    private  ContentItemService _service;
+    private readonly IContentService _service; // ✅ Use interface!
 
-    /// <summary>
-    /// Setup test environment.
-    /// </summary>
-    [Fact]
-    public async Task Setup()
+    public ContentItemServiceTests(ApiWebApplicationFactory factory)
     {
-        var options = new DbContextOptionsBuilder<GameDbContext>()
-            .UseInMemoryDatabase(databaseName: $"GaDeMaTest_{Guid.NewGuid()}")
-            .Options;
-
-        _context = new GameDbContext(options);
-        _service = new ContentItemService(_context, null!);
-
-        await _context.Database.EnsureCreatedAsync();
+        _service = factory.Services.GetRequiredService<IContentService>(); // ✅ DI!
     }
 
     /// <summary>

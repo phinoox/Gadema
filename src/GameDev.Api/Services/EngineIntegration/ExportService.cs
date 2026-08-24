@@ -11,15 +11,18 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of export service.
 /// </summary>
-public class ExportService : IExportService
+public class ExportService : IGademaService,  IExportService
 {
     private readonly ILogger<ExportService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ExportService;
 
     public ExportService(ILogger<ExportService> logger) => _logger = logger;
     public async Task<ExportJsonResponseDto> ExportToJsonAsync(Guid projectId, ExportJsonDto dto)

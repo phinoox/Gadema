@@ -13,16 +13,19 @@ using GameDev.Data;
 using Microsoft.Extensions.Logging;
 using GameDev.Core.Models;
 using GameDev.Core.Dtos.Tasks;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of task service (renamed to ProjectTaskService).
 /// </summary>
-public class ProjectTaskService : ITaskService
+public class ProjectTaskService : IGademaService,  IProjectTaskService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ProjectTaskService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ProjectTaskService;
 
     /// <summary>
     /// Constructor with dependency injection.

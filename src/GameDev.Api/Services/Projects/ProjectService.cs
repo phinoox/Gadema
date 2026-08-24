@@ -11,16 +11,19 @@ using GameDev.Core.Dtos.Projects;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
 using GameDev.Core.Dtos.Response;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of project service.
 /// </summary>
-public class ProjectService : IProjectService
+public class ProjectService : IGademaService,  IProjectService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ProjectService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ProjectService;
 
     /// <summary>
     /// Constructor with dependency injection.

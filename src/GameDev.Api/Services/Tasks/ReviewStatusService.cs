@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using GameDev.Core.Dtos.Reviews;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 
 namespace GameDev.Api.Services;
@@ -17,10 +18,12 @@ namespace GameDev.Api.Services;
 /// <summary>
 /// Implementation of review status service.
 /// </summary>
-public class ReviewStatusService : IReviewStatusService
+public class ReviewStatusService : IGademaService,  IReviewStatusService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ReviewStatusService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ReviewService;
 
     /// <summary>
     /// Constructor with dependency injection.

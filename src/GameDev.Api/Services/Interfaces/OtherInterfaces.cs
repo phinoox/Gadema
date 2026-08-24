@@ -42,7 +42,7 @@ public interface IExternalReferenceService
 /// <summary>
 /// Interface for task service.
 /// </summary>
-public interface ITaskService
+public interface IProjectTaskService
 {
     Task<ApiResponseDto<PaginationResponse<ProjectTaskResponseDto>>> GetTasksAsync(Guid? projectId, int? status, int? difficulty, bool isQuickWin);
     Task<ApiResponseDto<ProjectTaskResponseDto>> CreateTaskAsync(ProjectTaskCreateDto createDto);

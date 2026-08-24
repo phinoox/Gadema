@@ -12,16 +12,19 @@ using GameDev.Core.Dtos.ExternalReferences;
 using GameDev.Core.Models;
 using GameDev.Data;
 using Microsoft.Extensions.Logging;
+using GameDev.Core.Services;
 
 namespace GameDev.Api.Services;
 
 /// <summary>
 /// Implementation of external reference service.
 /// </summary>
-public class ExternalReferenceService : IExternalReferenceService
+public class ExternalReferenceService : IGademaService,  IExternalReferenceService
 {
     private readonly GameDbContext _context;
     private readonly ILogger<ExternalReferenceService> _logger;
+
+    public ServiceTypeEnum ServiceType => ServiceTypeEnum.ExternalReferenceService;
 
     /// <summary>
     /// Constructor with dependency injection.

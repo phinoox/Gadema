@@ -8,7 +8,7 @@ This document provides detailed guidance on implementing ADHD-friendly focus mod
 
 ```csharp
 // ✅ CORRECT - Single-task view hides all sidebars and navigation
-public class FocusModeService : IFocusModeService
+public class FocusModeService : IGademaService,  IFocusModeService
 {
     private readonly GameDbContext _context;
     
@@ -186,7 +186,7 @@ public class FocusModeService : IFocusModeService
 ### Sort Algorithm Implementation
 
 ```csharp
-public class TaskSortService : ITaskSortService
+public class TaskSortService : IGademaService,  ITaskSortService
 {
     private readonly GameDbContext _context;
     
@@ -229,7 +229,7 @@ public class TaskSortService : ITaskSortService
 ### Simplified Task View
 
 ```csharp
-public class GettingStartedService : IGettingStartedService
+public class GettingStartedService : IGademaService,  IGettingStartedService
 {
     private readonly GameDbContext _context;
     
@@ -303,7 +303,7 @@ public class GettingStartedService : IGettingStartedService
 ### Shortcut Implementation
 
 ```csharp
-public interface IFocusModeShortcutsService : ISnapshot
+public interface IFocusModeShortcutsService : IGademaService,  ISnapshot
 {
     Task FocusOnActiveTaskAsync();  // Ctrl+Shift+F
     Task NextQuickWinAsync();        // Ctrl+Shift+1

@@ -39,7 +39,7 @@ src/
 #### **Implementation Pattern:**
 ```csharp
 // Authentication Service Implementation
-public class ApiAuthService : IApiAuthService
+public class ApiAuthService : IGademaService,  IApiAuthService
 {
     private readonly IConfiguration _configuration;
     private readonly GameDbContext _context;
