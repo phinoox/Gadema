@@ -293,13 +293,13 @@ public class ContentItemService : IGademaService,  IContentService
     /// <summary>
     /// Auto-save content item snapshot.
     /// </summary>
-    public async Task<ApiResponseDto<ContentItemResponseDto>> AutosaveAsync(Guid id)
+    public async Task<ApiResponseDto<SimpleResponseDto>> AutosaveAsync(Guid id)
     {
         var item = await _context.ContentItems.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
         }
         
         // Create snapshot for version control
@@ -322,19 +322,19 @@ public class ContentItemService : IGademaService,  IContentService
         _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto<ContentItemResponseDto>.Success(new ContentItemResponseDto(){Id = id});
+        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){Success = true, Message = "Saved Sucessfully"});
     }
 
     /// <summary>
     /// Rollback to previous version.
     /// </summary>
-    public async Task<ApiResponseDto<SimpleResponseDto>> RollbackAsync(Guid id, RollbackDto rollbackDto)
+    public async Task<ApiResponseDto<VersionInfo>> RollbackAsync(Guid id, RollbackDto rollbackDto)
     {
         var item = await _context.ContentItems.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<VersionInfo>.NotFound($"ContentItem with ID {id} not found");
         }
         
         // Find the target snapshot
@@ -343,12 +343,12 @@ public class ContentItemService : IGademaService,  IContentService
         
         if (snapshot == null)
         {
-            return ApiResponseDto<SimpleResponseDto>.BadRequest($"No snapshot found for version {rollbackDto.TargetVersion}");
+            return ApiResponseDto<VersionInfo>.BadRequest($"No snapshot found for version {rollbackDto.TargetVersion}");
         }
         
         // Restore from snapshot data
         var restoredData = JsonSerializer.Deserialize<ContentItem>(snapshot.SnapshotDataJson!);
-        
+        var oldVersion = item.Version;
         item.Title = restoredData.Title;
         item.Description = restoredData.Description;
         item.ShortDesc = restoredData.ShortDesc;
@@ -377,21 +377,7 @@ public class ContentItemService : IGademaService,  IContentService
         _context.ContentSnapshots.Add(newSnapshot);
         await _context.SaveChangesAsync();
         
-        return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true,Message = "Content Item has been deleted successfully" });
+        return ApiResponseDto<VersionInfo>.Success(new VersionInfo(){ Success = true,FromVersion = oldVersion,ToVersion = rollbackDto.TargetVersion,Message = "Content Item has been deleted successfully" });
     }
 
-    Task<ApiResponseDto<SimpleResponseDto>> IContentService.DeleteContentItemAsync(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> IContentService.AutosaveAsync(Guid contentItemId)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<ApiResponseDto<VersionInfo>> IContentService.RollbackAsync(Guid id, RollbackDto rollbackDto)
-    {
-        throw new NotImplementedException();
-    }
 }

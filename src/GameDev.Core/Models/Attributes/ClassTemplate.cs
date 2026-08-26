@@ -17,6 +17,12 @@ public class ClassTemplate
     /// Unique identifier for the class template.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// Name of the class (e.g., "Warrior", "Mage").

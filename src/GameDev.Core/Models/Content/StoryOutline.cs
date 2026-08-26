@@ -25,6 +25,11 @@ public class StoryOutline
     [Required]
     public Guid SequenceId { get; set; }
 
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     // Navigation property: StorySequence (Many-to-One)
     [ForeignKey("SequenceId")]
     public virtual StorySequence StorySequence { get; set; }
@@ -52,5 +57,7 @@ public class StoryOutline
     /// </summary>
     [EnumDataType(typeof(OutlineStatusEnum)), Required, Display(Name = "Outline Status")]
     public OutlineStatusEnum OutlineStatus { get; set; } = OutlineStatusEnum.DraftOutline;
+
+
 
 }

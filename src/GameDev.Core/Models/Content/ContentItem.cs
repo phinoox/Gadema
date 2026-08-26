@@ -137,12 +137,6 @@ public class ContentItem
     /// </summary>
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
-    /// <summary>
-    /// Navigation property: Collection of tasks associated with this content item.
-    /// Foreign key: ContentItemId (matches FK in ProjectTask)
-    /// </summary>
-    public virtual ICollection<ProjectTask> ProjectTasks { get; set; } = new List<ProjectTask>();
-
     // Reference navigation properties (Many-to-One relationships)
     /// <summary>
     /// Navigation property: Review status for this content item (Many-to-One).
@@ -156,41 +150,7 @@ public class ContentItem
     /// Foreign key: ContentItemId (matches FK in ContentTags junction table)
     /// </summary>
     public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
-
-    // Reference navigation properties for identity system
-    /// <summary>
-    /// Navigation property: Collection of character identities for this content item.
-    /// Enables lazy loading to access all identity assignments (race, faction, alignment).
-    /// Foreign key: ContentItemId (matches FK in CharacterIdentity)
-    /// Used by eager loading pattern: Include(ci => ci.CharacterIdentities)
-    /// </summary>
-    public virtual ICollection<CharacterIdentity> CharacterIdentities { get; set; } = new List<CharacterIdentity>();
-
-    // Collection navigation for character details and backgrounds (via FK as PK pattern)
-    /// <summary>
-    /// Navigation property: Collection of character details for this content item.
-    /// Enables lazy loading to access all character detail records.
-    /// Foreign key: ContentItemId (matches FK in CharacterDetails - FK as Primary Key pattern)
-    /// Used by eager loading: Include(ci => ci.CharacterDetails)
-    /// </summary>
-    public virtual ICollection<CharacterDetails> CharacterDetailsCollection { get; set; } = new List<CharacterDetails>();
-
-    /// <summary>
-    /// Navigation property: Collection of character backgrounds for this content item.
-    /// Enables lazy loading to access all character background records.
-    /// Foreign key: ContentItemId (matches FK in CharacterBackground - FK as Primary Key pattern)
-    /// Used by eager loading: Include(ci => ci.CharacterBackgrounds)
-    /// </summary>
-    public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
-
-    /// <summary>
-    /// Collection navigation for review statuses (Many-to-One relationship).
-    /// Enables lazy loading to access all review statuses associated with this content item.
-    /// Foreign key: ContentItemId (matches FK in ReviewStatus)
-    /// Used by eager loading: Include(ci => ci.ReviewStatuses)
-    /// </summary>
-    public virtual ICollection<ReviewStatus> ReviewStatuses { get; set; } = new List<ReviewStatus>();
-
+    
     /// <summary>
     /// FK to ContentItem.Id (for FK-as-PK pattern in junction tables).
     /// This is used by configuration files expecting FK-as-PK pattern.

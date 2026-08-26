@@ -17,6 +17,12 @@ public class AbilityDefinition
     /// Unique identifier for the ability definition.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// Name of the ability (e.g., "Fireball", "Heal").

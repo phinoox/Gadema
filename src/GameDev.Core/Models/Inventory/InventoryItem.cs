@@ -17,6 +17,12 @@ public class InventoryItem
     /// Unique identifier for the inventory item.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// ID of the project this inventory item belongs to.

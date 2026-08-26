@@ -19,6 +19,12 @@ public class LoreEntry
     /// Unique identifier for the lore entry.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// ID of the project this lore belongs to.

@@ -34,6 +34,10 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService
     {
         _context = context;
         _logger = logger;
+        if(_context == null)
+        {
+            throw new Exception("Error: DB context was null");
+        }
     }
 
     /// <summary>

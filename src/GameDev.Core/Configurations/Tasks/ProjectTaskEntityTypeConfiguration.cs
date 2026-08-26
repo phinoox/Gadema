@@ -30,11 +30,6 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
         builder.HasIndex(e => e.Difficulty);       // Filter by difficulty level
         builder.HasIndex(e => e.IsQuickWin);       // ADHD-friendly filter for quick wins
         
-        // Navigation property: ContentItem (Optional FK)
-        builder.HasOne(pt => pt.ContentItem)  // ContentItemId is nullable
-            .WithMany(ci => ci.ProjectTasks)
-            .HasForeignKey(pt => pt.ContentItemId)
-            .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, allow task history
         
         // Navigation property: Comments (Collection) - Fixed FK to match ProjectTaskId pattern
         builder.HasMany(pt => pt.Comments)

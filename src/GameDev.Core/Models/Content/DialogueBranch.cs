@@ -25,6 +25,12 @@ public class DialogueBranch
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
 
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
+
     // Navigation property: Project (Many-to-One)
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }

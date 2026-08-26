@@ -2,6 +2,7 @@
 // GameDev.Tests - WebApplicationFactory (Combined Enum Lookup + DI Registration)
 // =============================================================================
 
+using FluentAssertions;
 using FluentAssertions.Common;
 using GameDev.Api.Services;
 using GameDev.Core.Dtos.ContentItems;
@@ -10,70 +11,124 @@ using GameDev.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.Collections.Generic;
 using System.Linq;
 
 public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 {
     private GameDbContext? _context;
+    private IServiceScope _scope;
     private readonly Dictionary<ServiceTypeEnum, Type> _serviceRegistry = new();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureServices(services =>
         {
-            // Remove production DbContext registration if it exists
+           /* // Remove production DbContext registration if it exists
             var descriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(DbContextOptions<GameDbContext>));
 
             if (descriptor != null)
             {
-                services.Remove(descriptor);
+                //services.Remove(descriptor);
+                Console.WriteLine("DBCOntext removed. Ficken");
             }
-
+            //RemoveDbContext(builder);
             // Add in-memory SQLite database for tests
-            services.AddDbContext<GameDbContext>(options =>
+            //var result =services.AddDbContext<GameDbContext>(options =>
+            /*var result =services.AddDbContext<GameDbContext>(options =>
             {
                 options.UseInMemoryDatabase("GaDeMaTest");
-                
+
                 // For in-memory database, no need to manually apply configurations
                 // EF Core auto-applies them based on DbSet properties
-            });
-
-            // Ensure database schema is created
-            var sp = services.BuildServiceProvider();
-            using var scope = sp.CreateScope();
-            _context = scope.ServiceProvider.GetRequiredService<GameDbContext>();
+            });*/
+            //_context = Server.Host.Services.GetService<GameDbContext>();
             
-            try
-            {
-                _context.Database.EnsureCreated();
-            }
-            catch (Microsoft.EntityFrameworkCore.DbUpdateException)
-            {
-                // Expected for in-memory database - ignore
-            }
+            RegisterServicesWithAddScoped(services);
 
-            // ✅ STEP 1: Register all services directly in DI container using AddScoped
-            // This is the standard .NET way - type-safe and efficient!
-            RegisterServicesWithAddScoped(sp, services);
-
-            // ✅ STEP 2: Build dictionary with ServiceTypeEnum for fast lookup
-            PopulateServiceRegistry(sp);
-
-            Console.WriteLine("✓ Services registered in DI + Dictionary");
+            Console.WriteLine("✓ Services registered in DI + Dictionary. Ficken");
         });
+    }
+
+    private void RemoveDbContext(IWebHostBuilder builder)
+    {
+        builder.ConfigureServices(services =>
+        {
+          // 1. Remove the original DbContextOptions
+            var dbContextOptionsDescriptor = services.SingleOrDefault(
+                d => d.ServiceType == typeof(DbContextOptions));
+            if (dbContextOptionsDescriptor != null)
+                services.Remove(dbContextOptionsDescriptor);
+
+            // 2. Remove the original DbContext implementation (if registered)
+            var dbContextDescriptor = services.SingleOrDefault(
+                d => d.ServiceType == typeof(GameDbContext));
+            if (dbContextDescriptor != null)
+                services.Remove(dbContextDescriptor);
+        });
+    }
+
+
+    private void CreateScope()
+    {
+        if(_scope == null)
+            _scope = Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+    }
+
+
+    public T GetScopedService<T>() where T : notnull
+    {
+       CreateScope();
+        var service = _scope.ServiceProvider.GetRequiredService<T>();
+        
+        return service;
+    }
+
+    
+
+    public GameDbContext GetScopedContext()
+    {
+        //return _context;
+        //return Services.GetService<GameDbContext>();
+        //return Services.GetRequiredService<GameDbContext>();
+
+   CreateScope();
+       
+        var dbcontext = _scope.ServiceProvider.GetRequiredService<GameDbContext>();
+        //dbcontext.Database.
+        return dbcontext;
+    }
+    
+
+    private void RegisterServicesWithAddScoped(IServiceCollection serviceCollection)
+    {
+        // Explicit registrations for all services that follow the pattern
+        serviceCollection.AddScoped<IContentService, ContentItemService>();
+        serviceCollection.AddScoped<IProjectService, ProjectService>();
+        serviceCollection.AddScoped<IProjectTaskService, ProjectTaskService>();
+        serviceCollection.AddScoped<IApiAuthService, ApiAuthService>();
+        serviceCollection.AddScoped<IDialogueService, DialogueService>();
+        serviceCollection.AddScoped<ICommentService, CommentService>();
+        serviceCollection.AddScoped<IExternalReferenceService, ExternalReferenceService>();
+        serviceCollection.AddScoped<IStoryOutlineService, StoryOutlineService>();
+        serviceCollection.AddScoped<IExportService, ExportService>();
+        serviceCollection.AddScoped<ITagService, TagService>();
+        serviceCollection.AddScoped<IReviewStatusService, ReviewStatusService>();
+        //serviceCollection.AddScoped<GameDbContext>();
     }
 
     /// <summary>
     /// Register all services directly using AddScoped (Standard DI pattern).
     /// This is the primary registration method.
     /// </summary>
-    private void RegisterServicesWithAddScoped(IServiceProvider serviceProvider, IServiceCollection serviceCollection)
+    private void AutoRegisterServicesWithAddScoped(IServiceProvider serviceProvider, IServiceCollection serviceCollection)
     {
         var assembly = typeof(ContentItemService).Assembly;
-        
+
         foreach (var type in assembly.GetTypes())
         {
             if (type.Name.EndsWith("Service") && !type.IsInterface)
@@ -81,23 +136,23 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
                 // Check if this type implements any IGademaService interface
                 var gademaInterface = type.GetInterfaces()
                     .FirstOrDefault(i => i == typeof(IGademaService));
-                
+
                 if (gademaInterface != null)
                 {
                     try
                     {
                         // Get concrete service type name for registration
                         var typeName = type.Name.Replace("Service", string.Empty);
-                        
+
                         // Find corresponding interface type (e.g., IContentService from ContentItemService)
                         var interfaceType = typeof(ContentItemService).Assembly.GetTypes()
                             .FirstOrDefault(t => t.Name.EndsWith($"I{typeName}Service"));
-                        
+
                         if (interfaceType != null)
                         {
                             // Register service with AddScoped - type-safe DI pattern!
                             serviceCollection.AddScoped(interfaceType, type);
-                            
+
                             Console.WriteLine($"✓ Registered: {interfaceType.Name} → {type.Name}");
                         }
                     }
@@ -116,7 +171,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     private void PopulateServiceRegistry(IServiceProvider serviceProvider)
     {
         var assembly = typeof(ContentItemService).Assembly;
-        
+
         foreach (var type in assembly.GetTypes())
         {
             if (type.Name.EndsWith("Service") && !type.IsInterface)
@@ -124,19 +179,19 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
                 // Check if this type implements IGademaService
                 var gademaInterface = type.GetInterfaces()
                     .FirstOrDefault(i => i == typeof(IGademaService));
-                
+
                 if (gademaInterface != null)
                 {
                     try
                     {
                         // Get the ServiceTypeEnum value from the service
                         var instance = serviceProvider.GetService(type);
-                        
+
                         if (instance is IGademaService gademaService)
                         {
                             // Store concrete type for enum-based lookup
                             _serviceRegistry[gademaService.ServiceType] = type;
-                            
+
                             Console.WriteLine($"✓ Registry: {gademaService.ServiceType} → {type.Name}");
                         }
                     }
@@ -159,7 +214,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
             // Use DI container to get the instance - works with AddScoped!
             return Services.GetService(concreteType) as IGademaService;
         }
-        
+
         Console.WriteLine($"⚠️ Service not found: {serviceType}");
         return null;
     }
@@ -174,7 +229,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         {
             return Services.GetService(interfaceType) as IGademaService;
         }
-        
+
         return null;
     }
 
@@ -207,7 +262,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     public void PrintServices()
     {
         Console.WriteLine("=== Registered Services (DI + Dictionary) ===");
-        
+
         // Show DI-registered services
         Console.WriteLine("\n📦 Direct DI Registration:");
         foreach (var kvp in _serviceRegistry)
@@ -215,14 +270,14 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
             var concreteType = kvp.Value;
             var interfaceType = typeof(ContentItemService).Assembly.GetTypes()
                 .FirstOrDefault(t => t.Name.EndsWith($"I{kvp.Key}"));
-            
+
             Console.WriteLine($"  [{kvp.Key}] → {concreteType.Name}");
             if (interfaceType != null)
             {
                 Console.WriteLine($"           Implemented by: {interfaceType.Name}");
             }
         }
-        
+
         Console.WriteLine($"\nTotal: {_serviceRegistry.Count} services registered");
         Console.WriteLine("===============================================");
     }

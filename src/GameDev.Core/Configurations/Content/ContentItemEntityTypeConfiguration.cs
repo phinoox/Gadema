@@ -56,10 +56,5 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
             .HasForeignKey(c => c.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);
 
-        // Navigation property: Tasks (SetNull to preserve task history)
-        builder.HasMany(ci => ci.ProjectTasks)
-            .WithOne(pt => pt.ContentItem)
-            .HasForeignKey(pt => pt.ProjectTaskId)
-            .OnDelete(DeleteBehavior.SetNull);
     }
 }

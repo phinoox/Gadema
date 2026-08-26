@@ -27,13 +27,7 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         builder.HasIndex(e => e.Status);  // Filter by status
         builder.HasIndex(e => e.ReviewedByUserId);
         builder.HasIndex(e => e.ReviewedAt);  // Query recent reviews
-        
-        // Navigation property: ContentItem (SetNull to preserve review history)
-        builder.HasOne(rs => rs.ContentItem)
-            .WithMany(ci => ci.ReviewStatuses)
-            .HasForeignKey(rs => rs.ContentItemId)
-            .OnDelete(DeleteBehavior.SetNull);  // Keep review entity alive when content deleted
-        
+                
         // Navigation property: Reviewer (Optional FK to User)
         builder.HasOne(rs => rs.Reviewer)
             .WithMany()

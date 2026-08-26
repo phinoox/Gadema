@@ -22,12 +22,7 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
     {
         builder.HasKey(e => e.Id);
 
-        // Link to character (ContentItem)
-        builder.HasOne(ci => ci.ContentItem)
-            .WithMany(c => c.CharacterIdentities)
-            .HasForeignKey(ci => ci.ContentItemId)
-            .OnDelete(DeleteBehavior.Cascade);  // Character identities deleted when content deleted
-
+        
         // Link to identity type definition
         builder.HasOne(ci => ci.IdentityDefinition)  // Navigate to IdentityDefinition instead
             .WithMany()  // If IDentityDefinition has collection, or remove if not

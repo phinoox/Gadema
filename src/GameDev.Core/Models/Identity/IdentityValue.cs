@@ -46,7 +46,7 @@ public class IdentityValue
     public virtual Projects.Project Project { get; set; }
 
     [EnumDataType(typeof(ProjectTemplateTypeEnum)), Required, Display(Name = "Project Template ID")]
-    public int ProjectTemplateId { get; set; }
+    public Guid ProjectTemplateId { get; set; }
 
     /// <summary>
     /// Name of the identity type (e.g., "Race", "Faction").

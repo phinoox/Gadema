@@ -1,5 +1,5 @@
 // =============================================================================
-// GameDev.Tests - Unit Tests for Services
+// GameDev.Tests - Unit Tests for ContentItemService (No Factory)
 // =============================================================================
 
 namespace GameDev.Tests.Services;
@@ -12,18 +12,25 @@ using GameDev.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using GameDev.Core.Dtos.ContentItems;
 using GameDev.Core.Enums;
-using Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
-/// Tests for ContentItemService business logic.
+/// Unit tests for ContentItemService business logic.
+/// Uses in-memory database with direct service instantiation.
 /// </summary>
-public class ContentItemServiceTests
+public class ContentItemServiceUnitTest
 {
-    private readonly IContentService _service; // ✅ Use interface!
+    private readonly IContentService _service;
+    private GameDbContext _context;
 
-    public ContentItemServiceTests(ApiWebApplicationFactory factory)
+    public ContentItemServiceUnitTest()
     {
-        _service = factory.Services.GetRequiredService<IContentService>(); // ✅ DI!
+        // Setup in-memory database context
+        var options = new DbContextOptionsBuilder<GameDbContext>()
+            .UseInMemoryDatabase("GaDeMaTest")
+            .Options;
+        
+        _context = new GameDbContext(options);  // ✅ Fixed: Create instance with correct type
+        _service = new ContentItemService(_context, null!);
     }
 
     /// <summary>
@@ -57,7 +64,7 @@ public class ContentItemServiceTests
     [Fact]
     public async Task GetContentItemAsync_WhenIdExists_ShouldReturnData()
     {
-        // Arrange
+        // Arrange - create first
         var createDto = new CreateContentItemDto
         {
             ProjectId = Guid.NewGuid(),
@@ -68,10 +75,12 @@ public class ContentItemServiceTests
             ShortDesc = "Witcher"
         };
 
-        var result = await _service.CreateContentItemAsync(createDto);
+        var createResult = await _service.CreateContentItemAsync(createDto);
 
-        // Act
-        var getResult = await _service.GetContentItemAsync(result.Data!.Id, ViewModeEnum.PrivateWriting);
+        // Act - get by ID
+        var getResult = await _service.GetContentItemAsync(
+            createResult.Data!.Id, 
+            ViewModeEnum.PrivateWriting);
 
         // Assert
         getResult.Successful.Should().BeTrue();
@@ -83,7 +92,7 @@ public class ContentItemServiceTests
     [Fact]
     public async Task UpdateContentItemAsync_ShouldPersistChanges()
     {
-        // Arrange
+        // Arrange - create first
         var createDto = new CreateContentItemDto
         {
             ProjectId = Guid.NewGuid(),
@@ -96,7 +105,7 @@ public class ContentItemServiceTests
 
         var createResult = await _service.CreateContentItemAsync(createDto);
 
-        // Act
+        // Act - update
         var updateDto = new UpdateContentItemDto
         {
             Description = "Updated description",
@@ -104,7 +113,9 @@ public class ContentItemServiceTests
             ViewMode = null!
         };
 
-        var updateResult = await _service.UpdateContentItemAsync(createResult.Data!.Id, updateDto);
+        var updateResult = await _service.UpdateContentItemAsync(
+            createResult.Data!.Id, 
+            updateDto);
 
         // Assert
         updateResult.Successful.Should().BeTrue();
@@ -116,7 +127,7 @@ public class ContentItemServiceTests
     [Fact]
     public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
-        // Arrange
+        // Arrange - create first
         var createDto = new CreateContentItemDto
         {
             ProjectId = Guid.NewGuid(),
@@ -129,8 +140,9 @@ public class ContentItemServiceTests
 
         var createResult = await _service.CreateContentItemAsync(createDto);
 
-        // Act
-        var deleteResult = await _service.DeleteContentItemAsync(createResult.Data!.Id);
+        // Act - delete
+        var deleteResult = await _service.DeleteContentItemAsync(
+            createResult.Data!.Id);
 
         // Assert
         deleteResult.Successful.Should().BeTrue();

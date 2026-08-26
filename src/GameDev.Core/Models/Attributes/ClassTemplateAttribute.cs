@@ -17,6 +17,12 @@ public class ClassTemplateAttribute
     /// Unique identifier for the template attribute definition.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// FK to the parent class template (composite key with AttributeSetId).

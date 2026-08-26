@@ -15,6 +15,10 @@ namespace GameDev.Core.Models;
 public class CharacterDetails
 {
     /// <summary>
+    /// Unique identifier for the character background.
+    /// </summary>
+    public Guid Id { get; set; } = Guid.NewGuid();
+    /// <summary>
     /// FK as Primary Key - links to ContentItem.Id
     /// </summary>
     public Guid ContentItemId { get; set; }  // FK as Primary Key

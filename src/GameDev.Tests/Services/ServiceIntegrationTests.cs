@@ -24,6 +24,7 @@ using Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IApiAuthService _authService;
 
     /// <summary>
@@ -31,7 +32,10 @@ public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     /// </summary>
     public ApiAuthServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-         _authService = factory.Services.GetRequiredService<IApiAuthService>();
+        _factory = factory;
+        //using var scope = factory.GetScopedService<IServiceScopeFactory>().CreateScope();
+        // _authService = scope.ServiceProvider.GetRequiredService<IApiAuthService>();
+        _authService = factory.GetScopedService<IApiAuthService>();
     }
 
     /// <summary>
@@ -41,12 +45,14 @@ public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task GoogleCallbackAsync_ShouldReturnSuccessful()
     {
         // Arrange
-
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _authService.GoogleCallbackAsync("test_code");
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -56,7 +62,7 @@ public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task Disable2FAAsync_ShouldReturnSuccessful()
     {
         // Arrange
-
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _authService.Disable2FAAsync(new Disable2FADto
         {
@@ -65,6 +71,8 @@ public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }
 
@@ -73,6 +81,7 @@ public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
 /// </summary>
 public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IProjectService _projectService;
 
     /// <summary>
@@ -80,7 +89,8 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     /// </summary>
     public ProjectServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-         _projectService = factory.Services.GetRequiredService<IProjectService>();
+        _factory = factory;
+         _projectService = factory.GetScopedService<IProjectService>();
     }
 
     /// <summary>
@@ -90,7 +100,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+       //_factory.GetScopedContext().Database.EnsureCreated();
         var createDto = new CreateProjectDto
         {
             Title = "Test Project",
@@ -102,6 +112,8 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -111,12 +123,14 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task UpdateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+       //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _projectService.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }
 
@@ -125,6 +139,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
 /// </summary>
 public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IContentService _contentItemService;
 
     /// <summary>
@@ -132,7 +147,8 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     /// </summary>
     public ContentItemServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _contentItemService = factory.Services.GetRequiredService<IContentService>();
+        _factory = factory;
+        _contentItemService = factory.GetScopedService<IContentService>();
         
     }
 
@@ -143,7 +159,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     public async Task CreateContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+       //_factory.GetScopedContext().Database.EnsureCreated();
         var createDto = new CreateContentItemDto
         {
             ProjectId = Guid.NewGuid(),
@@ -159,6 +175,8 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -168,11 +186,14 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _contentItemService.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -182,13 +203,15 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-      
+      //_factory.GetScopedContext().Database.EnsureCreated();
 
         // Act
         var result = await _contentItemService.DeleteContentItemAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }
 
@@ -197,6 +220,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
 /// </summary>
 public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IProjectTaskService _projectTaskService;
 
     /// <summary>
@@ -204,7 +228,8 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     /// </summary>
     public TaskServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _projectTaskService = factory.Services.GetRequiredService<IProjectTaskService>();
+        _factory = factory;
+        _projectTaskService = factory.GetScopedService<IProjectTaskService>();
         
     }
 
@@ -215,7 +240,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task CreateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-     
+        //_factory.GetScopedContext().Database.EnsureCreated();
         var createDto = new ProjectTaskCreateDto
         {
             ProjectId = Guid.NewGuid(),
@@ -231,6 +256,8 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -240,11 +267,15 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task UpdateTaskAsync_ShouldReturnSuccessful()
     {
      
+        //Arrange
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _projectTaskService.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -254,12 +285,14 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-      
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _projectTaskService.DeleteTaskAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }
 
@@ -268,6 +301,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
 /// </summary>
 public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IExportService _exportService;
 
     /// <summary>
@@ -275,7 +309,8 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     /// </summary>
     public ExportServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _exportService = factory.Services.GetRequiredService<IExportService>();
+        _factory = factory;
+        _exportService = factory.GetScopedService<IExportService>();
         
     }
 
@@ -287,12 +322,14 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     {
         // Arrange
      
-
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _exportService.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
 
         // Assert
         result.Should().NotBeNull();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -302,13 +339,15 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     public async Task ExportToCsvAsync_ShouldReturnFile()
     {
         // Arrange
-    
+        //_factory.GetScopedContext().Database.EnsureCreated();
 
         // Act
         var result = await _exportService.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
 
         // Assert
         result.Should().NotBeNull();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }
 
@@ -317,6 +356,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
 /// </summary>
 public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
+    private readonly ApiWebApplicationFactory _factory;
     private readonly IReviewStatusService _reviewStatusService;
 
     /// <summary>
@@ -324,7 +364,8 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     /// </summary>
     public ReviewStatusServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _reviewStatusService = factory.Services.GetRequiredService<IReviewStatusService>();
+        _factory = factory;
+        _reviewStatusService = factory.GetScopedService<IReviewStatusService>();
         if(_reviewStatusService == null)
         {
             throw new Exception("ReviewService was null damnit");
@@ -339,12 +380,13 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     {
         // Arrange
        
-
+        //_factory.GetScopedContext().Database.EnsureCreated();
         // Act
         var result = await _reviewStatusService.GetReviewStatusAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
+        //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 
     /// <summary>
@@ -354,7 +396,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     public async Task ApproveContentAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+       //_factory.GetScopedContext().Database.EnsureCreated();
 
         // Act
         var result = await _reviewStatusService.ApproveContentAsync(Guid.NewGuid(), new ApproveContentDto
@@ -365,5 +407,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
 
         // Assert
         result.Successful.Should().BeTrue();
+
+         //_factory.GetScopedContext().Database.EnsureDeleted();
     }
 }

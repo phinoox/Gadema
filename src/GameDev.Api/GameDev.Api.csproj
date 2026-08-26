@@ -16,6 +16,9 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
+  <ItemGroup>
+  <InternalsVisibleTo Include="GameDev.Tests" />
+</ItemGroup>   
 
   <ItemGroup>
     <!-- Reference to Data and Core projects -->

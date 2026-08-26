@@ -35,30 +35,20 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     public ApiIntegrationTests(ApiWebApplicationFactory factory)
     {
         _factory = factory;
-        
-        if(_factory == null)
+
+        if (_factory == null)
             throw new Exception("factory was null you dumbass");
         _httpClient = _factory.CreateClient();
 
 
-/*
-         _host = new HostBuilder()
-        .ConfigureWebHost(builder =>
-        {
-            builder.UseTestServer()
-                .Configure(app =>
-                {
-                    app.UseRouting();
-                    app.UseEndpoints(endpoints =>
-                    {
-                        endpoints.MapControllers();
-                    });
-                });
-        })
-        .Build();
-    _host.Start();
-    _httpClient = _host.GetTestClient();*/
-    
+    }
+
+    [Fact]
+    public async Task HealthCheck_ShouldReturnOk()
+    {
+        var response = await _httpClient.GetAsync("/health");
+
+        response.IsSuccessStatusCode.Should().BeTrue();
     }
 
     /// <summary>
@@ -89,6 +79,8 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     {
         // Act
         var response = await _httpClient.GetAsync("/api/v1/projects");
+
+        await response.Content.ReadAsStringAsync();
 
         // Assert
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
@@ -169,7 +161,7 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     [Fact]
     public async Task CreateExternalReference_ShouldReturnOk()
     {
-         if(_httpClient == null)
+        if (_httpClient == null)
             throw new Exception("client was null you dumbass");
         // Arrange
         var createReferenceDto = new CreateExternalReferenceDto

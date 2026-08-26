@@ -18,6 +18,12 @@ public class StorySequence
     /// Unique identifier for the story sequence.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
+
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+
     
     /// <summary>
     /// ID of the project this sequence belongs to.

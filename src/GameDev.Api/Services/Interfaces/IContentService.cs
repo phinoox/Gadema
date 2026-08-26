@@ -26,6 +26,6 @@ public interface IContentService
     Task<ApiResponseDto<ContentItemResponseDto>> UpdateContentItemAsync(Guid id, UpdateContentItemDto updateDto);
     Task<ApiResponseDto<SimpleResponseDto>> DeleteContentItemAsync(Guid id);
     Task<ApiResponseDto<MediaAttachmentResponseDto>> UploadMediaAsync(Guid id, IFormFile file);
-    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> AutosaveAsync(Guid contentItemId);
+    Task<ApiResponseDto<SimpleResponseDto>> AutosaveAsync(Guid contentItemId);
     Task<ApiResponseDto<VersionInfo>> RollbackAsync(Guid id, RollbackDto rollbackDto);
 }
