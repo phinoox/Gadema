@@ -48,6 +48,7 @@ public partial class Program
         builder.Services.AddScoped<IExportService, ExportService>();
         builder.Services.AddScoped<ITagService, TagService>();
         builder.Services.AddScoped<IReviewStatusService, ReviewStatusService>();
+        builder.Services.AddScoped<IUserContext, UserContext>();
 
         var app = builder.Build();
 
