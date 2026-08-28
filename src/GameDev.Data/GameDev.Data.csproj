@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <!-- Reference to Core project -->
-    <ProjectReference Include="..\GameDev.Core\GameDev.Core.csproj" />
+    <ProjectReference Include="..\Gadema.Core\Gadema.Core.csproj" />
     
     <!-- EF Core packages -->
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />

@@ -6,7 +6,7 @@
 ### **Project Structure**
 
 ```
-src/GameDev.WebApp/
+src/Gadema.WebApp/
 ├── Program.cs                          # Application entry point with services
 ├── wwwroot/
 │   └── index.html                      # HTML starter page
@@ -55,13 +55,13 @@ src/GameDev.WebApp/
 
 From project root:
 ```bash
-cd src/GameDev.WebApp
+cd src/Gadema.WebApp
 dotnet run
 ```
 
 Or from solution root:
 ```bash
-dotnet run --project src/GameDev.WebApp/GameDev.WebApp.csproj
+dotnet run --project src/Gadema.WebApp/Gadema.WebApp.csproj
 ```
 
 The application will be available at `http://localhost:5000` (or next available port).
@@ -70,7 +70,7 @@ The application will be available at `http://localhost:5000` (or next available 
 
 ### **API Integration**
 
-The `HttpClient` is pre-configured to call your `GameDev.Api`:
+The `HttpClient` is pre-configured to call your `Gadema.Api`:
 - Base URL automatically detected from running environment
 - API endpoints: `/api/v1/projects`, `/api/v1/content/items`, etc.
 
@@ -92,7 +92,7 @@ The `HttpClient` is pre-configured to call your `GameDev.Api`:
 ### **Architecture Notes**
 
 - Blazor WebAssembly = Client-side rendering in browser
-- HTTP calls to `GameDev.Api` for all data operations
+- HTTP calls to `Gadema.Api` for all data operations
 - No server-side Blazor code (unlike Blazor Server)
 - Single-page application (SPA) architecture
 

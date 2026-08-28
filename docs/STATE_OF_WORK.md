@@ -11,15 +11,15 @@
 ### ✅ **COMPLETED WORK:**
 
 #### **1. Project Architecture & Models (53/53 tables)**
-- [x] All 43 model files created in `src/GameDev.Core/Models/`
-- [x] All 42 DTO files created in `src/GameDev.Core/Dtos/`
+- [x] All 43 model files created in `src/Gadema.Core/Models/`
+- [x] All 42 DTO files created in `src/Gadema.Core/Dtos/`
 - [x] DbContext configured with all 43 DbSet properties
 - [x] Enums for all type definitions (ContentTypeEnum, ContentStatusEnum, ViewModeEnum, etc.)
 - [x] Project model added (~57 total tables including Project)
 
 **Models Created:**
 ```
-src/GameDev.Core/Models/
+src/Gadema.Core/Models/
 ├── User.cs ✅
 ├── Team.cs ✅
 ├── TeamMember.cs ✅
@@ -122,7 +122,7 @@ src/GameDev.Core/Models/
 ### **Build Errors (~60 errors remaining):**
 
 #### **Critical Issue #1: Missing EF Core Using Statements**
-**Affected Files**: All 15 service files in `src/GameDev.Api/Services/`
+**Affected Files**: All 15 service files in `src/Gadema.Api/Services/`
 **Error Type**: `error CS1061: 'IOrderedQueryable<T>' does not contain a definition for 'ToListAsync'`
 **Solution Needed**: Add `using Microsoft.EntityFrameworkCore;` to each file
 
@@ -150,7 +150,7 @@ src/GameDev.Core/Models/
 #### **Priority 1.1: Add EF Core Using Statements**
 ```bash
 # Pattern for each service file:
-// After line 3: "using GameDev.Core.Dtos;"
+// After line 3: "using Gadema.Core.Dtos;"
 + using Microsoft.EntityFrameworkCore;
 ```
 
@@ -168,7 +168,7 @@ src/GameDev.Core/Models/
 
 #### **Priority 1.2: Add Projects DbSet to GameDbContext**
 ```csharp
-// src/GameDev.Data/GameDbContext.cs, after line ~76:
+// src/Gadema.Data/GameDbContext.cs, after line ~76:
 + public DbSet<Project> Projects { get; set; }
 ```
 
@@ -202,7 +202,7 @@ else
 ### **PHASE 2: BUILD VERIFICATION (~5 mins)**
 
 ```bash
-cd src/GameDev.Api
+cd src/Gadema.Api
 dotnet build --no-incremental
 ```
 
@@ -215,7 +215,7 @@ dotnet build --no-incremental
 #### **3.1 Create Configuration Files per Domain**
 From DEPLOYMENTv2.md, create ~45 configuration files in:
 ```
-src/GameDev.Core/Configurations/
+src/Gadema.Core/Configurations/
 ├── Authentication/UserConfiguration.cs
 ├── Authentication/TeamMemberConfiguration.cs
 ├── Projects/ProjectConfiguration.cs
@@ -254,10 +254,10 @@ For production deployment as shown in DEPLOYMENTv2.md
 ## **📋 FILES REQUIRING CHANGES:**
 
 ### **Must Fix (Critical):**
-1. `src/GameDev.Api/Services/*.cs` - Add EF Core using statement (15 files)
-2. `src/GameDev.Data/GameDbContext.cs` - Add Projects DbSet
-3. `src/GameDev.Api/Services/ContentItemService.cs` - Fix response patterns (lines 237, 321, 376)
-4. `src/GameDev.Api/Services/TaskService.cs` - Fix nullable handling (lines 98-100, 127-139)
+1. `src/Gadema.Api/Services/*.cs` - Add EF Core using statement (15 files)
+2. `src/Gadema.Data/GameDbContext.cs` - Add Projects DbSet
+3. `src/Gadema.Api/Services/ContentItemService.cs` - Fix response patterns (lines 237, 321, 376)
+4. `src/Gadema.Api/Services/TaskService.cs` - Fix nullable handling (lines 98-100, 127-139)
 
 ### **Should Fix (Recommended):**
 5. All DTO files that use anonymous type projections in services
@@ -286,8 +286,8 @@ Run `dotnet build Gadema.sln` to confirm all fixes applied successfully
 
 ### **Step 4: Migration Setup (Optional)**
 ```bash
-cd src/GameDev.Data
-dotnet ef migrations add InitialCreate --project GameDev.Data --startup-project GameDev.Api
+cd src/Gadema.Data
+dotnet ef migrations add InitialCreate --project Gadema.Data --startup-project Gadema.Api
 dotnet ef database update
 ```
 
@@ -316,7 +316,7 @@ All updated documentation available in `docs/` folder:
 ### **Quick Fix All Service Files (One-liner):**
 ```bash
 # Add EF Core using statement to all service files
-for file in src/GameDev.Api/Services/*.cs; do
+for file in src/Gadema.Api/Services/*.cs; do
     sed -i '3a\using Microsoft.EntityFrameworkCore;' "$file"
 done
 ```
@@ -324,7 +324,7 @@ done
 ### **Add Projects DbSet:**
 ```bash
 sed -i '/public DbSet<EngineFieldMapping> EngineFieldMappings { get; set; }/a\\n    /// <summary>\n    /// Project entity set.\n    /// </summary>\n    public DbSet<Project> Projects { get; set; }' \
-    src/GameDev.Data/GameDbContext.cs
+    src/Gadema.Data/GameDbContext.cs
 ```
 
 ---

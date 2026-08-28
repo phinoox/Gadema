@@ -24,19 +24,19 @@ This document defines the complete API contract for GaDeMa v0.1, including:
 
 ```bash
 src/
-├── GameDev.Core/Models/          # Entity classes (clustered by domain)
+├── Gadema.Core/Models/          # Entity classes (clustered by domain)
 │   ├── Authentication/User.cs
 │   ├── Projects/Project.cs
 │   ├── Content/ContentItem.cs
 │   ├── Tasks/ProjectTask.cs      # Renamed from Task to avoid System.Threading.Task ambiguity
 │   └── [etc...]
-├── GameDev.Core/Dtos/            # API DTOs (clustered by domain)
+├── Gadema.Core/Dtos/            # API DTOs (clustered by domain)
 │   ├── Authentication/SigninDto.cs
 │   ├── Projects/CreateProjectDto.cs
 │   ├── Content/ContentItemCreateDto.cs
 │   ├── Tasks/ProjectTaskCreateDto.cs  # Renamed from TaskCreateDto
 │   └── [etc...]
-├── GameDev.Api/Controllers/    # REST endpoints (clustered by domain)
+├── Gadema.Api/Controllers/    # REST endpoints (clustered by domain)
 │   ├── Authentication/AuthController.cs
 │   ├── Projects/ProjectsController.cs
 │   ├── Content/ContentItemsController.cs
@@ -1576,7 +1576,7 @@ All endpoints follow `/api/v1/{resource}` convention. To upgrade to v2:
 
 ### **Projects Domain DTOs:**
 ```csharp
-// CreateProjectDto.cs (in src/GameDev.Core/Dtos/Projects/)
+// CreateProjectDto.cs (in src/Gadema.Core/Dtos/Projects/)
 public class CreateProjectDto
 {
     [Required]
@@ -1595,7 +1595,7 @@ public class CreateProjectDto
 
 ### **Tasks Domain DTOs (Renamed):**
 ```csharp
-// ProjectTaskCreateDto.cs (in src/GameDev.Core/Dtos/Tasks/)
+// ProjectTaskCreateDto.cs (in src/Gadema.Core/Dtos/Tasks/)
 public class ProjectTaskCreateDto
 {
     [MaxLength(256)]
@@ -1614,7 +1614,7 @@ public class ProjectTaskCreateDto
     public bool IsQuickWin { get; set; } = false;
 }
 
-// UpdateProjectTaskDto.cs (in src/GameDev.Core/Dtos/Tasks/)
+// UpdateProjectTaskDto.cs (in src/Gadema.Core/Dtos/Tasks/)
 public class UpdateProjectTaskDto
 {
     public int Status { get; set; }
@@ -1624,7 +1624,7 @@ public class UpdateProjectTaskDto
     public bool IsQuickWin { get; set; }
 }
 
-// ProjectTaskResponseDto.cs (in src/GameDev.Core/Dtos/Tasks/)
+// ProjectTaskResponseDto.cs (in src/Gadema.Core/Dtos/Tasks/)
 public class ProjectTaskResponseDto
 {
     [Display(Name = "ID")]

@@ -23,8 +23,8 @@ This document contains the complete API contract definition for GaDeMa v0.1, inc
 
 ```bash
 src/
-├── GameDev.Api/Controllers/    # Endpoint implementations
-├── GameDev.Core/Dtos/          # Request/response DTOs
+├── Gadema.Api/Controllers/    # Endpoint implementations
+├── Gadema.Core/Dtos/          # Request/response DTOs
 └── docs/API-CONTRACTS.md        # This documentation file
 ```
 

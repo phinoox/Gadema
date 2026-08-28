@@ -21,8 +21,8 @@ This document defines all deployment strategies, database migration paths, hosti
 
 ```bash
 src/
-├── GameDev.Api/                   # API deployment target
-├── GameDev.WebApp/                # Blazor Server deployment
+├── Gadema.Api/                   # API deployment target
+├── Gadema.WebApp/                # Blazor Server deployment
 └── docs/DEPLOYMENT.md             # This documentation file
 
 # Configuration files
@@ -73,7 +73,7 @@ public class GameDbContext : DbContext
 
 // ✅ CORRECT - Database migration command (Migrations)
 // Run this in terminal to apply schema changes:
-dotnet ef database update --project GameDev.Data --startup-project GameDev.Api --force
+dotnet ef database update --project Gadema.Data --startup-project Gadema.Api --force
 
 // For production deployment, use environment variables:
 // Production settings.json
@@ -90,8 +90,8 @@ dotnet ef database update --project GameDev.Data --startup-project GameDev.Api -
 }
 
 // ✅ CORRECT - Migration script for PostgreSQL
-dotnet ef migrations add InitialCreate --project GameDev.Data --startup-project GameDev.Api
-dotnet ef database update --project GameDev.Data --startup-project GameDev.Api
+dotnet ef migrations add InitialCreate --project Gadema.Data --startup-project Gadema.Api
+dotnet ef database update --project Gadema.Data --startup-project Gadema.Api
 ```
 
 #### **Performance Metrics:**
@@ -237,11 +237,11 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ["GameDev.Api.csproj", ""]
-RUN dotnet restore "GameDev.Api.csproj"
+COPY ["Gadema.Api.csproj", ""]
+RUN dotnet restore "Gadema.Api.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet publish "GameDev.Api.csproj" \
+RUN dotnet publish "Gadema.Api.csproj" \
     -c Release \
     --no-restore \
     /p:PublishDir=/publish
@@ -260,13 +260,13 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost/health || exit 1
 
 # Run the application
-ENTRYPOINT ["dotnet", "GameDev.Api.dll"]
+ENTRYPOINT ["dotnet", "Gadema.Api.dll"]
 
 # Alternative: Use gcloud for production deployment
 # FROM public.ecr.aws/docker/library/gcr.io/dotnet/aspnet:10.0 AS base
 # WORKDIR /app
 # EXPOSE 80
-# ENTRYPOINT ["dotnet", "GameDev.Api.dll"]
+# ENTRYPOINT ["dotnet", "Gadema.Api.dll"]
 
 # Usage Example: Build and deploy to production
 docker build -t gaema-api:v1.0 --build-arg ASPNETCORE_ENVIRONMENT=Production .
@@ -420,7 +420,7 @@ jobs:
         
       - name: Publish to production
         run: |
-          dotnet publish GameDev.Api.csproj \
+          dotnet publish Gadema.Api.csproj \
             -c Release \
             /p:PublishDir=/publish \
             -o ${{ runner.temp }}/app/publish

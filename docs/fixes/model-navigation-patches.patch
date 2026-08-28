@@ -1,5 +1,5 @@
---- a/src/GameDev.Core/Models/Abilities/AbilitySet.cs
-+++ b/src/GameDev.Core/Models/Abilities/AbilitySet.cs
+--- a/src/Gadema.Core/Models/Abilities/AbilitySet.cs
++++ b/src/Gadema.Core/Models/Abilities/AbilitySet.cs
 @@ -25,6 +25,9 @@ public class AbilitySet
      [Required]
      public Guid ProjectId { get; set; }
@@ -11,8 +11,8 @@
      /// <summary>
      /// Type: 0=Combat, 1=Non-Combat, 2=Hybrid.
      /// </summary>
---- a/src/GameDev.Core/Models/Content/AssetLink.cs
-+++ b/src/GameDev.Core/Models/Content/AssetLink.cs
+--- a/src/Gadema.Core/Models/Content/AssetLink.cs
++++ b/src/Gadema.Core/Models/Content/AssetLink.cs
 @@ -30,6 +30,9 @@ public class AssetLink
      [Column("content_item_id"), Required]
      public Guid ContentItemId { get; set; }
@@ -24,8 +24,8 @@
      /// <summary>
      /// File name.
      /// </summary>
---- a/src/GameDev.Core/Models/Attributes/CharacterAttributes.cs
-+++ b/src/GameDev.Core/Models/Attributes/CharacterAttributes.cs
+--- a/src/Gadema.Core/Models/Attributes/CharacterAttributes.cs
++++ b/src/Gadema.Core/Models/Attributes/CharacterAttributes.cs
 @@ -35,6 +35,14 @@ public class CharacterAttributes
      [Required]
      public Guid AttributeDefinitionId { get; set; }
@@ -41,8 +41,8 @@
      /// <summary>
      /// Current value.
      /// </summary>
---- a/src/GameDev.Core/Models/Characters/CharacterBackground.cs
-+++ b/src/GameDev.Core/Models/Characters/CharacterBackground.cs
+--- a/src/Gadema.Core/Models/Characters/CharacterBackground.cs
++++ b/src/Gadema.Core/Models/Characters/CharacterBackground.cs
 @@ -25,6 +25,14 @@ public class CharacterBackground
      [Required]
      public Guid CharacterDetailsId { get; set; }
@@ -57,8 +57,8 @@
      /// <summary>
      /// Description of the background.
      /// </summary>
---- a/src/GameDev.Core/Models/Characters/CharacterDetails.cs
-+++ b/src/GameDev.Core/Models/Characters/CharacterDetails.cs
+--- a/src/Gadema.Core/Models/Characters/CharacterDetails.cs
++++ b/src/Gadema.Core/Models/Characters/CharacterDetails.cs
 @@ -35,6 +35,9 @@ public class CharacterDetails
      public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
  
@@ -67,8 +67,8 @@
 +    public virtual ContentItem ContentItem { get; set; }
 +    
  }
---- a/src/GameDev.Core/Models/Characters/CharacterIdentity.cs
-+++ b/src/GameDev.Core/Models/Characters/CharacterIdentity.cs
+--- a/src/Gadema.Core/Models/Characters/CharacterIdentity.cs
++++ b/src/Gadema.Core/Models/Characters/CharacterIdentity.cs
 @@ -30,6 +30,14 @@ public class CharacterIdentity
      [Required]
      public Guid IdentityTypeId { get; set; }
@@ -84,8 +84,8 @@
      /// <summary>
      /// Value (race, faction, etc.).
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/ClassTemplate.cs
-+++ b/src/GameDev.Core/Models/Templates/ClassTemplate.cs
+--- a/src/Gadema.Core/Models/Templates/ClassTemplate.cs
++++ b/src/Gadema.Core/Models/Templates/ClassTemplate.cs
 @@ -30,6 +30,9 @@ public class ClassTemplate
      [Required]
      public Guid ProjectTemplateId { get; set; }
@@ -96,8 +96,8 @@
      /// <summary>
      /// Order index.
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/ClassTemplateAttribute.cs
-+++ b/src/GameDev.Core/Models/Templates/ClassTemplateAttribute.cs
+--- a/src/Gadema.Core/Models/Templates/ClassTemplateAttribute.cs
++++ b/src/Gadema.Core/Models/Templates/ClassTemplateAttribute.cs
 @@ -30,6 +30,14 @@ public class ClassTemplateAttribute
      [Required]
      public Guid AttributeDefinitionId { get; set; }
@@ -113,8 +113,8 @@
      /// <summary>
      /// Value.
      /// </summary>
---- a/src/GameDev.Core/Models/Content/ContentItem.cs
-+++ b/src/GameDev.Core/Models/Content/ContentItem.cs
+--- a/src/Gadema.Core/Models/Content/ContentItem.cs
++++ b/src/Gadema.Core/Models/Content/ContentItem.cs
 @@ -130,6 +130,9 @@ public class ContentItem
  
      // Reference navigation properties (Many-to-One relationships)
@@ -130,8 +130,8 @@
 +    public Guid? ContentItemId { get; set; }  // Nullable FK for junction tables
 +    
  }
---- a/src/GameDev.Core/Models/Versioning/ContentVersionLog.cs
-+++ b/src/GameDev.Core/Models/Versioning/ContentVersionLog.cs
+--- a/src/Gadema.Core/Models/Versioning/ContentVersionLog.cs
++++ b/src/Gadema.Core/Models/Versioning/ContentVersionLog.cs
 @@ -35,6 +35,9 @@ public class ContentVersionLog
      public int VersionNumber { get; set; }
      
@@ -142,8 +142,8 @@
      /// <summary>
      /// Timestamp when the version was created.
      /// </summary>
---- a/src/GameDev.Core/Models/Content/DialogueBranch.cs
-+++ b/src/GameDev.Core/Models/Content/DialogueBranch.cs
+--- a/src/Gadema.Core/Models/Content/DialogueBranch.cs
++++ b/src/Gadema.Core/Models/Content/DialogueBranch.cs
 @@ -70,6 +70,10 @@ public class DialogueBranch
      /// Order index for sorting branches.
      /// </summary>
@@ -154,8 +154,8 @@
 +    public virtual DialogueBranch? ParentNode { get; set; }
 +    
  }
---- a/src/GameDev.Core/Models/Inventory/EndingDefinition.cs
-+++ b/src/GameDev.Core/Models/Inventory/EndingDefinition.cs
+--- a/src/Gadema.Core/Models/Inventory/EndingDefinition.cs
++++ b/src/Gadema.Core/Models/Inventory/EndingDefinition.cs
 @@ -30,6 +30,14 @@ public class EndingDefinition
      [Required]
      public Guid ProjectId { get; set; }
@@ -171,8 +171,8 @@
 +    public string Title { get; set; } = "";
 +    
  }
---- a/src/GameDev.Core/Models/EngineIntegration/EngineExportConfig.cs
-+++ b/src/GameDev.Core/Models/EngineIntegration/EngineExportConfig.cs
+--- a/src/Gadema.Core/Models/EngineIntegration/EngineExportConfig.cs
++++ b/src/Gadema.Core/Models/EngineIntegration/EngineExportConfig.cs
 @@ -35,6 +35,14 @@ public class EngineExportConfig
      [Required]
      public Guid ProjectId { get; set; }
@@ -189,8 +189,8 @@
      /// <summary>
      /// Timestamp when the config was created.
      /// </summary>
---- a/src/GameDev.Core/Models/EngineIntegration/EngineFieldMapping.cs
-+++ b/src/GameDev.Core/Models/EngineIntegration/EngineFieldMapping.cs
+--- a/src/Gadema.Core/Models/EngineIntegration/EngineFieldMapping.cs
++++ b/src/Gadema.Core/Models/EngineIntegration/EngineFieldMapping.cs
 @@ -30,6 +30,14 @@ public class EngineFieldMapping
      [Required]
      public Guid ProjectId { get; set; }
@@ -214,8 +214,8 @@
      /// <summary>
      /// Timestamp when the mapping was created.
      /// </summary>
---- a/src/GameDev.Core/Models/Content/ExternalReference.cs
-+++ b/src/GameDev.Core/Models/Content/ExternalReference.cs
+--- a/src/Gadema.Core/Models/Content/ExternalReference.cs
++++ b/src/Gadema.Core/Models/Content/ExternalReference.cs
 @@ -35,6 +35,10 @@ public class ExternalReference
      [Required]
      public Guid ReferenceId { get; set; }
@@ -232,8 +232,8 @@
      /// <summary>
      /// Target URL or identifier.
      /// </summary>
---- a/src/GameDev.Core/Models/Identity/IdentityValue.cs
-+++ b/src/GameDev.Core/Models/Identity/IdentityValue.cs
+--- a/src/Gadema.Core/Models/Identity/IdentityValue.cs
++++ b/src/Gadema.Core/Models/Identity/IdentityValue.cs
 @@ -35,6 +35,18 @@ public class IdentityValue
      [Required]
      public Guid ProjectTemplateId { get; set; }
@@ -261,8 +261,8 @@
      /// <summary>
      /// Indicates if this is a default value.
      /// </summary>
---- a/src/GameDev.Core/Models/Inventory/InventoryItem.cs
-+++ b/src/GameDev.Core/Models/Inventory/InventoryItem.cs
+--- a/src/Gadema.Core/Models/Inventory/InventoryItem.cs
++++ b/src/Gadema.Core/Models/Inventory/InventoryItem.cs
 @@ -35,6 +35,14 @@ public class InventoryItem
      [Required]
      public Guid ProjectId { get; set; }
@@ -279,8 +279,8 @@
      /// <summary>
      /// Timestamp when the item was created.
      /// </summary>
---- a/src/GameDev.Core/Models/Identity/ProjectIdentityDefinition.cs
-+++ b/src/GameDev.Core/Models/Identity/ProjectIdentityDefinition.cs
+--- a/src/Gadema.Core/Models/Identity/ProjectIdentityDefinition.cs
++++ b/src/Gadema.Core/Models/Identity/ProjectIdentityDefinition.cs
 @@ -35,6 +35,14 @@ public class ProjectIdentityDefinition
      [Required]
      public Guid IdentityTypeId { get; set; }
@@ -298,8 +298,8 @@
      /// <summary>
      /// Indicates if this is required.
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-+++ b/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
+--- a/src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
++++ b/src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
 @@ -25,6 +25,14 @@ public class TemplateAttributeSetDefinition
      [Required]
      public Guid ProjectTemplateId { get; set; }
@@ -317,8 +317,8 @@
      /// <summary>
      /// Description.
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/TemplateClassTemplateDefinition.cs
-+++ b/src/GameDev.Core/Models/Templates/TemplateClassTemplateDefinition.cs
+--- a/src/Gadema.Core/Models/Templates/TemplateClassTemplateDefinition.cs
++++ b/src/Gadema.Core/Models/Templates/TemplateClassTemplateDefinition.cs
 @@ -25,6 +25,14 @@ public class TemplateClassTemplateDefinition
      [Required]
      public Guid ProjectTemplateId { get; set; }
@@ -330,8 +330,8 @@
      /// <summary>
      /// Description.
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/TemplateIdentityDefinition.cs
-+++ b/src/GameDev.Core/Models/Templates/TemplateIdentityDefinition.cs
+--- a/src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
++++ b/src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
 @@ -30,6 +30,14 @@ public class TemplateIdentityDefinition
      [Required]
      public Guid IdentityDefinitionId { get; set; }
@@ -349,8 +349,8 @@
      /// <summary>
      /// Description.
      /// </summary>
---- a/src/GameDev.Core/Models/Templates/TemplateNarrativeStructure.cs
-+++ b/src/GameDev.Core/Models/Templates/TemplateNarrativeStructure.cs
+--- a/src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
++++ b/src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
 @@ -25,6 +25,14 @@ public class TemplateNarrativeStructure
      [Required]
      public Guid ProjectTemplateId { get; set; }
@@ -362,8 +362,8 @@
      /// <summary>
      /// Description.
      /// </summary>
---- a/src/GameDev.Core/Models/Tokens/TokenUsageLog.cs
-+++ b/src/GameDev.Core/Models/Tokens/TokenUsageLog.cs
+--- a/src/Gadema.Core/Models/Tokens/TokenUsageLog.cs
++++ b/src/Gadema.Core/Models/Tokens/TokenUsageLog.cs
 @@ -60,6 +60,14 @@ public class TokenUsageLog
      //Navigation Properties
      public virtual ProjectToken ProjectToken { get; set; }
@@ -382,8 +382,8 @@
 -    public virtual ProjectToken ProjectToken { get; set; }
 -    public virtual ContentItem? ContentItem { get; set; }
  }
---- a/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-+++ b/src/GameDev.Core/Models/Templates/TemplateAttributeSetDefinition.cs
+--- a/src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
++++ b/src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
 @@ -25,6 +25,14 @@ public class TemplateAttributeSetDefinition
      [Required]
      public Guid ProjectTemplateId { get; set; }

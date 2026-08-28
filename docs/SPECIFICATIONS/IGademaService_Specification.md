@@ -20,9 +20,9 @@ The `IGademaService` interface provides a **unified service abstraction layer** 
 
 ```bash
 src/
-├── GameDev.Core/Services/IGademaService.cs        # Interface definition
-├── GameDev.Api.Services/*.cs                      # Service implementations
-├── src/GameDev.Tests/Factory/ApiWebApplicationFactory.cs  # Factory with dictionary + DI registration
+├── Gadema.Core/Services/IGademaService.cs        # Interface definition
+├── Gadema.Api.Services/*.cs                      # Service implementations
+├── src/Gadema.Tests/Factory/ApiWebApplicationFactory.cs  # Factory with dictionary + DI registration
 └── docs/SPECIFICATIONS/IGademaService_Specification.md    # This documentation
 ```
 
@@ -34,10 +34,10 @@ src/
 
 ```csharp
 // =============================================================================
-// GameDev.Core.Services - Unified Service Interface for Testing & DI
+// Gadema.Core.Services - Unified Service Interface for Testing & DI
 // =============================================================================
 
-namespace GameDev.Core.Services;
+namespace Gadema.Core.Services;
 
 /// <summary>
 /// Enumeration of all service types in the application.
@@ -147,13 +147,13 @@ public class ApiAuthService : IGademaService
 
 ```csharp
 // =============================================================================
-// GameDev.Tests - WebApplicationFactory (Combined Enum Lookup + DI Registration)
+// Gadema.Tests - WebApplicationFactory (Combined Enum Lookup + DI Registration)
 // =============================================================================
 
 using FluentAssertions.Common;
-using GameDev.Api.Services;
-using GameDev.Core.Dtos.ContentItems;
-using GameDev.Core.Services; // ← Add this using
+using Gadema.Api.Services;
+using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Services; // ← Add this using
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

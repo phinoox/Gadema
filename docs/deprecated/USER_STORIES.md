@@ -21,8 +21,8 @@ This document defines the user stories, feature breakdown, and acceptance criter
 
 ```bash
 src/
-├── GameDev.Core/Models/         # Entity classes
-├── GameDev.Data/               # DbContext + migrations config
+├── Gadema.Core/Models/         # Entity classes
+├── Gadema.Data/               # DbContext + migrations config
 └── docs/USER_STORIES.md         # This documentation file
 ```
 

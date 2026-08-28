@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using Gadema.Core.Models;
+
+namespace Gadema.Api.Services;
+public interface IUserContext : IDisposable
+{
+    // Current authenticated user (if any)
+    User? CurrentUser { get; }
+    
+    // User ID as Guid or null if not authenticated
+    Guid? UserId { get; }
+    
+    // Project token for API access (if applicable)
+    string? ApiTokenHash { get; }
+    
+    // Roles for authorization checks
+    List<string> Roles { get; }
+    
+    // Team memberships for RBAC
+    List<TeamMember>? TeamMemberships { get; }
+}

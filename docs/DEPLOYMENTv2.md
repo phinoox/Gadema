@@ -17,10 +17,10 @@ This document defines all deployment strategies, database migration paths, hosti
 
 ```bash
 src/
-├── GameDev.Core/Models/          # Entity classes (clustered by domain)
+├── Gadema.Core/Models/          # Entity classes (clustered by domain)
 │   └── Enums/                    # All type enumerations
 │
-├── GameDev.Core/Configurations/  # Fluent API configurations per domain ⭐ NEW!
+├── Gadema.Core/Configurations/  # Fluent API configurations per domain ⭐ NEW!
 │   ├── Authentication/
 │   │   ├── UserConfiguration.cs
 │   │   └── TeamMemberConfiguration.cs
@@ -83,7 +83,7 @@ src/
 │       ├── EngineFieldMappingConfiguration.cs
 │       └── AssetLinkConfiguration.cs
 │
-├── GameDev.Data/                 # DbContext + migrations config
+├── Gadema.Data/                 # DbContext + migrations config
 ├── docs/DEPLOYMENT.md            # This documentation file
 ```
 
@@ -130,7 +130,7 @@ public class GameDbContext : DbContext
 
 // ✅ CORRECT - Database migration command (Migrations) with domain-separated configurations
 // Run this in terminal to apply schema changes:
-dotnet ef database update --project GameDev.Data --startup-project GameDev.Api --force
+dotnet ef database update --project Gadema.Data --startup-project Gadema.Api --force
 
 // For production deployment, use environment variables:
 // Production settings.json
@@ -147,8 +147,8 @@ dotnet ef database update --project GameDev.Data --startup-project GameDev.Api -
 }
 
 // ✅ CORRECT - Migration script for PostgreSQL with domain-separated configurations
-dotnet ef migrations add InitialCreate --project GameDev.Data --startup-project GameDev.Api
-dotnet ef database update --project GameDev.Data --startup-project GameDev.Api
+dotnet ef migrations add InitialCreate --project Gadema.Data --startup-project Gadema.Api
+dotnet ef database update --project Gadema.Data --startup-project Gadema.Api
 
 // ✅ CORRECT - EF Core auto-discovery of domain-separated configurations (NEW!)
 protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -180,23 +180,23 @@ public class GameDbContext : DbContext  // ❌ Avoid! Can be confused with Syste
 }
 
 // ✅ CORRECT - Use hybrid response patterns for migration commands (NEW!)
-dotnet ef migrations add RenameTaskToProjectTask --project GameDev.Data \
-    --startup-project GameDev.Api \
+dotnet ef migrations add RenameTaskToProjectTask --project Gadema.Data \
+    --startup-project Gadema.Api \
     --migrations User,Team,TeamMember,Project  # All tables including new Project + domain-separated configs!
 
 // ❌ INCORRECT - Don't use migration commands with Task entity (domain-clustered code violation) (NEW!)
-dotnet ef migrations add RenameTaskToProjectTask --project GameDev.Data \
-    --startup-project GameDev.Api \
+dotnet ef migrations add RenameTaskToProjectTask --project Gadema.Data \
+    --startup-project Gadema.Api \
     --migrations User,Team,Task  # ❌ Avoid! Can be confused with System.Threading.Task!
 
 // ✅ CORRECT - Use hybrid response patterns for migration commands (NEW!)
-dotnet ef migrations add RenameTaskToProjectTask --project GameDev.Data \
-    --startup-project GameDev.Api \
+dotnet ef migrations add RenameTaskToProjectTask --project Gadema.Data \
+    --startup-project Gadema.Api \
     --migrations User,Team,TeamMember,Project  # All tables including new Project + domain-separated configs!
 
 // ❌ INCORRECT - Don't use migration commands with Task entity (domain-clustered code violation) (NEW!)
-dotnet ef migrations add RenameTaskToProjectTask --project GameDev.Data \
-    --startup-project GameDev.Api \
+dotnet ef migrations add RenameTaskToProjectTask --project Gadema.Data \
+    --startup-project Gadema.Api \
     --migrations User,Team,Task  # ❌ Avoid! Can be confused with System.Threading.Task!
 ```
 
@@ -460,11 +460,11 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ["GameDev.Api.csproj", ""]
-RUN dotnet restore "GameDev.Api.csproj"
+COPY ["Gadema.Api.csproj", ""]
+RUN dotnet restore "Gadema.Api.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet publish "GameDev.Api.csproj" \
+RUN dotnet publish "Gadema.Api.csproj" \
     -c Release \
     --no-restore \
     /p:PublishDir=/publish
@@ -483,7 +483,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost/health || exit 1
 
 # Run the application with domain-separated configurations!
-ENTRYPOINT ["dotnet", "GameDev.Api.dll"]
+ENTRYPOINT ["dotnet", "Gadema.Api.dll"]
 
 // ✅ CORRECT - Use hybrid response patterns for Dockerfile generation (NEW!)
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base

@@ -19,9 +19,9 @@ This document defines all security requirements, authentication mechanisms, auth
 
 ```bash
 src/
-├── GameDev.Api/Middleware/        # Auth middleware, CORS, Rate limiting
-├── GameDev.Api/Services/Auth/     # Authentication services
-├── GameDev.Core/Dtos/Auth/        # Auth-related DTOs
+├── Gadema.Api/Middleware/        # Auth middleware, CORS, Rate limiting
+├── Gadema.Api/Services/Auth/     # Authentication services
+├── Gadema.Core/Dtos/Auth/        # Auth-related DTOs
 └── docs/SECURITY.md               # This documentation file
 ```
 

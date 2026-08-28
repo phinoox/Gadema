@@ -20,9 +20,9 @@ This document defines all performance optimization strategies, caching patterns,
 
 ```bash
 src/
-├── GameDev.Data/                 # DbContext + query optimization
-├── GameDev.Api/Middleware/       # Performance middleware (CORS, Rate Limiting)
-├── GameDev.WebApp/               # UI performance considerations
+├── Gadema.Data/                 # DbContext + query optimization
+├── Gadema.Api/Middleware/       # Performance middleware (CORS, Rate Limiting)
+├── Gadema.WebApp/               # UI performance considerations
 └── docs/PERFORMANCE.md           # This documentation file
 ```
 

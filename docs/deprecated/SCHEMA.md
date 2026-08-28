@@ -21,8 +21,8 @@ This document contains the complete database schema definition for GaDeMa v0.1, 
 
 ```bash
 src/
-├── GameDev.Core/Models/       # Entity classes (ContentItem.cs, User.cs, etc.)
-├── GameDev.Data/              # DbContext + migrations config
+├── Gadema.Core/Models/       # Entity classes (ContentItem.cs, User.cs, etc.)
+├── Gadema.Data/              # DbContext + migrations config
 └── docs/SCHEMA.md             # This documentation file
 ```
 

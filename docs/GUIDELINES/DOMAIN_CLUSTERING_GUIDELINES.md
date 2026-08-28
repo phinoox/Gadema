@@ -8,7 +8,7 @@ This document defines the file organization structure per domain, ensuring consi
 
 ```bash
 src/
-└── GameDev.Core/Models/
+└── Gadema.Core/Models/
     ├── Authentication/
     │   ├── User.cs
     │   └── TeamMember.cs
@@ -27,7 +27,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Core/Dtos/
+└── Gadema.Core/Dtos/
     ├── Authentication/
     │   ├── SignInDto.cs
     │   ├── SignInWith2FADto.cs
@@ -50,7 +50,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Api/Services/
+└── Gadema.Api/Services/
     ├── Authentication/
     │   ├── ApiAuthService.cs
     │   ├── TwoFactorAuthService.cs
@@ -67,7 +67,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Api/Controllers/
+└── Gadema.Api/Controllers/
     ├── Authentication/
     │   └── AuthController.cs
     ├── Projects/
@@ -82,7 +82,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Core/Configurations/
+└── Gadema.Core/Configurations/
     ├── Authentication/
     │   ├── UserConfiguration.cs
     │   └── TeamMemberConfiguration.cs
@@ -144,7 +144,7 @@ For services that need access to multiple domain entities, use a dedicated folde
 
 ```bash
 src/
-└── GameDev.Api/Services/CrossDomain/
+└── Gadema.Api/Services/CrossDomain/
     ├── VersionControlService.cs  // Works with snapshots, tasks, content
     └── SearchService.cs  // Searches across all domains
 ```
@@ -175,7 +175,7 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
 
 ```bash
 src/
-└── GameDev.Core/Models/Content/
+└── Gadema.Core/Models/Content/
     ├── ContentItem.cs
     ├── StoryOutline.cs
     ├── DialogueBranch.cs
@@ -190,7 +190,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Core/Dtos/Content/
+└── Gadema.Core/Dtos/Content/
     ├── CreateDto/
     │   ├── CreateContentItemDto.cs
     │   └── CreateStoryOutlineDto.cs
@@ -210,7 +210,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Core/Enums/
+└── Gadema.Core/Enums/
     ├── ContentTypeEnum.cs
     ├── ContentStatusEnum.cs
     ├── ViewModeEnum.cs
@@ -222,7 +222,7 @@ src/
 
 ```bash
 src/
-└── GameDev.Core/Dtos/Common/
+└── Gadema.Core/Dtos/Common/
     ├── PaginationResult.cs
     └── ErrorResponseDto.cs
 ```
@@ -235,13 +235,13 @@ When adding a new domain (e.g., `Inventory`):
 
 ```bash
 src/
-├── GameDev.Core/Models/Inventory/
+├── Gadema.Core/Models/Inventory/
 │   ├── InventoryItem.cs
 │   ├── EndingDefinition.cs
 │   └── Enums/
 │       └── ItemTypeEnum.cs
 │
-├── GameDev.Core/Dtos/Inventory/
+├── Gadema.Core/Dtos/Inventory/
 │   ├── CreateDto/
 │   │   └── CreateInventoryItemDto.cs
 │   ├── UpdateDto/
@@ -249,14 +249,14 @@ src/
 │   └── ResponseDto/
 │       └── InventoryItemResponseDto.cs
 │
-├── GameDev.Api/Controllers/Inventory/
+├── Gadema.Api/Controllers/Inventory/
 │   └── InventoryItemsController.cs
 │
-├── GameDev.Api/Services/Inventory/
+├── Gadema.Api/Services/Inventory/
 │   ├── InventoryService.cs
 │   └── IInventoryService.cs
 │
-└── GameDev.Core/Configurations/Inventory/
+└── Gadema.Core/Configurations/Inventory/
     ├── InventoryItemConfiguration.cs
     └── EndingDefinitionConfiguration.cs
 ```
@@ -267,7 +267,7 @@ src/
 
 | Anti-Pattern | Example | ✅ Correct Approach |
 | :--- | :--- | :--- |
-| **Flat Structure** | All models in `GameDev.Core/Models/` without domain folders | ❌ Don't do this! Use domain folders |
+| **Flat Structure** | All models in `Gadema.Core/Models/` without domain folders | ❌ Don't do this! Use domain folders |
 | **Mixed DTOs** | CreatingDto.cs and UpdateDto.cs in same file | ✅ Separate files per operation type |
 | **Generic Names** | Service.cs, Entity.cs (no context) | ✅ Descriptive names: InventoryService.cs |
 | **Cross-Domain Mixing** | TaskConfiguration.cs with ContentItem properties | ✅ Keep configurations domain-specific |

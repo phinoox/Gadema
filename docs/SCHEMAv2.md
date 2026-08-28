@@ -22,10 +22,10 @@ This document defines the complete database schema for GaDeMa v0.1, including:
 
 ```bash
 src/
-├── GameDev.Core/Models/          # Entity classes (ContentItem.cs, User.cs, etc.)
+├── Gadema.Core/Models/          # Entity classes (ContentItem.cs, User.cs, etc.)
 │   └── Enums/                    # All type enumerations
 │
-├── GameDev.Core/Configurations/  # Fluent API configurations per domain ⭐ NEW!
+├── Gadema.Core/Configurations/  # Fluent API configurations per domain ⭐ NEW!
 │   ├── Authentication/
 │   │   ├── UserConfiguration.cs
 │   │   └── TeamMemberConfiguration.cs
@@ -88,7 +88,7 @@ src/
 │       ├── EngineFieldMappingConfiguration.cs
 │       └── AssetLinkConfiguration.cs
 │
-├── GameDev.Data/                 # DbContext + migrations config
+├── Gadema.Data/                 # DbContext + migrations config
 ├── docs/SCHEMA.md                # This documentation file
 ```
 
@@ -171,7 +171,7 @@ public class TeamMember
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Authentication/UserConfiguration.cs
+// src/Gadema.Core/Configurations/Authentication/UserConfiguration.cs
 public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
@@ -189,7 +189,7 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Authentication/TeamMemberConfiguration.cs
+// src/Gadema.Core/Configurations/Authentication/TeamMemberConfiguration.cs
 public class TeamMemberEntityTypeConfiguration : IEntityTypeConfiguration<TeamMember>
 {
     public void Configure(EntityTypeBuilder<TeamMember> builder)
@@ -279,7 +279,7 @@ public class Project
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Projects/ProjectConfiguration.cs
+// src/Gadema.Core/Configurations/Projects/ProjectConfiguration.cs
 public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
 {
     public void Configure(EntityTypeBuilder<Project> builder)
@@ -364,7 +364,7 @@ public class ContentItem
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Content/ContentItemConfiguration.cs
+// src/Gadema.Core/Configurations/Content/ContentItemConfiguration.cs
 public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
 {
     public void Configure(EntityTypeBuilder<ContentItem> builder)
@@ -432,7 +432,7 @@ public class StorySequence
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Narrative/StorySequenceConfiguration.cs
+// src/Gadema.Core/Configurations/Narrative/StorySequenceConfiguration.cs
 public class StorySequenceEntityTypeConfiguration : IEntityTypeConfiguration<StorySequence>
 {
     public void Configure(EntityTypeBuilder<StorySequence> builder)
@@ -482,7 +482,7 @@ public class CharacterDetails
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Characters/CharacterDetailsConfiguration.cs
+// src/Gadema.Core/Configurations/Characters/CharacterDetailsConfiguration.cs
 public class CharacterDetailsEntityTypeConfiguration : IEntityTypeConfiguration<CharacterDetails>
 {
     public void Configure(EntityTypeBuilder<CharacterDetails> builder)
@@ -526,7 +526,7 @@ public class AttributeSet
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Attributes/AttributeSetConfiguration.cs
+// src/Gadema.Core/Configurations/Attributes/AttributeSetConfiguration.cs
 public class AttributeSetEntityTypeConfiguration : IEntityTypeConfiguration<AttributeSet>
 {
     public void Configure(EntityTypeBuilder<AttributeSet> builder)
@@ -574,7 +574,7 @@ public class AbilitySet
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Abilities/AbilitySetConfiguration.cs
+// src/Gadema.Core/Configurations/Abilities/AbilitySetConfiguration.cs
 public class AbilitySetEntityTypeConfiguration : IEntityTypeConfiguration<AbilitySet>
 {
     public void Configure(EntityTypeBuilder<AbilitySet> builder)
@@ -635,7 +635,7 @@ public class ProjectTask
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Tasks/ProjectTaskConfiguration.cs
+// src/Gadema.Core/Configurations/Tasks/ProjectTaskConfiguration.cs
 public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask>
 {
     public void Configure(EntityTypeBuilder<ProjectTask> builder)
@@ -694,7 +694,7 @@ public class ActivityLog
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Activities/ActivityLogConfiguration.cs
+// src/Gadema.Core/Configurations/Activities/ActivityLogConfiguration.cs
 public class ActivityLogEntityTypeConfiguration : IEntityTypeConfiguration<ActivityLog>
 {
     public void Configure(EntityTypeBuilder<ActivityLog> builder)
@@ -742,7 +742,7 @@ public class ContentSnapshot
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Versioning/ContentSnapshotConfiguration.cs
+// src/Gadema.Core/Configurations/Versioning/ContentSnapshotConfiguration.cs
 public class ContentSnapshotEntityTypeConfiguration : IEntityTypeConfiguration<ContentSnapshot>
 {
     public void Configure(EntityTypeBuilder<ContentSnapshot> builder)
@@ -789,7 +789,7 @@ public class ProjectTemplate
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Templates/ProjectTemplateConfiguration.cs
+// src/Gadema.Core/Configurations/Templates/ProjectTemplateConfiguration.cs
 public class ProjectTemplateEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTemplate>
 {
     public void Configure(EntityTypeBuilder<ProjectTemplate> builder)
@@ -835,7 +835,7 @@ public class ProjectIdentityDefinition
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/Identity/ProjectIdentityDefinitionConfiguration.cs
+// src/Gadema.Core/Configurations/Identity/ProjectIdentityDefinitionConfiguration.cs
 public class ProjectIdentityDefinitionEntityTypeConfiguration : IEntityTypeConfiguration<ProjectIdentityDefinition>
 {
     public void Configure(EntityTypeBuilder<ProjectIdentityDefinition> builder)
@@ -879,7 +879,7 @@ public class EngineExportConfig
 }
 
 // ✅ NEW - Configuration file per domain
-// src/GameDev.Core/Configurations/EngineIntegration/EngineExportConfigConfiguration.cs
+// src/Gadema.Core/Configurations/EngineIntegration/EngineExportConfigConfiguration.cs
 public class EngineExportConfigEntityTypeConfiguration : IEntityTypeConfiguration<EngineExportConfig>
 {
     public void Configure(EntityTypeBuilder<EngineExportConfig> builder)

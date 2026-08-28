@@ -1,13 +1,13 @@
 // =============================================================================
-// GameDev.Data - EF Core DbContext and Migrations Configuration
+// Gadema.Data - EF Core DbContext and Migrations Configuration
 // =============================================================================
 
-using GameDev.Core.Configurations;
-using GameDev.Core.Models;
-using GameDev.Core.Models.Projects;
+using Gadema.Core.Configurations;
+using Gadema.Core.Models;
+using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameDev.Data;
+namespace Gadema.Data;
 
 /// <summary>
 /// Main database context for GaDeMa application.

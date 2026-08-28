@@ -19,9 +19,9 @@ This document defines the practical user workflows, use cases, and operational p
 
 ```bash
 src/
-├── GameDev.Api/Controllers/    # Endpoint implementations
-├── GameDev.Core/Dtos/          # Request/response DTOs
-├── GameDev.Data/               # DbContext + migrations config
+├── Gadema.Api/Controllers/    # Endpoint implementations
+├── Gadema.Core/Dtos/          # Request/response DTOs
+├── Gadema.Data/               # DbContext + migrations config
 └── docs/WORKFLOWS.md           # This documentation file
 ```
 
@@ -303,10 +303,10 @@ public class AdhdFriendlyTaskService
 ### **Sequence Diagram Example:**
 ```mermaid
 sequenceDiagram
-    participant GameDev as Game Developer
+    participant Gadema as Game Developer
     participant API as GaDeMa API
     
-    GameDev->>API: POST /api/v1/projects/{id}/export/json
+    Gadema->>API: POST /api/v1/projects/{id}/export/json
     Note right of API: Selective section export
     
     API->>DB: Query Published Content Items
@@ -315,7 +315,7 @@ sequenceDiagram
     API->>ExportService: Generate JSON with QuestPDF
     ExportService-->>API: Formatted JSON Data
     
-    GameDev->>UnityEditor: Import JSON into Unity Project
+    Gadema->>UnityEditor: Import JSON into Unity Project
 ```
 
 ### **Implementation Code Example:**

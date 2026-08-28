@@ -9,13 +9,13 @@
 /// their causes, symptoms, solutions, and prevention strategies.
 /// </summary>
 
-namespace GameDev.Tests;
+namespace Gadema.Tests;
 
 using Xunit;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using GameDev.Data;
-using GameDev.Core.Models;
+using Gadema.Data;
+using Gadema.Core.Models;
 using System.Linq;
 
 /// <summary>
@@ -303,7 +303,7 @@ public class EFTroubleshootingTests
 /// 
 /// SOLUTION:
 /// ---------
-/// Always use the fully-qualified class name from GameDev.Data namespace:
+/// Always use the fully-qualified class name from Gadema.Data namespace:
 /// 
 /// FROM (WRONG):
 ///   var options = new DbContextOptionsBuilder<Context>()...

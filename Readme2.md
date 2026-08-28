@@ -59,10 +59,10 @@ dotnet restore
 dotnet ef database update
 
 # 4. Build and run API locally
-dotnet run --project src/GameDev.Api
+dotnet run --project src/Gadema.Api
 
 # 5. Run Blazor WebApp locally
-dotnet run --project src/GameDev.WebApp
+dotnet run --project src/Gadema.WebApp
 ```
 
 ---

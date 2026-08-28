@@ -26,10 +26,10 @@
 
 ```
 src/
-├── GameDev.Core/Models/          # Entity classes (domain-clustered)
-├── GameDev.Core/Configurations/  # Fluent API configs per domain ⭐
-├── GameDev.Api/Controllers/      # REST endpoints (clustered by domain)
-├── GameDev.Data/                 # DbContext + migrations config
+├── Gadema.Core/Models/          # Entity classes (domain-clustered)
+├── Gadema.Core/Configurations/  # Fluent API configs per domain ⭐
+├── Gadema.Api/Controllers/      # REST endpoints (clustered by domain)
+├── Gadema.Data/                 # DbContext + migrations config
 └── docs/                         # All documentation files ✅
 ```
 

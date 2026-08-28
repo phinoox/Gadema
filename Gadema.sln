@@ -2,15 +2,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31902.59
 MinimumVisualStudioVersion = 10.0.40554.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDev.Api", "src\GameDev.Api\GameDev.Api.csproj", "{3520F44C-4547-1F2C-483B-57C4BFFE4E2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadema.Api", "src\Gadema.Api\Gadema.Api.csproj", "{3520F44C-4547-1F2C-483B-57C4BFFE4E2F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDev.Core", "src\GameDev.Core\GameDev.Core.csproj", "{2B283F5A-708B-FD81-9033-A0B735DA4745}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadema.Core", "src\Gadema.Core\Gadema.Core.csproj", "{2B283F5A-708B-FD81-9033-A0B735DA4745}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDev.Data", "src\GameDev.Data\GameDev.Data.csproj", "{0ADF60EC-9D11-BB38-DCAC-F2A2530852CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadema.Data", "src\Gadema.Data\Gadema.Data.csproj", "{0ADF60EC-9D11-BB38-DCAC-F2A2530852CA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDev.WebApp", "src\GameDev.WebApp\GameDev.WebApp.csproj", "{2AA4B15E-5A5B-6CD0-369B-D6E6035DD2BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadema.WebApp", "src\Gadema.WebApp\Gadema.WebApp.csproj", "{2AA4B15E-5A5B-6CD0-369B-D6E6035DD2BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameDev.Tests", "src\GameDev.Tests\GameDev.Tests.csproj", "{30C133BA-2E6D-0C29-EB1A-CC1A98EB16D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gadema.Tests", "src\Gadema.Tests\Gadema.Tests.csproj", "{30C133BA-2E6D-0C29-EB1A-CC1A98EB16D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

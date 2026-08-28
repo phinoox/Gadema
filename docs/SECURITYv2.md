@@ -17,7 +17,7 @@ This document defines all performance optimization strategies, caching patterns,
 
 ```bash
 src/
-├── GameDev.Core/Configurations/  # Fluent API configurations per domain ⭐
+├── Gadema.Core/Configurations/  # Fluent API configurations per domain ⭐
 │   ├── Authentication/
 │   │   ├── UserConfiguration.cs
 │   │   └── TeamMemberConfiguration.cs
@@ -79,7 +79,7 @@ src/
 │       ├── EngineExportConfigConfiguration.cs
 │       ├── EngineFieldMappingConfiguration.cs
 │       └── AssetLinkConfiguration.cs
-├── GameDev.Data/                 # DbContext + migrations config
+├── Gadema.Data/                 # DbContext + migrations config
 └── docs/PERFORMANCE.md           # This documentation file
 ```
 

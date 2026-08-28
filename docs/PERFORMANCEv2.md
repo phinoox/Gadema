@@ -17,7 +17,7 @@ This document defines all security requirements, authentication mechanisms, auth
 
 ```bash
 src/
-├── GameDev.Core/Configurations/  # Fluent API configurations per domain ⭐
+├── Gadema.Core/Configurations/  # Fluent API configurations per domain ⭐
 │   ├── Authentication/
 │   │   ├── UserConfiguration.cs      # ✅ Password hashing implementation
 │   │   └── TeamMemberConfiguration.cs
@@ -35,12 +35,12 @@ src/
 │   │   └── TokenUsageLogConfiguration.cs
 │   └── Tokens/
 │       └── ProjectTokenConfiguration.cs
-├── GameDev.Data/                 # DbContext + migrations config
-├── GameDev.Api/Middleware/        # Auth middleware, CORS, Rate limiting
+├── Gadema.Data/                 # DbContext + migrations config
+├── Gadema.Api/Middleware/        # Auth middleware, CORS, Rate limiting
 │   ├── AuthenticationMiddleware.cs
 │   ├── CorsMiddleware.cs
 │   └── RateLimitMiddleware.cs
-├── GameDev.Api/Services/Auth/     # Authentication services (domain-aware)
+├── Gadema.Api/Services/Auth/     # Authentication services (domain-aware)
 │   ├── ApiAuthService.cs         # ✅ Google OAuth + BCrypt password hashing
 │   └── TokenService.cs           # ✅ API token generation with SHA256 + salt
 ├── docs/SECURITY.md              # This documentation file

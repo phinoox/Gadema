@@ -17,41 +17,41 @@ This document defines the coding standards, naming conventions, architectural pa
 
 ```bash
 src/
-├── GameDev.Core/Models/         # Entity classes (clustered by domain)
+├── Gadema.Core/Models/         # Entity classes (clustered by domain)
 │   ├── Authentication/User.cs
 │   ├── Projects/Project.cs
 │   ├── Content/ContentItem.cs
 │   ├── Tasks/ProjectTask.cs      # ✅ Renamed from Task to avoid System.Threading.Task ambiguity
 │   └── [etc...]
-├── GameDev.Core/Dtos/           # API DTOs (clustered by domain) ⭐ NEW!
+├── Gadema.Core/Dtos/           # API DTOs (clustered by domain) ⭐ NEW!
 │   ├── Authentication/SigninDto.cs
 │   ├── Projects/CreateProjectDto.cs
 │   ├── Content/ContentItemCreateDto.cs
 │   ├── Tasks/ProjectTaskCreateDto.cs  # ✅ Renamed from TaskCreateDto
 │   └── [etc...]
-├── GameDev.Core/Configurations/ # Fluent API configurations per domain ⭐ NEW!
+├── Gadema.Core/Configurations/ # Fluent API configurations per domain ⭐ NEW!
 │   ├── Authentication/UserConfiguration.cs
 │   ├── Projects/ProjectConfiguration.cs
 │   ├── Content/ContentItemConfiguration.cs
 │   ├── Tasks/ProjectTaskConfiguration.cs  # ✅ Renamed from TaskConfiguration
 │   └── [etc...]
-├── GameDev.Api/Middleware/        # Auth middleware, CORS, Rate limiting (domain-aware)
+├── Gadema.Api/Middleware/        # Auth middleware, CORS, Rate limiting (domain-aware)
 │   ├── AuthenticationMiddleware.cs
 │   ├── CorsMiddleware.cs
 │   └── RateLimitMiddleware.cs
-├── GameDev.Api/Controllers/    # REST endpoints (clustered by domain) ⭐ NEW!
+├── Gadema.Api/Controllers/    # REST endpoints (clustered by domain) ⭐ NEW!
 │   ├── Authentication/AuthController.cs
 │   ├── Projects/ProjectsController.cs
 │   ├── Content/ContentItemsController.cs
 │   ├── Tasks/TasksController.cs      # ✅ Renamed from TaskController
 │   └── [etc...]
-├── GameDev.Api/Services/       # Business logic (domain-aware services) ⭐ NEW!
+├── Gadema.Api/Services/       # Business logic (domain-aware services) ⭐ NEW!
 │   ├── Authentication/AuthService.cs
 │   ├── Projects/ProjectService.cs
 │   ├── Content/ContentItemService.cs
 │   ├── Tasks/TaskService.cs      # ✅ Renamed from TaskService
 │   └── [etc...]
-├── GameDev.WebApp/Pages/       # Razor pages with View Mode separation
+├── Gadema.WebApp/Pages/       # Razor pages with View Mode separation
 └── docs/CODING_GUIDELINES.md   # This documentation file
 ```
 
@@ -69,10 +69,10 @@ src/
 
 ```csharp
 // ✅ CORRECT - Domain-clustered model files
-public class ContentItem { }  // src/GameDev.Core/Models/Content/ContentItem.cs
+public class ContentItem { }  // src/Gadema.Core/Models/Content/ContentItem.cs
 
 public class ProjectTask { }   // ✅ Renamed from Task (avoids System.Threading.Task ambiguity!)
-                               // src/GameDev.Core/Models/Tasks/ProjectTask.cs
+                               // src/Gadema.Core/Models/Tasks/ProjectTask.cs
 
 // ❌ INCORRECT
 public class task              // lowercase, wrong casing, ambiguous!
@@ -91,7 +91,7 @@ public class task              // lowercase, wrong casing, ambiguous!
 
 ```csharp
 // ✅ CORRECT - Naming Convention Rules with Domain Clustering (NEW!)
-public class CreateProjectDto      // src/GameDev.Core/Dtos/Projects/
+public class CreateProjectDto      // src/Gadema.Core/Dtos/Projects/
 {
     [Required]
     public string Title { get; set; } = "";
@@ -116,7 +116,7 @@ public class TaskCreateDto         // ❌ Avoid! Can be confused with System.Thr
 
 ```csharp
 // ✅ CORRECT - Domain-aware controller clustering (NEW!)
-public class ProjectsController : ControllerBase { }  // src/GameDev.Api/Controllers/Projects/
+public class ProjectsController : ControllerBase { }  // src/Gadema.Api/Controllers/Projects/
 
 public class TasksController : ControllerBase        // ✅ Renamed from TaskController
 {                                                     // (avoids ambiguity with System.Threading.Task)
@@ -140,7 +140,7 @@ public class TaskController : ControllerBase         // ❌ Avoid! Can be confus
 
 ```csharp
 // ✅ CORRECT - Service layer naming with domain clustering (NEW!)
-public interface IProjectTaskService { }              // src/GameDev.Api/Services/Tasks/
+public interface IProjectTaskService { }              // src/Gadema.Api/Services/Tasks/
 
 public class ProjectTaskService : IGademaService,  IProjectTaskService // ✅ Renamed from TaskService
 {                                                     // (avoids ambiguity with System.Threading.Task)
@@ -159,7 +159,7 @@ public class TaskService : IGademaService,  ITaskService               // ❌ Av
 
 ```csharp
 // ✅ CORRECT - Configuration file naming with domain clustering (NEW!)
-public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User> { }  // src/GameDev.Core/Configurations/Authentication/
+public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User> { }  // src/Gadema.Core/Configurations/Authentication/
 
 public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask>  // ✅ Renamed from TaskConfiguration.cs
 {                                                                                     // (avoids ambiguity with System.Threading.Task)
@@ -422,7 +422,7 @@ public async Task<List<ProjectTask>> GetProjectTasksAsync(Guid projectId)  // �
 
 ```csharp
 // ✅ CORRECT - Naming Convention Rules with domain clustering (NEW!)
-public class CreateProjectDto      // src/GameDev.Core/Dtos/Projects/
+public class CreateProjectDto      // src/Gadema.Core/Dtos/Projects/
 {
     [Required]
     public string Title { get; set; } = "";

@@ -2,128 +2,128 @@
   "enums": [
     {
       "name": "TeamMemberRoleEnum",
-      "file": "./src/GameDev.Core/Enums/TeamMemberRole.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/TeamMemberRole.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "TaskDifficultyEnum",
-      "file": "./src/GameDev.Core/Enums/TaskDifficulty.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/TaskDifficulty.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "LoreTypeEnum",
-      "file": "./src/GameDev.Core/Enums/LoreType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/LoreType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "OutlineStatusEnum",
-      "file": "./src/GameDev.Core/Enums/OutlineStatus.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/OutlineStatus.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "TaskStatusEnum",
-      "file": "./src/GameDev.Core/Enums/TaskStatus.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/TaskStatus.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ExportFormatEnum",
-      "file": "./src/GameDev.Core/Enums/ExportFormat.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ExportFormat.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ProjectVisibilityEnum",
-      "file": "./src/GameDev.Core/Enums/ProjectVisibility.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ProjectVisibility.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "TaskPriorityEnum",
-      "file": "./src/GameDev.Core/Enums/TaskPriority.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/TaskPriority.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ContentTypeEnum",
-      "file": "./src/GameDev.Core/Enums/ContentType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ContentType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ProjectDifficultyEnum",
-      "file": "./src/GameDev.Core/Enums/ProjectDifficulty.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ProjectDifficulty.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "RelatedEntityTypeEnum",
-      "file": "./src/GameDev.Core/Enums/RelatedEntityType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/RelatedEntityType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ProjectTemplateTypeEnum",
-      "file": "./src/GameDev.Core/Enums/ProjectTemplateType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ProjectTemplateType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "OwnerTypeEnum",
-      "file": "./src/GameDev.Core/Enums/OwnerType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/OwnerType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ContentStatusEnum",
-      "file": "./src/GameDev.Core/Enums/ContentStatus.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ContentStatus.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "ViewModeEnum",
-      "file": "./src/GameDev.Core/Enums/ViewMode.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/ViewMode.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
     },
     {
       "name": "SnapshotTypeEnum",
-      "file": "./src/GameDev.Core/Enums/SnapshotType.cs",
-      "namespace": "GameDev.Core.Enums",
+      "file": "./src/Gadema.Core/Enums/SnapshotType.cs",
+      "namespace": "Gadema.Core.Enums",
       "type": "enumeration",
       "category": "value-type",
       "purpose": "Type-safe enumeration for domain constants"
@@ -132,1091 +132,1091 @@
   "classes": [
     {
       "name": "Overview : PageComponent",
-      "file": "./src/GameDev.WebApp/Pages/Overview : PageComponent.cs",
-      "namespace": "GameDev.WebApp.Pages",
+      "file": "./src/Gadema.WebApp/Pages/Overview : PageComponent.cs",
+      "namespace": "Gadema.WebApp.Pages",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Projects : PageComponent",
-      "file": "./src/GameDev.WebApp/Pages/Projects : PageComponent.cs",
-      "namespace": "GameDev.WebApp.Pages",
+      "file": "./src/Gadema.WebApp/Pages/Projects : PageComponent.cs",
+      "namespace": "Gadema.WebApp.Pages",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentItems : PageComponent",
-      "file": "./src/GameDev.WebApp/Pages/ContentItems : PageComponent.cs",
-      "namespace": "GameDev.WebApp.Pages",
+      "file": "./src/Gadema.WebApp/Pages/ContentItems : PageComponent.cs",
+      "namespace": "Gadema.WebApp.Pages",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Tasks : PageComponent",
-      "file": "./src/GameDev.WebApp/Components/Tasks : PageComponent.cs",
-      "namespace": "GameDev.WebApp.Pages",
+      "file": "./src/Gadema.WebApp/Components/Tasks : PageComponent.cs",
+      "namespace": "Gadema.WebApp.Pages",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "StoryOutlining : PageComponent",
-      "file": "./src/GameDev.WebApp/Components/StoryOutlining : PageComponent.cs",
-      "namespace": "GameDev.WebApp.Pages",
+      "file": "./src/Gadema.WebApp/Components/StoryOutlining : PageComponent.cs",
+      "namespace": "Gadema.WebApp.Pages",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "CustomAuthenticationStateProvider : AuthenticationStateProvider",
-      "file": "./src/GameDev.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "service"
     },
     {
       "name": "CustomUserClaimsPrincipal : ClaimsPrincipal",
-      "file": "./src/GameDev.Core/Models/customuserclaimsprincipal : claimsprincipal/CustomUserClaimsPrincipal : ClaimsPrincipal.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/customuserclaimsprincipal : claimsprincipal/CustomUserClaimsPrincipal : ClaimsPrincipal.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "GameDbContext : DbContext",
-      "file": "./src/GameDev.Data/GameDbContext : DbContextContext.cs",
-      "namespace": "GameDev.Data",
+      "file": "./src/Gadema.Data/GameDbContext : DbContextContext.cs",
+      "namespace": "Gadema.Data",
       "type": "class",
       "category": "model"
     },
     {
       "name": "ProjectTaskController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ProjectTaskController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ProjectTaskController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ExportController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ExportController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ExportController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "SearchController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/SearchController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/SearchController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "CommentsController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/CommentsController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/CommentsController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ContentItemsController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ContentItemsController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ContentItemsController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ExternalReferencesController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ExternalReferencesController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ExternalReferencesController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "DialogueBranchesController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/DialogueBranchesController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/DialogueBranchesController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ReviewStatusController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ReviewStatusController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ReviewStatusController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "TagsController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/TagsController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/TagsController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "StorySequencesController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/StorySequencesController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/StorySequencesController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ProjectsController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/ProjectsController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/ProjectsController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "AuthController : ControllerBase",
-      "file": "./src/GameDev.Api/Controllers/AuthController : ControllerBase.cs",
-      "namespace": "GameDev.Api.Controllers",
+      "file": "./src/Gadema.Api/Controllers/AuthController : ControllerBase.cs",
+      "namespace": "Gadema.Api.Controllers",
       "type": "class",
       "category": "controller"
     },
     {
       "name": "ProjectTaskService : IGademaService,  ITaskService",
-      "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ITaskService"
     },
     {
       "name": "ReviewStatusService : IGademaService,  IReviewService",
-      "file": "./src/GameDev.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IReviewService"
     },
     {
       "name": "CommentService : IGademaService,  ICommentService",
-      "file": "./src/GameDev.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ICommentService"
     },
     {
       "name": "PaginationResponse<T> where T : class",
-      "file": "./src/GameDev.Core/Models/pagination<t> where t : class/PaginationResponse<T> where T : class.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/pagination<t> where t : class/PaginationResponse<T> where T : class.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ApiResponseDto<T> where T : class",
-      "file": "./src/GameDev.Core/Dtos/apidto<t> where t : class.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/apidto<t> where t : class.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ValidationException : Exception",
-      "file": "./src/GameDev.Api/Services/ValidationException : Exception.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ValidationException : Exception.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "NotFoundException : Exception",
-      "file": "./src/GameDev.Api/Services/NotFoundException : Exception.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/NotFoundException : Exception.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ExceptionHandlerConfiguration",
-      "file": "./src/GameDev.Api/Services/ExceptionHandlerConfiguration.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ExceptionHandlerConfiguration.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "FeatureFlagsConfiguration",
-      "file": "./src/GameDev.Api/Services/FeatureFlagsConfiguration.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/FeatureFlagsConfiguration.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TagService : IGademaService,  ITagService",
-      "file": "./src/GameDev.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ITagService"
     },
     {
       "name": "SearchService : IGademaService,  ISearchService",
-      "file": "./src/GameDev.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "ISearchService"
     },
     {
       "name": "ExternalReferenceService : IGademaService,  IExternalReferenceService",
-      "file": "./src/GameDev.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IExternalReferenceService"
     },
     {
       "name": "DialogueService : IGademaService,  IDialogueService",
-      "file": "./src/GameDev.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IDialogueService"
     },
     {
       "name": "ContentItemService : IGademaService,  IContentService",
-      "file": "./src/GameDev.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IContentService"
     },
     {
       "name": "StoryOutlineService : IGademaService,  IStoryOutlineService",
-      "file": "./src/GameDev.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IStoryOutlineService"
     },
     {
       "name": "AuthResponse",
-      "file": "./src/GameDev.Core/Models/auth/AuthResponse.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/auth/AuthResponse.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "service"
     },
     {
       "name": "UserResponse",
-      "file": "./src/GameDev.Core/Models/user/UserResponse.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/user/UserResponse.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectService : IGademaService,  IProjectService",
-      "file": "./src/GameDev.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IProjectService"
     },
     {
       "name": "ApiAuthService : IGademaService,  IApiAuthService",
-      "file": "./src/GameDev.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IApiAuthService"
     },
     {
       "name": "ExportService : IGademaService,  IExportService",
-      "file": "./src/GameDev.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service",
       "interface": "IExportService"
     },
     {
       "name": "CreateProjectDtoValidationTests",
-      "file": "./src/GameDev.Core/Dtos/projectdtovalidationtests.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projectdtovalidationtests.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateContentItemDtoValidationTests",
-      "file": "./src/GameDev.Core/Dtos/contentitemdtovalidationtests.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/contentitemdtovalidationtests.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateTaskDtoValidationTests",
-      "file": "./src/GameDev.Core/Dtos/taskdtovalidationtests.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/taskdtovalidationtests.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "TaskDifficultyEnumTests",
-      "file": "./src/GameDev.Tests/Services/TaskDifficultyEnumTestsTests.cs",
-      "namespace": "GameDev.Tests.Services",
+      "file": "./src/Gadema.Tests/Services/TaskDifficultyEnumTestsTests.cs",
+      "namespace": "Gadema.Tests.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentTypeEnumTests",
-      "file": "./src/GameDev.Tests/Services/ContentTypeEnumTestsTests.cs",
-      "namespace": "GameDev.Tests.Services",
+      "file": "./src/Gadema.Tests/Services/ContentTypeEnumTestsTests.cs",
+      "namespace": "Gadema.Tests.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ApiIntegrationTests",
-      "file": "./src/GameDev.Tests/apiintegrationtestsTests.cs",
-      "namespace": "GameDev.Tests.Services",
+      "file": "./src/Gadema.Tests/apiintegrationtestsTests.cs",
+      "namespace": "Gadema.Tests.Services",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentItemServiceTests",
-      "file": "./src/GameDev.Api/Services/Content/ContentItemServiceTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Content/ContentItemServiceTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "ApiAuthServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/ApiAuthServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ApiAuthServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "ProjectServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/Projects/ProjectServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Projects/ProjectServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "ContentItemServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/Content/ContentItemServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Content/ContentItemServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "TaskServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/Tasks/TaskServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/Tasks/TaskServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "ExportServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/ExportServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ExportServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "ReviewStatusServiceIntegrationTests",
-      "file": "./src/GameDev.Api/Services/ReviewStatusServiceIntegrationTestsService.cs",
-      "namespace": "GameDev.Api.Services",
+      "file": "./src/Gadema.Api/Services/ReviewStatusServiceIntegrationTestsService.cs",
+      "namespace": "Gadema.Api.Services",
       "type": "class",
       "category": "service"
     },
     {
       "name": "TokenUsageLog",
-      "file": "./src/GameDev.Core/Models/TokenUsageLog.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/TokenUsageLog.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ActivityLog",
-      "file": "./src/GameDev.Core/Models/ActivityLog.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/ActivityLog.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ReviewStatus",
-      "file": "./src/GameDev.Core/Models/ReviewStatus.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/ReviewStatus.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectTask",
-      "file": "./src/GameDev.Core/Models/projecttask/ProjectTask.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/projecttask/ProjectTask.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectTaskComments",
-      "file": "./src/GameDev.Core/Models/projecttaskcomments/ProjectTaskComments.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/projecttaskcomments/ProjectTaskComments.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Tag",
-      "file": "./src/GameDev.Core/Models/tag/Tag.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/tag/Tag.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "MediaTags",
-      "file": "./src/GameDev.Core/Models/mediatags/MediaTags.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/mediatags/MediaTags.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentTags",
-      "file": "./src/GameDev.Core/Models/contenttags/ContentTags.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/contenttags/ContentTags.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "StoryOutline",
-      "file": "./src/GameDev.Core/Models/storyoutline/StoryOutline.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/storyoutline/StoryOutline.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "DialogueNode",
-      "file": "./src/GameDev.Core/Models/dialoguenode/DialogueNode.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/dialoguenode/DialogueNode.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "DialogueBranch",
-      "file": "./src/GameDev.Core/Models/dialoguebranch/DialogueBranch.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/dialoguebranch/DialogueBranch.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentItem",
-      "file": "./src/GameDev.Core/Models/contentitem/ContentItem.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/contentitem/ContentItem.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ExternalReference",
-      "file": "./src/GameDev.Core/Models/externalreference/ExternalReference.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/externalreference/ExternalReference.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "MediaAttachment",
-      "file": "./src/GameDev.Core/Models/mediaattachment/MediaAttachment.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/mediaattachment/MediaAttachment.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "StoryBeat",
-      "file": "./src/GameDev.Core/Models/storybeat/StoryBeat.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/storybeat/StoryBeat.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "LoreEntry",
-      "file": "./src/GameDev.Core/Models/loreentry/LoreEntry.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/loreentry/LoreEntry.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "StorySequence",
-      "file": "./src/GameDev.Core/Models/storysequence/StorySequence.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/storysequence/StorySequence.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "CharacterDetails",
-      "file": "./src/GameDev.Core/Models/characterdetails/CharacterDetails.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/characterdetails/CharacterDetails.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "CharacterBackground",
-      "file": "./src/GameDev.Core/Models/characterbackground/CharacterBackground.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/characterbackground/CharacterBackground.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectToken",
-      "file": "./src/GameDev.Core/Models/projecttoken/ProjectToken.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/projecttoken/ProjectToken.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Project",
-      "file": "./src/GameDev.Core/Models/project/Project.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/project/Project.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "User",
-      "file": "./src/GameDev.Core/Models/user/User.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/user/User.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TeamMember",
-      "file": "./src/GameDev.Core/Models/teammember/TeamMember.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/teammember/TeamMember.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Team",
-      "file": "./src/GameDev.Core/Models/team/Team.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/team/Team.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "CharacterAttributes",
-      "file": "./src/GameDev.Core/Models/characterattributes/CharacterAttributes.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/characterattributes/CharacterAttributes.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ClassTemplateAttribute",
-      "file": "./src/GameDev.Core/Models/classtemplateattribute/ClassTemplateAttribute.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/classtemplateattribute/ClassTemplateAttribute.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ClassTemplate",
-      "file": "./src/GameDev.Core/Models/classtemplate/ClassTemplate.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/classtemplate/ClassTemplate.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "AttributeSet",
-      "file": "./src/GameDev.Core/Models/attributeset/AttributeSet.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/attributeset/AttributeSet.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "AttributeDefinition",
-      "file": "./src/GameDev.Core/Models/attribute/AttributeDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/attribute/AttributeDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "StatusEffectDefinition",
-      "file": "./src/GameDev.Core/Models/statuseffect/StatusEffectDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/statuseffect/StatusEffectDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "AbilitySet",
-      "file": "./src/GameDev.Core/Models/abilityset/AbilitySet.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/abilityset/AbilitySet.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "AbilityDefinition",
-      "file": "./src/GameDev.Core/Models/ability/AbilityDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/ability/AbilityDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "Comment",
-      "file": "./src/GameDev.Core/Models/comment/Comment.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/comment/Comment.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "CharacterIdentity",
-      "file": "./src/GameDev.Core/Models/characteridentity/CharacterIdentity.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/characteridentity/CharacterIdentity.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "IdentityValue",
-      "file": "./src/GameDev.Core/Models/identityvalue/IdentityValue.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/identityvalue/IdentityValue.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectIdentityDefinition",
-      "file": "./src/GameDev.Core/Models/projectidentity/ProjectIdentityDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/projectidentity/ProjectIdentityDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "EndingDefinition",
-      "file": "./src/GameDev.Core/Models/ending/EndingDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/ending/EndingDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "InventoryItem",
-      "file": "./src/GameDev.Core/Models/inventoryitem/InventoryItem.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/inventoryitem/InventoryItem.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TemplateAttributeSetDefinition",
-      "file": "./src/GameDev.Core/Models/templateattributeset/TemplateAttributeSetDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/templateattributeset/TemplateAttributeSetDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TemplateIdentityDefinition",
-      "file": "./src/GameDev.Core/Models/templateidentity/TemplateIdentityDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/templateidentity/TemplateIdentityDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TemplateClassTemplateDefinition",
-      "file": "./src/GameDev.Core/Models/templateclasstemplate/TemplateClassTemplateDefinition.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/templateclasstemplate/TemplateClassTemplateDefinition.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "TemplateNarrativeStructure",
-      "file": "./src/GameDev.Core/Models/templatenarrativestructure/TemplateNarrativeStructure.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/templatenarrativestructure/TemplateNarrativeStructure.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectTemplate",
-      "file": "./src/GameDev.Core/Models/projecttemplate/ProjectTemplate.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/projecttemplate/ProjectTemplate.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentVersionLog",
-      "file": "./src/GameDev.Core/Models/contentversionlog/ContentVersionLog.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/contentversionlog/ContentVersionLog.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ContentSnapshot",
-      "file": "./src/GameDev.Core/Models/contentsnapshot/ContentSnapshot.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/contentsnapshot/ContentSnapshot.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "EngineExportConfig",
-      "file": "./src/GameDev.Core/Models/engineexportconfig/EngineExportConfig.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/engineexportconfig/EngineExportConfig.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "AssetLink",
-      "file": "./src/GameDev.Core/Models/assetlink/AssetLink.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/assetlink/AssetLink.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "EngineFieldMapping",
-      "file": "./src/GameDev.Core/Models/enginefieldmapping/EngineFieldMapping.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/enginefieldmapping/EngineFieldMapping.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "UploadMediaDto",
-      "file": "./src/GameDev.Core/Dtos/uploadmediadto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/uploadmediadto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ContentItemResponseDto",
-      "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "MediaAttachmentResponseDto",
-      "file": "./src/GameDev.Core/Dtos/mediaattachmentdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/mediaattachmentdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "UpdateContentItemDto",
-      "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "AutosaveDto",
-      "file": "./src/GameDev.Core/Dtos/autosavedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/autosavedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateContentItemDto",
-      "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "RollbackDto",
-      "file": "./src/GameDev.Core/Dtos/rollbackdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/rollbackdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ContentItemAutosaveResponseDto",
-      "file": "./src/GameDev.Core/Dtos/contentitemautosavedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/contentitemautosavedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "VersionInfo",
-      "file": "./src/GameDev.Core/Models/versioninfo/VersionInfo.cs",
-      "namespace": "GameDev.Core.Models",
+      "file": "./src/Gadema.Core/Models/versioninfo/VersionInfo.cs",
+      "namespace": "Gadema.Core.Models",
       "type": "class",
       "category": "entity"
     },
     {
       "name": "ProjectTaskListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/projecttasklistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttasklistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTaskResponseDto",
-      "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTaskCreateDto",
-      "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTaskUpdateDto",
-      "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ExportCsvDto",
-      "file": "./src/GameDev.Core/Dtos/exportcsvdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/exportcsvdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ExportJsonDto",
-      "file": "./src/GameDev.Core/Dtos/exportjsondto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/exportjsondto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ExportPdfDto",
-      "file": "./src/GameDev.Core/Dtos/exportpdfdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/exportpdfdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ExportApiResponseDto<T>",
-      "file": "./src/GameDev.Core/Dtos/exportapidto<t>.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/exportapidto<t>.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ExportXmlGddDto",
-      "file": "./src/GameDev.Core/Dtos/exportxmlgdddto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/exportxmlgdddto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateExternalReferenceDto",
-      "file": "./src/GameDev.Core/Dtos/externalreferencedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/externalreferencedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SearchContentItemsDto",
-      "file": "./src/GameDev.Core/Dtos/searchcontentitemsdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/searchcontentitemsdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "service"
     },
     {
       "name": "CreateSequenceDto",
-      "file": "./src/GameDev.Core/Dtos/sequencedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/sequencedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SequenceListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/sequencelistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/sequencelistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SequenceResponseDto",
-      "file": "./src/GameDev.Core/Dtos/sequencedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/sequencedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ApproveContentDto",
-      "file": "./src/GameDev.Core/Dtos/approvecontentdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/approvecontentdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ReviewStatusListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/reviewstatuslistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/reviewstatuslistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ReviewStatusResponseDto",
-      "file": "./src/GameDev.Core/Dtos/reviewstatusdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/reviewstatusdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "TokenListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/tokenlistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/tokenlistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateProjectDto",
-      "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "UpdateProjectDto",
-      "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTokenDto",
-      "file": "./src/GameDev.Core/Dtos/projecttokendto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttokendto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectResponseDto",
-      "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTokenResponseDto",
-      "file": "./src/GameDev.Core/Dtos/projecttokendto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttokendto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ProjectTokenListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/projecttokenlistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/projecttokenlistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "RecoveryCodesDto",
-      "file": "./src/GameDev.Core/Dtos/recoverycodesdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/recoverycodesdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "GoogleCallbackDto",
-      "file": "./src/GameDev.Core/Dtos/googlecallbackdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/googlecallbackdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SignInWith2FADto",
-      "file": "./src/GameDev.Core/Dtos/signinwith2fadto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/signinwith2fadto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "Disable2FADto",
-      "file": "./src/GameDev.Core/Dtos/disable2fadto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/disable2fadto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "RecoveryCodesResponseDto",
-      "file": "./src/GameDev.Core/Dtos/recoverycodesdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/recoverycodesdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SignInDto",
-      "file": "./src/GameDev.Core/Dtos/signindto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/signindto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CommentListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/commentlistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/commentlistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CommentResponseDto",
-      "file": "./src/GameDev.Core/Dtos/commentdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/commentdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateCommentDto",
-      "file": "./src/GameDev.Core/Dtos/commentdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/commentdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ReferenceListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/referencelistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/referencelistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ReferenceResponseDto",
-      "file": "./src/GameDev.Core/Dtos/referencedto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/referencedto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "BranchListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/branchlistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/branchlistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "CreateBranchDto",
-      "file": "./src/GameDev.Core/Dtos/branchdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/branchdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "BranchResponseDto",
-      "file": "./src/GameDev.Core/Dtos/branchdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/branchdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "AddTagsDto",
-      "file": "./src/GameDev.Core/Dtos/addtagsdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/addtagsdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "TagListResponseDto",
-      "file": "./src/GameDev.Core/Dtos/taglistdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/taglistdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "TagResponseDto",
-      "file": "./src/GameDev.Core/Dtos/tagdto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/tagdto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SimpleResponseDto",
-      "file": "./src/GameDev.Core/Dtos/simpledto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/simpledto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "SuccessResponseDto : SimpleResponseDto",
-      "file": "./src/GameDev.Core/Dtos/successdto : simpledto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/successdto : simpledto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     },
     {
       "name": "ErrorResponseDto : SimpleResponseDto",
-      "file": "./src/GameDev.Core/Dtos/errordto : simpledto.cs",
-      "namespace": "GameDev.Core.Dtos",
+      "file": "./src/Gadema.Core/Dtos/errordto : simpledto.cs",
+      "namespace": "Gadema.Core.Dtos",
       "type": "class",
       "category": "dto"
     }
@@ -1229,7 +1229,7 @@
     "summary": {
       "enums": {
         "count": 16,
-        "namespace": "GameDev.Core.Enums"
+        "namespace": "Gadema.Core.Enums"
       },
       "classes_by_category": {}
     },
@@ -1237,85 +1237,85 @@
       "controllers": [
         {
           "name": "ProjectTaskController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ProjectTaskController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ProjectTaskController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "ExportController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ExportController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ExportController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "SearchController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/SearchController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/SearchController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "CommentsController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/CommentsController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/CommentsController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "ContentItemsController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ContentItemsController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ContentItemsController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "ExternalReferencesController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ExternalReferencesController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ExternalReferencesController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "DialogueBranchesController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/DialogueBranchesController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/DialogueBranchesController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "ReviewStatusController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ReviewStatusController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ReviewStatusController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "TagsController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/TagsController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/TagsController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "StorySequencesController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/StorySequencesController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/StorySequencesController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "ProjectsController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/ProjectsController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/ProjectsController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         },
         {
           "name": "AuthController : ControllerBase",
-          "file": "./src/GameDev.Api/Controllers/AuthController : ControllerBase.cs",
-          "namespace": "GameDev.Api.Controllers",
+          "file": "./src/Gadema.Api/Controllers/AuthController : ControllerBase.cs",
+          "namespace": "Gadema.Api.Controllers",
           "type": "class",
           "category": "controller"
         }
@@ -1323,167 +1323,167 @@
       "services": [
         {
           "name": "CustomAuthenticationStateProvider : AuthenticationStateProvider",
-          "file": "./src/GameDev.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ProjectTaskService : IGademaService,  ITaskService",
-          "file": "./src/GameDev.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Projects/ProjectTaskService : IGademaService,  ITaskServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ITaskService"
         },
         {
           "name": "ReviewStatusService : IGademaService,  IReviewService",
-          "file": "./src/GameDev.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ReviewStatusService : IGademaService,  IReviewServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IReviewService"
         },
         {
           "name": "CommentService : IGademaService,  ICommentService",
-          "file": "./src/GameDev.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/CommentService : IGademaService,  ICommentServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ICommentService"
         },
         {
           "name": "TagService : IGademaService,  ITagService",
-          "file": "./src/GameDev.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/TagService : IGademaService,  ITagServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ITagService"
         },
         {
           "name": "SearchService : IGademaService,  ISearchService",
-          "file": "./src/GameDev.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/SearchService : IGademaService,  ISearchServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "ISearchService"
         },
         {
           "name": "ExternalReferenceService : IGademaService,  IExternalReferenceService",
-          "file": "./src/GameDev.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ExternalReferenceService : IGademaService,  IExternalReferenceServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IExternalReferenceService"
         },
         {
           "name": "DialogueService : IGademaService,  IDialogueService",
-          "file": "./src/GameDev.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/DialogueService : IGademaService,  IDialogueServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IDialogueService"
         },
         {
           "name": "ContentItemService : IGademaService,  IContentService",
-          "file": "./src/GameDev.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Content/ContentItemService : IGademaService,  IContentServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IContentService"
         },
         {
           "name": "StoryOutlineService : IGademaService,  IStoryOutlineService",
-          "file": "./src/GameDev.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/StoryOutlineService : IGademaService,  IStoryOutlineServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IStoryOutlineService"
         },
         {
           "name": "AuthResponse",
-          "file": "./src/GameDev.Core/Models/auth/AuthResponse.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/auth/AuthResponse.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ProjectService : IGademaService,  IProjectService",
-          "file": "./src/GameDev.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Projects/ProjectService : IGademaService,  IProjectServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IProjectService"
         },
         {
           "name": "ApiAuthService : IGademaService,  IApiAuthService",
-          "file": "./src/GameDev.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ApiAuthService : IGademaService,  IApiAuthServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IApiAuthService"
         },
         {
           "name": "ExportService : IGademaService,  IExportService",
-          "file": "./src/GameDev.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ExportService : IGademaService,  IExportServiceService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service",
           "interface": "IExportService"
         },
         {
           "name": "ContentItemServiceTests",
-          "file": "./src/GameDev.Api/Services/Content/ContentItemServiceTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Content/ContentItemServiceTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ApiAuthServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/ApiAuthServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ApiAuthServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ProjectServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/Projects/ProjectServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Projects/ProjectServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ContentItemServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/Content/ContentItemServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Content/ContentItemServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "TaskServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/Tasks/TaskServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/Tasks/TaskServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ExportServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/ExportServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ExportServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "ReviewStatusServiceIntegrationTests",
-          "file": "./src/GameDev.Api/Services/ReviewStatusServiceIntegrationTestsService.cs",
-          "namespace": "GameDev.Api.Services",
+          "file": "./src/Gadema.Api/Services/ReviewStatusServiceIntegrationTestsService.cs",
+          "namespace": "Gadema.Api.Services",
           "type": "class",
           "category": "service"
         },
         {
           "name": "SearchContentItemsDto",
-          "file": "./src/GameDev.Core/Dtos/searchcontentitemsdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/searchcontentitemsdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "service"
         }
@@ -1491,421 +1491,421 @@
       "models": [
         {
           "name": "Overview : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/Overview : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/Overview : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Projects : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/Projects : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/Projects : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentItems : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/ContentItems : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/ContentItems : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Tasks : PageComponent",
-          "file": "./src/GameDev.WebApp/Components/Tasks : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Components/Tasks : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StoryOutlining : PageComponent",
-          "file": "./src/GameDev.WebApp/Components/StoryOutlining : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Components/StoryOutlining : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "CustomAuthenticationStateProvider : AuthenticationStateProvider",
-          "file": "./src/GameDev.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/customauthenticationstateprovider : authenticationstateprovider/CustomAuthenticationStateProvider : AuthenticationStateProvider.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "service"
         },
         {
           "name": "CustomUserClaimsPrincipal : ClaimsPrincipal",
-          "file": "./src/GameDev.Core/Models/customuserclaimsprincipal : claimsprincipal/CustomUserClaimsPrincipal : ClaimsPrincipal.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/customuserclaimsprincipal : claimsprincipal/CustomUserClaimsPrincipal : ClaimsPrincipal.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "GameDbContext : DbContext",
-          "file": "./src/GameDev.Data/GameDbContext : DbContextContext.cs",
-          "namespace": "GameDev.Data",
+          "file": "./src/Gadema.Data/GameDbContext : DbContextContext.cs",
+          "namespace": "Gadema.Data",
           "type": "class",
           "category": "model"
         },
         {
           "name": "PaginationResponse<T> where T : class",
-          "file": "./src/GameDev.Core/Models/pagination<t> where t : class/PaginationResponse<T> where T : class.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/pagination<t> where t : class/PaginationResponse<T> where T : class.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AuthResponse",
-          "file": "./src/GameDev.Core/Models/auth/AuthResponse.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/auth/AuthResponse.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "service"
         },
         {
           "name": "UserResponse",
-          "file": "./src/GameDev.Core/Models/user/UserResponse.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/user/UserResponse.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TokenUsageLog",
-          "file": "./src/GameDev.Core/Models/TokenUsageLog.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/TokenUsageLog.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ActivityLog",
-          "file": "./src/GameDev.Core/Models/ActivityLog.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/ActivityLog.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ReviewStatus",
-          "file": "./src/GameDev.Core/Models/ReviewStatus.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/ReviewStatus.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ProjectTask",
-          "file": "./src/GameDev.Core/Models/projecttask/ProjectTask.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/projecttask/ProjectTask.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ProjectTaskComments",
-          "file": "./src/GameDev.Core/Models/projecttaskcomments/ProjectTaskComments.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/projecttaskcomments/ProjectTaskComments.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Tag",
-          "file": "./src/GameDev.Core/Models/tag/Tag.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/tag/Tag.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "MediaTags",
-          "file": "./src/GameDev.Core/Models/mediatags/MediaTags.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/mediatags/MediaTags.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentTags",
-          "file": "./src/GameDev.Core/Models/contenttags/ContentTags.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/contenttags/ContentTags.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StoryOutline",
-          "file": "./src/GameDev.Core/Models/storyoutline/StoryOutline.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/storyoutline/StoryOutline.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "DialogueNode",
-          "file": "./src/GameDev.Core/Models/dialoguenode/DialogueNode.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/dialoguenode/DialogueNode.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "DialogueBranch",
-          "file": "./src/GameDev.Core/Models/dialoguebranch/DialogueBranch.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/dialoguebranch/DialogueBranch.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentItem",
-          "file": "./src/GameDev.Core/Models/contentitem/ContentItem.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/contentitem/ContentItem.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ExternalReference",
-          "file": "./src/GameDev.Core/Models/externalreference/ExternalReference.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/externalreference/ExternalReference.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "MediaAttachment",
-          "file": "./src/GameDev.Core/Models/mediaattachment/MediaAttachment.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/mediaattachment/MediaAttachment.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StoryBeat",
-          "file": "./src/GameDev.Core/Models/storybeat/StoryBeat.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/storybeat/StoryBeat.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "LoreEntry",
-          "file": "./src/GameDev.Core/Models/loreentry/LoreEntry.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/loreentry/LoreEntry.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StorySequence",
-          "file": "./src/GameDev.Core/Models/storysequence/StorySequence.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/storysequence/StorySequence.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "CharacterDetails",
-          "file": "./src/GameDev.Core/Models/characterdetails/CharacterDetails.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/characterdetails/CharacterDetails.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "CharacterBackground",
-          "file": "./src/GameDev.Core/Models/characterbackground/CharacterBackground.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/characterbackground/CharacterBackground.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ProjectToken",
-          "file": "./src/GameDev.Core/Models/projecttoken/ProjectToken.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/projecttoken/ProjectToken.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Project",
-          "file": "./src/GameDev.Core/Models/project/Project.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/project/Project.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "User",
-          "file": "./src/GameDev.Core/Models/user/User.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/user/User.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TeamMember",
-          "file": "./src/GameDev.Core/Models/teammember/TeamMember.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/teammember/TeamMember.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Team",
-          "file": "./src/GameDev.Core/Models/team/Team.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/team/Team.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "CharacterAttributes",
-          "file": "./src/GameDev.Core/Models/characterattributes/CharacterAttributes.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/characterattributes/CharacterAttributes.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ClassTemplateAttribute",
-          "file": "./src/GameDev.Core/Models/classtemplateattribute/ClassTemplateAttribute.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/classtemplateattribute/ClassTemplateAttribute.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ClassTemplate",
-          "file": "./src/GameDev.Core/Models/classtemplate/ClassTemplate.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/classtemplate/ClassTemplate.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AttributeSet",
-          "file": "./src/GameDev.Core/Models/attributeset/AttributeSet.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/attributeset/AttributeSet.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AttributeDefinition",
-          "file": "./src/GameDev.Core/Models/attribute/AttributeDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/attribute/AttributeDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StatusEffectDefinition",
-          "file": "./src/GameDev.Core/Models/statuseffect/StatusEffectDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/statuseffect/StatusEffectDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AbilitySet",
-          "file": "./src/GameDev.Core/Models/abilityset/AbilitySet.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/abilityset/AbilitySet.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AbilityDefinition",
-          "file": "./src/GameDev.Core/Models/ability/AbilityDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/ability/AbilityDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Comment",
-          "file": "./src/GameDev.Core/Models/comment/Comment.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/comment/Comment.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "CharacterIdentity",
-          "file": "./src/GameDev.Core/Models/characteridentity/CharacterIdentity.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/characteridentity/CharacterIdentity.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "IdentityValue",
-          "file": "./src/GameDev.Core/Models/identityvalue/IdentityValue.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/identityvalue/IdentityValue.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ProjectIdentityDefinition",
-          "file": "./src/GameDev.Core/Models/projectidentity/ProjectIdentityDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/projectidentity/ProjectIdentityDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "EndingDefinition",
-          "file": "./src/GameDev.Core/Models/ending/EndingDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/ending/EndingDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "InventoryItem",
-          "file": "./src/GameDev.Core/Models/inventoryitem/InventoryItem.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/inventoryitem/InventoryItem.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TemplateAttributeSetDefinition",
-          "file": "./src/GameDev.Core/Models/templateattributeset/TemplateAttributeSetDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/templateattributeset/TemplateAttributeSetDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TemplateIdentityDefinition",
-          "file": "./src/GameDev.Core/Models/templateidentity/TemplateIdentityDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/templateidentity/TemplateIdentityDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TemplateClassTemplateDefinition",
-          "file": "./src/GameDev.Core/Models/templateclasstemplate/TemplateClassTemplateDefinition.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/templateclasstemplate/TemplateClassTemplateDefinition.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "TemplateNarrativeStructure",
-          "file": "./src/GameDev.Core/Models/templatenarrativestructure/TemplateNarrativeStructure.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/templatenarrativestructure/TemplateNarrativeStructure.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ProjectTemplate",
-          "file": "./src/GameDev.Core/Models/projecttemplate/ProjectTemplate.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/projecttemplate/ProjectTemplate.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentVersionLog",
-          "file": "./src/GameDev.Core/Models/contentversionlog/ContentVersionLog.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/contentversionlog/ContentVersionLog.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentSnapshot",
-          "file": "./src/GameDev.Core/Models/contentsnapshot/ContentSnapshot.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/contentsnapshot/ContentSnapshot.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "EngineExportConfig",
-          "file": "./src/GameDev.Core/Models/engineexportconfig/EngineExportConfig.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/engineexportconfig/EngineExportConfig.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "AssetLink",
-          "file": "./src/GameDev.Core/Models/assetlink/AssetLink.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/assetlink/AssetLink.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "EngineFieldMapping",
-          "file": "./src/GameDev.Core/Models/enginefieldmapping/EngineFieldMapping.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/enginefieldmapping/EngineFieldMapping.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "VersionInfo",
-          "file": "./src/GameDev.Core/Models/versioninfo/VersionInfo.cs",
-          "namespace": "GameDev.Core.Models",
+          "file": "./src/Gadema.Core/Models/versioninfo/VersionInfo.cs",
+          "namespace": "Gadema.Core.Models",
           "type": "class",
           "category": "entity"
         }
@@ -1913,393 +1913,393 @@
       "dtos": [
         {
           "name": "ApiResponseDto<T> where T : class",
-          "file": "./src/GameDev.Core/Dtos/apidto<t> where t : class.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/apidto<t> where t : class.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateProjectDtoValidationTests",
-          "file": "./src/GameDev.Core/Dtos/projectdtovalidationtests.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projectdtovalidationtests.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateContentItemDtoValidationTests",
-          "file": "./src/GameDev.Core/Dtos/contentitemdtovalidationtests.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/contentitemdtovalidationtests.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateTaskDtoValidationTests",
-          "file": "./src/GameDev.Core/Dtos/taskdtovalidationtests.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/taskdtovalidationtests.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "UploadMediaDto",
-          "file": "./src/GameDev.Core/Dtos/uploadmediadto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/uploadmediadto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ContentItemResponseDto",
-          "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "MediaAttachmentResponseDto",
-          "file": "./src/GameDev.Core/Dtos/mediaattachmentdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/mediaattachmentdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "UpdateContentItemDto",
-          "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "AutosaveDto",
-          "file": "./src/GameDev.Core/Dtos/autosavedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/autosavedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateContentItemDto",
-          "file": "./src/GameDev.Core/Dtos/contentitemdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/contentitemdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "RollbackDto",
-          "file": "./src/GameDev.Core/Dtos/rollbackdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/rollbackdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ContentItemAutosaveResponseDto",
-          "file": "./src/GameDev.Core/Dtos/contentitemautosavedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/contentitemautosavedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTaskListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/projecttasklistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttasklistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTaskResponseDto",
-          "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTaskCreateDto",
-          "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTaskUpdateDto",
-          "file": "./src/GameDev.Core/Dtos/projecttaskdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttaskdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ExportCsvDto",
-          "file": "./src/GameDev.Core/Dtos/exportcsvdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/exportcsvdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ExportJsonDto",
-          "file": "./src/GameDev.Core/Dtos/exportjsondto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/exportjsondto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ExportPdfDto",
-          "file": "./src/GameDev.Core/Dtos/exportpdfdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/exportpdfdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ExportApiResponseDto<T>",
-          "file": "./src/GameDev.Core/Dtos/exportapidto<t>.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/exportapidto<t>.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ExportXmlGddDto",
-          "file": "./src/GameDev.Core/Dtos/exportxmlgdddto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/exportxmlgdddto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateExternalReferenceDto",
-          "file": "./src/GameDev.Core/Dtos/externalreferencedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/externalreferencedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SearchContentItemsDto",
-          "file": "./src/GameDev.Core/Dtos/searchcontentitemsdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/searchcontentitemsdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "service"
         },
         {
           "name": "CreateSequenceDto",
-          "file": "./src/GameDev.Core/Dtos/sequencedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/sequencedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SequenceListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/sequencelistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/sequencelistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SequenceResponseDto",
-          "file": "./src/GameDev.Core/Dtos/sequencedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/sequencedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ApproveContentDto",
-          "file": "./src/GameDev.Core/Dtos/approvecontentdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/approvecontentdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ReviewStatusListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/reviewstatuslistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/reviewstatuslistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ReviewStatusResponseDto",
-          "file": "./src/GameDev.Core/Dtos/reviewstatusdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/reviewstatusdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "TokenListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/tokenlistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/tokenlistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateProjectDto",
-          "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "UpdateProjectDto",
-          "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTokenDto",
-          "file": "./src/GameDev.Core/Dtos/projecttokendto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttokendto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectResponseDto",
-          "file": "./src/GameDev.Core/Dtos/projectdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projectdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTokenResponseDto",
-          "file": "./src/GameDev.Core/Dtos/projecttokendto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttokendto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ProjectTokenListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/projecttokenlistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/projecttokenlistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "RecoveryCodesDto",
-          "file": "./src/GameDev.Core/Dtos/recoverycodesdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/recoverycodesdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "GoogleCallbackDto",
-          "file": "./src/GameDev.Core/Dtos/googlecallbackdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/googlecallbackdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SignInWith2FADto",
-          "file": "./src/GameDev.Core/Dtos/signinwith2fadto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/signinwith2fadto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "Disable2FADto",
-          "file": "./src/GameDev.Core/Dtos/disable2fadto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/disable2fadto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "RecoveryCodesResponseDto",
-          "file": "./src/GameDev.Core/Dtos/recoverycodesdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/recoverycodesdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SignInDto",
-          "file": "./src/GameDev.Core/Dtos/signindto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/signindto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CommentListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/commentlistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/commentlistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CommentResponseDto",
-          "file": "./src/GameDev.Core/Dtos/commentdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/commentdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateCommentDto",
-          "file": "./src/GameDev.Core/Dtos/commentdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/commentdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ReferenceListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/referencelistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/referencelistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ReferenceResponseDto",
-          "file": "./src/GameDev.Core/Dtos/referencedto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/referencedto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "BranchListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/branchlistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/branchlistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "CreateBranchDto",
-          "file": "./src/GameDev.Core/Dtos/branchdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/branchdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "BranchResponseDto",
-          "file": "./src/GameDev.Core/Dtos/branchdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/branchdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "AddTagsDto",
-          "file": "./src/GameDev.Core/Dtos/addtagsdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/addtagsdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "TagListResponseDto",
-          "file": "./src/GameDev.Core/Dtos/taglistdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/taglistdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "TagResponseDto",
-          "file": "./src/GameDev.Core/Dtos/tagdto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/tagdto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SimpleResponseDto",
-          "file": "./src/GameDev.Core/Dtos/simpledto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/simpledto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "SuccessResponseDto : SimpleResponseDto",
-          "file": "./src/GameDev.Core/Dtos/successdto : simpledto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/successdto : simpledto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         },
         {
           "name": "ErrorResponseDto : SimpleResponseDto",
-          "file": "./src/GameDev.Core/Dtos/errordto : simpledto.cs",
-          "namespace": "GameDev.Core.Dtos",
+          "file": "./src/Gadema.Core/Dtos/errordto : simpledto.cs",
+          "namespace": "Gadema.Core.Dtos",
           "type": "class",
           "category": "dto"
         }
@@ -2307,36 +2307,36 @@
       "page_components": [
         {
           "name": "Overview : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/Overview : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/Overview : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Projects : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/Projects : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/Projects : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "ContentItems : PageComponent",
-          "file": "./src/GameDev.WebApp/Pages/ContentItems : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Pages/ContentItems : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "Tasks : PageComponent",
-          "file": "./src/GameDev.WebApp/Components/Tasks : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Components/Tasks : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         },
         {
           "name": "StoryOutlining : PageComponent",
-          "file": "./src/GameDev.WebApp/Components/StoryOutlining : PageComponent.cs",
-          "namespace": "GameDev.WebApp.Pages",
+          "file": "./src/Gadema.WebApp/Components/StoryOutlining : PageComponent.cs",
+          "namespace": "Gadema.WebApp.Pages",
           "type": "class",
           "category": "entity"
         }

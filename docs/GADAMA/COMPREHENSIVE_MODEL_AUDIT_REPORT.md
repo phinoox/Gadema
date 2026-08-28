@@ -3,7 +3,7 @@
 ## Executive Summary
 
 **Audit Date:** 2024-16-August  
-**Total Entities Scanned:** 57 models across `src/GameDev.Core/Models`  
+**Total Entities Scanned:** 57 models across `src/Gadema.Core/Models`  
 **Design Principle Compliance:** ~42% compliant, ~58% non-compliant  
 **Critical Issues Identified:** 12+ entities missing proper ContentItem traceability
 
@@ -116,7 +116,7 @@ Use explicit queries with ContentTypeEnum checks instead of eager loading.
 
 #### Step 1.2: Add ContentItemId to StoryOutline
 
-In src/GameDev.Core/Models/Narrative/StoryOutline.cs (add after existing properties):
+In src/Gadema.Core/Models/Narrative/StoryOutline.cs (add after existing properties):
 
 ```csharp
 /// <summary>
@@ -133,7 +133,7 @@ public virtual ContentItem ContentItem { get; set; }
 
 #### Step 1.3: Add ContentItemId to StorySequence
 
-In src/GameDev.Core/Models/Narrative/StorySequence.cs:
+In src/Gadema.Core/Models/Narrative/StorySequence.cs:
 
 ```csharp
 /// <summary>
@@ -150,7 +150,7 @@ public virtual ContentItem ContentItem { get; set; }
 
 #### Step 1.4: Add ContentItemId to ProjectTask
 
-In src/GameDev.Core/Models/Tasks/ProjectTask.cs:
+In src/Gadema.Core/Models/Tasks/ProjectTask.cs:
 
 ```csharp
 /// <summary>

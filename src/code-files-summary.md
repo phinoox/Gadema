@@ -2,7 +2,7 @@
 
 ## Complete List of C# Files (93 source files)
 
-### 📁 GameDev.Api (21 files)
+### 📁 Gadema.Api (21 files)
 **Controllers:**
 - Authentication/AuthController.cs
 - Content/CommentsController.cs
@@ -43,7 +43,7 @@
 
 ---
 
-### 📁 GameDev.Core (74 files)
+### 📁 Gadema.Core (74 files)
 **Models (36 files):**
 - Abilities/AbilityDefinition.cs
 - Abilities/AbilitySet.cs
@@ -212,12 +212,12 @@
 
 ---
 
-### 📁 GameDev.Data (1 file)
+### 📁 Gadema.Data (1 file)
 - GameDbContext.cs
 
 ---
 
-### 📁 GameDev.Tests (5 files)
+### 📁 Gadema.Tests (5 files)
 - Integration/ApiIntegrationTests.cs
 - Models/ModelValidationTests.cs
 - Services/ContentItemServiceTests.cs
@@ -226,7 +226,7 @@
 
 ---
 
-### 📁 GameDev.WebApp (6 files)
+### 📁 Gadema.WebApp (6 files)
 - Components/AuthenticationStateProvider.cs
 - Components/PageComponents.cs
 - Layouts/MainLayout.cs

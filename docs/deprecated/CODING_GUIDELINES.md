@@ -17,14 +17,14 @@ This document defines the coding standards, naming conventions, and architectura
 
 ```bash
 src/
-├── GameDev.Core/Models/         # Entity classes (ContentItem.cs, User.cs)
-├── GameDev.Core/Dtos/           # API DTOs (CreateProjectDto.cs)
-├── GameDev.Core/Enums/          # Type enumerations
-├── GameDev.Data/               # DbContext + migrations config
-├── GameDev.Api/Controllers/    # REST endpoints (ProjectsController.cs)
-├── GameDev.Api/Services/       # Business logic (ContentItemService.cs)
-├── GameDev.WebApp/Pages/       # Razor pages with View Mode separation
-└── GameDev.Tests/              # Unit + Integration tests
+├── Gadema.Core/Models/         # Entity classes (ContentItem.cs, User.cs)
+├── Gadema.Core/Dtos/           # API DTOs (CreateProjectDto.cs)
+├── Gadema.Core/Enums/          # Type enumerations
+├── Gadema.Data/               # DbContext + migrations config
+├── Gadema.Api/Controllers/    # REST endpoints (ProjectsController.cs)
+├── Gadema.Api/Services/       # Business logic (ContentItemService.cs)
+├── Gadema.WebApp/Pages/       # Razor pages with View Mode separation
+└── Gadema.Tests/              # Unit + Integration tests
 ```
 
 ---
@@ -412,12 +412,12 @@ var items = await _context.ContentItems.Skip(0).Take(pageSize).ToListAsync();  /
 
 | Convention | Rule | Example |
 | :--- | :--- | :--- |
-| **Folder Structure** | Separate `Dtos` folder with subfolders | `GameDev.Core/Dtos/Projects/CreateProjectDto.cs` |
-| **Namespace Mappings** | Follow folder path patterns | `src/GameDev.Core/Dtos → GameDev.Core.Dtos.Projects` |
+| **Folder Structure** | Separate `Dtos` folder with subfolders | `Gadema.Core/Dtos/Projects/CreateProjectDto.cs` |
+| **Namespace Mappings** | Follow folder path patterns | `src/Gadema.Core/Dtos → Gadema.Core.Dtos.Projects` |
 
 ```bash
 # ✅ CORRECT - Folder structure
-GameDev.Core/Dtos/
+Gadema.Core/Dtos/
 ├── Projects/
 │   ├── CreateProjectDto.cs
 │   └── UpdateProjectDto.cs

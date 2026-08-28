@@ -17,13 +17,13 @@ This document defines the practical user workflows, use cases, and operational p
 
 ```bash
 src/
-├── GameDev.Api/Controllers/    # Endpoint implementations (clustered by domain)
+├── Gadema.Api/Controllers/    # Endpoint implementations (clustered by domain)
 │   ├── Authentication/AuthController.cs
 │   ├── Projects/ProjectsController.cs
 │   ├── Content/ContentItemsController.cs
 │   ├── Tasks/TasksController.cs      # ProjectTaskController (renamed from TaskController)
 │   └── [etc...]
-├── GameDev.Core/Dtos/          # Request/response DTOs (clustered by domain)
+├── Gadema.Core/Dtos/          # Request/response DTOs (clustered by domain)
 │   ├── Authentication/SigninDto.cs
 │   ├── Projects/CreateProjectDto.cs
 │   ├── Content/ContentItemCreateDto.cs
@@ -378,10 +378,10 @@ public async Task ExecuteProjectTaskQuickWinWorkflowAsync(Guid projectId)
 
 ```mermaid
 sequenceDiagram
-    participant GameDev as Game Developer
+    participant Gadema as Game Developer
     participant API as GaDeMa API
     
-    GameDev->>API: POST /api/v1/projects/{id}/export/json
+    Gadema->>API: POST /api/v1/projects/{id}/export/json
     Note right of API: Response pattern: WRAPPED for file generation confirmation
     Note right of API: Selective section export
     
@@ -391,7 +391,7 @@ sequenceDiagram
     API->>ExportService: Generate JSON with QuestPDF
     ExportService-->>API: Formatted JSON Data
     
-    GameDev->>UnityEditor: Import JSON into Unity Project
+    Gadema->>UnityEditor: Import JSON into Unity Project
 ```
 
 ### **Updated Implementation Code Example:**

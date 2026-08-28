@@ -60,22 +60,22 @@ GaDeMa/
 │   ├── DEPLOYMENT.md                 # Database migration, hosting, CI/CD
 │   └── SUMMARY.md                    # Quick reference guide
 ├── src/                              # Source code root
-│   ├── GameDev.Core/                 # Shared domain models & interfaces
+│   ├── Gadema.Core/                 # Shared domain models & interfaces
 │   │   ├── Models/                   # EF Core entities (e.g., ContentItem.cs)
 │   │   ├── Dtos/                     # API DTOs (e.g., CreateProjectDto.cs)
 │   │   ├── Enums/                    # Type enumerations
 │   │   └── Interfaces/               # Service contracts (e.g., IContentService.cs)
-│   ├── GameDev.Data/                 # EF Core DbContext + Migrations config
-│   ├── GameDev.Api/                  # ASP.NET Core Web API layer
+│   ├── Gadema.Data/                 # EF Core DbContext + Migrations config
+│   ├── Gadema.Api/                  # ASP.NET Core Web API layer
 │   │   ├── Controllers/              # REST endpoints (e.g., ContentItemController.cs)
 │   │   ├── Services/                 # Business logic (e.g., ContentItemService.cs)
 │   │   ├── Middleware/               # Auth policies, rate limiting
 │   │   └── Program.cs                # Application entry point + DI setup
-│   ├── GameDev.WebApp/               # Blazor Server App layer
+│   ├── Gadema.WebApp/               # Blazor Server App layer
 │   │   ├── Pages/                    # Razor pages (e.g., Index.razor)
 │   │   ├── Components/               # Reusable UI components
 │   │   └── Layouts/                  # Main layout with auth guard
-│   └── GameDev.Tests/                # Unit + Integration tests
+│   └── Gadema.Tests/                # Unit + Integration tests
 ├── uploads/                          # Media files (outside src/ for git ignore)
 └── docs/                             # Technical documentation
 ```
@@ -104,13 +104,13 @@ GaDeMa/
 
 3. **Run the API (local development)**
    ```bash
-   cd src/GameDev.Api
+   cd src/Gadema.Api
    dotnet run
    ```
 
 4. **Run the Web App (Blazor Server)**
    ```bash
-   cd src/GameDev.WebApp
+   cd src/Gadema.WebApp
    dotnet run
    ```
 
