@@ -1,0 +1,87 @@
+@page "/tags"
+
+<PageTitle>Tags - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Tag Management</h1>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <strong>All Tags</strong>
+        <button class="btn btn-primary" onclick="window.location.href='/tags/create'">
+            <i class="bi bi-plus-circle"></i> Add Tag
+        </button>
+    </div>
+    
+    <div class="card-body">
+        @if (TagDtos != null && TagDtos.Count > 0)
+        {
+            <div class="row mb-3">
+                <!-- Search/Filter -->
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Search tags..." id="tagSearch" onkeyup="filterTags()" />
+                </div>
+            </div>
+
+            <!-- Tags Grid -->
+            <div class="row" id="tags-container">
+                @foreach (var tag in TagDtos)
+                {
+                    <div class="col-md-4 col-sm-6 mb-3">
+                        <div class="card h-100 text-center border-primary" style="cursor: pointer;">
+                            <div class="card-body">
+                                <i class="bi bi-tag" style="font-size: 2rem; color: #6c757d;"></i>
+                                <h5 class="card-title mt-2">@tag.Name</h5>
+                                <small class="text-muted">@tag.UsageCount usages</small>
+                            </div>
+                            <div class="card-footer bg-light">
+                                <a class="btn btn-sm btn-outline-primary" href="/tags/edit" asp-route-id="@tag.Id">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (TagDtos.Count == 0)
+                {
+                    <div class="col-12 text-center py-5">
+                        <i class="bi bi-tag" style="font-size: 3rem; color: #dee2e6;"></i>
+                        <h5 class="text-muted mt-3">No tags found</h5>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No tags found.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<TagDto>? TagDtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Mock data for development
+        TagDtos = new List<TagDto>
+        {
+            new TagDto { Id = 1, Name = "Main Quest", UsageCount = 23 },
+            new TagDto { Id = 2, Name = "Side Quest", UsageCount = 45 },
+            new TagDto { Id = 3, Name = "Character Interaction", UsageCount = 18 },
+            new TagDto { Id = 4, Name = "Tutorial", UsageCount = 12 },
+            new TagDto { Id = 5, Name = "Cutscene", UsageCount = 8 },
+        };
+    }
+
+    private void filterTags()
+    {
+        // Filter tags based on search input
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class TagDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public int UsageCount { get; set; }
+    }
+}

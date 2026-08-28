@@ -1,0 +1,129 @@
+@page "/register"
+@inject NavigationManager Navigation
+
+<PageTitle>Register - GaDeMa</PageTitle>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100 py-5">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-3 overflow-hidden">
+                <div class="card-body p-5">
+                    <!-- Logo/Brand -->
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <i class="bi bi-controller" style="font-size: 3rem; color: #0d6efd;"></i>
+                        </div>
+                        <h3>Create Account</h3>
+                        <p class="text-muted">Join GaDeMa - Game Development Management System</p>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form id="registerForm" method="post">
+                        <!-- Name Fields -->
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label text-muted">First Name</label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="firstName" 
+                                   name="FirstName" 
+                                   placeholder="John" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label text-muted">Last Name</label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="lastName" 
+                                   name="LastName" 
+                                   placeholder="Doe" />
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-muted">Email Address</label>
+                            <input type="email" 
+                                   class="form-control form-control-lg" 
+                                   id="email" 
+                                   name="Email" 
+                                   placeholder="your.email@example.com" />
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label text-muted">Password</label>
+                            <input type="password" 
+                                   class="form-control form-control-lg" 
+                                   id="password" 
+                                   name="Password" 
+                                   placeholder="Choose a strong password" />
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-4">
+                            <label for="confirmPassword" class="form-label text-muted">Confirm Password</label>
+                            <input type="password" 
+                                   class="form-control form-control-lg" 
+                                   id="confirmPassword" 
+                                   name="ConfirmPassword" 
+                                   placeholder="Re-enter your password" />
+                        </div>
+
+                        <!-- Terms and Privacy -->
+                        <div class="mb-4 p-3 bg-light rounded">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="terms" name="AcceptedTerms" required />
+                                <label class="form-check-label small" for="terms">
+                                    I accept the <a href="#" class="text-decoration-none">Terms of Service</a> and 
+                                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Register Button -->
+                        <button type="submit" class="btn btn-primary w-100 mb-3 py-2">
+                            Create Account
+                        </button>
+                    </form>
+
+                    <!-- Divider -->
+                    <hr />
+
+                    <!-- Already Have Account -->
+                    <div class="text-center mt-4">
+                        <p class="text-muted small mb-0">
+                            Already have an account? 
+                            <a href="/signin" class="fw-bold text-decoration-none">Sign in here</a>
+                        </p>
+                    </div>
+
+                    <!-- Error Message -->
+                    @if (ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger mt-3" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            @ErrorMessage
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="text-center mt-4 text-muted small">
+                <a href="#" class="text-decoration-none">Privacy Policy</a> | 
+                <a href="#" class="text-decoration-none">Terms of Service</a> | 
+                <a href="/forgot-password" class="text-decoration-none">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string? ErrorMessage { get; set; }
+
+    protected  async Task OnPostAsync()
+    {
+        // TODO: Integrate with user registration API
+        
+        Navigation.NavigateTo("/Error", false);
+    }
+}

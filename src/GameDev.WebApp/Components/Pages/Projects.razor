@@ -1,0 +1,107 @@
+@page "/projects"
+
+<PageTitle>Projects - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Project Management</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                <strong>All Projects</strong>
+                <button class="btn btn-primary" onclick="window.location.href='/projects/new'">
+                    <i class="bi bi-plus-circle"></i> New Project
+                </button>
+            </div>
+            
+            <div class="card-body">
+                @if (ProjectDtos != null && ProjectDtos.Count > 0)
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var project in ProjectDtos)
+                        {
+                            <div class="list-group-item px-4 py-3">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h5 class="mb-1">@project.Name</h5>
+                                        <p class="text-muted mb-0">@project.Description ?? "No description"</p>
+                                    </div>
+                                    <span class="badge bg-primary rounded-pill">Project #@(project.Id.ToString("D3"))</span>
+                                </div>
+                                
+                                <div class="mt-2">
+                                    <small class="text-muted me-4"><i class="bi bi-calendar"></i> Created: @project.CreatedDate?.ToString("MMM dd, yyyy") ?? "-"</small>
+                                    <small class="text-muted"><i class="bi bi-clock"></i> Status: @project.Status</small>
+                                </div>
+                                
+                                <div class="mt-3 d-flex gap-2">
+                                    <a class="btn btn-sm btn-outline-primary" href="/projects/view" asp-route-id="@project.Id">View Details</a>
+                                    <a class="btn btn-sm btn-outline-secondary" href="/projects/edit" asp-route-id="@project.Id">Edit</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">No projects found.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <!-- Project Statistics -->
+        <div class="card shadow-sm mb-3">
+            <div class="card-body text-center">
+                <h5 class="card-title">Total Projects</h5>
+                <h2 class="display-4">@ProjectDtos.Count()</h2>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                Filters
+            </div>
+            <div class="card-body">
+                <select class="form-select mb-2" id="statusFilter" onchange="filterProjects()">
+                    <option value="">All Statuses</option>
+                    <option value="Active">Active</option>
+                    <option value="Completed">Completed</option>
+                    <option value="OnHold">On Hold</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<ProjectDto>? ProjectDtos;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        // Mock data for development
+        ProjectDtos = new List<ProjectDto>
+        {
+            new ProjectDto { Id = 1, Name = "Project Alpha", Description = "First game project", Status = "Active", CreatedDate = DateTime.Now.AddDays(-30) },
+            new ProjectDto { Id = 2, Name = "Project Beta", Description = "Second iteration", Status = "Active", CreatedDate = DateTime.Now.AddDays(-14) },
+            new ProjectDto { Id = 3, Name = "Project Gamma", Description = "Experimental project", Status = "OnHold", CreatedDate = DateTime.Now.AddDays(-60) },
+        };
+    }
+
+    private void filterProjects()
+    {
+        // TODO: Implement filtering logic
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class ProjectDto
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string Status { get; set; } = "";
+        public DateTime? CreatedDate { get; set; }
+    }
+}

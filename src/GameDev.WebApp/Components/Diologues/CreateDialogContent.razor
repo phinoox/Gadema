@@ -1,0 +1,81 @@
+@page "/content/create"
+
+
+<PageTitle>Create Content - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Create New Content Item</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form id="contentForm" method="post">
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control form-control-lg" id="title" name="Title" required />
+                <small class="form-text text-muted">Enter a descriptive title for this content item</small>
+            </div>
+
+            <!-- Type Dropdown -->
+            <div class="mb-3">
+                <label for="type" class="form-label">Content Type</label>
+                <select class="form-select form-select-lg" id="type" name="Type">
+                    <option value="CharacterDialogue">Character Dialogue</option>
+                    <option value="Tutorial">Tutorial</option>
+                    <option value="Video">Video Cutscene</option>
+                    <option value="Level">Level Design</option>
+                    <option value="Lore">Lore Entry</option>
+                </select>
+            </div>
+
+            <!-- Project Selection -->
+            <div class="mb-3">
+                <label for="projectId" class="form-label">Project</label>
+                <select class="form-select form-select-lg" id="projectId" name="ProjectId">
+                    <option value="">Select a project...</option>
+                    <option value="1001">Project Alpha (1001)</option>
+                    <option value="2002">Project Beta (2002)</option>
+                    <option value="3003">Project Gamma (3003)</option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control form-control-lg" id="description" name="Description" rows="5"></textarea>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select form-select-lg" id="status" name="Status">
+                    <option value="Draft">Draft</option>
+                    <option value="InReview">In Review</option>
+                    <option value="Published">Published</option>
+                    <option value="Archived">Archived</option>
+                </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/content'">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    Create Content Item
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .form-label {
+        font-weight: 500;
+    }
+    
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+</style>

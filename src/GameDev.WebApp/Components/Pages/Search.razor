@@ -1,0 +1,132 @@
+@page "/search"
+
+<PageTitle>Search - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Search & Outline</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <!-- Search Form -->
+        <form class="mb-4" onsubmit="@HandleSearchSubmit">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text bg-light border-primary">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control form-control-lg" 
+                       id="searchInput" 
+                       placeholder="Search content, characters, dialogue..." 
+                       autocomplete="off" />
+                <button class="btn btn-primary" type="submit">
+                    Search
+                </button>
+            </div>
+
+            <!-- Quick Filters -->
+            <div class="d-flex gap-2 mt-3 mb-3">
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('searchInput').value='content'">Content</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('searchInput').value='character'">Characters</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('searchInput').value='dialogue'">Dialogue</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('searchInput').value='quest'">Quests</button>
+            </div>
+        </form>
+
+        <!-- Search Results -->
+        @if (!string.IsNullOrEmpty(SearchQuery))
+        {
+            <div class="card border-primary mb-3">
+                <div class="card-header bg-light">
+                    <strong>Search Results for: "@SearchQuery"</strong>
+                </div>
+                <div class="card-body" id="search-results">
+                    @if (SearchResults != null && SearchResults.Count > 0)
+                    {
+                        @foreach (var result in SearchResults.Take(10))
+                        {
+                            <div class="list-group-item px-4 py-3 border-bottom">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h6 class="mb-1">@result.Title</h6>
+                                        <small class="text-muted">
+                                            @($"{(result.Type?.ToString() ?? "N/A")} | #{result.Id}")
+                                        </small>
+                                        @if (!string.IsNullOrEmpty(result.ProjectName))
+                                        {
+                                            <div class="mt-1"><small class="text-muted">@result.ProjectName</small></div>
+                                        }
+                                    </div>
+                                    <a class="btn btn-sm btn-outline-primary" href="#">View</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <p class="text-muted">No results found for "@SearchQuery"</p>
+                    }
+                </div>
+            </div>
+        }
+
+        <!-- Story Outline -->
+        <div class="card shadow-sm mt-4">
+            <div class="card-header bg-light">
+                <strong>Story Outline</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var act in ActingActs)
+                    {
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 border-start border-4 border-primary">
+                                <div class="card-body">
+                                    <h5 class="card-title">Act @(act.ActNumber)</h5>
+                                    <p class="card-text">@act.Title</p>
+                                    <small class="text-muted">@act.Description?.Substring(0, Math.Min(100, @act.Description?.Length ?? 0))@if (@act.Description?.Length > 100) { <span class="text-muted">...</span> }</small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string SearchQuery { get; set; } = "";
+    private List<SearchResultDto>? SearchResults;
+    private List<ActingAct>? ActingActs;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ActingActs = new List<ActingAct>
+        {
+            new ActingAct { ActNumber = 1, Title = "The Beginning", Description = "Introduction of main characters and setting" },
+            new ActingAct { ActNumber = 2, Title = "Rising Action", Description = "Development of central conflicts and relationships" },
+            new ActingAct { ActNumber = 3, Title = "Climax", Description = "Major turning point in the narrative" },
+        };
+    }
+
+    private void HandleSearchSubmit(ChangeEventArgs eventArgs)
+    {
+        if(eventArgs.Value is string)
+            SearchQuery = eventArgs.Value as string ?? string.Empty;
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    class SearchResultDto
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = "";
+        public string? Type { get; set; }
+        public string? ProjectName { get; set; }
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    class ActingAct
+    {
+        public int ActNumber { get; set; }
+        public string Title { get; set; } = "";
+        public string? Description { get; set; }
+    }
+}

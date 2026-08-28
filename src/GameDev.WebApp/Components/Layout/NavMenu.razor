@@ -1,30 +1,86 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">GameDev.WebApp</a>
-    </div>
-</div>
+@using Microsoft.AspNetCore.Components.Sections
+@rendermode InteractiveServer
+<SectionContent SectionName="NavMenu">
+    <nav class="nav flex-column px-2">
+        <!-- Content Management Section -->
+        <h3>Navigation</h3>
+        <div class="nav-item mb-3">
+            <h6 class="text-muted small fw-bold uppercase mb-2">Content & Projects</h6>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+            <NavLink class="nav-link d-flex align-items-center" href="/" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu me-2"></span>
+                <span>Home</span>
+            </NavLink>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            <NavLink class="nav-link d-flex align-items-center" href="/content">
+                <span class="bi bi-files-nav-menu me-2"></span>
+                <span>Content</span>
+            </NavLink>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/projects">
+                <span class="bi bi-folder2-open-nav-menu me-2"></span>
+                <span>Projects</span>
+            </NavLink>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/tasks">
+                <span class="bi bi-check2-square-nav-menu me-2"></span>
+                <span>Tasks</span>
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+        <!-- Reviews Section -->
+        <div class="nav-item mb-3">
+            <h6 class="text-muted small fw-bold uppercase mb-2">Reviews & Feedback</h6>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/reviews">
+                <span class="bi bi-star-half-nav-menu me-2"></span>
+                <span>Reviews</span>
             </NavLink>
         </div>
 
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+        <!-- Dialogue Section -->
+        <div class="nav-item mb-3">
+            <h6 class="text-muted small fw-bold uppercase mb-2">Dialogue & Characters</h6>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/dialogue">
+                <span class="bi bi-chat-dots-nav-menu me-2"></span>
+                <span>Dialogue</span>
+            </NavLink>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/characters">
+                <span class="bi bi-person-badge-nav-menu me-2"></span>
+                <span>Characters</span>
+            </NavLink>
+        </div>
+
+        <!-- Tags Section -->
+        <div class="nav-item mb-3">
+            <h6 class="text-muted small fw-bold uppercase mb-2">Organization</h6>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/tags">
+                <span class="bi bi-tags-nav-menu me-2"></span>
+                <span>Tags</span>
+            </NavLink>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/search">
+                <span class="bi bi-search-nav-menu me-2"></span>
+                <span>Search & Outline</span>
+            </NavLink>
+        </div>
+
+        <!-- Settings Section -->
+        <div class="nav-item mb-3">
+            <h6 class="text-muted small fw-bold uppercase mb-2">Settings</h6>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/settings">
+                <span class="bi bi-gear-fill-nav-menu me-2"></span>
+                <span>General Settings</span>
+            </NavLink>
+
+            <NavLink class="nav-link d-flex align-items-center" href="/settings/profile">
+                <span class="bi bi-person-circle-nav-menu me-2"></span>
+                <span>Profile</span>
             </NavLink>
         </div>
     </nav>
-</div>
-
+</SectionContent>

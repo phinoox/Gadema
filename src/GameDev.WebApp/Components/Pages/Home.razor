@@ -1,7 +1,137 @@
-﻿@page "/"
+@page "/"
+@using GameDev.WebApp
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Home - GaDeMa</PageTitle>
+<SectionOutlet SectionName="Ficken"/>
+<div class="container-fluid p-4">
+    <div class="row">
+        <!-- Welcome Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-house-door" style="font-size: 2rem; color: #6c757d;"></i>
+                    </div>
+                    <h3>Welcome to GaDeMa</h3>
+                    <p class="card-text text-muted">
+                        Game Development Management System
+                    </p>
+                    <hr>
+                    <div class="mt-auto">
+                        <a href="/content" class="btn btn-primary">Manage Content</a>
+                        <a href="/projects" class="btn btn-outline-secondary">View Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<h1>Hello, world!</h1>
+        <!-- Quick Actions Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-lightning" style="font-size: 2rem; color: #ffc107;"></i>
+                    </div>
+                    <h3>Quick Actions</h3>
+                    <ul class="list-unstyled text-start">
+                        <li class="mb-2"><a href="/content/create" class="text-decoration-none">Create New Content</a></li>
+                        <li class="mb-2"><a href="/projects" class="text-decoration-none">Browse Projects</a></li>
+                        <li class="mb-2"><a href="/dialogue" class="text-decoration-none">Manage Dialogue</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-Welcome to your new app.
+        <!-- System Status Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="bi bi-info-circle" style="font-size: 2rem; color: #17a2b8;"></i>
+                    </div>
+                    <h3>System Status</h3>
+                    <p class="card-text text-success">● Online</p>
+                    <hr>
+                    <small class="text-muted">GaDeMa v1.0.0</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-4">
+        <div class="col-12 text-center mb-3">
+            <h4 class="text-muted">Explore GaDeMa</h4>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-primary">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: #0d6efd;"></i>
+                    <h6 class="mt-2">Content</h6>
+                    <small class="text-muted">Manage all game content</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-info">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-folder2-open" style="font-size: 2rem; color: #0dcaf0;"></i>
+                    <h6 class="mt-2">Projects</h6>
+                    <small class="text-muted">Project management</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-warning">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-star-half" style="font-size: 2rem; color: #ffc107;"></i>
+                    <h6 class="mt-2">Reviews</h6>
+                    <small class="text-muted">Review management</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-success">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-chat-dots" style="font-size: 2rem; color: #198754;"></i>
+                    <h6 class="mt-2">Dialogue</h6>
+                    <small class="text-muted">Character dialogue</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-info">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-tags" style="font-size: 2rem; color: #0dcaf0;"></i>
+                    <h6 class="mt-2">Tags</h6>
+                    <small class="text-muted">Tag management</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="card h-100 border-secondary">
+                <div class="card-body text-center py-3">
+                    <i class="bi bi-search" style="font-size: 2rem; color: #6c757d;"></i>
+                    <h6 class="mt-2">Search</h6>
+                    <small class="text-muted">Full-text search</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style scoped>
+    .card {
+        transition: transform 0.2s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+</style>

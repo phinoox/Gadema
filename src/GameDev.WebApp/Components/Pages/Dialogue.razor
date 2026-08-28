@@ -1,0 +1,105 @@
+@page "/dialogue"
+
+<PageTitle>Dialogue & Characters - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Dialogue & Character Management</h1>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <strong>Active Dialogues</strong>
+        <button class="btn btn-primary" onclick="window.location.href='/dialogue/new'">
+            <i class="bi bi-plus-circle"></i> Create Dialogue
+        </button>
+    </div>
+    
+    <div class="card-body">
+        @if (Dialogues != null && Dialogues.Count > 0)
+        {
+            <div class="row">
+                @foreach (var dialogue in Dialogues)
+                {
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 border-start border-4 border-primary">
+                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                <strong>@dialogue.CharacterName</strong>
+                                <span class="badge bg-primary">@dialogue.Speakers?.Count() Speakers</span>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title text-muted"><i class="bi bi-chat-dots"></i> Dialogue Name: @dialogue.Name</h6>
+                                
+                                <div class="mt-3">
+                                    <small class="d-block text-muted mb-1"><strong>Scenes:</strong></small>
+                                    <ul class="list-unstyled small mb-0">
+                                        @foreach (var scene in dialogue.Scenes?.Take(3))
+                                        {
+                                            <li>@scene.SceneName</li>
+                                        }
+                                        @if (dialogue.Scenes != null && dialogue.Scenes.Count > 3)
+                                        {
+                                            <li>+@(dialogue.Scenes.Count - 3) more scenes...</li>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <small class="text-muted mt-2 d-block">
+                                    @($"Created: @{dialogue.CreatedDate?.ToShortDateString() ?? "N/A"} | Status: @dialogue.Status")
+                                </small>
+                            </div>
+                            
+                            <div class="card-footer bg-white">
+                                <a class="btn btn-sm btn-outline-primary w-100" href="/dialogue/view" asp-route-id="@dialogue.Id">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No dialogues found.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<DialogueDto>? Dialogues;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        Dialogues = new List<DialogueDto>
+        {
+            new DialogueDto 
+            { 
+                Id = 1, 
+                CharacterName = "Marcus Aurelius", 
+                Name = "Roman Leadership Series", 
+                Speakers = new List<string> { "Marcus Aurelius", "Maximus" },
+                Scenes = new List<DialogueScene> { 
+                    new DialogueScene { SceneName = "Chapter 1: The Emperor" },
+                    new DialogueScene { SceneName = "Chapter 2: Council Room" },
+                    new DialogueScene { SceneName = "Chapter 3: Battle of Actium" }
+                },
+                Status = "Active",
+                CreatedDate = DateTime.Now.AddDays(-45)
+            },
+        };
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class DialogueDto
+    {
+        public int Id { get; set; }
+        public string CharacterName { get; set; } = "";
+        public string Name { get; set; } = "";
+        public List<string>? Speakers { get; set; }
+        public List<DialogueScene>? Scenes { get; set; }
+        public string Status { get; set; } = "Draft";
+        public DateTime? CreatedDate { get; set; }
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class DialogueScene
+    {
+        public string SceneName { get; set; } = "";
+    }
+}

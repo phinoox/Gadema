@@ -1,0 +1,115 @@
+@page "/projecttasks"
+
+<PageTitle>Tasks - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Task Management</h1>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <strong>All Tasks</strong>
+        <button class="btn btn-primary" onclick="window.location.href='/tasks/create'">
+            <i class="bi bi-plus-circle"></i> Create Task
+        </button>
+    </div>
+    
+    <div class="card-body">
+        @if (TaskDtos != null && TaskDtos.Count > 0)
+        {
+            <div class="row">
+                <!-- Todo Column -->
+                <div class="col-md-3 mb-4">
+                    <div class="list-group shadow-sm" id="todo-tasks">
+                        @foreach (var task in TaskDtos.Where(t => t.Status == "Todo"))
+                        {
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start px-3 py-2 border-start border-4 border-primary">
+                                <div>
+                                    <h6 class="mb-1">@task.Title</h6>
+                                    <small class="text-muted">Project: @(task.ProjectId.HasValue ? task.ProjectId!.ToString() : "N/A")</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">TODO</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- In Progress Column -->
+                <div class="col-md-3 mb-4">
+                    <div class="list-group shadow-sm" id="in-progress-tasks">
+                        @foreach (var task in TaskDtos.Where(t => t.Status == "InProgress"))
+                        {
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start px-3 py-2 border-start border-4 border-warning">
+                                <div>
+                                    <h6 class="mb-1">@task.Title</h6>
+                                    <small class="text-muted">Project: @(task.ProjectId.HasValue ? task.ProjectId!.ToString() : "N/A")</small>
+                                </div>
+                                <span class="badge bg-warning rounded-pill">IN PROGRESS</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Review Column -->
+                <div class="col-md-3 mb-4">
+                    <div class="list-group shadow-sm" id="review-tasks">
+                        @foreach (var task in TaskDtos.Where(t => t.Status == "Review"))
+                        {
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start px-3 py-2 border-start border-4 border-info">
+                                <div>
+                                    <h6 class="mb-1">@task.Title</h6>
+                                    <small class="text-muted">Project: @(task.ProjectId.HasValue ? task.ProjectId!.ToString() : "N/A")</small>
+                                </div>
+                                <span class="badge bg-info rounded-pill">REVIEW</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Done Column -->
+                <div class="col-md-3 mb-4">
+                    <div class="list-group shadow-sm" id="done-tasks">
+                        @foreach (var task in TaskDtos.Where(t => t.Status == "Done"))
+                        {
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start px-3 py-2 border-start border-4 border-success text-muted">
+                                <div>
+                                    <h6 class="mb-1">@task.Title</h6>
+                                    <small class="text-muted">Project: @(task.ProjectId.HasValue ? task.ProjectId!.ToString() : "N/A")</small>
+                                </div>
+                                <span class="badge bg-success rounded-pill">DONE</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No tasks found.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<TaskDto>? TaskDtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Mock data for development
+        TaskDtos = new List<TaskDto>
+        {
+            new TaskDto { Id = 1, Title = "Implement character dialogue system", Description = "Create UI and backend for character interactions", ProjectId = 1001, Status = "InProgress" },
+            new TaskDto { Id = 2, Title = "Design tutorial levels", Description = "Create first three tutorial levels", ProjectId = 1001, Status = "Review" },
+            new TaskDto { Id = 3, Title = "Add background music tracks", Description = "Import and organize audio files", ProjectId = 1001, Status = "Done" },
+            new TaskDto { Id = 4, Title = "Write game lore documentation", Description = "Document game history and character backgrounds", ProjectId = 2002, Status = "Todo" },
+        };
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class TaskDto
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = "";
+        public string? Description { get; set; }
+        public int? ProjectId { get; set; }
+        public string Status { get; set; } = "Todo";
+    }
+}

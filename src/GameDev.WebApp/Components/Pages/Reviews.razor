@@ -1,0 +1,83 @@
+@page "/reviews"
+
+<PageTitle>Reviews - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Review Management</h1>
+
+<div class="card shadow-sm">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <strong>All Reviews</strong>
+        <button class="btn btn-primary" onclick="window.location.href='/reviews/create'">
+            <i class="bi bi-plus-circle"></i> Create Review
+        </button>
+    </div>
+    
+    <div class="card-body">
+        @if (ReviewsDtos != null && ReviewsDtos.Count > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Review ID</th>
+                            <th>Reviewer</th>
+                            <th>Content Item</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var review in ReviewsDtos)
+                        {
+                            <tr>
+                                <td>@review.Id.ToString("D6")</td>
+                                <td>@review.ReviewerName</td>
+                                <td>@(review.ContentItemId?.ToString("D3") ?? "-")</td>
+                                <td>
+                                    @for (int i = 0; i < review.Rating; i++)
+                                    {
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                    }
+                                </td>
+                                <td><span class="badge bg-@((review.Status == "Published") ? "success" : (review.Status == "Pending") ? "warning" : "secondary"))">@review.Status</span></td>
+                                <td>
+                                    <a class="btn btn-sm btn-outline-primary" href="/reviews/detail" asp-route-id="@review.Id">View</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No reviews found.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<ReviewDto>? ReviewsDtos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Mock data for development
+        ReviewsDtos = new List<ReviewDto>
+        {
+            new ReviewDto { Id = 1, ReviewerName = "John Smith", ContentItemId = 1001, Rating = 5, Status = "Published" },
+            new ReviewDto { Id = 2, ReviewerName = "Jane Doe", ContentItemId = 1002, Rating = 4, Status = "Published" },
+            new ReviewDto { Id = 3, ReviewerName = "Bob Wilson", ContentItemId = 1003, Rating = 3, Status = "Pending" },
+        };
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class ReviewDto
+    {
+        public int Id { get; set; }
+        public string ReviewerName { get; set; } = "";
+        public int? ContentItemId { get; set; }
+        public int Rating { get; set; }
+        public string Status { get; set; } = "Pending";
+    }
+}

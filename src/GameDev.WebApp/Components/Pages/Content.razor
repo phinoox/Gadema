@@ -1,0 +1,79 @@
+@page "/content"
+
+<PageTitle>Content Management - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Content Management</h1>
+
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <strong>All Content Items</strong>
+        <button class="btn btn-primary" onclick="window.location.href='/content/create'">
+            <i class="bi bi-plus-circle"></i> Add New Content
+        </button>
+    </div>
+    
+    <div class="card-body">
+        @if (ContentItems != null && ContentItems.Count > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Project</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ContentItems)
+                        {
+                            <tr>
+                                <td>@item.Id.ToString("D6")</td>
+                                <td>@(string.IsNullOrEmpty(item.Title) ? "-" : item.Title)</td>
+                                <td>@(item.Type?.ToString() ?? "N/A")</td>
+                                <td>@(item.ProjectId.HasValue ? $"#{item.ProjectId.Value:D3}" : "-")</td>
+                                <td>@item.Status.ToString()</td>
+                                <td>
+                                    <a class="btn btn-sm btn-outline-primary" href="/content/edit/{id:int}" asp-route-id="@item.Id">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No content items found. <button class="btn btn-sm btn-primary" onclick="window.location.href='/content/create'">Create one</button></p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<ContentItem>? ContentItems { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: Load content items from API
+        // For now, mock data for development
+        ContentItems = new List<ContentItem>
+        {
+            new ContentItem { Id = 1, Title = "Hero Character Introduction", Type = "CharacterDialogue", ProjectId = 1001, Status = "Published" },
+            new ContentItem { Id = 2, Title = "Tutorial Scene 1", Type = "Tutorial", ProjectId = 1001, Status = "Published" },
+            new ContentItem { Id = 3, Title = "Main Quest Opening", Type = "Video", ProjectId = 1002, Status = "InReview" },
+        };
+    }
+
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    public class ContentItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; } = "";
+        public string? Type { get; set; }
+        public int? ProjectId { get; set; }
+        public string Status { get; set; } = "Draft";
+    }
+}

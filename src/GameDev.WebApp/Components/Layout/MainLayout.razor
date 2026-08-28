@@ -1,23 +1,24 @@
-﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Sections
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+
+
+<div class="d-flex flex-column flex-md-row align-items-stretch min-vh-100">
+    <div class="sidebar col-md-3 bg-light border-end" style="min-height: 100vh;">
+        <SectionOutlet SectionName="NavMenu" @rendermode="@(new InteractiveServerRenderMode())"/>
+        <NavMenu/>
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="min-height: 100vh;">
+        <div class="top-row ps-3 navbar navbar-dark bg-primary d-flex align-items-center">
+            <a class="navbar-brand fw-bold ms-2 me-auto text-white" href="">GaDeMa</a>
+            <UserMenu/>
         </div>
 
-        <article class="content px-4">
-            @Body
+        <article class="content px-4 pt-4">
+            <h1>@Body</h1>
         </article>
     </main>
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+<ReconnectModal />

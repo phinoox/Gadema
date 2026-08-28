@@ -7,4 +7,16 @@
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- MudBlazor - Material Design UI framework -->
+    <PackageReference Include="MudBlazor" Version="6.19.0" />
+    
+    <!-- Authentication helpers (optional, can be added if needed) -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../GameDev.Core/GameDev.Core.csproj" />
+  </ItemGroup>
+
 </Project>

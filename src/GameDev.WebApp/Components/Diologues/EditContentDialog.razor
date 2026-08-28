@@ -1,0 +1,103 @@
+@page "/content/edit/{id:int}"
+
+
+<PageTitle>Edit Content - GaDeMa</PageTitle>
+
+<h1 class="h3 mb-4">Edit Content Item</h1>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <form id="editContentForm" method="post">
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control form-control-lg" id="title" name="Title" value="@Model.Title" required />
+                <small class="form-text text-muted">Enter a descriptive title for this content item</small>
+            </div>
+
+            <!-- Type Dropdown -->
+            <div class="mb-3">
+                <label for="type" class="form-label">Content Type</label>
+                <select class="form-select form-select-lg" id="type" name="Type" value="@Model.Type">
+                    <option value="CharacterDialogue">Character Dialogue</option>
+                    <option value="Tutorial">Tutorial</option>
+                    <option value="Video">Video Cutscene</option>
+                    <option value="Level">Level Design</option>
+                    <option value="Lore">Lore Entry</option>
+                </select>
+            </div>
+
+            <!-- Project Selection -->
+            <div class="mb-3">
+                <label for="projectId" class="form-label">Project</label>
+                <select class="form-select form-select-lg" id="projectId" name="ProjectId" value="@Model.ProjectId">
+                    <option value="1001">Project Alpha (1001)</option>
+                    <option value="2002">Project Beta (2002)</option>
+                    <option value="3003">Project Gamma (3003)</option>
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control form-control-lg" id="description" name="Description" rows="5">@Model.Description</textarea>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select form-select-lg" id="status" name="Status" value="@Model.Status">
+                    <option value="Draft">Draft</option>
+                    <option value="InReview">In Review</option>
+                    <option value="Published">Published</option>
+                    <option value="Archived">Archived</option>
+                </select>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/content'">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@code {
+    private EditContentModel Model { get; set; } = new EditContentModel()
+    {
+        Title = "Sample Content",
+        Type = "CharacterDialogue",
+        ProjectId = 1001,
+        Description = "This is a sample content item description.",
+        Status = "Draft"
+    };
+}
+
+@code {
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    private class EditContentModel
+    {
+        public string Title { get; set; } = "";
+        public string Type { get; set; } = "CharacterDialogue";
+        public int ProjectId { get; set; }
+        public string? Description { get; set; }
+        public string Status { get; set; } = "Draft";
+    }
+}
+
+<style>
+    .form-label {
+        font-weight: 500;
+    }
+    
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+</style>

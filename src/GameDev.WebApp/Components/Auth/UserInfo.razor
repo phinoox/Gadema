@@ -1,0 +1,36 @@
+@inject NavigationManager Navigation
+
+<div class="d-flex align-items-center" data-user-info="true">
+    <!-- User Avatar/Initials -->
+    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2" 
+         style="width: 48px; height: 48px; font-size: 1.2rem;"
+         title="@GetCurrentUserName()">
+        @GetCurrentUserName()?.Substring(0, Math.Min(1, GetCurrentUserName()?.Length ?? 1))
+    </div>
+
+    <!-- User Info Display -->
+    <div class="flex-grow-1 overflow-hidden">
+        <h6 class="mb-0 text-truncate">@GetCurrentUserName()</h6>
+        @if (!string.IsNullOrEmpty(GetCurrentUserEmail()))
+        {
+            <small class="text-muted text-truncate">@GetCurrentUserEmail()</small>
+        }
+    </div>
+
+    <!-- Logout Button (placeholder) -->
+    <button class="btn btn-sm btn-outline-secondary" onclick="@OnLogoutClick()">
+        <i class="bi bi-box-arrow-right me-1"></i>
+        Logout
+    </button>
+</div>
+
+@code {
+    // Placeholder - will be populated from API in real application
+    private string GetCurrentUserName() => "User";
+    private string? GetCurrentUserEmail() => null;
+
+    private async Task OnLogoutClick()
+    {
+        Navigation.NavigateTo("/signin",false);
+    }
+}
