@@ -24,7 +24,6 @@
     <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="10.0.11" />
     <ProjectReference Include="..\Gadema.Core\Gadema.Core.csproj" />
     <ProjectReference Include="..\Gadema.Api\Gadema.Api.csproj" />
-    <ProjectReference Include="..\Gadema.Data\Gadema.Data.csproj" />
     
     <!-- Testing frameworks -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />

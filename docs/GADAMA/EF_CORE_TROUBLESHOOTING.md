@@ -14,7 +14,7 @@ namespace Gadema.Tests;
 using Xunit;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Gadema.Core.Models;
 using System.Linq;
 

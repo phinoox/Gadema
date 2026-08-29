@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Services;
 

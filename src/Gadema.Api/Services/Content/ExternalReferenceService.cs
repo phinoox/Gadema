@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.ExternalReferences;
 using Gadema.Core.Models;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Services;
 

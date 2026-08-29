@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Dtos;
-using Gadema.Data;
 using Gadema.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.AspNetCore.Http;
+using Gadema.Core.Database;
 
 // Gadema.Api - ASP.NET Core Web API Entry Point
 // =============================================================================

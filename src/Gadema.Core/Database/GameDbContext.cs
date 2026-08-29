@@ -7,7 +7,7 @@ using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Data;
+namespace Gadema.Core.Database;
 
 /// <summary>
 /// Main database context for GaDeMa application.

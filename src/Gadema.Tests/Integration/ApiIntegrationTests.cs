@@ -18,7 +18,7 @@ using Gadema.Core.Dtos.Tasks;
 using Gadema.Core.Dtos.Export;
 using Gadema.Core.Dtos.ExternalReferences;
 using Microsoft.Extensions.Hosting;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 /// <summary>

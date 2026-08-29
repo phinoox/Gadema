@@ -7,7 +7,7 @@ namespace Gadema.Tests.Services;
 using Xunit;
 using FluentAssertions;
 using System.Net;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Gadema.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Dtos.ContentItems;

@@ -7,7 +7,7 @@ using FluentAssertions.Common;
 using Gadema.Api.Services;
 using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Services; // ← Add this using
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

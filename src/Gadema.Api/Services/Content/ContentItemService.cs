@@ -13,7 +13,7 @@ using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Dtos.Response;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Services;

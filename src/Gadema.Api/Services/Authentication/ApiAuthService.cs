@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.Authentication;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 

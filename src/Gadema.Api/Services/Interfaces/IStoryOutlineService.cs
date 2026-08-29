@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.StoryOutlining;
-using Gadema.Data;
+using Gadema.Core.Database;
 using Microsoft.Extensions.Logging;
 
 namespace Gadema.Api.Services;
