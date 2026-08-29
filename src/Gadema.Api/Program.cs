@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.AspNetCore.Http;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 
 // Gadema.Api - ASP.NET Core Web API Entry Point
 // =============================================================================

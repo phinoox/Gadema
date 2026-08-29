@@ -11,7 +11,7 @@ using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Dtos.Export;
 using Gadema.Core.Dtos.Reviews;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Dtos.DialogueTrees;

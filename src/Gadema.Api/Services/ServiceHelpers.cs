@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
 
 namespace Gadema.Api.Services;

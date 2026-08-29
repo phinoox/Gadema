@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Enums;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Gadema.Core.Dtos.Response;

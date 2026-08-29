@@ -11,7 +11,7 @@ using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Dtos.Search;
 using Gadema.Core.Dtos.Tags;
 using Gadema.Core.Models;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Services;
 

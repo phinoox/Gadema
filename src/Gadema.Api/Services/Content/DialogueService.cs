@@ -9,7 +9,7 @@ using System.Linq; // Added for LINQ methods like Include, ToListAsync
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.DialogueTrees;
 using Gadema.Core.Models;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore; // Added for EF Core extension methods
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Services;

@@ -8,7 +8,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.Projects;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Services;

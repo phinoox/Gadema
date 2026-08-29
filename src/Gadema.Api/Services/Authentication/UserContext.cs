@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Gadema.Core.Models;
-using Gadema.Core.Database;
+using Gadema.Data.Database;
 using Microsoft.AspNetCore.Http;
 
 namespace Gadema.Api.Services;
