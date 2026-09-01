@@ -16,6 +16,9 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
+  <PropertyGroup>
+  <StartupObject>Gadema.Api.Program</StartupObject>
+</PropertyGroup>
   <ItemGroup>
   <InternalsVisibleTo Include="Gadema.Tests" />
 </ItemGroup>   

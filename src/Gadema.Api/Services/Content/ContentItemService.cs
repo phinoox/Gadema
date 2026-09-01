@@ -348,6 +348,10 @@ public class ContentItemService : IGademaService,  IContentService
         
         // Restore from snapshot data
         var restoredData = JsonSerializer.Deserialize<ContentItem>(snapshot.SnapshotDataJson!);
+        if (restoredData == null)
+        {
+            return ApiResponseDto<VersionInfo>.BadRequest($"Could not load restored data for version {rollbackDto.TargetVersion}");
+        }
         var oldVersion = item.Version;
         item.Title = restoredData.Title;
         item.Description = restoredData.Description;

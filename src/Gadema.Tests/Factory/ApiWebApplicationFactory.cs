@@ -4,6 +4,7 @@
 
 using FluentAssertions;
 using FluentAssertions.Common;
+using Gadema.Api;
 using Gadema.Api.Services;
 using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Services; // ← Add this using

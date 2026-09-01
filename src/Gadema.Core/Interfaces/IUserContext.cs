@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Gadema.Core.Models;
 
-namespace Gadema.Api.Services;
+namespace Gadema.Core.Services;
 public interface IUserContext : IDisposable
 {
     // Current authenticated user (if any)

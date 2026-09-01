@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Gadema.Core.Models;
+using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.AspNetCore.Http;
 
@@ -40,9 +41,9 @@ public class UserContext : IUserContext
         set => _apiTokenHash = value;
     }
     
-    public List<string>? Roles
+    public List<string> Roles
     {
-        get => _roles;
+        get => _roles ?? new List<string>();
         set => _roles = value;
     }
     

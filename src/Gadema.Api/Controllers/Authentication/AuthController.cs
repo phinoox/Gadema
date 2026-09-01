@@ -67,6 +67,17 @@ public class AuthController : ControllerBase
     }
 
     /// <summary>
+    /// Register a new user account.
+    /// Password must be at least 8 characters, contain uppercase, lowercase, number, and special character.
+    /// </summary>
+    [HttpPost("register")]
+    public async Task<IActionResult> RegisterAsync([FromBody] RegisterDto registerDto)
+    {
+        var result = await _authService.RegisterAsync(registerDto);
+        return Ok(result);
+    }
+    
+    /// <summary>
     /// Disable two-factor authentication.
     /// </summary>
     [HttpDelete("2fa/disable")]
