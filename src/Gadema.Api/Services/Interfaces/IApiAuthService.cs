@@ -22,4 +22,5 @@ public interface IApiAuthService
     Task<ApiResponseDto<AuthResponse>> SignInWith2FAAsync(SignInWith2FADto signInDto);
     Task<ApiResponseDto<RecoveryCodesResponseDto>> GetRecoveryCodesAsync(RecoveryCodesDto recoveryDto);
     Task<ApiResponseDto<AuthResponse>> Disable2FAAsync(Disable2FADto disableDto);
+    Task<ApiResponseDto<AuthResponse>> RegisterAsync(RegisterDto registerDto);
 }

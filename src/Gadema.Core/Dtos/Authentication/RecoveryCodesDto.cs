@@ -15,4 +15,5 @@ public class RecoveryCodesDto
     /// </summary>
     [MaxLength(16)]
     public string? Format { get; set; } = "csv";
+    public Guid? UserId { get; set; }
 }

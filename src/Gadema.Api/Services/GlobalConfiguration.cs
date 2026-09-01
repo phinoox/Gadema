@@ -109,6 +109,11 @@ public class ApiResponseDto<T> where T : class
         Errors = null!,
         Data = default!
     };
+
+    internal static ApiResponseDto<AuthResponse> Unauthorized(string v)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

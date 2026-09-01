@@ -101,6 +101,10 @@ public class AuthResponse
     /// User info.
     /// </summary>
     public UserResponse? User { get; set; } = null!;
+    public Guid UserId { get; internal set; }
+    public string Email { get; internal set; }
+    public string? Name { get; internal set; }
+    public string Message { get; internal set; }
 }
 
 /// <summary>

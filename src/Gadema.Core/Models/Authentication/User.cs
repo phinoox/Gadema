@@ -92,5 +92,6 @@ public class User
     /// Foreign key: CreatedByUserId (matches FK in Team)
     /// </summary>
     public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
-
+    public string? PasswordHash { get; set; }
+    public string? TwoFactorSecret { get; set; }
 }

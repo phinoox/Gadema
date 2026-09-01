@@ -10,4 +10,5 @@ namespace Gadema.Core.Dtos.Authentication;
 public class RecoveryCodesResponseDto
 {
     public IEnumerable<string> Codes { get; set; } = Enumerable.Empty<string>();
+    public string Message { get; set; }
 }
