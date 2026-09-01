@@ -1,0 +1,107 @@
+@inherits LayoutComponentBase
+
+<div class="bg-white border rounded-lg shadow-sm p-4">
+    <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-gray-700 flex items-center gap-2">
+            ✨ Suggestions for what's next
+            @if (IsDismissed)
+            {
+                <span class="text-xs bg-gray-100 px-2 py-0.5 rounded-full text-gray-500">(dismissed)</span>
+            }
+        </h3>
+        <div class="flex items-center gap-2">
+            @if (!IsDismissed)
+            {
+                <button @onclick="Dismiss" class="px-2 py-1 text-xs rounded border border-gray-300 hover:bg-gray-50 transition-colors" title="Dismiss until next save">
+                    Dismiss
+                </button>
+            }
+            <button @onclick="KeepShowing" class="px-2 py-1 text-xs rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium">
+                Keep showing me
+            </button>
+        </div>
+    </div>
+
+    @if (!IsDismissed && Suggestions.Any())
+    {
+        <div class="space-y-4">
+
+            <!-- Quick Wins Section -->
+            @if (QuickWins != null && QuickWins.Any())
+            {
+                <section>
+                    <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+                        ⚡ Quick wins (no new research needed)
+                        <span class="text-xs bg-yellow-100 text-yellow-700 px-1.5 rounded-full">@QuickWins.Count</span>
+                    </h4>
+                    @foreach (var win in QuickWins)
+                    {
+                        <label class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer group transition-colors">
+                            <input type="checkbox" class="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                            <div class="flex-1 min-w-0">
+                                @foreach (var tag in win.Tags)
+                                {
+                                    if (!string.IsNullOrEmpty(tag))
+                                    {
+                                        <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium @tag.CssClass">@tag.Text</span>
+                                    }
+                                }
+                                <p class="text-sm text-gray-700 mt-0.5">@win.Text</p>
+                            </div>
+                        </label>
+                    }
+                </section>
+            }
+
+            <!-- Related Items Section -->
+            @if (RelatedItems != null && RelatedItems.Any())
+            {
+                <section>
+                    <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+                        🔍 Related items to review
+                        <span class="text-xs bg-purple-100 text-purple-700 px-1.5 rounded-full">@RelatedItems.Count</span>
+                    </h4>
+                    @foreach (var item in RelatedItems)
+                    {
+                        <div class="flex items-start gap-3 p-2 rounded-lg hover:bg-gray-50 cursor-pointer group transition-colors">
+                            <div class="p-1.5 bg-purple-50 text-purple-600 rounded @item.IconClass flex-shrink-0">@item.Icon</div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-800 group-hover:text-blue-700 transition-colors line-clamp-2">@item.Text</p>
+                                @if (!string.IsNullOrEmpty(item.Context))
+                                {
+                                    <p class="text-xs text-gray-400 mt-0.5">@item.Context</p>
+                                }
+                            </div>
+                            @if (item.ActionLabel != null)
+                            {
+                                <button @onclick="() => OnActionClick(item)" class="ml-auto px-2 py-1 text-xs rounded bg-purple-600 text-white hover:bg-purple-700 transition-colors">
+                                    @item.ActionLabel
+                                </button>
+                            }
+                        </div>
+                    }
+                </section>
+            }
+
+        </div>
+    }
+    else if (IsDismissed)
+    {
+        <p class="text-xs text-gray-400 italic">Dismissed. Suggestions will reappear on next snapshot save.</p>
+    }
+</div>
+
+@code {
+    private bool IsDismissed = false;
+    private List<SuggestionItem>? QuickWins;
+    private List<RelatedItem>? RelatedItems;
+
+    [Parameter] public bool ShowSuggestions { get; set; } = true;
+    [Parameter] public EventCallback OnDismiss { get; set; }
+    [Parameter] public EventCallback OnKeepShowing { get; set; }
+    [Parameter] public List<SuggestionItem>? Suggestions { get; set; }
+
+    private void Dismiss() => IsDismissed = true;
+    private void KeepShowing() => IsDismissed = false;
+    private async Task OnActionClick(RelatedItem item) => await OnAction?.InvokeAsync(item);
+}

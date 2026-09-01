@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaDeMa — Idea Dump Zone Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-sm min-h-screen pb-24">
+
+<div class="max-w-6xl mx-auto p-6">
+
+    <!-- Header -->
+    <div class="mb-6 flex items-center justify-between">
+        <h1 class="text-xl font-bold text-gray-900">Idea Dump Zone</h1>
+        <div class="flex items-center gap-3">
+            <button class="px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-white transition-colors text-xs font-medium flex items-center gap-2" title="Clear all">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                Clear all
+            </button>
+            <button class="px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors text-xs font-medium">Export to PDF</button>
+        </div>
+    </div>
+
+    <!-- Main Idea Dump Area -->
+    <section class="bg-yellow-50 border-2 border-dashed border-yellow-300 rounded-xl p-6 mb-6">
+        <label class="block text-xs font-semibold text-yellow-800 uppercase tracking-wide mb-3 flex items-center gap-2">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            Dump ideas here — they're auto-saved instantly
+        </label>
+
+        <!-- Textarea -->
+        <textarea 
+            class="w-full h-64 p-4 text-gray-700 bg-yellow-50 rounded-lg border-none resize-y focus:ring-2 focus:ring-blue-400 outline-none font-mono text-sm leading-relaxed"
+            placeholder="Type your ideas here... No judgment, no structure required. Just get it out of your head and into the system."
+        >Idea #234: What if the "temporal residue" from the clock tower scene actually manifests physically — not just as a motif but as actual fragments of time bleeding through? Maybe Elias can see echoes of moments that happened 10 minutes ago, like ghost images overlaying reality. But they only appear when he's under stress or fatigue.
+
+Idea #235: The red thread motif needs to be more than visual. What if it's also a metaphor for "narrative causality" — every time someone touches an object with the red thread on it, that person's future is subtly altered? And Elias doesn't know this yet. He only discovers it when his own past starts repeating itself.</textarea>
+
+        <!-- Character count -->
+        <div class="mt-2 text-xs text-gray-500 flex items-center justify-between">
+            <span>@item("char_count") characters • 147 words</span>
+            <span class="text-green-600">@item("save_status")</span>
+        </div>
+    </section>
+
+    <!-- Drag-and-Drop Zone: Attach to existing content -->
+    <section class="mb-6">
+        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Attach idea to...</label>
+        
+        <!-- Searchable attachment list -->
+        <div class="bg-white border rounded-lg overflow-hidden">
+            <input type="text" 
+                   placeholder="🔍 Search existing scenes, beats, or characters..." 
+                   class="w-full px-4 py-3 text-sm bg-gray-50 border-none focus:ring-2 focus:ring-blue-400 outline-none" />
+
+            <!-- Suggestions -->
+            <div class="max-h-64 overflow-y-auto">
+                <!-- Suggestion 1 -->
+                <div class="p-3 hover:bg-yellow-50 cursor-pointer transition-colors border-b border-gray-100 last:border-0">
+                    <div class="flex items-start gap-2">
+                        <span class="text-green-600 mt-0.5">@item("icon_scene")</span>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate">Scene 7: The Clock Tower</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Attach as a "What if" variation or expand this beat?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suggestion 2 -->
+                <div class="p-3 hover:bg-yellow-50 cursor-pointer transition-colors border-b border-gray-100 last:border-0">
+                    <div class="flex items-start gap-2">
+                        <span class="text-purple-600 mt-0.5">@item("icon_character")</span>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate">Elias — CharacterBackground (Childhood Trauma)</p>
+                            <p class="text-xs text-gray-500 mt-0.5">This connects to the grandfather clock memory here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suggestion 3 -->
+                <div class="p-3 hover:bg-yellow-50 cursor-pointer transition-colors border-b border-gray-100 last:border-0">
+                    <div class="flex items-start gap-2">
+                        <span class="text-blue-600 mt-0.5">@item("icon_beat")</span>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-900 truncate">Beat: "The Revelation" (unplaced)</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Use this as the setup for that beat's twist.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Ideas Panel -->
+    <section class="mb-6">
+        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Related Ideas (AI suggestions)</label>
+        
+        <div class="bg-white border rounded-lg p-4 space-y-3">
+            <p class="text-xs text-gray-500 italic">Based on what you just wrote, here are ideas that might fit:</p>
+
+            <!-- Related Idea 1 -->
+            <button class="w-full flex items-start gap-2 p-2 rounded-lg hover:bg-gray-50 transition-colors group text-left">
+                <span class="text-blue-600 mt-0.5">@item("icon_lightbulb")</span>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-800 group-hover:text-blue-700 transition-colors">@item("related_title_1")</p>
+                    <p class="text-xs text-gray-500 mt-0.5 line-clamp-2">@item("related_desc_1")</p>
+                </div>
+            </button>
+
+            <!-- Related Idea 2 -->
+            <button class="w-full flex items-start gap-2 p-2 rounded-lg hover:bg-gray-50 transition-colors group text-left">
+                <span class="text-purple-600 mt-0.5">@item("icon_lightbulb")</span>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-800 group-hover:text-blue-700 transition-colors">@item("related_title_2")</p>
+                    <p class="text-xs text-gray-500 mt-0.5 line-clamp-2">@item("related_desc_2")</p>
+                </div>
+            </button>
+
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-white border rounded-lg p-4">
+        <div class="flex items-center justify-between text-xs text-gray-500">
+            <span>Total ideas in dump: @item("total_count")</span>
+            <span>Last added: 2 hours ago</span>
+        </div>
+    </section>
+
+</div>
+
+<script>
+const items = {
+    'char_count': 1,470,
+    'save_status': '✓ Saved locally • Will sync on next save',
+    'icon_scene': '📍',
+    'icon_character': '🧑‍🦳',
+    'icon_beat': '⚡',
+    'icon_lightbulb': '💡',
+    'total_count': 127,
+    
+    'related_title_1': 'What if the echoes can be "collected" as a power?',
+    'related_desc_1': 'Elias notices he can pull fragments of past moments into his current reality. But each use costs him a memory of something else — creating an emotional trade-off.',
+    
+    'related_title_2': 'The red thread is actually blood from the original timeline',
+    'related_desc_2': 'Every time someone touches an object with the red thread, they absorb a piece of that timeline\'s trauma. Elias is unknowingly carrying grief he doesn\'t remember.'
+};
+
+// Render tooltips on hover
+document.querySelectorAll('p').forEach(el => {
+    const content = items[el.textContent.replace(/[#\s#]/g, '')];
+    if (content && typeof content === 'string') el.textContent = content;
+});
+</script>
+
+</body>
+</html>

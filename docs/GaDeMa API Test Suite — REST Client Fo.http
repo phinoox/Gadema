@@ -1,0 +1,394 @@
+# GaDeMa API Test Suite — REST Client Format (VS Code)
+
+> **Protocol:** `HTTP/1.1` | **Base URL:** `https://localhost:5001/api/v1`  
+> **Format:** RFC 2616-compliant with VS Code REST Client extension syntax
+
+---
+
+## 📋 Test Sequence: User Registration → Project Creation → Content Workflow
+
+```http
+### ===== STEP 1: REGISTER A NEW USER =====
+POST https://localhost:5001/api/v1/auth/register HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Connection: keep-alive
+Cache-Control: no-cache
+
+{
+    "email": "developer@example.com",
+    "password": "SecureP@ssw0rd!",
+    "name": "Jane Developer"
+}
+```
+
+---
+
+```http
+### ===== STEP 2: SIGN IN WITH REGISTERED CREDENTIALS =====
+POST https://localhost:5001/api/v1/auth/signin HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Connection: keep-alive
+
+{
+    "email": "developer@example.com",
+    "password": "SecureP@ssw0rd!"
+}
+```
+
+---
+
+```http
+### ===== STEP 3: SIGN IN WITH GOOGLE OAUTH (ALTERNATIVE) =====
+POST https://localhost:5001/api/v1/auth/callback/google HTTP/1.1
+Host: localhost:5001
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+
+code=4/AO0aAm8Gf6r3XwQp2kL9mNvYzRtBcDsE&state=session-abc-123
+```
+
+---
+
+```http
+### ===== STEP 4: SIGN IN WITH TWO-FACTOR AUTHENTICATION =====
+POST https://localhost:5001/api/v1/auth/signin-with-2fa HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "developer@example.com",
+    "password": "SecureP@ssw0rd!",
+    "twoFactorToken": "123456"  // Replace with actual TOTP token from authenticator app
+}
+```
+
+---
+
+```http
+### ===== STEP 5: CREATE A NEW PROJECT =====
+POST https://localhost:5001/api/v1/projects HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "title": "My RPG Adventure Game",
+    "description": "A fantasy RPG with branching narrative and character progression.",
+    "ownerType": 0,       // 0 = User-owned, 1 = Team-owned
+    "visibility": "Private",  // Public | Private | TeamOnly
+    "templateType": "RPG"   // Optional: use predefined project templates
+}
+```
+
+---
+
+```http
+### ===== STEP 6: LIST ALL PROJECTS (VERIFICATION) =====
+GET https://localhost:5001/api/v1/projects?pageSize=20&page=1 HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+```
+
+---
+
+```http
+### ===== STEP 7: CREATE A NEW CONTENT ITEM (Character) =====
+POST https://localhost:5001/api/v1/content/items HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "projectId": "<PROJECT_ID_FROM_STEP_5>",
+    "contentType": 0,         // ContentTypeEnum.Character = 0
+    "title": "Elara Moonwhisper",
+    "slug": "elara-moonwhisper",
+    "shortDesc": "A rogue mage seeking redemption for her past.",
+    "description": "# Character Sheet\n\n## Overview\n- **Name:** Elara Moonwhisper  \n- **Race:** Half-Elf  \n- **Class:** Arcane Rogue\n\n## Personality Traits\nElara carries a quiet determination in her eyes, haunted by the failure that led to her current quest. She speaks softly but with conviction.\n\n## Background\nFormer apprentice of the Sunspire Academy, she was expelled after discovering dark rituals within her mentor's teachings."
+}
+```
+
+---
+
+```http
+### ===== STEP 8: UPDATE THE CONTENT ITEM (Add Tags & Media) =====
+PUT https://localhost:5001/api/v1/content/items/<CONTENT_ID_FROM_STEP_7> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "description": "# Character Sheet\n\n## Overview\n- **Name:** Elara Moonwhisper  \n- **Race:** Half-Elf  \n- **Class:** Arcane Rogue  \n\n## Equipment\nWields a silver-tipped dagger and an ancient grimoire.\n\n## Abilities\n- *Shadow Step*: Teleport short distances in darkness.  \n- *Arcane Lockpicking*: Opens magical seals with a touch.",
+    "published": false,
+    "viewMode": "PrivateWriting",   // vs "Presentation" mode
+    "tags": [
+        "Protagonist",
+        "MagicUser",
+        "RogueClass",
+        "HalfElf"
+    ],
+    "reviewStatusId": "<OPTIONAL_REVIEW_STATUS_ID>"
+}
+```
+
+---
+
+```http
+### ===== STEP 9: CREATE A NEW STORY OUTLINE (Plot Point) =====
+POST https://localhost:5001/api/v1/content/items HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "projectId": "<PROJECT_ID_FROM_STEP_5>",
+    "contentType": 3,            // ContentTypeEnum.PlotPoint = 3
+    "title": "The Fallen Kingdom",
+    "slug": "the-fallen-kingdom",
+    "shortDesc": "Act II climax where the kingdom is overtaken by corruption.",
+    "description": "# Plot Point: The Fallen Kingdom\n\n## Synopsis\nThe dark forces Elara encountered in Act I have now consumed the entire kingdom of Aethelgard. The capital city lies in ruins, and survivors are scattered.\n\n## Beats\n- **Beat 1:** Elara arrives at the gates (destruction)\n- **Beat 2:** Discovery of the corrupted throne room\n- **Beat 3:** Confrontation with the corrupted king\n- **Beat 4:** The revelation that corruption spread through bloodlines, not just magic\n\n## Themes\nPower corrupts. Legacy. Sacrifice."
+}
+```
+
+---
+
+```http
+### ===== STEP 10: CREATE A DIALOGUE BRANCH (Visual Novel Style) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID>/dialogue/branches HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "projectId": "<PROJECT_ID_FROM_STEP_5>",
+    "title": "Chapter 1: The Awakening",
+    "visualNodeImageUri": "/assets/images/nodes/awakening_bg.png",
+    "characterIconUri": "/assets/images/icons/elara_silverhair.png"
+}
+```
+
+---
+
+```http
+### ===== STEP 11: ADD A DIALOGUE NODE TO THE BRANCH (Child Node) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID>/dialogue/branches/<BRANCH_ID>/nodes HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "branchId": "<BRANCH_ID_FROM_STEP_10>",
+    "title": "The Stranger Approaches",
+    "speakerName": "Unknown Traveler",
+    "speakerRole": 0,            // 0 = Protagonist, 1 = NPC, 2 = Antagonist
+    "dialogueText": "\"You're... the one they called the Moonwhisper.\"",
+    "choices": [
+        {
+            "id": "choice_a",
+            "label": "Introduce yourself.",
+            "nextNodeId": "<CHILD_NODE_ID>",
+            "conditions": {
+                "requiredTraits": ["Polite"]
+            }
+        },
+        {
+            "id": "choice_b",
+            "label": "Stay silent and watch.",
+            "nextNodeId": "<CHILD_NODE_ID_ALT>",
+            "conditions": {
+                "requiredTraits": ["Cautious"]
+            }
+        }
+    ]
+}
+```
+
+---
+
+```http
+### ===== STEP 12: CREATE A PROJECT TASK (ADHD-Friendly Flat Structure) =====
+POST https://localhost:5001/api/v1/tasks HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "projectId": "<PROJECT_ID_FROM_STEP_5>",
+    "contentItemId": null,       // null = project-level task, not tied to specific content
+    "taskTitle": "Design the main character's ability tree",
+    "description": "Create a complete skill/ability progression for Elara including:\n- Passive abilities (shadow step, smoke screen)\n- Active combat abilities\n- Utility abilities (lockpicking, stealth)",
+    "status": 0,                 // TaskStatusEnum.Pending = 0, InProgress=1, Completed=2
+    "priority": 1,              // 1 = Highest priority
+    "difficulty": 2,            // 0 = Easy, 1 = Medium, 2 = Hard
+    "isQuickWin": true,         // ✅ ADHD-friendly flag for quick wins
+    "estimatedMinutes": 45,
+    "assignedToUserId": null,   // Optional: leave null for unassigned
+    "dueDate": "2025-12-31T23:59:59Z"
+}
+```
+
+---
+
+```http
+### ===== STEP 13: ADD A COMMENT TO THE TASK (Team Collaboration) =====
+POST https://localhost:5001/api/v1/tasks/<TASK_ID_FROM_STEP_12>/comments HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "contentItemId": "<CONTENT_ID_FROM_STEP_7>",
+    "text": "@developer Please review the ability tree before we start implementation. I want to make sure the passive abilities don't stack with each other.",
+    "visibility": "Team"         // Private | Team | Public
+}
+```
+
+---
+
+```http
+### ===== STEP 14: SUBMIT CONTENT FOR REVIEW (Approval Workflow) =====
+POST https://localhost:5001/api/v1/content-items/<CONTENT_ID_FROM_STEP_7>/review HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "status": 1,                 // ReviewStatusEnum.Pending = 1
+    "assignedReviewerId": "<TEAM_MEMBER_ID>"
+}
+```
+
+---
+
+```http
+### ===== STEP 15: APPROVE CONTENT (Second User's Perspective) =====
+POST https://localhost:5001/api/v1/content-items/<CONTENT_ID_FROM_STEP_7>/review HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <TEAM_MEMBER_ACCESS_TOKEN>
+
+{
+    "status": 2,                 // ReviewStatusEnum.Approved = 2
+    "reviewerNotes": "Approved. The ability interactions are balanced."
+}
+```
+
+---
+
+```http
+### ===== STEP 16: EXTERNAL REFERENCE (Google Docs / Pinterest) =====
+POST https://localhost:5001/api/v1/content-items/<CONTENT_ID_FROM_STEP_7>/external-references HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "name": "Character Design Inspiration",
+    "url": "https://www.pinterest.com/pin/123456789/",
+    "sourceType": 0,             // 0 = Pinterest, 1 = GoogleDocs, 2 = ArtStation
+    "thumbnailUrl": null         // Optional: auto-generated thumbnail from URL
+}
+```
+
+---
+
+```http
+### ===== STEP 17: EXPORT CONTENT AS JSON (For Unity/Unreal Import) =====
+POST https://localhost:5001/api/v1/export/content/json HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "projectId": "<PROJECT_ID>",
+    "includeRelationships": true,
+    "version": 1
+}
+```
+
+---
+
+```http
+### ===== STEP 18: SEARCH ACROSS ALL CONTENT (Full-Text) =====
+GET https://localhost:5001/api/v1/search/content?q=moonwhisper&contentType=Character&status=Draft HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+```
+
+---
+
+## 📋 Expected Response Codes Reference
+
+| Step | Endpoint | Expected Status | Description |
+|------|----------|-----------------|-------------|
+| 1 | POST /auth/register | `201 Created` | User created successfully |
+| 2 | POST /auth/signin | `200 OK` + JWT token in body | Authentication successful |
+| 3 | POST /auth/callback/google | `200 OK` + JWT token | OAuth flow complete |
+| 4 | POST /auth/signin-with-2fa | `200 OK` + JWT token | 2FA verified, session active |
+| 5 | POST /projects | `201 Created` | Project created with UUID |
+| 6 | GET /projects?pageSize=20 | `200 OK` + pagination metadata | List of user's projects |
+| 7 | POST /content/items | `201 Created` | Content item created (auto-assigns ID) |
+| 8 | PUT /content-items/{id} | `200 OK` | Item updated, version incremented |
+| 9 | POST /content/items | `201 Created` | Plot point created |
+| 10 | POST /projects/{id}/dialogue/branches | `201 Created` | Branch tree root node created |
+| 11 | POST /dialogue/branches/{id}/nodes | `201 Created` | Child dialogue node added |
+| 12 | POST /tasks | `201 Created` | Flat task created (ADHD-friendly) |
+| 13 | POST /tasks/{id}/comments | `201 Created` | Comment threaded to task |
+| 14 | POST /content-items/{id}/review | `200 OK` | Review submitted for approval |
+| 15 | POST /content-items/{id}/review | `200 OK` | Reviewer approves content |
+| 16 | POST /content-items/{id}/external-references | `201 Created` | External link stored |
+| 17 | POST /export/content/json | `200 OK` + JSON payload | Downloadable export |
+| 18 | GET /search/content?q=... | `200 OK` + search results | Full-text search across domain |
+
+---
+
+## 🧪 VS Code REST Client Tips
+
+**To use these in VS Code:**
+
+1. Install the **REST Client** extension (Huachao Mao)
+2. Save all requests above as a single `.http` file, e.g., `tests/api-test-sequence.http`
+3. Run with: `Ctrl+Alt+N` or click "▶ Send Request" in the editor
+4. Responses appear below each request automatically
+
+**Pro tip — add response validation comments:**
+
+```http
+### ===== STEP 1: REGISTER A NEW USER =====
+POST https://localhost:5001/api/v1/auth/register HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+
+{
+    "email": "developer@example.com",
+    "password": "SecureP@ssw0rd!",
+    "name": "Jane Developer"
+}
+
+## @response validate status-code 201 && response.json().message === "User registered successfully"
+```
+
+---
+
+This sequence exercises every major domain in the system: authentication, project lifecycle, content CRUD, versioning, dialogue trees, task management, review workflows, external references, and export. Each step builds on the previous one to simulate a real user workflow.

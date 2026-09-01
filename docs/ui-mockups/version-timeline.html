@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GaDeMa — Version Timeline Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans text-sm">
+
+<div class="max-w-6xl mx-auto p-8">
+    <!-- Header -->
+    <div class="mb-6 flex items-center justify-between">
+        <div>
+            <h1 class="text-xl font-bold text-gray-900">The Glass Garden — Version History</h1>
+            <p class="text-xs text-gray-500 mt-0.5">Milestones • Auto-saved states are not shown here</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <button class="px-3 py-1.5 rounded-lg border border-gray-300 hover:bg-white transition-colors text-xs font-medium">
+                Restore v7 — 14 Jan
+            </button>
+            <button class="px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors text-xs font-medium flex items-center gap-2">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                Create snapshot
+            </button>
+        </div>
+    </div>
+
+    <!-- Timeline View -->
+    <section class="bg-white border rounded-xl p-4 shadow-sm">
+        <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+            📍 Milestone Timeline
+        </label>
+
+        <div class="flex items-start gap-8 overflow-x-auto pb-2 -mx-2 px-2 snap-x snap-mandatory" style="min-height: 140px;">
+            
+            <!-- v1 -->
+            <div class="snap-center min-w-[160px]">
+                <button class="w-full text-left group relative">
+                    <div class="flex items-baseline gap-2 mb-1">
+                        <span class="text-xs font-mono bg-gray-100 px-1.5 rounded text-gray-600 font-normal">#v1</span>
+                        <span class="text-[10px] text-gray-400">Jan 8, 9:23 AM</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">@item("v1_title")</h4>
+                </button>
+
+                <!-- Arrow connector -->
+                <div class="hidden group-hover:block absolute right-full mr-3 top-1/2 -translate-y-1/2 z-50">
+                    <svg width="24" height="8" viewBox="0 0 24 8" fill="none" stroke="#e5e7eb">
+                        <path d="M6 4h9m-3-4l-4.1 4.1L13 8" stroke-width="1.5"/>
+                    </svg>
+                </div>
+
+                <!-- Comment tooltip -->
+                <div class="absolute bottom-full left-0 -mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                    <div class="bg-gray-900 text-white text-xs rounded-lg py-1.5 px-3 shadow-xl whitespace-normal max-w-[180px]">
+                        Created project structure + defined first three scenes.
+                        <span class="block mt-1 text-xs opacity-70">3 min • 420 words</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- v2 -->
+            <div class="snap-center min-w-[160px] relative">
+                <button class="w-full text-left group relative">
+                    <div class="flex items-baseline gap-2 mb-1">
+                        <span class="text-xs font-mono bg-gray-100 px-1.5 rounded text-gray-600 font-normal">#v2</span>
+                        <span class="text-[10px] text-gray-400">Jan 8, 3:17 PM</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">@item("v2_title")</h4>
+
+                    <!-- Arrow connector -->
+                    <div class="hidden group-hover:block absolute right-full mr-3 top-1/2 -translate-y-1/2 z-50">
+                        <svg width="24" height="8" viewBox="0 0 24 8" fill="none" stroke="#e5e7eb">
+                            <path d="M6 4h9m-3-4l-4.1 4.1L13 8" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+
+                    <!-- Comment tooltip -->
+                    <div class="absolute bottom-full left-0 -mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                        <div class="bg-gray-900 text-white text-xs rounded-lg py-1.5 px-3 shadow-xl whitespace-normal max-w-[180px]">
+                            Added character background for Protagonist + fixed timeline inconsistency in Scene 2.
+                            <span class="block mt-1 text-xs opacity-70">12 min • +1,847 words</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+            <!-- v3 -->
+            <div class="snap-center min-w-[160px] relative border-l-2 border-dashed border-gray-300 pl-8">
+                <button class="w-full text-left group relative">
+                    <div class="flex items-baseline gap-2 mb-1">
+                        <span class="text-xs font-mono bg-blue-50 px-1.5 rounded text-blue-700 font-semibold">#v3</span>
+                        <span class="text-[10px] text-gray-400">Jan 9, 2:45 PM</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">@item("v3_title")</h4>
+
+                    <!-- Arrow connector -->
+                    <div class="hidden group-hover:block absolute right-full mr-3 top-1/2 -translate-y-1/2 z-50">
+                        <svg width="24" height="8" viewBox="0 0 24 8" fill="none" stroke="#e5e7eb">
+                            <path d="M6 4h9m-3-4l-4.1 4.1L13 8" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+
+                    <!-- Comment tooltip -->
+                    <div class="absolute bottom-full left-0 -mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                        <div class="bg-gray-900 text-white text-xs rounded-lg py-1.5 px-3 shadow-xl whitespace-normal max-w-[180px]">
+                            Blocked on the clock mechanic — need to research how time mechanics work in this setting.
+                            <span class="block mt-1 text-xs opacity-70">8 min • 892 words</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick actions below -->
+                    <div class="mt-3 flex items-center gap-1" style="display: none;">
+                        <button class="px-2 py-1 text-[10px] rounded border border-gray-300 hover:bg-gray-50 transition-colors">🔍 Find uses</button>
+                        <button class="px-2 py-1 text-[10px] rounded border border-gray-300 hover:bg-gray-50 transition-colors">⚡ Quick edit</button>
+                    </div>
+                </button>
+            </div>
+
+            <!-- v4 -->
+            <div class="snap-center min-w-[160px] relative border-l-2 border-dashed border-gray-300 pl-8">
+                <button class="w-full text-left group relative">
+                    <div class="flex items-baseline gap-2 mb-1">
+                        <span class="text-xs font-mono bg-blue-50 px-1.5 rounded text-blue-700 font-semibold">#v4</span>
+                        <span class="text-[10px] text-gray-400">Jan 9, 8:12 AM</span>
+                    </div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">@item("v4_title")</h4>
+
+                    <!-- Comment tooltip -->
+                    <div class="absolute bottom-full left-0 -mb-2 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                        <div class="bg-gray-900 text-white text-xs rounded-lg py-1.5 px-3 shadow-xl whitespace-normal max-w-[180px]">
+                            Resolved clock mechanic — added "temporal residue" as a recurring motif throughout the chapter.
+                            <span class="block mt-1 text-xs opacity-70">24 min • +2,341 words</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick actions below -->
+                    <div class="mt-3 flex items-center gap-1" style="display: none;">
+                        <button class="px-2 py-1 text-[10px] rounded border border-gray-300 hover:bg-gray-50 transition-colors">🔍 Find uses</button>
+                        <button class="px-2 py-1 text-[10px] rounded border border-gray-300 hover:bg-gray-50 transition-colors">⚡ Quick edit</button>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Auto-saved states (not in timeline) -->
+    <section class="mt-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+        <p class="text-xs text-yellow-800 font-medium flex items-center gap-1.5">
+            <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M9 2h6v18H9z"/></svg>
+            Auto-saved states are not shown in the timeline — they exist only as fail-safe backups. Click "Restore" on any milestone to open that exact version.
+        </p>
+    </section>
+
+</div>
+
+<script>
+// Simple mock data replacement
+const items = {
+    'v1_title': 'Initial draft of Chapter 1: The Basement',
+    'v2_title': 'Added character background + fixed timeline in Scene 2',
+    'v3_title': 'BLOCKED: Clock mechanic unresolved — need research',
+    'v4_title': 'Clock mechanic resolved with temporal residue motif'
+};
+
+// Render tooltips on hover
+document.querySelectorAll('h4').forEach(el => {
+    const content = items[el.textContent.replace(/[#\s#]/g, '')];
+    if (content) el.textContent = content;
+});
+</script>
+
+</body>
+</html>
