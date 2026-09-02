@@ -8,6 +8,7 @@ using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Reviews;
 using Gadema.Api.Services;
 using System;
+using Gadema.Core.Dtos;
 
 
 namespace Gadema.Api.Services;

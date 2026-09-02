@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <!-- Reference to Data and Core projects -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.12" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.12" />
     <ProjectReference Include="../Gadema.Data/Gadema.Data.csproj" />

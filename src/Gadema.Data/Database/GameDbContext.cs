@@ -237,6 +237,8 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<EngineFieldMapping> EngineFieldMappings { get; set; }
 
+    public DbSet<UserProviderLink> UserProviderLinks => Set<UserProviderLink>();
+
     /// <summary>
     /// Database connection string name.
     /// </summary>

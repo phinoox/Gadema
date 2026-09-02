@@ -6,6 +6,7 @@ using FluentAssertions;
 using FluentAssertions.Common;
 using Gadema.Api;
 using Gadema.Api.Services;
+using Gadema.Api.Services.Authentication;
 using Gadema.Core.Dtos.ContentItems;
 using Gadema.Core.Services; // ← Add this using
 using Gadema.Data.Database;
@@ -28,27 +29,27 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     {
         builder.ConfigureServices(services =>
         {
-           /* // Remove production DbContext registration if it exists
-            var descriptor = services.SingleOrDefault(
-                d => d.ServiceType == typeof(DbContextOptions<GameDbContext>));
+            /* // Remove production DbContext registration if it exists
+             var descriptor = services.SingleOrDefault(
+                 d => d.ServiceType == typeof(DbContextOptions<GameDbContext>));
 
-            if (descriptor != null)
-            {
-                //services.Remove(descriptor);
-                Console.WriteLine("DBCOntext removed. Ficken");
-            }
-            //RemoveDbContext(builder);
-            // Add in-memory SQLite database for tests
-            //var result =services.AddDbContext<GameDbContext>(options =>
-            /*var result =services.AddDbContext<GameDbContext>(options =>
-            {
-                options.UseInMemoryDatabase("GaDeMaTest");
+             if (descriptor != null)
+             {
+                 //services.Remove(descriptor);
+                 Console.WriteLine("DBCOntext removed. Ficken");
+             }
+             //RemoveDbContext(builder);
+             // Add in-memory SQLite database for tests
+             //var result =services.AddDbContext<GameDbContext>(options =>
+             /*var result =services.AddDbContext<GameDbContext>(options =>
+             {
+                 options.UseInMemoryDatabase("GaDeMaTest");
 
-                // For in-memory database, no need to manually apply configurations
-                // EF Core auto-applies them based on DbSet properties
-            });*/
+                 // For in-memory database, no need to manually apply configurations
+                 // EF Core auto-applies them based on DbSet properties
+             });*/
             //_context = Server.Host.Services.GetService<GameDbContext>();
-            
+
             RegisterServicesWithAddScoped(services);
 
             Console.WriteLine("✓ Services registered in DI + Dictionary. Ficken");
@@ -59,7 +60,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     {
         builder.ConfigureServices(services =>
         {
-          // 1. Remove the original DbContextOptions
+            // 1. Remove the original DbContextOptions
             var dbContextOptionsDescriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(DbContextOptions));
             if (dbContextOptionsDescriptor != null)
@@ -76,20 +77,20 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 
     private void CreateScope()
     {
-        if(_scope == null)
+        if (_scope == null)
             _scope = Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
     }
 
 
     public T GetScopedService<T>() where T : notnull
     {
-       CreateScope();
+        CreateScope();
         var service = _scope.ServiceProvider.GetRequiredService<T>();
-        
+
         return service;
     }
 
-    
+
 
     public GameDbContext GetScopedContext()
     {
@@ -97,13 +98,13 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         //return Services.GetService<GameDbContext>();
         //return Services.GetRequiredService<GameDbContext>();
 
-   CreateScope();
-       
+        CreateScope();
+
         var dbcontext = _scope.ServiceProvider.GetRequiredService<GameDbContext>();
         //dbcontext.Database.
         return dbcontext;
     }
-    
+
 
     private void RegisterServicesWithAddScoped(IServiceCollection serviceCollection)
     {
@@ -111,7 +112,6 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         serviceCollection.AddScoped<IContentService, ContentItemService>();
         serviceCollection.AddScoped<IProjectService, ProjectService>();
         serviceCollection.AddScoped<IProjectTaskService, ProjectTaskService>();
-        serviceCollection.AddScoped<IApiAuthService, ApiAuthService>();
         serviceCollection.AddScoped<IDialogueService, DialogueService>();
         serviceCollection.AddScoped<ICommentService, CommentService>();
         serviceCollection.AddScoped<IExternalReferenceService, ExternalReferenceService>();
@@ -119,7 +119,13 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         serviceCollection.AddScoped<IExportService, ExportService>();
         serviceCollection.AddScoped<ITagService, TagService>();
         serviceCollection.AddScoped<IReviewStatusService, ReviewStatusService>();
-        //serviceCollection.AddScoped<GameDbContext>();
+
+        // new — replace with the three concrete auth services:
+        serviceCollection.AddSingleton<JwtTokenService>();
+        serviceCollection.AddScoped<EmailPasswordAuthService>();
+        serviceCollection.AddScoped<TwoFactorAuthService>();
+        serviceCollection.AddScoped<GoogleOAuthService>();
+        serviceCollection.AddHttpClient();   // GoogleOAuthService needs IHttpClientFactory
     }
 
     /// <summary>

@@ -22,57 +22,75 @@ using Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Integration tests for authentication service.
 /// </summary>
-public class ApiAuthServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
+using Gadema.Api.Services.Authentication;
+using Gadema.Core.Dtos.Authentication;
+
+public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly ApiWebApplicationFactory _factory;
-    private readonly IApiAuthService _authService;
+    private readonly EmailPasswordAuthService _emailAuth;
+    private readonly TwoFactorAuthService _twoFactor;
+    private readonly GoogleOAuthService _google;
 
-    /// <summary>
-    /// Setup test environment.
-    /// </summary>
-    public ApiAuthServiceIntegrationTests(ApiWebApplicationFactory factory)
+    public AuthIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _factory = factory;
-        //using var scope = factory.GetScopedService<IServiceScopeFactory>().CreateScope();
-        // _authService = scope.ServiceProvider.GetRequiredService<IApiAuthService>();
-        _authService = factory.GetScopedService<IApiAuthService>();
+        _factory  = factory;
+        _emailAuth = factory.GetScopedService<EmailPasswordAuthService>();
+        _twoFactor = factory.GetScopedService<TwoFactorAuthService>();
+        _google    = factory.GetScopedService<GoogleOAuthService>();
     }
 
-    /// <summary>
-    /// Test: Google callback should return Successful.
-    /// </summary>
     [Fact]
-    public async Task GoogleCallbackAsync_ShouldReturnSuccessful()
+    public void Register_ShouldSucceed_ForNewEmail()
     {
-        // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
-        // Act
-        var result = await _authService.GoogleCallbackAsync("test_code");
-
-        // Assert
-        result.Successful.Should().BeTrue();
-
-         //_factory.GetScopedContext().Database.EnsureDeleted();
-    }
-
-    /// <summary>
-    /// Test: Disable 2FA should return Successful.
-    /// </summary>
-    [Fact]
-    public async Task Disable2FAAsync_ShouldReturnSuccessful()
-    {
-        // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
-        // Act
-        var result = await _authService.Disable2FAAsync(new Disable2FADto
+        var result = _emailAuth.Register(new RegisterDto
         {
-            TwoFactorToken = "123456"
+            Email = $"test{Guid.NewGuid():N}@example.com",
+            Password = "Str0ngPass!",
+            Name = "Test User"
         });
-
-        // Assert
         result.Successful.Should().BeTrue();
+        result.Data!.AccessToken.Should().NotBeNullOrEmpty();
+    }
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+    [Fact]
+    public void Register_ShouldConflict_ForDuplicateEmail()
+    {
+        var email = $"dup{Guid.NewGuid():N}@example.com";
+        _emailAuth.Register(new RegisterDto { Email = email, Password = "x", Name = "A" });
+
+        var result = _emailAuth.Register(new RegisterDto { Email = email, Password = "y", Name = "B" });
+        result.Successful.Should().BeFalse();
+        result.StatusCode.Should().Be(System.Net.HttpStatusCode.Conflict);
+    }
+
+    [Fact]
+    public void SignIn_ShouldFail_ForWrongPassword()
+    {
+        var email = $"pw{Guid.NewGuid():N}@example.com";
+        _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
+
+        var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "wrong" });
+        result.Successful.Should().BeFalse();
+        result.StatusCode.Should().Be(System.Net.HttpStatusCode.Unauthorized);
+    }
+
+    [Fact]
+    public void SignIn_ShouldSucceed_ForValidCredentials()
+    {
+        var email = $"ok{Guid.NewGuid():N}@example.com";
+        _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
+
+        var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "correct" });
+        result.Successful.Should().BeTrue();
+        result.Data!.AccessToken.Should().NotBeNullOrEmpty();
+    }
+
+    [Fact]
+    public void GoogleSignIn_WithInvalidToken_ShouldFail()
+    {
+        var result = _google.SignIn(new GoogleSignInDto { IdToken = "garbage" });
+        result.Successful.Should().BeFalse();
     }
 }
 
