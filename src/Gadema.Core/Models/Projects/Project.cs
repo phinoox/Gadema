@@ -46,7 +46,7 @@ public class Project
     /// <summary>
     /// FK to User or Team (polymorphic FK pattern).
     /// </summary>
-    [ForeignKey(nameof(Owner))]
+    [Required]
     public Guid OwnerId { get; set; }
 
     /// <summary>
@@ -59,7 +59,8 @@ public class Project
     /// Navigation property: User or Team who owns this project (polymorphic ownership).
     /// Note: This is a weak navigation - use OwnerType to determine actual owner entity type.
     /// </summary>
-    public virtual Project? Owner { get; set; }
+    [ForeignKey("OwnerId")]
+    public virtual User? Owner { get; set; }
 
     // Collection navigation properties
     /// <summary>
@@ -124,6 +125,7 @@ public class Project
     /// Used for multi-part narratives (e.g., "Book 2" of "The Elder Scrolls").
     /// Foreign key: SeriesId matches FK column on child projects.
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     [ForeignKey("SeriesProjectId")]
     public virtual Project? SeriesProject { get; set; }
 
@@ -131,7 +133,15 @@ public class Project
     /// FK to parent project in series (nullable).
     /// Used for back-referencing parent project in a series.
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     public Guid? SeriesProjectId { get; set; }
+
+     /// <summary>
+    /// Navigation property: Collection of child projects in this project's series.
+    /// Enables lazy loading to access all sequels / parts belonging to this parent project.
+    /// Foreign key: SeriesIds (auto-created by EF Core on the many side)
+    /// </summary>
+    public virtual ICollection<Project> SeriesProjects { get; set; } = new List<Project>();
 
     /// <summary>
     /// Optional parent series name.

@@ -18,7 +18,7 @@ public class ContentItem
     /// <summary>
     /// Unique identifier for the content item.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid? Id { get; set; }
 
     /// <summary>
     /// ID of the project this content item belongs to.
@@ -142,6 +142,7 @@ public class ContentItem
     /// Navigation property: Review status for this content item (Many-to-One).
     /// Foreign key: ContentItemId (matches FK in ReviewStatus)
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     public virtual ReviewStatus? ReviewStatus { get; set; }
 
     /// <summary>

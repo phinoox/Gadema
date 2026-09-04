@@ -37,8 +37,10 @@ public class IdentityDefinition
 }
 
 // Keep ProjectIdentityDefinition for specific project-scoped identity definitions
-public class ProjectIdentityDefinition : IdentityDefinition
+public class ProjectIdentityDefinition 
 {
+
+    public Guid Id { get; set; } = Guid.NewGuid();
     // Add these properties at the end of the class:
 
     [EnumDataType(typeof(IdentityTypeEnum)), Required, Display(Name = "Identity Type")]

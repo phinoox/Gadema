@@ -79,7 +79,7 @@ public class ContentItemServiceUnitTest
 
         // Act - get by ID
         var getResult = await _service.GetContentItemAsync(
-            createResult.Data!.Id, 
+            createResult.Data!.Id.Value, 
             ViewModeEnum.PrivateWriting);
 
         // Assert
@@ -114,7 +114,7 @@ public class ContentItemServiceUnitTest
         };
 
         var updateResult = await _service.UpdateContentItemAsync(
-            createResult.Data!.Id, 
+            createResult.Data!.Id.Value, 
             updateDto);
 
         // Assert
@@ -142,7 +142,7 @@ public class ContentItemServiceUnitTest
 
         // Act - delete
         var deleteResult = await _service.DeleteContentItemAsync(
-            createResult.Data!.Id);
+            createResult.Data!.Id.Value);
 
         // Assert
         deleteResult.Successful.Should().BeTrue();

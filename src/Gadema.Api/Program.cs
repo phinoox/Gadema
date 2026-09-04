@@ -26,16 +26,9 @@ public partial class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        Console.WriteLine("Ficker");
         // Add services to the container.
         builder.Services.AddControllers();
-        string allargs = "Penis args:";
-        foreach (var arg in args)
-        {
-            allargs += "," + arg;
-        }
-        //Console.WriteLine(allargs);
-
+      
         // if(builder.Environment.IsProduction() || builder.Environment.IsDevelopment())
         {
             builder.Services.AddDbContext<GameDbContext>(options =>
@@ -64,6 +57,11 @@ public partial class Program
 
         // HttpClient for Google JWKS (or other outbound calls)
         builder.Services.AddHttpClient("GoogleOAuth");
+        builder.Services.AddHttpContextAccessor();
+
+        var jwtSecret = builder.Configuration["Jwt:Secret"];
+        if (string.IsNullOrWhiteSpace(jwtSecret) || Encoding.UTF8.GetByteCount(jwtSecret) < 32)
+            throw new InvalidOperationException("Jwt:Secret must be set and at least 32 bytes long.");
 
         // JWT Bearer middleware – protects /2fa/* and /google/link endpoints
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -88,13 +86,15 @@ public partial class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
+        if (!app.Environment.IsDevelopment() && !app.Environment.IsEnvironment("Testing"))
         {
+            app.UseHttpsRedirection();
             app.UseExceptionHandler("/error");
+            app.MapGet("/error", () => Results.Problem(detail: "An unexpected error occurred.", statusCode: StatusCodes.Status500InternalServerError));
             app.UseHsts();
         }
 
-        app.UseHttpsRedirection();
+        
         app.UseAuthentication(); 
         app.UseAuthorization();
         app.MapControllers();

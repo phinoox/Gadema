@@ -7,6 +7,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
+using Gadema.Core.Enums;
 
 namespace Gadema.Data.Configurations.Authentication;
 
@@ -31,7 +32,7 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(e => e.Id).ValueGeneratedOnAdd();
         builder.Property(e => e.UserName).IsRequired().HasMaxLength(256);
         builder.Property(e => e.Email).IsRequired().HasMaxLength(256);
-        builder.Property(u => u.Provider).HasConversion<int>().HasDefaultValue(0);
+        builder.Property(u => u.Provider).HasDefaultValue(UserAuthProviderEnum.Password);
         // Email is already [Required] + [MaxLength(256)] — ensure unique index:
         builder.HasIndex(u => u.Email).IsUnique();
         builder.HasIndex(u => u.GoogleSubjectId).IsUnique().HasFilter("\"GoogleSubjectId\" IS NOT NULL");

@@ -23,7 +23,9 @@ using Microsoft.Extensions.DependencyInjection;
 /// Integration tests for authentication service.
 /// </summary>
 using Gadema.Api.Services.Authentication;
-using Gadema.Core.Dtos.Authentication;
+using Gadema.Core.Models;
+using Gadema.Data.Database;
+using Gadema.Core.Models.Projects;
 
 public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
@@ -31,6 +33,32 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     private readonly EmailPasswordAuthService _emailAuth;
     private readonly TwoFactorAuthService _twoFactor;
     private readonly GoogleOAuthService _google;
+    private User _user;
+    private string _password = "Password123!";
+
+    public void SeedAuthTestData()
+    {
+       
+
+        // Seed a test user with email/password
+        _user = new User
+        {
+            Id = Guid.NewGuid(),
+            Email = "seed@example.com",
+            UserName = "seeduser",
+            FullName = "Seed User",
+            PasswordHash = PasswordHasher.Hash(_password),
+            TwoFactorEnabled = false,
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+        };
+
+        var link = new UserProviderLink { UserId = _user.Id, Provider = UserAuthProviderEnum.Password };
+
+        //db.Users.Add(_user);
+        //db.UserProviderLinks.Add(link);
+        //db.SaveChanges();
+    }
 
     public AuthIntegrationTests(ApiWebApplicationFactory factory)
     {
@@ -38,6 +66,8 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
         _emailAuth = factory.GetScopedService<EmailPasswordAuthService>();
         _twoFactor = factory.GetScopedService<TwoFactorAuthService>();
         _google    = factory.GetScopedService<GoogleOAuthService>();
+        _factory.ResetDb();
+        SeedAuthTestData();
     }
 
     [Fact]
@@ -45,9 +75,9 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     {
         var result = _emailAuth.Register(new RegisterDto
         {
-            Email = $"test{Guid.NewGuid():N}@example.com",
-            Password = "Str0ngPass!",
-            Name = "Test User"
+            Email = _user.Email ,
+            Password = _password,
+            Name = _user.UserName
         });
         result.Successful.Should().BeTrue();
         result.Data!.AccessToken.Should().NotBeNullOrEmpty();
@@ -56,7 +86,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     [Fact]
     public void Register_ShouldConflict_ForDuplicateEmail()
     {
-        var email = $"dup{Guid.NewGuid():N}@example.com";
+        var email = _user.Email;
         _emailAuth.Register(new RegisterDto { Email = email, Password = "x", Name = "A" });
 
         var result = _emailAuth.Register(new RegisterDto { Email = email, Password = "y", Name = "B" });
@@ -67,7 +97,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     [Fact]
     public void SignIn_ShouldFail_ForWrongPassword()
     {
-        var email = $"pw{Guid.NewGuid():N}@example.com";
+        var email = _user.Email;
         _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
 
         var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "wrong" });
@@ -78,7 +108,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     [Fact]
     public void SignIn_ShouldSucceed_ForValidCredentials()
     {
-        var email = $"ok{Guid.NewGuid():N}@example.com";
+        var email = "ficker" +_user.Email;
         _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
 
         var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "correct" });
@@ -108,7 +138,8 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public ProjectServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
         _factory = factory;
-         _projectService = factory.GetScopedService<IProjectService>();
+        _projectService = factory.GetScopedService<IProjectService>();
+        
     }
 
     /// <summary>
@@ -118,7 +149,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       //_factory.GetScopedContext().Database.EnsureCreated();
+       
         var createDto = new CreateProjectDto
         {
             Title = "Test Project",
@@ -131,7 +162,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 
     /// <summary>
@@ -141,14 +172,14 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task UpdateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       //_factory.GetScopedContext().Database.EnsureCreated();
+       
         // Act
         var result = await _projectService.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 }
 
@@ -167,6 +198,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     {
         _factory = factory;
         _contentItemService = factory.GetScopedService<IContentService>();
+        _factory.ResetDb();
         
     }
 
@@ -176,25 +208,32 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     [Fact]
     public async Task CreateContentItemAsync_ShouldReturnSuccessful()
     {
-        // Arrange
-       //_factory.GetScopedContext().Database.EnsureCreated();
-        var createDto = new CreateContentItemDto
+        var scope = _factory.GetScope();
+
+        // Ancestor path for ContentItem — explicit, in FK order:
+        // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var seededProject = DbSeeder.Seed(scope, project);
+        //var testItem = DbSeeder.Create<ContentItem>(ci => ci.Project = seededProject);
+        //var testCharacter = DbSeeder.Create<CharacterDetails>(cd => cd.ContentItem = testItem);
+        //testCharacter = DbSeeder.Seed<CharacterDetails>(scope,testCharacter);
+        //var item = DbSeeder.Seed<ContentItem>(scope,testItem);
+
+        var result = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto
         {
-            ProjectId = Guid.NewGuid(),
+            ProjectId = seededProject.Id,
+            //Project = seededProject,
             ContentType = ContentTypeEnum.Character,
             Title = "Test Character",
             Slug = null!,
-            Description = "Test description",
-            ShortDesc = "Test short desc"
-        };
+            Description = "d",
+            ShortDesc = "s"
+        });
 
-        // Act
-        var result = await _contentItemService.CreateContentItemAsync(createDto);
-
-        // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+
     }
 
     /// <summary>
@@ -203,15 +242,24 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     [Fact]
     public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
-        // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
-        // Act
+        var projectId = Guid.NewGuid();
+        // arrange: ensure project exists if FK required, else skip
+        var created = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto { ProjectId = projectId, ContentType = ContentTypeEnum.Character, Title = "C", Slug = "c", Description = "d", ShortDesc = "s" });
+        created.Successful.Should().BeTrue();
+
+        // act — need the id; if result.Data exposes Id use it
+        var fetched = await _contentItemService.GetContentItemAsync(created.Data!.Id.Value, ViewModeEnum.PrivateWriting);
+
+        // assert real behavior
+        fetched.Successful.Should().BeTrue();
+        fetched.Data!.Title.Should().Be("C");
+    }
+
+    [Fact]
+    public async Task GetContentItemAsync_ReturnsNotFound_ForUnknownId()
+    {
         var result = await _contentItemService.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
-
-        // Assert
-        result.Successful.Should().BeTrue();
-
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+        result.Successful.Should().BeFalse(); // a random id should NOT be "successful"
     }
 
     /// <summary>
@@ -221,15 +269,20 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
         // Arrange
-      //_factory.GetScopedContext().Database.EnsureCreated();
+        var projectId = Guid.NewGuid();
+        // arrange: ensure project exists if FK required, else skip
+        var created = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto { ProjectId = projectId, ContentType = ContentTypeEnum.Character, Title = "C", Slug = "c", Description = "d", ShortDesc = "s" });
+        created.Successful.Should().BeTrue();
+
 
         // Act
-        var result = await _contentItemService.DeleteContentItemAsync(Guid.NewGuid());
+        var contentItemId = created.Data == null ? new Guid() : created.Data.Id;
+        var result = await _contentItemService.DeleteContentItemAsync(contentItemId.Value);
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+
     }
 }
 
@@ -248,7 +301,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     {
         _factory = factory;
         _projectTaskService = factory.GetScopedService<IProjectTaskService>();
-        
+        _factory.ResetDb();
     }
 
     /// <summary>
@@ -258,7 +311,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task CreateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
         var createDto = new ProjectTaskCreateDto
         {
             ProjectId = Guid.NewGuid(),
@@ -275,7 +328,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 
     /// <summary>
@@ -286,14 +339,14 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     {
      
         //Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
         // Act
         var result = await _projectTaskService.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 
     /// <summary>
@@ -303,14 +356,14 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
         // Act
         var result = await _projectTaskService.DeleteTaskAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 }
 
@@ -329,7 +382,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     {
         _factory = factory;
         _exportService = factory.GetScopedService<IExportService>();
-        
+        _factory.ResetDb();
     }
 
     /// <summary>
@@ -340,14 +393,14 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     {
         // Arrange
      
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
         // Act
         var result = await _exportService.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
 
         // Assert
         result.Should().NotBeNull();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 
     /// <summary>
@@ -357,7 +410,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     public async Task ExportToCsvAsync_ShouldReturnFile()
     {
         // Arrange
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
 
         // Act
         var result = await _exportService.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
@@ -365,7 +418,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
         // Assert
         result.Should().NotBeNull();
 
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 }
 
@@ -388,6 +441,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         {
             throw new Exception("ReviewService was null damnit");
         }
+        _factory.ResetDb();
     }
 
     /// <summary>
@@ -398,13 +452,13 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     {
         // Arrange
        
-        //_factory.GetScopedContext().Database.EnsureCreated();
+        
         // Act
         var result = await _reviewStatusService.GetReviewStatusAsync(Guid.NewGuid());
 
         // Assert
         result.Successful.Should().BeTrue();
-        //_factory.GetScopedContext().Database.EnsureDeleted();
+        
     }
 
     /// <summary>
@@ -414,7 +468,6 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     public async Task ApproveContentAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       //_factory.GetScopedContext().Database.EnsureCreated();
 
         // Act
         var result = await _reviewStatusService.ApproveContentAsync(Guid.NewGuid(), new ApproveContentDto
@@ -425,7 +478,6 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
 
         // Assert
         result.Successful.Should().BeTrue();
-
-         //_factory.GetScopedContext().Database.EnsureDeleted();
+         
     }
 }

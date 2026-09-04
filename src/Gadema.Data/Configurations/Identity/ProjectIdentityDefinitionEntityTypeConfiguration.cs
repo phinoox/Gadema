@@ -21,11 +21,14 @@ public class ProjectIdentityDefinitionEntityTypeConfiguration : IEntityTypeConfi
     public void Configure(EntityTypeBuilder<ProjectIdentityDefinition> builder)
     {
         // Primary key (composite)
-        builder.HasKey(e => new { e.ProjectId, e.IdentityName });
-        
-        // Navigation property: Project
+        builder.HasKey(e => e.Id);
+
+        // Prevent duplicate identity names within the same project
+        builder.HasIndex(e => new { e.ProjectId, e.IdentityName }).IsUnique();
+
         builder.HasOne(pid => pid.Project)
             .WithMany()
-            .HasForeignKey(pid => pid.ProjectId);
+            .HasForeignKey(pid => pid.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

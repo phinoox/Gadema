@@ -14,7 +14,7 @@ public class ContentItemResponseDto
     /// <summary>
     /// Unique identifier for the content item.
     /// </summary>
-    public Guid Id { get; set; }
+    public Guid? Id { get; set; }
     
     /// <summary>
     /// Project ID.

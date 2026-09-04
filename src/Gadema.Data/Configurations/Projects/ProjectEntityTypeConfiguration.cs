@@ -33,7 +33,7 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
         // Navigation property: SeriesProject (Restrict for historical data)
         builder.HasOne(p => p.SeriesProject)
             .WithMany()
-            .HasForeignKey(p => p.SeriesId)  // Optional parent project for series tracking
+            .HasForeignKey(p => p.SeriesProjectId)  // Optional parent project for series tracking
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
         
         // Navigation property: Owner (Restrict to preserve project history)

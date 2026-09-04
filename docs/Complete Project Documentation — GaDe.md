@@ -251,24 +251,3 @@ src/
   </ItemGroup>
 </Project>
 ```
-
----
-
-## 🗄️ Database Schema (53 Tables)
-
-### Authentication & Team Management
-
-| Table | Primary Key | Foreign Keys | Description |
-|-------|------------|--------------|-------------|
-| `Users` | `Id` (Guid) | — | User accounts with BCrypt/RFC2898DeriveBytes hashed passwords |
-| `Teams` | `Id` (Guid) | `OwnerId` → Users.Id | Collaborative project groups |
-| `TeamMembers` | `Id` (Guid) | `TeamId`, `UserId` | Many-to-many with role enum |
-| `ProjectTokens` | `Id` (Guid) | `ProjectId` → Projects.Id | API tokens per project (SHA256 hashed secrets) |
-| `TokenUsageLogs` | `Id` (Guid) | `ProjectTokenId` → ProjectTokens.Id | Audit trail of token usage |
-| `ActivityLogs` | `Id` (Guid) | `ProjectId`, `ContentItemId` | Immutable audit trail of all DB changes |
-
-### Core Content Management
-
-| Table | Primary Key | Foreign Keys | Description |
-|-------|------------|--------------|-------------|
-| `Projects` | `Id` (Guid) | `OwnerTypeId` → Enum; `SeriesProjectId` → Projects.Id | Game projects with polym
