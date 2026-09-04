@@ -38,23 +38,25 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
             .HasForeignKey(m => m.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);
         
+
+        
         // Navigation property: ContentTags (SetNull to preserve tags)
-        builder.HasMany(ci => ci.ContentTagAssociations)
+        builder.HasMany(ci => ci.ContentItemTags)
             .WithOne(ct => ct.ContentItem)
             .HasForeignKey(ct => ct.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);
         
         // Navigation property: ReviewStatus (SetNull to preserve review history)
         builder.HasOne(ci => ci.ReviewStatus)
-            .WithMany()
-            .HasForeignKey(rs => rs.ContentItemId)
-            .OnDelete(DeleteBehavior.SetNull);
-
+            .WithOne()
+            .HasForeignKey<ReviewStatus>(rs => rs.ContentItemId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
         // Navigation property: Comments (SetNull to preserve comment history)
         builder.HasMany(ci => ci.Comments)
             .WithOne(c => c.ContentItem)
             .HasForeignKey(c => c.ContentItemId)
             .OnDelete(DeleteBehavior.SetNull);
-
+        
     }
 }

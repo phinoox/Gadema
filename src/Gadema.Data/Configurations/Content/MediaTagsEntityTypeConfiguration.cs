@@ -28,3 +28,4 @@ public class MediaTagsEntityTypeConfiguration : IEntityTypeConfiguration<MediaTa
         builder.HasIndex(e => e.TagId).HasDatabaseName("IX_MediaTags_Tag");
     }
 }
+//ToDo : check foreign key

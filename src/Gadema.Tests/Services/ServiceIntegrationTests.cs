@@ -214,15 +214,11 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
         // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
         var owner  =     DbSeeder.Seed<User>(scope);
         var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
-        var seededProject = DbSeeder.Seed(scope, project);
-        //var testItem = DbSeeder.Create<ContentItem>(ci => ci.Project = seededProject);
-        //var testCharacter = DbSeeder.Create<CharacterDetails>(cd => cd.ContentItem = testItem);
-        //testCharacter = DbSeeder.Seed<CharacterDetails>(scope,testCharacter);
-        //var item = DbSeeder.Seed<ContentItem>(scope,testItem);
-
+        DbSeeder.Seed(scope, project);
+        
         var result = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto
         {
-            ProjectId = seededProject.Id,
+            ProjectId = project.Id,
             //Project = seededProject,
             ContentType = ContentTypeEnum.Character,
             Title = "Test Character",
@@ -242,13 +238,17 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     [Fact]
     public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
-        var projectId = Guid.NewGuid();
-        // arrange: ensure project exists if FK required, else skip
-        var created = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto { ProjectId = projectId, ContentType = ContentTypeEnum.Character, Title = "C", Slug = "c", Description = "d", ShortDesc = "s" });
-        created.Successful.Should().BeTrue();
+          //arrange
+        var scope = _factory.GetScope();
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        item.Title = "C";
+        DbSeeder.Seed(scope,item);
 
         // act — need the id; if result.Data exposes Id use it
-        var fetched = await _contentItemService.GetContentItemAsync(created.Data!.Id.Value, ViewModeEnum.PrivateWriting);
+        var fetched = await _contentItemService.GetContentItemAsync(item.Id.Value, ViewModeEnum.PrivateWriting);
 
         // assert real behavior
         fetched.Successful.Should().BeTrue();
@@ -268,16 +268,16 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     [Fact]
     public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
     {
-        // Arrange
-        var projectId = Guid.NewGuid();
-        // arrange: ensure project exists if FK required, else skip
-        var created = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto { ProjectId = projectId, ContentType = ContentTypeEnum.Character, Title = "C", Slug = "c", Description = "d", ShortDesc = "s" });
-        created.Successful.Should().BeTrue();
+        //arrange
+        var scope = _factory.GetScope();
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        DbSeeder.Seed(scope,item);
 
-
-        // Act
-        var contentItemId = created.Data == null ? new Guid() : created.Data.Id;
-        var result = await _contentItemService.DeleteContentItemAsync(contentItemId.Value);
+        //act
+        var result = await _contentItemService.DeleteContentItemAsync(item.Id.Value);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -311,10 +311,15 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task CreateTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
+        //arrange
+        var scope = _factory.GetScope();
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
         
         var createDto = new ProjectTaskCreateDto
         {
-            ProjectId = Guid.NewGuid(),
+            ProjectId = project.Id,
             TaskTitle = "Test Task",
             Status = 0,
             Priority = 1,
@@ -339,13 +344,18 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     {
      
         //Arrange
-        
+        var scope = _factory.GetScope();
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
+        DbSeeder.Seed(scope,task);
         // Act
-        var result = await _projectTaskService.UpdateTaskAsync(Guid.NewGuid(), new ProjectTaskUpdateDto());
+        var result = await _projectTaskService.UpdateTaskAsync(task.Id, new ProjectTaskUpdateDto(){Status = 3});
 
         // Assert
         result.Successful.Should().BeTrue();
-
+        result.Data!.Status.Should().Be(3);
          
     }
 
@@ -356,9 +366,15 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        
+        //Arrange
+        var scope = _factory.GetScope();
+        var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
+        DbSeeder.Seed(scope,task);
         // Act
-        var result = await _projectTaskService.DeleteTaskAsync(Guid.NewGuid());
+        var result = await _projectTaskService.DeleteTaskAsync(task.Id);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -451,10 +467,15 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     public async Task GetReviewStatusAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+        var scope = _factory.GetScope();
+         var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        DbSeeder.Seed(scope,item);
         
         // Act
-        var result = await _reviewStatusService.GetReviewStatusAsync(Guid.NewGuid());
+        var result = await _reviewStatusService.GetReviewStatusAsync(item.ReviewStatus.Id);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -468,9 +489,16 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     public async Task ApproveContentAsync_ShouldReturnSuccessful()
     {
         // Arrange
-
+        var scope = _factory.GetScope();
+         var owner  =     DbSeeder.Seed<User>(scope);
+        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        DbSeeder.Seed(scope, project);
+        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        DbSeeder.Seed(scope,item);
+        var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.ContentItem = item);
+        //DbSeeder.Seed<ReviewStatus>(scope,reviewStatus);
         // Act
-        var result = await _reviewStatusService.ApproveContentAsync(Guid.NewGuid(), new ApproveContentDto
+        var result = await _reviewStatusService.ApproveContentAsync(reviewStatus.Id, new ApproveContentDto
         {
             Status = 1,
             ReviewComments = "Approved"

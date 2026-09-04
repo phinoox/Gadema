@@ -33,6 +33,7 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
             .WithMany()
             .HasForeignKey(rs => rs.ReviewedByUserId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
+
         
         // Properties configuration
         builder.Property(e => e.Status).IsRequired();

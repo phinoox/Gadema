@@ -3,6 +3,7 @@ using System.Reflection;
 using AutoFixture;
 using AutoFixture.Kernel;
 using Gadema.Data.Database;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -90,7 +91,7 @@ public static class DbSeeder
                 index++;
 
             } while (factAttrib == null);
-
+            db.Database.ExecuteSqlRaw("PRAGMA foreign_key_check;");
             // Retrieve the line number
             string methodName = callerFrame.GetMethod().Name;
             int lineNumber = callerFrame.GetFileLineNumber();

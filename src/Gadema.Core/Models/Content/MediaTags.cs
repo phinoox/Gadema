@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Content;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -34,6 +35,6 @@ public class MediaTags
     public Guid TagId { get; set; }
 
     // Navigation property: Tag (Many-to-One)
-    public virtual Tag Tag { get; set; }
+    public virtual ContentTag Tag { get; set; }
 
 }

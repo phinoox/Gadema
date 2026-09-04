@@ -11,7 +11,7 @@ namespace Gadema.Core.Dtos.Tags;
 /// </summary>
 public class TagListResponseDto
 {
-    public IEnumerable<TagResponseDto> Items { get; set; } = Enumerable.Empty<TagResponseDto>();
+    public IEnumerable<TagResponseDto> Tags { get; set; } = Enumerable.Empty<TagResponseDto>();
     
     public int TotalCount { get; set; }
     

@@ -25,7 +25,7 @@ public class ReviewStatus
 
     // Navigation property: ContentItem (Many-to-One)
     [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    public virtual ContentItem? ContentItem { get; set; }
     
     /// <summary>
     /// Status: 0=Pending, 1=Approved, 2=Rejected.

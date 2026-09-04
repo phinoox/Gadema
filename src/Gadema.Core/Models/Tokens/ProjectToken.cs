@@ -2,6 +2,7 @@
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
@@ -68,6 +69,7 @@ public class ProjectToken
     /// Navigation property: Project that owns this token.
     /// Foreign key: ProjectId (matches FK in ProjectToken)
     /// </summary>
+    [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }
 
 }

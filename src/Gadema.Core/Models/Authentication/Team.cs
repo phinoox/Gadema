@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 // Gadema.Core - Shared Domain Models & Interfaces
@@ -62,5 +63,5 @@ public class Team
     /// Foreign key: CreatedByUserId (matches FK in configuration)
     /// </summary>
     public virtual User CreatedByUser { get; set; }
-
+     public virtual ICollection<ProjectTeam>  ProjectTeams { get; set; }  = new List<ProjectTeam>();
 }

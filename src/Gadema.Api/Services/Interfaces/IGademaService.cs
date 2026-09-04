@@ -11,6 +11,7 @@ public enum ServiceTypeEnum
 {
     ContentService,
     ProjectService,
+    ProjectTagService,
     ProjectTaskService,
     AuthService,
     DialogueService,

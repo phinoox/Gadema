@@ -24,11 +24,16 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     private readonly StreamWriter _logWriter = new StreamWriter("unit_test_db.log",append:false);
     private IServiceScope? _scope;
 
+    private static bool _FkChecked = false;
+
     public ApiWebApplicationFactory()
     {
         // Must stay OPEN for the factory's lifetime — closing it drops the in-memory DB.
         _connection = new SqliteConnection("Data Source=:memory:");
         _connection.Open();
+        using var pragmaCmd = _connection.CreateCommand();
+        pragmaCmd.CommandText = "PRAGMA foreign_keys = ON;PRAGMA foreign_key_check;";
+        pragmaCmd.ExecuteNonQuery();
     }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
@@ -62,6 +67,8 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
                 .LogTo(_logWriter.WriteLine, LogLevel.Information));
             services.AddSingleton(_connection); // prevent DI from disposing it per scope
         });
+        
+        
     }
 
     /// <summary>
@@ -80,7 +87,22 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     {
         var db = GetOrCreateScope().ServiceProvider.GetRequiredService<GameDbContext>();
         db.Database.EnsureDeleted();
+        //db.Database.ExecuteSqlRaw("PRAGMA foreign_keys = ON;");
+        List<string> db_pragma = new List<string>(){
+            "foreign_key_check",
+            "defer_foreign_keys=true",
+            "main.quick_check"
+            };
+        foreach (var pragma in db_pragma)
+        {
+            db.Database.ExecuteSqlRaw($"PRAGMA {pragma};");
+        }
         db.Database.EnsureCreated();
+        foreach (var pragma in db_pragma)
+        {
+            db.Database.ExecuteSqlRaw($"PRAGMA {pragma};");
+        }
+
     }
 
     protected override IHost CreateHost(IHostBuilder builder)
@@ -107,6 +129,29 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         }
         base.Dispose(disposing);
         _logWriter.Dispose();
+    }
+
+    private void CheckFK()
+    {
+        if(_FkChecked == true)
+        return;
+        _FkChecked = true;
+        using var command = _connection.CreateCommand();
+        command.CommandText = "PRAGMA foreign_keys = ON;PRAGMA foreign_key_check;";
+       // _context.Database.OpenConnection();
+       command.ExecuteNonQuery();
+        using var reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            // Each row represents a violation.
+            // Columns typically include: table_name, row_id, parent_table_name, foreign_key_index
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                Console.WriteLine($"fk violation: {reader.GetName(i)}: {reader.GetValue(i)}");
+            }
+        }
+       // _context.Database.CloseConnection();
     }
 
     internal IServiceScope GetScope()

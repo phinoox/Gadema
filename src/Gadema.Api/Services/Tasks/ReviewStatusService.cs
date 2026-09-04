@@ -40,7 +40,10 @@ public class ReviewStatusService : IGademaService,  IReviewStatusService
     public async Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid contentItemId)
     {
         var reviewStatus = await _context.ReviewStatuses.FindAsync(contentItemId);
-
+        if (reviewStatus == null)
+        {
+            return ApiResponseDto<ReviewStatusResponseDto>.NotFound($"Review status for ContentItem {contentItemId} not found");
+        }
         return ApiResponseDto<ReviewStatusResponseDto>.Success(new ReviewStatusResponseDto());
     }
 
@@ -63,7 +66,7 @@ public class ReviewStatusService : IGademaService,  IReviewStatusService
             reviewStatus.ReviewComments = approveDto.ReviewComments;
         }
 
-        reviewStatus.ReviewedByUserId = UserHelper.GetUserId();
+        //reviewStatus.ReviewedByUserId = UserHelper.GetUserId();
         reviewStatus.ReviewedAt = DateTime.UtcNow;
 
         _context.Entry(reviewStatus).State = Microsoft.EntityFrameworkCore.EntityState.Modified;

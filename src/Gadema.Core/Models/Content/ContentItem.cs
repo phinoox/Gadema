@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -142,29 +143,16 @@ public class ContentItem
     /// Navigation property: Review status for this content item (Many-to-One).
     /// Foreign key: ContentItemId (matches FK in ReviewStatus)
     /// </summary>
-    [Fixture(FixtureHintEnum.Omit)]
-    public virtual ReviewStatus? ReviewStatus { get; set; }
-
-    /// <summary>
-    /// Navigation property: Collection of tag associations for this content item.
-    /// Enables lazy loading to access all tags associated with this content.
-    /// Foreign key: ContentItemId (matches FK in ContentTags junction table)
-    /// </summary>
-    public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
     
-    /// <summary>
-    /// FK to ContentItem.Id (for FK-as-PK pattern in junction tables).
-    /// This is used by configuration files expecting FK-as-PK pattern.
-    /// </summary>
-    [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; } = Guid.NewGuid(); // Initialize with Id after object creation
-
+    public virtual ReviewStatus ReviewStatus { get; set; }
+   
     /// <summary>
     /// Navigation property: Collection of usage logs for this project token.
     /// Enables lazy loading to track all API usage history.
     /// Foreign key: ProjectTokenId (matches FK in TokenUsageLog)
     /// </summary>
-    public virtual ICollection<TokenUsageLog> UsageLogs { get; set; } = new List<TokenUsageLog>();
+    //public virtual ICollection<TokenUsageLog> UsageLogs { get; set; } = new List<TokenUsageLog>();
+    public virtual ICollection<ContentItemTag> ContentItemTags { get; set; } = new List<ContentItemTag>();
 
 
 }

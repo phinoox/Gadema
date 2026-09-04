@@ -6,6 +6,7 @@ using Gadema.Data.Configurations;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
+using Gadema.Core.Models.Content;
 
 namespace Gadema.Data.Database;
 
@@ -63,13 +64,16 @@ public class GameDbContext : DbContext
     /// <summary>
     /// Tag entity set.
     /// </summary>
-    public DbSet<Tag> Tags { get; set; }
+    public DbSet<ProjectTagRelation> ProjectTagRelations { get; set; }
     
     /// <summary>
     /// ContentTags junction table.
     /// </summary>
-    public DbSet<ContentTags> ContentTags { get; set; }
+    public DbSet<ProjectTag> ProjectTags { get; set; }
+
+    public DbSet<ContentTag> ContentTags { get; set; }
     
+    public DbSet<ContentItemTag> ContentItemTags { get; set; }
     /// <summary>
     /// MediaTags junction table.
     /// </summary>

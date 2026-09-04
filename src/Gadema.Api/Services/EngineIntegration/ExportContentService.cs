@@ -25,8 +25,8 @@ public class ExportContentService : IGademaService,  IExportContentService
         var projects = await _context.Projects
             .Where(p => p.Id == projectId)
             .Include(p => p.ContentItems)
-                .ThenInclude(ci => ci.MediaAttachments)
-                    .ThenInclude(ma => ma.ExternalReferences)  // ✅ Correct navigation
+                //.ThenInclude(ci => ci.MediaAttachments)
+                //    .ThenInclude(ma => ma.ExternalReferences)  // ✅ Correct navigation
             .ToListAsync();
 
         var content = new
