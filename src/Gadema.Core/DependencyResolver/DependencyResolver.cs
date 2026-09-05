@@ -65,6 +65,7 @@ public static class DependencyResolver
         {
             foreach (var depType in kvp.Value.SelectMany(a => a.DependentTypes))
             {
+                if (depType == typeof(RootMarker)) continue; // skip root marker
                 if (depType == kvp.Key) continue; // skip self-references
                 allTypes.Add(depType);
             }

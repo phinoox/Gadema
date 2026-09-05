@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Class template definition for character scaling systems.
 /// Used in project templates to define base class configurations.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(DependencyResolver.RootMarker))]
 public class ClassTemplate
 {
     /// <summary>

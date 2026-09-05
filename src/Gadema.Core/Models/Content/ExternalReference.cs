@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents an external reference (Google Docs, Pinterest boards, etc.).
 /// Used for linking to external resources like GDD documents or art references.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class ExternalReference
 {
     /// <summary>

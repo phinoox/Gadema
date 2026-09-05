@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents an ending definition for branching narratives.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class EndingDefinition
 {
     /// <summary>

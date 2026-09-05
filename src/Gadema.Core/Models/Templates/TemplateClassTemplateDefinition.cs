@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Definition of character class templates for project templates.
 /// Stores class structure information for game templates.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ClassTemplate),typeof(AttributeDefinition))]
 public class TemplateClassTemplateDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();

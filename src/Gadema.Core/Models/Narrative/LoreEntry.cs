@@ -13,6 +13,7 @@ namespace Gadema.Core.Models;
 /// Represents a lore entry (world-building information).
 /// Used for documenting setting details, history, and mythology.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public class LoreEntry
 {
     /// <summary>

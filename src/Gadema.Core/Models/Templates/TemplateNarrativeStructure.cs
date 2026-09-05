@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Definition of narrative structures (act sequences, plot points) for project templates.
 /// Provides pre-configured story arcs and sequence arrangements for game templates.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(DependencyResolver.RootMarker))]
 public class TemplateNarrativeStructure
 {
     public Guid Id { get; set; } = Guid.NewGuid();

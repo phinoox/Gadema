@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a status effect definition for character/class templates.
 /// Used for defining buffs, debuffs, and other status effects (GAS-like architecture).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class StatusEffectDefinition
 {
     /// <summary>

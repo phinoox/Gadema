@@ -12,6 +12,7 @@ namespace Gadema.Core.Models.Projects;
 /// Represents a Team's access to a specific Project.
 /// Stores the role the team has within this project.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project), typeof(Team))]
 public class ProjectTeam
 {
     /// <summary>

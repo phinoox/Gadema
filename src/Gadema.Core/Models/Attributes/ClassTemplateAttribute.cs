@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Attribute definition for a specific class template.
 /// Allows per-class overrides of base attribute formulas.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ClassTemplate),typeof(AttributeDefinition))]
 public class ClassTemplateAttribute
 {
     /// <summary>

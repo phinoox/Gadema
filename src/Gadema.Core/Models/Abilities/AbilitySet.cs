@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents an ability set for character/class templates.
 /// Used for defining ability systems and character skills (GAS-like architecture).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public class AbilitySet
 {
     /// <summary>

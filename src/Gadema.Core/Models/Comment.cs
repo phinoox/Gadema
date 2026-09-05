@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a comment on a content item.
 /// Supports visibility control (private, team-only, public).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class Comment
 {
     /// <summary>

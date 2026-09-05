@@ -13,6 +13,7 @@ namespace Gadema.Core.Models.Projects;
 /// Represents a project in the game development management system.
 /// Owned by a single User (CreatedBy).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(User))]
 public class Project
 {
     /// <summary>

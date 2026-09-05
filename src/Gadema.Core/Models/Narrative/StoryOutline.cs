@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a story outline (chapter/sequence) within a project.
 /// Used for narrative structure and beat sheet organization.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(StorySequence), typeof(ContentItem))]
 public class StoryOutline
 {
     /// <summary>

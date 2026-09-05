@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents an attribute set for character/class templates.
 /// Used for defining ability systems and character stats.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public class AttributeSet
 {
     /// <summary>

@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents an ability definition for character/class templates.
 /// Used for defining individual abilities with scaling formulas (GAS-like architecture).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class AbilityDefinition
 {
     /// <summary>

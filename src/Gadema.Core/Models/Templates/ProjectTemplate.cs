@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a project template for quick project creation.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class ProjectTemplate
 {
     /// <summary>

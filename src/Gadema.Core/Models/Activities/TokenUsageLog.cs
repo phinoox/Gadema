@@ -10,6 +10,9 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a log entry for API token usage.
 /// </summary>
+// ActivityLog: no FK (uses ProjectId as string/identifier, not EF FK)
+// TokenUsageLog has a nullable FK to ProjectToken — include it anyway for safety
+[DependencyResolver.ModelDependency(typeof(ProjectToken))]
 public class TokenUsageLog
 {
     /// <summary>

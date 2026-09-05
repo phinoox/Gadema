@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.DependencyResolver;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +13,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue branch (node) in a branching narrative tree.
 /// Used for visual novel and interactive story development.
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class DialogueBranch
 {
     /// <summary>

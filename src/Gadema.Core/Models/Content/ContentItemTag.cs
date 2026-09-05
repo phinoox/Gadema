@@ -9,6 +9,7 @@ namespace Gadema.Core.Models.Content;
 /// <summary>
 /// Junction table linking ContentItem to ContentTag.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem),typeof(ContentTag))]
 public class ContentItemTag
 {
     [Required]

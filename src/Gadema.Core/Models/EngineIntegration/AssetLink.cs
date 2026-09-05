@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Links content items to engine asset systems.
 /// Used for tracking exported assets and cross-referencing with game engines.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class AssetLink
 {
     /// <summary>

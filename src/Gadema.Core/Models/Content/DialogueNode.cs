@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.DependencyResolver;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue node within a branch.
 /// Contains the actual dialogue text and choices.
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class DialogueNode
 {
     /// <summary>

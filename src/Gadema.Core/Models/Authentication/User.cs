@@ -10,6 +10,7 @@ using Gadema.Core.Models;
 
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
+using Gadema.Core.DependencyResolver;
 
 namespace Gadema.Core.Models;
 
@@ -17,6 +18,7 @@ namespace Gadema.Core.Models;
 /// Represents a user account in the GaDeMa system.
 /// Supports Google OAuth, password login, and two-factor authentication.
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class User
 {
     /// <summary>

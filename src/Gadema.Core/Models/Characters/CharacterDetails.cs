@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Child entity for character details (FK as Primary Key pattern).
 /// Stores detailed character information linked to ContentItem.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class CharacterDetails
 {
     /// <summary>

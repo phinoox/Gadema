@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.DependencyResolver;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a team organization in the GaDeMa system.
 /// Teams can have multiple members with different roles.
 /// </summary>
+[ModelDependency(typeof(User))]
 public class Team
 {
     /// <summary>

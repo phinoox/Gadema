@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a media file attached to a content item (images, PDFs, etc.).
 /// Supports file upload with storage path tracking.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class MediaAttachment
 {
     /// <summary>

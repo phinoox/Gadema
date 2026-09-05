@@ -6,6 +6,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Projects;
 
 namespace Gadema.Core.Models;
 
@@ -13,6 +14,7 @@ namespace Gadema.Core.Models;
 /// Definition of identity types (race, faction, alignment, guild) for a project.
 /// Configures what character identities can be selected within this specific project.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(DependencyResolver.RootMarker))]
 public class IdentityDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();
@@ -36,7 +38,9 @@ public class IdentityDefinition
     public string? Description { get; set; }
 }
 
+
 // Keep ProjectIdentityDefinition for specific project-scoped identity definitions
+[DependencyResolver.ModelDependency(typeof(IdentityDefinition),typeof(IdentityValue))]
 public class ProjectIdentityDefinition 
 {
 
@@ -60,5 +64,5 @@ public class ProjectIdentityDefinition
 
     // Navigation property: Project
     [ForeignKey("ProjectId")]
-    public virtual Projects.Project Project { get; set; }
+    public virtual Project Project { get; set; }
 }

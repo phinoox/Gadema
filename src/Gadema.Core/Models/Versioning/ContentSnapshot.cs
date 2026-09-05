@@ -9,6 +9,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a content snapshot for version control and rollback.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class ContentSnapshot
 {
     /// <summary>

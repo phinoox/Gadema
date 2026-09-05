@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using Gadema.Core.DependencyResolver;
 
 namespace Gadema.Core.Models.Content;
 
 /// <summary>
 /// Represents a tag specifically for ContentItems (Characters, World, Mechanics, etc.).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(RootMarker))]
 public class ContentTag
 {
     public Guid Id { get; set; } = Guid.NewGuid();

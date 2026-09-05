@@ -1,96 +1,96 @@
 // ─── AUTHENTICATION ───────────────────────────────────────────────────────
 
-[ModelDependency(typeof(Team), typeof(User))]
+[DependencyResolver.ModelDependency(typeof(Team), typeof(User))]
 public partial class TeamMember { ... }
 
-[ModelDependency(typeof(User))]
+[DependencyResolver.ModelDependency(typeof(User))]
 public partial class Team { ... }
 
-[ModelDependency(typeof(User))]
+[DependencyResolver.ModelDependency(typeof(User))]
 public partial class UserProviderLink { ... }
 
 // ─── PROJECTS ─────────────────────────────────────────────────────────────
 
 // ProjectSeries: NO dependencies (root)
 
-[ModelDependency(typeof(Project), typeof(Team))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(Team))]
 public partial class ProjectTeam { ... }
 
-[ModelDependency(typeof(Project), typeof(ProjectTag))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ProjectTag))]
 public partial class ProjectTagRelation { ... }
 
-[ModelDependency(typeof(User))]
+[DependencyResolver.ModelDependency(typeof(User))]
 public partial class Project { ... }
 
 // ─── NARRATIVE ─────────────────────────────────────────────────────────────
 
-[ModelDependency(typeof(StorySequence))]
+[DependencyResolver.ModelDependency(typeof(StorySequence))]
 public partial class StoryBeat { ... }
 
-[ModelDependency(typeof(StorySequence), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(StorySequence), typeof(ContentItem))]
 public partial class StoryOutline { ... }
 
-[ModelDependency(typeof(Project))]
+[DependencyResolver.ModelDependency(typeof(Project))]
 public partial class StorySequence { ... }
 
-[ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public partial class LoreEntry { ... }
 
 // ─── CONTENT / ENGINE INTEGRATION ──────────────────────────────────────────
 
-[ModelDependency(typeof(Project))]
+[DependencyResolver.ModelDependency(typeof(Project))]
 public partial class ContentItem { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class AssetLink { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class MediaAttachment { ... }
 
 // ActivityLog: no FK (uses ProjectId as string/identifier, not EF FK)
 // TokenUsageLog has a nullable FK to ProjectToken — include it anyway for safety
-[ModelDependency(typeof(ProjectToken))]
+[DependencyResolver.ModelDependency(typeof(ProjectToken))]
 public partial class TokenUsageLog { ... }
 
 // ─── TASKS ─────────────────────────────────────────────────────────────────
 
-[ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public partial class ProjectTask { ... }
 
-[ModelDependency(typeof(ProjectTask))]
+[DependencyResolver.ModelDependency(typeof(ProjectTask))]
 public partial class ProjectTaskComments { ... }
 
 // ─── ATTRIBUTES / ABILITIES ────────────────────────────────────────────────
 
-[ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public partial class AttributeSet { ... }
 
-[ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
 public partial class AbilitySet { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class AbilityDefinition { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class StatusEffectDefinition { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class AttributeDefinition { ... }
 
 // ─── CHARACTERS / IDENTITY ────────────────────────────────────────────────
 
-[ModelDependency(typeof(ContentItem), typeof(AttributeDefinition))]
+[DependencyResolver.ModelDependency(typeof(ContentItem), typeof(AttributeDefinition))]
 public partial class CharacterAttributes { ... }
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class CharacterIdentity { ... }
 
 // ─── VERSIONING / STORY ───────────────────────────────────────────────────
 
-[ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public partial class ContentVersionLog { ... }
 
-[ModelDependency(typeof(Project))]
+[DependencyResolver.ModelDependency(typeof(Project))]
 public partial class ProjectToken { ... }
 
 // DialogueNode, DialogueBranch: NO dependencies (only scalar properties)

@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents an inventory item for game assets (collectibles, keys, achievements).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class InventoryItem
 {
     /// <summary>

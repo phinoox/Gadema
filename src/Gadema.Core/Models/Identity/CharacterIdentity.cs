@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Identity assignment for a specific character/content item.
 /// Links a content item with selected identity definitions and values.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class CharacterIdentity
 {
     public Guid Id { get; set; } = Guid.NewGuid();

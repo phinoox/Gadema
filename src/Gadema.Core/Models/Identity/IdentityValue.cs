@@ -5,6 +5,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Projects;
 
 namespace Gadema.Core.Models;
 
@@ -12,6 +13,7 @@ namespace Gadema.Core.Models;
 /// Specific identity values that can be selected for character identities.
 /// Contains all the available options (e.g., "Human", "Elf", "Orc" for race selection).
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(IdentityDefinition), typeof(Project), typeof(ProjectTemplate))]
 public class IdentityValue
 {
     public Guid Id { get; set; } = Guid.NewGuid();

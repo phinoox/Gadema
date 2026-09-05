@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a story beat within a sequence.
 /// Used for detailed narrative structure and scene organization.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(StorySequence))]
 public class StoryBeat
 {
     /// <summary>

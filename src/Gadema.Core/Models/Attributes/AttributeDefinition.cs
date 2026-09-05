@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents an attribute definition for character/class templates.
 /// Used for defining ability systems and character stats with scaling formulas.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class AttributeDefinition
 {
     /// <summary>

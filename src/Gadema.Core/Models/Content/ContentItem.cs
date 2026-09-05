@@ -14,6 +14,7 @@ namespace Gadema.Core.Models;
 /// Represents a content item (character, world, mechanic, etc.) in the game development system.
 /// Supports polymorphic design with type-specific detail tables and view mode separation.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class ContentItem
 {
     /// <summary>

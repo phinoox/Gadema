@@ -26,6 +26,7 @@ public class TopoTypeB { }
 [ModelDependency(typeof(TopoTypeD))]
 public class TopoTypeC { }
 
+[ModelDependency(typeof(RootMarker))]
 public class TopoTypeD { } // root — no dependencies
 
 public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDisposable
@@ -42,7 +43,7 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         _scope?.Dispose();
     }
 
-   
+
 
     [Fact]
     public void ResolveDependencies_ShouldReturnCorrectOrderForIsolatedGraph()
@@ -52,7 +53,7 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         var result = DependencyResolver.ResolveDependencies(assembly);
         Assert.NotNull(result.SortedTypes);
         Assert.NotEmpty(result.SortedTypes);
-        Assert.Equal(4,result.SortedTypes.Count);
+        Assert.Equal(4, result.SortedTypes.Count);
         // TopoTypeD has no dependencies, so it should be first
         var topoTypeDIndex = result.SortedTypes.IndexOf(typeof(TopoTypeD));
         var topoTypeCIndex = result.SortedTypes.IndexOf(typeof(TopoTypeC));
@@ -71,11 +72,11 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         var result = DependencyResolver.ResolveDependencies(assembly);
         Assert.NotNull(result.CyclicTypes);
         Assert.NotEmpty(result.CyclicTypes);
-        Assert.Equal(2,result.CyclicTypes.Count);
+        Assert.Equal(2, result.CyclicTypes.Count);
     }
-   
 
-     [Fact]
+
+    [Fact]
     public void ResolveDependencies_ShouldReturnTopologicalOrder()
     {
         var assembly = typeof(User).Assembly;
@@ -84,6 +85,32 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         Assert.NotNull(result.SortedTypes);
         Assert.NotEmpty(result.SortedTypes);
         Assert.Contains(typeof(User), result.SortedTypes);
+    }
+
+    [Fact]
+    public void AllModels_ShouldHaveModelDependencyAttribute()
+    {
+        var assembly = typeof(ModelDependencyAttribute).Assembly;
+        var modelsAssembly = typeof(Gadema.Core.Models.User).Assembly;
+
+        // Get all classes in Gadema.Core.Models namespace
+        var modelTypes = modelsAssembly.GetExportedTypes()
+            .Where(t => t.IsClass && !t.IsAbstract && t.Namespace?.StartsWith("Gadema.Core.Models") == true)
+            .ToList();
+
+        // Get all types with ModelDependency attribute
+        var attributedTypes = new HashSet<Type>();
+        foreach (var type in assembly.GetExportedTypes())
+        {
+            var attrs = type.GetCustomAttributes(typeof(ModelDependencyAttribute), false);
+            if (attrs.Length > 0)
+                attributedTypes.Add(type);
+        }
+
+        // Every model should have the attribute (except RootMarker itself)
+        var missing = modelTypes.Where(t => !attributedTypes.Contains(t) && t.Name != "RootMarker").ToList();
+
+        Assert.True(missing.Count == 0, $"Missing [ModelDependency] attribute on: {string.Join(", ", missing.Select(t => t.Name))}");
     }
 
     [Fact]

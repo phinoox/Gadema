@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a project-level API token for automation access.
 /// Tokens are hashed before storage for security.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class ProjectToken
 {
     /// <summary>

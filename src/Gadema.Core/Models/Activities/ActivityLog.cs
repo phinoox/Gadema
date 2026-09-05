@@ -10,6 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents an activity log entry for project events.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class ActivityLog
 {
     /// <summary>

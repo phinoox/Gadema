@@ -1,3 +1,4 @@
+using Gadema.Core.DependencyResolver;
 using Gadema.Core.Enums;
 
 namespace Gadema.Core.Models;
@@ -5,6 +6,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Audit trail: which authentication providers are linked to a user account.
 /// </summary>
+[ModelDependency(typeof(User))]
 public class UserProviderLink
 {
     public Guid UserId { get; set; }

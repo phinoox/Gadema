@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a story sequence (chapter) within a project.
 /// Used for organizing narrative structure and beat sheets.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(Project))]
 public class StorySequence
 {
     /// <summary>

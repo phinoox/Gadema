@@ -12,6 +12,7 @@ namespace Gadema.Core.Models;
 /// Uses ContentItemId and AttributeDefinitionId as composite primary key.
 /// Stores calculated or manually set attribute values per character.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem), typeof(AttributeDefinition))]
 public class CharacterAttributes
 {
     /// <summary>

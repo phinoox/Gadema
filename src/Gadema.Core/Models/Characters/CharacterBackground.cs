@@ -11,6 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a background element for a character.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class CharacterBackground
 {
     /// <summary>

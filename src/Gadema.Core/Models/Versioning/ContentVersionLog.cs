@@ -10,6 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a content version log for rollback support.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ContentItem))]
 public class ContentVersionLog
 {
     /// <summary>

@@ -10,6 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a comment on a task.
 /// </summary>
+[DependencyResolver.ModelDependency(typeof(ProjectTask))]
 public class ProjectTaskComments
 {
     /// <summary>

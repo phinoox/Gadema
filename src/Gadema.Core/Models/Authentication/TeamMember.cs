@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.DependencyResolver;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 // Gadema.Core - Shared Domain Models & Interfaces
@@ -10,6 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a team member with role-based access control.
 /// Supports Admin, Editor, and Viewer roles.
 /// </summary>
+[ModelDependency(typeof(Team), typeof(User))]
 public class TeamMember
 {
     /// <summary>

@@ -92,11 +92,11 @@ public static class DbSeeder
         for (int i = 0; i < index; i++)
         {
             var parentType = sortedTypes[i];
-            var parentAttrs = DependencyResolver.GetGraph(typeof(DbSeeder).Assembly)[parentType];
+            var parentAttrs = DependencyResolver.GetGraph((parentType).Assembly)[parentType];
             if (parentAttrs == null || parentAttrs.Count == 0) continue;
 
             // Use reflection to call AutoSeed<ParentType> since parentType is a runtime Type
-            var autoSeedMethod = typeof(DbSeeder).GetMethod(nameof(AutoSeed), BindingFlags.NonPublic | BindingFlags.Static)
+            var autoSeedMethod = typeof(DbSeeder).GetMethod(nameof(AutoSeed), BindingFlags.Public | BindingFlags.Static)
                 ?.MakeGenericMethod(parentType);
 
             if (autoSeedMethod == null)
@@ -140,7 +140,7 @@ public static class DbSeeder
         for (int i = 0; i < index; i++)
         {
             var parentType = sortedTypes[i];
-            var attrs = DependencyResolver.GetGraph(typeof(DbSeeder).Assembly)[parentType];
+            var attrs = DependencyResolver.GetGraph((parentType).Assembly)[parentType];
             if (attrs == null || attrs.Count == 0) continue;
 
             foreach (var attr in attrs)

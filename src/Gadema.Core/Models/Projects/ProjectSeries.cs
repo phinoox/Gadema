@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.DependencyResolver;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace Gadema.Core.Models.Projects;
 /// <summary>
 /// Represents a collection of related projects (e.g., a book series or game franchise).
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class ProjectSeries
 {
     /// <summary>
