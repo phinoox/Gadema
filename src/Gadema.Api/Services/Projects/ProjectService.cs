@@ -12,6 +12,7 @@ using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Services;
+using Gadema.Core.Models.Projects;
 
 namespace Gadema.Api.Services;
 
@@ -21,6 +22,8 @@ namespace Gadema.Api.Services;
 public class ProjectService : IGademaService,  IProjectService
 {
     private readonly GameDbContext _context;
+
+    private readonly IUserContext _userContext;
     private readonly ILogger<ProjectService> _logger;
 
     public ServiceTypeEnum ServiceType => ServiceTypeEnum.ProjectService;
@@ -28,10 +31,11 @@ public class ProjectService : IGademaService,  IProjectService
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ProjectService(GameDbContext context, ILogger<ProjectService> logger)
+    public ProjectService(GameDbContext context, ILogger<ProjectService> logger,IUserContext userContext)
     {
         _context = context;
         _logger = logger;
+        _userContext = userContext;
     }
 
     /// <summary>
@@ -54,8 +58,30 @@ public class ProjectService : IGademaService,  IProjectService
     /// </summary>
     public async Task<ApiResponseDto<ProjectResponseDto>> CreateProjectAsync(CreateProjectDto createDto)
     {
+        var user = _userContext.CurrentUser;
+
+        if (user == null)
+            return ApiResponseDto<ProjectResponseDto>.Unauthorized("Not authenticated.");
+
+        var project = new Project();
+        project.Owner = user;
+        project.Id = new Guid();
+        project.Description = createDto.Description;
+        project.Title = createDto.Title;
+        project.Visibility = createDto.Visibility;
+        project.Slug = createDto.Slug ?? createDto.Title.Trim();
+        _context.Projects.Add(project);
+        _context.SaveChanges();
         // Implement project creation logic
-        return ApiResponseDto<ProjectResponseDto>.Success(new ProjectResponseDto());
+        return ApiResponseDto<ProjectResponseDto>.Success(new ProjectResponseDto()
+        {
+            Id = project.Id,
+            Title = project.Title,
+            Visibility = project.Visibility,
+            Status = project.Status,
+            OwnerId = user.Id
+        }
+        );
     }
 
     /// <summary>

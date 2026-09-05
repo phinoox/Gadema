@@ -1,4 +1,7 @@
+using System.Reflection;
 using Gadema.Api;
+using Gadema.Core.DependencyResolver;
+using Gadema.Core.Models.Projects;
 using Gadema.Data.Database;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -105,6 +108,32 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 
     }
 
+    private static object CreateInstance(Type t)
+    {
+        var ctor = t.GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null);
+        return ctor?.Invoke(Array.Empty<object>()) ?? Activator.CreateInstance(t)!;
+    }
+
+/*
+    /// <summary>
+    /// Seeds the entire model graph in FK order. Call once per test setup.
+    /// </summary>
+    public void SeedDatabase()
+    {
+        using var scope = Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<GameDbContext>();
+
+        // DependencyResolver + DbSeeder combined in one call:
+        foreach (var type in DependencyResolver.ResolveDependencies(typeof(Project).Assembly)!)
+        {
+            Console.WriteLine($"[DbSeeder] Seeding [{type.Name}]...");
+            var instance = CreateInstance(type);
+            DbSeeder.Seed(scope, (object?)instance!);
+        }
+
+        Console.WriteLine("[DbSeeder] ─────────────────────────── All models seeded.");
+    }
+*/
     protected override IHost CreateHost(IHostBuilder builder)
     {
         var host = base.CreateHost(builder);
@@ -130,29 +159,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         base.Dispose(disposing);
         _logWriter.Dispose();
     }
-
-    private void CheckFK()
-    {
-        if(_FkChecked == true)
-        return;
-        _FkChecked = true;
-        using var command = _connection.CreateCommand();
-        command.CommandText = "PRAGMA foreign_keys = ON;PRAGMA foreign_key_check;";
-       // _context.Database.OpenConnection();
-       command.ExecuteNonQuery();
-        using var reader = command.ExecuteReader();
-
-        while (reader.Read())
-        {
-            // Each row represents a violation.
-            // Columns typically include: table_name, row_id, parent_table_name, foreign_key_index
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                Console.WriteLine($"fk violation: {reader.GetName(i)}: {reader.GetValue(i)}");
-            }
-        }
-       // _context.Database.CloseConnection();
-    }
+  
 
     internal IServiceScope GetScope()
     {

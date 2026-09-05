@@ -1,6 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Enums;
 // =============================================================================
 
 namespace Gadema.Core.Dtos.Projects;
@@ -46,13 +47,13 @@ public class ProjectResponseDto
     /// Visibility: 1=Private, 2=Public.
     /// </summary>
     [Display(Name = "Visibility")]
-    public int Visibility { get; set; }
+    public ProjectVisibilityEnum Visibility { get; set; }
     
     /// <summary>
     /// Status: 0=Draft, 1=InProgress, 2=Published, 3=Archived.
     /// </summary>
     [Display(Name = "Status")]
-    public int Status { get; set; }
+    public ProjectStatusEnum Status { get; set; }
     
     /// <summary>
     /// Enable user registration flag.

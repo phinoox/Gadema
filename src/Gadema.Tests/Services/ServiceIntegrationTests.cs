@@ -26,6 +26,7 @@ using Gadema.Api.Services.Authentication;
 using Gadema.Core.Models;
 using Gadema.Data.Database;
 using Gadema.Core.Models.Projects;
+using Gadema.Tests.Seeders;
 
 public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
@@ -38,7 +39,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 
     public void SeedAuthTestData()
     {
-       
+
 
         // Seed a test user with email/password
         _user = new User
@@ -62,10 +63,10 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 
     public AuthIntegrationTests(ApiWebApplicationFactory factory)
     {
-        _factory  = factory;
+        _factory = factory;
         _emailAuth = factory.GetScopedService<EmailPasswordAuthService>();
         _twoFactor = factory.GetScopedService<TwoFactorAuthService>();
-        _google    = factory.GetScopedService<GoogleOAuthService>();
+        _google = factory.GetScopedService<GoogleOAuthService>();
         _factory.ResetDb();
         SeedAuthTestData();
     }
@@ -75,7 +76,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     {
         var result = _emailAuth.Register(new RegisterDto
         {
-            Email = _user.Email ,
+            Email = _user.Email,
             Password = _password,
             Name = _user.UserName
         });
@@ -108,7 +109,7 @@ public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     [Fact]
     public void SignIn_ShouldSucceed_ForValidCredentials()
     {
-        var email = "ficker" +_user.Email;
+        var email = "ficker" + _user.Email;
         _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
 
         var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "correct" });
@@ -139,7 +140,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     {
         _factory = factory;
         _projectService = factory.GetScopedService<IProjectService>();
-        
+
     }
 
     /// <summary>
@@ -149,11 +150,11 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+
         var createDto = new CreateProjectDto
         {
             Title = "Test Project",
-            Visibility = 1
+            Visibility = ProjectVisibilityEnum.Private
         };
 
         // Act
@@ -162,7 +163,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
         // Assert
         result.Successful.Should().BeTrue();
 
-         
+
     }
 
     /// <summary>
@@ -172,14 +173,14 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task UpdateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
-       
+
         // Act
         var result = await _projectService.UpdateProjectAsync(Guid.NewGuid(), new UpdateProjectDto());
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         
+
     }
 }
 
@@ -199,7 +200,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
         _factory = factory;
         _contentItemService = factory.GetScopedService<IContentService>();
         _factory.ResetDb();
-        
+
     }
 
     /// <summary>
@@ -212,10 +213,10 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
 
         // Ancestor path for ContentItem — explicit, in FK order:
         // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
-        
+
         var result = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto
         {
             ProjectId = project.Id,
@@ -238,14 +239,14 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     [Fact]
     public async Task GetContentItemAsync_ShouldReturnSuccessful()
     {
-          //arrange
+        //arrange
         var scope = _factory.GetScope();
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
         item.Title = "C";
-        DbSeeder.Seed(scope,item);
+        DbSeeder.Seed(scope, item);
 
         // act — need the id; if result.Data exposes Id use it
         var fetched = await _contentItemService.GetContentItemAsync(item.Id.Value, ViewModeEnum.PrivateWriting);
@@ -270,11 +271,11 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     {
         //arrange
         var scope = _factory.GetScope();
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
-        DbSeeder.Seed(scope,item);
+        DbSeeder.Seed(scope, item);
 
         //act
         var result = await _contentItemService.DeleteContentItemAsync(item.Id.Value);
@@ -313,10 +314,10 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         // Arrange
         //arrange
         var scope = _factory.GetScope();
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
-        
+
         var createDto = new ProjectTaskCreateDto
         {
             ProjectId = project.Id,
@@ -333,7 +334,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         // Assert
         result.Successful.Should().BeTrue();
 
-         
+
     }
 
     /// <summary>
@@ -342,21 +343,21 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     [Fact]
     public async Task UpdateTaskAsync_ShouldReturnSuccessful()
     {
-     
+
         //Arrange
         var scope = _factory.GetScope();
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
-        DbSeeder.Seed(scope,task);
+        DbSeeder.Seed(scope, task);
         // Act
-        var result = await _projectTaskService.UpdateTaskAsync(task.Id, new ProjectTaskUpdateDto(){Status = 3});
+        var result = await _projectTaskService.UpdateTaskAsync(task.Id, new ProjectTaskUpdateDto() { Status = 3 });
 
         // Assert
         result.Successful.Should().BeTrue();
         result.Data!.Status.Should().Be(3);
-         
+
     }
 
     /// <summary>
@@ -365,21 +366,20 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
     [Fact]
     public async Task DeleteTaskAsync_ShouldReturnSuccessful()
     {
-        // Arrange
         //Arrange
         var scope = _factory.GetScope();
-        var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
-        DbSeeder.Seed(scope,task);
+        DbSeeder.Seed(scope, task);
         // Act
         var result = await _projectTaskService.DeleteTaskAsync(task.Id);
 
         // Assert
         result.Successful.Should().BeTrue();
 
-         
+
     }
 }
 
@@ -408,15 +408,15 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     public async Task ExportToJsonAsync_ShouldReturnOk()
     {
         // Arrange
-     
-        
+
+        //ToDo : verify proper test
         // Act
         var result = await _exportService.ExportToJsonAsync(Guid.NewGuid(), new ExportJsonDto());
 
         // Assert
         result.Should().NotBeNull();
 
-         
+
     }
 
     /// <summary>
@@ -426,7 +426,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
     public async Task ExportToCsvAsync_ShouldReturnFile()
     {
         // Arrange
-        
+        //ToDo : verify proper test
 
         // Act
         var result = await _exportService.ExportToCsvAsync(Guid.NewGuid(), new ExportCsvDto());
@@ -434,7 +434,7 @@ public class ExportServiceIntegrationTests : IClassFixture<ApiWebApplicationFact
         // Assert
         result.Should().NotBeNull();
 
-         
+
     }
 }
 
@@ -453,7 +453,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     {
         _factory = factory;
         _reviewStatusService = factory.GetScopedService<IReviewStatusService>();
-        if(_reviewStatusService == null)
+        if (_reviewStatusService == null)
         {
             throw new Exception("ReviewService was null damnit");
         }
@@ -468,18 +468,18 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     {
         // Arrange
         var scope = _factory.GetScope();
-         var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
-        DbSeeder.Seed(scope,item);
-        
+        DbSeeder.Seed(scope, item);
+
         // Act
         var result = await _reviewStatusService.GetReviewStatusAsync(item.ReviewStatus.Id);
 
         // Assert
         result.Successful.Should().BeTrue();
-        
+
     }
 
     /// <summary>
@@ -490,11 +490,11 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
     {
         // Arrange
         var scope = _factory.GetScope();
-         var owner  =     DbSeeder.Seed<User>(scope);
-        var project       = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var owner = DbSeeder.Seed<User>(scope);
+        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
-        DbSeeder.Seed(scope,item);
+        DbSeeder.Seed(scope, item);
         var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.ContentItem = item);
         //DbSeeder.Seed<ReviewStatus>(scope,reviewStatus);
         // Act
@@ -506,6 +506,6 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
 
         // Assert
         result.Successful.Should().BeTrue();
-         
+
     }
 }

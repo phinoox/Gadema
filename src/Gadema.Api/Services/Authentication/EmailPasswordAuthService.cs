@@ -2,6 +2,7 @@ using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Authentication;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
+using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,10 +13,13 @@ public class EmailPasswordAuthService
     private readonly GameDbContext _db;
     private readonly JwtTokenService _jwt;
 
-    public EmailPasswordAuthService(GameDbContext db, JwtTokenService jwt)
+    private readonly IUserContext _userContext;
+
+    public EmailPasswordAuthService(GameDbContext db, JwtTokenService jwt,IUserContext userContext)
     {
         _db = db;
         _jwt = jwt;
+        _userContext = userContext;
     }
 
     public ApiResponseDto<AuthResponse> Register(RegisterDto dto)
@@ -58,7 +62,6 @@ public class EmailPasswordAuthService
 
         user.LastLogin = DateTime.UtcNow;
         _db.SaveChanges();
-
         // 2FA enabled → issue only a short-lived pending token, client goes to /2fa/signin
         if (user.TwoFactorEnabled)
             return ApiResponseDto<AuthResponse>.Success(new AuthResponse

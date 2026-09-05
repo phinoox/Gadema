@@ -1,6 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Enums;
 // =============================================================================
 
 namespace Gadema.Core.Dtos.Projects;
@@ -27,9 +28,7 @@ public class CreateProjectDto
     /// </summary>
     public Guid? TemplateId { get; set; } = null!;
     
-    /// <summary>
-    /// Visibility: 1=Private, 2=Public.
-    /// </summary>
-    [Range(1, 2)]
-    public int Visibility { get; set; } = 1;
+    public string? Description {get;set;}
+
+    public ProjectVisibilityEnum Visibility {get;set;}
 }

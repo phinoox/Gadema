@@ -6,10 +6,10 @@ namespace Gadema.Core.Services;
 public interface IUserContext : IDisposable
 {
     // Current authenticated user (if any)
-    User? CurrentUser { get; }
+    User? CurrentUser { get; set; }
     
     // User ID as Guid or null if not authenticated
-    Guid? UserId { get; }
+    Guid? UserId { get; set; }
     
     // Project token for API access (if applicable)
     string? ApiTokenHash { get; }

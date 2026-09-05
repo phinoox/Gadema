@@ -34,9 +34,9 @@ public class UserResponse
 /// </summary>
 public class AuthResponse
 {
-    public Guid UserId { get; set; }
-    public string Email { get; set; }
-    public string Name { get; set; }
+    //public Guid UserId { get; set; }
+    //public string Email { get; set; }
+    //public string Name { get; set; }
     public string AccessToken { get; set; }    // JWT token (Bearer) or session ID
     public string TokenType { get; set; }     // "Bearer" | "Session" | "RefreshToken"
     public int ExpiresInSeconds { get; set; }  // TTL for the returned token

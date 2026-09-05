@@ -2,11 +2,14 @@ using System.Diagnostics;
 using System.Reflection;
 using AutoFixture;
 using AutoFixture.Kernel;
+using Gadema.Core.DependencyResolver;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
+using Gadema.Core.DependencyResolver;
 
+namespace Gadema.Tests.Seeders;
 /// <summary>
 /// Generic DB seeding for any mapped entity.
 /// Instance generation (required columns filled) is delegated to AutoFixture,
@@ -35,35 +38,132 @@ public static class DbSeeder
     }
 
     private sealed class EntityCollectionOmitter : ISpecimenBuilder
-{
-    public object Create(object request, ISpecimenContext context)
     {
-        if (request is PropertyInfo prop)
+        public object Create(object request, ISpecimenContext context)
+        {
+            if (request is PropertyInfo prop)
             {
-                if( IsEntityCollection(prop.PropertyType))
+                if (IsEntityCollection(prop.PropertyType))
                     return new OmitSpecimen();
-                
+
                 var FixtureAttribute = prop.GetCustomAttribute<FixtureAttribute>();
                 var hint = FixtureAttribute == null ? FixtureHintEnum.None : FixtureAttribute.Hint;
-                if(hint == FixtureHintEnum.Omit)
+                if (hint == FixtureHintEnum.Omit)
                     return new OmitSpecimen();
 
             }
-          
-        return new NoSpecimen();
+
+            return new NoSpecimen();
+        }
+
+        private static bool IsEntityCollection(Type type) =>
+            type.IsGenericType &&
+            (
+            type.GetGenericTypeDefinition() == typeof(ICollection<>) ||
+            type.GetGenericTypeDefinition() == typeof(IEnumerable<>)
+
+            ) &&
+            type.GetGenericArguments()[0].IsClass;
     }
 
-    private static bool IsEntityCollection(Type type) =>
-        type.IsGenericType &&
-        (
-        type.GetGenericTypeDefinition() == typeof(ICollection<>) ||
-        type.GetGenericTypeDefinition() == typeof(IEnumerable<>) 
-        
-        ) &&
-        type.GetGenericArguments()[0].IsClass;
-}
+      
+    // Shared context to track seeded instances by type during a single AutoSeed call
+    private static readonly AsyncLocal<Dictionary<Type, Guid?>> _seededCache = new();
 
-    
+    /// <summary>
+    /// Seeds a single instance into the database. Auto-resolves FK dependencies first.
+    /// </summary>
+    public static T AutoSeed<T>(IServiceScope scope, Action<T>? customize = null) where T : class
+    {
+        var db = scope.ServiceProvider.GetRequiredService<GameDbContext>();
+
+        // Initialize cache for this seed call
+        if (_seededCache.Value == null)
+            _seededCache.Value = new Dictionary<Type, Guid?>();
+
+        // Step 1: Get topological order
+        var sortedTypes = DependencyResolver.ResolveDependencies().SortedTypes;
+        if (sortedTypes == null) return default;
+
+        int index = sortedTypes.IndexOf(typeof(T));
+        if (index < 0) throw new InvalidOperationException($"Type {typeof(T).Name} not found in dependency graph");
+
+        // Step 2: Seed all parents before this type
+        for (int i = 0; i < index; i++)
+        {
+            var parentType = sortedTypes[i];
+            var parentAttrs = DependencyResolver.GetGraph(typeof(DbSeeder).Assembly)[parentType];
+            if (parentAttrs == null || parentAttrs.Count == 0) continue;
+
+            // Use reflection to call AutoSeed<ParentType> since parentType is a runtime Type
+            var autoSeedMethod = typeof(DbSeeder).GetMethod(nameof(AutoSeed), BindingFlags.NonPublic | BindingFlags.Static)
+                ?.MakeGenericMethod(parentType);
+
+            if (autoSeedMethod == null)
+                throw new InvalidOperationException($"Could not find AutoSeed<{parentType.Name}>");
+
+            autoSeedMethod.Invoke(null, new object[] { scope, (Action<object>?)null });
+        }
+
+        // Step 3: Create, customize, persist
+        T? instance;
+        if (customize != null)
+        {
+            instance = CreateInstance<T>(typeof(T));
+            customize(instance); // customize is now Action<T> — works correctly
+        }
+        else
+        {
+            instance = _fixture.Create<T>();
+        }
+
+        // Wire FK properties from already-seeded parents
+        SetFKProperties(db, typeof(T), instance, scope);
+
+        db.Set<T>().Add(instance);
+        db.SaveChanges();
+
+        // Cache the seeded ID
+        var id = instance.GetType().GetProperty("Id")?.GetValue(instance) as Guid?;
+        if (id != null)
+            _seededCache.Value[typeof(T)] = id;
+
+        return instance;
+    }
+
+    private static void SetFKProperties(DbContext db, Type targetType, object instance, IServiceScope scope)
+    {
+        var sortedTypes = DependencyResolver.ResolveDependencies().SortedTypes;
+        if (sortedTypes == null || _seededCache.Value == null) return;
+
+        int index = sortedTypes.IndexOf(targetType);
+        for (int i = 0; i < index; i++)
+        {
+            var parentType = sortedTypes[i];
+            var attrs = DependencyResolver.GetGraph(typeof(DbSeeder).Assembly)[parentType];
+            if (attrs == null || attrs.Count == 0) continue;
+
+            foreach (var attr in attrs)
+            {
+                var propInfo = targetType.GetProperty(parentType.Name + "Id", BindingFlags.Public | BindingFlags.Instance);
+                if (propInfo == null || !propInfo.CanWrite) continue;
+
+                if (_seededCache.Value.TryGetValue(parentType, out var parentId) && parentId != null)
+                    propInfo.SetValue(instance, parentId.Value);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Creates an instance without persisting (for pre-built overrides).
+    /// </summary>
+    public static T Create<T>(Action<T>? customize = null) where T : class
+    {
+        var instance = _fixture.Create<T>() ?? throw new InvalidOperationException($"No parameterless constructor on {typeof(T).FullName}");
+        customize?.Invoke(instance);
+        return instance;
+    }
+
     /// <summary>Create + persist an entity with sensible defaults; return it (use .Id).</summary>
     public static T Seed<T>(IServiceScope scope) where T : class
         => Seed(scope, Create<T>());
@@ -83,16 +183,13 @@ public static class DbSeeder
             int index = 1;
             Attribute factAttrib = null;
             StackFrame callerFrame;
-            // Get the caller frame (index 0 is current, index 1 is caller)
             do
             {
                 callerFrame = stackTrace.GetFrame(index);
                 factAttrib = callerFrame.GetMethod().GetCustomAttribute(typeof(FactAttribute));
                 index++;
-
             } while (factAttrib == null);
             db.Database.ExecuteSqlRaw("PRAGMA foreign_key_check;");
-            // Retrieve the line number
             string methodName = callerFrame.GetMethod().Name;
             int lineNumber = callerFrame.GetFileLineNumber();
             Console.WriteLine($" SeedError in {methodName} line {lineNumber} : Could not seed entity of type {typeof(T)}");
@@ -101,14 +198,18 @@ public static class DbSeeder
         return entity;
     }
 
-    /// <summary>Create an instance without persisting (for overriding values first).</summary>
-    public static T Create<T>() where T : class => _fixture.Create<T>();
-
-    /// <summary>Create with specific overrides, e.g. For&lt;ContentItem&gt;(x => x.ProjectId, projectId).</summary>
-    public static T Create<T>(Action<T>? customize = null) where T : class
+     private static T? CreateInstance<T>(Type t) where T : class
     {
-        var instance = _fixture.Create<T>();   // all settable properties filled with sensible defaults
-        customize?.Invoke(instance);           // caller overrides what it needs (FKs etc.)
-        return instance;
+        object instancedObject = t.GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, Type.EmptyTypes, null)?
+        .Invoke(Array.Empty<object>()) ?? Activator.CreateInstance(t)!;
+        return instancedObject == null ? default(T) : (T)instancedObject;
+    }
+
+
+    private static Guid GetSeedId(Type type)
+    {
+        // This would need to be passed in from the recursive Seed call — 
+        // for now we return a placeholder. In production, pass the seeded instance through context.
+        throw new NotImplementedException("Pass parent instances via IServiceScope context.");
     }
 }

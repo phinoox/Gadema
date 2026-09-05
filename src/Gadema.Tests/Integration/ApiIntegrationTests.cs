@@ -61,7 +61,7 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
         var createProjectDto = new CreateProjectDto
         {
             Title = "Test Project",
-            Visibility = 1
+            Visibility = ProjectVisibilityEnum.Private
         };
 
         // Act

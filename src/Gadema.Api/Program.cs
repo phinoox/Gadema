@@ -15,6 +15,7 @@ using Gadema.Api.Services.Authentication;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 namespace Gadema.Api;
 
@@ -88,13 +89,12 @@ public partial class Program
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment() && !app.Environment.IsEnvironment("Testing"))
         {
-            app.UseHttpsRedirection();
+         //   app.UseHttpsRedirection();
             app.UseExceptionHandler("/error");
             app.MapGet("/error", () => Results.Problem(detail: "An unexpected error occurred.", statusCode: StatusCodes.Status500InternalServerError));
             app.UseHsts();
         }
 
-        
         app.UseAuthentication(); 
         app.UseAuthorization();
         app.MapControllers();
