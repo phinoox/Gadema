@@ -25,6 +25,13 @@ public class ProjectToken
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
+
+    /// <summary>
+    /// Navigation property: Project that owns this token.
+    /// Foreign key: ProjectId (matches FK in ProjectToken)
+    /// </summary>
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
     
     /// <summary>
     /// Name of the token (e.g., "CI/CD Pipeline").
@@ -66,11 +73,6 @@ public class ProjectToken
     /// </summary>
     public virtual ICollection<TokenUsageLog> UsageLogs { get; set; } = new List<TokenUsageLog>();
 
-    /// <summary>
-    /// Navigation property: Project that owns this token.
-    /// Foreign key: ProjectId (matches FK in ProjectToken)
-    /// </summary>
-    [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
+    
 
 }

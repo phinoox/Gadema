@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.DependencyResolver;
 using Gadema.Core.Enums;
 
@@ -10,6 +11,8 @@ namespace Gadema.Core.Models;
 public class UserProviderLink
 {
     public Guid UserId { get; set; }
+
+    [ForeignKey("UserId")]
     public User User { get; set; } = null!;
 
     public UserAuthProviderEnum Provider { get; set; }

@@ -13,29 +13,31 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue branch (node) in a branching narrative tree.
 /// Used for visual novel and interactive story development.
 /// </summary>
-[ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(Project),typeof(ContentItem))]
 public class DialogueBranch
 {
     /// <summary>
     /// Unique identifier for the dialogue branch.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; }
     
     /// <summary>
     /// ID of the project this branch belongs to.
     /// </summary>
     [Required, Display(Name = "Project ID")]
+    [Fixture(FixtureHintEnum.Omit)]
     public Guid ProjectId { get; set; }
-
-    public Guid? ContentItemId { get; set; }  
-    
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
-
 
     // Navigation property: Project (Many-to-One)
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }
+
+    [Fixture(FixtureHintEnum.Omit)]
+    public Guid? ContentItemId { get; set; }  
+    
+    [ForeignKey("ContentItemId")]
+    public virtual ContentItem? ContentItem { get; set; }
+   
     
     /// <summary>
     /// Title of the dialogue branch.
@@ -69,12 +71,14 @@ public class DialogueBranch
     /// <summary>
     /// ID of parent node (for self-referencing FK).
     /// </summary>
+/*
+    [Fixture(FixtureHintEnum.Omit)]
     public Guid? ParentNodeId { get; set; }
 
     // Navigation property: Parent Node (self-referencing)
     [ForeignKey("ParentNodeId")]
     public virtual DialogueBranch? ParentNode { get; set; }
-    
+  */  
     /// <summary>
     /// Order index for sorting branches.
     /// </summary>
@@ -85,6 +89,7 @@ public class DialogueBranch
     /// Navigation property: Collection of dialogue nodes in this branch.
     /// Foreign key: BranchId (matches FK in DialogueNode)
     /// </summary>
-    public virtual ICollection<DialogueNode> Nodes { get; set; } = new List<DialogueNode>();
+    [Fixture(FixtureHintEnum.Omit)]
+    public virtual ICollection<DialogueNode> ChildNodes { get; set; } = new List<DialogueNode>();
 
 }

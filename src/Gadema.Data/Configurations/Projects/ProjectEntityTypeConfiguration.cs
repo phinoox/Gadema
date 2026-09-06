@@ -15,14 +15,14 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
         builder.HasIndex(e => e.Slug).IsUnique();
         builder.HasIndex(e => e.Visibility);
         builder.HasIndex(e => e.Status);
-        builder.HasIndex(e => e.OwnerId); // For finding projects by creator
+        builder.HasIndex(e => e.UserId); // For finding projects by creator
 
         // Relationships
 
         // CreatedByUser (Restrict to preserve history if user deleted)
-        builder.HasOne(p => p.Owner)
+        builder.HasOne(p => p.User)
             .WithMany() // User doesn't need a Projects collection necessarily, or handle it elsewhere
-            .HasForeignKey(p => p.OwnerId)
+            .HasForeignKey(p => p.UserId)
             .OnDelete(DeleteBehavior.Restrict);
 
         // ProjectSeries (Optional, Restrict to preserve series if project deleted)

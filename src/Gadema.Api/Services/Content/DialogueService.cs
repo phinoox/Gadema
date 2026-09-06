@@ -75,7 +75,7 @@ public class DialogueService : IGademaService,  IDialogueService
             VisualNodeImageUri = createDto.VisualNodeImageUri,
             CharacterIconUri = createDto.CharacterIconUri,
             IsRoot = true,
-            ParentNodeId = null!,
+            //ParentNodeId = null!,
             OrderIndex = 0
         };
 

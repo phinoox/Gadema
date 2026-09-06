@@ -49,13 +49,14 @@ public class Project
     /// <summary>
     /// FK to the User who created this project.
     /// </summary>
-    public Guid OwnerId { get; set; }
+    [Fixture(FixtureHintEnum.Omit)]
+    public Guid UserId { get; set; }
     
     /// <summary>
     /// Navigation property: User who created this project.
     /// </summary>
-    [ForeignKey("OwnerId")]
-    public virtual User Owner { get; set; } = null!;
+    [ForeignKey("Userd")]
+    public virtual User User { get; set; } = null!;
 
     /// <summary>
     /// FK to the ProjectSeries this project belongs to.

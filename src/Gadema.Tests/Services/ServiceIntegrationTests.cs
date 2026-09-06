@@ -27,6 +27,7 @@ using Gadema.Core.Models;
 using Gadema.Data.Database;
 using Gadema.Core.Models.Projects;
 using Gadema.Tests.Seeders;
+using Gadema.Tests.Helpers;
 
 public class AuthIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
@@ -133,6 +134,46 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     private readonly ApiWebApplicationFactory _factory;
     private readonly IProjectService _projectService;
 
+    private readonly EmailPasswordAuthService _emailAuth;
+
+     private User _user;
+    private string _password = "Password123!";
+
+    public void SeedAuthTestData()
+    {
+
+
+        // Seed a test user with email/password
+        _user = new User
+        {
+            Id = Guid.NewGuid(),
+            Email = "seed@example.com",
+            UserName = "seeduser",
+            FullName = "Seed User",
+            PasswordHash = PasswordHasher.Hash(_password),
+            TwoFactorEnabled = false,
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+        };
+
+        var link = new UserProviderLink { UserId = _user.Id, Provider = UserAuthProviderEnum.Password };
+
+        //db.Users.Add(_user);
+        //db.UserProviderLinks.Add(link);
+        //db.SaveChanges();
+    }
+
+    string  SignIn()
+    {
+        SeedAuthTestData();
+        var email = "ficker" + _user.Email;
+        _emailAuth.Register(new RegisterDto { Email = email, Password = "correct", Name = "T" });
+
+        var result = _emailAuth.SignIn(new SignInDto { Email = email, Password = "correct" });
+        result.Successful.Should().BeTrue();
+        return result.Data.User.Id;
+    }
+
     /// <summary>
     /// Setup test environment.
     /// </summary>
@@ -140,6 +181,7 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     {
         _factory = factory;
         _projectService = factory.GetScopedService<IProjectService>();
+         _emailAuth = factory.GetScopedService<EmailPasswordAuthService>();
 
     }
 
@@ -150,6 +192,8 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
     public async Task CreateProjectAsync_ShouldReturnSuccessful()
     {
         // Arrange
+        //var userId = SignIn();
+       var _userContext = TestUserContextHelper.CreateTestContext(_factory);
 
         var createDto = new CreateProjectDto
         {
@@ -214,7 +258,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
         // Ancestor path for ContentItem — explicit, in FK order:
         // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
 
         var result = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto
@@ -242,7 +286,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
         //arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
         item.Title = "C";
@@ -272,7 +316,7 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
         //arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
@@ -315,7 +359,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         //arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
 
         var createDto = new ProjectTaskCreateDto
@@ -347,7 +391,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         //Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
         DbSeeder.Seed(scope, task);
@@ -369,7 +413,7 @@ public class TaskServiceIntegrationTests : IClassFixture<ApiWebApplicationFactor
         //Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var task = DbSeeder.Create<ProjectTask>(pt => pt.Project = project);
         DbSeeder.Seed(scope, task);
@@ -469,7 +513,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         // Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
@@ -491,7 +535,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         // Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.Owner = owner);
+        var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
         var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
         DbSeeder.Seed(scope, item);

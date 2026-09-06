@@ -3,6 +3,8 @@ using System.Linq;
 using System.Reflection;
 using Gadema.Core.DependencyResolver;
 using Gadema.Core.Models;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
@@ -119,7 +121,7 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         var assembly = typeof(ModelDependencyAttribute).Assembly;
         var result = DependencyResolver.ResolveDependencies(assembly);
         var sortedTypes = result.SortedTypes;
-
+        DbSeeder.ResetSeedingCache();
         Assert.NotNull(sortedTypes);
         Assert.NotEmpty(sortedTypes);
 
@@ -137,18 +139,39 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
                     results.Add((type, false, "AutoSeed method not found"));
                     continue;
                 }
-
+                
                 autoSeedMethod.Invoke(null, new object[] { _scope, (Action<object>?)null });
                 results.Add((type, true, null));
             }
-            catch (TargetInvocationException ex)
+             catch (SqliteException ex)
             {
                 var inner = ex.InnerException ?? ex;
                 results.Add((type, false, inner.Message));
             }
+             catch (DbUpdateException ex)
+            {
+                var inner = ex.InnerException ?? ex;
+                results.Add((type, false, inner.Message));
+            }
+            catch (TargetInvocationException ex)
+            {
+                Exception e = ex;
+
+                while(e.InnerException != null)
+                {
+                    e = e.InnerException;
+                }
+                
+                results.Add((type, false, e.Message));
+            }
+           
+            
         }
 
         var failures = results.Where(r => !r.Success).ToList();
-        Assert.True(failures.Count == 0, $"Failed to seed: {string.Join(", ", failures.Select(f => $"{f.Type.Name}: {f.Error}"))}");
+        var succeeded = results.Where(r => r.Success).ToList();
+        string successfullSeed = $"\r\n Succeeded to seed: \r\n {string.Join($",\r\n ", succeeded.Select(f => $"{f.Type.Name}"))}";
+        string failedSeed = $" Failed to seed: \r\n {string.Join($",\r\n ", failures.Select(f => $"{f.Type.Name}: {f.Error} "))}";
+        Assert.True(failures.Count == 0, $"{successfullSeed} \r\n \r\n {failedSeed}");
     }
 }

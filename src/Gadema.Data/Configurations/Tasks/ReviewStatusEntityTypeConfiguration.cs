@@ -25,13 +25,13 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.ContentItemId);
         builder.HasIndex(e => e.Status);  // Filter by status
-        builder.HasIndex(e => e.ReviewedByUserId);
+        builder.HasIndex(e => e.ReviewerId);
         builder.HasIndex(e => e.ReviewedAt);  // Query recent reviews
                 
         // Navigation property: Reviewer (Optional FK to User)
         builder.HasOne(rs => rs.Reviewer)
             .WithMany()
-            .HasForeignKey(rs => rs.ReviewedByUserId)
+            .HasForeignKey(rs => rs.ReviewerId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
 
         

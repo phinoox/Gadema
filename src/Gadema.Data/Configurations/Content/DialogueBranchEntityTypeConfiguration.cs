@@ -27,13 +27,19 @@ public class DialogueBranchEntityTypeConfiguration : IEntityTypeConfiguration<Di
         builder.HasIndex(e => e.ProjectId);
         builder.HasIndex(e => e.Slug).IsUnique();
         builder.HasIndex(e => e.IsRoot);
-        
+
         // Self-referencing FK for tree structure
-        builder.HasOne(db => db.ParentNode)
+        /*builder.HasOne(db => db.ParentNode)
             .WithMany()
             .HasForeignKey(e => e.ParentNodeId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain historical data
-        
+        */
+
+        // Add this to map the relationship
+        builder.HasMany(db => db.ChildNodes)
+            .WithOne() // Assuming DialogueNode has a BackReference, otherwise use WithNone()
+            .HasForeignKey(n => n.DialogueBranchId)
+            .OnDelete(DeleteBehavior.Cascade);
         // Properties configuration
         builder.Property(e => e.Title).IsRequired();
     }

@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Definition of attribute sets for project templates.
 /// Stores the structure and formulas for character ability systems.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(DependencyResolver.RootMarker))]
+[DependencyResolver.ModelDependency(typeof(ProjectTemplate))]
 public class AttributeSetDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();

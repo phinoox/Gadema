@@ -36,7 +36,7 @@ public class ReviewStatus
     /// <summary>
     /// ID of the user who reviewed the content.
     /// </summary>
-    public Guid? ReviewedByUserId { get; set; }
+    public Guid? ReviewerId { get; set; }
 
     // Navigation property: Reviewer (User) - Optional Many-to-One relationship
     [ForeignKey("ReviewedByUserId")]

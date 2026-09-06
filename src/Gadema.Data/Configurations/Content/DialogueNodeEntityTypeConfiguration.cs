@@ -24,14 +24,14 @@ public class DialogueNodeEntityTypeConfiguration : IEntityTypeConfiguration<Dial
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.BranchId);
-        builder.HasIndex(e => e.SpeakerId);
+        builder.HasIndex(e => e.DialogueBranchId);
+        //builder.HasIndex(e => e.SpeakerId);
         
         // Navigation property: DialogueBranch (Cascade delete)
-        builder.HasOne(dn => dn.Branch)
-            .WithMany(db => db.Nodes)
-            .HasForeignKey(dn => dn.BranchId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete nodes when branch deleted
+        builder.HasOne(dn => dn.DialogueBranch)
+            .WithMany(db => db.ChildNodes)
+            .HasForeignKey(dn => dn.DialogueBranchId)
+            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete nodes when branch deleted*
         
         // Properties configuration
         builder.Property(e => e.NodeText).IsRequired().HasMaxLength(4096);

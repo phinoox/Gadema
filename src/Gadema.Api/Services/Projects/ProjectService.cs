@@ -64,7 +64,7 @@ public class ProjectService : IGademaService,  IProjectService
             return ApiResponseDto<ProjectResponseDto>.Unauthorized("Not authenticated.");
 
         var project = new Project();
-        project.Owner = user;
+        project.User = user;
         project.Id = new Guid();
         project.Description = createDto.Description;
         project.Title = createDto.Title;

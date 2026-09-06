@@ -20,6 +20,7 @@ public class StorySequence
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
+    //[Fixture(FixtureHintEnum.Omit)]
     public Guid? ContentItemId { get; set; }  
     
     [ForeignKey("ContentItemId")]
@@ -30,6 +31,7 @@ public class StorySequence
     /// ID of the project this sequence belongs to.
     /// </summary>
     [Required, Display(Name = "Project ID")]
+    //[Fixture(FixtureHintEnum.Omit)]
     public Guid ProjectId { get; set; }
 
     // Navigation property: Project (Many-to-One)
@@ -39,6 +41,7 @@ public class StorySequence
     /// <summary>
     /// Parent sequence ID for hierarchical organization.
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     public Guid? ParentSequenceId { get; set; }
 
     // Navigation property: Parent Sequence (self-referencing)

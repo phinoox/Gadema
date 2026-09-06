@@ -10,7 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Template attribute set definition for project templates.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(AttributeSetDefinition))]
+[DependencyResolver.ModelDependency(typeof(AttributeSetDefinition),typeof(ProjectTemplate))]
 public class TemplateAttributeSetDefinition
 {
     /// <summary>

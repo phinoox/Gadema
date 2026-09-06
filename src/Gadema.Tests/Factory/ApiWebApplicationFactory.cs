@@ -1,9 +1,13 @@
 using System.Reflection;
+using System.Security.Principal;
 using Gadema.Api;
+using Gadema.Api.Services;
 using Gadema.Core.DependencyResolver;
 using Gadema.Core.Models.Projects;
 using Gadema.Data.Database;
+using Gadema.Tests.Helpers;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +32,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     private IServiceScope? _scope;
 
     private static bool _FkChecked = false;
+    private UserContext _userContext;
 
     public ApiWebApplicationFactory()
     {
@@ -63,7 +68,10 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
             // Drop Program.cs's DbContext registration, re-register on the shared connection.
             services.RemoveAll<DbContextOptions<GameDbContext>>();
             services.RemoveAll<GameDbContext>();
-
+            services.RemoveAll<HttpContextAccessor>();
+            
+            services.AddSingleton<IHttpContextAccessor, MockHttpContextAccessor>();
+              
             services.AddDbContext<GameDbContext>(
                 o => o.UseSqlite(_connection)
                 .EnableSensitiveDataLogging()
@@ -165,4 +173,15 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     {
        return _scope;
     }
+}
+
+public class MockHttpContextAccessor : IHttpContextAccessor
+{
+    public HttpContext HttpContext { get; set; } = new DefaultHttpContext
+    {
+        User = new GenericPrincipal(
+            new GenericIdentity("test-user"), 
+            new[] { "Role1", "Role2" })
+        
+    };
 }

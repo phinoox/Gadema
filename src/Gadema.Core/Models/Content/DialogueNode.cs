@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue node within a branch.
 /// Contains the actual dialogue text and choices.
 /// </summary>
-[ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(DialogueBranch),typeof(ContentItem))]
 public class DialogueNode
 {
     /// <summary>
@@ -23,6 +23,7 @@ public class DialogueNode
     public Guid? ContentItemId { get; set; }  
     
     [ForeignKey("ContentItemId")]
+    [Fixture(FixtureHintEnum.Omit)]
     public virtual ContentItem? ContentItem { get; set; }
 
 
@@ -30,11 +31,12 @@ public class DialogueNode
     /// ID of the branch this node belongs to.
     /// </summary>
     [Required, Display(Name = "Branch ID")]
-    public Guid BranchId { get; set; }
+    [Fixture(FixtureHintEnum.Omit)]
+    public Guid DialogueBranchId { get; set; }
 
     // Navigation property: DialogueBranch (Many-to-One)
     [ForeignKey("BranchId")]
-    public virtual DialogueBranch Branch { get; set; }
+    public virtual DialogueBranch DialogueBranch { get; set; }
 
     /// <summary>
     /// Text content of the dialogue node.
@@ -45,11 +47,12 @@ public class DialogueNode
     /// <summary>
     /// ID of the speaker (character) for this node.
     /// </summary>
-    public Guid? SpeakerId { get; set; }
+    //[Fixture(FixtureHintEnum.Omit)]
+    //public Guid? SpeakerId { get; set; }
 
     // Navigation property: Speaker (User - Many-to-One)
-    [ForeignKey("SpeakerId")]
-    public virtual User? Speaker { get; set; }
+    //[ForeignKey("SpeakerId")]
+    public virtual string? Speaker { get; set; } //ToDo: this should be a character
 
     /// <summary>
     /// Choice options (JSON array).
@@ -68,6 +71,7 @@ public class DialogueNode
     /// Parent node ID for hierarchical dialogue structure.
     /// Used for branching conversations in visual novels.
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     public Guid? ParentNodeId { get; set; }
 
     // Navigation property: Parent Node (self-referencing, optional)
@@ -78,6 +82,7 @@ public class DialogueNode
     /// Collection of child nodes (for dialogue tree).
     /// Foreign key: ParentNodeId (matches FK in DialogueNode)
     /// </summary>
+    [Fixture(FixtureHintEnum.Omit)]
     public virtual ICollection<DialogueNode> ChildNodes { get; set; } = new List<DialogueNode>();
 
 }

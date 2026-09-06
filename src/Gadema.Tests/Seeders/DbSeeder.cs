@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Gadema.Core.DependencyResolver;
+using Microsoft.Data.Sqlite;
 
 namespace Gadema.Tests.Seeders;
 /// <summary>
@@ -70,6 +71,15 @@ public static class DbSeeder
     // Shared context to track seeded instances by type during a single AutoSeed call
     private static readonly AsyncLocal<Dictionary<Type, Guid?>> _seededCache = new();
 
+
+    public static void ResetSeedingCache()
+    {
+         if (_seededCache.Value == null)
+            _seededCache.Value = new Dictionary<Type, Guid?>();
+        else
+            _seededCache.Value!.Clear();
+    }
+
     /// <summary>
     /// Seeds a single instance into the database. Auto-resolves FK dependencies first.
     /// </summary>
@@ -92,6 +102,8 @@ public static class DbSeeder
         for (int i = 0; i < index; i++)
         {
             var parentType = sortedTypes[i];
+            if(_seededCache.Value.Keys.Contains(parentType))
+                continue;
             var parentAttrs = DependencyResolver.GetGraph((parentType).Assembly)[parentType];
             if (parentAttrs == null || parentAttrs.Count == 0) continue;
 
@@ -119,10 +131,17 @@ public static class DbSeeder
 
         // Wire FK properties from already-seeded parents
         SetFKProperties(db, typeof(T), instance, scope);
+        
 
         db.Set<T>().Add(instance);
-        db.SaveChanges();
-
+        try {
+            db.SaveChanges();
+        }
+        catch (SqliteException e)
+        {
+            Console.WriteLine($"SQLite exception when trying to save entity {typeof(T).Name}:{e.Message}");
+            throw;
+        }
         // Cache the seeded ID
         var id = instance.GetType().GetProperty("Id")?.GetValue(instance) as Guid?;
         if (id != null)
@@ -132,27 +151,32 @@ public static class DbSeeder
     }
 
     private static void SetFKProperties(DbContext db, Type targetType, object instance, IServiceScope scope)
+{
+    if (_seededCache.Value == null) return;
+ // Get the graph for this type's assembly
+    var graph = DependencyResolver.GetGraph(targetType.Assembly);
+    if (graph == null || !graph.ContainsKey(targetType)) return;
+
+    // Get the dependencies of the target type
+    var attrs = graph[targetType];
+    if (attrs == null || attrs.Count == 0) return;
+
+    foreach (var dependencyTypeAttribute in attrs)
     {
-        var sortedTypes = DependencyResolver.ResolveDependencies().SortedTypes;
-        if (sortedTypes == null || _seededCache.Value == null) return;
+        foreach(var dependencyType in dependencyTypeAttribute.DependentTypes ){
+        // Check if the dependency has been seeded
+        if (!_seededCache.Value.TryGetValue(dependencyType, out var depId) || depId == null)
+            continue;
 
-        int index = sortedTypes.IndexOf(targetType);
-        for (int i = 0; i < index; i++)
-        {
-            var parentType = sortedTypes[i];
-            var attrs = DependencyResolver.GetGraph((parentType).Assembly)[parentType];
-            if (attrs == null || attrs.Count == 0) continue;
-
-            foreach (var attr in attrs)
-            {
-                var propInfo = targetType.GetProperty(parentType.Name + "Id", BindingFlags.Public | BindingFlags.Instance);
-                if (propInfo == null || !propInfo.CanWrite) continue;
-
-                if (_seededCache.Value.TryGetValue(parentType, out var parentId) && parentId != null)
-                    propInfo.SetValue(instance, parentId.Value);
-            }
+        // Set the FK property: "{DependencyTypeName}Id" → {dependencyId}
+        var fkPropertyName = $"{dependencyType.Name}Id";
+        var propInfo = targetType.GetProperty(fkPropertyName, BindingFlags.Public | BindingFlags.Instance);
+        
+        if (propInfo != null && propInfo.CanWrite)
+            propInfo.SetValue(instance, depId.Value);
         }
     }
+}
 
     /// <summary>
     /// Creates an instance without persisting (for pre-built overrides).
