@@ -103,12 +103,12 @@ sequenceDiagram
     participant User as Writer
     participant Browser as Blazor Component
     participant API as Gadema.Api Controller
-    participant Service as ContentItemService
+    participant Service as MetaInfoService
     participant DB as EF Core DbContext
     participant Audit as ActivityLog
     
     User->>Browser: Opens /content/create page
-    Browser->>API: POST /api/content-items (CreateContentItemDto)
+    Browser->>API: POST /api/content-items (CreateMetaInfoDto)
     
     rect rgb(240, 248, 255)
         Note over API, Service: Controller Layer
@@ -125,14 +125,14 @@ sequenceDiagram
     rect rgb(236, 253, 240)
         Note over DB: Data Access Layer
     end
-    DB->>DB: INSERT into ContentItems table
+    DB->>DB: INSERT into MetaInfos table
     DB-->>Service: Entity created
     
     Service-->>API: Response DTO with generated URL
     API-->>Browser: 201 Created response
     Browser-->>User: Success notification + refresh via SignalR
     
-    Note over Audit: ActivityLog entry created:<br/>"ContentItemCreated by User@X"
+    Note over Audit: ActivityLog entry created:<br/>"MetaInfoCreated by User@X"
 ```
 
 ### 2. Branching Narrative Creation Flow (Self-Referencing Tree)
@@ -214,21 +214,21 @@ erDiagram
     Team ||--o{ TeamMember : contains
     Team ||--o{ Project : polymorphic owner
     
-    Project ||--o{ ContentItem : contains
+    Project ||--o{ MetaInfo : contains
     Project ||--o{ StorySequence : chapters
     Project ||--o{ ProjectTask : tasks
     Project ||--o{ ActivityLog : events
     
-    ContentItem ||--o{ DialogueBranch : has branches
-    ContentItem ||--o{ MediaAttachment : files
-    ContentItem }|--|| ReviewStatus : approval state
+    MetaInfo ||--o{ DialogueBranch : has branches
+    MetaInfo ||--o{ MediaAttachment : files
+    MetaInfo }|--|| ReviewStatus : approval state
     
     StorySequence }o--|o{ StorySequence : parent chapter
     StorySequence ||--o{ StoryBeat : scenes
     StoryOutline }|--|| StorySequence : section of
     
     ProjectTask ||--o{ Comment : discussions on task
-    ProjectTask |o--|| ContentItem : optional link
+    ProjectTask |o--|| MetaInfo : optional link
     
     Tag }|--o{ ContentTagAssociation : 
     Tag }|--o{ ProjectTagAssociation : 
@@ -346,9 +346,9 @@ sequenceDiagram
         Note over Hub, Writer: All subscribed clients<br/>receive update instantly
     end
     
-    Hub-->>Writer1: ContentItemChanged event
-    Hub-->>Writer2: ContentItemChanged event
-    Hub-->>EditorC: ContentItemChanged event
+    Hub-->>Writer1: MetaInfoChanged event
+    Hub-->>Writer2: MetaInfoChanged event
+    Hub-->>EditorC: MetaInfoChanged event
     
     Writer1->>Writer1: UI refreshes via StateHasChanged()
     Writer2->>Writer2: UI refreshes via StateHasChanged()
@@ -378,7 +378,7 @@ graph LR
 | **Eager Loading** | Fetch nested data in one query | `.Include(ci => ci.MediaAttachments)` |
 | **Projection Select** | Reduce payload size | `.Select(p => new ProjectSummaryDto(...))` |
 | **Pagination** | Large lists | `Skip().Take(20)` with index |
-| **Filtering Indexes** | Common filters | IX_ContentItems_Status IX_ProjectTasks_Difficulty |
+| **Filtering Indexes** | Common filters | IX_MetaInfos_Status IX_ProjectTasks_Difficulty |
 | **Soft Delete Filter** | Preserve history | `.Where(p => p.IsActive == true)` |
 
 ### Caching Strategy (Redis)

@@ -27,19 +27,19 @@ src/
 ├── Gadema.Core/Models/          # Entity classes (clustered by domain)
 │   ├── Authentication/User.cs
 │   ├── Projects/Project.cs
-│   ├── Content/ContentItem.cs
+│   ├── Content/MetaInfo.cs
 │   ├── Tasks/ProjectTask.cs      # Renamed from Task to avoid System.Threading.Task ambiguity
 │   └── [etc...]
 ├── Gadema.Core/Dtos/            # API DTOs (clustered by domain)
 │   ├── Authentication/SigninDto.cs
 │   ├── Projects/CreateProjectDto.cs
-│   ├── Content/ContentItemCreateDto.cs
+│   ├── Content/MetaInfoCreateDto.cs
 │   ├── Tasks/ProjectTaskCreateDto.cs  # Renamed from TaskCreateDto
 │   └── [etc...]
 ├── Gadema.Api/Controllers/    # REST endpoints (clustered by domain)
 │   ├── Authentication/AuthController.cs
 │   ├── Projects/ProjectsController.cs
-│   ├── Content/ContentItemsController.cs
+│   ├── Content/MetaInfosController.cs
 │   ├── Tasks/TasksController.cs      # Renamed from TaskController
 │   └── [etc...]
 ```
@@ -139,7 +139,7 @@ All list endpoints use standard pagination:
 
 ## **🔐 5. View Mode Separation** (Unchanged)
 
-API endpoints support both `PrivateWriting` and `Presentation` view modes for ContentItem responses:
+API endpoints support both `PrivateWriting` and `Presentation` view modes for MetaInfo responses:
 
 ### **View Mode Query Parameter**
 | Parameter | Type | Default | Notes |
@@ -162,9 +162,9 @@ API endpoints support both `PrivateWriting` and `Presentation` view modes for Co
 ## **🔐 6. DTO Design Patterns** (Updated with Domain Clustering)
 
 ### **Naming Convention Rules**
-- ✅ `CreateXDto` for creation operations (e.g., `CreateProjectDto`, `CreateContentItemDto`)
-- ✅ `UpdateXDto` for partial updates (e.g., `UpdateContentItemDto`, `UpdateProjectTaskDto`)
-- ✅ `ResponseXDto` for API responses (e.g., `ContentItemResponseDto`, `ProjectTaskResponseDto`)
+- ✅ `CreateXDto` for creation operations (e.g., `CreateProjectDto`, `CreateMetaInfoDto`)
+- ✅ `UpdateXDto` for partial updates (e.g., `UpdateMetaInfoDto`, `UpdateProjectTaskDto`)
+- ✅ `ResponseXDto` for API responses (e.g., `MetaInfoResponseDto`, `ProjectTaskResponseDto`)
 - ✅ All DTOs must be marked with `[Display(Name = "...")]` for UI labels
 
 ### **Required vs Optional Field Patterns**
@@ -940,7 +940,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response** ✅ **RAW**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "externalResources": [
     {
       "url": "https://notion.so/game-team/gdd",
@@ -1006,7 +1006,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response** ✅ **RAW**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "tags": [
     {
       "tagId": "tag-001",
@@ -1046,7 +1046,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
   "success": true,
   "message": "Tags added successfully",
   "data": {
-    "contentItemId": "char-001",
+    "MetaInfoId": "char-001",
     "addedTags": [
       {
         "tagId": "tag-001",
@@ -1099,7 +1099,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response** ✅ **RAW**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "attachments": [
     {
       "id": "att-001",
@@ -1161,7 +1161,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
       "id": "proj-001",
       "title": "The Dragon's Crown"
     },
-    "contentItems": [
+    "MetaInfos": [
       {
         "id": "char-001",
         "title": "Geralt",
@@ -1294,7 +1294,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
       "title": "Geralt Character Updated",
       "description": "User 'Jane Doe' updated the description...",
       "relatedEntityId": "char-001",
-      "relatedEntityType": 1,  // ContentItem
+      "relatedEntityType": 1,  // MetaInfo
       "createdAt": "2024-03-15T14:30:00Z",
       "userId": "usr-001"
     }
@@ -1314,7 +1314,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response** ✅ **RAW**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "reviewStatus": {
     "status": "Pending",
     "reviewedByUserId": null,
@@ -1350,7 +1350,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
   "success": true,
   "message": "Content item review updated successfully",
   "data": {
-    "contentItemId": "char-001",
+    "MetaInfoId": "char-001",
     "reviewStatus": {
       "status": "Approved",
       "reviewedByUserId": "usr-002",
@@ -1380,7 +1380,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
   "data": [
     {
       "id": "comment-001",
-      "contentItemId": "char-001",
+      "MetaInfoId": "char-001",
       "commentedByUserId": "usr-002",
       "commentText": "This character needs better backstory.",
       "visibility": "private",
@@ -1417,7 +1417,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
   "message": "Comment created successfully",
   "data": {
     "id": "comment-001",
-    "contentItemId": "char-001",
+    "MetaInfoId": "char-001",
     "commentedByUserId": "usr-002",
     "commentText": "This character needs better backstory.",
     "visibility": "team-only",

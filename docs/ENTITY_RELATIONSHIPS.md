@@ -12,23 +12,23 @@ erDiagram
     %% === AUTHENTICATION & IDENTITY ===
     User ||--o{ TeamMember : "owns"
     User }|--|| ProjectToken : "has tokens"
-    User ||--o{ ContentItem : "creates"
+    User ||--o{ MetaInfo : "creates"
     Team }|--o{ TeamMember : "contains"
     Team ||--o{ Project : "owns (polymorphic)"
     
     %% === PROJECTS & CONTENT ===
-    Project ||--o{ ContentItem : "contains"
+    Project ||--o{ MetaInfo : "contains"
     Project ||--o{ StorySequence : "has sequences"
     Project ||--o{ ProjectTask : "has tasks"
     Project ||--o{ ActivityLog : "logs events"
     Project ||--o{ MediaAttachment : "hosts media"
     Project }|--|| User : "created by"
     
-    ContentItem ||--o{ DialogueBranch : "has branches"
-    ContentItem ||--o{ DialogueNode : "contains nodes"
-    ContentItem ||--o{ CharacterDetails : "has details"
-    ContentItem ||--o{ MediaAttachment : "attaches media"
-    ContentItem }|--|| ReviewStatus : "has review status"
+    MetaInfo ||--o{ DialogueBranch : "has branches"
+    MetaInfo ||--o{ DialogueNode : "contains nodes"
+    MetaInfo ||--o{ CharacterDetails : "has details"
+    MetaInfo ||--o{ MediaAttachment : "attaches media"
+    MetaInfo }|--|| ReviewStatus : "has review status"
     
     %% === NARRATIVE STRUCTURE ===
     StorySequence }o--|| Project : "belongs to"
@@ -43,7 +43,7 @@ erDiagram
     
     %% === TASKS & WORKFLOW ===
     ProjectTask ||--|{ ProjectTaskComments : "has comments"
-    ProjectTask |o--|| ContentItem : "references content"
+    ProjectTask |o--|| MetaInfo : "references content"
     ProjectTask |o--|| User : "assigned to"
     
     %% === IDENTITY SYSTEM (Polymorphic) ===
@@ -51,11 +51,11 @@ erDiagram
     TeamMember ||--|{ Tag : "has tags"
     
     %% === METADATA & TAGGING ===
-    ContentItem |o--o{ ContentTags : "tags content"
+    MetaInfo |o--o{ ContentTags : "tags content"
     Project |o--o{ Tag : "has tags"
     
     %% === VERSIONING & LOGGING ===
-    ContentItem ||--o{ ContentVersionLog : "version history"
+    MetaInfo ||--o{ ContentVersionLog : "version history"
     ActivityLog ||--|| User : "performed by (nullable)"
     ActivityLog }|--|| Project : "belongs to project"
 ```
@@ -76,7 +76,7 @@ erDiagram
 | | `StorySequence` | Hierarchical chapter/sequence organizer |
 | | `StoryBeat` | Atomic scene/unit within a sequence |
 | | `StoryOutline` | Narrative outline section (if exists) |
-| **Content** | `ContentItem` | Core content model (polymorphic types: characters, worlds, mechanics) |
+| **Content** | `MetaInfo` | Core content model (polymorphic types: characters, worlds, mechanics) |
 | | `CharacterDetails` | Character-specific attributes |
 | | `DialogueBranch` | Root nodes of branching narrative trees |
 | | `DialogueNode` | Dialogue choices and conditions |
@@ -157,7 +157,7 @@ public string CommentText { get; set; } = "";
 
 #### `ContentTags`
 
-| ContentItemId (FK+PK) | TagId (FK+PK) |
+| MetaInfoId (FK+PK) | TagId (FK+PK) |
 |------------------------|---------------|
 | `Guid`                 | `Guid`        |
 
@@ -168,9 +168,9 @@ public string CommentText { get; set; } = "";
 ### 5. Optional FKs (Nullable Navigation)
 
 ```csharp
-public Guid? ContentItemId { get; set; }
-[ForeignKey("ContentItemId")]
-public virtual ContentItem? ContentItem { get; set; }
+public Guid? MetaInfoId { get; set; }
+[ForeignKey("MetaInfoId")]
+public virtual MetaInfo? MetaInfo { get; set; }
 ```
 
 Used when:
@@ -191,7 +191,7 @@ graph TD
     B -->|contains| C[StoryOutline]
     B -->|contains| D(StoryBeat)
     
-    E[ContentItem: Narrative] -->|maps to| F(DialogueBranch)
+    E[MetaInfo: Narrative] -->|maps to| F(DialogueBranch)
     F -->|contains| G[DialogueNode]
     G -->|child of| H[G]
 ```
@@ -201,11 +201,11 @@ graph TD
 ```mermaid
 graph TD
     A[Project] -->|has| B(ProjectTask)
-    B -->|linked to| C(ContentItem)
+    B -->|linked to| C(MetaInfo)
     B -->|assigned to| D[User]
     B -->|comments on| E(ProjectTaskComments)
     
-    F[Tag] -.->|many-to-many via ContentTags| G(ContentItem)
+    F[Tag] -.->|many-to-many via ContentTags| G(MetaInfo)
 ```
 
 ### Identity System Chain (Polymorphic)
@@ -216,7 +216,7 @@ graph TD
     
     C[Trait/Attribute] --> D(ClassTemplate)
     D --> E(CharacterDetails)
-    E --> F(ContentItem: Character)
+    E --> F(MetaInfo: Character)
     
     G(TeamMember) --> H[Team]
 ```
@@ -232,15 +232,15 @@ graph TD
 | `TeamMemberships` | `UserId + TeamId` | UserId, TeamId | Many-to-many via junction |
 | `Projects` | `Id` | `OwnerId`, `SeriesProjectId` | Polymorphic owner; self-referencing series |
 | `StorySequences` | `Id` | `ParentSequenceId`, `ProjectId` | Self-parenting tree |
-| `ContentItems` | `Id` | `ProjectId` | 1:many to all content entities |
+| `MetaInfos` | `Id` | `ProjectId` | 1:many to all content entities |
 | `DialogueBranches` | `Id` | `ParentNodeId` (nullable), `ProjectId` | Optional self-parent tree |
-| `DialogueNodes` | `Id` | `ParentNodeId`, `BranchId`, `ContentItemId` | Tree with optional root |
+| `DialogueNodes` | `Id` | `ParentNodeId`, `BranchId`, `MetaInfoId` | Tree with optional root |
 | `StoryOutlines` | `Id` | `SequenceId` | 1:many from sequences |
 | `StoryBeats` | `Id` | `SequenceId` | 1:many from sequences |
-| `ProjectTasks` | `Id` | `ContentItemId` (nullable), `ProjectId` | Optional content link |
+| `ProjectTasks` | `Id` | `MetaInfoId` (nullable), `ProjectId` | Optional content link |
 | `TaskComments` | `ProjectTaskId + CommentedByUserId` | ProjectTaskId, CommentedByUserId | FK-as-PK junction |
-| `CharacterDetails` | `Id` | `ClassTemplateId`, `ContentItemId` | Many-to-one to characters |
-| `MediaAttachments` | `Id` | `ContentItemId` | 1:many from content items |
+| `CharacterDetails` | `Id` | `ClassTemplateId`, `MetaInfoId` | Many-to-one to characters |
+| `MediaAttachments` | `Id` | `MetaInfoId` | 1:many from content items |
 | `ExternalReferences` | `Id` | `ParentId` (nullable) | Self-referencing tree |
 
 ---
@@ -265,7 +265,7 @@ graph TD
 
 **Tasks and dialogue nodes are not always tied to specific content.** This allows:
 - Tasks to exist independently (general todo items)
-- Dialogue trees to be created without a parent ContentItem
+- Dialogue trees to be created without a parent MetaInfo
 - Flexible data entry workflows
 
 ---
@@ -284,9 +284,9 @@ graph TD
 ### `Project` — Work Container
 - Polymorphic owner (User or Team)
 - Hierarchical series support via `SeriesId` FK back to parent project
-- **Related:** ContentItems, StorySequences, ProjectTasks, ActivityLogs, MediaAttachments, Tags
+- **Related:** MetaInfos, StorySequences, ProjectTasks, ActivityLogs, MediaAttachments, Tags
 
-### `ContentItem` — Core Domain Entity
+### `MetaInfo` — Core Domain Entity
 - Type polymorphism: Character, World, Mechanic, Setting, etc. (via `ContentTypeEnum`)
 - View mode separation: `PrivateWriting` vs `Presentation`
 - **Related:** DialogueBranches, MediaAttachments, Comments, ReviewStatus, ContentTags, ExternalReferences, AssetLinks
@@ -306,7 +306,7 @@ graph TD
 - Flat structure: no epics/stories/subtasks (intentional simplicity)
 - Difficulty/Easy-Medium-Hard prioritization
 - Quick win flag for momentum
-- Optional content linkage (task may or may not reference a specific ContentItem)
+- Optional content linkage (task may or may not reference a specific MetaInfo)
 
 ### `CharacterIdentity` — Identity Assignment Table
 - Links characters to identity definitions and values

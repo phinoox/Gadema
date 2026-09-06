@@ -12,20 +12,20 @@
 
 ### Navigation Properties Added:
 1. **AbilitySet** → `Project` navigation
-2. **AssetLink** → `ContentItem` navigation  
-3. **CharacterAttributes** → `ContentItem`, `AttributeDefinition` navigations
+2. **AssetLink** → `MetaInfo` navigation  
+3. **CharacterAttributes** → `MetaInfo`, `AttributeDefinition` navigations
 4. **CharacterBackground** → `CharacterDetails`, `CharacterBackgrounds` collections
-5. **CharacterDetails** → `ContentItem` navigation + `CharacterBackgrounds` collection
-6. **CharacterIdentity** → `ContentItem`, `IdentityDefinition`, `IdentityValue` navigations
+5. **CharacterDetails** → `MetaInfo` navigation + `CharacterBackgrounds` collection
+6. **CharacterIdentity** → `MetaInfo`, `IdentityDefinition`, `IdentityValue` navigations
 7. **ClassTemplate** → `AttributeSet` collection
 8. **ClassTemplateAttribute** → `ClassTemplate`, `AttributeDefinition` navigations
-9. **ContentItem** → All collections + CharacterIdentities, ExternalReferences added
-10. **ContentVersionLog** → `ContentItem` navigation
+9. **MetaInfo** → All collections + CharacterIdentities, ExternalReferences added
+10. **ContentVersionLog** → `MetaInfo` navigation
 11. **DialogueBranch** → `ParentNode` self-ref, `Nodes` collection
 12. **DialogueNode** → `Branch`, `Speaker`, `ParentNode`, `ChildNodes` navigations
 13. **EngineExportConfig** → `Project`, `IsEnabled` properties
 14. **EngineFieldMapping** → `Project`, `SourceColumn`, `TargetColumn` properties
-15. **ExternalReference** → `Parent` self-ref, `ContentItemReferences` collection
+15. **ExternalReference** → `Parent` self-ref, `MetaInfoReferences` collection
 16. **IdentityValue** → `IdentityDefinition`, `ProjectTemplate` navigations
 17. **InventoryItem** → `Project` navigation
 18. **Project** → `SeriesProject` nullable back-reference + all collections

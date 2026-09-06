@@ -30,13 +30,13 @@ public class EFTroubleshootingTests
     [Fact]
     public async Task NavigationPropertyConflict_ShouldBeResolved()
     {
-        // Problem: ContentItem had duplicate ReviewStatus navigations
+        // Problem: MetaInfo had duplicate ReviewStatus navigations
         var context = new GameDbContext(
             new DbContextOptionsBuilder<GameDbContext>()
                 .UseInMemoryDatabase("GaDeMaTest")
                 .Options);
 
-        var contentItem = new ContentItem
+        var MetaInfo = new MetaInfo
         {
             Id = Guid.NewGuid(),
             ProjectId = Guid.NewGuid()
@@ -45,19 +45,19 @@ public class EFTroubleshootingTests
         var reviewStatus = new ReviewStatus
         {
             Id = Guid.NewGuid(),
-            ContentItemId = contentItem.Id,
+            MetaInfoId = MetaInfo.Id,
             Status = 0,
             ReviewedByUserId = null,
             ReviewComments = "Test comment"
         };
 
-        context.ContentItems.Add(contentItem);
+        context.MetaInfos.Add(MetaInfo);
         context.ReviewStatuses.Add(reviewStatus);
         
         await context.SaveChangesAsync();
         
         // Assert - No navigation validation errors
-        context.ContentItems.Should().Contain(c => c.Id == contentItem.Id);
+        context.MetaInfos.Should().Contain(c => c.Id == MetaInfo.Id);
     }
 
     /// <summary>
@@ -124,16 +124,16 @@ public class EFTroubleshootingTests
 /// SYMPTOM:
 /// --------
 /// System.InvalidOperationException : Unable to determine the relationship 
-/// represented by navigation 'ContentItem.ReviewStatus' of type 'ReviewStatus'.
+/// represented by navigation 'MetaInfo.ReviewStatus' of type 'ReviewStatus'.
 /// 
 /// ERROR MESSAGES:
 /// --------------
 /// 1. "Unable to determine the relationship represented by navigation..."
-/// 2. "Entity 'ContentItem' already has a navigation property for 'ReviewStatus'"
+/// 2. "Entity 'MetaInfo' already has a navigation property for 'ReviewStatus'"
 /// 
 /// ROOT CAUSE:
 /// -----------
-/// ContentItem entity had BOTH single and collection navigations to ReviewStatus:
+/// MetaInfo entity had BOTH single and collection navigations to ReviewStatus:
 /// ```csharp
 /// // Line ~134 - Single navigation (correct)
 /// public virtual ReviewStatus? ReviewStatus { get; set; }
@@ -142,28 +142,28 @@ public class EFTroubleshootingTests
 /// public virtual ICollection<ReviewStatus> ReviewStatuses { get; set; }
 /// ```
 /// 
-/// The configuration expected ReviewStatuses but ContentItem had both, causing
+/// The configuration expected ReviewStatuses but MetaInfo had both, causing
 /// EF Core to see duplicate relationships with same FK pattern.
 /// 
 /// SOLUTION:
 /// ---------
-/// 1. Remove collection property from ContentItem.cs (lines 187-193)
+/// 1. Remove collection property from MetaInfo.cs (lines 187-193)
 ///    DELETE entire block containing ReviewStatuses collection
 ///    
 /// 2. Update configuration file to match single navigation:
 ///    In ReviewStatusEntityTypeConfiguration.cs line 33:
 ///    
 ///    FROM:
-///      builder.HasOne(rs => rs.ContentItem)
+///      builder.HasOne(rs => rs.MetaInfo)
 ///          .WithMany(ci => ci.ReviewStatuses)
 ///      
 ///    TO:
-///      builder.HasOne(rs => rs.ContentItem)
+///      builder.HasOne(rs => rs.MetaInfo)
 ///          .WithOne(ci => ci.ReviewStatus)  // Match single property!
 /// 
 /// DESIGN DECISION:
 /// ----------------
-/// ContentItem should use SINGLE navigation (ReviewStatus?) because:
+/// MetaInfo should use SINGLE navigation (ReviewStatus?) because:
 /// - Each content item has at most ONE review status (Many-to-One relationship)
 /// - No junction table pattern used here (unlike ContentTags, CharacterIdentities)
 /// - ReviewStatus tracks single review state per content item
@@ -246,7 +246,7 @@ public class EFTroubleshootingTests
 /// 
 /// BEFORE (WRONG):
 /// ```csharp
-/// public ContentItemServiceTests(ApiWebApplicationFactory factory)  // ❌ No inheritance!
+/// public MetaInfoServiceTests(ApiWebApplicationFactory factory)  // ❌ No inheritance!
 /// {
 ///     _service = factory.Services.GetRequiredService<IContentService>();
 /// }
@@ -254,11 +254,11 @@ public class EFTroubleshootingTests
 /// 
 /// AFTER (CORRECT - Integration Test):
 /// ```csharp
-/// public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>  // ✅ Inherit!
+/// public class MetaInfoServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>  // ✅ Inherit!
 /// {
 ///     private readonly IContentService _service;
 ///     
-///     public ContentItemServiceIntegrationTests(ApiWebApplicationFactory factory)
+///     public MetaInfoServiceIntegrationTests(ApiWebApplicationFactory factory)
 ///     {
 ///         _service = factory.Services.GetRequiredService<IContentService>();
 ///     }
@@ -267,18 +267,18 @@ public class EFTroubleshootingTests
 /// 
 /// ALTERNATIVE (Unit Test without Factory):
 /// ```csharp
-/// public class ContentItemServiceUnitTest  // ✅ No inheritance needed!
+/// public class MetaInfoServiceUnitTest  // ✅ No inheritance needed!
 /// {
 ///     private readonly IContentService _service;
 ///     
-///     public ContentItemServiceUnitTest()  // ✅ Simple constructor
+///     public MetaInfoServiceUnitTest()  // ✅ Simple constructor
 ///     {
 ///         var options = new DbContextOptionsBuilder<GameDbContext>()
 ///             .UseInMemoryDatabase("GaDeMaTest")
 ///             .Options;
 ///         
 ///         _context = new GameDbContext(options);
-///         _service = new ContentItemService(_context, null!);
+///         _service = new MetaInfoService(_context, null!);
 ///     }
 /// }
 /// ```

@@ -1,9 +1,9 @@
-# `ContentItem` — Complete Analysis
+# `MetaInfo` — Complete Analysis
 
 ## 📋 Overview
 
 ```csharp
-public class ContentItem
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public Guid ProjectId { get; set; }           // FK → Projects table
@@ -33,7 +33,7 @@ public class ContentItem
 
 ### 1. Polymorphic Type System (No Tables Per Type)
 
-`ContentItem` is a **single table** that represents 12 different content types:
+`MetaInfo` is a **single table** that represents 12 different content types:
 
 | ContentType | Example Use Case |
 |-------------|-----------------|
@@ -51,7 +51,7 @@ public class ContentItem
 | `Other` (11) | Catch-all for unmapped types |
 
 **How type-specific data is stored:**  
-The model supports **polymorphic detail tables** — when a ContentItem's `ContentType` changes or when you need type-specific fields, they go into separate child tables keyed by `ContentItemId`. For example:
+The model supports **polymorphic detail tables** — when a MetaInfo's `ContentType` changes or when you need type-specific fields, they go into separate child tables keyed by `MetaInfoId`. For example:
 - A `Character` might have a linked `CharacterDetails` entity with name, level, role, status.
 - A `World` might have `LoreEntry` associations tied to its ID.
 
@@ -75,7 +75,7 @@ public enum ViewModeEnum : int
 
 ### 3. Versioned Content with Audit Trail
 
-Every `ContentItem` has a `Version` counter and a one-to-many relationship to `ContentVersionLog`:
+Every `MetaInfo` has a `Version` counter and a one-to-many relationship to `ContentVersionLog`:
 
 ```csharp
 public virtual ICollection<ContentVersionLog> VersionLogs { get; set; } = new List<ContentVersionLog>();
@@ -94,27 +94,27 @@ This supports:
 
 | Entity | FK Column | Navigation Property | Purpose |
 |--------|-----------|---------------------|---------|
-| **Project** ←→ ContentItem | `ProjectId` | `ContentItem.Project` | Projects contain many content items |
-| **ReviewStatus** ←→ ContentItem | `ContentItemId` (FK-as-PK) | `ContentItem.ReviewStatus` | Optional approval state |
+| **Project** ←→ MetaInfo | `ProjectId` | `MetaInfo.Project` | Projects contain many content items |
+| **ReviewStatus** ←→ MetaInfo | `MetaInfoId` (FK-as-PK) | `MetaInfo.ReviewStatus` | Optional approval state |
 
 ### Child Relationships (One-to-Many)
 
 | Entity | FK on Child | Purpose |
 |--------|-------------|---------|
-| **DialogueBranch** | `ContentItemId` | A content item can be the root of a branching narrative tree |
-| **MediaAttachment** | `ContentItemId` | Images, PDFs attached to the content |
-| **Comment** | `ContentItemId` | User comments on this content |
-| **ExternalReference** | `ParentType=0`, `ParentId` → ContentItem.Id | Links to external docs (Google Docs, Pinterest, etc.) |
-| **AssetLink** | `ContentItemId` | Game engine asset connections |
+| **DialogueBranch** | `MetaInfoId` | A content item can be the root of a branching narrative tree |
+| **MediaAttachment** | `MetaInfoId` | Images, PDFs attached to the content |
+| **Comment** | `MetaInfoId` | User comments on this content |
+| **ExternalReference** | `ParentType=0`, `ParentId` → MetaInfo.Id | Links to external docs (Google Docs, Pinterest, etc.) |
+| **AssetLink** | `MetaInfoId` | Game engine asset connections |
 
 ### Self-Referencing / Junction
 
 ```csharp
 public virtual ICollection<ContentTags> ContentTagAssociations { get; set; } = new List<ContentTags>();
-[Required] public Guid ContentItemId { get; set; }  // FK-as-PK column in junction table
+[Required] public Guid MetaInfoId { get; set; }  // FK-as-PK column in junction table
 ```
 
-`ContentItem` participates in a many-to-many relationship with `Tag`:
+`MetaInfo` participates in a many-to-many relationship with `Tag`:
 - Junction: `ContentTags` table (self-composite key — each row has its own `Id`)
 - Query pattern: `/api/content-items?tags=tag1,tag2` returns only tagged items
 
@@ -147,7 +147,7 @@ public enum ContentStatusEnum
 ### Narrative Structure Integration
 
 ```
-ContentItem (type = PlotPoint or Quest)
+MetaInfo (type = PlotPoint or Quest)
        ↓ (has many)
 DialogueBranches  ←→ DialogueNodes (tree structure with conditions)
        ↓
@@ -156,15 +156,15 @@ StorySequence (chapter/act level, optional hierarchical parent)
 StoryBeat (atomic scene units within a sequence)
 ```
 
-A `ContentItem` of type `PlotPoint` can be the root or leaf node in a branching dialogue tree. The `DialogueBranch.ContentItemId` FK allows the narrative engine to "expand" that content item into interactive choices at runtime.
+A `MetaInfo` of type `PlotPoint` can be the root or leaf node in a branching dialogue tree. The `DialogueBranch.MetaInfoId` FK allows the narrative engine to "expand" that content item into interactive choices at runtime.
 
 ### Task Integration
 
 ```csharp
-public class ProjectTask { ... public Guid? ContentItemId { get; set; } ... }
+public class ProjectTask { ... public Guid? MetaInfoId { get; set; } ... }
 ```
 
-A task can optionally link to a specific `ContentItem`, allowing:
+A task can optionally link to a specific `MetaInfo`, allowing:
 - Writers to attach tasks directly to plot points or characters they're working on
 - Progress tracking that's scoped to content rather than just abstract work items
 
@@ -172,7 +172,7 @@ A task can optionally link to a specific `ContentItem`, allowing:
 
 ```mermaid
 graph LR
-    A[ContentItem] -->|has many| B(MediaAttachment)
+    A[MetaInfo] -->|has many| B(MediaAttachment)
     A -->|has many| C(ExternalReference)
     
     B -.-> D[PNG/JPG/PDF files on disk or cloud storage]
@@ -187,12 +187,12 @@ This supports a rich documentation model where each content item can have:
 
 ## ⚡ Performance Considerations
 
-The `ContentItem` table has several indexes implied by the configuration pattern:
+The `MetaInfo` table has several indexes implied by the configuration pattern:
 
 ```sql
-CREATE INDEX IX_ContentItems_ProjectId ON ContentItems(ProjectId);      -- Project-level queries
-CREATE INDEX IX_ContentItems_Status  ON ContentItems(Status);           -- Filter by lifecycle stage
-CREATE INDEX IX_ContentItems_Slug    ON ContentItems(Slug, ProjectId);  -- Unique per-project slugs
+CREATE INDEX IX_MetaInfos_ProjectId ON MetaInfos(ProjectId);      -- Project-level queries
+CREATE INDEX IX_MetaInfos_Status  ON MetaInfos(Status);           -- Filter by lifecycle stage
+CREATE INDEX IX_MetaInfos_Slug    ON MetaInfos(Slug, ProjectId);  -- Unique per-project slugs
 ```
 
 **Common query patterns supported:**
@@ -210,7 +210,7 @@ CREATE INDEX IX_ContentItems_Slug    ON ContentItems(Slug, ProjectId);  -- Uniqu
 
 1. **No type-specific columns in the main table** — all polymorphic detail lives in child tables. This means queries like "get all characters with level > 5" require joining to a separate `CharacterDetails` table, which adds a join cost. (This is the trade-off of avoiding a fat table.)
 
-2. **No soft-delete flag on ContentItem itself** — unlike `Project`, there's no `IsActive` on `ContentItem`. This suggests content items are never "deleted," only archived or unpublished. The consequence is potential bloat if old drafts accumulate, but it also preserves version history naturally.
+2. **No soft-delete flag on MetaInfo itself** — unlike `Project`, there's no `IsActive` on `MetaInfo`. This suggests content items are never "deleted," only archived or unpublished. The consequence is potential bloat if old drafts accumulate, but it also preserves version history naturally.
 
 3. **References field is a JSON string** — `string? References { get; set; }` stores an external references array as JSON. While flexible, this means you can't index/search the reference titles or URLs efficiently (unlike having a normalized junction table).
 
@@ -218,7 +218,7 @@ CREATE INDEX IX_ContentItems_Slug    ON ContentItems(Slug, ProjectId);  -- Uniqu
 
 ---
 
-## 📝 Summary: What ContentItem Is (and Isn't)
+## 📝 Summary: What MetaInfo Is (and Isn't)
 
 | | Truth |
 |--|------|
@@ -227,9 +227,9 @@ CREATE INDEX IX_ContentItems_Slug    ON ContentItems(Slug, ProjectId);  -- Uniqu
 | ✅ | It supports **two view modes** (editing vs presentation) for different audiences |
 | ✅ | It can be the **root of a dialogue tree** or a standalone narrative element |
 | ❌ | It is *not* normalized into 12 separate tables (that would explode the join count) |
-| ❌ | It does *not* store type-specific fields inline — those are in child/junction entities keyed by `ContentItemId` |
+| ❌ | It does *not* store type-specific fields inline — those are in child/junction entities keyed by `MetaInfoId` |
 | ❌ | It has no soft-delete flag — content can only be unpublished/archived, never truly deleted |
 
 ---
 
-**End of ContentItem analysis.**
+**End of MetaInfo analysis.**

@@ -24,7 +24,7 @@ src/
 │   ├── Projects/
 │   │   └── ProjectConfiguration.cs
 │   ├── Content/
-│   │   ├── ContentItemConfiguration.cs
+│   │   ├── MetaInfoConfiguration.cs
 │   │   ├── StoryOutlineConfiguration.cs
 │   │   ├── DialogueBranchConfiguration.cs
 │   │   ├── ExternalReferenceConfiguration.cs
@@ -91,16 +91,16 @@ src/
 
 #### **Architecture:**
 - Always use `.Include()` for relationship queries to prevent N+1 problem
-- Use `.ThenInclude()` for nested relationships (e.g., ContentItem → MediaAttachments)
+- Use `.ThenInclude()` for nested relationships (e.g., MetaInfo → MediaAttachments)
 - Never query navigation properties separately in loops
 
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Eager loading to avoid N+1 queries with ProjectTask entity
-public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<MetaInfo> GetMetaInfoWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // Single query with eager loading for all relationships including ProjectTasks
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.MediaAttachments)
         .Include(ci => ci.ContentTags)
             .ThenInclude(ct => ct.Tag)  // Include junction + tag data
@@ -110,24 +110,24 @@ public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewMode
 }
 
 // ❌ INCORRECT - N+1 problem with Task entity (now renamed to ProjectTask)
-public async Task<List<ContentItem>> GetContentItemsAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetMetaInfosAsync(Guid projectId)
 {
     // First: Get all items
-    var items = await _context.ContentItems.ToListAsync();
+    var items = await _context.MetaInfos.ToListAsync();
     
     foreach (var item in items)
     {
         // Second: Query tasks separately for each item (N+1 problem!) - now ProjectTask
         var tasks = await _context.ProjectTasks  // ✅ Updated entity name
-            .Where(t => t.ContentItemId == item.Id)  // ✅ Updated FK relationship
+            .Where(t => t.MetaInfoId == item.Id)  // ✅ Updated FK relationship
             .ToListAsync();  // N+1 query!
     }
 }
 
 // ✅ CORRECT - Fixed version with eager loading for ProjectTask
-public async Task<List<ContentItem>> GetContentItemsWithTasksAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetMetaInfosWithTasksAsync(Guid projectId)
 {
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.ProjectTasks)  // ✅ Updated: eager loading for ProjectTasks
         .Where(ci => ci.ProjectId == projectId)
         .ToListAsync();  // Single query!
@@ -407,18 +407,18 @@ public class ContentCacheExpirationService
     private const int PublishedContentTTLHours = 1;     // Less frequent changes
     private const int StaticDataTTLHours = 24;         // Minimal changes
     
-    public TimeSpan GetCacheExpiration(ContentItemType contentType)
+    public TimeSpan GetCacheExpiration(MetaInfoType contentType)
     {
         return contentType switch
         {
-            ContentItemType.Draft => TimeSpan.FromMinutes(DraftContentTTLMinutes),
-            ContentItemType.Published => TimeSpan.FromHours(PublishedContentTTLHours),
-            ContentItemType.Static => TimeSpan.FromHours(StaticDataTTLHours),
+            MetaInfoType.Draft => TimeSpan.FromMinutes(DraftContentTTLMinutes),
+            MetaInfoType.Published => TimeSpan.FromHours(PublishedContentTTLHours),
+            MetaInfoType.Static => TimeSpan.FromHours(StaticDataTTLHours),
             _ => TimeSpan.FromMinutes(DraftContentTTLMinutes)  // Default: short TTL for ProjectTask entity
         };
     }
     
-    public async Task<T> GetOrCacheAsync<T>(string cacheKey, Func<Task<T>> getFunc, ContentItemType contentType) where T : class
+    public async Task<T> GetOrCacheAsync<T>(string cacheKey, Func<Task<T>> getFunc, MetaInfoType contentType) where T : class
     {
         return await _redisCache.GetOrCreateAsync(cacheKey, async entry =>
         {
@@ -454,7 +454,7 @@ public class RedisCacheConfigurationService
             .UseCache(expiration: TimeSpan.FromMinutes(5));  // ✅ Updated domain-aware caching
         
         // Published content: 1 hour TTL (less frequent changes) - includes ProjectTask entities
-        context.ContentItems
+        context.MetaInfos
             .Where(ci => ci.Published)
             .Include(ci => ci.MediaAttachments)
             .AsQueryable()
@@ -483,12 +483,12 @@ public class DomainAwareCacheConfigurationService
         // Projects domain: 30 minutes TTL (project settings change occasionally)
         context.Projects
             .Where(p => p.Published)
-            .Include(p => p.ContentItems).ThenInclude(ci => ci.ProjectTasks)  // ✅ Updated eager loading for ProjectTask
+            .Include(p => p.MetaInfos).ThenInclude(ci => ci.ProjectTasks)  // ✅ Updated eager loading for ProjectTask
             .AsQueryable()
             .UseCache(expiration: TimeSpan.FromMinutes(30));  // ✅ Updated domain-aware caching
         
         // Content domain: 5 minutes TTL (content changes frequently)
-        context.ContentItems
+        context.MetaInfos
             .Where(ci => ci.Published)
             .Include(ci => ci.MediaAttachments)
             .AsQueryable()
@@ -518,7 +518,7 @@ public class DomainAwareCacheConfigurationService
 #### **Updated Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Stream large file uploads with ProjectTask entity metadata
-public async Task UploadLargeFileAsync(Guid contentItemId, IFormFile file)
+public async Task UploadLargeFileAsync(Guid MetaInfoId, IFormFile file)
 {
     // Validate file size BEFORE processing (prevent OOM) with ProjectTask entity
     const int MaxFileSize = 100 * 1024 * 1024;  // 100MB in bytes
@@ -560,7 +560,7 @@ public async Task UploadLargeFileAsync(Guid contentItemId, IFormFile file)
 }
 
 // ✅ CORRECT - File upload with MIME type validation and ProjectTask entity metadata
-public async Task UploadMediaFileAsync(Guid contentItemId, IFormFile file)
+public async Task UploadMediaFileAsync(Guid MetaInfoId, IFormFile file)
 {
     // Validate MIME type BEFORE processing file with ProjectTask entity
     var allowedMimeTypes = new[] 

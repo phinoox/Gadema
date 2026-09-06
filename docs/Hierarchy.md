@@ -7,7 +7,7 @@
 │  Project    │── Owner (User/Team)
 └─────────────┘
       │
-      └──> Contains all ContentItems, TeamMemberships
+      └──> Contains all MetaInfos, TeamMemberships
 ```
 
 ---
@@ -36,59 +36,59 @@
 
 ## **Level 3: Content Items (Generic Container - ~57 tables total)**
 
-### **Character ContentItem**
+### **Character MetaInfo**
 ```
-ContentItem (Character)
+MetaInfo (Character)
 │
-├── CharacterDetails       │── FK to ContentItem, PK as FK to CharacterAttributes
-├── CharacterBackground    │── FK to ContentItem (back-reference needed!)
-├── CharacterAttributes    │── FK to ContentItem (back-reference needed!)
-├── ProjectTasks           │── Optional FK to ContentItem (content-specific tasks)
-├── MediaAttachments       │── FK to ContentItem, cascade delete
-├── ExternalReferences     │── FK to ContentItem, maintain link history
+├── CharacterDetails       │── FK to MetaInfo, PK as FK to CharacterAttributes
+├── CharacterBackground    │── FK to MetaInfo (back-reference needed!)
+├── CharacterAttributes    │── FK to MetaInfo (back-reference needed!)
+├── ProjectTasks           │── Optional FK to MetaInfo (content-specific tasks)
+├── MediaAttachments       │── FK to MetaInfo, cascade delete
+├── ExternalReferences     │── FK to MetaInfo, maintain link history
 ├── Tags/ContentTags       │── Junction table for multi-select tagging
 ├── CharacterIdentities    │── Identity assignments (race/faction/alignment)
 └── ReviewStatus           │── Approval workflow for character content
 ```
 
-### **World/Locations ContentItem**
+### **World/Locations MetaInfo**
 ```
-ContentItem (World/Location)
+MetaInfo (World/Location)
 │
-├── StorySequence         │── FK to ContentItem (narrative structure within world)
-├── StoryBeat             │── FK to ContentItem (plot points within world)
-├── LoreEntry             │── FK to ContentItem (world-building lore)
-├── DialogueBranch        │── FK to ContentItem (visual novel dialogue)
+├── StorySequence         │── FK to MetaInfo (narrative structure within world)
+├── StoryBeat             │── FK to MetaInfo (plot points within world)
+├── LoreEntry             │── FK to MetaInfo (world-building lore)
+├── DialogueBranch        │── FK to MetaInfo (visual novel dialogue)
 ├── DialogueNode          │── FK to DialogueBranch, part of tree structure
-└── MediaAttachments      │── FK to ContentItem, cascade delete
+└── MediaAttachments      │── FK to MetaInfo, cascade delete
 ```
 
-### **Mechanics/Systems ContentItem**
+### **Mechanics/Systems MetaInfo**
 ```
-ContentItem (Mechanic/System)
+MetaInfo (Mechanic/System)
 │
-├── ClassTemplateAttribute│── FK to ContentItem (attribute mappings for class template)
-├── AbilityDefinition     │── FK to ContentItem (abilities within mechanic system)
-└── MediaAttachments      │── FK to ContentItem, cascade delete
+├── ClassTemplateAttribute│── FK to MetaInfo (attribute mappings for class template)
+├── AbilityDefinition     │── FK to MetaInfo (abilities within mechanic system)
+└── MediaAttachments      │── FK to MetaInfo, cascade delete
 ```
 
-### **General Purpose ContentItems**
+### **General Purpose MetaInfos**
 ```
-ContentItem (Generic)
+MetaInfo (Generic)
 │
-├── StoryOutline          │── FK to Project OR ContentItem (narrative structure planning)
-├── DialogueBranch        │── FK to ContentItem (visual novel dialogue for generic content)
-└── MediaAttachments      │── FK to ContentItem, cascade delete
+├── StoryOutline          │── FK to Project OR MetaInfo (narrative structure planning)
+├── DialogueBranch        │── FK to MetaInfo (visual novel dialogue for generic content)
+└── MediaAttachments      │── FK to MetaInfo, cascade delete
 ```
 
 ---
 
-## **Level 4: Cross-Cutting Concerns (Apply to ALL ContentItems)**
+## **Level 4: Cross-Cutting Concerns (Apply to ALL MetaInfos)**
 
 ### **Task Management**
 ```
 ┌─────────────┐
-│ ProjectTask │── Optional FK to ContentItem (content-specific task)
+│ ProjectTask │── Optional FK to MetaInfo (content-specific task)
 └─────────────┘
       │
       └──> TaskComments (comments specific to this task)
@@ -98,14 +98,14 @@ ContentItem (Generic)
 ### **Version Control**
 ```
 ┌─────────────┐
-│ ContentSnapshot│── FK to ContentItem, version tracking for rollback
+│ ContentSnapshot│── FK to MetaInfo, version tracking for rollback
 └─────────────┘
 ```
 
 ### **Activity Monitoring**
 ```
 ┌─────────────┐
-│ ActivityLog  │── Generic RelatedEntityId (can be ContentItem or Project)
+│ ActivityLog  │── Generic RelatedEntityId (can be MetaInfo or Project)
 └─────────────┘
       │
       └──> TokenUsageLog (API token usage tracking for audit/monitoring)
@@ -117,13 +117,13 @@ ContentItem (Generic)
 │ Tag         │── Reusable tag definitions (MainCharacter, Hero, etc.)
 └─────────────┘
       │
-      └──> ContentTags (Junction table linking Tags to all ContentItems)
+      └──> ContentTags (Junction table linking Tags to all MetaInfos)
 ```
 
 ### **Media Management**
 ```
 ┌─────────────┐
-│ MediaAttachment │── FK to ContentItem, cascade delete when content deleted
+│ MediaAttachment │── FK to MetaInfo, cascade delete when content deleted
 └─────────────┘
       │
       └──> MediaTags (Tagging for media files with category labels)
@@ -132,7 +132,7 @@ ContentItem (Generic)
 ### **Review Workflow**
 ```
 ┌─────────────┐
-│ ReviewStatus  │── FK to ContentItem, approval/rejection workflow
+│ ReviewStatus  │── FK to MetaInfo, approval/rejection workflow
 └─────────────┘
 ```
 
@@ -160,7 +160,7 @@ ContentItem (Generic)
 
 ## **Level 5: Entity Relationships Summary**
 
-### **Direct FKs to ContentItem:**
+### **Direct FKs to MetaInfo:**
 1. ✅ CharacterDetails (strong relationship)
 2. ✅ CharacterBackground (strong relationship)
 3. ✅ CharacterAttributes (strong relationship)
@@ -178,7 +178,7 @@ ContentItem (Generic)
 15. ✅ ContentSnapshot (version tracking for rollback)
 
 ### **Generic Relationships:**
-- ⚠️ ActivityLog (generic `RelatedEntityId`, can link to any entity including ContentItem)
+- ⚠️ ActivityLog (generic `RelatedEntityId`, can link to any entity including MetaInfo)
 
 ---
 
@@ -219,7 +219,7 @@ ContentItem (Generic)
         │         ├── DialogueBranch/Node
         │         └── MediaAttachments
         │
-        └───► CROSS-CUTTING CONCERNS (ALL ContentItems)
+        └───► CROSS-CUTTING CONCERNS (ALL MetaInfos)
                   ├── ProjectTasks (optional FK)
                   ├── ReviewStatus
                   ├── Tags/Junction Table
@@ -232,23 +232,23 @@ ContentItem (Generic)
 
 ## **📋 Navigation Property Requirements:**
 
-**Every entity that has a `ContentItemId` FK should also have:**
-- ✅ A back-reference navigation property to `ContentItem` (except junction tables)
+**Every entity that has a `MetaInfoId` FK should also have:**
+- ✅ A back-reference navigation property to `MetaInfo` (except junction tables)
 - ✅ Eager loading capability via `Include()` pattern
 - ✅ Proper cascade delete or restrict behavior based on relationship type
 
 **Exception: Junction Tables**
-- `ContentTags` → Has two navigation properties (one to ContentItem, one to Tag)
+- `ContentTags` → Has two navigation properties (one to MetaInfo, one to Tag)
 
 ---
 
 ## **🎯 Key Design Patterns:**
 
-1. **Generic Container Pattern**: ContentItem holds metadata while specific data lives in child entities
+1. **Generic Container Pattern**: MetaInfo holds metadata while specific data lives in child entities
 2. **Strong vs Optional Relationships**: Most are strong (cascade delete), ProjectTasks is optional (restrict)
-3. **Cross-Cutting Concerns**: Tasks, Reviews, Tags, Snapshots apply to ALL ContentItems uniformly
+3. **Cross-Cutting Concerns**: Tasks, Reviews, Tags, Snapshots apply to ALL MetaInfos uniformly
 4. **Eager Loading Pattern**: All navigation properties enable efficient eager loading to prevent N+1 queries
 
 ---
 
-This hierarchical structure ensures clean separation of concerns where `ContentItem` acts as the generic metadata container for all game development content types, with specific data stored in child entities! 🎮✨
+This hierarchical structure ensures clean separation of concerns where `MetaInfo` acts as the generic metadata container for all game development content types, with specific data stored in child entities! 🎮✨

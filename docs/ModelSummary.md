@@ -8,12 +8,12 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`Comment`** | `CommentEntityTypeConfiguration` | Links to ContentItem; tracks comments with visibility (private/team/public), max 4096 chars |
-| **`ContentItem`** | `ContentItemEntityTypeConfiguration` | Core polymorphic entity; has ContentType, Status, ViewMode enums; links to Project, MediaAttachments, Comments, etc. |
+| **`Comment`** | `CommentEntityTypeConfiguration` | Links to MetaInfo; tracks comments with visibility (private/team/public), max 4096 chars |
+| **`MetaInfo`** | `MetaInfoEntityTypeConfiguration` | Core polymorphic entity; has ContentType, Status, ViewMode enums; links to Project, MediaAttachments, Comments, etc. |
 | **`Tag`** | `TagEntityTypeConfiguration` | Content organization tags; unique slug; links to ContentTags & MediaTags junction tables |
-| **`ContentTags`** | `ContentTagsEntityTypeConfiguration` | Junction table: ContentItem ↔ Tag |
+| **`ContentTags`** | `ContentTagsEntityTypeConfiguration` | Junction table: MetaInfo ↔ Tag |
 | **`MediaTags`** | `MediaTagsEntityTypeConfiguration` | Junction table: MediaAttachment ↔ Tag |
-| **`MediaAttachment`** | `MediaAttachmentEntityTypeConfiguration` | File uploads (images, PDFs); links to ContentItem; has FileName, ContentType, StoragePath, FileSize |
+| **`MediaAttachment`** | `MediaAttachmentEntityTypeConfiguration` | File uploads (images, PDFs); links to MetaInfo; has FileName, ContentType, StoragePath, FileSize |
 | **`ExternalReference`** | `ExternalReferenceEntityTypeConfiguration` | External links (Google Docs, Pinterest); self-referencing parent; unique URL index |
 | **`DialogueBranch`** | `DialogueBranchEntityTypeConfiguration` | Branching narrative tree; self-referencing ParentNode; unique slug |
 | **`DialogueNode`** | `DialogueNodeEntityTypeConfiguration` | Dialogue within branches; has Speaker (User), ChoiceOptions (JSON), Conditions (JSON); self-referencing ChildNodes |
@@ -47,7 +47,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`CharacterDetails`** | `CharacterDetailsEntityTypeConfiguration` | Uses FK-as-PK pattern with ContentItem; has Name, Level, ClassTemplateId, Role, Status |
+| **`CharacterDetails`** | `CharacterDetailsEntityTypeConfiguration` | Uses FK-as-PK pattern with MetaInfo; has Name, Level, ClassTemplateId, Role, Status |
 | **`CharacterBackground`** | `CharacterBackgroundEntityTypeConfiguration` | Uses FK-as-PK pattern; links to CharacterDetails; has Description, Published flag |
 
 ---
@@ -60,7 +60,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | **`AttributeSet`** | `AttributeSetEntityTypeConfiguration` | Groups attributes; links to Project; has Name, DisplayOrder, IsActive |
 | **`ClassTemplate`** | `ClassTemplateEntityTypeConfiguration` | Character class configs (Warrior, Mage); links to AttributeSet; has BaseLevel, MaxLevel |
 | **`ClassTemplateAttribute`** | `ClassTemplateAttributeEntityTypeConfiguration` | Per-class attribute overrides; composite PK (ClassTemplateId, AttributeDefinitionId) |
-| **`CharacterAttributes`** | `CharacterAttributesEntityTypeConfiguration` | Stored attribute values per character; composite PK (ContentItemId, AttributeDefinitionId) |
+| **`CharacterAttributes`** | `CharacterAttributesEntityTypeConfiguration` | Stored attribute values per character; composite PK (MetaInfoId, AttributeDefinitionId) |
 | **`AbilityDefinition`** | `AbilityDefinitionEntityTypeConfiguration` | Individual abilities (Fireball, Heal); has AbilityType enum, CooldownSeconds, ResourceCost, ScalingFormulaJson |
 | **`AbilitySet`** | `AbilitySetEntityTypeConfiguration` | Groups abilities; links to Project; has Type enum (Combat/Non-Combat/Hybrid); unique slug |
 | **`StatusEffectDefinition`** | `StatusEffectDefinitionEntityTypeConfiguration` | Buffs/debuffs; has EffectType enum, DurationSeconds, DamagePerTick; unique slug |
@@ -106,7 +106,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 |-------|--------------|-------------|
 | **`EngineExportConfig`** | `EngineExportConfigEntityTypeConfiguration` | Engine-specific export configs (Unity/Unreal/Both); has ExportFormat enum; links to Project (cascade) |
 | **`EngineFieldMapping`** | `EngineFieldMappingEntityTypeConfiguration` | Maps content fields to engine property names; composite PK (EngineExportConfigId, SourceColumn, TargetColumn) |
-| **`AssetLink`** | `AssetLinkEntityTypeConfiguration` | Links content items to engine assets; has EnginePath, EngineAssetId, EngineFileType; links to ContentItem (cascade) |
+| **`AssetLink`** | `AssetLinkEntityTypeConfiguration` | Links content items to engine assets; has EnginePath, EngineAssetId, EngineFileType; links to MetaInfo (cascade) |
 
 ---
 
@@ -115,7 +115,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
 | **`ProjectToken`** | `ProjectTokenEntityTypeConfiguration` | API tokens for projects; hashed token storage; links to Project (cascade) |
-| **`TokenUsageLog`** | `TokenUsageLogEntityTypeConfiguration` (Tokens) | API usage tracking; links to ProjectToken (cascade), ContentItem (set null), Project (cascade) |
+| **`TokenUsageLog`** | `TokenUsageLogEntityTypeConfiguration` (Tokens) | API usage tracking; links to ProjectToken (cascade), MetaInfo (set null), Project (cascade) |
 
 ---
 
@@ -124,7 +124,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
 | **`ContentSnapshot`** | `ContentSnapshotEntityTypeConfiguration` | Content snapshots for rollback; has SnapshotType enum (AutoGenerated/ManualSave/RollbackPoint); max 50000 chars JSON |
-| **`ContentVersionLog`** | `ContentVersionLogEntityTypeConfiguration` | Version history; links to ContentItem (set null); tracks ChangedByUserId, ChangeDescription |
+| **`ContentVersionLog`** | `ContentVersionLogEntityTypeConfiguration` | Version history; links to MetaInfo (set null); tracks ChangedByUserId, ChangeDescription |
 
 ---
 
@@ -132,10 +132,10 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`ProjectTask`** | `ProjectTaskEntityTypeConfiguration` | ADHD-friendly task management; has Status, Priority, Difficulty enums; IsQuickWin flag; links to Project & ContentItem |
+| **`ProjectTask`** | `ProjectTaskEntityTypeConfiguration` | ADHD-friendly task management; has Status, Priority, Difficulty enums; IsQuickWin flag; links to Project & MetaInfo |
 | **`ProjectTaskComments`** | `ProjectTaskCommentsEntityTypeConfiguration` | Task comments; links to ProjectTask (cascade) |
 | **`TaskCommentEntityTypeConfiguration`** | `TaskCommentEntityTypeConfiguration` | **DUPLICATE** config for same entity (ProjectTaskComments) |
-| **`ReviewStatus`** | `ReviewStatusEntityTypeConfiguration` | Content review status (Pending/Approved/Rejected); links to ContentItem & Reviewer (restrict) |
+| **`ReviewStatus`** | `ReviewStatusEntityTypeConfiguration` | Content review status (Pending/Approved/Rejected); links to MetaInfo & Reviewer (restrict) |
 
 ---
 
@@ -154,7 +154,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 2. **Models Without Configurations**: `IdentityDefinition`, `AttributeSetDefinition`, and `Comment` (Comment has config but it's in Tasks folder)
 
-3. **FK-as-PK Pattern**: `CharacterDetails`, `CharacterBackground`, and `ContentItem` use FK-as-PK patterns for polymorphic/detail table relationships
+3. **FK-as-PK Pattern**: `CharacterDetails`, `CharacterBackground`, and `MetaInfo` use FK-as-PK patterns for polymorphic/detail table relationships
 
 4. **Polymorphic Ownership**: `Project` uses OwnerType + OwnerId for polymorphic ownership (User or Team)
 

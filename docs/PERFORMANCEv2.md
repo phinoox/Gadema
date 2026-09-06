@@ -24,7 +24,7 @@ src/
 │   ├── Projects/
 │   │   └── ProjectConfiguration.cs
 │   ├── Content/
-│   │   ├── ContentItemConfiguration.cs
+│   │   ├── MetaInfoConfiguration.cs
 │   │   └── MediaAttachmentConfiguration.cs
 │   ├── Tasks/
 │   │   ├── ProjectTaskConfiguration.cs      # ✅ Renamed from TaskConfiguration
@@ -353,10 +353,10 @@ public static class UserAuthorization
     }
     
     // ✅ WRAPPED response pattern for content edit permission check (confirmation)
-    public static async Task<IActionResult> CanEditContentAsync(User user, ContentItem contentItem)
+    public static async Task<IActionResult> CanEditContentAsync(User user, MetaInfo MetaInfo)
     {
         var teamMember = await _context.TeamMembers.FirstOrDefaultAsync(
-            tm => tm.UserId == contentItem.CreatedByUserId);
+            tm => tm.UserId == MetaInfo.CreatedByUserId);
         
         if (teamMember == null || (teamMember.RoleId != 0 && teamMember.RoleId != 1))  // Admin=0, Editor=1 with domain-aware patterns
         {
@@ -375,7 +375,7 @@ public static class UserAuthorization
             data = new 
             {
                 userId = user.Id,
-                contentItemId = contentItem.Id
+                MetaInfoId = MetaInfo.Id
             }
         });  // ✅ WRAPPED response pattern for authorization confirmation
     }
@@ -397,9 +397,9 @@ public async Task<IActionResult> AdminDeleteContentAsync(Guid id, Guid userId)
         };  // ✅ WRAPPED response pattern for authorization error
     }
     
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    if (contentItem == null)
+    if (MetaInfo == null)
     {
         return NotFound(new 
         {
@@ -409,7 +409,7 @@ public async Task<IActionResult> AdminDeleteContentAsync(Guid id, Guid userId)
         });  // ✅ WRAPPED response pattern for Not Found error
     }
     
-    _context.ContentItems.Remove(contentItem);
+    _context.MetaInfos.Remove(MetaInfo);
     await _context.SaveChangesAsync();
     
     return Ok(new 
@@ -682,7 +682,7 @@ public class FileUploadService : IGademaService,  IFileUploadService
     };
     
     // ✅ CORRECT - Secure file upload method (domain-aware patterns and hybrid response pattern)
-    public async Task<IActionResult> UploadFileAsync(Guid contentItemId, IFormFile file)
+    public async Task<IActionResult> UploadFileAsync(Guid MetaInfoId, IFormFile file)
     {
         // Validate MIME type BEFORE processing file (domain-aware patterns)
         if (!AllowedMimeTypes.Contains(file.ContentType, StringComparer.OrdinalIgnoreCase))
@@ -826,7 +826,7 @@ public class InputSanitizerService : IGademaService,  IInputSanitizationService
     }
     
     // Usage Example: UpdateContentAsync with hybrid response pattern (WRAPPED confirmation)
-    public async Task<IActionResult> UpdateContentAsync(Guid contentItemId, ContentItemDto dto)
+    public async Task<IActionResult> UpdateContentAsync(Guid MetaInfoId, MetaInfoDto dto)
     {
         // ✅ WRAPPED response pattern for update confirmation
         try
@@ -837,10 +837,10 @@ public class InputSanitizerService : IGademaService,  IInputSanitizationService
                 dto.Description = SanitizeHtml(dto.Description);  // ✅ HTML escaping to prevent XSS with domain-aware patterns
             }
             
-            var contentItem = await _context.ContentItems.FindAsync(contentItemId);
+            var MetaInfo = await _context.MetaInfos.FindAsync(MetaInfoId);
             
-            contentItem.Description = dto.Description;  // ✅ Now safe from XSS attacks with domain-aware patterns
-            contentItem.LastModifiedAt = DateTime.UtcNow;
+            MetaInfo.Description = dto.Description;  // ✅ Now safe from XSS attacks with domain-aware patterns
+            MetaInfo.LastModifiedAt = DateTime.UtcNow;
             
             await _context.SaveChangesAsync();
             
@@ -850,9 +850,9 @@ public class InputSanitizerService : IGademaService,  IInputSanitizationService
                 message = "Content item updated successfully",
                 data = new 
                 {
-                    id = contentItemId,
+                    id = MetaInfoId,
                     description = dto.Description,
-                    lastModifiedAt = contentItem.LastModifiedAt
+                    lastModifiedAt = MetaInfo.LastModifiedAt
                 }
             });  // ✅ WRAPPED response pattern for update confirmation
         }
@@ -870,7 +870,7 @@ public class InputSanitizerService : IGademaService,  IInputSanitizationService
 
 // Usage Example: Content creation with hybrid response pattern (WRAPPED confirmation)
 [HttpPost("content-items")]
-public async Task<IActionResult> CreateContentItemAsync(Guid projectId, [FromBody] CreateContentItemDto dto)
+public async Task<IActionResult> CreateMetaInfoAsync(Guid projectId, [FromBody] CreateMetaInfoDto dto)
 {
     // ✅ WRAPPED response pattern for content creation confirmation
     try
@@ -881,7 +881,7 @@ public async Task<IActionResult> CreateContentItemAsync(Guid projectId, [FromBod
             dto.Description = _inputSanitizerService.SanitizeHtml(dto.Description);  // ✅ HTML escaping to prevent XSS with domain-aware patterns
         }
         
-        var contentItem = new ContentItem
+        var MetaInfo = new MetaInfo
         {
             ProjectId = projectId,
             ContentType = dto.ContentType,
@@ -895,7 +895,7 @@ public async Task<IActionResult> CreateContentItemAsync(Guid projectId, [FromBod
             CreatedAt = DateTime.UtcNow
         };
         
-        await _context.ContentItems.AddAsync(contentItem);
+        await _context.MetaInfos.AddAsync(MetaInfo);
         await _context.SaveChangesAsync();
         
         return Ok(new 
@@ -904,13 +904,13 @@ public async Task<IActionResult> CreateContentItemAsync(Guid projectId, [FromBod
             message = "Content item created successfully",
             data = new 
             {
-                id = contentItem.Id,
-                title = contentItem.Title,
-                description = contentItem.Description,  // ✅ Now safe from XSS attacks with domain-aware patterns
-                slug = contentItem.Slug,
-                viewMode = contentItem.ViewMode,
-                status = (int)contentItem.Status,
-                createdAt = contentItem.CreatedAt
+                id = MetaInfo.Id,
+                title = MetaInfo.Title,
+                description = MetaInfo.Description,  // ✅ Now safe from XSS attacks with domain-aware patterns
+                slug = MetaInfo.Slug,
+                viewMode = MetaInfo.ViewMode,
+                status = (int)MetaInfo.Status,
+                createdAt = MetaInfo.CreatedAt
             }
         });  // ✅ WRAPPED response pattern for creation confirmation
     }

@@ -281,10 +281,10 @@ public static class UserAuthorization
         return user.TeamMembers.Any(tm => tm.RoleId == 0);  // Admin = 0
     }
     
-    public static bool CanEditContent(this User user, ContentItem contentItem)
+    public static bool CanEditContent(this User user, MetaInfo MetaInfo)
     {
         var teamMember = user.TeamMembers.FirstOrDefault(
-            tm => tm.UserId == contentItem.CreatedByUserId);
+            tm => tm.UserId == MetaInfo.CreatedByUserId);
         
         return teamMember != null && (teamMember.RoleId == 0 || teamMember.RoleId == 1);
     }
@@ -597,7 +597,7 @@ public class InputSanitizerService
     }
     
     // Usage Example:
-    public async Task<ContentItem> UpdateContentAsync(Guid contentItemId, ContentItemDto dto)
+    public async Task<MetaInfo> UpdateContentAsync(Guid MetaInfoId, MetaInfoDto dto)
     {
         // Sanitize description BEFORE storing in database
         if (!string.IsNullOrWhiteSpace(dto.Description))
@@ -606,14 +606,14 @@ public class InputSanitizerService
         }
         
         // Save sanitized data to database
-        var contentItem = await _context.ContentItems.FindAsync(contentItemId);
+        var MetaInfo = await _context.MetaInfos.FindAsync(MetaInfoId);
         
-        contentItem.Description = dto.Description;  // Now safe from XSS attacks
-        contentItem.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo.Description = dto.Description;  // Now safe from XSS attacks
+        MetaInfo.LastModifiedAt = DateTime.UtcNow;
         
         await _context.SaveChangesAsync();
         
-        return contentItem;
+        return MetaInfo;
     }
 }
 
@@ -627,7 +627,7 @@ public class HtmlTagRemover
     }
     
     // Usage Example:
-    public async Task<ContentItem> SanitizeAndStoreAsync(Guid contentItemId, ContentItemDto dto)
+    public async Task<MetaInfo> SanitizeAndStoreAsync(Guid MetaInfoId, MetaInfoDto dto)
     {
         // Remove HTML tags entirely if needed
         if (!string.IsNullOrWhiteSpace(dto.Description))
@@ -635,12 +635,12 @@ public class HtmlTagRemover
             dto.Description = RemoveHtmlTags(dto.Description);
         }
         
-        var contentItem = await _context.ContentItems.FindAsync(contentItemId);
-        contentItem.Description = dto.Description;
+        var MetaInfo = await _context.MetaInfos.FindAsync(MetaInfoId);
+        MetaInfo.Description = dto.Description;
         
         await _context.SaveChangesAsync();
         
-        return contentItem;
+        return MetaInfo;
     }
 }
 

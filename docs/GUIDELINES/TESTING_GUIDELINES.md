@@ -23,12 +23,12 @@ This document defines testing requirements, patterns, and coverage targets for t
 ### Arrange-Act-Assert Pattern
 
 ```csharp
-public class ContentItemServiceTests : IDisposable
+public class MetaInfoServiceTests : IDisposable
 {
     private readonly GameDbContext _context;
     private readonly Mock<IEmailService> _emailMock;
     
-    public ContentItemServiceTests()
+    public MetaInfoServiceTests()
     {
         _emailMock = new Mock<IEmailService>();
         // ... setup DbContext with test data
@@ -38,7 +38,7 @@ public class ContentItemServiceTests : IDisposable
     public async Task CreateContentAsync_WhenDescriptionIsNull_ShouldThrowValidationException()
     {
         // Arrange: Setup test data with null description
-        var contentDto = new ContentItemDto 
+        var contentDto = new MetaInfoDto 
         {
             Title = "Test Character",
             Description = null,  // Invalid case
@@ -57,7 +57,7 @@ public class ContentItemServiceTests : IDisposable
     public async Task CreateContentAsync_ValidInput_ShouldReturnCreatedItem()
     {
         // Arrange
-        var validDto = new ContentItemDto 
+        var validDto = new MetaInfoDto 
         {
             Title = "Valid Character",
             Description = "This is a test description",
@@ -109,14 +109,14 @@ public class ApiIntegrationTests : IClassFixture<ApiTestFixture>
     public async Task GetPublishedContentAsync_ReturnsOnlyPublishedItems()
     {
         // Arrange: Create test data
-        var contentItem = await Fixture.SetupPublishedContent();
+        var MetaInfo = await Fixture.SetupPublishedContent();
 
         // Act: Call API endpoint
         var response = await _client.GetAsync("/api/v1/content/items?projectId=abc&published=true");
 
         // Assert: Verify published items only
         response.StatusCode.Should().Be(HttpStatusCode.OK);
-        var content = await response.Content.ReadFromJsonAsync<List<ContentItemDto>>();
+        var content = await response.Content.ReadFromJsonAsync<List<MetaInfoDto>>();
         content.All(c => c.Published).Should().BeTrue();
     }
     
@@ -290,7 +290,7 @@ builder.Services.AddDbContext<GameDbContext>(options =>
 [Fact]
 public async Task CreateContentAsync_InvalidTitleAndEmptyDescription_ShouldReturnMultipleErrors()
 {
-    var dto = new ContentItemDto 
+    var dto = new MetaInfoDto 
     {
         Title = "",  // Invalid - empty title
         Description = null,  // Invalid - missing description
@@ -364,12 +364,12 @@ public async Task GetPublishedContentAsync_ShouldCompleteWithin500ms()
 public async Task EagerLoadingQuery_ShouldExecuteAsSingleSqlStatement()
 {
     // Arrange: Setup test data with relationships
-    var contentItems = await _context.ContentItems.AddRangeAsync(
-        CreateTestContentItem("Char1"),
-        CreateTestContentItem("Char2")
+    var MetaInfos = await _context.MetaInfos.AddRangeAsync(
+        CreateTestMetaInfo("Char1"),
+        CreateTestMetaInfo("Char2")
     );
 
-    foreach (var item in contentItems)
+    foreach (var item in MetaInfos)
     {
         item.MediaAttachments.Add(CreateMediaAttachment(item.Id));
     }
@@ -378,7 +378,7 @@ public async Task EagerLoadingQuery_ShouldExecuteAsSingleSqlStatement()
 
     // Act: Execute eager loading query
     var stopwatch = Stopwatch.StartNew();
-    var results = await _context.ContentItems
+    var results = await _context.MetaInfos
         .Include(c => c.MediaAttachments)
         .ToListAsync();
     stopwatch.Stop();
@@ -407,7 +407,7 @@ public async Task EagerLoadingQuery_ShouldExecuteAsSingleSqlStatement()
 
 | Anti-Pattern | Example | ✅ Correct Approach |
 | :--- | :--- | :--- |
-| **Hardcoded Test Data** | `var item = new ContentItem { Title = "Test" }` | Use setup methods with unique IDs |
+| **Hardcoded Test Data** | `var item = new MetaInfo { Title = "Test" }` | Use setup methods with unique IDs |
 | **Database Pollution** | Not cleaning up test data | Use transactions or in-memory DB |
 | **External Service Calls** | Calling real email service | Mock external services |
 | **Vague Test Names** | `public async Task Test1()` | `public async Task CreateAsync_ValidInput_ShouldSucceed()` |

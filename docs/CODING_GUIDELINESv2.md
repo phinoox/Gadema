@@ -20,19 +20,19 @@ src/
 ├── Gadema.Core/Models/         # Entity classes (clustered by domain)
 │   ├── Authentication/User.cs
 │   ├── Projects/Project.cs
-│   ├── Content/ContentItem.cs
+│   ├── Content/MetaInfo.cs
 │   ├── Tasks/ProjectTask.cs      # ✅ Renamed from Task to avoid System.Threading.Task ambiguity
 │   └── [etc...]
 ├── Gadema.Core/Dtos/           # API DTOs (clustered by domain) ⭐ NEW!
 │   ├── Authentication/SigninDto.cs
 │   ├── Projects/CreateProjectDto.cs
-│   ├── Content/ContentItemCreateDto.cs
+│   ├── Content/MetaInfoCreateDto.cs
 │   ├── Tasks/ProjectTaskCreateDto.cs  # ✅ Renamed from TaskCreateDto
 │   └── [etc...]
 ├── Gadema.Core/Configurations/ # Fluent API configurations per domain ⭐ NEW!
 │   ├── Authentication/UserConfiguration.cs
 │   ├── Projects/ProjectConfiguration.cs
-│   ├── Content/ContentItemConfiguration.cs
+│   ├── Content/MetaInfoConfiguration.cs
 │   ├── Tasks/ProjectTaskConfiguration.cs  # ✅ Renamed from TaskConfiguration
 │   └── [etc...]
 ├── Gadema.Api/Middleware/        # Auth middleware, CORS, Rate limiting (domain-aware)
@@ -42,13 +42,13 @@ src/
 ├── Gadema.Api/Controllers/    # REST endpoints (clustered by domain) ⭐ NEW!
 │   ├── Authentication/AuthController.cs
 │   ├── Projects/ProjectsController.cs
-│   ├── Content/ContentItemsController.cs
+│   ├── Content/MetaInfosController.cs
 │   ├── Tasks/TasksController.cs      # ✅ Renamed from TaskController
 │   └── [etc...]
 ├── Gadema.Api/Services/       # Business logic (domain-aware services) ⭐ NEW!
 │   ├── Authentication/AuthService.cs
 │   ├── Projects/ProjectService.cs
-│   ├── Content/ContentItemService.cs
+│   ├── Content/MetaInfoService.cs
 │   ├── Tasks/TaskService.cs      # ✅ Renamed from TaskService
 │   └── [etc...]
 ├── Gadema.WebApp/Pages/       # Razor pages with View Mode separation
@@ -63,13 +63,13 @@ src/
 
 | Convention | Rule | Example | Notes |
 | :--- | :--- | :--- | :--- |
-| **File Name** | `EntityName.cs` with PascalCase (domain-clustered) | `ContentItem.cs`, `User.cs`, `ProjectTask.cs` ✅ | Cluster by domain folder |
-| **Class Name** | Singular + PascalCase | `ContentItem`, not `ContentItems` | Consistent naming |
+| **File Name** | `EntityName.cs` with PascalCase (domain-clustered) | `MetaInfo.cs`, `User.cs`, `ProjectTask.cs` ✅ | Cluster by domain folder |
+| **Class Name** | Singular + PascalCase | `MetaInfo`, not `MetaInfos` | Consistent naming |
 | **Navigation Properties** | Plural collection names with FK as PK when appropriate | `ICollection<ProjectTask> ProjectTasks` | Clear FK relationships |
 
 ```csharp
 // ✅ CORRECT - Domain-clustered model files
-public class ContentItem { }  // src/Gadema.Core/Models/Content/ContentItem.cs
+public class MetaInfo { }  // src/Gadema.Core/Models/Content/MetaInfo.cs
 
 public class ProjectTask { }   // ✅ Renamed from Task (avoids System.Threading.Task ambiguity!)
                                // src/Gadema.Core/Models/Tasks/ProjectTask.cs
@@ -86,8 +86,8 @@ public class task              // lowercase, wrong casing, ambiguous!
 | Convention | Rule | Example | Notes |
 | :--- | :--- | :--- | :--- |
 | **Creation Operations** | `CreateXDto` suffix in domain-clustered folders | `CreateProjectDto.cs`, `ProjectTaskCreateDto.cs` ✅ | Domain-aware folder structure |
-| **Update Operations** | `UpdateXDto` suffix in domain-clustered folders | `UpdateContentItemDto.cs`, `UpdateProjectTaskDto.cs` ✅ | Domain-aware folder structure |
-| **Response DTOs** | `ResponseXDto` suffix in domain-clustered folders | `ContentItemResponseDto.cs`, `ProjectTaskResponseDto.cs` ✅ | Domain-aware folder structure |
+| **Update Operations** | `UpdateXDto` suffix in domain-clustered folders | `UpdateMetaInfoDto.cs`, `UpdateProjectTaskDto.cs` ✅ | Domain-aware folder structure |
+| **Response DTOs** | `ResponseXDto` suffix in domain-clustered folders | `MetaInfoResponseDto.cs`, `ProjectTaskResponseDto.cs` ✅ | Domain-aware folder structure |
 
 ```csharp
 // ✅ CORRECT - Naming Convention Rules with Domain Clustering (NEW!)
@@ -135,8 +135,8 @@ public class TaskController : ControllerBase         // ❌ Avoid! Can be confus
 
 | Convention | Rule | Example | Notes |
 | :--- | :--- | :--- | :--- |
-| **Interface Files** | `IXxxService.cs` in domain-clustered folders | `IProjectTaskService.cs`, `IContentItemService.cs` ✅ | Domain-aware folder structure |
-| **Implementation Files** | `XxxService.cs` (no Interface prefix) in domain-clustered folders | `ProjectTaskService.cs`, `ContentItemService.cs` ✅ | Domain-aware folder structure |
+| **Interface Files** | `IXxxService.cs` in domain-clustered folders | `IProjectTaskService.cs`, `IMetaInfoService.cs` ✅ | Domain-aware folder structure |
+| **Implementation Files** | `XxxService.cs` (no Interface prefix) in domain-clustered folders | `ProjectTaskService.cs`, `MetaInfoService.cs` ✅ | Domain-aware folder structure |
 
 ```csharp
 // ✅ CORRECT - Service layer naming with domain clustering (NEW!)
@@ -186,7 +186,7 @@ public class TaskConfiguration : IEntityTypeConfiguration<Task>                 
 
 ```csharp
 // ✅ CORRECT - Method naming with domain clustering (NEW!)
-public async Task<ContentItem> GetContentItemAsync(Guid id) {}
+public async Task<MetaInfo> GetMetaInfoAsync(Guid id) {}
 public async Task<List<ProjectTask>> GetProjectTasksAsync(Guid projectId, int difficulty = (int)TaskDifficultyEnum.Easy)  // ✅ Updated method name
 {                                                                                                      // (avoids ambiguity with System.Threading.Task)
     return await _context.ProjectTasks.ToListAsync();  // ✅ Updated entity name
@@ -229,7 +229,7 @@ public string user { get; set; }    // Unclear, should be userId
 
 ```csharp
 // ✅ CORRECT - XML docs for complex domain-clustered operations (NEW!)
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid projectId)
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto, Guid projectId)
 {
     // ... implementation with domain-aware patterns
 }
@@ -242,14 +242,14 @@ public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid
 /// <param name="dto">DTO object with required fields for creation</param>
 /// <returns>The newly created content item instance</returns>
 /// <exception cref="ValidationException">Thrown when DTO validation fails</exception>
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid projectId)
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto, Guid projectId)
 {
     // ... implementation with domain-aware patterns
 }
 
 // ❌ INCORRECT - Over-documentation for simple operations in domain-clustered code
 /// <summary>Creates a content item...</summary> /// <param name="dto">... </param>
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid projectId) {}  // Too much!
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto, Guid projectId) {}  // Too much!
 ```
 
 ### **2.2 XML Documentation Template for Domain Clustering** (⭐ NEW!)
@@ -259,7 +259,7 @@ public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid
 /// Represents a content item in the game development management system.
 /// Supports polymorphic design with type-specific detail tables and view mode separation.
 /// </summary>
-public class ContentItem
+public class MetaInfo
 {
     /// <summary>
     /// Unique identifier for the content item.
@@ -339,21 +339,21 @@ public class TaskCreateDto
 
 ```csharp
 // ✅ CORRECT - Eager loading to avoid N+1 queries in domain-clustered code (NEW!)
-var contentItem = await _context.ContentItems
+var MetaInfo = await _context.MetaInfos
     .Include(ci => ci.MediaAttachments)
     .Include(ci => ci.ProjectTasks).ThenInclude(t => t.Comments)  // ✅ Updated eager loading for ProjectTask
     .FirstOrDefaultAsync(ci => ci.Id == id);
 
 // ❌ INCORRECT - N+1 problem with Task entity (now renamed to ProjectTask)
-var contentItems = await _context.ContentItems.ToListAsync();
-foreach (var item in contentItems)
+var MetaInfos = await _context.MetaInfos.ToListAsync();
+foreach (var item in MetaInfos)
 {
     var tasks = await _context.Tasks  // ❌ N+1 query! Can be confused with System.Threading.Task!
-        .Where(t => t.ContentItemId == item.Id).ToListAsync();  // N+1!
+        .Where(t => t.MetaInfoId == item.Id).ToListAsync();  // N+1!
 }
 
 // ✅ CORRECT - Fixed version with eager loading for ProjectTask in domain-clustered code (NEW!)
-var contentItems = await _context.ContentItems
+var MetaInfos = await _context.MetaInfos
     .Include(ci => ci.ProjectTasks)  // ✅ Updated eager loading for ProjectTask
         .ThenInclude(t => t.Comments)
     .Where(ci => ci.ProjectId == projectId)
@@ -417,8 +417,8 @@ public async Task<List<ProjectTask>> GetProjectTasksAsync(Guid projectId)  // �
 | Rule | When to Use | Example | Notes |
 | :--- | :--- | :--- | :--- |
 | **Creation Operations** | ✅ Use `CreateXDto` in domain-clustered folders | `CreateProjectDto`, `ProjectTaskCreateDto` ✅ | Domain-aware folder structure |
-| **Update Operations** | ✅ Use `UpdateXDto` in domain-clustered folders | `UpdateContentItemDto`, `UpdateProjectTaskDto` ✅ | Domain-aware folder structure |
-| **Response DTOs** | ✅ Use `ResponseXDto` in domain-clustered folders | `ContentItemResponseDto`, `ProjectTaskResponseDto` ✅ | Domain-aware folder structure |
+| **Update Operations** | ✅ Use `UpdateXDto` in domain-clustered folders | `UpdateMetaInfoDto`, `UpdateProjectTaskDto` ✅ | Domain-aware folder structure |
+| **Response DTOs** | ✅ Use `ResponseXDto` in domain-clustered folders | `MetaInfoResponseDto`, `ProjectTaskResponseDto` ✅ | Domain-aware folder structure |
 
 ```csharp
 // ✅ CORRECT - Naming Convention Rules with domain clustering (NEW!)
@@ -658,7 +658,7 @@ public async Task<IActionResult> DeleteProjectTaskAsync(Guid projectId, Guid tas
 }
 
 // ✅ CORRECT - Use hybrid response patterns in domain-clustered code (file upload) (NEW!)
-public async Task<IActionResult> UploadMediaFileAsync(Guid contentItemId, IFormFile file)  // ✅ Updated method name
+public async Task<IActionResult> UploadMediaFileAsync(Guid MetaInfoId, IFormFile file)  // ✅ Updated method name
 {
     // Validate MIME type BEFORE processing file (domain-aware pattern)
     var allowedMimeTypes = new[] 
@@ -720,7 +720,7 @@ public async Task<IActionResult> UploadMediaFileAsync(Guid contentItemId, IFormF
 ```csharp
 // ✅ CORRECT - Error response format in domain-clustered code (NEW!)
 [HttpPost("{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)
 {
     if (!ModelState.IsValid)  // ✅ Validate DTO first! Domain-aware pattern!
     {
@@ -734,7 +734,7 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
     
     try
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
             return NotFound(new 
@@ -1146,7 +1146,7 @@ public async Task<IActionResult> CreateProjectTokenAsync(Guid projectId, [FromBo
 
 ```csharp
 // ✅ CORRECT - File upload handling with secure hashing and hybrid response patterns (NEW!)
-public async Task<IActionResult> UploadFileAsync(Guid contentItemId, IFormFile file)  // ✅ Updated method name
+public async Task<IActionResult> UploadFileAsync(Guid MetaInfoId, IFormFile file)  // ✅ Updated method name
 {
     // Validate MIME type BEFORE processing file in domain-clustered code!
     var allowedMimeTypes = new[] 
@@ -1205,7 +1205,7 @@ public async Task<IActionResult> UploadFileAsync(Guid contentItemId, IFormFile f
 }
 
 // ❌ INCORRECT - Don't validate MIME type before processing in domain-clustered code (NEW!)
-public async Task<IActionResult> UploadFileAsync(Guid contentItemId, IFormFile file)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<IActionResult> UploadFileAsync(Guid MetaInfoId, IFormFile file)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     // ❌ NEVER skip MIME type validation! Can be confused with System.Threading.Task!
     var filePath = Path.Combine(AppContext.BaseDirectory, "uploads", file.FileName);  // ❌ Security violation in domain-clustered code!
@@ -1365,7 +1365,7 @@ public class InputSanitizerService : IGademaService,  IInputSanitizationService
 }
 
 // ❌ INCORRECT - Don't store raw HTML in database fields (domain-clustered code violation) (NEW!)
-public class ContentItem
+public class MetaInfo
 {
     // ❌ NEVER store raw HTML in Description field! Can be confused with System.Threading.Task!
     public string Description { get; set; } = "";  // ❌ Security violation in domain-clustered code!
@@ -1373,7 +1373,7 @@ public class ContentItem
 
 // ✅ CORRECT - Use hybrid response patterns for content update (NEW!)
 [HttpPost("content-items/{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)  // ✅ Updated method name
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)  // ✅ Updated method name
 {
     try
     {
@@ -1383,10 +1383,10 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             dto.Description = _inputSanitizerService.SanitizeHtml(dto.Description);  // ✅ HTML escaping to prevent XSS in domain-clustered code!
         }
         
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        contentItem.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
-        contentItem.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
+        MetaInfo.LastModifiedAt = DateTime.UtcNow;
         
         await _context.SaveChangesAsync();
         
@@ -1396,9 +1396,9 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             message = "Content item updated successfully",
             data = new 
             {
-                id = contentItemId,
+                id = MetaInfoId,
                 description = dto.Description,
-                lastModifiedAt = contentItem.LastModifiedAt
+                lastModifiedAt = MetaInfo.LastModifiedAt
             }
         });  // ✅ WRAPPED response pattern for update confirmation! Domain-aware patterns!
     }
@@ -1415,19 +1415,19 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
 
 // ❌ INCORRECT - Don't sanitize HTML before storing in database fields (domain-clustered code violation) (NEW!)
 [HttpPost("content-items/{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    contentItem.Description = dto.Description;  // ❌ No HTML sanitization before storage! Domain-aware pattern violation!
+    MetaInfo.Description = dto.Description;  // ❌ No HTML sanitization before storage! Domain-aware pattern violation!
     await _context.SaveChangesAsync();
     
-    return Ok(contentItem);  // ❌ No wrapping for update confirmation! Domain-aware pattern violation!
+    return Ok(MetaInfo);  // ❌ No wrapping for update confirmation! Domain-aware pattern violation!
 }
 
 // ✅ CORRECT - Use hybrid response patterns for content update (NEW!)
 [HttpPost("content-items/{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)  // ✅ Updated method name
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)  // ✅ Updated method name
 {
     if (!ModelState.IsValid)
     {
@@ -1447,10 +1447,10 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             dto.Description = _inputSanitizerService.SanitizeHtml(dto.Description);  // ✅ HTML escaping to prevent XSS in domain-clustered code!
         }
         
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        contentItem.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
-        contentItem.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
+        MetaInfo.LastModifiedAt = DateTime.UtcNow;
         
         await _context.SaveChangesAsync();
         
@@ -1460,9 +1460,9 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             message = "Content item updated successfully",
             data = new 
             {
-                id = contentItemId,
+                id = MetaInfoId,
                 description = dto.Description,
-                lastModifiedAt = contentItem.LastModifiedAt
+                lastModifiedAt = MetaInfo.LastModifiedAt
             }
         });  // ✅ WRAPPED response pattern for update confirmation! Domain-aware patterns!
     }
@@ -1479,22 +1479,22 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
 
 // ❌ INCORRECT - Don't check ModelState before processing logic in domain-clustered code (NEW!)
 [HttpPost("content-items/{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    if (contentItem == null)
+    if (MetaInfo == null)
         return NotFound(new { id, errors = "Content item not found" });  // ❌ No wrapping for Not Found error! Domain-aware pattern violation!
     
-    contentItem.Description = dto.Description;  // ❌ No HTML sanitization before storage! Domain-aware pattern violation!
+    MetaInfo.Description = dto.Description;  // ❌ No HTML sanitization before storage! Domain-aware pattern violation!
     await _context.SaveChangesAsync();
     
-    return Ok(contentItem);  // ❌ No wrapping for update confirmation! Domain-aware pattern violation!
+    return Ok(MetaInfo);  // ❌ No wrapping for update confirmation! Domain-aware pattern violation!
 }
 
 // ✅ CORRECT - Use hybrid response patterns for content update (NEW!)
 [HttpPost("content-items/{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)  // ✅ Updated method name
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)  // ✅ Updated method name
 {
     if (!ModelState.IsValid)  // ✅ Always check ModelState FIRST! Domain-aware pattern!
     {
@@ -1514,9 +1514,9 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             dto.Description = _inputSanitizerService.SanitizeHtml(dto.Description);  // ✅ HTML escaping to prevent XSS in domain-clustered code!
         }
         
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        if (contentItem == null)
+        if (MetaInfo == null)
             return NotFound(new 
             {
                 success = false,
@@ -1524,8 +1524,8 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
                 message = "Resource not found"
             });  // ✅ WRAPPED response pattern for Not Found error! Domain-aware patterns!
         
-        contentItem.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
-        contentItem.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo.Description = dto.Description;  // ✅ Now safe from XSS attacks in domain-clustered code!
+        MetaInfo.LastModifiedAt = DateTime.UtcNow;
         
         await _context.SaveChangesAsync();
         
@@ -1535,9 +1535,9 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             message = "Content item updated successfully",
             data = new 
             {
-                id = contentItemId,
+                id = MetaInfoId,
                 description = dto.Description,
-                lastModifiedAt = contentItem.LastModifiedAt
+                lastModifiedAt = MetaInfo.LastModifiedAt
             }
         });  // ✅ WRAPPED response pattern for update confirmation! Domain-aware patterns!
     }
@@ -1797,10 +1797,10 @@ public async Task<IActionResult> SignInAsync(SignInDto signInDto)  // ✅ Update
 
 ```csharp
 // ✅ CORRECT - Query optimization with eager loading and pagination in domain-clustered code (NEW!)
-public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
+public async Task<MetaInfo> GetMetaInfoWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
 {
     // Single query with eager loading for all relationships including ProjectTasks (domain-aware pattern)
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.MediaAttachments)
         .Include(ci => ci.ContentTags).ThenInclude(ct => ct.Tag)
         .Include(ci => ci.ProjectTasks)  // ✅ Updated: eager loading for ProjectTask entity in domain-clustered code!
@@ -1809,21 +1809,21 @@ public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewMode
 }
 
 // ❌ INCORRECT - N+1 problem with Task entity (now renamed to ProjectTask) (NEW!)
-public async Task<List<ContentItem>> GetContentItemsAsync(Guid projectId)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<List<MetaInfo>> GetMetaInfosAsync(Guid projectId)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
-    var items = await _context.ContentItems.ToListAsync();
+    var items = await _context.MetaInfos.ToListAsync();
     
     foreach (var item in items)
     {
         var tasks = await _context.Tasks  // ❌ N+1 problem! Can be confused with System.Threading.Task!
-            .Where(t => t.ContentItemId == item.Id).ToListAsync();  // ❌ N+1 query! Domain-aware pattern violation!
+            .Where(t => t.MetaInfoId == item.Id).ToListAsync();  // ❌ N+1 query! Domain-aware pattern violation!
     }
 }
 
 // ✅ CORRECT - Query optimization with eager loading and pagination in domain-clustered code (NEW!)
-public async Task<List<ContentItem>> GetContentItemsAsync(Guid projectId)  // ✅ Updated method name
+public async Task<List<MetaInfo>> GetMetaInfosAsync(Guid projectId)  // ✅ Updated method name
 {
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.ProjectTasks).ThenInclude(t => t.Comments)  // ✅ Updated: eager loading for ProjectTask entity in domain-clustered code!
         .Where(ci => ci.ProjectId == projectId)
         .ToListAsync();  // Single query! Domain-aware pattern!
@@ -2070,7 +2070,7 @@ public async Task<IActionResult> GetProjectTaskWithCacheAsync(Guid projectId, Gu
 
 ```csharp
 // ✅ CORRECT - File stream for large uploads in domain-clustered code (NEW!)
-public async Task UploadLargeFileAsync(Guid contentItemId, string fileName)  // ✅ Updated method name
+public async Task UploadLargeFileAsync(Guid MetaInfoId, string fileName)  // ✅ Updated method name
 {
     var filePath = $"uploads/{Guid.NewGuid()}_{fileName}";
     
@@ -2080,7 +2080,7 @@ public async Task UploadLargeFileAsync(Guid contentItemId, string fileName)  // 
 }
 
 // ❌ INCORRECT - Don't load entire file into memory for uploads in domain-clustered code (domain-clustered code violation) (NEW!)
-public async Task UploadLargeFileAsync(Guid contentItemId, string fileName)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task UploadLargeFileAsync(Guid MetaInfoId, string fileName)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     var filePath = $"uploads/{fileName}";
     
@@ -2189,9 +2189,9 @@ public async Task<IActionResult> UploadMediaFileAsync(Guid id, IFormFile file)  
 ```csharp
 // ✅ CORRECT - View mode separation in domain-clustered code (NEW!)
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
 {
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     if (item == null)
         return NotFound(new 
@@ -2230,20 +2230,20 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
 
 // ❌ INCORRECT - Don't separate view modes properly in domain-clustered code (domain-clustered code violation) (NEW!)
 [HttpGet("{id}")]
-public async Task<ContentItem> GetContentItemAsync(Guid id)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<MetaInfo> GetMetaInfoAsync(Guid id)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     return item;  // ❌ No view mode separation! Domain-aware pattern violation in domain-clustered code!
 }
 
 // ✅ CORRECT - Use hybrid response patterns for view mode separation (NEW!)
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
 {
     try
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
             return NotFound(new 
@@ -2290,12 +2290,12 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
 
 // ❌ INCORRECT - Don't use hybrid response patterns for view mode separation (domain-clustered code violation) (NEW!)
 [HttpGet("{id}")]
-public async Task<ContentItem> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ❌ Avoid! Can be confused with System.Threading.Task!
+public async Task<MetaInfo> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     if (item == null)
-        return new ContentItem();  // ❌ No wrapping for Not Found error! Domain-aware pattern violation in domain-clustered code!
+        return new MetaInfo();  // ❌ No wrapping for Not Found error! Domain-aware pattern violation in domain-clustered code!
     
     if (viewMode == ViewModeEnum.PrivateWriting)
         return item;  // ❌ No wrapping for PrivateWriting mode data retrieval! Domain-aware pattern violation in domain-clustered code!
@@ -2305,11 +2305,11 @@ public async Task<ContentItem> GetContentItemAsync(Guid id, [FromQuery] ViewMode
 
 // ✅ CORRECT - Use hybrid response patterns for view mode separation (NEW!)
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)  // ✅ Updated method name
 {
     try
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
             return NotFound(new 
@@ -2496,7 +2496,7 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService  // ✅ U
 
 ```csharp
 // ✅ CORRECT - Unit test pattern with ≥80% code coverage target in domain-clustered code (NEW!)
-public class ContentItemServiceTests : IDisposable
+public class MetaInfoServiceTests : IDisposable
 {
     private readonly GameDbContext _context;
     
@@ -2504,7 +2504,7 @@ public class ContentItemServiceTests : IDisposable
     public async Task CreateContentAsync_WhenDescriptionIsNull_ShouldThrowValidationException()  // ✅ Updated method name in domain-clustered code!
     {
         // Arrange: Setup test data with null description in domain-clustered code!
-        var contentDto = new ContentItemDto 
+        var contentDto = new MetaInfoDto 
         {
             Title = "Test Character",
             Description = null,  // Invalid case in domain-clustered code!
@@ -2521,7 +2521,7 @@ public class ContentItemServiceTests : IDisposable
 }
 
 // ❌ INCORRECT - Don't test external services directly (domain-clustered code violation) (NEW!)
-public class ContentItemServiceTests : IDisposable  // ❌ Avoid! Can be confused with System.Threading.Task!
+public class MetaInfoServiceTests : IDisposable  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     private readonly GameDbContext _context;
     private readonly Mock<IExternalService> _mockExternalService;  // ❌ No mocking for external services! Domain-aware pattern violation in domain-clustered code!
@@ -2648,7 +2648,7 @@ public class ProjectTaskServiceTests : IDisposable
 }
 
 // ❌ INCORRECT - Don't test external services directly (domain-clustered code violation) (NEW!)
-public class ContentItemServiceTests : IDisposable  // ❌ Avoid! Can be confused with System.Threading.Task!
+public class MetaInfoServiceTests : IDisposable  // ❌ Avoid! Can be confused with System.Threading.Task!
 {
     private readonly GameDbContext _context;
     
@@ -2663,7 +2663,7 @@ public class ContentItemServiceTests : IDisposable  // ❌ Avoid! Can be confuse
 }
 
 // ✅ CORRECT - Use hybrid response patterns in unit tests (NEW!)
-public class ContentItemServiceTests : IDisposable
+public class MetaInfoServiceTests : IDisposable
 {
     private readonly GameDbContext _context;
     
@@ -2692,7 +2692,7 @@ public async Task GetPublishedContentAsync_ReturnsOnlyPublishedItems()  // ✅ U
     
     // Assert: Verify published items only in domain-clustered code!
     response.StatusCode.Should().Be(HttpStatusCode.OK);
-    var content = await response.Content.ReadFromJsonAsync<List<ContentItemDto>>();
+    var content = await response.Content.ReadFromJsonAsync<List<MetaInfoDto>>();
     content.All(c => c.Published).Should().BeTrue();  // ✅ RAW response pattern for data retrieval! Domain-aware patterns in domain-clustered code!
 }
 
@@ -2704,7 +2704,7 @@ public async Task GetPublishedContentAsync_ReturnsOnlyPublishedItems()  // ❌ A
     
     var response = await client.GetAsync("/api/v1/content/items?projectId=abc&published=true");
     response.StatusCode.Should().Be(HttpStatusCode.OK);
-    var content = await response.Content.ReadFromJsonAsync<List<ContentItemDto>>();
+    var content = await response.Content.ReadFromJsonAsync<List<MetaInfoDto>>();
     content.All(c => c.Published).Should().BeTrue();  // ❌ No verification for published items only! Domain-aware pattern violation in domain-clustered code!
 }
 
@@ -2929,24 +2929,24 @@ public async Task GetProjectTasksAsync_ReturnsRawResponse()  // ❌ Avoid! Can b
 
 ```csharp
 // ✅ CORRECT - Direct EF Core access (No Repository Pattern) in domain-clustered code (NEW!)
-public class ContentItemService : IGademaService,  IContentItemService
+public class MetaInfoService : IGademaService,  IMetaInfoService
 {
     private readonly GameDbContext _context;
     
-    public ContentItemService(GameDbContext context)
+    public MetaInfoService(GameDbContext context)
     {
         _context = context;  // Direct DbContext dependency! Domain-aware pattern!
     }
     
-    public async Task<ContentItem> GetContentItemAsync(Guid id)  // ✅ Updated method name in domain-clustered code!
+    public async Task<MetaInfo> GetMetaInfoAsync(Guid id)  // ✅ Updated method name in domain-clustered code!
     {
-        return await _context.ContentItems.FindAsync(id);  // Simple and clear! Domain-aware pattern in domain-clustered code!
+        return await _context.MetaInfos.FindAsync(id);  // Simple and clear! Domain-aware pattern in domain-clustered code!
     }
 }
 
 // ❌ INCORRECT - Repository Pattern (unnecessary abstraction for MVP in domain-clustered code) (NEW!)
 public interface IRepository<T> where T : class {}  // ❌ Avoid! Unnecessary abstraction in domain-clustered code! Domain-aware pattern violation in domain-clustered code!
-public class ContentItemRepository : IRepository<ContentItem> {}  // ❌ Avoid! Repository Pattern violates MVP simplicity! Domain-aware pattern violation in domain-clustered code!
+public class MetaInfoRepository : IRepository<MetaInfo> {}  // ❌ Avoid! Repository Pattern violates MVP simplicity! Domain-aware pattern violation in domain-clustered code!
 
 // ✅ CORRECT - Use hybrid response patterns for service methods (NEW!)
 [HttpPost]

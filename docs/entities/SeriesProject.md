@@ -93,7 +93,7 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project> 
 {
     public void Configure(EntityTypeBuilder<Project> builder)
     {
-        // ... existing properties (Owner, ContentItems, etc.)
+        // ... existing properties (Owner, MetaInfos, etc.)
         
         // ✅ NAVIGATION PROPERTY: SeriesProject (nullable back-reference to parent project)
         builder.HasMany(p => p.SeriesProjects)  // ✅ Forward reference on parent!
@@ -131,7 +131,7 @@ public async Task<List<Project>> GetSeriesProjectsAsync()
     // ✅ Eager loading prevents N+1 query problem (Performance.md requirement!)
     var projects = await _context.Projects
         .Include(p => p.SeriesProjects)  // Forward reference on parent
-            .ThenInclude(child => child.ContentItems)  // Nested eager loading!
+            .ThenInclude(child => child.MetaInfos)  // Nested eager loading!
         .Where(p => p.SeriesId != null && p.SeriesName != null)  // Filter by series
         .ToListAsync();
     
@@ -427,7 +427,7 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project> 
 {
     public void Configure(EntityTypeBuilder<Project> builder)
     {
-        // ... existing properties (Owner, ContentItems, etc.)
+        // ... existing properties (Owner, MetaInfos, etc.)
         
         // ✅ NAVIGATION PROPERTY: SeriesProject (nullable back-reference to parent project)
         builder.HasMany(p => p.SeriesProjects)  // ✅ Forward reference on parent!

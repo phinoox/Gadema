@@ -5,7 +5,7 @@
 /// <summary>
 /// RESOLUTION FOR: Entity Framework Navigation Property Conflicts
 /// 
-/// Problem: ContentItem entity had both single and collection navigation properties
+/// Problem: MetaInfo entity had both single and collection navigation properties
 /// to ReviewStatus, causing EF Core validation errors.
 /// </summary>
 
@@ -20,7 +20,7 @@ using FluentAssertions;
 public class NavigationPropertyConflictResolutionTests
 {
     [Fact]
-    public async Task ContentItem_ShouldNotHaveDuplicateNavigationProperties()
+    public async Task MetaInfo_ShouldNotHaveDuplicateNavigationProperties()
     {
         // Arrange
         var context = new GameDbContext(
@@ -29,7 +29,7 @@ public class NavigationPropertyConflictResolutionTests
                 .Options);
 
         // Act - Try to add a ReviewStatus entity
-        var contentItem = new ContentItem
+        var MetaInfo = new MetaInfo
         {
             Id = Guid.NewGuid(),
             ProjectId = Guid.NewGuid()
@@ -38,19 +38,19 @@ public class NavigationPropertyConflictResolutionTests
         var reviewStatus = new ReviewStatus
         {
             Id = Guid.NewGuid(),
-            ContentItemId = contentItem.Id,
+            MetaInfoId = MetaInfo.Id,
             Status = 0,
             ReviewedByUserId = null,
             ReviewComments = "Test comment"
         };
 
         // Assert - Should not throw navigation validation errors
-        context.ContentItems.Add(contentItem);
+        context.MetaInfos.Add(MetaInfo);
         context.ReviewStatuses.Add(reviewStatus);
         
         await context.SaveChangesAsync();
         
-        context.ContentItems.Should().Contain(c => c.Id == contentItem.Id);
+        context.MetaInfos.Should().Contain(c => c.Id == MetaInfo.Id);
     }
 }
 
@@ -60,12 +60,12 @@ public class NavigationPropertyConflictResolutionTests
 /// 
 /// PROBLEM:
 /// --------
-/// The ContentItem entity in src/Gadema.Core/Models/Content/ContentItem.cs had BOTH:
+/// The MetaInfo entity in src/Gadema.Core/Models/Content/MetaInfo.cs had BOTH:
 /// 1. Single navigation: public virtual ReviewStatus? ReviewStatus { get; set; }
 /// 2. Collection navigation: public virtual ICollection<ReviewStatus> ReviewStatuses { get; set; }
 /// 
 /// The configuration file ReviewStatusEntityTypeConfiguration expected:
-/// builder.HasOne(rs => rs.ContentItem).WithMany(ci => ci.ReviewStatuses)
+/// builder.HasOne(rs => rs.MetaInfo).WithMany(ci => ci.ReviewStatuses)
 /// 
 /// This created a navigation conflict because EF Core saw two different ways to access
 /// the same relationship, causing validation errors during model initialization.
@@ -78,7 +78,7 @@ public class NavigationPropertyConflictResolutionTests
 /// 
 /// SOLUTION:
 /// ---------
-/// 1. Remove the duplicate collection property from ContentItem.cs (lines 187-193)
+/// 1. Remove the duplicate collection property from MetaInfo.cs (lines 187-193)
 ///    - Delete the entire block containing ReviewStatuses collection
 ///    - Keep only the single ReviewStatus? property (line ~134)
 /// 
@@ -86,22 +86,22 @@ public class NavigationPropertyConflictResolutionTests
 ///    In src/Gadema.Core/Configurations/Tasks/ReviewStatusEntityTypeConfiguration.cs:
 ///    
 ///    FROM:
-///      builder.HasOne(rs => rs.ContentItem)
+///      builder.HasOne(rs => rs.MetaInfo)
 ///          .WithMany(ci => ci.ReviewStatuses)
 ///      
 ///    TO:
-///      builder.HasOne(rs => rs.ContentItem)
+///      builder.HasOne(rs => rs.MetaInfo)
 ///          .WithOne(ci => ci.ReviewStatus)  // Match the single property!
 /// 
 /// DESIGN DECISION:
 /// ----------------
-/// ContentItem should use a SINGLE navigation property (ReviewStatus?) because:
+/// MetaInfo should use a SINGLE navigation property (ReviewStatus?) because:
 /// - Each content item has at most ONE review status (Many-to-One relationship)
 /// - The junction table pattern (ContentTags, CharacterIdentities) is NOT used here
 /// - ReviewStatus tracks a single review state per content item
 /// 
 /// If multiple reviews were needed, we would use:
-/// 1. A separate "ReviewComments" entity with FK to ContentItem
+/// 1. A separate "ReviewComments" entity with FK to MetaInfo
 /// 2. Or remove the navigation and access via DbContext directly
 /// 
 /// VERIFICATION:
@@ -114,9 +114,9 @@ public class NavigationPropertyConflictResolutionTests
 /// IMPACT:
 /// -------
 /// This change affects:
-/// - src/Gadema.Core/Models/Content/ContentItem.cs
+/// - src/Gadema.Core/Models/Content/MetaInfo.cs
 /// - src/Gadema.Core/Configurations/Tasks/ReviewStatusEntityTypeConfiguration.cs
-/// - All entities that reference ContentItem.ReviewStatus navigation property
+/// - All entities that reference MetaInfo.ReviewStatus navigation property
 /// 
 /// No data migration needed - this is purely a model definition change.
 /// =============================================================================

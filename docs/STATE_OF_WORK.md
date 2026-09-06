@@ -23,7 +23,7 @@ src/Gadema.Core/Models/
 ├── User.cs ✅
 ├── Team.cs ✅
 ├── TeamMember.cs ✅
-├── ContentItem.cs ✅
+├── MetaInfo.cs ✅
 ├── StoryOutline.cs ✅
 ├── DialogueBranch.cs ✅
 ├── DialogueNode.cs ✅
@@ -72,18 +72,18 @@ src/Gadema.Core/Models/
 #### **2. DTOs Created (42 total)**
 - [x] Authentication DTOs (SignInDto, GoogleCallbackDto, SignInWith2FADto, RecoveryCodesDto, Disable2FADto)
 - [x] Projects DTOs (CreateProjectDto, UpdateProjectDto, ProjectResponseDto, ProjectTokenDto, etc.)
-- [x] ContentItems DTOs (CreateContentItemDto, UpdateContentItemDto, RollbackDto, AutosaveDto, ContentItemResponseDto, etc.)
+- [x] MetaInfos DTOs (CreateMetaInfoDto, UpdateMetaInfoDto, RollbackDto, AutosaveDto, MetaInfoResponseDto, etc.)
 - [x] StoryOutlining DTOs (CreateSequenceDto, SequenceListResponseDto, SequenceResponseDto)
 - [x] DialogueTrees DTOs (CreateBranchDto, BranchListResponseDto, BranchResponseDto)
 - [x] ExternalReferences DTOs (CreateExternalReferenceDto, ReferenceListResponseDto, ReferenceResponseDto)
-- [x] Tags DTOs (AddTagsDto, TagListResponseDto, ContentItemResponseDto wrapper)
+- [x] Tags DTOs (AddTagsDto, TagListResponseDto, MetaInfoResponseDto wrapper)
 - [x] Tasks DTOs (CreateTaskDto, UpdateTaskDto, TaskResponseDto, TaskListResponseDto)
 - [x] Search/Export/Reviews/Comments DTOs
 
 #### **3. Services Created (18 total)**
 - [x] ApiAuthService - OAuth, 2FA, JWT token handling
 - [x] ProjectService - CRUD operations with tokens
-- [x] ContentItemService - Full lifecycle with autosave/snapshots
+- [x] MetaInfoService - Full lifecycle with autosave/snapshots
 - [x] StoryOutlineService - Chapter management
 - [x] DialogueService - Branch/nodes tree structure
 - [x] ExternalReferenceService - Structured external resource links
@@ -97,7 +97,7 @@ src/Gadema.Core/Models/
 #### **4. Controllers Created (12 total)**
 - [x] AuthController - 5 authentication endpoints
 - [x] ProjectsController - 5 project management endpoints
-- [x] ContentItemsController - 10 content lifecycle endpoints
+- [x] MetaInfosController - 10 content lifecycle endpoints
 - [x] StorySequencesController - 2 chapter endpoints
 - [x] ExternalReferencesController - 2 reference endpoints
 - [x] TasksController - 4 task management endpoints
@@ -132,8 +132,8 @@ src/Gadema.Core/Models/
 **Solution Needed**: Add property to GameDbContext.cs line ~76
 
 #### **Critical Issue #3: Incorrect ApiResponseDto Usage**
-**Affected File**: ContentItemService.cs lines 237, 321, 376
-**Error Type**: `error CS0117: 'ContentItemResponseDto' does not contain a definition for 'Success'`
+**Affected File**: MetaInfoService.cs lines 237, 321, 376
+**Error Type**: `error CS0117: 'MetaInfoResponseDto' does not contain a definition for 'Success'`
 **Solution Needed**: Use SimpleResponseDto wrapper or ApiResponseDto<object>
 
 #### **Critical Issue #4: Nullable Type Handling**
@@ -157,7 +157,7 @@ src/Gadema.Core/Models/
 **Files to Fix (15 total):**
 - ApiAuthService.cs
 - CommentService.cs  
-- ContentItemService.cs
+- MetaInfoService.cs
 - DialogueService.cs ✅ (already has EF Core)
 - ExternalReferenceService.cs
 - ProjectService.cs
@@ -172,9 +172,9 @@ src/Gadema.Core/Models/
 + public DbSet<Project> Projects { get; set; }
 ```
 
-#### **Priority 1.3: Fix ContentItemService Response Patterns**
+#### **Priority 1.3: Fix MetaInfoService Response Patterns**
 ```csharp
-// Line 237 (DeleteContentItemAsync):
+// Line 237 (DeleteMetaInfoAsync):
 return ApiResponseDto<object>.Success(new SimpleResponseDto 
 { 
     Success = true, 
@@ -219,7 +219,7 @@ src/Gadema.Core/Configurations/
 ├── Authentication/UserConfiguration.cs
 ├── Authentication/TeamMemberConfiguration.cs
 ├── Projects/ProjectConfiguration.cs
-├── Content/ContentItemConfiguration.cs
+├── Content/MetaInfoConfiguration.cs
 └── [etc for all other domains...]
 ```
 
@@ -256,7 +256,7 @@ For production deployment as shown in DEPLOYMENTv2.md
 ### **Must Fix (Critical):**
 1. `src/Gadema.Api/Services/*.cs` - Add EF Core using statement (15 files)
 2. `src/Gadema.Data/GameDbContext.cs` - Add Projects DbSet
-3. `src/Gadema.Api/Services/ContentItemService.cs` - Fix response patterns (lines 237, 321, 376)
+3. `src/Gadema.Api/Services/MetaInfoService.cs` - Fix response patterns (lines 237, 321, 376)
 4. `src/Gadema.Api/Services/TaskService.cs` - Fix nullable handling (lines 98-100, 127-139)
 
 ### **Should Fix (Recommended):**
@@ -361,7 +361,7 @@ If critical fixes above don't resolve all errors:
 - ✅ Using FK as PK pattern for CharacterDetails/CharacterBackground
 - ✅ Flat task structure (no hierarchical epics/stories)
 - ✅ Hybrid response pattern (RAW vs WRAPPED based on endpoint type)
-- ✅ View mode separation in ContentItem responses
+- ✅ View mode separation in MetaInfo responses
 
 ---
 

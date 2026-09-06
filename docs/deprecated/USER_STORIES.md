@@ -56,7 +56,7 @@ src/
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
 | **CONT-01** | As a writer, I want to create content items (Character, World, etc.) with a dedicated Outline first, so that I can plan before writing prose. *(Note: Uses `StoryOutline` table + Option B)* | - Two-phase creation:<br>  1. Outline Summary (`StoryOutline.Summary`)<br>  2. Prose Content<br>- Draft status tracking until ready to publish | **High** | StoryOutline entity, content creation workflow |
-| **CONT-02** | As a writer, I want to switch between Private Writing and Presentation modes for each item, so that I can review content in isolation. *(Note: `ContentItem.ViewMode` separation)* | - UI toggle:<br>  PrivateWriting (Admin tools)<br>  Presentation (Clean view)<br>- Version control works in both modes | **High** | ViewMode enum, API endpoint parameter, DTO mapping |
+| **CONT-02** | As a writer, I want to switch between Private Writing and Presentation modes for each item, so that I can review content in isolation. *(Note: `MetaInfo.ViewMode` separation)* | - UI toggle:<br>  PrivateWriting (Admin tools)<br>  Presentation (Clean view)<br>- Version control works in both modes | **High** | ViewMode enum, API endpoint parameter, DTO mapping |
 | **CONT-03** | As a dialogue designer, I want to create hierarchical dialogue trees with branching paths, so that I can build complex visual novel narratives easily. *(Note: `DialogueBranch` + `DialogueNode` hierarchy)* | - Visual tree view<br>- Drag-and-drop node reordering<br>- Condition tracking (Flags/Events) | **High** | Self-referencing FK structure for branches/nodes |
 | **CONT-04** | As a writer, I want to version my content and rollback changes, so that I don't lose work when experimenting. *(Note: `ContentSnapshot` + Rollback logic)* | - Auto-save snapshots on major changes<br>- "Rollback" button accessible<br>- Version history visible in log | **High** | ContentSnapshot entity, rollback service logic |
 | **CONT-05** | As a user, I want to link external resources (Google Docs, Pinterest boards) to my content items. *(Note: `ExternalReference` table)* | - Structured links via dedicated endpoint<br>- URL validation + categorization<br>- Clean export with reference data | **High** | ExternalReference entity, URL validation logic |
@@ -69,7 +69,7 @@ src/
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
 | **PROJECTTASK-01** | As a user with focus challenges, I want to filter tasks by difficulty (Easy/Medium/Hard), so that I can match workload to my current energy level. *(Note: `ProjectTask.Difficulty` enum)* | - Filter by Difficulty<br>- Quick Win badge for short tasks<br>- Focus Mode UI toggle available | **High** | Task filtering logic, difficulty enum, quick win flag |
-| **PROJECTTASK-02** | As a user, I want to link tasks to specific content items, so that my progress is tied directly to story elements. *(Note: `ProjectTask.ContentItemId` FK)* | - Task linked to ContentItem (Character/Scene)<br>- Clicking task opens related item<br>- Progress updates automatically | **Medium** | FK relationship between Task and ContentItem |
+| **PROJECTTASK-02** | As a user, I want to link tasks to specific content items, so that my progress is tied directly to story elements. *(Note: `ProjectTask.MetaInfoId` FK)* | - Task linked to MetaInfo (Character/Scene)<br>- Clicking task opens related item<br>- Progress updates automatically | **Medium** | FK relationship between Task and MetaInfo |
 | **PROJECTTASK-03** | As a writer, I want to see an activity feed of recent changes, so that I can track who worked on what. *(Note: `ActivityLog` table)* | - Unified feed per project<br>- Shows "Who changed What" + Timestamp<br>- Filter by event type (e.g., Outline Updated) | **Medium** | ActivityLog entity, filtering logic |
 | **PROJECTTASK-04** | As a team member, I want to comment on tasks with controlled visibility, so that feedback can be shared privately or publicly. *(Note: `TaskComments` table)* | - Private comments (Team only)<br>- Public comments (Public View visible)<br>- Rich text editing support | **Medium** | TaskComments entity, visibility control logic |
 | **PROJECTTASK-05** | As a user, I want to estimate task duration in minutes, so that I can prioritize realistic work sessions. *(Note: `ProjectTask.EstimatedMinutes`)* | - Input field for time estimation<br>- Default values for common tasks<br>- Dashboard display with total estimated hours | **Low** | Time estimation input validation |
@@ -189,10 +189,10 @@ src/
 // Acceptance Criteria Implementation:
 
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // Arrange: Get content item from database
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     if (item == null)
         return NotFound();
@@ -203,7 +203,7 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
     if (viewMode == ViewModeEnum.PrivateWriting)
     {
         // Include all fields, version history, media attachments
-        var response = new ContentItemResponseDto
+        var response = new MetaInfoResponseDto
         {
             Id = item.Id,
             Title = item.Title,
@@ -221,7 +221,7 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewMo
     if (viewMode == ViewModeEnum.Presentation)
     {
         // Only published content, no admin tools
-        var response = new ContentItemResponseDto
+        var response = new MetaInfoResponseDto
         {
             Id = item.Id,
             Title = item.Title,
@@ -264,8 +264,8 @@ Total Stories: ~40 core features
 | Story ID | Entity/Table Used | Key Relationship |
 | :-- | :--- | :--- |
 | AUTH-01 | `User`, `TeamMember` | 1:N relationship with Team |
-| CONT-01 | `ContentItem`, `StoryOutline` | N:1 (ContentItem → StoryOutline) |
-| PROJECTTASK-01 | `ProjectTask` (Flat structure) | N:1 (Task → ContentItem via FK) |
+| CONT-01 | `MetaInfo`, `StoryOutline` | N:1 (MetaInfo → StoryOutline) |
+| PROJECTTASK-01 | `ProjectTask` (Flat structure) | N:1 (Task → MetaInfo via FK) |
 | EXP-01 | Multiple entities + Export Service | Aggregation of all published content |
 
 ---
@@ -276,10 +276,10 @@ Total Stories: ~40 core features
 
 ```csharp
 [Fact]
-public async Task GetContentItemAsync_WhenViewModeIsPrivateWriting_ShouldReturnFullData()
+public async Task GetMetaInfoAsync_WhenViewModeIsPrivateWriting_ShouldReturnFullData()
 {
     // Arrange: Setup test data with both draft and published content
-    var testContent = new ContentItem
+    var testContent = new MetaInfo
     {
         Id = Guid.NewGuid(),
         Title = "Test Character",
@@ -295,7 +295,7 @@ public async Task GetContentItemAsync_WhenViewModeIsPrivateWriting_ShouldReturnF
 
     // Assert: Verify full content returned including draft fields
     response.StatusCode.Should().Be(HttpStatusCode.OK);
-    var data = await response.Content.ReadFromJsonAsync<ContentItemResponseDto>();
+    var data = await response.Content.ReadFromJsonAsync<MetaInfoResponseDto>();
     
     data.Title.Should().Be("Test Character");
     data.Description.Should().Contain("draft description");  // Full draft content
@@ -303,10 +303,10 @@ public async Task GetContentItemAsync_WhenViewModeIsPrivateWriting_ShouldReturnF
 }
 
 [Fact]
-public async Task GetContentItemAsync_WhenViewModeIsPresentation_ShouldReturnCleanData()
+public async Task GetMetaInfoAsync_WhenViewModeIsPresentation_ShouldReturnCleanData()
 {
     // Arrange: Setup test data with published content
-    var testContent = new ContentItem
+    var testContent = new MetaInfo
     {
         Id = Guid.NewGuid(),
         Title = "Test Character",
@@ -322,7 +322,7 @@ public async Task GetContentItemAsync_WhenViewModeIsPresentation_ShouldReturnCle
 
     // Assert: Verify clean public view returned
     response.StatusCode.Should().Be(HttpStatusCode.OK);
-    var data = await response.Content.ReadFromJsonAsync<ContentItemResponseDto>();
+    var data = await response.Content.ReadFromJsonAsync<MetaInfoResponseDto>();
     
     data.Title.Should().Be("Test Character");
     data.Description.Should().Contain("published description");  // Only published content

@@ -28,7 +28,7 @@
 /// 
 /// VERIFIED SERVICES REGISTERED:
 /// -----------------------------
-/// ✅ IContentService → ContentItemService
+/// ✅ IContentService → MetaInfoService
 /// ✅ IProjectService → ProjectService  
 /// ✅ IProjectTaskService → ProjectTaskService
 /// ✅ IApiAuthService → ApiAuthService
@@ -64,7 +64,7 @@
 /// ROOT CAUSE:
 /// -----------
 /// CharacterDetails entity lacks configuration file defining FK-as-PK pattern.
-/// Entity expects ContentItemId to be the primary key (FK-as-PK pattern).
+/// Entity expects MetaInfoId to be the primary key (FK-as-PK pattern).
 /// 
 /// SOLUTION:
 /// ---------
@@ -77,12 +77,12 @@
 ///     {
 ///         builder.ToTable("CharacterDetails");
 ///         
-///         // Set ContentItemId as primary key (FK-as-PK pattern)
-///         builder.HasKey(e => e.ContentItemId);
+///         // Set MetaInfoId as primary key (FK-as-PK pattern)
+///         builder.HasKey(e => e.MetaInfoId);
 ///         
-///         builder.HasOne(e => e.ContentItem)
+///         builder.HasOne(e => e.MetaInfo)
 ///             .WithMany(c => c.CharacterDetailsCollection)
-///             .HasForeignKey(e => e.ContentItemId);
+///             .HasForeignKey(e => e.MetaInfoId);
 ///     }
 /// }
 /// ```
@@ -95,27 +95,27 @@
 /// =============================================================================
 
 /// ============================================================================
-/// MEDIUM ISSUE #3: CONTENTITEM.CONTENTITEMID INITIALIZATION CONFLICT
+/// MEDIUM ISSUE #3: MetaInfo.MetaInfoID INITIALIZATION CONFLICT
 /// -----------------------------------------------------------------------------
 /// 
 /// SYMPTOM:
 /// --------
-/// "ContentItem.ContentItemId initialized to Guid.NewGuid() conflicts with Id property"
+/// "MetaInfo.MetaInfoId initialized to Guid.NewGuid() conflicts with Id property"
 /// 
 /// ROOT CAUSE:
 /// -----------
-/// Line 173 in ContentItem.cs:
-///   public Guid ContentItemId { get; set; } = Guid.NewGuid();  // ❌ Wrong!
+/// Line 173 in MetaInfo.cs:
+///   public Guid MetaInfoId { get; set; } = Guid.NewGuid();  // ❌ Wrong!
 /// 
 /// This initializes before Id is set, causing ID conflicts.
 /// 
 /// SOLUTION:
 /// ---------
-/// Remove default initializer from ContentItemId:
+/// Remove default initializer from MetaInfoId:
 /// 
 /// ```csharp
 /// [Required, Display(Name = "Content Item ID")]
-/// public Guid ContentItemId { get; set; }  // ✅ No default value
+/// public Guid MetaInfoId { get; set; }  // ✅ No default value
 /// ```
 /// 
 /// Let EF Core handle initialization or set it after Id assignment.
@@ -157,7 +157,7 @@
 /// ---------------------------------
 /// ✅ Issue #1: Service Registration Gaps - Affects all integration tests
 /// ✅ Issue #2: Entity Configuration Gaps - Causes primary key errors
-/// ✅ Issue #3: ContentItem.ContentItemId initialization - ID conflicts
+/// ✅ Issue #3: MetaInfo.MetaInfoId initialization - ID conflicts
 /// 
 /// MEDIUM PRIORITY (Fix Soon):
 /// -----------------------------  
@@ -183,9 +183,9 @@
 /// Create config files for entities with relationship issues (CharacterDetails, CharacterBackground).
 /// Or add explicit configuration in GameDbContext.OnModelCreating().
 /// 
-/// STEP 3: Fix ContentItem.ContentItemId Initialization
+/// STEP 3: Fix MetaInfo.MetaInfoId Initialization
 /// -----------------------------------------------------
-/// Remove default initializer from ContentItem.cs line ~173.
+/// Remove default initializer from MetaInfo.cs line ~173.
 /// 
 /// STEP 4: Enable Auto-Discovery as Safety Net (Optional)
 /// -------------------------------------------------------
@@ -225,7 +225,7 @@
 /// 
 /// Passing Tests (21):
 /// --------------------
-/// - ContentItemServiceUnitTests: All tests pass after navigation conflict fix
+/// - MetaInfoServiceUnitTests: All tests pass after navigation conflict fix
 /// - ServiceIntegrationTests: Model validation tests pass
 /// - ExportServiceUnitTest: 5 tests pass
 /// 

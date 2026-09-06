@@ -55,7 +55,7 @@ public enum ContentTypeEnum
 ```
 
 **Where it's used:**
-- `ContentItem.ContentType` — determines the kind of content being created
+- `MetaInfo.ContentType` — determines the kind of content being created
 - API filtering: `/api/content-items?contentType=Character` returns only character entries
 - UI rendering: Different templates rendered based on type (character cards vs world maps)
 
@@ -190,8 +190,8 @@ public enum IdentityDefinitionType : int
 // Find all characters that are Elves AND from the Alliance
 var elves = await _context.CharacterIdentities
     .Where(ci => ci.IdentityType == (int)IdentityTypeEnum.Race)
-    .ThenInclude(cid => cid.ContentItem)
-    .Where(ci => ci.ContentItem.ContentType == ContentTypeEnum.Character)
+    .ThenInclude(cid => cid.MetaInfo)
+    .Where(ci => ci.MetaInfo.ContentType == ContentTypeEnum.Character)
     .ToListAsync();
 
 // Filter by faction and alignment via bitwise AND
@@ -257,7 +257,7 @@ public enum ViewModeEnum : int
 ```
 
 **Where it's used:**
-- `ContentItem.ViewMode` determines which Razor component renders the content item
+- `MetaInfo.ViewMode` determines which Razor component renders the content item
 - `PrivateWriting`: Shows markdown toolbar, revision history, inline comments
 - `Presentation`: Renders as clean HTML/PDF-ready output with typography optimizations
 
@@ -315,7 +315,7 @@ public enum ExportFormatEnum : int
 
 | Entity | Enums Used | Purpose |
 |--------|-----------|---------|
-| `ContentItem` | `ContentTypeEnum`, `ContentStatusEnum`, `ViewModeEnum` | Core content classification, state, and UI rendering mode |
+| `MetaInfo` | `ContentTypeEnum`, `ContentStatusEnum`, `ViewModeEnum` | Core content classification, state, and UI rendering mode |
 | `Project` | `OwnerTypeEnum`, `ProjectStatusEnum`, `ProjectDifficultyEnum`, `ProjectVisibilityEnum` | Ownership model, lifecycle tracking, access control |
 | `ProjectTask` | `TaskStatusEnum`, `TaskPriorityEnum`, `TaskDifficultyEnum` | Workflow pipeline + cognitive load management |
 | `CharacterIdentity` | `IdentityTypeEnum` (flags), `IdentityDefinitionType` | Multi-dimensional character typing system |
@@ -363,7 +363,7 @@ This keeps the API semantic and self-documenting.
 | Decision | Rationale | Potential Concern | Mitigation |
 |----------|-----------|-------------------|------------|
 | `[Flags]` on `IdentityTypeEnum` | Supports multi-dimensional character typing (race + faction + alignment) | Bitwise confusion for non-developers | Well-documented with clear enum values and examples in API docs |
-| No `None` sentinel values | Forces explicit data, no ambiguity | Harder to handle "unset" states in UI | Use nullable references (`Guid?`) instead of enums where optional applies (e.g., `ContentItemId` is nullable) |
+| No `None` sentinel values | Forces explicit data, no ambiguity | Harder to handle "unset" states in UI | Use nullable references (`Guid?`) instead of enums where optional applies (e.g., `MetaInfoId` is nullable) |
 | Dense integer starting at 0 | Enables bitwise ops and efficient DB storage | Less human-readable than descriptive names | Generated XML docs + API Swagger documentation provide full context |
 | Enum-only approach (no string-based types) | Type-safe, SQL-friendly, no injection risk | Requires migration for enum changes | All enum additions are versioned in migrations with explicit `ALTER TYPE` statements |
 

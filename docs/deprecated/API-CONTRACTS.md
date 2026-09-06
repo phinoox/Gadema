@@ -123,7 +123,7 @@ All list endpoints use standard pagination:
 
 ## **🔐 5. View Mode Separation**
 
-API endpoints support both `PrivateWriting` and `Presentation` view modes for ContentItem responses:
+API endpoints support both `PrivateWriting` and `Presentation` view modes for MetaInfo responses:
 
 ### **View Mode Query Parameter**
 | Parameter | Type | Default | Notes |
@@ -147,8 +147,8 @@ API endpoints support both `PrivateWriting` and `Presentation` view modes for Co
 
 ### **Naming Convention Rules**
 - ✅ `CreateXDto` for creation operations (e.g., `CreateProjectDto`)
-- ✅ `UpdateXDto` for partial updates (e.g., `UpdateContentItemDto`)
-- ✅ `ResponseXDto` for API responses (e.g., `ContentItemResponseDto`)
+- ✅ `UpdateXDto` for partial updates (e.g., `UpdateMetaInfoDto`)
+- ✅ `ResponseXDto` for API responses (e.g., `MetaInfoResponseDto`)
 - ✅ All DTOs must be marked with `[Display(Name = "...")]` for UI labels
 
 ### **Required vs Optional Field Patterns**
@@ -830,7 +830,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "externalResources": [
     {
       "url": "https://notion.so/game-team/gdd",
@@ -1032,7 +1032,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
     "id": "proj-001",
     "title": "The Dragon's Crown"
   },
-  "contentItems": [
+  "MetaInfos": [
     {
       "id": "char-001",
       "title": "Geralt",
@@ -1137,7 +1137,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
       "title": "Geralt Character Updated",
       "description": "User 'Jane Doe' updated the description...",
       "relatedEntityId": "char-001",
-      "relatedEntityType": 1,  // ContentItem
+      "relatedEntityType": 1,  // MetaInfo
       "createdAt": "2024-03-15T14:30:00Z",
       "userId": "usr-001"
     }
@@ -1157,7 +1157,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "reviewStatus": {
     "status": "Pending",
     "reviewedByUserId": null,
@@ -1190,7 +1190,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "reviewStatus": {
     "status": "Approved",
     "reviewedByUserId": "usr-002",
@@ -1219,7 +1219,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
   "data": [
     {
       "id": "comment-001",
-      "contentItemId": "char-001",
+      "MetaInfoId": "char-001",
       "commentedByUserId": "usr-002",
       "commentText": "This character needs better backstory.",
       "visibility": "private",
@@ -1253,7 +1253,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 ```json
 {
   "id": "comment-001",
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "commentedByUserId": "usr-002",
   "commentText": "This character needs better backstory.",
   "visibility": "team-only",
@@ -1273,7 +1273,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "tags": [
     {
       "tagId": "tag-001",
@@ -1358,7 +1358,7 @@ public ICollection<Guid> TagIds { get; set; } = new List<Guid>();
 **Response**:
 ```json
 {
-  "contentItemId": "char-001",
+  "MetaInfoId": "char-001",
   "attachments": [
     {
       "id": "att-001",

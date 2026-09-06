@@ -27,7 +27,7 @@ src/
 │   ├── Projects/
 │   │   └── ProjectConfiguration.cs
 │   ├── Content/
-│   │   ├── ContentItemConfiguration.cs
+│   │   ├── MetaInfoConfiguration.cs
 │   │   ├── StoryOutlineConfiguration.cs
 │   │   ├── DialogueBranchConfiguration.cs
 │   │   ├── ExternalReferenceConfiguration.cs
@@ -410,7 +410,7 @@ gcloud run deploy gaema-api \
 
 # ✅ CORRECT - Domain-separated configurations deployment to Kubernetes (NEW!)
 kubectl apply -f kubernetes/configurations/project-task-config.yml  # ✅ ProjectTaskConfiguration deployed per domain!
-kubectl apply -f kubernetes/configurations/content-item-config.yml  # ✅ ContentItemConfiguration deployed per domain!
+kubectl apply -f kubernetes/configurations/content-item-config.yml  # ✅ MetaInfoConfiguration deployed per domain!
 
 # ❌ INCORRECT - Don't deploy Task entity configuration instead of ProjectTask (domain-clustered code violation) (NEW!)
 kubectl apply -f kubernetes/configurations/task-config.yml  # ❌ Avoid! Can be confused with System.Threading.Task! Domain-aware pattern violation in domain-clustered code!

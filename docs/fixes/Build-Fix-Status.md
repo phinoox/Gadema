@@ -12,15 +12,15 @@ All of the following model classes now have proper navigation properties:
 
 ### Navigation Properties Added:
 - **AbilitySet** → `Project` navigation property
-- **AssetLink** → `ContentItem` navigation property  
-- **CharacterAttributes** → `ContentItem`, `AttributeDefinition` navigation properties
+- **AssetLink** → `MetaInfo` navigation property  
+- **CharacterAttributes** → `MetaInfo`, `AttributeDefinition` navigation properties
 - **CharacterBackground** → `CharacterDetails`, `CharacterBackgrounds` collections
-- **CharacterDetails** → `ContentItem` navigation property
-- **CharacterIdentity** → `ContentItem`, `IdentityDefinition`, `IdentityValue` navigations
+- **CharacterDetails** → `MetaInfo` navigation property
+- **CharacterIdentity** → `MetaInfo`, `IdentityDefinition`, `IdentityValue` navigations
 - **ClassTemplate** → `AttributeSet` collection
 - **ClassTemplateAttribute** → `ClassTemplate`, `AttributeDefinition` navigations
-- **ContentItem** → Collection properties: `Tasks`, `Comments`, `VersionLogs`, `AssetLinks`, `MediaAttachments`; Property: `ContentItemId`
-- **ContentVersionLog** → `ContentItem` navigation property
+- **MetaInfo** → Collection properties: `Tasks`, `Comments`, `VersionLogs`, `AssetLinks`, `MediaAttachments`; Property: `MetaInfoId`
+- **ContentVersionLog** → `MetaInfo` navigation property
 - **DialogueBranch** → `ParentNode` self-referencing navigation
 - **EngineExportConfig** → `Project` navigation property, `IsEnabled` property
 - **EngineFieldMapping** → `Project` navigation property, `SourceColumn`, `TargetColumn` properties

@@ -16,7 +16,7 @@ After carefully reviewing all ~57 entities in SCHEMA.md and their Fluent API con
 public class StoryOutline  // From SCHEMA.md
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }  // FK to ContentItems
+    public Guid MetaInfoId { get; set; }  // FK to MetaInfos
     
     // ⚠️ Missing navigation property for story sequences!
     // Should have: ICollection<StorySequence> Sequences
@@ -26,7 +26,7 @@ public class StoryOutline  // From SCHEMA.md
 public class StoryOutline
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     // ✅ NEW - Navigation property for story sequences
     public ICollection<StorySequence> Sequences { get; set; }  // ⚠️ MISSING in documentation!
@@ -46,7 +46,7 @@ public class StoryOutline
 public class DialogueBranch  // From SCHEMA.md
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     // ⚠️ Missing navigation property for dialogue nodes!
 }
@@ -55,7 +55,7 @@ public class DialogueBranch  // From SCHEMA.md
 public class DialogueBranch
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     // ✅ NEW - Navigation property for dialogue nodes
     public ICollection<DialogueNode> Nodes { get; set; }  // ⚠️ MISSING in documentation!
@@ -101,13 +101,13 @@ public class DialogueNode
 
 ---
 
-#### **4. ExternalReference → ContentItem Relationship**
+#### **4. ExternalReference → MetaInfo Relationship**
 ```csharp
-// ❌ MISSING - ExternalReference has FK but no navigation property back to ContentItem
+// ❌ MISSING - ExternalReference has FK but no navigation property back to MetaInfo
 public class ExternalReference  // From SCHEMA.md
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }  // FK to ContentItems
+    public Guid MetaInfoId { get; set; }  // FK to MetaInfos
     
     // ⚠️ Missing navigation property for content item!
 }
@@ -116,27 +116,27 @@ public class ExternalReference  // From SCHEMA.md
 public class ExternalReference
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     // ✅ NEW - Navigation property for content item (back-reference)
-    public virtual ContentItem ContentItem { get; set; }  // ⚠️ MISSING!
+    public virtual MetaInfo MetaInfo { get; set; }  // ⚠️ MISSING!
 }
 ```
 
 **Why it's needed:**
-- Eager loading pattern requires `Include(er => er.ContentItem)` to avoid N+1 queries
+- Eager loading pattern requires `Include(er => er.MetaInfo)` to avoid N+1 queries
 - ViewMode separation affects what external references are shown in Presentation mode
 - Domain-separated configuration needs this back-reference defined
 
 ---
 
-#### **5. MediaAttachment → ContentItem Relationship**
+#### **5. MediaAttachment → MetaInfo Relationship**
 ```csharp
-// ❌ MISSING - MediaAttachment has FK but no navigation property back to ContentItem
+// ❌ MISSING - MediaAttachment has FK but no navigation property back to MetaInfo
 public class MediaAttachment  // From SCHEMA.md
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }  // FK to ContentItems
+    public Guid MetaInfoId { get; set; }  // FK to MetaInfos
     
     // ⚠️ Missing navigation property for content item!
 }
@@ -145,15 +145,15 @@ public class MediaAttachment  // From SCHEMA.md
 public class MediaAttachment
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     // ✅ NEW - Navigation property for content item (back-reference)
-    public virtual ContentItem ContentItem { get; set; }  // ⚠️ MISSING!
+    public virtual MetaInfo MetaInfo { get; set; }  // ⚠️ MISSING!
 }
 ```
 
 **Why it's needed:**
-- Eager loading pattern requires `Include(m => m.ContentItem)` to avoid N+1 queries
+- Eager loading pattern requires `Include(m => m.MetaInfo)` to avoid N+1 queries
 - Cascade delete when content item is deleted should work through navigation property
 - ViewMode separation affects what media is shown in Presentation mode
 
@@ -220,10 +220,10 @@ public class TeamMember
 
 ---
 
-#### **8. ContentItem → ProjectTasks Relationship (Already Partially Defined)**
+#### **8. MetaInfo → ProjectTasks Relationship (Already Partially Defined)**
 ```csharp
-// ⚠️ PARTIALLY MISSING - ContentItem has ProjectTasks collection but it's not documented
-public class ContentItem  // From SCHEMA.md
+// ⚠️ PARTIALLY MISSING - MetaInfo has ProjectTasks collection but it's not documented
+public class MetaInfo  // From SCHEMA.md
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -231,8 +231,8 @@ public class ContentItem  // From SCHEMA.md
     public ICollection<ProjectTask> ProjectTasks { get; set; }  // ⚠️ PARTIALLY MISSING in docs!
 }
 
-// ✅ FIXED - Need to add this navigation property in ContentItem entity documentation
-public class ContentItem
+// ✅ FIXED - Need to add this navigation property in MetaInfo entity documentation
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -250,7 +250,7 @@ public class ContentItem
 
 ### **❌ Low Priority Gaps (Optional but Recommended):**
 
-#### **9. Tag → ContentItem via Junction Table**
+#### **9. Tag → MetaInfo via Junction Table**
 ```csharp
 // ⚠️ PARTIALLY MISSING - Tag has no direct navigation property to content items
 public class Tag  // From SCHEMA.md
@@ -276,7 +276,7 @@ public class Tag
 
 ---
 
-#### **10. ActivityLog → ContentItem/ProjectTask Relationship**
+#### **10. ActivityLog → MetaInfo/ProjectTask Relationship**
 ```csharp
 // ⚠️ PARTIALLY MISSING - ActivityLog has RelatedEntityId but no typed navigation property
 public class ActivityLog  // From SCHEMA.md
@@ -294,7 +294,7 @@ public class ActivityLog
     public Guid? RelatedEntityId { get; set; }
     
     // ✅ NEW - Typed navigation property for content item (if applicable)
-    public virtual ContentItem? ContentItem { get; set; }  // ⚠️ PARTIALLY MISSING!
+    public virtual MetaInfo? MetaInfo { get; set; }  // ⚠️ PARTIALLY MISSING!
     
     // ✅ NEW - Typed navigation property for project task (if applicable)
     public virtual ProjectTask? ProjectTask { get; set; }  // ⚠️ PARTIALLY MISSING!
@@ -314,13 +314,13 @@ public class ActivityLog
 | **Critical** | StoryOutline | `ICollection<StorySequence> Sequences` | 🔴 High | Required for narrative structure |
 | **Critical** | DialogueBranch | `ICollection<DialogueNode> Nodes` | 🔴 High | Required for dialogue tree |
 | **Critical** | DialogueNode | `DialogueNode ParentNode`, `ICollection<DialogueNode> ChildNodes` | 🔴 High | Required for node hierarchy |
-| **Critical** | ExternalReference | `ContentItem ContentItem` | 🔴 High | Back-reference required for eager loading |
-| **Critical** | MediaAttachment | `ContentItem ContentItem` | 🔴 High | Back-reference required for cascade delete |
+| **Critical** | ExternalReference | `MetaInfo MetaInfo` | 🔴 High | Back-reference required for eager loading |
+| **Critical** | MediaAttachment | `MetaInfo MetaInfo` | 🔴 High | Back-reference required for cascade delete |
 | **Medium** | Project | `TeamMember? Owner` | 🟡 Medium | Polymorphic FK pattern needs back-reference |
 | **Medium** | TeamMember | `User User` | 🟡 Medium | Back-reference needed for user management |
-| **Partial** | ContentItem | `ICollection<ProjectTask> ProjectTasks` | 🟡 Medium | Already partially defined but not documented |
+| **Partial** | MetaInfo | `ICollection<ProjectTask> ProjectTasks` | 🟡 Medium | Already partially defined but not documented |
 | **Low** | Tag | `ICollection<ContentTag> ContentTags` | 🟢 Low | Optional but useful for tag management |
-| **Low** | ActivityLog | `ContentItem?`, `ProjectTask?` | 🟢 Low | Optional for activity filtering |
+| **Low** | ActivityLog | `MetaInfo?`, `ProjectTask?` | 🟢 Low | Optional for activity filtering |
 
 ---
 
@@ -390,9 +390,9 @@ public class ExternalReferenceEntityTypeConfiguration : IEntityTypeConfiguration
         builder.HasKey(e => e.Id);
         
         // Navigation properties (NEW!)
-        builder.HasOne(er => er.ContentItem)  // ⚠️ MISSING!
+        builder.HasOne(er => er.MetaInfo)  // ⚠️ MISSING!
             .WithMany(ci => ci.ExternalReferences)  // ⚠️ MISSING!
-            .HasForeignKey(er => er.ContentItemId)
+            .HasForeignKey(er => er.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
@@ -408,9 +408,9 @@ public class MediaAttachmentEntityTypeConfiguration : IEntityTypeConfiguration<M
         builder.HasKey(e => e.Id);
         
         // Navigation properties (NEW!)
-        builder.HasOne(ma => ma.ContentItem)  // ⚠️ MISSING!
+        builder.HasOne(ma => ma.MetaInfo)  // ⚠️ MISSING!
             .WithMany(ci => ci.MediaAttachments)  // ⚠️ MISSING!
-            .HasForeignKey(ma => ma.ContentItemId)
+            .HasForeignKey(ma => ma.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

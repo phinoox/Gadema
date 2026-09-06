@@ -41,7 +41,7 @@ Gadema.Api/
 │   │   └── AuthController.cs           # Login, Register, OAuth callbacks
 │   ├── Content/
 │   │   ├── CommentsController.cs       # CRUD on comments
-│   │   ├── ContentItemsController.cs   # Core content CRUD
+│   │   ├── MetaInfosController.cs   # Core content CRUD
 │   │   ├── DialogueBranchesController.cs # Branch tree operations
 │   │   ├── ExternalReferencesController.cs # Link external URLs/docs
 │   │   ├── ReviewStatusController.cs   # Approval/review workflow
@@ -57,7 +57,7 @@ Gadema.Api/
 │
 ├── Services/
 │   ├── Authentication/ApiAuthService.cs
-│   ├── Content/ContentItemService.cs
+│   ├── Content/MetaInfoService.cs
 │   ├── Content/DialogueService.cs
 │   ├── Content/ExternalReferenceService.cs
 │   ├── Content/TagService.cs
@@ -192,7 +192,7 @@ Controllers do **not** use `.Include()` directly. Instead, they pass projection 
 [HttpGet("{id}/with-content")]
 public async Task<ActionResult<Project>> GetWithContent(Guid id)
 {
-    // var p = await _context.Projects.Include(x => x.ContentItems).FirstAsync();
+    // var p = await _context.Projects.Include(x => x.MetaInfos).FirstAsync();
 }
 
 // ✅ GOOD — service handles inclusion based on needs
@@ -211,7 +211,7 @@ public async Task<ActionResult> GetById(Guid id)
 | Service | Primary Responsibility | Key Methods |
 |---------|----------------------|-------------|
 | `ApiAuthService` | JWT validation, token issuance, 2FA handling | `ValidateTokenAsync`, `GenerateJwtTokenAsync` |
-| `ContentItemService` | Core content CRUD with polymorphic type support | `CreateAsync`, `PublishAsync`, `UpdateVersionAsync` |
+| `MetaInfoService` | Core content CRUD with polymorphic type support | `CreateAsync`, `PublishAsync`, `UpdateVersionAsync` |
 | `DialogueService` | Branch/node tree manipulation (recursive ops) | `AddNodeAsync`, `MoveBranchAsync`, `CollapseBranchAsync` |
 | `ProjectService` | Project lifecycle + polymorphic ownership logic | `CreateProjectAsync`, `TransferOwnershipAsync` |
 | `TaskService` | ADHD-friendly task management | `QuickWinCompleteAsync`, `ReorderTasksAsync` |
@@ -224,8 +224,8 @@ public async Task<ActionResult> GetById(Guid id)
 ### Content Versioning Flow (simplified)
 
 ```
-1. Controller receives UpdateContentItemDto (with changes only)
-2. ContentItemService.GetExistingVersion(id, versionNumber)
+1. Controller receives UpdateMetaInfoDto (with changes only)
+2. MetaInfoService.GetExistingVersion(id, versionNumber)
 3. Compute delta (what changed: fields, type switch, etc.)
 4. Create new ContentVersionLog entry (audit trail)
 5. Update entity in DB with new version number
@@ -240,16 +240,16 @@ public async Task<ActionResult> GetById(Guid id)
 ```mermaid
 sequenceDiagram
     participant C as ContentCreator
-    participant S as ContentItemService
+    participant S as MetaInfoService
     participant P as ProjectService
     participant T as TeamMemberRepository
     participant A as ActivityLogger
 
-    C->>S: SubmitDraft(contentItem, reviewRequest)
-    S->>P: RequestReview(contentItem, reviewerId)
+    C->>S: SubmitDraft(MetaInfo, reviewRequest)
+    S->>P: RequestReview(MetaInfo, reviewerId)
     P->>T: GetTeamMembers(projectId)
     T-->>P: Returns list of reviewers
-    P->>A: LogActivity("ReviewRequested", contentItemId)
+    P->>A: LogActivity("ReviewRequested", MetaInfoId)
     A-->>P: ActivityLog saved
     P-->>S: Reviewers assigned
     S-->>C: Response with reviewer assignments
@@ -387,7 +387,7 @@ var project = new Project {
 public record ProjectSummaryDto(Guid Id, string Title, string Slug, ViewModeEnum ViewMode);
 ```
 
-**DTO naming convention:** `{Entity}Dto` — e.g., `CreateProjectDto`, `UpdateContentItemDto`. Never use the entity class name as a DTO type.
+**DTO naming convention:** `{Entity}Dto` — e.g., `CreateProjectDto`, `UpdateMetaInfoDto`. Never use the entity class name as a DTO type.
 
 ---
 

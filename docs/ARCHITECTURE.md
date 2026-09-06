@@ -159,7 +159,7 @@ public class ProjectTask
     public Guid ProjectId { get; set; }
     
     // Direct content link (optional)
-    public Guid? ContentItemId { get; set; }
+    public Guid? MetaInfoId { get; set; }
     
     // ADHD-friendly fields:
     public int Difficulty { get; set; }       // Easy/Medium/Hard
@@ -183,14 +183,14 @@ public class ProjectTask
 1. User logs in (JWT issued, stored in auth cookie)
 2. WebApp renders /content/create page via Blazor Server
 3. User fills form → Blazor component calls HttpClient POST `/api/content-items`
-4. API Controller receives `CreateContentItemDto`, validates with `[Required]` attrs
+4. API Controller receives `CreateMetaInfoDto`, validates with `[Required]` attrs
 5. Controller calls `IContentService.CreateAsync()` (no direct DB access)
 6. Service layer:
    - Generates unique slug via hash of title + timestamp
    - Determines ContentType from dropdown selection
    - Creates ContentVersionLog entry for audit trail
-7. Service calls `_context.ContentItems.Add(contentItem)`
-8. EF Core executes INSERT via the configured `ContentItemEntityTypeConfiguration`
+7. Service calls `_context.MetaInfos.Add(MetaInfo)`
+8. EF Core executes INSERT via the configured `MetaInfoEntityTypeConfiguration`
 9. Response DTO with generated URL returned to WebApp
 10. Blazor component refreshes via WebSocket signalR connection
 ```
@@ -271,7 +271,7 @@ public async Task<IActionResult> Create(ProjectCreateDto dto)
 
 | Entity | Many-to-Many Via | Junction Table Exists? |
 |--------|-----------------|----------------------|
-| `ContentItem` ↔ `Tag` | `ContentTags` entity with composite-like key | Yes (`Id` as self-PK + FKs inline) |
+| `MetaInfo` ↔ `Tag` | `ContentTags` entity with composite-like key | Yes (`Id` as self-PK + FKs inline) |
 | `MediaAttachment` ↔ `ExternalReference` | `ExternalReference.ParentType = 1`, `ParentId` | No (inline FK on parent) |
 
 ### Indexes for Performance-Critical Queries
@@ -346,7 +346,7 @@ graph LR
 
 ### `Gadema.Core` (~86 files)
 - **Models:** 31 entity classes across domains (Authentication, Characters, Content, Narrative, Tasks, etc.)
-- **DTOs:** 36 DTO classes organized by domain (Authentication, Projects, ContentItems, DialogueTrees, Export, etc.)
+- **DTOs:** 36 DTO classes organized by domain (Authentication, Projects, MetaInfos, DialogueTrees, Export, etc.)
 - **Enums:** 19 value types defining business state machines and classification
 
 ### `Gadema.Data` (~1 file + config files)
@@ -374,7 +374,7 @@ graph LR
 | Find how EF Core maps entities to tables | See `ENTITY_CONFIGURATIONS.md` (Fluent API configs) |
 | Find the enum for a specific domain concept | See `ENUMS.md` (complete enum registry) |
 | Understand how an HTTP request flows through the system | See this document + `ARCHITECTURE_API_LAYER.md` |
-| Add a new content type | Look at `ContentTypeEnum.cs` → add value → update `ContentItem.ContentType` model |
+| Add a new content type | Look at `ContentTypeEnum.cs` → add value → update `MetaInfo.ContentType` model |
 | Add a new task state | Update `TaskStatusEnum` → ensure all services handle the new enum value |
 
 ---

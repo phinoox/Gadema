@@ -37,7 +37,7 @@ The documentation is organized into **three tiers**:
 |------|---------|-------|
 | `docs/entities/class-enum-map.json` | Complete class and enum inventory | ✅ **NEW - Technical Reference** |
 | `docs/entities/CharacterIdentity.md` | Character identity entity definition | ✅ Entity documentation |
-| `docs/entities/ContentItem.md` | Content item entity definition | ✅ Entity documentation |
+| `docs/entities/MetaInfo.md` | Content item entity definition | ✅ Entity documentation |
 | `docs/entities/SeriesProject.md` | Series project relationship documentation | ✅ Relationship patterns |
 | `docs/entities/ProjectTask.md` | ProjectTask relationship documentation | ✅ Relationship patterns |
 | `docs/entities/StoryOutline.md` | StoryOutline relationship documentation | ✅ Relationship patterns |
@@ -76,7 +76,7 @@ The documentation is organized into **three tiers**:
 1. 📘 Read `docs/README.md` (this file)
 2. 🔥 Read `docs/entities/SeriesProject.md` - understand series relationships
 3. 🔥 Read `docs/entities/CharacterIdentity.md` - learn identity system patterns
-4. 🔥 Read `docs/entities/ContentItem.md` - core content model
+4. 🔥 Read `docs/entities/MetaInfo.md` - core content model
 5. 🔥 Check `docs/entities/class-enum-map.json` - technical reference
 6. 🔥 Read `docs/SUMMARYv2.md` - high-level architecture overview
 7. 🔥 Skim `docs/CODING_GUIDELINESv2.md` - get naming conventions
@@ -153,7 +153,7 @@ All new documentation in `docs/entities/` should be consulted when working with 
 | Entity Topic | Consult This File |
 |--------------|-------------------|
 | Character identity system | `CharacterIdentity.md` |
-| Content item structure | `ContentItem.md` |
+| Content item structure | `MetaInfo.md` |
 | Series project relationships | `SeriesProject.md` |
 | Class and enum mapping | `class-enum-map.json` (technical reference) |
 
@@ -226,7 +226,7 @@ echo "=== READING ORDER ===" > /tmp/gadema-guide.txt
 echo "1. README.md (this file)" >> /tmp/gadema-guide.txt
 echo "2. entities/SeriesProject.md - understand series relationships" >> /tmp/gadema-guide.txt
 echo "3. entities/CharacterIdentity.md - learn identity patterns" >> /tmp/gadema-guide.txt
-echo "4. entities/ContentItem.md - core content model" >> /tmp/gadema-guide.txt
+echo "4. entities/MetaInfo.md - core content model" >> /tmp/gadema-guide.txt
 echo "5. SUMMARYv2.md - high-level architecture" >> /tmp/gadema-guide.txt
 echo "6. API-CONTRACTSv2.md - API structure" >> /tmp/gadema-guide.txt
 echo "7. CODING_GUIDELINESv2.md - code standards" >> /tmp/gadema-guide.txt

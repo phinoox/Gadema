@@ -61,14 +61,14 @@ GaDeMa/
 │   └── SUMMARY.md                    # Quick reference guide
 ├── src/                              # Source code root
 │   ├── Gadema.Core/                 # Shared domain models & interfaces
-│   │   ├── Models/                   # EF Core entities (e.g., ContentItem.cs)
+│   │   ├── Models/                   # EF Core entities (e.g., MetaInfo.cs)
 │   │   ├── Dtos/                     # API DTOs (e.g., CreateProjectDto.cs)
 │   │   ├── Enums/                    # Type enumerations
 │   │   └── Interfaces/               # Service contracts (e.g., IContentService.cs)
 │   ├── Gadema.Data/                 # EF Core DbContext + Migrations config
 │   ├── Gadema.Api/                  # ASP.NET Core Web API layer
-│   │   ├── Controllers/              # REST endpoints (e.g., ContentItemController.cs)
-│   │   ├── Services/                 # Business logic (e.g., ContentItemService.cs)
+│   │   ├── Controllers/              # REST endpoints (e.g., MetaInfoController.cs)
+│   │   ├── Services/                 # Business logic (e.g., MetaInfoService.cs)
 │   │   ├── Middleware/               # Auth policies, rate limiting
 │   │   └── Program.cs                # Application entry point + DI setup
 │   ├── Gadema.WebApp/               # Blazor Server App layer

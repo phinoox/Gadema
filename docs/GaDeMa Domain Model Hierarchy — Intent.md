@@ -18,13 +18,13 @@
 
 | Entity | PK | Direct Parent | Role in Hierarchy |
 |--------|----|---------------|-------------------|
-| `ContentItem` | `Id`, `ContentItemId` | Project (via `ProjectId`) | **Root content entity** — polymorphic type container. All other content entities link *through* this via FK-as-PK patterns. |
+| `MetaInfo` | `Id`, `MetaInfoId` | Project (via `ProjectId`) | **Root content entity** — polymorphic type container. All other content entities link *through* this via FK-as-PK patterns. |
 
 ### Level 2: Character Model Chain
 
 | Entity | PK | Direct Parent | Role in Hierarchy |
 |--------|----|---------------|-------------------|
-| `CharacterDetails` | `Id`, `ContentItemId` | **ContentItem** (via `ContentItemId`) | Stores character-specific data (name, level, role). *Not* directly linked to Project — must go through ContentItem. |
+| `CharacterDetails` | `Id`, `MetaInfoId` | **MetaInfo** (via `MetaInfoId`) | Stores character-specific data (name, level, role). *Not* directly linked to Project — must go through MetaInfo. |
 | `CharacterBackground` | `Id` | **CharacterDetails** (via `CharacterDetailsId`) | Descriptive background entries for a specific character instance. Links to the Details row that represents the character. |
 
 ### Level 3: Identity & Attribute System
@@ -33,17 +33,17 @@
 |--------|----|---------------|-------------------|
 | `IdentityDefinition` | `Id`, `ProjectId` | Project | Defines *types* of identity (Race, Faction, Alignment, Guild) — reusable across characters |
 | `IdentityValue` | `Id`, `ProjectTemplateId` | ProjectTemplate (via `ProjectTemplateId`) | Selectable options for an identity type (e.g., "Human", "Elf") scoped to a template. *Note: This links to ProjectTemplate, not IdentityDefinition — verify intended hierarchy.* |
-| `AttributeDefinition` | `Id`, `ContentItemId` | **ContentItem** | Defines what attributes exist (Health, Strength) for a content item type. |
-| `ClassTemplate` | `Id`, `ContentItemId` | **ContentItem** | Class archetype definition tied to a specific content item. |
-| `ClassTemplateAttribute` | `Id` | **ClassTemplate** (via `ClassTemplateId`) | Per-class override of attribute formulas. *Correctly chains through ClassTemplate, not directly to ContentItem.* ✅ |
+| `AttributeDefinition` | `Id`, `MetaInfoId` | **MetaInfo** | Defines what attributes exist (Health, Strength) for a content item type. |
+| `ClassTemplate` | `Id`, `MetaInfoId` | **MetaInfo** | Class archetype definition tied to a specific content item. |
+| `ClassTemplateAttribute` | `Id` | **ClassTemplate** (via `ClassTemplateId`) | Per-class override of attribute formulas. *Correctly chains through ClassTemplate, not directly to MetaInfo.* ✅ |
 
 ### Level 4: Narrative Structure Chain
 
 | Entity | PK | Direct Parent | Role in Hierarchy |
 |--------|----|---------------|-------------------|
-| `StorySequence` | `Id`, `ContentItemId` | Project (via `ProjectId`) | Chapter/act-level container. Optional hierarchical parent via `ParentSequenceId`. |
+| `StorySequence` | `Id`, `MetaInfoId` | Project (via `ProjectId`) | Chapter/act-level container. Optional hierarchical parent via `ParentSequenceId`. |
 | `StoryOutline` | `Id` | **StorySequence** (via `SequenceId`) | Section-level breakdown within a sequence. |
-| `StoryBeat` | `Id`, `ContentItemId` | **StorySequence** (via `SequenceId`) | Atomic scene unit — the smallest narrative element. |
+| `StoryBeat` | `Id`, `MetaInfoId` | **StorySequence** (via `SequenceId`) | Atomic scene unit — the smallest narrative element. |
 
 ### Level 5: Dialogue & Branching Narrative
 
@@ -56,16 +56,16 @@
 
 | Entity | PK | Direct Parent | Role in Hierarchy |
 |--------|----|---------------|-------------------|
-| `ProjectTask` | `Id`, `ContentItemId` (FK-as-PK column) | Project (via `ProjectId`) + Optional ContentItem link | Flat task model. *Note: `ContentItemId` is a FK column but also used as PK identifier in junction tables — this is the FK-as-PK pattern.* |
-| `Comment` | `Id`, `ContentItemId` (FK-as-PK) | **ContentItem** | Comments on content items via junction table pattern. |
+| `ProjectTask` | `Id`, `MetaInfoId` (FK-as-PK column) | Project (via `ProjectId`) + Optional MetaInfo link | Flat task model. *Note: `MetaInfoId` is a FK column but also used as PK identifier in junction tables — this is the FK-as-PK pattern.* |
+| `Comment` | `Id`, `MetaInfoId` (FK-as-PK) | **MetaInfo** | Comments on content items via junction table pattern. |
 
 ### Level 7: Media, References & Versioning
 
 | Entity | PK | Direct Parent | Role in Hierarchy |
 |--------|----|---------------|-------------------|
-| `MediaAttachment` | `Id`, `ContentItemId` (FK-as-PK) | **ContentItem** | File attachments. |
-| `ExternalReference` | `Id` | ContentItem, Task, or Comment (via `ParentType`/`ParentId`) | External links — polymorphic parent via integer discriminator. |
-| `ContentVersionLog` | `Id`, `ContentItemId` (FK-as-PK) | **ContentItem** | Audit trail for content changes. |
+| `MediaAttachment` | `Id`, `MetaInfoId` (FK-as-PK) | **MetaInfo** | File attachments. |
+| `ExternalReference` | `Id` | MetaInfo, Task, or Comment (via `ParentType`/`ParentId`) | External links — polymorphic parent via integer discriminator. |
+| `ContentVersionLog` | `Id`, `MetaInfoId` (FK-as-PK) | **MetaInfo** | Audit trail for content changes. |
 
 ---
 
@@ -81,7 +81,7 @@ graph TB
     end
     
     subgraph "Content Model (Polymorphic Root)"
-        C[ContentItem <br/><i>ContentType enum determines type</i>]
+        C[MetaInfo <br/><i>ContentType enum determines type</i>]
         
         CD[CharacterDetails<br/>name, level, role, status]
         CB[CharacterBackground<br/>narrative background entries]
@@ -139,15 +139,15 @@ graph TB
 Go through each entity and verify:
 
 ### ✅ Correct Chain (FK points to immediate parent)
-- [ ] `CharacterBackground` → `CharacterDetailsId` → `ContentItem.ContentItemId` ✅ **Correct** — goes through Details first, not directly to ContentItem.
-- [ ] `ClassTemplateAttribute` → `ClassTemplateId` → `ContentItem` ✅ **Correct** — chains through ClassTemplate.
+- [ ] `CharacterBackground` → `CharacterDetailsId` → `MetaInfo.MetaInfoId` ✅ **Correct** — goes through Details first, not directly to MetaInfo.
+- [ ] `ClassTemplateAttribute` → `ClassTemplateId` → `MetaInfo` ✅ **Correct** — chains through ClassTemplate.
 
 ### ⚠️ Potential Hierarchy Breaks (needs review)
 
 | Entity | FK Points To | Intended Parent? | Issue? |
 |--------|-------------|-----------------|--------|
 | `IdentityValue` | `ProjectTemplateId` → ProjectTemplate | IdentityDefinition? | **BREAK** — skips the IdentityDefinition layer. Should it chain through Definition first? |
-| `ExternalReference` | `ParentType` (int) + `ParentId` (Guid) | ContentItem, Task, or Comment | Polymorphic — acceptable if ParentType discriminator is used in queries |
+| `ExternalReference` | `ParentType` (int) + `ParentId` (Guid) | MetaInfo, Task, or Comment | Polymorphic — acceptable if ParentType discriminator is used in queries |
 | `StoryBeat` | `SequenceId` → StorySequence | ✅ Correct |
 | `StoryOutline` | `SequenceId` → StorySequence | ✅ Correct |
 
@@ -156,7 +156,7 @@ Go through each entity and verify:
 1. **`IdentityValue` links to `ProjectTemplate`, not `IdentityDefinition`**  
    - *Question:* Is IdentityDefinition meant to be a reusable type definition that gets instantiated via ProjectTemplate? If so, the hierarchy is:
      ```
-     ContentItem (type=Character) → AttributeDefinition/ClassTemplate → CharacterDetails
+     MetaInfo (type=Character) → AttributeDefinition/ClassTemplate → CharacterDetails
      IdentityDefinition (reusable type) ←→ IdentityValue (scoped to ProjectTemplate)
      ```
    - This seems intentional but **not a strict parent-child chain**.
@@ -164,8 +164,8 @@ Go through each entity and verify:
 2. **`StoryOutline` vs `StoryBeat`**  
    - Both reference `SequenceId`. Is StoryOutline an intermediate layer between Sequence and Beat? Or are they parallel siblings under Sequence? The diagram shows them as both children, which suggests they're siblings — not a deep hierarchy.
 
-3. **`ProjectTask.ContentItemId` is nullable**  
-   - A task can exist *without* being tied to any ContentItem. This breaks the "everything chains through ContentItem" pattern. Is that intentional? (Seems yes — tasks are general work items, not all need content linkage.)
+3. **`ProjectTask.MetaInfoId` is nullable**  
+   - A task can exist *without* being tied to any MetaInfo. This breaks the "everything chains through MetaInfo" pattern. Is that intentional? (Seems yes — tasks are general work items, not all need content linkage.)
 
 ---
 

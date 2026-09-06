@@ -34,16 +34,16 @@ src/
 
 #### **Architecture:**
 - Always use `.Include()` for relationship queries to prevent N+1 problem
-- Use `.ThenInclude()` for nested relationships (e.g., ContentItem → MediaAttachments)
+- Use `.ThenInclude()` for nested relationships (e.g., MetaInfo → MediaAttachments)
 - Never query navigation properties separately in loops
 
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Eager loading to avoid N+1 queries
-public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<MetaInfo> GetMetaInfoWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // Single query with eager loading for all relationships
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.MediaAttachments)
         .Include(ci => ci.ContentTags)
             .ThenInclude(ct => ct.Tag)  // Include junction + tag data
@@ -51,24 +51,24 @@ public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewMode
 }
 
 // ❌ INCORRECT - N+1 problem (one query per item's attachments)
-public async Task<List<ContentItem>> GetContentItemsAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetMetaInfosAsync(Guid projectId)
 {
     // First: Get all items
-    var items = await _context.ContentItems.ToListAsync();
+    var items = await _context.MetaInfos.ToListAsync();
     
     foreach (var item in items)
     {
         // Second: Query attachments separately for each item (N+1 problem!)
         var attachments = await _context.MediaAttachments
-            .Where(a => a.ContentItemId == item.Id)
+            .Where(a => a.MetaInfoId == item.Id)
             .ToListAsync();  // N+1 query!
     }
 }
 
 // ✅ CORRECT - Fixed version with eager loading
-public async Task<List<ContentItem>> GetContentItemsWithAttachmentsAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetMetaInfosWithAttachmentsAsync(Guid projectId)
 {
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Include(ci => ci.MediaAttachments)
         .Where(ci => ci.ProjectId == projectId)
         .ToListAsync();  // Single query!
@@ -92,19 +92,19 @@ public async Task<List<ContentItem>> GetContentItemsWithAttachmentsAsync(Guid pr
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Paginated query with default size
-public async Task<PaginationResult<ContentItemDto>> GetContentItemsAsync(Guid projectId, int page = 1, int pageSize = 20)
+public async Task<PaginationResult<MetaInfoDto>> GetMetaInfosAsync(Guid projectId, int page = 1, int pageSize = 20)
 {
     // Validate page and pageSize parameters
     if (page < 1) page = 1;
     if (pageSize < 1 || pageSize > 100) pageSize = 20;
     
-    return new PaginationResult<ContentItemDto>
+    return new PaginationResult<MetaInfoDto>
     {
-        Data = await _context.ContentItems
+        Data = await _context.MetaInfos
             .Where(c => c.ProjectId == projectId)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(c => new ContentItemDto 
+            .Select(c => new MetaInfoDto 
             {
                 Id = c.Id,
                 Title = c.Title,
@@ -112,7 +112,7 @@ public async Task<PaginationResult<ContentItemDto>> GetContentItemsAsync(Guid pr
                 Published = c.Published
             })
             .ToListAsync(),
-        TotalItems = await _context.ContentItems.CountAsync(c => c.ProjectId == projectId),
+        TotalItems = await _context.MetaInfos.CountAsync(c => c.ProjectId == projectId),
         CurrentPage = page,
         PageSize = pageSize,
         TotalPages = (int)Math.Ceiling(TotalItems / (double)pageSize)
@@ -120,9 +120,9 @@ public async Task<PaginationResult<ContentItemDto>> GetContentItemsAsync(Guid pr
 }
 
 // ✅ CORRECT - Efficient query for total count (separate from data retrieval)
-public async Task<int> GetContentItemCountAsync(Guid projectId)
+public async Task<int> GetMetaInfoCountAsync(Guid projectId)
 {
-    return await _context.ContentItems.CountAsync(c => c.ProjectId == projectId);
+    return await _context.MetaInfos.CountAsync(c => c.ProjectId == projectId);
 }
 ```
 
@@ -144,10 +144,10 @@ public async Task<int> GetContentItemCountAsync(Guid projectId)
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Filter before including relationships
-public async Task<List<ContentItem>> GetPublishedCharactersAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetPublishedCharactersAsync(Guid projectId)
 {
     // First: Filter by Published status and ContentType
-    var publishedItems = await _context.ContentItems
+    var publishedItems = await _context.MetaInfos
         .Where(c => c.Published && c.ContentType == ContentTypeEnum.Character)
         
         // Then: Eager load relationships only for filtered items
@@ -159,9 +159,9 @@ public async Task<List<ContentItem>> GetPublishedCharactersAsync(Guid projectId)
 }
 
 // ❌ INCORRECT - Include before filtering (wasted queries)
-public async Task<List<ContentItem>> GetPublishedCharactersAsync(Guid projectId)
+public async Task<List<MetaInfo>> GetPublishedCharactersAsync(Guid projectId)
 {
-    var allItems = await _context.ContentItems
+    var allItems = await _context.MetaInfos
         .Include(c => c.MediaAttachments)
             .ThenInclude(m => m.StoragePath)  // Includes relationships for ALL items first
         .Where(c => c.Published && c.ContentType == ContentTypeEnum.Character)
@@ -169,11 +169,11 @@ public async Task<List<ContentItem>> GetPublishedCharactersAsync(Guid projectId)
 }
 
 // ✅ CORRECT - Use projection instead of navigation properties
-public async Task<List<ContentItemDto>> GetPublishedCharactersAsync(Guid projectId)
+public async Task<List<MetaInfoDto>> GetPublishedCharactersAsync(Guid projectId)
 {
-    return await _context.ContentItems
+    return await _context.MetaInfos
         .Where(c => c.Published && c.ContentType == ContentTypeEnum.Character)
-        .Select(c => new ContentItemDto
+        .Select(c => new MetaInfoDto
         {
             Id = c.Id,
             Title = c.Title,
@@ -196,7 +196,7 @@ public async Task<List<ContentItemDto>> GetPublishedCharactersAsync(Guid project
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Fluent API configuration with indexes
-modelBuilder.Entity<ContentItem>(entity =>
+modelBuilder.Entity<MetaInfo>(entity =>
 {
     entity.HasKey(e => e.Id);
     
@@ -217,7 +217,7 @@ modelBuilder.Entity<ContentItem>(entity =>
 });
 
 // Usage Example: Fast filtering by multiple criteria
-var characters = await _context.ContentItems
+var characters = await _context.MetaInfos
     .Where(c => c.Slug.Contains("dragon"))  // Uses index efficiently
     .Include(c => c.MediaAttachments)
     .ToListAsync();
@@ -268,7 +268,7 @@ public class ContentCacheService
     }
     
     // ✅ CORRECT - Different TTL based on content type
-    public async Task<ContentItemDto> GetPublishedContentAsync(Guid id)
+    public async Task<MetaInfoDto> GetPublishedContentAsync(Guid id)
     {
         var cacheKey = $"published-content:{id}";
         
@@ -277,16 +277,16 @@ public class ContentCacheService
             // Published content: 1 hour TTL (less frequent changes)
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
             
-            var contentItem = await _context.ContentItems.FindAsync(id);
+            var MetaInfo = await _context.MetaInfos.FindAsync(id);
             
-            if (contentItem != null && contentItem.Published)
+            if (MetaInfo != null && MetaInfo.Published)
             {
                 // Return published item with clean view mode
-                return new ContentItemDto
+                return new MetaInfoDto
                 {
-                    Id = contentItem.Id,
-                    Title = contentItem.Title,
-                    Published = contentItem.Published,
+                    Id = MetaInfo.Id,
+                    Title = MetaInfo.Title,
+                    Published = MetaInfo.Published,
                     ViewMode = "Presentation"
                 };
             }
@@ -341,13 +341,13 @@ public class ContentCacheExpirationService
     private const int PublishedContentTTLHours = 1;     // Less frequent changes
     private const int StaticDataTTLHours = 24;         // Minimal changes
     
-    public TimeSpan GetCacheExpiration(ContentItemType contentType)
+    public TimeSpan GetCacheExpiration(MetaInfoType contentType)
     {
         return contentType switch
         {
-            ContentItemType.Draft => TimeSpan.FromMinutes(DraftContentTTLMinutes),
-            ContentItemType.Published => TimeSpan.FromHours(PublishedContentTTLHours),
-            ContentItemType.Static => TimeSpan.FromHours(StaticDataTTLHours),
+            MetaInfoType.Draft => TimeSpan.FromMinutes(DraftContentTTLMinutes),
+            MetaInfoType.Published => TimeSpan.FromHours(PublishedContentTTLHours),
+            MetaInfoType.Static => TimeSpan.FromHours(StaticDataTTLHours),
             _ => TimeSpan.FromMinutes(DraftContentTTLMinutes)  // Default: short TTL
         };
     }
@@ -388,7 +388,7 @@ public class RedisCacheConfigurationService
             .UseCache(expiration: TimeSpan.FromMinutes(5));
         
         // Published content: 1 hour TTL (less frequent changes)
-        context.ContentItems
+        context.MetaInfos
             .Where(c => c.Published)
             .Include(c => c.MediaAttachments)
             .AsQueryable()
@@ -411,7 +411,7 @@ public class RedisCacheConfigurationService
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Stream large file uploads
-public async Task UploadLargeFileAsync(Guid contentItemId, IFormFile file)
+public async Task UploadLargeFileAsync(Guid MetaInfoId, IFormFile file)
 {
     // Validate file size BEFORE processing (prevent OOM)
     const int MaxFileSize = 100 * 1024 * 1024;  // 100MB in bytes
@@ -432,7 +432,7 @@ public async Task UploadLargeFileAsync(Guid contentItemId, IFormFile file)
 }
 
 // ✅ CORRECT - File upload with MIME type validation
-public async Task UploadMediaFileAsync(Guid contentItemId, IFormFile file)
+public async Task UploadMediaFileAsync(Guid MetaInfoId, IFormFile file)
 {
     // Validate MIME type BEFORE processing file
     var allowedMimeTypes = new[] 
@@ -499,7 +499,7 @@ public class FileUploadSecurityMiddleware : IMiddleware
 #### **Implementation Pattern:**
 ```csharp
 // ✅ CORRECT - Optimized GET operation with caching
-public async Task<IActionResult> GetContentItemAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // Use Redis cache for published content
     if (viewMode == ViewModeEnum.Presentation && await IsPublishedContent(id))
@@ -509,9 +509,9 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, ViewModeEnum viewM
             // Set appropriate expiration for published content
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
             
-            var item = await _context.ContentItems.FindAsync(id);
+            var item = await _context.MetaInfos.FindAsync(id);
             
-            return new ContentItemDto 
+            return new MetaInfoDto 
             {
                 Id = item.Id,
                 Title = item.Title,
@@ -523,12 +523,12 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, ViewModeEnum viewM
     }
     
     // Fallback to database for non-cached or draft content
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     if (item == null)
         return NotFound();
     
-    return Ok(new ContentItemDto 
+    return Ok(new MetaInfoDto 
     {
         Id = item.Id,
         Title = item.Title,
@@ -539,14 +539,14 @@ public async Task<IActionResult> GetContentItemAsync(Guid id, ViewModeEnum viewM
 
 // ✅ CORRECT - Optimized POST operation with validation
 [HttpPost]
-public async Task<IActionResult> CreateContentAsync([FromBody] CreateContentItemDto dto)
+public async Task<IActionResult> CreateContentAsync([FromBody] CreateMetaInfoDto dto)
 {
     // Validate DTO first (fail fast)
     if (!ModelState.IsValid)
         return BadRequest(ModelState);
     
     // Create content item (minimal processing)
-    var item = new ContentItem 
+    var item = new MetaInfo 
     {
         ProjectId = dto.ProjectId,
         ContentType = dto.ContentType,
@@ -555,7 +555,7 @@ public async Task<IActionResult> CreateContentAsync([FromBody] CreateContentItem
         CreatedAt = DateTime.UtcNow
     };
     
-    await _context.ContentItems.AddAsync(item);
+    await _context.MetaInfos.AddAsync(item);
     await _context.SaveChangesAsync();
     
     // Return created item with minimal overhead
@@ -570,13 +570,13 @@ public async Task<IActionResult> CreateContentAsync([FromBody] CreateContentItem
 [HttpDelete("{id}")]
 public async Task<IActionResult> DeleteContentAsync(Guid id)
 {
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     if (item == null)
         return NotFound();
     
     // Minimal processing: just delete and save changes
-    _context.ContentItems.Remove(item);
+    _context.MetaInfos.Remove(item);
     await _context.SaveChangesAsync();  // Fastest possible operation!
     
     return Ok(new { success = true, message = "Content deleted successfully" });
@@ -778,7 +778,7 @@ public class PerformanceMetricsService
     public void LogApiResponseTime(ActionContext context, TimeSpan responseTime)
     {
         // Monitor API response time (<500ms target for GET, <2s for POST)
-        if (context.ActionName == "GetContentItemAsync")
+        if (context.ActionName == "GetMetaInfoAsync")
         {
             var latency = responseTime.TotalMilliseconds;
             

@@ -30,7 +30,7 @@ Gadema.FDD/
 │   │   │   ├── Gadema.Features.ContentManagement.csproj          # Feature project file
 │   │   │   │
 │   │   │   ├── Domain/                           # Pure domain, NO framework deps
-│   │   │   │   ├── ContentItem.cs                # Core entity (Aggregate Root)
+│   │   │   │   ├── MetaInfo.cs                # Core entity (Aggregate Root)
 │   │   │   │   ├── ContentType.cs               # Domain enum: Character, World...
 │   │   │   │   ├── ContentViewMode.cs           # Draft/Review/Published
 │   │   │   │   ├── Project.cs                    # Domain model for Projects
@@ -40,43 +40,43 @@ Gadema.FDD/
 │   │   │   ├── Application/                      # Business logic & use cases
 │   │   │   │   ├── Services/
 │   │   │   │   │   ├── IContentService.cs       # Interface contract
-│   │   │   │   │   ├── ContentItemService.cs    # Implementation (business rules only)
+│   │   │   │   │   ├── MetaInfoService.cs    # Implementation (business rules only)
 │   │   │   │   │   ├── IProjectService.cs
 │   │   │   │   │   └── ProjectService.cs
 │   │   │   │   └── Commands/                     # CQRS commands
-│   │   │   │       ├── CreateContentItemCommand.cs
-│   │   │   │       ├── UpdateContentItemCommand.cs
-│   │   │   │       ├── PublishContentItemCommand.cs
+│   │   │   │       ├── CreateMetaInfoCommand.cs
+│   │   │   │       ├── UpdateMetaInfoCommand.cs
+│   │   │   │       ├── PublishMetaInfoCommand.cs
 │   │   │   │       └── RollbackToVersionCommand.cs
 │   │   │   │
 │   │   │   ├── DomainEvents/                     # Events as first-class citizens
-│   │   │   │   ├── ContentItemUpdatedEvent.cs   # Carries data: old/new values
-│   │   │   │   ├── ContentItemPublishedEvent.cs
+│   │   │   │   ├── MetaInfoUpdatedEvent.cs   # Carries data: old/new values
+│   │   │   │   ├── MetaInfoPublishedEvent.cs
 │   │   │   │   ├── TaskCompletedEvent.cs        # When a task is marked done
 │   │   │   │   └── ProjectCreatedEvent.cs       # Domain event, not application event
 │   │   │   │
 │   │   │   ├── Infrastructure/                   # Data access & persistence
 │   │   │   │   ├── Repositories/
 │   │   │   │   │   ├── IRepository{T}.cs        # Generic repository interface
-│   │   │   │   │   └── ContentItemRepository.cs # EF Core-backed implementation
+│   │   │   │   │   └── MetaInfoRepository.cs # EF Core-backed implementation
 │   │   │   │   ├── Migrations/                   # DB migrations
 │   │   │   │   │   ├── 001_initial.sql          # First migration script
 │   │   │   │   │   └── 002_add_tags_table.sql  # Subsequent migrations
-│   │   │   │   └── ContentItemEntityTypeConfiguration.cs # Fluent API config
+│   │   │   │   └── MetaInfoEntityTypeConfiguration.cs # Fluent API config
 │   │   │   │
 │   │   │   ├── Api/                              # HTTP layer (API only)
 │   │   │   │   ├── Controllers/
-│   │   │   │   │   ├── ContentItemsController.cs    [ApiController] [Route("api/v1/content/items")]
+│   │   │   │   │   ├── MetaInfosController.cs    [ApiController] [Route("api/v1/content/items")]
 │   │   │   │   │   └── ProjectsController.cs        [ApiController] [Route("api/v1/projects")]
 │   │   │   │   └── Models/                         # API-specific DTOs (not in Domain)
-│   │   │   │       ├── ContentItemDto.cs           # Response model
-│   │   │   │       └── CreateContentItemRequest.cs # Request DTO with validation attributes
+│   │   │   │       ├── MetaInfoDto.cs           # Response model
+│   │   │   │       └── CreateMetaInfoRequest.cs # Request DTO with validation attributes
 │   │   │   │
 │   │   │   └── WebApp/                           # Blazor Server UI (feature-specific pages)
 │   │   │       ├── Pages/
 │   │   │       │   ├── Content.razor              # List view of content items
 │   │   │       │   ├── CreateContentDialog.razor  # Modal form for creation
-│   │   │       │   └── ViewContentItemDialog.razor# Preview/presentation mode
+│   │   │       │   └── ViewMetaInfoDialog.razor# Preview/presentation mode
 │   │   │       └── Components/
 │   │   │           ├── ContentCard.razor          # Reusable card component
 │   │   │           └── ContentTypeBadge.razor     # Type badge renderer
@@ -160,8 +160,8 @@ Gadema.FDD/
 └── tests/                                # FEATURE-DRIVEN TESTS (one per feature)
     ├── Gadema.Tests.ContentManagement.csproj
     │   ├── Features/ContentManagement.UnitTests.cs             # Unit tests for domain logic
-    │   ├── Application/Services/ContentItemServiceSpecs.cs     # BDD-style integration tests
-    │   └── Api/Controllers/ContentItemsControllerSpecs.cs      # API contract tests
+    │   ├── Application/Services/MetaInfoServiceSpecs.cs     # BDD-style integration tests
+    │   └── Api/Controllers/MetaInfosControllerSpecs.cs      # API contract tests
     │
     ├── Gadema.Tests.ProjectManagement.csproj
     │   ├── Features/ProjectManagement.UnitTests.cs
@@ -179,9 +179,9 @@ Gadema.FDD/
 | **Feature as a Folder** | Each feature has its own directory with all layers inside | `Features/ContentManagement/Domain/`, `/Application/`, `/Api/`, `/WebApp/` |
 | **No Shared Business Logic** | Features never reference each other's implementations | `ContentManagement` does NOT import `ProjectManagement` |
 | **Shared Infrastructure is Separate** | DB context, migrations live in a shared project | `Infrastructure.Database/GameDbContext.cs` references NO feature projects |
-| **Domain First** | Domain layer has NO dependencies on Application/Infrastructure | `ContentItem.cs` uses no EF Core or ASP.NET types |
-| **CQRS within Features** | Commands and Queries are separate, each with its own handler | `CreateContentItemCommandHandler` vs `GetAsync` method |
-| **Domain Events as First-Class Citizens** | Events carry data and are published by domain entities | `ContentItemUpdatedEvent` has `NewTitle`, `OldTitle` properties |
+| **Domain First** | Domain layer has NO dependencies on Application/Infrastructure | `MetaInfo.cs` uses no EF Core or ASP.NET types |
+| **CQRS within Features** | Commands and Queries are separate, each with its own handler | `CreateMetaInfoCommandHandler` vs `GetAsync` method |
+| **Domain Events as First-Class Citizens** | Events carry data and are published by domain entities | `MetaInfoUpdatedEvent` has `NewTitle`, `OldTitle` properties |
 | **Tests Per Feature** | Each feature gets its own test project | `Gadema.Tests.ContentManagement.csproj` lives in `tests/` |
 
 ---
@@ -192,12 +192,12 @@ Gadema.FDD/
 LAYERED (Before):
 ┌─────────────────────────────────────────────────┐
 │  Gadema.Core        │  All entities mixed       │
-│  └── ContentItem    │  no folder by feature     │
+│  └── MetaInfo    │  no folder by feature     │
 │  └── Project        │                           │
 │  └── DialogueBranch │                           │
 ├─────────────────────────────────────────────────┤
 │  Gadema.Api         │  All controllers          │
-│  └── Controllers/ContentItemsController.cs      │
+│  └── Controllers/MetaInfosController.cs      │
 │  └── Controllers/ProjectsController.cs          │
 ├─────────────────────────────────────────────────┤
 │  Gadema.WebApp      │  All pages mixed          │
@@ -208,7 +208,7 @@ LAYERED (Before):
 FDD (After):
 ┌─────────────────────────────────────────────────┐
 │  Features/ContentManagement/                    │
-│    ├── Domain/ContentItem.cs   ← Self-contained │
+│    ├── Domain/MetaInfo.cs   ← Self-contained │
 │    ├── Application/...         │                 │
 │    └── WebApp/Pages/Content.razor              │
 ├─────────────────────────────────────────────────┤

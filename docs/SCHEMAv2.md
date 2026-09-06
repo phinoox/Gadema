@@ -22,7 +22,7 @@ This document defines the complete database schema for GaDeMa v0.1, including:
 
 ```bash
 src/
-├── Gadema.Core/Models/          # Entity classes (ContentItem.cs, User.cs, etc.)
+├── Gadema.Core/Models/          # Entity classes (MetaInfo.cs, User.cs, etc.)
 │   └── Enums/                    # All type enumerations
 │
 ├── Gadema.Core/Configurations/  # Fluent API configurations per domain ⭐ NEW!
@@ -32,7 +32,7 @@ src/
 │   ├── Projects/
 │   │   └── ProjectConfiguration.cs
 │   ├── Content/
-│   │   ├── ContentItemConfiguration.cs
+│   │   ├── MetaInfoConfiguration.cs
 │   │   ├── StoryOutlineConfiguration.cs
 │   │   ├── DialogueBranchConfiguration.cs
 │   │   ├── ExternalReferenceConfiguration.cs
@@ -304,8 +304,8 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
             .HasForeignKey(p => p.OwnerId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
         
-        // Navigation property: ContentItems (Cascade delete)
-        builder.HasMany(p => p.ContentItems)
+        // Navigation property: MetaInfos (Cascade delete)
+        builder.HasMany(p => p.MetaInfos)
             .WithOne(ci => ci.Project)
             .HasForeignKey(ci => ci.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete content when project deleted
@@ -317,9 +317,9 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
 
 ## **📂 Section 3: Content Entities (9+ tables)**
 
-### **ContentItem Entity**
+### **MetaInfo Entity**
 ```csharp
-public class ContentItem
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -364,10 +364,10 @@ public class ContentItem
 }
 
 // ✅ NEW - Configuration file per domain
-// src/Gadema.Core/Configurations/Content/ContentItemConfiguration.cs
-public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
+// src/Gadema.Core/Configurations/Content/MetaInfoConfiguration.cs
+public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo>
 {
-    public void Configure(EntityTypeBuilder<ContentItem> builder)
+    public void Configure(EntityTypeBuilder<MetaInfo> builder)
     {
         builder.HasKey(e => e.Id);
         
@@ -379,26 +379,26 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
         
         // Navigation property: Project (Cascade delete)
         builder.HasOne(ci => ci.Project)
-            .WithMany(p => p.ContentItems)
+            .WithMany(p => p.MetaInfos)
             .HasForeignKey(ci => ci.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete content when project deleted
         
         // Navigation property: MediaAttachments (Cascade delete)
         builder.HasMany(ci => ci.MediaAttachments)
-            .WithOne(m => m.ContentItem)
-            .HasForeignKey(m => m.ContentItemId)
+            .WithOne(m => m.MetaInfo)
+            .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete attachments when content deleted
         
         // Navigation property: ContentTags (SetNull to preserve tags)
         builder.HasMany(ci => ci.ContentTags)
-            .WithOne(ct => ct.ContentItem)
-            .HasForeignKey(ct => ct.ContentItemId)
+            .WithOne(ct => ct.MetaInfo)
+            .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);  // Keep tag entity alive when content deleted
         
         // Navigation property: ReviewStatus (SetNull to preserve review history)
         builder.HasOne(ci => ci.ReviewStatus)
             .WithMany()
-            .HasForeignKey(rs => rs.ContentItemId)
+            .HasForeignKey(rs => rs.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);  // Preserve review history when content updated
     }
 }
@@ -469,7 +469,7 @@ public class StorySequenceEntityTypeConfiguration : IEntityTypeConfiguration<Sto
 ```csharp
 public class CharacterDetails
 {
-    public Guid ContentItemId { get; set; }  // FK as Primary Key
+    public Guid MetaInfoId { get; set; }  // FK as Primary Key
     
     [Required, Display(Name = "Character Name")]
     public string Name { get; set; } = "";
@@ -488,12 +488,12 @@ public class CharacterDetailsEntityTypeConfiguration : IEntityTypeConfiguration<
     public void Configure(EntityTypeBuilder<CharacterDetails> builder)
     {
         // Primary key: FK as PK pattern (FK = content item ID)
-        builder.HasKey(e => e.ContentItemId);
+        builder.HasKey(e => e.MetaInfoId);
         
-        // Navigation property: ContentItem (Cascade delete)
+        // Navigation property: MetaInfo (Cascade delete)
         builder.HasOne(cd => cd)  // Self-referencing FK navigation
             .WithMany(ci => ci.CharacterDetails)
-            .HasForeignKey(e => e.ContentItemId)
+            .HasForeignKey(e => e.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete character details when content deleted
         
         // Properties configuration
@@ -607,7 +607,7 @@ public class ProjectTask
     [Required]
     public Guid ProjectId { get; set; }
     
-    public Guid? ContentItemId { get; set; }  // Nullable FK to ContentItem
+    public Guid? MetaInfoId { get; set; }  // Nullable FK to MetaInfo
     
     [MaxLength(256), Required]
     public string TaskTitle { get; set; } = "";
@@ -648,10 +648,10 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
         builder.HasIndex(e => e.Difficulty);       // Filter by difficulty level
         builder.HasIndex(e => e.IsQuickWin);       // ADHD-friendly filter for quick wins
         
-        // Navigation property: ContentItem (Optional FK)
-        builder.HasOne(pt => pt.ContentItem)  // ContentItemId is nullable
+        // Navigation property: MetaInfo (Optional FK)
+        builder.HasOne(pt => pt.MetaInfo)  // MetaInfoId is nullable
             .WithMany(ci => ci.Tasks)  // Junction table relationship or direct FK if needed
-            .HasForeignKey(pt => pt.ContentItemId)
+            .HasForeignKey(pt => pt.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, allow task history
         
         // Properties configuration
@@ -682,7 +682,7 @@ public class ActivityLog
     
     public Guid? RelatedEntityId { get; set; }  // Nullable FK to related entity
     
-    public int RelatedEntityType { get; set; }  // Enum: ContentItem, Task, etc.
+    public int RelatedEntityType { get; set; }  // Enum: MetaInfo, Task, etc.
     
     [MaxLength(512)]
     public string? Title { get; set; }
@@ -726,7 +726,7 @@ public class ContentSnapshot
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public int SnapshotVersion { get; set; }
     
@@ -750,7 +750,7 @@ public class ContentSnapshotEntityTypeConfiguration : IEntityTypeConfiguration<C
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ContentItemId);
+        builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.SnapshotVersion);
         builder.HasIndex(e => e.SnapshotType);
         builder.HasIndex(e => e.CreatedByUserId);
@@ -907,7 +907,7 @@ public class EngineExportConfigEntityTypeConfiguration : IEntityTypeConfiguratio
 | :--- | :--- | :--- | :--- |
 | **Authentication/** | 2 | User, TeamMember | Base auth models + team membership |
 | **Projects/** | 1 | Project | Core project management + polymorphic ownership |
-| **Content/** | 8+ | ContentItem, StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags | All core content entities |
+| **Content/** | 8+ | MetaInfo, StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags | All core content entities |
 | **Narrative/** | 3 | StorySequence, StoryBeat, LoreEntry | Chapter structure + plot beats |
 | **Characters/** | 2 | CharacterDetails, CharacterBackground | Character attributes + backstory (FK as PK) |
 | **Attributes/** | 5 | AttributeSet, AttributeDefinition, ClassTemplate, ClassTemplateAttribute, CharacterAttributes | RPG attribute systems |
@@ -929,7 +929,7 @@ public class EngineExportConfigEntityTypeConfiguration : IEntityTypeConfiguratio
 | Category | Tables Count | Key Features | Configuration Files |
 | :--- | :--- | :--- | :--- |
 | **Authentication & Teams** | 3 | User, Team, TeamMember + Project | 3 config files ✅ |
-| **Content & Media** | 9+ | ContentItem(+ViewMode), StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags | 8+ config files ✅ |
+| **Content & Media** | 9+ | MetaInfo(+ViewMode), StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags | 8+ config files ✅ |
 | **Narrative Structure** | 3 | StorySequence, StoryBeat, LoreEntry | 3 config files ✅ |
 | **Characters** | 2 | CharacterDetails/Background | 2 config files ✅ |
 | **Attributes & Scaling** | 5 | AttributeSet, AttributeDefinition, ClassTemplate, ClassTemplateAttribute, CharacterAttributes | 5 config files ✅ |
@@ -968,7 +968,7 @@ public class GameDbContext : DbContext
     public DbSet<TeamMember> TeamMembers { get; set; }
     
     public DbSet<Project> Projects { get; set; }
-    public DbSet<ContentItem> ContentItems { get; set; }
+    public DbSet<MetaInfo> MetaInfos { get; set; }
     public DbSet<StoryOutline> StoryOutlines { get; set; }
     public DbSet<DialogueBranch> DialogueBranches { get; set; }
     public DbSet<DialogueNode> DialogueNodes { get; set; }

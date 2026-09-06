@@ -21,7 +21,7 @@ This document contains the complete database schema definition for GaDeMa v0.1, 
 
 ```bash
 src/
-├── Gadema.Core/Models/       # Entity classes (ContentItem.cs, User.cs, etc.)
+├── Gadema.Core/Models/       # Entity classes (MetaInfo.cs, User.cs, etc.)
 ├── Gadema.Data/              # DbContext + migrations config
 └── docs/SCHEMA.md             # This documentation file
 ```
@@ -158,10 +158,10 @@ modelBuilder.Entity<TeamMember>(entity =>
 
 ## **📂 Section 2: Content & Media Entities (9 tables)**
 
-### **ContentItem Entity**
+### **MetaInfo Entity**
 
 ```csharp
-public class ContentItem
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -289,7 +289,7 @@ public class ExternalReference
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
-    public int ParentType { get; set; }  // Enum: ContentItem(0), ProjectTask(1), Comment(2)
+    public int ParentType { get; set; }  // Enum: MetaInfo(0), ProjectTask(1), Comment(2)
     public Guid? ParentId { get; set; }
     
     [Required, Display(Name = "External URL")]
@@ -312,7 +312,7 @@ public class MediaAttachment
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required, Display(Name = "File Name")]
     public string FileName { get; set; } = "";
@@ -363,7 +363,7 @@ public class ContentTags
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required, Display(Name = "Tag ID")]
     public Guid TagId { get; set; }
@@ -392,7 +392,7 @@ public class MediaTags
 ### **Fluent API Configuration for Content Entities**
 
 ```csharp
-modelBuilder.Entity<ContentItem>(entity =>
+modelBuilder.Entity<MetaInfo>(entity =>
 {
     entity.HasKey(e => e.Id);
     
@@ -404,20 +404,20 @@ modelBuilder.Entity<ContentItem>(entity =>
     
     // Navigation property: MediaAttachments (Cascade delete)
     entity.HasMany(ci => ci.MediaAttachments)
-          .WithOne(m => m.ContentItem)
-          .HasForeignKey(m => m.ContentItemId)
+          .WithOne(m => m.MetaInfo)
+          .HasForeignKey(m => m.MetaInfoId)
           .OnDelete(DeleteBehavior.Cascade);
     
     // Navigation property: ContentTags (Junction Table - SetNull)
     entity.HasMany(ci => ci.ContentTags)
-          .WithOne(ct => ct.ContentItem)
-          .HasForeignKey(ct => ct.ContentItemId)
+          .WithOne(ct => ct.MetaInfo)
+          .HasForeignKey(ct => ct.MetaInfoId)
           .OnDelete(DeleteBehavior.SetNull);  // Keep tag entity alive
     
     // Navigation property: ReviewStatus (SetNull to preserve history)
     entity.HasOne(ci => ci.ReviewStatus)
           .WithMany()
-          .HasForeignKey(rs => rs.ContentItemId)
+          .HasForeignKey(rs => rs.MetaInfoId)
           .OnDelete(DeleteBehavior.SetNull);
 });
 
@@ -461,12 +461,12 @@ modelBuilder.Entity<MediaAttachment>(entity =>
 {
     entity.HasKey(e => e.Id);
     
-    entity.HasIndex(e => e.ContentItemId);
+    entity.HasIndex(e => e.MetaInfoId);
     
     // Cascade delete content item removes all attachments
-    entity.HasOne(m => m.ContentItem)
+    entity.HasOne(m => m.MetaInfo)
         .WithMany(ci => ci.MediaAttachments)
-        .HasForeignKey(m => m.ContentItemId)
+        .HasForeignKey(m => m.MetaInfoId)
         .OnDelete(DeleteBehavior.Cascade);
 });
 
@@ -482,8 +482,8 @@ modelBuilder.Entity<ContentTags>(entity =>
     entity.HasKey(e => e.Id);
     
     // Junction table - no navigation property to parent for performance
-    entity.HasIndex(e => e.ContentItemId)
-        .HasDatabaseName("IX_ContentTags_ContentItem");
+    entity.HasIndex(e => e.MetaInfoId)
+        .HasDatabaseName("IX_ContentTags_MetaInfo");
     
     entity.HasIndex(e => e.TagId)
         .HasDatabaseName("IX_ContentTags_Tag");
@@ -573,7 +573,7 @@ public class LoreEntry
 ```csharp
 public class CharacterDetails
 {
-    public Guid ContentItemId { get; set; }  // FK as Primary Key
+    public Guid MetaInfoId { get; set; }  // FK as Primary Key
     
     [Required, Display(Name = "Character Name")]
     public string Name { get; set; } = "";
@@ -591,7 +591,7 @@ public class CharacterDetails
 ```csharp
 public class CharacterBackground
 {
-    public Guid ContentItemId { get; set; }  // FK as Primary Key
+    public Guid MetaInfoId { get; set; }  // FK as Primary Key
     
     [MaxLength(4096)]
     public string? FullBiography { get; set; }
@@ -720,7 +720,7 @@ public class CharacterAttributes
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required]
     public Guid AttributeDefinitionId { get; set; }
@@ -826,7 +826,7 @@ public class AssetLink
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [MaxLength(2048)]
     public string EnginePath { get; set; } = "";
@@ -853,7 +853,7 @@ public class ProjectTask
     [Required]
     public Guid ProjectId { get; set; }
     
-    public Guid? ContentItemId { get; set; }  // Nullable FK to ContentItem
+    public Guid? MetaInfoId { get; set; }  // Nullable FK to MetaInfo
     
     [MaxLength(256), Required]
     public string ProjectTaskTitle { get; set; } = "";
@@ -909,7 +909,7 @@ public class Comment
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required]
     public Guid CommentedByUserId { get; set; }
@@ -932,7 +932,7 @@ public class ContentVersionLog
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required]
     public Guid ChangedByUserId { get; set; }
@@ -954,7 +954,7 @@ public class ReviewStatus
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public int Status { get; set; }  // Enum: Pending, Approved, Rejected
     
@@ -984,7 +984,7 @@ public class ActivityLog
     
     public Guid? RelatedEntityId { get; set; }  // Nullable FK to related entity
     
-    public int RelatedEntityType { get; set; }  // Enum: ContentItem, ProjectTask, etc.
+    public int RelatedEntityType { get; set; }  // Enum: MetaInfo, ProjectTask, etc.
     
     [MaxLength(512)]
     public string? Title { get; set; }
@@ -1064,7 +1064,7 @@ public class ContentSnapshot
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public int SnapshotVersion { get; set; }
     
@@ -1280,7 +1280,7 @@ public class CharacterIdentity
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public Guid? IdentityDefinitionId { get; set; }  // Nullable if project doesn't require identity
     
@@ -1386,7 +1386,7 @@ modelBuilder.Entity<TeamMember>(entity =>
     entity.HasIndex(e => e.RoleId).IsUnique();
 });
 
-modelBuilder.Entity<ContentItem>(entity =>
+modelBuilder.Entity<MetaInfo>(entity =>
 {
     entity.HasKey(e => e.Id);
     
@@ -1398,20 +1398,20 @@ modelBuilder.Entity<ContentItem>(entity =>
     
     // Navigation property: MediaAttachments (Cascade delete)
     entity.HasMany(ci => ci.MediaAttachments)
-          .WithOne(m => m.ContentItem)
-          .HasForeignKey(m => m.ContentItemId)
+          .WithOne(m => m.MetaInfo)
+          .HasForeignKey(m => m.MetaInfoId)
           .OnDelete(DeleteBehavior.Cascade);
     
     // Navigation property: ContentTags (Junction Table - SetNull)
     entity.HasMany(ci => ci.ContentTags)
-          .WithOne(ct => ct.ContentItem)
-          .HasForeignKey(ct => ct.ContentItemId)
+          .WithOne(ct => ct.MetaInfo)
+          .HasForeignKey(ct => ct.MetaInfoId)
           .OnDelete(DeleteBehavior.SetNull);  // Keep tag entity alive
     
     // Navigation property: ReviewStatus (SetNull to preserve history)
     entity.HasOne(ci => ci.ReviewStatus)
           .WithMany()
-          .HasForeignKey(rs => rs.ContentItemId)
+          .HasForeignKey(rs => rs.MetaInfoId)
           .OnDelete(DeleteBehavior.SetNull);
 });
 
@@ -1425,7 +1425,7 @@ modelBuilder.Entity<ContentItem>(entity =>
 | Category | Tables Count | Key Features |
 | :--- | :--- | :--- |
 | **Base & Auth** | 3 | User, Team, TeamMember |
-| **Content & Media** | 9 | ContentItem(+ViewMode), StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags |
+| **Content & Media** | 9 | MetaInfo(+ViewMode), StoryOutline, DialogueBranch/Node, ExternalReference, MediaAttachment, Tag, ContentTags, MediaTags |
 | **Narrative Structure** | 8 | StorySequence, StoryBeat, LoreEntry, CharacterDetails/Background |
 | **Attributes & Scaling** | 6 | AttributeSet, AttributeDefinition, ClassTemplate, ClassTemplateAttribute, CharacterAttributes |
 | **Abilities & GAS** | 4 | AbilitySet, AbilityDefinition, StatusEffectDefinition, AssetLink |

@@ -24,7 +24,7 @@
 
 | Entity | Purpose |
 | :--- | :--- |
-| **ContentItem** | Main content unit (character/world/mechanic) with title/slug/shortDesc/description/viewMode |
+| **MetaInfo** | Main content unit (character/world/mechanic) with title/slug/shortDesc/description/viewMode |
 | **StoryOutline** | Narrative structure for outlining before full writing |
 | **DialogueBranch** | Visual novel dialogue tree nodes and connections |
 | **DialogueNode** | Individual dialogue lines within branches |
@@ -169,7 +169,7 @@
 ✅ **FK as PK**: CharacterDetails, CharacterBackground use FK as primary key (child entities)  
 ✅ **Domain Clustering**: All ~57 entities organized in domain-separated folders  
 ✅ **Configuration Files**: Each entity has dedicated `XxxEntityTypeConfiguration.cs` file  
-✅ **Cascade Deletes**: ContentItem cascades to MediaAttachments; Tasks restrict for history  
+✅ **Cascade Deletes**: MetaInfo cascades to MediaAttachments; Tasks restrict for history  
 ✅ **Hybrid Response Patterns**: API endpoints return RAW (data) or WRAPPED (confirmation/error)  
 
 This architecture supports the MVP goal of creating a comprehensive, maintainable game development management tool! 🎮✨

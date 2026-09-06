@@ -100,8 +100,8 @@ public interface IGademaService
 Each service must implement `IGademaService` and expose its `ServiceTypeEnum`:
 
 ```csharp
-// ✅ CORRECT - ContentItemService Implementation
-public class ContentItemService : IGademaService, IContentService
+// ✅ CORRECT - MetaInfoService Implementation
+public class MetaInfoService : IGademaService, IContentService
 {
     public ServiceTypeEnum ServiceTypeEnum => ServiceTypeEnum.ContentService;
     
@@ -152,7 +152,7 @@ public class ApiAuthService : IGademaService
 
 using FluentAssertions.Common;
 using Gadema.Api.Services;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Services; // ← Add this using
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -217,7 +217,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     /// </summary>
     private void RegisterServicesWithAddScoped(IServiceProvider serviceProvider, IServiceCollection serviceCollection)
     {
-        var assembly = typeof(ContentItemService).Assembly;
+        var assembly = typeof(MetaInfoService).Assembly;
         
         foreach (var type in assembly.GetTypes())
         {
@@ -234,8 +234,8 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
                         // Get concrete service type name for registration
                         var typeName = type.Name.Replace("Service", string.Empty);
                         
-                        // Find corresponding interface type (e.g., IContentService from ContentItemService)
-                        var interfaceType = typeof(ContentItemService).Assembly.GetTypes()
+                        // Find corresponding interface type (e.g., IContentService from MetaInfoService)
+                        var interfaceType = typeof(MetaInfoService).Assembly.GetTypes()
                             .FirstOrDefault(t => t.Name.EndsWith($"I{typeName}Service"));
                         
                         if (interfaceType != null)
@@ -260,7 +260,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     /// </summary>
     private void PopulateServiceRegistry(IServiceProvider serviceProvider)
     {
-        var assembly = typeof(ContentItemService).Assembly;
+        var assembly = typeof(MetaInfoService).Assembly;
         
         foreach (var type in assembly.GetTypes())
         {
@@ -319,7 +319,7 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
         foreach (var kvp in _serviceRegistry)
         {
             var concreteType = kvp.Value;
-            var interfaceType = typeof(ContentItemService).Assembly.GetTypes()
+            var interfaceType = typeof(MetaInfoService).Assembly.GetTypes()
                 .FirstOrDefault(t => t.Name.EndsWith($"I{kvp.Key}"));
             
             Console.WriteLine($"  [{kvp.Key}] → {concreteType.Name}");
@@ -341,11 +341,11 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
 ### **Method 1: Enum-Based Lookup (Most Convenient)**
 
 ```csharp
-public class ContentItemServiceIntegrationTest : IClassFixture<ApiWebApplicationFactory>
+public class MetaInfoServiceIntegrationTest : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly IGademaService _service;
 
-    public ContentItemServiceIntegrationTest(ApiWebApplicationFactory factory, ITestOutputHelper output)
+    public MetaInfoServiceIntegrationTest(ApiWebApplicationFactory factory, ITestOutputHelper output)
     {
         // Get service by ServiceTypeEnum - clean and explicit!
         _service = factory.GetService(ServiceTypeEnum.ContentService)!;
@@ -354,9 +354,9 @@ public class ContentItemServiceIntegrationTest : IClassFixture<ApiWebApplication
     }
 
     [Fact]
-    public async Task CreateContentItem_ShouldReturnSuccessful()
+    public async Task CreateMetaInfo_ShouldReturnSuccessful()
     {
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -369,7 +369,7 @@ public class ContentItemServiceIntegrationTest : IClassFixture<ApiWebApplication
         // Access through concrete service interface
         if (_service is IContentService contentService)
         {
-            var result = await contentService.CreateContentItemAsync(createDto);
+            var result = await contentService.CreateMetaInfoAsync(createDto);
             
             result.Successful.Should().BeTrue();
         }
@@ -436,7 +436,7 @@ public class AuthIntegrationTest : IClassFixture<ApiWebApplicationFactory>
 
 | ServiceTypeEnum | Concrete Type | Interface Type | Purpose |
 |-----------------|---------------|----------------|---------|
-| `ContentService` | `ContentItemService` | `IContentService` | Content management (characters, worlds, mechanics) |
+| `ContentService` | `MetaInfoService` | `IContentService` | Content management (characters, worlds, mechanics) |
 | `ProjectService` | `ProjectService` | `IProjectService` | Project CRUD operations |
 | `TaskService` | `ProjectTaskService` | `ITaskService` | Task management for writing/design work |
 | `AuthService` | `ApiAuthService` | `IApiAuthService` | OAuth, 2FA, token management |
@@ -474,7 +474,7 @@ public class AuthIntegrationTest : IClassFixture<ApiWebApplicationFactory>
 #### **Before:**
 ```csharp
 // ❌ Direct instantiation with null dependencies
-var contentService = new ContentItemService(null!, null!);
+var contentService = new MetaInfoService(null!, null!);
 ```
 
 #### **After:**

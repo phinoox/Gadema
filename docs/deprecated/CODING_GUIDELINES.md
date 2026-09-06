@@ -17,12 +17,12 @@ This document defines the coding standards, naming conventions, and architectura
 
 ```bash
 src/
-├── Gadema.Core/Models/         # Entity classes (ContentItem.cs, User.cs)
+├── Gadema.Core/Models/         # Entity classes (MetaInfo.cs, User.cs)
 ├── Gadema.Core/Dtos/           # API DTOs (CreateProjectDto.cs)
 ├── Gadema.Core/Enums/          # Type enumerations
 ├── Gadema.Data/               # DbContext + migrations config
 ├── Gadema.Api/Controllers/    # REST endpoints (ProjectsController.cs)
-├── Gadema.Api/Services/       # Business logic (ContentItemService.cs)
+├── Gadema.Api/Services/       # Business logic (MetaInfoService.cs)
 ├── Gadema.WebApp/Pages/       # Razor pages with View Mode separation
 └── Gadema.Tests/              # Unit + Integration tests
 ```
@@ -35,20 +35,20 @@ src/
 
 | Convention | Rule | Example |
 | :--- | :--- | :--- |
-| **File Name** | `EntityName.cs` with PascalCase | `ContentItem.cs`, `User.cs`, `StoryOutline.cs` |
-| **Class Name** | Singular + PascalCase | `ContentItem`, not `ContentItems` |
+| **File Name** | `EntityName.cs` with PascalCase | `MetaInfo.cs`, `User.cs`, `StoryOutline.cs` |
+| **Class Name** | Singular + PascalCase | `MetaInfo`, not `MetaInfos` |
 | **Navigation Properties** | Plural collection names | `ICollection<MediaAttachment> MediaAttachments` |
 
 ```csharp
 // ✅ CORRECT
-public class ContentItem
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public ICollection<MediaAttachment> MediaAttachments { get; set; }
 }
 
 // ❌ INCORRECT
-public class contentitem  // lowercase, wrong casing
+public class MetaInfo  // lowercase, wrong casing
 {
     public GUID id         // PascalCase violation
 }
@@ -58,9 +58,9 @@ public class contentitem  // lowercase, wrong casing
 
 | Convention | Rule | Example |
 | :--- | :--- | :--- |
-| **Creation Operations** | `CreateXDto` suffix | `CreateProjectDto`, `CreateContentItemDto` |
-| **Update Operations** | `UpdateXDto` suffix | `UpdateContentItemDto` |
-| **Response DTOs** | `ResponseXDto` suffix | `ContentItemResponseDto` |
+| **Creation Operations** | `CreateXDto` suffix | `CreateProjectDto`, `CreateMetaInfoDto` |
+| **Update Operations** | `UpdateXDto` suffix | `UpdateMetaInfoDto` |
+| **Response DTOs** | `ResponseXDto` suffix | `MetaInfoResponseDto` |
 
 ```csharp
 // ✅ CORRECT - Naming Convention Rules
@@ -70,13 +70,13 @@ public class CreateProjectDto
     public string Title { get; set; } = "";
 }
 
-public class UpdateContentItemDto
+public class UpdateMetaInfoDto
 {
     [MaxLength(4096)]
     public string? Description { get; set; } = null!;
 }
 
-public class ContentItemResponseDto
+public class MetaInfoResponseDto
 {
     public Guid Id { get; set; }
     public bool Published { get; set; }
@@ -87,13 +87,13 @@ public class ContentItemResponseDto
 
 | Convention | Rule | Example |
 | :--- | :--- | :--- |
-| **File Name** | `ResourceNameController.cs` | `ProjectsController.cs`, `ContentItemsController.cs` |
+| **File Name** | `ResourceNameController.cs` | `ProjectsController.cs`, `MetaInfosController.cs` |
 | **Class Name** | Match file name + `Controller` suffix | Same as above |
 
 ```csharp
 // ✅ CORRECT - API Contracts naming
 public class ProjectsController : ControllerBase {}
-public class ContentItemsController : ControllerBase {}
+public class MetaInfosController : ControllerBase {}
 ```
 
 ### **1.4 Service Files & Classes**
@@ -101,13 +101,13 @@ public class ContentItemsController : ControllerBase {}
 | Convention | Rule | Example |
 | :--- | :--- | :--- |
 | **Interface Files** | `IXxxService.cs` | `IContentService.cs`, `IApiAuthService.cs` |
-| **Implementation Files** | `XxxService.cs` (no Interface prefix) | `ContentItemService.cs` |
+| **Implementation Files** | `XxxService.cs` (no Interface prefix) | `MetaInfoService.cs` |
 
 ```csharp
 // ✅ CORRECT - Service layer naming
 public interface IContentService { }
 
-public class ContentItemService : IGademaService,  IContentService { }
+public class MetaInfoService : IGademaService,  IContentService { }
 ```
 
 ### **1.5 Method Naming**
@@ -120,7 +120,7 @@ public class ContentItemService : IGademaService,  IContentService { }
 
 ```csharp
 // ✅ CORRECT - Method naming conventions
-public async Task<ContentItem> GetContentItemAsync(Guid id) {}
+public async Task<MetaInfo> GetMetaInfoAsync(Guid id) {}
 public async Task<List<StorySequence>> GetAllSequencesAsync(Guid projectId) {}
 
 // ❌ INCORRECT
@@ -159,7 +159,7 @@ public string user { get; set; }    // Unclear, should be userId
 
 ```csharp
 // ✅ CORRECT - XML docs for complex operations
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto)
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto)
 {
     // ... implementation
 }
@@ -171,7 +171,7 @@ public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto)
 /// <param name="dto">DTO object with required fields for creation</param>
 /// <returns>The newly created content item instance</returns>
 /// <exception cref="ValidationException">Thrown when DTO validation fails</exception>
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto)
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto)
 {
     // ... implementation
 }
@@ -186,7 +186,7 @@ using System.ComponentModel.DataAnnotations;
 /// Represents a content item in the game development management system.
 /// Supports polymorphic design with type-specific detail tables and view mode separation.
 /// </summary>
-public class ContentItem
+public class MetaInfo
 {
     /// <summary>
     /// Unique identifier for the content item.
@@ -222,7 +222,7 @@ public class ContentItem
 
 ```csharp
 // ✅ CORRECT - DTO property labels
-public class CreateContentItemDto
+public class CreateMetaInfoDto
 {
     [Required]
     [Display(Name = "Project ID")]
@@ -256,7 +256,7 @@ public class CreateProjectDto
 }
 
 // ❌ INCORRECT - Don't add validation to models
-public class ContentItem
+public class MetaInfo
 {
     // NO VALIDATION ATTRIBUTES HERE
     public string Description { get; set; } = "";
@@ -271,23 +271,23 @@ public class ContentItem
 
 | Rule | When to Use | Example |
 | :--- | :--- | :--- |
-| **Always Use Include** | ✅ All relationship queries | `_context.ContentItems.Include(i => i.MediaAttachments).ToListAsync()` |
+| **Always Use Include** | ✅ All relationship queries | `_context.MetaInfos.Include(i => i.MediaAttachments).ToListAsync()` |
 | **Avoid N+1 Queries** | ❌ Never use `Where` on navigation properties | Don't query attachments separately in a loop |
 
 ```csharp
 // ✅ CORRECT - Eager loading to avoid N+1 queries
-var contentItem = await _context.ContentItems
+var MetaInfo = await _context.MetaInfos
     .Include(ci => ci.MediaAttachments)
     .Include(ci => ci.ContentTags)
         .ThenInclude(ct => ct.Tag)  // Include junction + tag data
     .FirstOrDefaultAsync(ci => ci.Id == id);
 
 // ❌ INCORRECT - N+1 problem
-var contentItems = await _context.ContentItems.ToListAsync();
-foreach (var item in contentItems)
+var MetaInfos = await _context.MetaInfos.ToListAsync();
+foreach (var item in MetaInfos)
 {
     var attachments = await _context.MediaAttachments
-        .Where(a => a.ContentItemId == item.Id).ToListAsync();  // N+1!
+        .Where(a => a.MetaInfoId == item.Id).ToListAsync();  // N+1!
 }
 ```
 
@@ -300,17 +300,17 @@ foreach (var item in contentItems)
 
 ```csharp
 // ✅ CORRECT - Paginated query with default size
-public async Task<PaginationResult<ContentItemDto>> GetContentItemsAsync(Guid projectId, int page = 1, int pageSize = 20)
+public async Task<PaginationResult<MetaInfoDto>> GetMetaInfosAsync(Guid projectId, int page = 1, int pageSize = 20)
 {
-    return new PaginationResult<ContentItemDto>
+    return new PaginationResult<MetaInfoDto>
     {
-        Data = await _context.ContentItems
+        Data = await _context.MetaInfos
             .Where(c => c.ProjectId == projectId)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
-            .Select(c => new ContentItemDto { ... })
+            .Select(c => new MetaInfoDto { ... })
             .ToListAsync(),
-        TotalItems = await _context.ContentItems.CountAsync(c => c.ProjectId == projectId),
+        TotalItems = await _context.MetaInfos.CountAsync(c => c.ProjectId == projectId),
         CurrentPage = page,
         PageSize = pageSize,
         TotalPages = (int)Math.Ceiling(TotalItems / (double)pageSize)
@@ -326,7 +326,7 @@ public async Task<PaginationResult<ContentItemDto>> GetContentItemsAsync(Guid pr
 | **Unique Constraints** | ✅ Ensure slugs are unique | `HasIndex(e => e.Slug).IsUnique()` |
 
 ```csharp
-modelBuilder.Entity<ContentItem>(entity =>
+modelBuilder.Entity<MetaInfo>(entity =>
 {
     entity.HasKey(e => e.Id);
     
@@ -345,20 +345,20 @@ modelBuilder.Entity<ContentItem>(entity =>
 | Rule | When to Use | Example |
 | :--- | :--- | :--- |
 | **Avoid Complex OR Conditions** | ✅ Limit complexity in WHERE clauses | Keep under 5 conditions per query |
-| **Use `Where` Before `Include`** | ✅ Filter first, then eager load | `_context.ContentItems.Where(...) .Include(...)` |
+| **Use `Where` Before `Include`** | ✅ Filter first, then eager load | `_context.MetaInfos.Where(...) .Include(...)` |
 
 ```csharp
 // ✅ CORRECT - Filter before including relationships
-var items = await _context.ContentItems
+var items = await _context.MetaInfos
     .Where(c => c.Published && c.ContentType == ContentTypeEnum.Character)
     .Include(c => c.MediaAttachments)
-        .ThenInclude(m => m.ContentItem)
+        .ThenInclude(m => m.MetaInfo)
     .ToListAsync();
 
 // ❌ INCORRECT - Include before filtering (wasted queries)
-var items = await _context.ContentItems
+var items = await _context.MetaInfos
     .Include(c => c.MediaAttachments)
-        .ThenInclude(m => m.ContentItem)
+        .ThenInclude(m => m.MetaInfo)
     .Where(c => c.Published && c.ContentType == ContentTypeEnum.Character)
     .ToListAsync();  // Includes relationships for all items first
 ```
@@ -371,9 +371,9 @@ var items = await _context.ContentItems
 
 | Rule | When to Use | Example |
 | :--- | :--- | :--- |
-| **Creation Operations** | ✅ Use `CreateXDto` | `CreateProjectDto`, `CreateContentItemDto` |
-| **Update Operations** | ✅ Use `UpdateXDto` | `UpdateContentItemDto` |
-| **Response DTOs** | ✅ Use `ResponseXDto` | `ContentItemResponseDto` |
+| **Creation Operations** | ✅ Use `CreateXDto` | `CreateProjectDto`, `CreateMetaInfoDto` |
+| **Update Operations** | ✅ Use `UpdateXDto` | `UpdateMetaInfoDto` |
+| **Response DTOs** | ✅ Use `ResponseXDto` | `MetaInfoResponseDto` |
 
 ### **4.2 Required vs Optional Field Patterns** (See Section 1.2)
 
@@ -405,7 +405,7 @@ public ICollection<string>? Tags { get; set; }  // Should initialize
 public int PageSize { get; set; } = 20;
 
 // ❌ INCORRECT - Don't validate in controller actions
-var items = await _context.ContentItems.Skip(0).Take(pageSize).ToListAsync();  // No validation!
+var items = await _context.MetaInfos.Skip(0).Take(pageSize).ToListAsync();  // No validation!
 ```
 
 ### **4.4 DTO File Organization**
@@ -421,9 +421,9 @@ Gadema.Core/Dtos/
 ├── Projects/
 │   ├── CreateProjectDto.cs
 │   └── UpdateProjectDto.cs
-├── ContentItems/
-│   ├── CreateContentItemDto.cs
-│   └── UpdateContentItemDto.cs
+├── MetaInfos/
+│   ├── CreateMetaInfoDto.cs
+│   └── UpdateMetaInfoDto.cs
 └── Common/
     ├── PaginationResult.cs
     └── ErrorResponseDto.cs
@@ -490,7 +490,7 @@ throw new ValidationException(validationErrors);
 ```csharp
 // ✅ CORRECT - Controller error handling pattern
 [HttpPost]
-public async Task<IActionResult> CreateContentAsync([FromBody] CreateContentItemDto dto)
+public async Task<IActionResult> CreateContentAsync([FromBody] CreateMetaInfoDto dto)
 {
     // Always check validation first
     if (!ModelState.IsValid)
@@ -683,7 +683,7 @@ public async Task<List<StorySequence>> GetSequencesWithCacheAsync(Guid projectId
 
 ```csharp
 // ✅ CORRECT - File stream for large uploads
-public async Task UploadLargeFileAsync(Guid contentItemId, string fileName)
+public async Task UploadLargeFileAsync(Guid MetaInfoId, string fileName)
 {
     var filePath = $"uploads/{Guid.NewGuid()}_{fileName}";
     
@@ -707,9 +707,9 @@ public async Task UploadLargeFileAsync(Guid contentItemId, string fileName)
 ```csharp
 // ✅ CORRECT - View mode separation in controller
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
-    var item = await _context.ContentItems.FindAsync(id);
+    var item = await _context.MetaInfos.FindAsync(id);
     
     // PrivateWriting mode: return full content + admin tools
     if (viewMode == ViewModeEnum.PrivateWriting)
@@ -779,7 +779,7 @@ public async Task<List<ProjectTask>> GetQuickWinTasksAsync(Guid projectId)
 
 ```csharp
 // ✅ CORRECT - Unit test pattern with ≥80% coverage target
-public class ContentItemServiceTests : IDisposable
+public class MetaInfoServiceTests : IDisposable
 {
     private readonly GameDbContext _context;
     
@@ -787,7 +787,7 @@ public class ContentItemServiceTests : IDisposable
     public async Task CreateContentAsync_WhenDescriptionIsNull_ShouldThrowValidationException()
     {
         // Arrange: Setup test data with null description
-        var contentDto = new ContentItemDto 
+        var contentDto = new MetaInfoDto 
         {
             Title = "Test Character",
             Description = null,  // Invalid case
@@ -818,7 +818,7 @@ public async Task GetPublishedContentAsync_ReturnsOnlyPublishedItems()
 
     // Assert: Verify published items only
     response.StatusCode.Should().Be(HttpStatusCode.OK);
-    var content = await response.Content.ReadFromJsonAsync<List<ContentItemDto>>();
+    var content = await response.Content.ReadFromJsonAsync<List<MetaInfoDto>>();
     content.All(c => c.Published).Should().BeTrue();
 }
 ```
@@ -854,24 +854,24 @@ git checkout -b chore/update-gitignore
 
 ```csharp
 // ✅ CORRECT - Direct EF Core access (No Repository Pattern)
-public class ContentItemService
+public class MetaInfoService
 {
     private readonly GameDbContext _context;
     
-    public ContentItemService(GameDbContext context)
+    public MetaInfoService(GameDbContext context)
     {
         _context = context;  // Direct DbContext dependency
     }
     
-    public async Task<ContentItem> GetContentItemAsync(Guid id)
+    public async Task<MetaInfo> GetMetaInfoAsync(Guid id)
     {
-        return await _context.ContentItems.FindAsync(id);  // Simple and clear
+        return await _context.MetaInfos.FindAsync(id);  // Simple and clear
     }
 }
 
 // ❌ INCORRECT - Repository Pattern (unnecessary abstraction for MVP)
 public interface IRepository<T> where T : class {}
-public class ContentItemRepository : IRepository<ContentItem> {}
+public class MetaInfoRepository : IRepository<MetaInfo> {}
 ```
 
 ### **10.2 No Hierarchical ProjectTasks**
@@ -905,9 +905,9 @@ public class TaskItem { }
 
 ```csharp
 // ✅ CORRECT - Simple CRUD methods without XML docs
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid projectId)
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto, Guid projectId)
 {
-    var item = new ContentItem 
+    var item = new MetaInfo 
     {
         ProjectId = projectId,
         ContentType = dto.ContentType,
@@ -915,13 +915,13 @@ public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid
         Description = dto.Description
     };
 
-    await _context.ContentItems.AddAsync(item);
+    await _context.MetaInfos.AddAsync(item);
     return item;
 }
 
 // ❌ INCORRECT - Over-documentation for simple operations
 /// <summary>Creates a content item...</summary> /// <param name="dto">... </param>
-public async Task<ContentItem> CreateContentAsync(CreateContentItemDto dto, Guid projectId) {}  // Too much!
+public async Task<MetaInfo> CreateContentAsync(CreateMetaInfoDto dto, Guid projectId) {}  // Too much!
 ```
 
 ### **10.4 No Magic Numbers**

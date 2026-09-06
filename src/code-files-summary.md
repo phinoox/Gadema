@@ -7,7 +7,7 @@
 **Controllers:**
 - Authentication/AuthController.cs
 - Content/CommentsController.cs
-- Content/ContentItemsController.cs
+- Content/MetaInfosController.cs
 - Content/DialogueBranchesController.cs
 - Content/ExternalReferencesController.cs
 - Content/ReviewStatusController.cs
@@ -20,7 +20,7 @@
 
 **Services:**
 - Authentication/ApiAuthService.cs
-- Content/ContentItemService.cs
+- Content/MetaInfoService.cs
 - Content/DialogueService.cs
 - Content/ExternalReferenceService.cs
 - Content/TagService.cs
@@ -59,7 +59,7 @@
 - Characters/CharacterBackground.cs
 - Characters/CharacterDetails.cs
 - Comment.cs
-- Content/ContentItem.cs
+- Content/MetaInfo.cs
 - Content/DialogueBranch.cs
 - Content/DialogueNode.cs
 - EngineIntegration/AssetLink.cs
@@ -76,7 +76,7 @@
 **Dtos (36 files):**
 - Authentication/* (5)
 - Comments/* (2)
-- ContentItems/* (8)
+- MetaInfos/* (8)
 - DialogueTrees/* (3)
 - Export/* (5)
 - ExternalReferences/* (2)
@@ -108,7 +108,7 @@
 ### 📁 Gadema.Tests (~5 files)
 - Integration/ApiIntegrationTests.cs
 - Models/ModelValidationTests.cs
-- Services/ContentItemServiceTests.cs
+- Services/MetaInfoServiceTests.cs
 - Services/ServiceIntegrationTests.cs
 - TestMetadata.cs
 

@@ -27,24 +27,24 @@ public partial class Project { ... }
 [DependencyResolver.ModelDependency(typeof(StorySequence))]
 public partial class StoryBeat { ... }
 
-[DependencyResolver.ModelDependency(typeof(StorySequence), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(StorySequence), typeof(MetaInfo))]
 public partial class StoryOutline { ... }
 
 [DependencyResolver.ModelDependency(typeof(Project))]
 public partial class StorySequence { ... }
 
-[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
 public partial class LoreEntry { ... }
 
 // ─── CONTENT / ENGINE INTEGRATION ──────────────────────────────────────────
 
 [DependencyResolver.ModelDependency(typeof(Project))]
-public partial class ContentItem { ... }
+public partial class MetaInfo { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class AssetLink { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class MediaAttachment { ... }
 
 // ActivityLog: no FK (uses ProjectId as string/identifier, not EF FK)
@@ -54,7 +54,7 @@ public partial class TokenUsageLog { ... }
 
 // ─── TASKS ─────────────────────────────────────────────────────────────────
 
-[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
 public partial class ProjectTask { ... }
 
 [DependencyResolver.ModelDependency(typeof(ProjectTask))]
@@ -62,32 +62,32 @@ public partial class ProjectTaskComments { ... }
 
 // ─── ATTRIBUTES / ABILITIES ────────────────────────────────────────────────
 
-[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
 public partial class AttributeSet { ... }
 
-[DependencyResolver.ModelDependency(typeof(Project), typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
 public partial class AbilitySet { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class AbilityDefinition { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class StatusEffectDefinition { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class AttributeDefinition { ... }
 
 // ─── CHARACTERS / IDENTITY ────────────────────────────────────────────────
 
-[DependencyResolver.ModelDependency(typeof(ContentItem), typeof(AttributeDefinition))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo), typeof(AttributeDefinition))]
 public partial class CharacterAttributes { ... }
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class CharacterIdentity { ... }
 
 // ─── VERSIONING / STORY ───────────────────────────────────────────────────
 
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public partial class ContentVersionLog { ... }
 
 [DependencyResolver.ModelDependency(typeof(Project))]
@@ -107,29 +107,29 @@ Projects:             ProjectSeries (root)
                      ProjectTagRelation → [Project, ProjectTag]
 
 Narrative:            StorySequence  → [Project]
-                     StoryOutline    → [StorySequence, ContentItem]
+                     StoryOutline    → [StorySequence, MetaInfo]
                      StoryBeat       → [StorySequence]
-                     LoreEntry       → [Project, ContentItem]
+                     LoreEntry       → [Project, MetaInfo]
 
-Content/Engine:       ContentItem      → [Project]
-                     AssetLink         → [ContentItem]
-                     MediaAttachment   → [ContentItem]
+Content/Engine:       MetaInfo      → [Project]
+                     AssetLink         → [MetaInfo]
+                     MediaAttachment   → [MetaInfo]
                      ActivityLog       → [Project]
                      TokenUsageLog     → [ProjectToken]
 
-Tasks:                ProjectTask        → [Project, ContentItem]
+Tasks:                ProjectTask        → [Project, MetaInfo]
                      ProjectTaskComments → [ProjectTask]
 
-Attributes/Abilities: AttributeSet    → [Project, ContentItem]
-                     AbilitySet         → [Project, ContentItem]
-                     AbilityDefinition  → [ContentItem]
-                     StatusEffectDef    → [ContentItem]
-                     AttributeDef       → [ContentItem]
+Attributes/Abilities: AttributeSet    → [Project, MetaInfo]
+                     AbilitySet         → [Project, MetaInfo]
+                     AbilityDefinition  → [MetaInfo]
+                     StatusEffectDef    → [MetaInfo]
+                     AttributeDef       → [MetaInfo]
 
-Characters:           CharacterAttributes   → [ContentItem, AttributeDefinition]
-                     CharacterIdentity       → [ContentItem] (nullable FKs)
+Characters:           CharacterAttributes   → [MetaInfo, AttributeDefinition]
+                     CharacterIdentity       → [MetaInfo] (nullable FKs)
 
-Versioning/Story:     ContentVersionLog      → [ContentItem]
+Versioning/Story:     ContentVersionLog      → [MetaInfo]
                      ProjectToken             → [Project]
 
 # Gadema.Core - Foreign Keys & Navigation Properties Map
@@ -172,7 +172,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 |-----------|---------|------|---------|----------|
 | FK→User | `OwnerId` | Many:1 | `Owner` | Cascade |
 | FK→ProjectSeries | `ProjectSeriesId` | Many:1 | `ProjectSeries` | Cascade |
-| PK→Many | `Id` (PK) | One-to-Many | `ContentItems` | — |
+| PK→Many | `Id` (PK) | One-to-Many | `MetaInfos` | — |
 | PK→Many | `Id` (PK) | One-to-Many | `Sequences` | — |
 | PK→Many | `Id` (PK) | One-to-Many | `Tasks` | — |
 | PK→Many | `Id` (PK) | One-to-Many | `ProjectTeams` | Cascade |
@@ -208,7 +208,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→StorySequence | `SequenceId` | Many:1 | `StorySequence` | Cascade |
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
@@ -216,7 +216,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→Project | `ProjectId` | Many:1 | `Project` | Cascade |
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
@@ -224,7 +224,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→Project | `ProjectId` | Many:1 | `Project` | Cascade |
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
@@ -239,7 +239,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→Project | `ProjectId` | Many:1 | `Project` | Cascade |
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
@@ -247,35 +247,35 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→Project | `ProjectId` | Many:1 | `Project` | Cascade |
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
 ## 14. AbilityDefinition
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
 ## 15. StatusEffectDefinition
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
 ## 16. AttributeDefinition
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 (optional) | `ContentItem` | — |
+| FK→MetaInfo | `MetaInfoId` | Many:1 (optional) | `MetaInfo` | — |
 
 ---
 
 ## 17. CharacterAttributes
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| **Composite PK** → | `(ContentItemId, AttributeDefinitionId)` | Many-to-Many | — | — |
+| **Composite PK** → | `(MetaInfoId, AttributeDefinitionId)` | Many-to-Many | — | — |
 | FK→AttributeDefinition | `AttributeDefinitionId` | One:One (via composite) | `AttributeDefinition` | Cascade |
 
 ---
@@ -283,20 +283,20 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 ## 18. CharacterIdentity
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 | `ContentItem` | Cascade |
+| FK→MetaInfo | `MetaInfoId` | Many:1 | `MetaInfo` | Cascade |
 | FK→IdentityDefinition | `IdentityDefinitionId` | Many:1 (optional) | `IdentityDefinition` | — |
 | FK→IdentityValue | `IdentityValueId` | Many:1 (optional) | `IdentityValue` | — |
 
 ---
 
-## 19. ContentItem
+## 19. MetaInfo
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
 | FK→Project | `ProjectId` | Many:1 | `Project` | Cascade |
 | PK→Many | `Id` (PK) | One-to-Many | `ContentVersionLogs` | — |
 | PK→Many | `Id` (PK) | One-to-Many | `AssetLinks` | — |
 | PK→Many | `Id` (PK) | One-to-Many | `MediaAttachments` | — |
-| PK→Many | `Id` (PK) | One-to-Many | `ContentItemTags` | — |
+| PK→Many | `Id` (PK) | One-to-Many | `MetaInfoTags` | — |
 
 ---
 
@@ -325,14 +325,14 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 ## 23. AssetLink
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 | `ContentItem` | Cascade |
+| FK→MetaInfo | `MetaInfoId` | Many:1 | `MetaInfo` | Cascade |
 
 ---
 
 ## 24. MediaAttachment
 | Direction | FK / PK | Type | NP Name | Behavior |
 |-----------|---------|------|---------|----------|
-| FK→ContentItem | `ContentItemId` | Many:1 | `ContentItem` | Cascade |
+| FK→MetaInfo | `MetaInfoId` | Many:1 | `MetaInfo` | Cascade |
 
 ---
 
@@ -370,7 +370,7 @@ Versioning/Story:     ContentVersionLog      → [ContentItem]
 
 ## Key Design Patterns Observed
 
-1. **Cascade on child collections** — All collection navigation properties (e.g., `Tasks`, `ContentItems`, `ChildSequences`) use `.List<>()` with cascade configured in EF Core configuration files.
+1. **Cascade on child collections** — All collection navigation properties (e.g., `Tasks`, `MetaInfos`, `ChildSequences`) use `.List<>()` with cascade configured in EF Core configuration files.
 2. **Restrict on "owner" relationships** — `CreatedByUserId` uses restrict to preserve historical audit trails.
 3. **Composite PK for junctions** — `CharacterAttributes` and `ProjectTagRelation` use FK-as-PK pattern (though `CharacterAttributes` is explicitly composite).
-4. **Optional content linking** — Many models reference `ContentItem` via nullable FK (`Guid?`) allowing flexible attachment without mandatory parent.
+4. **Optional content linking** — Many models reference `MetaInfo` via nullable FK (`Guid?`) allowing flexible attachment without mandatory parent.

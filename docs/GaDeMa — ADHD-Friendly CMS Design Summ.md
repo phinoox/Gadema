@@ -42,7 +42,7 @@ The system matches how ADHD brains actually work: non-linearly, associatively, a
 |--------|-------------|-----|
 | `ProjectTaskComments` | FK (`TaskId`) as PK column | Eliminates nullable primary keys; row = comment |
 | `ContentTags` | Self-composite key (`Id`) + FKs inline | No separate junction table needed |
-| `CharacterBackground` | FK (`ContentItemId`) as PK column | Direct link to character, no intermediate ID |
+| `CharacterBackground` | FK (`MetaInfoId`) as PK column | Direct link to character, no intermediate ID |
 
 ---
 

@@ -235,7 +235,7 @@ public async Task<StoryOutlineDto> GetStoryOutlineWithFullDataAsync(Guid id, Vie
 {
     // ✅ Eager loading prevents N+1 query problem (Performance.md requirement!)
     var outline = await _context.StoryOutlines
-        .Include(so => so.Project).ThenInclude(p => p.ContentItems).ThenInclude(ci => ci.MediaAttachments)  // Nested eager loading!
+        .Include(so => so.Project).ThenInclude(p => p.MetaInfos).ThenInclude(ci => ci.MediaAttachments)  // Nested eager loading!
             .Include(so => so.Sequences)
                 .ThenInclude(s => s.SequenceName)  // ✅ Sequences with outline relationship! Domain-aware patterns!
                 .ThenInclude(s => s.StoryBeats)  // Nested eager loading!
@@ -311,7 +311,7 @@ public async Task<StoryOutline> GetStoryOutlinePresentationModeAsync(Guid id, Vi
 {
     // ✅ Eager loading with ViewMode separation (hide sensitive outline info in Presentation mode)
     var outline = await _context.StoryOutlines
-        .Include(so => so.Project).ThenInclude(p => p.ContentItems).ThenInclude(ci => ci.MediaAttachments)  // ✅ Project info OK!
+        .Include(so => so.Project).ThenInclude(p => p.MetaInfos).ThenInclude(ci => ci.MediaAttachments)  // ✅ Project info OK!
         .Include(so => so.Sequences).ThenInclude(s => s.SequenceName)  // ✅ Sequences structure OK!
         .Exclude(so => so.References)  // ⚠️ Hide references for clean public view!
         .FirstOrDefaultAsync(so => so.Id == id);

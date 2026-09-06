@@ -129,7 +129,7 @@ The **Hybrid Response Pattern** is a key architectural decision in v2:
       "id": "proj-001",
       "title": "The Dragon's Crown"
     },
-    "contentItems": [
+    "MetaInfos": [
       {
         "id": "char-001",
         "title": "Geralt",
@@ -168,13 +168,13 @@ The **Hybrid Response Pattern** is a key architectural decision in v2:
 
 ```csharp
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(
+public async Task<IActionResult> GetMetaInfoAsync(
     Guid id, 
     [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    if (contentItem == null)
+    if (MetaInfo == null)
         return NotFound(new 
         {
             success = false,
@@ -187,27 +187,27 @@ public async Task<IActionResult> GetContentItemAsync(
     {
         return Ok(new 
         {
-            id = contentItem.Id,
-            title = contentItem.Title,
-            description = contentItem.Description,
-            shortDesc = contentItem.ShortDesc,
-            published = contentItem.Published,
+            id = MetaInfo.Id,
+            title = MetaInfo.Title,
+            description = MetaInfo.Description,
+            shortDesc = MetaInfo.ShortDesc,
+            published = MetaInfo.Published,
             viewMode = ViewModeEnum.PrivateWriting,
-            version = contentItem.Version,
-            status = contentItem.Status,
-            createdAt = contentItem.CreatedAt,
-            lastModifiedAt = contentItem.LastModifiedAt
+            version = MetaInfo.Version,
+            status = MetaInfo.Status,
+            createdAt = MetaInfo.CreatedAt,
+            lastModifiedAt = MetaInfo.LastModifiedAt
         });  // ✅ RAW for simple data retrieval
     }
     
     // Presentation mode: return only published fields + clean layout
     return Ok(new 
     {
-        id = contentItem.Id,
-        title = contentItem.Title,
-        description = contentItem.Description,
-        slug = contentItem.Slug,
-        seoTitle = $"@contentItem.Title - GaDeMa"  // SEO-friendly
+        id = MetaInfo.Id,
+        title = MetaInfo.Title,
+        description = MetaInfo.Description,
+        slug = MetaInfo.Slug,
+        seoTitle = $"@MetaInfo.Title - GaDeMa"  // SEO-friendly
     });  // ✅ RAW for simple data retrieval
 }
 ```
@@ -216,15 +216,15 @@ public async Task<IActionResult> GetContentItemAsync(
 
 ```csharp
 [HttpPut("{id}")]
-public async Task<IActionResult> UpdateContentItemAsync(
+public async Task<IActionResult> UpdateMetaInfoAsync(
     Guid id, 
-    [FromBody] UpdateContentItemDto dto)
+    [FromBody] UpdateMetaInfoDto dto)
 {
     try
     {
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        if (contentItem == null)
+        if (MetaInfo == null)
             return NotFound(new 
             {
                 success = false,
@@ -233,15 +233,15 @@ public async Task<IActionResult> UpdateContentItemAsync(
             });  // ✅ WRAPPED for error
         
         // Update fields
-        contentItem.Description = dto.Description ?? "";
-        contentItem.ShortDesc = dto.ShortDesc;
-        contentItem.Published = dto.Published;
-        contentItem.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo.Description = dto.Description ?? "";
+        MetaInfo.ShortDesc = dto.ShortDesc;
+        MetaInfo.Published = dto.Published;
+        MetaInfo.LastModifiedAt = DateTime.UtcNow;
         
         await _context.SaveChangesAsync();
         
         // Increment version number (polymorphic design)
-        contentItem.Version++;
+        MetaInfo.Version++;
         
         return Ok(new 
         {
@@ -249,14 +249,14 @@ public async Task<IActionResult> UpdateContentItemAsync(
             message = "Content item updated successfully",
             data = new 
             {
-                id = contentItem.Id,
-                title = contentItem.Title,
-                description = contentItem.Description,
-                shortDesc = contentItem.ShortDesc,
-                published = contentItem.Published,
-                viewMode = contentItem.ViewMode,
-                version = contentItem.Version,
-                status = contentItem.Status
+                id = MetaInfo.Id,
+                title = MetaInfo.Title,
+                description = MetaInfo.Description,
+                shortDesc = MetaInfo.ShortDesc,
+                published = MetaInfo.Published,
+                viewMode = MetaInfo.ViewMode,
+                version = MetaInfo.Version,
+                status = MetaInfo.Status
             }
         });  // ✅ WRAPPED for user-triggered confirmation
     }
@@ -277,13 +277,13 @@ public async Task<IActionResult> UpdateContentItemAsync(
 
 ```csharp
 [HttpDelete("{id}")]
-public async Task<IActionResult> DeleteContentItemAsync(Guid id)
+public async Task<IActionResult> DeleteMetaInfoAsync(Guid id)
 {
     try
     {
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        if (contentItem == null)
+        if (MetaInfo == null)
             return NotFound(new 
             {
                 success = false,
@@ -292,7 +292,7 @@ public async Task<IActionResult> DeleteContentItemAsync(Guid id)
             });  // ✅ WRAPPED for error
         
         // Delete content item
-        _context.ContentItems.Remove(contentItem);
+        _context.MetaInfos.Remove(MetaInfo);
         
         await _context.SaveChangesAsync();
         
@@ -400,7 +400,7 @@ public async Task<IActionResult> ExportToJsonAsync(Guid id, [FromBody] ExportOpt
     try
     {
         // Query published content items for export
-        var items = await _context.ContentItems
+        var items = await _context.MetaInfos
             .Where(i => i.ProjectId == id && i.Published)
             .Include(i => i.MediaAttachments)
             .ToListAsync();

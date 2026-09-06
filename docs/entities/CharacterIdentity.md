@@ -14,7 +14,7 @@ public class CharacterIdentity
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Display(Name = "Content Item")]
-    public Guid ContentItemId { get; set; }  // FK to ContentItems
+    public Guid MetaInfoId { get; set; }  // FK to MetaInfos
     
     [Display(Name = "Identity Type ID")]
     public Guid IdentityTypeId { get; set; } // FK to ProjectIdentityDefinition
@@ -52,8 +52,8 @@ public class CharacterIdentity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
-    // ✅ FK to ContentItems (character content item)
-    public Guid ContentItemId { get; set; }
+    // ✅ FK to MetaInfos (character content item)
+    public Guid MetaInfoId { get; set; }
     
     // ✅ FK to ProjectIdentityDefinition (identity type)
     public Guid IdentityTypeId { get; set; }
@@ -64,8 +64,8 @@ public class CharacterIdentity
 
 // ✅ CORRECT - Navigation properties on OTHER entities back to CharacterIdentity:
 
-// ContentItem entity has collection of CharacterIdentities
-public class ContentItem
+// MetaInfo entity has collection of CharacterIdentities
+public class MetaInfo
 {
     // ✅ Forward reference (collection)
     public ICollection<CharacterIdentity> CharacterIdentities { get; set; }  // ⚠️ NEEDS TO BE ADDED!
@@ -94,7 +94,7 @@ public class IdentityValue
 | :--- | :--- | :--- |
 | `string IdentityName` | Identity names should come from ProjectIdentityDefinition/IdentityValues tables | Not redundant data! Domain separation violation! |
 | `int IdentityType` | Use FK to IdentityTypeId instead of int for type safety | Domain-aware pattern requires typed navigation properties! |
-| No back-reference on ContentItem | Missing collection navigation property required by eager loading pattern (Performance.md) | Violates domain-separated configuration architecture! |
+| No back-reference on MetaInfo | Missing collection navigation property required by eager loading pattern (Performance.md) | Violates domain-separated configuration architecture! |
 
 ---
 
@@ -111,10 +111,10 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
         // Primary key
         builder.HasKey(e => e.Id);
         
-        // ✅ FK to ContentItem (character content item)
-        builder.HasOne(ci => ci.ContentItem)  // ⚠️ Forward reference on ContentItem!
+        // ✅ FK to MetaInfo (character content item)
+        builder.HasOne(ci => ci.MetaInfo)  // ⚠️ Forward reference on MetaInfo!
             .WithMany(c => c.CharacterIdentities)  // ⚠️ Back-reference needed!
-            .HasForeignKey(ci => ci.ContentItemId)
+            .HasForeignKey(ci => ci.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Don't cascade delete, maintain identity history!
         
         // ✅ FK to IdentityType (ProjectIdentityDefinition)
@@ -130,7 +130,7 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
             .OnDelete(DeleteBehavior.SetNull);  // ✅ Allow multiple identity values over time!
         
         // Properties configuration (not navigation properties)
-        builder.Property(e => e.ContentItemId).IsRequired();
+        builder.Property(e => e.MetaInfoId).IsRequired();
         builder.Property(e => e.IdentityTypeId).IsRequired();
         builder.Property(e => e.IdentityValueId).IsRequired();
         builder.Property(e => e.IsPrimary).HasDefaultValue(false);  // ✅ Primary identity flag!
@@ -146,10 +146,10 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
 | :--- | :--- | :--- |
 | **Entity Name** | `CharacterIdentity` | Links characters to their assigned identities (race/faction/alignment) |
 | **Primary Key** | `Id` (Guid, auto-generated) | Standard EF Core pattern |
-| **FKs** | 3 FKs: ContentItemId, IdentityTypeId, IdentityValueId | No redundant data (names from related tables) |
-| **Navigation Properties on ContentItem** | `ICollection<CharacterIdentity> CharacterIdentities` | ⚠️ Needs to be added! Eager loading requirement! |
+| **FKs** | 3 FKs: MetaInfoId, IdentityTypeId, IdentityValueId | No redundant data (names from related tables) |
+| **Navigation Properties on MetaInfo** | `ICollection<CharacterIdentity> CharacterIdentities` | ⚠️ Needs to be added! Eager loading requirement! |
 | **Back-References on IdentityType/IdentityValue** | Optional but recommended for typing | Domain-separated configuration pattern! |
-| **OnDelete Behavior** | Restrict (ContentItem), SetNull (IdentityValue) | Maintain identity history! |
+| **OnDelete Behavior** | Restrict (MetaInfo), SetNull (IdentityValue) | Maintain identity history! |
 
 ---
 
@@ -157,10 +157,10 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
 
 ```csharp
 // ✅ CORRECT - Query character with identity assignments (eager loading)
-public async Task<ContentItem> GetCharacterWithIdentitiesAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<MetaInfo> GetCharacterWithIdentitiesAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // ✅ Eager loading prevents N+1 query problem (Performance.md requirement!)
-    var character = await _context.ContentItems
+    var character = await _context.MetaInfos
         .Include(ci => ci.MediaAttachments)
         .Include(ci => ci.CharacterIdentities)  // ⚠️ Needs to be added! Eager loading!
             .ThenInclude(ciIdentity => ciIdentity.IdentityType)  // Nested eager loading!
@@ -171,36 +171,36 @@ public async Task<ContentItem> GetCharacterWithIdentitiesAsync(Guid id, ViewMode
 }
 
 // ❌ INCORRECT - Without eager loading, this causes N+1 query problem!
-public async Task<ContentItem> GetCharacterWithIdentitiesAsync_Bad()  // ⚠️ Avoid!
+public async Task<MetaInfo> GetCharacterWithIdentitiesAsync_Bad()  // ⚠️ Avoid!
 {
-    var characters = await _context.ContentItems.ToListAsync();
+    var characters = await _context.MetaInfos.ToListAsync();
     
     foreach (var character in characters)  // ❌ N+1 query!
     {
         var identities = await _context.CharacterIdentities
-            .Where(ci => ci.ContentItemId == character.Id).ToListAsync();  // ⚠️ Bad pattern!
+            .Where(ci => ci.MetaInfoId == character.Id).ToListAsync();  // ⚠️ Bad pattern!
     }
 }
 
 // ✅ CORRECT - Update character identity assignments (via navigation property)
-public async Task<IActionResult> UpdateCharacterIdentitiesAsync(Guid contentItemId, [FromBody] CharacterIdentityUpdateDto dto)
+public async Task<IActionResult> UpdateCharacterIdentitiesAsync(Guid MetaInfoId, [FromBody] CharacterIdentityUpdateDto dto)
 {
-    var character = await _context.ContentItems.FindAsync(contentItemId);
+    var character = await _context.MetaInfos.FindAsync(MetaInfoId);
     
     // ✅ Use eager loading to prevent N+1 query problem!
     var identities = await _context.CharacterIdentities
         .Include(ci => ci.IdentityType)
             .Include(ci => ci.IdentityValue)
-        .Where(ci => ci.ContentItemId == contentItemId)
+        .Where(ci => ci.MetaInfoId == MetaInfoId)
         .ToListAsync();  // ✅ Eager loading! Domain-aware patterns!
     
     // ... update logic here
 }
 
 // ❌ INCORRECT - Without eager loading, this causes N+1 query problem! (Performance.md violation!)
-public async Task<IActionResult> UpdateCharacterIdentitiesAsync_Bad(Guid contentItemId, [FromBody] CharacterIdentityUpdateDto dto)  // ⚠️ Avoid!
+public async Task<IActionResult> UpdateCharacterIdentitiesAsync_Bad(Guid MetaInfoId, [FromBody] CharacterIdentityUpdateDto dto)  // ⚠️ Avoid!
 {
-    var character = await _context.ContentItems.FindAsync(contentItemId);
+    var character = await _context.MetaInfos.FindAsync(MetaInfoId);
     
     foreach (var identity in identities)  // ❌ N+1 query!
     {
@@ -216,10 +216,10 @@ public async Task<IActionResult> UpdateCharacterIdentitiesAsync_Bad(Guid content
 | Feature | Value/Pattern | Notes |
 | :--- | :--- | :--- |
 | **Purpose** | Link characters to identity attributes (race, faction, alignment) | RPG systems, visual novel branching mechanics |
-| **FKs** | 3 FKs: ContentItem, IdentityType, IdentityValue | No redundant data, domain separation! |
-| **Navigation Property on ContentItem** | `ICollection<CharacterIdentity> CharacterIdentities` | ⚠️ Needs to be added for eager loading! |
+| **FKs** | 3 FKs: MetaInfo, IdentityType, IdentityValue | No redundant data, domain separation! |
+| **Navigation Property on MetaInfo** | `ICollection<CharacterIdentity> CharacterIdentities` | ⚠️ Needs to be added for eager loading! |
 | **Back-References** | Optional but recommended for typed navigation properties | Domain-separated configuration pattern! |
-| **OnDelete Behavior** | Restrict (ContentItem), SetNull (IdentityValue) | Maintain identity history! |
+| **OnDelete Behavior** | Restrict (MetaInfo), SetNull (IdentityValue) | Maintain identity history! |
 
 ---
 
@@ -228,7 +228,7 @@ public async Task<IActionResult> UpdateCharacterIdentitiesAsync_Bad(Guid content
 This entity definition ensures that **`CharacterIdentity`**:
 - ✅ Links characters to their assigned identities (race/faction/alignment) for RPG systems or visual novels
 - ✅ Uses 3 FKs instead of redundant data (names from related tables, not stored directly)
-- ✅ Has navigation properties on `ContentItem` for eager loading pattern (Performance.md requirement!)
+- ✅ Has navigation properties on `MetaInfo` for eager loading pattern (Performance.md requirement!)
 - ✅ Follows domain-separated configuration architecture with proper back-references
 
 The **CharacterIdentity entity** is essential for character identity tracking and game mechanics that depend on identity systems! 🎮✨
@@ -243,7 +243,7 @@ The **CharacterIdentity entity** is essential for character identity tracking an
 
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CHARACTER-03** | As an RPG game developer or visual novel writer, I want to assign identity attributes (race, faction, alignment, guild) to my characters so that I can track character development, narrative branching, and gameplay mechanics based on identity choices. *(Domain-aware pattern: Uses CharacterIdentity navigation property)* | - **Flexible Identity System**: Support multiple identity types per character (Race, Faction, Alignment)<br>- **Nullable FK to Identity Value**: `CharacterIdentity` entity links characters to specific identities<br>- **Eager Loading**: Use `Include(ci => ci.CharacterIdentities)` for N+1 prevention<br>- **ViewMode Separation**: Show/hide identity info in Presentation mode | **Medium** | `Content/ContentItemsController.cs`, `CharacterIdentityEntityTypeConfiguration.cs` ✅ Navigation property! |
+| **CHARACTER-03** | As an RPG game developer or visual novel writer, I want to assign identity attributes (race, faction, alignment, guild) to my characters so that I can track character development, narrative branching, and gameplay mechanics based on identity choices. *(Domain-aware pattern: Uses CharacterIdentity navigation property)* | - **Flexible Identity System**: Support multiple identity types per character (Race, Faction, Alignment)<br>- **Nullable FK to Identity Value**: `CharacterIdentity` entity links characters to specific identities<br>- **Eager Loading**: Use `Include(ci => ci.CharacterIdentities)` for N+1 prevention<br>- **ViewMode Separation**: Show/hide identity info in Presentation mode | **Medium** | `Content/MetaInfosController.cs`, `CharacterIdentityEntityTypeConfiguration.cs` ✅ Navigation property! |
 
 ---
 
@@ -262,7 +262,7 @@ sequenceDiagram
     Writer->>API: POST /api/v1/content/items
     Note right of API: First, create character content item without identities!
     
-    API->>DB: Create ContentItem (ContentType=Character, CharacterIdentities = null initially)
+    API->>DB: Create MetaInfo (ContentType=Character, CharacterIdentities = null initially)
     DB-->>API: 201 Created with content item ID
     
     API-->>Writer: Success Response: WRAPPED for creation confirmation
@@ -532,10 +532,10 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
         // Primary key
         builder.HasKey(e => e.Id);
         
-        // ✅ NAVIGATION PROPERTY: ContentItem (back-reference to character content item)
-        builder.HasOne(ci => ci.ContentItem)  // ⚠️ Back-reference needed!
+        // ✅ NAVIGATION PROPERTY: MetaInfo (back-reference to character content item)
+        builder.HasOne(ci => ci.MetaInfo)  // ⚠️ Back-reference needed!
             .WithMany(c => c.CharacterIdentities)  // ⚠️ Forward reference on content item!
-            .HasForeignKey(ci => ci.ContentItemId)
+            .HasForeignKey(ci => ci.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Don't cascade delete, maintain identity history!
         
         // Navigation property: IdentityType (FK to ProjectIdentityDefinition)
@@ -551,7 +551,7 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
             .OnDelete(DeleteBehavior.SetNull);  // ✅ Allow multiple identity values over time!
         
         // Properties configuration (not navigation properties)
-        builder.Property(e => e.ContentItemId).IsRequired();
+        builder.Property(e => e.MetaInfoId).IsRequired();
         builder.Property(e => e.IdentityTypeId).IsRequired();
         builder.Property(e => e.IdentityValueId).IsRequired();
         builder.Property(e => e.IsPrimary).HasDefaultValue(false);  // ✅ Primary identity flag!
@@ -575,7 +575,7 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
 
 ## **🎯 Key Design Patterns Demonstrated:**
 
-✅ **Back-Reference Navigation Property**: `CharacterIdentities` collection on ContentItem  
+✅ **Back-Reference Navigation Property**: `CharacterIdentities` collection on MetaInfo  
 ✅ **Forward Reference Collection**: `IdentityValue`, `IdentityType` back-references  
 ✅ **Eager Loading Pattern**: Prevent N+1 queries using `Include()` (Performance.md)  
 ✅ **ViewMode Separation**: Show/hide identity info in different contexts  

@@ -29,7 +29,7 @@ A collaborative documentation platform for game developers supporting:
 ### **1. SCHEMA.md** (~53 Tables)
 Complete database schema including:
 - Base & Auth entities (User, Team, TeamMember)
-- Content & Media entities (ContentItem with ViewMode, StoryOutline, DialogueBranch/Node)
+- Content & Media entities (MetaInfo with ViewMode, StoryOutline, DialogueBranch/Node)
 - Narrative Structure (StorySequence, StoryBeat, LoreEntry)
 - Attributes & Scaling (AttributeDefinition, ClassTemplate)
 - Abilities & GAS systems
@@ -106,7 +106,7 @@ Production deployment guide:
 
 ✅ **No Repository Pattern**: Direct EF Core access preferred for MVP simplicity  
 ✅ **Flat Task Structure**: No hierarchical epics/stories (ADHD-friendly design)  
-✅ **View Mode Separation**: PrivateWriting vs Presentation modes in ContentItem  
+✅ **View Mode Separation**: PrivateWriting vs Presentation modes in MetaInfo  
 ✅ **Global Feature Flags**: EnableUserRegistration = false by default in production  
 ✅ **ExternalReference Table**: Structured links to external resources  
 

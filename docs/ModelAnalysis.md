@@ -23,10 +23,10 @@ EF Core throws `InvalidOperationException` when both sides of a relationship con
 
 | Relationship | Entity A (config) | Entity B (config) | Fix |
 |---|---|---|---|
-| **Comment ↔ ContentItem** | `CommentEntityTypeConfiguration`: `WithOne(c => c.ContentItem).HasForeignKey(...)` | `ContentItemEntityTypeConfiguration`: `WithMany(ci => ci.Comments).HasForeignKey(...)` | Remove `.HasForeignKey()` from one side (preferably the principal side) |
-| **Project ↔ ContentItem** | `ProjectEntityTypeConfiguration`: `WithMany(p => p.ContentItems).HasForeignKey(ci => ci.ProjectId)` | `ContentItemEntityTypeConfiguration`: `WithMany(p => p.ContentItems).HasForeignKey(ci => ci.ProjectId)` | Remove the config from `ProjectEntityTypeConfiguration` (keep it on `ContentItemEntityTypeConfiguration`) |
-| **ContentItem ↔ MediaAttachment** | `ContentItemEntityTypeConfiguration`: `WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId)` | `MediaAttachmentEntityTypeConfiguration`: `WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId)` | Remove the config from `ContentItemEntityTypeConfiguration` |
-| **ContentItem ↔ ReviewStatus** | `ContentItemEntityTypeConfiguration`: `SetNull` | `ReviewStatusEntityTypeConfiguration`: `Restrict` | **Both double-config AND conflicting delete behaviors.** Unify on one side with the intended behavior. |
+| **Comment ↔ MetaInfo** | `CommentEntityTypeConfiguration`: `WithOne(c => c.MetaInfo).HasForeignKey(...)` | `MetaInfoEntityTypeConfiguration`: `WithMany(ci => ci.Comments).HasForeignKey(...)` | Remove `.HasForeignKey()` from one side (preferably the principal side) |
+| **Project ↔ MetaInfo** | `ProjectEntityTypeConfiguration`: `WithMany(p => p.MetaInfos).HasForeignKey(ci => ci.ProjectId)` | `MetaInfoEntityTypeConfiguration`: `WithMany(p => p.MetaInfos).HasForeignKey(ci => ci.ProjectId)` | Remove the config from `ProjectEntityTypeConfiguration` (keep it on `MetaInfoEntityTypeConfiguration`) |
+| **MetaInfo ↔ MediaAttachment** | `MetaInfoEntityTypeConfiguration`: `WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId)` | `MediaAttachmentEntityTypeConfiguration`: `WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId)` | Remove the config from `MetaInfoEntityTypeConfiguration` |
+| **MetaInfo ↔ ReviewStatus** | `MetaInfoEntityTypeConfiguration`: `SetNull` | `ReviewStatusEntityTypeConfiguration`: `Restrict` | **Both double-config AND conflicting delete behaviors.** Unify on one side with the intended behavior. |
 | **StorySequence ↔ StorySequence (self-ref)** | `StorySequenceEntityTypeConfiguration` configures **both** `ParentSequence → ChildSequences` and `ChildSequences → ParentSequence` with `HasForeignKey` on both sides. | Same file, both directions | Keep only the dependent side (`ParentSequence`) with `.HasForeignKey()`. Remove the inverse config. |
 
 ### 2. FK Property Name Mismatch
@@ -47,13 +47,13 @@ EF Core throws `InvalidOperationException` when both sides of a relationship con
 |---|---|---|
 | **TokenUsageLog** | Configured in **both** `Tokens/TokenUsageLogEntityTypeConfiguration.cs` and `Activities/TokenUsageLogEntityTypeConfiguration.cs`. EF Core will throw if both are registered. | Delete the duplicate. Keep whichever has the complete configuration. |
 | **ProjectTaskComments** | Configured in both `ProjectTaskCommentsEntityTypeConfiguration` and `TaskCommentEntityTypeConfiguration`. | Merge into a single configuration file. |
-| **Comment** | Configured in both `CommentEntityTypeConfiguration` and inside `ContentItemEntityTypeConfiguration` (`.WithMany(ci => ci.Comments)`). | Keep FK config on the dependent entity (`CommentEntityTypeConfiguration`). The principal-side config should not re-declare the FK. |
+| **Comment** | Configured in both `CommentEntityTypeConfiguration` and inside `MetaInfoEntityTypeConfiguration` (`.WithMany(ci => ci.Comments)`). | Keep FK config on the dependent entity (`CommentEntityTypeConfiguration`). The principal-side config should not re-declare the FK. |
 
 ### 5. CharacterBackground FK Mapping Bug
 
 | Issue | Details |
 |---|---|
-| `CharacterBackgroundEntityTypeConfiguration` sets `.HasForeignKey(e => e.ContentItemId)` with navigation `cb => cb.CharacterDetails`. But `ContentItemId` is the **PK** of `CharacterBackground`, not the FK to `CharacterDetails`. The FK property is `CharacterDetailsId`. | Change to `.HasForeignKey(e => e.CharacterDetailsId)` or remove the redundant config if EF convention handles it. |
+| `CharacterBackgroundEntityTypeConfiguration` sets `.HasForeignKey(e => e.MetaInfoId)` with navigation `cb => cb.CharacterDetails`. But `MetaInfoId` is the **PK** of `CharacterBackground`, not the FK to `CharacterDetails`. The FK property is `CharacterDetailsId`. | Change to `.HasForeignKey(e => e.CharacterDetailsId)` or remove the redundant config if EF convention handles it. |
 
 ---
 
@@ -78,7 +78,7 @@ These are likely **working** via EF Core conventions, but explicit configuration
 | Entity / Relationship | Issue | Recommendation |
 |---|---|---|
 | `Project.Tags` | `ProjectEntityTypeConfiguration` declares `.HasMany(p => p.Tags).WithMany()` but `Tag` has **no** `ProjectId` FK and no junction table. EF Core will create a **shadow** junction table at runtime, which may not match domain intent. | Either add a `ProjectTag` junction entity with explicit config, or add `ProjectId` to `Tag` and configure as one-to-many. |
-| `Project.MediaAttachments` | `ProjectEntityTypeConfiguration` declares `Project.MediaAttachments` but `MediaAttachment` has `ContentItemId`, **not** `ProjectId`. This mapping is invalid. | Remove `Project.MediaAttachments` — media attachments belong to `ContentItem`, not `Project`. |
+| `Project.MediaAttachments` | `ProjectEntityTypeConfiguration` declares `Project.MediaAttachments` but `MediaAttachment` has `MetaInfoId`, **not** `ProjectId`. This mapping is invalid. | Remove `Project.MediaAttachments` — media attachments belong to `MetaInfo`, not `Project`. |
 
 ---
 
@@ -90,10 +90,10 @@ The following are mapped via EF Core conventions. They are functional but could 
 
 | Entity | FKs (convention-mapped) |
 |---|---|
-| `ContentTags` | `ContentItemId → ContentItem`, `TagId → Tag` |
+| `ContentTags` | `MetaInfoId → MetaInfo`, `TagId → Tag` |
 | `MediaTags` | `MediaAttachmentId → MediaAttachment`, `TagId → Tag` |
 | `ClassTemplateAttribute` | `ClassTemplateId → ClassTemplate`, `AttributeDefinitionId → AttributeDefinition` |
-| `CharacterAttributes` | (`ContentItemId`, `AttributeDefinitionId`) — composite PK |
+| `CharacterAttributes` | (`MetaInfoId`, `AttributeDefinitionId`) — composite PK |
 | `EngineFieldMapping` | (`EngineExportConfigId`, `SourceColumn`, `TargetColumn`) — composite PK |
 | `TemplateIdentityDefinition` | (`ProjectTemplateId`, `IdentityName`) — composite PK |
 | `TemplateClassTemplateDefinition` | (`ProjectTemplateId`, `ClassTemplateName`) — composite PK |
@@ -104,10 +104,10 @@ The following are mapped via EF Core conventions. They are functional but could 
 
 | Entity | FK | Target | Delete Behavior |
 |---|---|---|---|
-| `ContentItem` | `ProjectId` | `Project` | Cascade |
-| `ContentItem` | `ContentItemId` → `MediaAttachment` | `MediaAttachment` | SetNull |
-| `ContentItem` | `ContentItemId` → `ContentTags` | `ContentTags` | SetNull |
-| `MediaAttachment` | `ContentItemId` | `ContentItem` | SetNull |
+| `MetaInfo` | `ProjectId` | `Project` | Cascade |
+| `MetaInfo` | `MetaInfoId` → `MediaAttachment` | `MediaAttachment` | SetNull |
+| `MetaInfo` | `MetaInfoId` → `ContentTags` | `ContentTags` | SetNull |
+| `MediaAttachment` | `MetaInfoId` | `MetaInfo` | SetNull |
 | `ExternalReference` | `ParentId` | `ExternalReference` (self) | Cascade |
 | `DialogueBranch` | `ParentNodeId` | `DialogueBranch` (self) | Restrict |
 | `DialogueNode` | `BranchId` | `DialogueBranch` | Cascade |
@@ -121,7 +121,7 @@ The following are mapped via EF Core conventions. They are functional but could 
 | `UserProviderLink` | `UserId` | `User` | Cascade |
 | `Project` | `SeriesProjectId` | `Project` (self) | Restrict |
 | `Project` | `OwnerId` | `User` | Restrict |
-| `CharacterDetails` | `ContentItemId` | `ContentItem` | Cascade |
+| `CharacterDetails` | `MetaInfoId` | `MetaInfo` | Cascade |
 | `ClassTemplate` | `AttributeSetId` | `AttributeSet` | Cascade |
 | `AbilitySet` | `ProjectId` | `Project` | Cascade |
 | `ProjectIdentityDefinition` | `ProjectId` | `Project` | Cascade |
@@ -132,12 +132,12 @@ The following are mapped via EF Core conventions. They are functional but could 
 | `EndingDefinition` | `ProjectId` | `Project` | Cascade |
 | `EngineExportConfig` | `ProjectId` | `Project` | Cascade |
 | `EngineFieldMapping` | `EngineExportConfigId` | `EngineExportConfig` | (via composite PK) |
-| `AssetLink` | `ContentItemId` | `ContentItem` | Cascade |
+| `AssetLink` | `MetaInfoId` | `MetaInfo` | Cascade |
 | `ProjectToken` | `ProjectId` | `Project` | Cascade |
 | `TokenUsageLog` | `TokenId` | `ProjectToken` | Cascade |
-| `TokenUsageLog` | `ContentId` | `ContentItem` | SetNull |
+| `TokenUsageLog` | `ContentId` | `MetaInfo` | SetNull |
 | `TokenUsageLog` | `ProjectId` | `Project` | Cascade |
-| `ContentVersionLog` | `ContentItemId` | `ContentItem` | SetNull |
+| `ContentVersionLog` | `MetaInfoId` | `MetaInfo` | SetNull |
 | `ProjectTask` | `ProjectTaskId` | `ProjectTask` (self, PK-as-FK) | Cascade |
 | `ReviewStatus` | `ReviewedByUserId` | `User` | Restrict |
 
@@ -156,11 +156,11 @@ The following are mapped via EF Core conventions. They are functional but could 
 
 | # | Priority | Action |
 |---|---|---|
-| 1 | 🔴 | Remove double `HasForeignKey()` from all 5 double-configured relationships (Comment↔ContentItem, Project↔ContentItem, ContentItem↔MediaAttachment, ContentItem↔ReviewStatus, StorySequence self-ref) |
+| 1 | 🔴 | Remove double `HasForeignKey()` from all 5 double-configured relationships (Comment↔MetaInfo, Project↔MetaInfo, MetaInfo↔MediaAttachment, MetaInfo↔ReviewStatus, StorySequence self-ref) |
 | 2 | 🔴 | Delete duplicate `TokenUsageLogEntityTypeConfiguration` (keep one) |
 | 3 | 🔴 | Delete duplicate `ProjectTaskComments` / `TaskComment` config (keep one) |
 | 4 | 🔴 | Fix `ProjectTaskComments` FK property name mismatch (`ProjectTaskId` vs `TaskId`) |
-| 5 | 🔴 | Fix `CharacterBackgroundEntityTypeConfiguration` FK to use `CharacterDetailsId` not `ContentItemId` |
+| 5 | 🔴 | Fix `CharacterBackgroundEntityTypeConfiguration` FK to use `CharacterDetailsId` not `MetaInfoId` |
 | 6 | 🔴 | Remove `Project.TeamMembers` FK config (wrong entity — `TeamMember` links to `Team`, not `Project`) |
 | 7 | 🟡 | Add explicit FK config for: `DialogueNode.SpeakerId`, `IdentityValue.IdentityDefinitionId`, `IdentityValue.ProjectTemplateId`, `EngineFieldMapping.ProjectId`, `TemplateIdentityDefinition.IdentityDefinitionId`, `TemplateAttributeSetDefinition.AttributeSetDefinitionId`, `Comment.CommentedByUserId` |
 | 8 | 🟡 | Fix `Project.Tags` implicit M2M — add junction entity or `ProjectId` to `Tag` |

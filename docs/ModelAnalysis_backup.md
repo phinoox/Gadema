@@ -13,20 +13,20 @@ I will structure the analysis clearly.
 
 1. Comment
 
-Model: ContentItemId -> ContentItem (Many-to-One)
-Config (CommentEntityTypeConfiguration in Tasks/): .HasForeignKey(c => c.ContentItemId) on .WithMany(ci => ci.Comments) -> Conflict: Model says OnDelete isn't specified, but config says DeleteBehavior.Cascade. Also, CommentEntityTypeConfiguration is in Tasks/ namespace but configures Comment which is a general model. Comment is also configured in ContentItemEntityTypeConfiguration as .WithMany(ci => ci.Comments). Having two configs for the same entity can cause mapping conflicts if both are registered.
-2. ContentItem
+Model: MetaInfoId -> MetaInfo (Many-to-One)
+Config (CommentEntityTypeConfiguration in Tasks/): .HasForeignKey(c => c.MetaInfoId) on .WithMany(ci => ci.Comments) -> Conflict: Model says OnDelete isn't specified, but config says DeleteBehavior.Cascade. Also, CommentEntityTypeConfiguration is in Tasks/ namespace but configures Comment which is a general model. Comment is also configured in MetaInfoEntityTypeConfiguration as .WithMany(ci => ci.Comments). Having two configs for the same entity can cause mapping conflicts if both are registered.
+2. MetaInfo
 
 Model: ProjectId -> Project
-Config (ContentItemEntityTypeConfiguration): .HasForeignKey(ci => ci.ProjectId) on .WithMany(p => p.ContentItems) -> Matches.
-Model: MediaAttachments collection -> MediaAttachment.ContentItemId
-Config: .HasForeignKey(m => m.ContentItemId) DeleteBehavior.SetNull -> Matches.
-Model: ContentTagAssociations -> ContentTags.ContentItemId
-Config: .HasForeignKey(ct => ct.ContentItemId) DeleteBehavior.SetNull -> Matches.
-Model: ReviewStatus -> ReviewStatus.ContentItemId
-Config: .HasForeignKey(rs => rs.ContentItemId) DeleteBehavior.SetNull -> Matches.
-Model: Comments -> Comment.ContentItemId
-Config: .HasForeignKey(c => c.ContentItemId) DeleteBehavior.Cascade -> Matches.
+Config (MetaInfoEntityTypeConfiguration): .HasForeignKey(ci => ci.ProjectId) on .WithMany(p => p.MetaInfos) -> Matches.
+Model: MediaAttachments collection -> MediaAttachment.MetaInfoId
+Config: .HasForeignKey(m => m.MetaInfoId) DeleteBehavior.SetNull -> Matches.
+Model: ContentTagAssociations -> ContentTags.MetaInfoId
+Config: .HasForeignKey(ct => ct.MetaInfoId) DeleteBehavior.SetNull -> Matches.
+Model: ReviewStatus -> ReviewStatus.MetaInfoId
+Config: .HasForeignKey(rs => rs.MetaInfoId) DeleteBehavior.SetNull -> Matches.
+Model: Comments -> Comment.MetaInfoId
+Config: .HasForeignKey(c => c.MetaInfoId) DeleteBehavior.Cascade -> Matches.
 3. Tag
 
 Model: ContentTagAssociations -> ContentTags.TagId
@@ -34,7 +34,7 @@ Model: MediaTagAssociations -> MediaTags.TagId
 Config (TagEntityTypeConfiguration): Only sets PK and indexes. No FK configs. Junction tables handle their own FKs. -> OK.
 4. ContentTags
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: TagId -> Tag
 Config (ContentTagsEntityTypeConfiguration): Only sets PK and indexes. No FK configs. -> OK (EF Core infers from navigation properties, but explicit configs are better. No conflict here, just implicit).
 5. MediaTags
@@ -44,8 +44,8 @@ Model: TagId -> Tag
 Config (MediaTagsEntityTypeConfiguration): Only sets PK and indexes. -> OK.
 6. MediaAttachment
 
-Model: ContentItemId -> ContentItem
-Config (MediaAttachmentEntityTypeConfiguration): .HasForeignKey(m => m.ContentItemId) DeleteBehavior.SetNull -> Matches.
+Model: MetaInfoId -> MetaInfo
+Config (MediaAttachmentEntityTypeConfiguration): .HasForeignKey(m => m.MetaInfoId) DeleteBehavior.SetNull -> Matches.
 Model: ExternalReferences collection -> ExternalReference (no FK in model for this, but ExternalReference has ParentId and ParentType). Config doesn't link them. -> OK.
 7. ExternalReference
 
@@ -115,25 +115,25 @@ Config (ProjectEntityTypeConfiguration):
 Note: OwnerType is just an int, not a FK. Polymorphic ownership is handled at the app layer, not EF FK level. -> OK.
 19. CharacterDetails
 
-Model: ContentItemId -> ContentItem (One-to-One via FK-as-PK)
-Config (CharacterDetailsEntityTypeConfiguration): .HasForeignKey<CharacterDetails>(e => e.ContentItemId) DeleteBehavior.Cascade -> Matches.
+Model: MetaInfoId -> MetaInfo (One-to-One via FK-as-PK)
+Config (CharacterDetailsEntityTypeConfiguration): .HasForeignKey<CharacterDetails>(e => e.MetaInfoId) DeleteBehavior.Cascade -> Matches.
 20. CharacterBackground
 
-Model: ContentItemId -> ContentItem (PK)
+Model: MetaInfoId -> MetaInfo (PK)
 Model: CharacterDetailsId -> CharacterDetails
-Config (CharacterBackgroundEntityTypeConfiguration): .HasForeignKey(e => e.ContentItemId) on .WithOne(cb => cb.CharacterDetails) -> Wait, this is weird. It says .HasForeignKey(e => e.ContentItemId) but the FK to CharacterDetails should be CharacterDetailsId. The config says .HasForeignKey(e => e.ContentItemId) which matches the PK, but the navigation is CharacterDetails. This is a POTENTIAL CONFLICT/MISMATCH. EF Core might get confused if ContentItemId is the PK and also the FK to CharacterDetails, but CharacterDetails has its own PK Id. Actually, CharacterBackground has ContentItemId as PK, and CharacterDetailsId as FK. The config only configures ContentItemId as FK to CharacterDetails, ignoring CharacterDetailsId. This is a BUG/MISMATCH.
+Config (CharacterBackgroundEntityTypeConfiguration): .HasForeignKey(e => e.MetaInfoId) on .WithOne(cb => cb.CharacterDetails) -> Wait, this is weird. It says .HasForeignKey(e => e.MetaInfoId) but the FK to CharacterDetails should be CharacterDetailsId. The config says .HasForeignKey(e => e.MetaInfoId) which matches the PK, but the navigation is CharacterDetails. This is a POTENTIAL CONFLICT/MISMATCH. EF Core might get confused if MetaInfoId is the PK and also the FK to CharacterDetails, but CharacterDetails has its own PK Id. Actually, CharacterBackground has MetaInfoId as PK, and CharacterDetailsId as FK. The config only configures MetaInfoId as FK to CharacterDetails, ignoring CharacterDetailsId. This is a BUG/MISMATCH.
 21. AttributeDefinition
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Config (AttributeDefinitionEntityTypeConfiguration): Only PK and indexes. No FK config. -> OK.
 22. AttributeSet
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: ProjectId -> Project
 Config (AttributeSetEntityTypeConfiguration): .HasForeignKey(att => att.ProjectId) DeleteBehavior.Cascade -> Matches.
 23. ClassTemplate
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: AttributeSetId -> AttributeSet
 Config (ClassTemplateEntityTypeConfiguration): .HasForeignKey(ct => ct.AttributeSetId) DeleteBehavior.Cascade -> Matches.
 24. ClassTemplateAttribute
@@ -143,21 +143,21 @@ Model: AttributeDefinitionId -> AttributeDefinition
 Config (ClassTemplateAttributeEntityTypeConfiguration): Composite PK .HasKey(e => new { e.ClassTemplateId, e.AttributeDefinitionId }). No FK configs. -> OK (convention handles it).
 25. CharacterAttributes
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: AttributeDefinitionId -> AttributeDefinition
-Config (CharacterAttributesEntityTypeConfiguration): Composite PK .HasKey(e => new { e.ContentItemId, e.AttributeDefinitionId }). No FK configs. -> OK.
+Config (CharacterAttributesEntityTypeConfiguration): Composite PK .HasKey(e => new { e.MetaInfoId, e.AttributeDefinitionId }). No FK configs. -> OK.
 26. AbilityDefinition
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Config (AbilityDefinitionEntityTypeConfiguration): Only PK and indexes. -> OK.
 27. AbilitySet
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: ProjectId -> Project
 Config (AbilitySetEntityTypeConfiguration): .HasForeignKey(abilitySet => abilitySet.ProjectId) DeleteBehavior.Cascade -> Matches.
 28. StatusEffectDefinition
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Config (StatusEffectDefinitionEntityTypeConfiguration): Only PK and indexes. -> OK.
 29. IdentityDefinition
 
@@ -174,16 +174,16 @@ Model: ProjectTemplateId -> ProjectTemplate
 Config (IdentityValueEntityTypeConfiguration): .HasForeignKey(iv => iv.ProjectId) DeleteBehavior.Cascade -> Matches. Other FKs not configured. -> OK.
 32. CharacterIdentity
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: IdentityDefinitionId -> IdentityDefinition
 Model: IdentityValueId -> IdentityValue
 Config (CharacterIdentityEntityTypeConfiguration):
 .HasForeignKey(ci => ci.IdentityDefinitionId) DeleteBehavior.Restrict -> Matches.
 .HasForeignKey(ci => ci.IdentityValueId) DeleteBehavior.SetNull -> Matches.
-Note: ContentItemId FK not configured. -> OK.
+Note: MetaInfoId FK not configured. -> OK.
 33. InventoryItem
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: ProjectId -> Project
 Config (InventoryItemEntityTypeConfiguration): .HasForeignKey(ii => ii.ProjectId) DeleteBehavior.Cascade -> Matches.
 34. EndingDefinition
@@ -225,8 +225,8 @@ Model: EngineExportConfigId -> EngineExportConfig
 Config (EngineFieldMappingEntityTypeConfiguration): Composite PK .HasKey(e => new { e.EngineExportConfigId, e.SourceColumn, e.TargetColumn }). No FK config. -> OK.
 43. AssetLink
 
-Model: ContentItemId -> ContentItem
-Config (AssetLinkEntityTypeConfiguration): .HasForeignKey(al => al.ContentItemId) DeleteBehavior.Cascade -> Matches.
+Model: MetaInfoId -> MetaInfo
+Config (AssetLinkEntityTypeConfiguration): .HasForeignKey(al => al.MetaInfoId) DeleteBehavior.Cascade -> Matches.
 44. ProjectToken
 
 Model: ProjectId -> Project
@@ -234,7 +234,7 @@ Config (ProjectTokenEntityTypeConfiguration): .HasForeignKey(pt => pt.ProjectId)
 45. TokenUsageLog
 
 Model: TokenId -> ProjectToken
-Model: ContentId -> ContentItem
+Model: ContentId -> MetaInfo
 Model: ProjectId -> Project
 Config 1 (TokenUsageLogEntityTypeConfiguration in Tokens/):
 .HasForeignKey(tul => tul.TokenId) DeleteBehavior.Cascade -> Matches.
@@ -248,12 +248,12 @@ CONFLICT: Two configurations for the same entity TokenUsageLog. EF Core will thr
 Config (ContentSnapshotEntityTypeConfiguration): Only PK and indexes. No FK configs. -> OK.
 47. ContentVersionLog
 
-Model: ContentItemId -> ContentItem
-Config (ContentVersionLogEntityTypeConfiguration): .HasForeignKey(cvl => cvl.ContentItemId) DeleteBehavior.SetNull -> Matches.
+Model: MetaInfoId -> MetaInfo
+Config (ContentVersionLogEntityTypeConfiguration): .HasForeignKey(cvl => cvl.MetaInfoId) DeleteBehavior.SetNull -> Matches.
 48. ProjectTask
 
 Model: ProjectId -> Project
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: Comments -> ProjectTaskComments
 Config (ProjectTaskEntityTypeConfiguration): .HasForeignKey(pct => pct.ProjectTaskId) on .WithMany(pt => pt.Comments) -> Wait, the FK in ProjectTaskComments is ProjectTaskId. The config uses pct.TaskId. Let's check ProjectTaskComments model: it has ProjectTaskId and TaskId. The config says .HasForeignKey(pct => pct.TaskId). This matches TaskId in the model. -> OK.
 49. ProjectTaskComments
@@ -264,7 +264,7 @@ Config 1 (ProjectTaskCommentsEntityTypeConfiguration): .HasForeignKey(pct => pct
 Config 2 (TaskCommentEntityTypeConfiguration): .HasForeignKey(tc => tc.TaskId) -> CONFLICT: Two configs for ProjectTaskComments.
 50. ReviewStatus
 
-Model: ContentItemId -> ContentItem
+Model: MetaInfoId -> MetaInfo
 Model: ReviewedByUserId -> User
 Config (ReviewStatusEntityTypeConfiguration): .HasForeignKey(rs => rs.ReviewedByUserId) `
 
@@ -309,10 +309,10 @@ Config does not configure this relationship explicitly. It's just a plain FK. OK
 Model: User has ProviderLinks. UserProviderLink has UserId, User.
 Config (UserProviderLinkEntityTypeConfiguration): HasOne(x => x.User).WithMany(u => u.ProviderLinks).HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade)
 PK is composite: (UserId, Provider). But FK is just UserId. This is fine, but the PK includes Provider which isn't part of the FK. OK.
-6. Project <-> ContentItem
-Model: Project has ContentItems. ContentItem has ProjectId, Project.
-Config (ProjectEntityTypeConfiguration): HasMany(p => p.ContentItems).WithOne(ci => ci.Project).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade)
-Config (ContentItemEntityTypeConfiguration): HasOne(ci => ci.Project).WithMany(p => p.ContentItems).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade)
+6. Project <-> MetaInfo
+Model: Project has MetaInfos. MetaInfo has ProjectId, Project.
+Config (ProjectEntityTypeConfiguration): HasMany(p => p.MetaInfos).WithOne(ci => ci.Project).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade)
+Config (MetaInfoEntityTypeConfiguration): HasOne(ci => ci.Project).WithMany(p => p.MetaInfos).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade)
 Conflict/Redundancy: Both sides configure the same relationship. EF Core will throw an error if both sides declare the relationship unless one uses .HasForeignKey and the other uses .WithoutForeignKey() or just omits the FK configuration. Having HasForeignKey on both sides is a known EF Core pitfall that causes "The property could not be configured as a foreign key" or duplicate relationship errors.
 7. Project <-> StorySequence
 Model: Project has Sequences. StorySequence has ProjectId, Project.
@@ -329,36 +329,36 @@ Config (ActivityLogEntityTypeConfiguration): HasOne(al => al.Project).WithMany()
 Config (ProjectEntityTypeConfiguration): Does not configure inverse. OK.
 10. Project <-> TeamMember
 Model: Project has TeamMembers. TeamMember has TeamId, UserId. Wait, TeamMember links to Team, not Project. But Project model has TeamMembers collection. This is a logical/modeling conflict. TeamMember doesn't have a ProjectId FK. The config for TeamMember links to Team. So Project.TeamMembers is misconfigured in the model or the config is missing.
-11. ContentItem <-> MediaAttachment
-Model: ContentItem has MediaAttachments. MediaAttachment has ContentItemId, ContentItem.
-Config (ContentItemEntityTypeConfiguration): HasMany(ci => ci.MediaAttachments).WithOne(m => m.ContentItem).HasForeignKey(m => m.ContentItemId).OnDelete(DeleteBehavior.SetNull)
-Config (MediaAttachmentEntityTypeConfiguration): HasOne(m => m.ContentItem).WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId).OnDelete(DeleteBehavior.SetNull)
+11. MetaInfo <-> MediaAttachment
+Model: MetaInfo has MediaAttachments. MediaAttachment has MetaInfoId, MetaInfo.
+Config (MetaInfoEntityTypeConfiguration): HasMany(ci => ci.MediaAttachments).WithOne(m => m.MetaInfo).HasForeignKey(m => m.MetaInfoId).OnDelete(DeleteBehavior.SetNull)
+Config (MediaAttachmentEntityTypeConfiguration): HasOne(m => m.MetaInfo).WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId).OnDelete(DeleteBehavior.SetNull)
 Conflict/Redundancy: Both sides declare the relationship. Same issue as #6.
-12. ContentItem <-> ContentTags
-Model: ContentItem has ContentTagAssociations. ContentTags has ContentItemId, ContentItem.
-Config (ContentItemEntityTypeConfiguration): HasMany(ci => ci.ContentTagAssociations).WithOne(ct => ct.ContentItem).HasForeignKey(ct => ct.ContentItemId).OnDelete(DeleteBehavior.SetNull)
+12. MetaInfo <-> ContentTags
+Model: MetaInfo has ContentTagAssociations. ContentTags has MetaInfoId, MetaInfo.
+Config (MetaInfoEntityTypeConfiguration): HasMany(ci => ci.ContentTagAssociations).WithOne(ct => ct.MetaInfo).HasForeignKey(ct => ct.MetaInfoId).OnDelete(DeleteBehavior.SetNull)
 Config (ContentTagsEntityTypeConfiguration): Does not configure FK. OK.
-13. ContentItem <-> ReviewStatus
-Model: ContentItem has ReviewStatus. ReviewStatus has ContentItemId, ContentItem.
-Config (ContentItemEntityTypeConfiguration): HasOne(ci => ci.ReviewStatus).WithMany().HasForeignKey(rs => rs.ContentItemId).OnDelete(DeleteBehavior.SetNull)
+13. MetaInfo <-> ReviewStatus
+Model: MetaInfo has ReviewStatus. ReviewStatus has MetaInfoId, MetaInfo.
+Config (MetaInfoEntityTypeConfiguration): HasOne(ci => ci.ReviewStatus).WithMany().HasForeignKey(rs => rs.MetaInfoId).OnDelete(DeleteBehavior.SetNull)
 Config (ReviewStatusEntityTypeConfiguration): Does not configure FK. OK.
-14. ContentItem <-> Comment
-Model: ContentItem has Comments. Comment has ContentItemId, ContentItem.
-Config (ContentItemEntityTypeConfiguration): HasMany(ci => ci.Comments).WithOne(c => c.ContentItem).HasForeignKey(c => c.ContentItemId).OnDelete(DeleteBehavior.Cascade)
-Config (CommentEntityTypeConfiguration): HasOne(c => c.ContentItem).WithMany(ci => ci.Comments).HasForeignKey(c => c.ContentItemId).OnDelete(DeleteBehavior.Cascade)
+14. MetaInfo <-> Comment
+Model: MetaInfo has Comments. Comment has MetaInfoId, MetaInfo.
+Config (MetaInfoEntityTypeConfiguration): HasMany(ci => ci.Comments).WithOne(c => c.MetaInfo).HasForeignKey(c => c.MetaInfoId).OnDelete(DeleteBehavior.Cascade)
+Config (CommentEntityTypeConfiguration): HasOne(c => c.MetaInfo).WithMany(ci => ci.Comments).HasForeignKey(c => c.MetaInfoId).OnDelete(DeleteBehavior.Cascade)
 Conflict/Redundancy: Both sides declare.
-15. ContentItem <-> AssetLink
-Model: ContentItem has AssetLinks. AssetLink has ContentItemId, ContentItem.
-Config (AssetLinkEntityTypeConfiguration): HasOne(al => al.ContentItem).WithMany(ci => ci.AssetLinks).HasForeignKey(al => al.ContentItemId).OnDelete(DeleteBehavior.Cascade)
-Config (ContentItemEntityTypeConfiguration): Does not configure inverse. OK.
-16. ContentItem <-> ContentVersionLog
-Model: ContentItem has VersionLogs. ContentVersionLog has ContentItemId, ContentItem.
-Config (ContentVersionLogEntityTypeConfiguration): HasOne(cvl => cvl.ContentItem).WithMany(ci => ci.VersionLogs).HasForeignKey(cvl => cvl.ContentItemId).OnDelete(DeleteBehavior.SetNull)
-Config (ContentItemEntityTypeConfiguration): Does not configure inverse. OK.
-17. ContentItem <-> TokenUsageLog
-Model: ContentItem has UsageLogs. TokenUsageLog has ContentId, ContentItem.
-Config (TokenUsageLogEntityTypeConfiguration): HasOne(tul => tul.ContentItem).WithMany(ci => ci.UsageLogs).HasForeignKey(tul => tul.ContentId).OnDelete(DeleteBehavior.SetNull)
-Note: FK property is ContentId, not ContentItemId. Model has ContentId. OK.
+15. MetaInfo <-> AssetLink
+Model: MetaInfo has AssetLinks. AssetLink has MetaInfoId, MetaInfo.
+Config (AssetLinkEntityTypeConfiguration): HasOne(al => al.MetaInfo).WithMany(ci => ci.AssetLinks).HasForeignKey(al => al.MetaInfoId).OnDelete(DeleteBehavior.Cascade)
+Config (MetaInfoEntityTypeConfiguration): Does not configure inverse. OK.
+16. MetaInfo <-> ContentVersionLog
+Model: MetaInfo has VersionLogs. ContentVersionLog has MetaInfoId, MetaInfo.
+Config (ContentVersionLogEntityTypeConfiguration): HasOne(cvl => cvl.MetaInfo).WithMany(ci => ci.VersionLogs).HasForeignKey(cvl => cvl.MetaInfoId).OnDelete(DeleteBehavior.SetNull)
+Config (MetaInfoEntityTypeConfiguration): Does not configure inverse. OK.
+17. MetaInfo <-> TokenUsageLog
+Model: MetaInfo has UsageLogs. TokenUsageLog has ContentId, MetaInfo.
+Config (TokenUsageLogEntityTypeConfiguration): HasOne(tul => tul.MetaInfo).WithMany(ci => ci.UsageLogs).HasForeignKey(tul => tul.ContentId).OnDelete(DeleteBehavior.SetNull)
+Note: FK property is ContentId, not MetaInfoId. Model has ContentId. OK.
 18. DialogueBranch <-> DialogueNode
 Model: DialogueBranch has Nodes. DialogueNode has BranchId, Branch.
 Config (DialogueNodeEntityTypeConfiguration): HasOne(dn => dn.Branch).WithMany(db => db.Nodes).HasForeignKey(dn => dn.BranchId).OnDelete(DeleteBehavior.Cascade)
@@ -394,8 +394,8 @@ Model: ClassTemplateAttribute has AttributeDefinitionId, AttributeDefinition.
 Config (ClassTemplateAttributeEntityTypeConfiguration): HasOne(cta => cta.AttributeDefinition).WithMany().HasForeignKey(cta => cta.AttributeDefinitionId);
 Config (AttributeDefinitionEntityTypeConfiguration): Does not configure inverse. OK.
 27. CharacterAttributes (Composite PK)
-Model: CharacterAttributes has ContentItemId, AttributeDefinitionId.
-Config (CharacterAttributesEntityTypeConfiguration): HasKey(e => new { e.ContentItemId, e.AttributeDefinitionId });
+Model: CharacterAttributes has MetaInfoId, AttributeDefinitionId.
+Config (CharacterAttributesEntityTypeConfiguration): HasKey(e => new { e.MetaInfoId, e.AttributeDefinitionId });
 Matches model. OK.
 28. AbilitySet <-> Project
 Model: AbilitySet has ProjectId, Project.
@@ -444,17 +444,17 @@ The user wants me to continue analyzing the foreign keys for possible conflicts 
 
 Let's go through the models and configs systematically.
 
-1. Comment & ContentItem
+1. Comment & MetaInfo
 
-Model: Comment has ContentItemId FK to ContentItem. ContentItem has ICollection<Comment> Comments.
-Config: CommentEntityTypeConfiguration sets FK to ContentItem with Cascade delete. ContentItemEntityTypeConfiguration sets Comments with Cascade delete.
-Conflict: Circular Cascade Delete. Both sides configure DeleteBehavior.Cascade. EF Core only allows one directional cascade. This will cause a runtime error (InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property... or cascade cycle error). Actually, EF Core throws InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property... Wait, no, it's usually System.InvalidOperationException: The properties expression 'c => c.ContentItemId' is not valid. The expression body should return the primary key property... No, it's System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Consider using fluent API to explicitly configure the relationship. Actually, the classic error is System.InvalidOperationException: The relationship from 'Comment' to 'ContentItem' with foreign key properties {'ContentItemId' : 'Id'} cannot target the primary key because it is not a candidate key type. No, the real error is: System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Or System.InvalidOperationException: The properties expression 'ci => ci.Comments' is not valid. The expression body should return the primary key property... Wait, the exact EF Core error for circular cascade is System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Consider using fluent API to explicitly configure the relationship. Actually, it's System.InvalidOperationException: The properties expression 'c => c.ContentItemId' is not valid... No. The real error is System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Let's verify: In ContentItemEntityTypeConfiguration, HasMany(ci => ci.Comments).WithOne(c => c.ContentItem).HasForeignKey(c => c.ContentItemId).OnDelete(DeleteBehavior.Cascade); In CommentEntityTypeConfiguration, HasOne(c => c.ContentItem).WithMany(ci => ci.Comments).HasForeignKey(c => c.ContentItemId).OnDelete(DeleteBehavior.Cascade); This defines the same relationship twice with different cascade behaviors or just redundantly. EF Core will throw InvalidOperationException: The properties expression 'c => c.ContentItemId' is not valid... or System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Actually, it's System.InvalidOperationException: The relationship from 'Comment' to 'ContentItem' cannot be configured because it is already configured. Wait, EF Core 5+ allows configuring both sides if they match, but here they both say Cascade. That's fine, but defining it twice is redundant. However, ContentItemEntityTypeConfiguration says .WithMany(ci => ci.Comments) and CommentEntityTypeConfiguration says .WithMany(ci => ci.Comments). This is a classic "double configuration" error in EF Core. It will throw InvalidOperationException: The properties expression 'c => c.ContentItemId' is not valid... No, it throws System.InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Actually, the exact error is System.InvalidOperationException: The properties expression 'c => c.ContentItemId' is not valid. The expression body should return the primary key property... No. Let's just state: Redundant/Multiple Configuration of the same relationship. EF Core will throw InvalidOperationException: Cannot create a relationship between 'Comment.ContentItem' and 'ContentItem.Comments' because there are multiple relationships that target the same FK property. Or System.InvalidOperationException: The relationship from 'Comment' to 'ContentItem' with foreign key properties {'ContentItemId' : 'Id'} is incompatible with the relationship from 'ContentItem' to 'Comment' with the same keys. I will note it as a Duplicate Relationship Configuration that will cause a build/runtime failure.
-2. Project & ContentItem
+Model: Comment has MetaInfoId FK to MetaInfo. MetaInfo has ICollection<Comment> Comments.
+Config: CommentEntityTypeConfiguration sets FK to MetaInfo with Cascade delete. MetaInfoEntityTypeConfiguration sets Comments with Cascade delete.
+Conflict: Circular Cascade Delete. Both sides configure DeleteBehavior.Cascade. EF Core only allows one directional cascade. This will cause a runtime error (InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property... or cascade cycle error). Actually, EF Core throws InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property... Wait, no, it's usually System.InvalidOperationException: The properties expression 'c => c.MetaInfoId' is not valid. The expression body should return the primary key property... No, it's System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Consider using fluent API to explicitly configure the relationship. Actually, the classic error is System.InvalidOperationException: The relationship from 'Comment' to 'MetaInfo' with foreign key properties {'MetaInfoId' : 'Id'} cannot target the primary key because it is not a candidate key type. No, the real error is: System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Or System.InvalidOperationException: The properties expression 'ci => ci.Comments' is not valid. The expression body should return the primary key property... Wait, the exact EF Core error for circular cascade is System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Consider using fluent API to explicitly configure the relationship. Actually, it's System.InvalidOperationException: The properties expression 'c => c.MetaInfoId' is not valid... No. The real error is System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Let's verify: In MetaInfoEntityTypeConfiguration, HasMany(ci => ci.Comments).WithOne(c => c.MetaInfo).HasForeignKey(c => c.MetaInfoId).OnDelete(DeleteBehavior.Cascade); In CommentEntityTypeConfiguration, HasOne(c => c.MetaInfo).WithMany(ci => ci.Comments).HasForeignKey(c => c.MetaInfoId).OnDelete(DeleteBehavior.Cascade); This defines the same relationship twice with different cascade behaviors or just redundantly. EF Core will throw InvalidOperationException: The properties expression 'c => c.MetaInfoId' is not valid... or System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Actually, it's System.InvalidOperationException: The relationship from 'Comment' to 'MetaInfo' cannot be configured because it is already configured. Wait, EF Core 5+ allows configuring both sides if they match, but here they both say Cascade. That's fine, but defining it twice is redundant. However, MetaInfoEntityTypeConfiguration says .WithMany(ci => ci.Comments) and CommentEntityTypeConfiguration says .WithMany(ci => ci.Comments). This is a classic "double configuration" error in EF Core. It will throw InvalidOperationException: The properties expression 'c => c.MetaInfoId' is not valid... No, it throws System.InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Actually, the exact error is System.InvalidOperationException: The properties expression 'c => c.MetaInfoId' is not valid. The expression body should return the primary key property... No. Let's just state: Redundant/Multiple Configuration of the same relationship. EF Core will throw InvalidOperationException: Cannot create a relationship between 'Comment.MetaInfo' and 'MetaInfo.Comments' because there are multiple relationships that target the same FK property. Or System.InvalidOperationException: The relationship from 'Comment' to 'MetaInfo' with foreign key properties {'MetaInfoId' : 'Id'} is incompatible with the relationship from 'MetaInfo' to 'Comment' with the same keys. I will note it as a Duplicate Relationship Configuration that will cause a build/runtime failure.
+2. Project & MetaInfo
 
-Model: Project has ICollection<ContentItem> ContentItems. ContentItem has Project Project & Guid ProjectId.
-Config: ProjectEntityTypeConfiguration says .WithMany(p => p.ContentItems).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade);
-Config: ContentItemEntityTypeConfiguration says .WithMany(p => p.ContentItems).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade);
-Conflict: Again, Duplicate Configuration of the exact same relationship. ProjectEntityTypeConfiguration and ContentItemEntityTypeConfiguration both configure Project.ContentItems <-> ContentItem.Project. This will cause InvalidOperationException: The properties expression 'p => p.ContentItems' is not valid... or System.InvalidOperationException: The relationship from 'ContentItem' to 'Project' is already configured.
+Model: Project has ICollection<MetaInfo> MetaInfos. MetaInfo has Project Project & Guid ProjectId.
+Config: ProjectEntityTypeConfiguration says .WithMany(p => p.MetaInfos).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade);
+Config: MetaInfoEntityTypeConfiguration says .WithMany(p => p.MetaInfos).HasForeignKey(ci => ci.ProjectId).OnDelete(DeleteBehavior.Cascade);
+Conflict: Again, Duplicate Configuration of the exact same relationship. ProjectEntityTypeConfiguration and MetaInfoEntityTypeConfiguration both configure Project.MetaInfos <-> MetaInfo.Project. This will cause InvalidOperationException: The properties expression 'p => p.MetaInfos' is not valid... or System.InvalidOperationException: The relationship from 'MetaInfo' to 'Project' is already configured.
 3. Project & StorySequence
 
 Model: Project has ICollection<StorySequence> Sequences. StorySequence has Project Project & Guid ProjectId.
@@ -473,28 +473,28 @@ Model: Project has ICollection<TeamMember> TeamMembers. TeamMember has Guid Team
 Config: TeamMemberEntityTypeConfiguration says .WithMany(t => t.TeamMembers).HasForeignKey(tm => tm.TeamId).OnDelete(DeleteBehavior.Cascade);
 Config: ProjectEntityTypeConfiguration says .WithMany().HasForeignKey(...)? No, it says .WithMany().HasForeignKey(...)? Wait, ProjectEntityTypeConfiguration says: builder.HasMany(p => p.TeamMembers).WithOne(tm => tm.Team).HasForeignKey(tm => tm.TeamId).OnDelete(DeleteBehavior.Cascade); -> This is WRONG. TeamMember does not have a ProjectId FK. It has TeamId. Configuring HasForeignKey(tm => tm.TeamId) on Project.TeamMembers implies ProjectId is the FK, but the config says tm.TeamId. This will cause a runtime error: The properties expression 'tm => tm.TeamId' is not valid. The expression body should return the foreign key property... because EF Core expects ProjectId based on the navigation property Project.TeamMembers.
 Conflict: Incorrect FK Property in ProjectEntityTypeConfiguration. It tries to use TeamId as the FK for Project.TeamMembers, but TeamMember doesn't have a ProjectId.
-6. ContentItem & MediaAttachment
+6. MetaInfo & MediaAttachment
 
-Model: ContentItem has ICollection<MediaAttachment> MediaAttachments. MediaAttachment has ContentItemId.
-Config: ContentItemEntityTypeConfiguration says .WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId).OnDelete(DeleteBehavior.SetNull);
-Config: MediaAttachmentEntityTypeConfiguration says .WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId).OnDelete(DeleteBehavior.SetNull);
+Model: MetaInfo has ICollection<MediaAttachment> MediaAttachments. MediaAttachment has MetaInfoId.
+Config: MetaInfoEntityTypeConfiguration says .WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId).OnDelete(DeleteBehavior.SetNull);
+Config: MediaAttachmentEntityTypeConfiguration says .WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId).OnDelete(DeleteBehavior.SetNull);
 Conflict: Duplicate Configuration.
-7. ContentItem & ContentTags
+7. MetaInfo & ContentTags
 
-Model: ContentItem has ICollection<ContentTags> ContentTagAssociations. ContentTags has ContentItemId.
-Config: ContentItemEntityTypeConfiguration says .WithMany(ci => ci.ContentTagAssociations).HasForeignKey(ct => ct.ContentItemId).OnDelete(DeleteBehavior.SetNull);
+Model: MetaInfo has ICollection<ContentTags> ContentTagAssociations. ContentTags has MetaInfoId.
+Config: MetaInfoEntityTypeConfiguration says .WithMany(ci => ci.ContentTagAssociations).HasForeignKey(ct => ct.MetaInfoId).OnDelete(DeleteBehavior.SetNull);
 Config: ContentTagsEntityTypeConfiguration does NOT configure the back-reference. It just sets PK and indexes.
 Status: OK.
-8. ContentItem & ReviewStatus
+8. MetaInfo & ReviewStatus
 
-Model: ContentItem has ReviewStatus? ReviewStatus. ReviewStatus has ContentItemId.
-Config: ContentItemEntityTypeConfiguration says .WithMany().HasForeignKey(rs => rs.ContentItemId).OnDelete(DeleteBehavior.SetNull);
-Config: ReviewStatusEntityTypeConfiguration says .WithMany().HasForeignKey(rs => rs.ContentItemId).OnDelete(DeleteBehavior.Restrict);
+Model: MetaInfo has ReviewStatus? ReviewStatus. ReviewStatus has MetaInfoId.
+Config: MetaInfoEntityTypeConfiguration says .WithMany().HasForeignKey(rs => rs.MetaInfoId).OnDelete(DeleteBehavior.SetNull);
+Config: ReviewStatusEntityTypeConfiguration says .WithMany().HasForeignKey(rs => rs.MetaInfoId).OnDelete(DeleteBehavior.Restrict);
 Conflict: Duplicate Configuration of the same relationship.
-9. ContentItem & TokenUsageLog
+9. MetaInfo & TokenUsageLog
 
-Model: ContentItem has ICollection<TokenUsageLog> UsageLogs. TokenUsageLog has Guid? ContentId.
-Config: ContentItemEntityTypeConfiguration says .WithMany(ci => ci.UsageLogs).HasForeignKey(...) -> Wait, ContentItemEntityTypeConfiguration does NOT configure UsageLogs. It only configures Comments, MediaAttachments, ContentTagAssociations, ReviewStatus.
+Model: MetaInfo has ICollection<TokenUsageLog> UsageLogs. TokenUsageLog has Guid? ContentId.
+Config: MetaInfoEntityTypeConfiguration says .WithMany(ci => ci.UsageLogs).HasForeignKey(...) -> Wait, MetaInfoEntityTypeConfiguration does NOT configure UsageLogs. It only configures Comments, MediaAttachments, ContentTagAssociations, ReviewStatus.
 Config: TokenUsageLogEntityTypeConfiguration (in Tokens folder) says .WithMany(ci => ci.UsageLogs).HasForeignKey(tul => tul.ContentId).OnDelete(DeleteBehavior.SetNull);
 Status: OK.
 10. Project & ActivityLog
@@ -509,8 +509,8 @@ Model: Project has ICollection<Tag> Tags. Tag does NOT have ProjectId. Tag has I
 Config: ProjectEntityTypeConfiguration says .WithMany().HasForeignKey(...)? Wait, ProjectEntityTypeConfiguration says: builder.HasMany(p => p.Tags).WithMany().HasForeignKey(...)? No, it says: builder.HasMany(p => p.Tags).WithMany()... Actually, looking at ProjectEntityTypeConfiguration: builder.HasMany(p => p.Tags).WithMany()... -> It doesn't configure FK for Project.Tags because Tag has no FK to Project. This is a Missing FK or Implicit Many-to-Many. EF Core will create a shadow FK table. But TagEntityTypeConfiguration doesn't handle it. This might be fine as implicit M2M, but usually Tag should have ProjectId or use a junction table. I'll note it as a potential Implicit Many-to-Many that might not match domain intent (tags are usually global or project-scoped via junction).
 12. Project & MediaAttachment
 
-Model: Project has ICollection<MediaAttachment> MediaAttachments. MediaAttachment has ContentItemId, not ProjectId.
-Config: ProjectEntityTypeConfiguration says .WithMany().HasForeignKey(...)? Actually, ProjectEntityTypeConfiguration says: builder.HasMany(p => p.MediaAttachments).WithMany()... -> It doesn't specify FK. EF Core might try to create a shadow FK or fail. MediaAttachment has ContentItemId, so Project.MediaAttachments is invalid unless it's a shadow relationship or implicit M2M. This is a Mapping Error. Project should not directly hold MediaAttachments; they belong to ContentItem.
+Model: Project has ICollection<MediaAttachment> MediaAttachments. MediaAttachment has MetaInfoId, not ProjectId.
+Config: ProjectEntityTypeConfiguration says .WithMany().HasForeignKey(...)? Actually, ProjectEntityTypeConfiguration says: builder.HasMany(p => p.MediaAttachments).WithMany()... -> It doesn't specify FK. EF Core might try to create a shadow FK or fail. MediaAttachment has MetaInfoId, so Project.MediaAttachments is invalid unless it's a shadow relationship or implicit M2M. This is a Mapping Error. Project should not directly hold MediaAttachments; they belong to MetaInfo.
 13. Project & SeriesProject
 
 Model: Project has Project? SeriesProject & Guid? SeriesProjectId. Project has ICollection<Project> SeriesProjects.
@@ -531,7 +531,7 @@ Conflict: Missing FK Configuration. SpeakerId is not configured as a FK to User.
 
 Model: ReviewStatus has ReviewedByUserId -> User.
 Config: ReviewStatusEntityTypeConfiguration says .HasForeignKey(rs => rs.ReviewedByUserId).OnDelete(DeleteBehavior.Restrict);
-Config: ContentItemEntityTypeConfiguration says .WithOne(rs => rs.ReviewStatus).HasForeignKey(rs => rs.ContentItemId)...
+Config: MetaInfoEntityTypeConfiguration says .WithOne(rs => rs.ReviewStatus).HasForeignKey(rs => rs.MetaInfoId)...
 Status: OK.
 17. ClassTemplate & AttributeSet
 
@@ -557,7 +557,7 @@ Config: ProjectTaskCommentsEntityTypeConfiguration says .WithOne(pt => pt.Commen
 Conflict: FK Property Name Mismatch. ProjectTaskComments has ProjectTaskId, but config uses TaskId.
 21. TokenUsageLog (Duplicate Configs)
 
-Tokens/TokenUsageLogEntityTypeConfiguration.cs configures ContentId -> ContentItem with SetNull.
+Tokens/TokenUsageLogEntityTypeConfiguration.cs configures ContentId -> MetaInfo with SetNull.
 Activities/TokenUsageLogEntityTypeConfiguration.cs configures ProjectId -> Project with Cascade.
 Status: OK, different FKs.
 22. EngineFieldMapping & EngineExportConfig

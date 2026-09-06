@@ -7,18 +7,18 @@ This document consolidates all "what NOT to do" guidance currently scattered acr
 ❌ **INCORRECT** - Unnecessary abstraction for MVP:
 ```csharp
 public interface IRepository<T> where T : class {}
-public class ContentItemRepository : IRepository<ContentItem> {}
+public class MetaInfoRepository : IRepository<MetaInfo> {}
 ```
 
 ✅ **CORRECT** - Direct EF Core access:
 ```csharp
-public class ContentItemService
+public class MetaInfoService
 {
     private readonly GameDbContext _context;
     
-    public async Task<ContentItem> GetAsync(Guid id)
+    public async Task<MetaInfo> GetAsync(Guid id)
     {
-        return await _context.ContentItems.FindAsync(id);
+        return await _context.MetaInfos.FindAsync(id);
     }
 }
 ```
@@ -65,14 +65,14 @@ public class ProjectTask
 ```csharp
 /// <summary>Creates a content item...</summary>
 /// <param name="dto">DTO object with required fields</param>
-public async Task<ContentItem> CreateAsync(CreateContentItemDto dto) {}  // ❌ Too much!
+public async Task<MetaInfo> CreateAsync(CreateMetaInfoDto dto) {}  // ❌ Too much!
 ```
 
 ✅ **CORRECT** - Self-explanatory code:
 ```csharp
-public async Task<ContentItem> CreateAsync(CreateContentItemDto dto, Guid projectId)
+public async Task<MetaInfo> CreateAsync(CreateMetaInfoDto dto, Guid projectId)
 {
-    var item = new ContentItem { ProjectId = projectId };  // Simple and clear
+    var item = new MetaInfo { ProjectId = projectId };  // Simple and clear
 }
 ```
 
@@ -80,16 +80,16 @@ public async Task<ContentItem> CreateAsync(CreateContentItemDto dto, Guid projec
 
 ❌ **INCORRECT** - Querying navigation properties in loop:
 ```csharp
-foreach (var item in contentItems)
+foreach (var item in MetaInfos)
 {
     var attachments = await _context.MediaAttachments
-        .Where(a => a.ContentItemId == item.Id).ToListAsync();  // ❌ N+1!
+        .Where(a => a.MetaInfoId == item.Id).ToListAsync();  // ❌ N+1!
 }
 ```
 
 ✅ **CORRECT** - Eager loading:
 ```csharp
-return await _context.ContentItems
+return await _context.MetaInfos
     .Include(ci => ci.MediaAttachments)
     .ToListAsync();  // ✅ Single query!
 ```
@@ -98,7 +98,7 @@ return await _context.ContentItems
 
 ❌ **INCORRECT** - Storing raw HTML:
 ```csharp
-public class ContentItem
+public class MetaInfo
 {
     public string Description { get; set; } = "<script>alert('XSS')</script>";  // ❌ Security risk!
 }
@@ -129,7 +129,7 @@ throw new ValidationException(["Email required", "Password too short"]);
 
 ❌ **INCORRECT** - Skip validation:
 ```csharp
-var item = await _context.ContentItems.FindAsync(id);
+var item = await _context.MetaInfos.FindAsync(id);
 item.Title = dto.Title;  // ❌ Process even if invalid!
 ```
 
@@ -145,7 +145,7 @@ if (!ModelState.IsValid)
 
 ❌ **INCORRECT** - Large page sizes:
 ```csharp
-var items = await _context.ContentItems.Skip(0).Take(500).ToListAsync();  // ❌ Too many!
+var items = await _context.MetaInfos.Skip(0).Take(500).ToListAsync();  // ❌ Too many!
 ```
 
 ✅ **CORRECT** - Limited pagination:

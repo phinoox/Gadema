@@ -10,11 +10,11 @@ The build currently has **~60 errors** primarily due to:
 ## Critical Issues - Must Fix First
 
 ### 1. SimpleResponseDto Created but Not Referenced
-**Issue**: `ContentItemResponseDto` is being used incorrectly with `.Success()` calls expecting `Success` and `message` properties, which don't exist in the current DTO structure.
+**Issue**: `MetaInfoResponseDto` is being used incorrectly with `.Success()` calls expecting `Success` and `message` properties, which don't exist in the current DTO structure.
 
 **Fix Required**: 
-- Add `using Gadema.Core.Dtos.Response;` to ContentItemService.cs (line 3)
-- Change all `ApiResponseDto<ContentItemResponseDto>.Success(new ContentItemResponseDto(){ Success = ... })` to:
+- Add `using Gadema.Core.Dtos.Response;` to MetaInfoService.cs (line 3)
+- Change all `ApiResponseDto<MetaInfoResponseDto>.Success(new MetaInfoResponseDto(){ Success = ... })` to:
   ```csharp
   ApiResponseDto<object>.Success(new SimpleResponseDto { 
       Success = true, 
@@ -50,10 +50,10 @@ public DbSet<Project> Projects { get; set; }
 
 ## DTO Definition Issues
 
-### A. ContentItemResponseDto has wrong pattern for success messages
+### A. MetaInfoResponseDto has wrong pattern for success messages
 **Current (line 237)**:
 ```csharp
-return ApiResponseDto<ContentItemResponseDto>.Success(new ContentItemResponseDto(){ Success = true, message = "..." });
+return ApiResponseDto<MetaInfoResponseDto>.Success(new MetaInfoResponseDto(){ Success = true, message = "..." });
 ```
 
 **Problem**: Mixing data DTO with response metadata.
@@ -66,7 +66,7 @@ return ApiResponseDto<object>.Success(new SimpleResponseDto {
 });
 ```
 
-### B. ContentItemResponseDto Properties vs Model Projection Mismatch  
+### B. MetaInfoResponseDto Properties vs Model Projection Mismatch  
 **Projection line 87** expects these properties:
 - Id, ProjectId, ContentType (int), Title, Slug, ShortDesc, Description, Published, Status (int), ViewMode (string), Version
 
@@ -97,20 +97,20 @@ else
 ```
 
 ### B. TaskService.cs Lines 67, 126-138
-Missing `ContentItemId` property in TaskResponseDto was added but still causing errors.
+Missing `MetaInfoId` property in TaskResponseDto was added but still causing errors.
 
 ## Priority Order for Fixes
 
 1. **HIGH**: Add EF Core using statements to all service files
 2. **HIGH**: Add `Projects` DbSet to GameDbContext
-3. **MEDIUM**: Fix ContentItemService response patterns (use SimpleResponseDto)
+3. **MEDIUM**: Fix MetaInfoService response patterns (use SimpleResponseDto)
 4. **MEDIUM**: Fix TaskService nullable type handling
 5. **LOW**: Clean up anonymous type projections
 
 ## Files Requiring Changes
 
 ### Immediate Priority:
-1. `src/Gadema.Api/Services/ContentItemService.cs` - Line 3 (add using), Lines 237, 321, 376 (fix return patterns)
+1. `src/Gadema.Api/Services/MetaInfoService.cs` - Line 3 (add using), Lines 237, 321, 376 (fix return patterns)
 2. `src/Gadema.Api/Services/TaskService.cs` - Lines 98-100, 127-139 (fix nullable handling)
 3. `src/Gadema.Data/GameDbContext.cs` - Add Projects DbSet
 

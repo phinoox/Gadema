@@ -98,22 +98,22 @@ public class RemainingIssuesTests
     }
 
     /// <summary>
-    /// Issue 6: ContentItem.ContentItemId initialization conflict
+    /// Issue 6: MetaInfo.MetaInfoId initialization conflict
     /// </summary>
     [Fact]
-    public void ContentItemId_Initialization_MustBeHandled()
+    public void MetaInfoId_Initialization_MustBeHandled()
     {
-        // ContentItem has both 'Id' property and 'ContentItemId' property
-        // The initializer sets ContentItemId to Guid.NewGuid() which conflicts
+        // MetaInfo has both 'Id' property and 'MetaInfoId' property
+        // The initializer sets MetaInfoId to Guid.NewGuid() which conflicts
         // with the actual Id that gets set later
         
-        var item = new ContentItem
+        var item = new MetaInfo
         {
             ProjectId = Guid.NewGuid(),  // Must be set first
             ContentType = ContentTypeEnum.Character,
             Title = "Test",
             Slug = "test-slug"
-            // ❌ Should NOT set ContentItemId here!
+            // ❌ Should NOT set MetaInfoId here!
         };
         
         // Instead: Let EF Core handle the ID or use HasNoKey for keyless entities
@@ -204,7 +204,7 @@ public class RemainingIssuesTests
 /// -----------
 /// CharacterDetails entity (child table for FK-as-PK pattern) doesn't have
 /// proper primary key configuration. It's designed as a keyless entity where
-/// the primary key is derived from the foreign key (ContentItemId).
+/// the primary key is derived from the foreign key (MetaInfoId).
 /// 
 /// SOLUTION:
 /// ---------
@@ -215,13 +215,13 @@ public class RemainingIssuesTests
 /// {
 ///     public void Configure(EntityTypeBuilder<CharacterDetails> builder)
 ///     {
-///         // ✅ Set primary key to be the same as ContentItemId (FK-as-PK pattern)
+///         // ✅ Set primary key to be the same as MetaInfoId (FK-as-PK pattern)
 ///         builder.ToTable("CharacterDetails");
 ///         
-///         // Define primary key using ContentItemId column
-///         builder.HasOne(d => d.ContentItem)
+///         // Define primary key using MetaInfoId column
+///         builder.HasOne(d => d.MetaInfo)
 ///             .WithMany(c => c.CharacterDetailsCollection)
-///             .HasForeignKey(d => d.ContentItemId)  // This IS the PK
+///             .HasForeignKey(d => d.MetaInfoId)  // This IS the PK
 ///             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete when parent deleted
 ///         
 ///         // ✅ No separate PK column needed - use FK as PK!
@@ -237,10 +237,10 @@ public class RemainingIssuesTests
 ///     modelBuilder.Entity<CharacterDetails>(entity =>
 ///     {
 ///         // Set FK column as PK (FK-as-PK pattern)
-///         entity.HasKey(e => e.ContentItemId);
-///         entity.HasOne(e => e.ContentItem)
+///         entity.HasKey(e => e.MetaInfoId);
+///         entity.HasOne(e => e.MetaInfo)
 ///             .WithMany(c => c.CharacterDetailsCollection)
-///             .HasForeignKey(e => e.ContentItemId);
+///             .HasForeignKey(e => e.MetaInfoId);
 ///     });
 /// }
 /// ```
@@ -266,7 +266,7 @@ public class RemainingIssuesTests
 /// // Ensure ALL services are registered explicitly:
 /// private void RegisterServicesWithAddScoped(IServiceProvider serviceProvider, IServiceCollection serviceCollection)
 /// {
-///     serviceCollection.AddScoped<IContentService, ContentItemService>();
+///     serviceCollection.AddScoped<IContentService, MetaInfoService>();
 ///     serviceCollection.AddScoped<IProjectService, ProjectService>();
 ///     serviceCollection.AddScoped<ITaskService, ProjectTaskService>();
 ///     serviceCollection.AddScoped<IApiAuthService, ApiAuthService>();
@@ -279,7 +279,7 @@ public class RemainingIssuesTests
 /// ```csharp
 /// private void RegisterServicesViaReflection(IServiceProvider serviceProvider)
 /// {
-///     var assembly = typeof(ContentItemService).Assembly;
+///     var assembly = typeof(MetaInfoService).Assembly;
 ///     
 ///     foreach (var type in assembly.GetTypes())
 ///     {
@@ -319,7 +319,7 @@ public class RemainingIssuesTests
 /// ```csharp
 /// protected override void OnModelCreating(ModelBuilder modelBuilder)
 /// {
-///     modelBuilder.Entity<ContentItem>(entity =>
+///     modelBuilder.Entity<MetaInfo>(entity =>
 ///     {
 ///         entity.Property(e => e.ViewMode)
 ///             .HasConversion<string>()  // Convert enum to string for storage
@@ -351,7 +351,7 @@ public class RemainingIssuesTests
 ///     // ... scalar properties
 ///     
 ///     // Collection navigations - ensure these exist:
-///     public virtual ICollection<ContentItem> ContentItems { get; set; }
+///     public virtual ICollection<MetaInfo> MetaInfos { get; set; }
 ///     public virtual ICollection<ProjectTask> Tasks { get; set; }
 ///     public virtual ICollection<Team> Teams { get; set; }
 ///     public virtual ICollection<User> Users { get; set; }  // Team members
@@ -361,26 +361,26 @@ public class RemainingIssuesTests
 /// =============================================================================
 
 /// =============================================================================
-/// ISSUE 6: CONTENTITEM.IDD INITIALIZATION CONFLICT  
+/// ISSUE 6: MetaInfo.IDD INITIALIZATION CONFLICT  
 /// -----------------------------------------------------------------------------
 /// 
 /// SYMPTOM:
 /// --------
-/// Potential ID conflicts when ContentItem.ContentItemId is initialized to Guid.NewGuid()
+/// Potential ID conflicts when MetaInfo.MetaInfoId is initialized to Guid.NewGuid()
 /// before actual Id property is set.
 /// 
 /// ROOT CAUSE:
 /// -----------
-/// Line 173 in ContentItem.cs:
-///   public Guid ContentItemId { get; set; } = Guid.NewGuid();  // ❌ Auto-init conflicts!
+/// Line 173 in MetaInfo.cs:
+///   public Guid MetaInfoId { get; set; } = Guid.NewGuid();  // ❌ Auto-init conflicts!
 /// 
 /// SOLUTION:
 /// ---------
-/// Remove the default initializer for ContentItemId:
+/// Remove the default initializer for MetaInfoId:
 /// 
 /// ```csharp
 /// [Required, Display(Name = "Content Item ID")]
-/// public Guid ContentItemId { get; set; }  // ✅ No default value
+/// public Guid MetaInfoId { get; set; }  // ✅ No default value
 /// ```
 /// 
 /// Let EF Core handle initialization or set it after Id is assigned.
@@ -414,7 +414,7 @@ public class RemainingIssuesTests
 /// Ensure enums are properly configured in OnModelCreating:
 /// 
 /// ```csharp
-/// modelBuilder.Entity<ContentItem>(entity =>
+/// modelBuilder.Entity<MetaInfo>(entity =>
 /// {
 ///     entity.Property(e => e.ContentType)
 ///         .HasConversion<int>()  // Store as int (enum value)

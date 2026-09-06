@@ -88,32 +88,32 @@ This document defines the complete user stories, acceptance criteria, and techni
 ### **CONTENT-01: Create/Edit Content Items**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-01** | As a writer, I want to create content items (characters, worlds, etc.) with dedicated outlines first so that my GDD is structured and organized. *(Domain-aware pattern: Uses ContentItem + StoryOutline)* | - Create outline before content<br>- Rich text editor support<br>- Markdown/HTML conversion<br>- **Hybrid response pattern**: `{ "success": true, "data": { "id": "...", "title": "..." } }` | **High** | `Content/ContentItemsController.cs`, `CreateContentItemDto.cs` ✅ Domain-separated config! |
+| **CONTENT-01** | As a writer, I want to create content items (characters, worlds, etc.) with dedicated outlines first so that my GDD is structured and organized. *(Domain-aware pattern: Uses MetaInfo + StoryOutline)* | - Create outline before content<br>- Rich text editor support<br>- Markdown/HTML conversion<br>- **Hybrid response pattern**: `{ "success": true, "data": { "id": "...", "title": "..." } }` | **High** | `Content/MetaInfosController.cs`, `CreateMetaInfoDto.cs` ✅ Domain-separated config! |
 
 ### **CONTENT-02: View Mode Separation**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-02** | As a writer with ADHD, I want to toggle between "PrivateWriting" and "Presentation" modes so that I can focus on writing without distraction. *(Domain-aware pattern: Uses ViewModeEnum)* | - PrivateWriting mode: Full admin tools<br>- Presentation mode: Clean public view only<br>- URL-based view mode switch<br>- **Hybrid response pattern**: `{ "data": { "viewMode": "Presentation", "title": "..." } }` (RAW for data retrieval!) | **High** | `Content/ContentItemsController.cs`, `ViewModeEnum.cs` ✅ Domain-aware enum! |
+| **CONTENT-02** | As a writer with ADHD, I want to toggle between "PrivateWriting" and "Presentation" modes so that I can focus on writing without distraction. *(Domain-aware pattern: Uses ViewModeEnum)* | - PrivateWriting mode: Full admin tools<br>- Presentation mode: Clean public view only<br>- URL-based view mode switch<br>- **Hybrid response pattern**: `{ "data": { "viewMode": "Presentation", "title": "..." } }` (RAW for data retrieval!) | **High** | `Content/MetaInfosController.cs`, `ViewModeEnum.cs` ✅ Domain-aware enum! |
 
 ### **CONTENT-03: Media Upload & Management**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-03** | As a writer, I want to upload reference images, concept art, and audio clips so that I have visual/audio inspiration for my GDD. *(Domain-aware pattern: Uses MediaAttachment with MIME type validation)* | - Upload files up to 100MB<br>- Drag-and-drop interface<br>- Thumbnail preview generation<br>- **Hybrid response pattern**: `{ "success": true, "data": { "filename": "...", "storagePath": "..." } }` (WRAPPED for upload confirmation!) | **High** | `Content/ContentItemsController.cs`, `MediaUploadDto.cs` ✅ Domain-aware file upload! |
+| **CONTENT-03** | As a writer, I want to upload reference images, concept art, and audio clips so that I have visual/audio inspiration for my GDD. *(Domain-aware pattern: Uses MediaAttachment with MIME type validation)* | - Upload files up to 100MB<br>- Drag-and-drop interface<br>- Thumbnail preview generation<br>- **Hybrid response pattern**: `{ "success": true, "data": { "filename": "...", "storagePath": "..." } }` (WRAPPED for upload confirmation!) | **High** | `Content/MetaInfosController.cs`, `MediaUploadDto.cs` ✅ Domain-aware file upload! |
 
 ### **CONTENT-04: Content Versioning & Rollback**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-04** | As a writer with perfectionist tendencies, I want to auto-save snapshots so that I can roll back if I accidentally break my GDD. *(Domain-aware pattern: Uses ContentSnapshot)* | - Auto-save on major changes<br>- Manual snapshot creation<br>- Version history viewer<br>- **Hybrid response pattern**: `{ "success": true, "data": { "snapshotId": "...", "version": 2 } }` (WRAPPED for auto-save confirmation!) | **High** | `Content/ContentItemsController.cs`, `ContentSnapshotEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **CONTENT-04** | As a writer with perfectionist tendencies, I want to auto-save snapshots so that I can roll back if I accidentally break my GDD. *(Domain-aware pattern: Uses ContentSnapshot)* | - Auto-save on major changes<br>- Manual snapshot creation<br>- Version history viewer<br>- **Hybrid response pattern**: `{ "success": true, "data": { "snapshotId": "...", "version": 2 } }` (WRAPPED for auto-save confirmation!) | **High** | `Content/MetaInfosController.cs`, `ContentSnapshotEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ### **CONTENT-05: Content Tagging System**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-05** | As an ADHD-friendly user, I want to tag content items (MainCharacter, Human, etc.) so that I can quickly find related items. *(Domain-aware pattern: Uses Tag + ContentTags junction table)* | - Pre-defined tag list<br>- Multi-select interface<br>- Tag suggestions based on usage<br>- **Hybrid response pattern**: `{ "success": true, "data": { "tags": ["MainCharacter", "Human"] } }` (WRAPPED for tag addition confirmation!) | **Medium** | `Content/ContentItemsController.cs`, `TagEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **CONTENT-05** | As an ADHD-friendly user, I want to tag content items (MainCharacter, Human, etc.) so that I can quickly find related items. *(Domain-aware pattern: Uses Tag + ContentTags junction table)* | - Pre-defined tag list<br>- Multi-select interface<br>- Tag suggestions based on usage<br>- **Hybrid response pattern**: `{ "success": true, "data": { "tags": ["MainCharacter", "Human"] } }` (WRAPPED for tag addition confirmation!) | **Medium** | `Content/MetaInfosController.cs`, `TagEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ### **CONTENT-06: External Reference Management**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **CONTENT-06** | As a writer, I want to link to external resources (Notion docs, Pinterest boards) so that my GDD is connected to inspiration sources. *(Domain-aware pattern: Uses ExternalReference)* | - URL validation (HTTP/HTTPS only)<br>- Resource type tagging (Document, Image, Video)<br>- Thumbnail preview for images<br>- **Hybrid response pattern**: `{ "success": true, "data": { "url": "...", "title": "..." } }` (WRAPPED for reference creation confirmation!) | **Medium** | `Content/ContentItemsController.cs`, `ExternalReferenceEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **CONTENT-06** | As a writer, I want to link to external resources (Notion docs, Pinterest boards) so that my GDD is connected to inspiration sources. *(Domain-aware pattern: Uses ExternalReference)* | - URL validation (HTTP/HTTPS only)<br>- Resource type tagging (Document, Image, Video)<br>- Thumbnail preview for images<br>- **Hybrid response pattern**: `{ "success": true, "data": { "url": "...", "title": "..." } }` (WRAPPED for reference creation confirmation!) | **Medium** | `Content/MetaInfosController.cs`, `ExternalReferenceEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ---
 
@@ -190,12 +190,12 @@ This document defines the complete user stories, acceptance criteria, and techni
 ### **TEAM-02: Content Review Workflow**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **TEAM-02** | As an editor, I want to review content items before publishing so that quality standards are maintained. *(Domain-aware pattern: Uses ReviewStatus entity)* | - Review queue view<br>- Approve/Reject actions<br>- Review comments required for rejection<br>- **Hybrid response pattern**: `{ "success": true, "message": "Content approved", "data": { "status": "Approved" } }` (WRAPPED for review confirmation!) | **High** | `Content/ContentItemsController.cs`, `ReviewStatusEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **TEAM-02** | As an editor, I want to review content items before publishing so that quality standards are maintained. *(Domain-aware pattern: Uses ReviewStatus entity)* | - Review queue view<br>- Approve/Reject actions<br>- Review comments required for rejection<br>- **Hybrid response pattern**: `{ "success": true, "message": "Content approved", "data": { "status": "Approved" } }` (WRAPPED for review confirmation!) | **High** | `Content/MetaInfosController.cs`, `ReviewStatusEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ### **TEAM-03: Team Comments on Content**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **TEAM-03** | As a team member, I want to leave comments on content items so that we can discuss improvements collaboratively. *(Domain-aware pattern: Uses Comment entity)* | - Rich text comment editor<br>- Visibility control (private/team-only/public)<br>- Reply nesting support<br>- **Hybrid response pattern**: `{ "success": true, "message": "Comment created", "data": { "id": "...", "visibility": "team-only" } }` (WRAPPED for comment creation confirmation!) | **Medium** | `Content/ContentItemsController.cs`, `CommentEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **TEAM-03** | As a team member, I want to leave comments on content items so that we can discuss improvements collaboratively. *(Domain-aware pattern: Uses Comment entity)* | - Rich text comment editor<br>- Visibility control (private/team-only/public)<br>- Reply nesting support<br>- **Hybrid response pattern**: `{ "success": true, "message": "Comment created", "data": { "id": "...", "visibility": "team-only" } }` (WRAPPED for comment creation confirmation!) | **Medium** | `Content/MetaInfosController.cs`, `CommentEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ### **TEAM-04: Team Activity Feed**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
@@ -219,7 +219,7 @@ This document defines the complete user stories, acceptance criteria, and techni
 ### **VERSION-03: Activity Timeline & Audit Log**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **VERSION-03** | As an admin, I want to see a timeline of all project activity so that I can audit changes and track contributions. *(Domain-aware pattern: Uses ActivityLog entity)* | - Chronological activity feed<br>- Filter by user or event type<br>- Link to related entities (ContentItem, ProjectTask)<br>- **Hybrid response pattern**: `{ "data": [{ "eventType": "ContentUpdated", "title": "...", "createdAt": "..." }] }` (RAW for list retrieval!) | **Medium** | `Activities/ActivityLogsController.cs`, `ActivityLogEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **VERSION-03** | As an admin, I want to see a timeline of all project activity so that I can audit changes and track contributions. *(Domain-aware pattern: Uses ActivityLog entity)* | - Chronological activity feed<br>- Filter by user or event type<br>- Link to related entities (MetaInfo, ProjectTask)<br>- **Hybrid response pattern**: `{ "data": [{ "eventType": "ContentUpdated", "title": "...", "createdAt": "..." }] }` (RAW for list retrieval!) | **Medium** | `Activities/ActivityLogsController.cs`, `ActivityLogEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ---
 
@@ -247,7 +247,7 @@ This document defines the complete user stories, acceptance criteria, and techni
 ### **SEARCH-01: Full-Text Content Search**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |
 | :-- | :--- | :--- | :--- | :--- |
-| **SEARCH-01** | As a writer with ADHD, I want to search my entire project so that I can quickly find relevant content items. *(Domain-aware pattern: Uses ContentItem full-text search)* | - Search by title/description/slug<br>- Filter by content type<br>- Highlight matches in results<br>- **Hybrid response pattern**: `{ "data": [{ "id": "...", "title": "..." }], "pagination": {...} }` (RAW for list retrieval!) | **High** | `Search/SearchController.cs`, `ContentItemEntityTypeConfiguration.cs` ✅ Domain-separated config! |
+| **SEARCH-01** | As a writer with ADHD, I want to search my entire project so that I can quickly find relevant content items. *(Domain-aware pattern: Uses MetaInfo full-text search)* | - Search by title/description/slug<br>- Filter by content type<br>- Highlight matches in results<br>- **Hybrid response pattern**: `{ "data": [{ "id": "...", "title": "..." }], "pagination": {...} }` (RAW for list retrieval!) | **High** | `Search/SearchController.cs`, `MetaInfoEntityTypeConfiguration.cs` ✅ Domain-separated config! |
 
 ### **SEARCH-02: Filtered Task Search**
 | ID | User Story | Acceptance Criteria | Priority | Technical Scope |

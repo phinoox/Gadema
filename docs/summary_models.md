@@ -8,12 +8,12 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`Comment`** | `CommentEntityTypeConfiguration` | Links to ContentItem; tracks comments with visibility (private/team/public), max 4096 chars |
-| **`ContentItem`** | `ContentItemEntityTypeConfiguration` | Core polymorphic entity; has ContentType, Status, ViewMode enums; links to Project, MediaAttachments, Comments, etc. |
+| **`Comment`** | `CommentEntityTypeConfiguration` | Links to MetaInfo; tracks comments with visibility (private/team/public), max 4096 chars |
+| **`MetaInfo`** | `MetaInfoEntityTypeConfiguration` | Core polymorphic entity; has ContentType, Status, ViewMode enums; links to Project, MediaAttachments, Comments, etc. |
 | **`Tag`** | `TagEntityTypeConfiguration` | Content organization tags; unique slug; links to ContentTags & MediaTags junction tables |
-| **`ContentTags`** | `ContentTagsEntityTypeConfiguration` | Junction table: ContentItem ↔ Tag |
+| **`ContentTags`** | `ContentTagsEntityTypeConfiguration` | Junction table: MetaInfo ↔ Tag |
 | **`MediaTags`** | `MediaTagsEntityTypeConfiguration` | Junction table: MediaAttachment ↔ Tag |
-| **`MediaAttachment`** | `MediaAttachmentEntityTypeConfiguration` | File uploads (images, PDFs); links to ContentItem; has FileName, ContentType, StoragePath, FileSize |
+| **`MediaAttachment`** | `MediaAttachmentEntityTypeConfiguration` | File uploads (images, PDFs); links to MetaInfo; has FileName, ContentType, StoragePath, FileSize |
 | **`ExternalReference`** | `ExternalReferenceEntityTypeConfiguration` | External links (Google Docs, Pinterest); self-referencing parent; unique URL index |
 | **`DialogueBranch`** | `DialogueBranchEntityTypeConfiguration` | Branching narrative tree; self-referencing ParentNode; unique slug |
 | **`DialogueNode`** | `DialogueNodeEntityTypeConfiguration` | Dialogue within branches; has Speaker (User), ChoiceOptions (JSON), Conditions (JSON); self-referencing ChildNodes |
@@ -47,7 +47,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`CharacterDetails`** | `CharacterDetailsEntityTypeConfiguration` | Uses FK-as-PK pattern with ContentItem; has Name, Level, ClassTemplateId, Role, Status |
+| **`CharacterDetails`** | `CharacterDetailsEntityTypeConfiguration` | Uses FK-as-PK pattern with MetaInfo; has Name, Level, ClassTemplateId, Role, Status |
 | **`CharacterBackground`** | `CharacterBackgroundEntityTypeConfiguration` | Uses FK-as-PK pattern; links to CharacterDetails; has Description, Published flag |
 
 ---
@@ -60,7 +60,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | **`AttributeSet`** | `AttributeSetEntityTypeConfiguration` | Groups attributes; links to Project; has Name, DisplayOrder, IsActive |
 | **`ClassTemplate`** | `ClassTemplateEntityTypeConfiguration` | Character class configs (Warrior, Mage); links to AttributeSet; has BaseLevel, MaxLevel |
 | **`ClassTemplateAttribute`** | `ClassTemplateAttributeEntityTypeConfiguration` | Per-class attribute overrides; composite PK (ClassTemplateId, AttributeDefinitionId) |
-| **`CharacterAttributes`** | `CharacterAttributesEntityTypeConfiguration` | Stored attribute values per character; composite PK (ContentItemId, AttributeDefinitionId) |
+| **`CharacterAttributes`** | `CharacterAttributesEntityTypeConfiguration` | Stored attribute values per character; composite PK (MetaInfoId, AttributeDefinitionId) |
 | **`AbilityDefinition`** | `AbilityDefinitionEntityTypeConfiguration` | Individual abilities (Fireball, Heal); has AbilityType enum, CooldownSeconds, ResourceCost, ScalingFormulaJson |
 | **`AbilitySet`** | `AbilitySetEntityTypeConfiguration` | Groups abilities; links to Project; has Type enum (Combat/Non-Combat/Hybrid); unique slug |
 | **`StatusEffectDefinition`** | `StatusEffectDefinitionEntityTypeConfiguration` | Buffs/debuffs; has EffectType enum, DurationSeconds, DamagePerTick; unique slug |
@@ -106,7 +106,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 |-------|--------------|-------------|
 | **`EngineExportConfig`** | `EngineExportConfigEntityTypeConfiguration` | Engine-specific export configs (Unity/Unreal/Both); has ExportFormat enum; links to Project (cascade) |
 | **`EngineFieldMapping`** | `EngineFieldMappingEntityTypeConfiguration` | Maps content fields to engine property names; composite PK (EngineExportConfigId, SourceColumn, TargetColumn) |
-| **`AssetLink`** | `AssetLinkEntityTypeConfiguration` | Links content items to engine assets; has EnginePath, EngineAssetId, EngineFileType; links to ContentItem (cascade) |
+| **`AssetLink`** | `AssetLinkEntityTypeConfiguration` | Links content items to engine assets; has EnginePath, EngineAssetId, EngineFileType; links to MetaInfo (cascade) |
 
 ---
 
@@ -115,7 +115,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
 | **`ProjectToken`** | `ProjectTokenEntityTypeConfiguration` | API tokens for projects; hashed token storage; links to Project (cascade) |
-| **`TokenUsageLog`** | `TokenUsageLogEntityTypeConfiguration` (Tokens) | API usage tracking; links to ProjectToken (cascade), ContentItem (set null), Project (cascade) |
+| **`TokenUsageLog`** | `TokenUsageLogEntityTypeConfiguration` (Tokens) | API usage tracking; links to ProjectToken (cascade), MetaInfo (set null), Project (cascade) |
 
 ---
 
@@ -124,7 +124,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
 | **`ContentSnapshot`** | `ContentSnapshotEntityTypeConfiguration` | Content snapshots for rollback; has SnapshotType enum (AutoGenerated/ManualSave/RollbackPoint); max 50000 chars JSON |
-| **`ContentVersionLog`** | `ContentVersionLogEntityTypeConfiguration` | Version history; links to ContentItem (set null); tracks ChangedByUserId, ChangeDescription |
+| **`ContentVersionLog`** | `ContentVersionLogEntityTypeConfiguration` | Version history; links to MetaInfo (set null); tracks ChangedByUserId, ChangeDescription |
 
 ---
 
@@ -132,10 +132,10 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 | Model | Configuration | Key Details |
 |-------|--------------|-------------|
-| **`ProjectTask`** | `ProjectTaskEntityTypeConfiguration` | ADHD-friendly task management; has Status, Priority, Difficulty enums; IsQuickWin flag; links to Project & ContentItem |
+| **`ProjectTask`** | `ProjectTaskEntityTypeConfiguration` | ADHD-friendly task management; has Status, Priority, Difficulty enums; IsQuickWin flag; links to Project & MetaInfo |
 | **`ProjectTaskComments`** | `ProjectTaskCommentsEntityTypeConfiguration` | Task comments; links to ProjectTask (cascade) |
 | **`TaskCommentEntityTypeConfiguration`** | `TaskCommentEntityTypeConfiguration` | **DUPLICATE** config for same entity (ProjectTaskComments) |
-| **`ReviewStatus`** | `ReviewStatusEntityTypeConfiguration` | Content review status (Pending/Approved/Rejected); links to ContentItem & Reviewer (restrict) |
+| **`ReviewStatus`** | `ReviewStatusEntityTypeConfiguration` | Content review status (Pending/Approved/Rejected); links to MetaInfo & Reviewer (restrict) |
 
 ---
 
@@ -154,7 +154,7 @@ Here's a comprehensive summary of all the **Models** and their **EF Core Configu
 
 2. **Models Without Configurations**: `IdentityDefinition`, `AttributeSetDefinition`, and `Comment` (Comment has config but it's in Tasks folder)
 
-3. **FK-as-PK Pattern**: `CharacterDetails`, `CharacterBackground`, and `ContentItem` use FK-as-PK patterns for polymorphic/detail table relationships
+3. **FK-as-PK Pattern**: `CharacterDetails`, `CharacterBackground`, and `MetaInfo` use FK-as-PK patterns for polymorphic/detail table relationships
 
 4. **Polymorphic Ownership**: `Project` uses OwnerType + OwnerId for polymorphic ownership (User or Team)
 
@@ -169,10 +169,10 @@ All 5 cases are confirmed in the current files. EF Core will throw an `InvalidOp
 
 | Relationship | Conflict Details |
 | :--- | :--- |
-| **`Comment` ↔ `ContentItem`** | `CommentEntityTypeConfiguration` declares `.HasForeignKey(c => c.ContentItemId)`. `ContentItemEntityTypeConfiguration` also declares `.WithMany(ci => ci.Comments).HasForeignKey(c => c.ContentItemId)`. |
-| **`Project` ↔ `ContentItem`** | `ProjectEntityTypeConfiguration` declares `.HasForeignKey(ci => ci.ProjectId)`. `ContentItemEntityTypeConfiguration` also declares `.HasForeignKey(ci => ci.ProjectId)`. |
-| **`ContentItem` ↔ `MediaAttachment`** | `ContentItemEntityTypeConfiguration` declares `.WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.ContentItemId)`. `MediaAttachmentEntityTypeConfiguration` also declares `.HasForeignKey(m => m.ContentItemId)`. |
-| **`ContentItem` ↔ `ReviewStatus`** | `ContentItemEntityTypeConfiguration` sets `SetNull`. `ReviewStatusEntityTypeConfiguration` sets `Restrict`. **Both double-config AND conflicting delete behaviors.** |
+| **`Comment` ↔ `MetaInfo`** | `CommentEntityTypeConfiguration` declares `.HasForeignKey(c => c.MetaInfoId)`. `MetaInfoEntityTypeConfiguration` also declares `.WithMany(ci => ci.Comments).HasForeignKey(c => c.MetaInfoId)`. |
+| **`Project` ↔ `MetaInfo`** | `ProjectEntityTypeConfiguration` declares `.HasForeignKey(ci => ci.ProjectId)`. `MetaInfoEntityTypeConfiguration` also declares `.HasForeignKey(ci => ci.ProjectId)`. |
+| **`MetaInfo` ↔ `MediaAttachment`** | `MetaInfoEntityTypeConfiguration` declares `.WithMany(ci => ci.MediaAttachments).HasForeignKey(m => m.MetaInfoId)`. `MediaAttachmentEntityTypeConfiguration` also declares `.HasForeignKey(m => m.MetaInfoId)`. |
+| **`MetaInfo` ↔ `ReviewStatus`** | `MetaInfoEntityTypeConfiguration` sets `SetNull`. `ReviewStatusEntityTypeConfiguration` sets `Restrict`. **Both double-config AND conflicting delete behaviors.** |
 | **`StorySequence` (Self-Ref)** | `StorySequenceEntityTypeConfiguration` configures **both** `ParentSequence → ChildSequences` and `ChildSequences → ParentSequence` with `HasForeignKey` on both sides. |
 
 **2. FK Property Name Mismatch**
@@ -194,7 +194,7 @@ All 5 cases are confirmed in the current files. EF Core will throw an `InvalidOp
 **5. CharacterBackground FK Mapping Bug**
 | Issue | Details |
 | :--- | :--- |
-| `CharacterBackgroundEntityTypeConfiguration` | Sets `.HasForeignKey(e => e.ContentItemId)` for the navigation to `CharacterDetails`. But `ContentItemId` is the **PK** of `CharacterBackground`, not the FK. The FK property is `CharacterDetailsId`. This will cause a mapping error. |
+| `CharacterBackgroundEntityTypeConfiguration` | Sets `.HasForeignKey(e => e.MetaInfoId)` for the navigation to `CharacterDetails`. But `MetaInfoId` is the **PK** of `CharacterBackground`, not the FK. The FK property is `CharacterDetailsId`. This will cause a mapping error. |
 
 ---
 
@@ -217,7 +217,7 @@ These are confirmed missing from their respective configuration files:
 | Entity / Relationship | Issue |
 | :--- | :--- |
 | `Project.Tags` | `Project` model has `ICollection<Tag> Tags`. `Tag` has no `ProjectId`. No config exists. EF Core will create a **shadow junction table** `ProjectTag` at runtime. |
-| `Project.MediaAttachments` | `Project` model has `ICollection<MediaAttachment> MediaAttachments`. `MediaAttachment` has `ContentItemId`, not `ProjectId`. No config exists. EF Core will create a **shadow junction table** `ProjectMediaAttachment` at runtime. |
+| `Project.MediaAttachments` | `Project` model has `ICollection<MediaAttachment> MediaAttachments`. `MediaAttachment` has `MetaInfoId`, not `ProjectId`. No config exists. EF Core will create a **shadow junction table** `ProjectMediaAttachment` at runtime. |
 
 ---
 
@@ -225,11 +225,11 @@ These are confirmed missing from their respective configuration files:
 
 | Priority | Action |
 | :--- | :--- |
-| 🔴 | Remove double `HasForeignKey()` from `Comment↔ContentItem`, `Project↔ContentItem`, `ContentItem↔MediaAttachment`, `ContentItem↔ReviewStatus`, and `StorySequence` self-ref. |
+| 🔴 | Remove double `HasForeignKey()` from `Comment↔MetaInfo`, `Project↔MetaInfo`, `MetaInfo↔MediaAttachment`, `MetaInfo↔ReviewStatus`, and `StorySequence` self-ref. |
 | 🔴 | Delete duplicate `TokenUsageLogEntityTypeConfiguration` (keep one). |
 | 🔴 | Delete duplicate `ProjectTaskComments` / `TaskComment` config (keep one). |
 | 🔴 | Fix `ProjectTaskComments` FK property name: change `TaskId` to `ProjectTaskId` in `ProjectTaskCommentsEntityTypeConfiguration`. |
-| 🔴 | Fix `CharacterBackgroundEntityTypeConfiguration`: change `.HasForeignKey(e => e.ContentItemId)` to `.HasForeignKey(e => e.CharacterDetailsId)`. |
+| 🔴 | Fix `CharacterBackgroundEntityTypeConfiguration`: change `.HasForeignKey(e => e.MetaInfoId)` to `.HasForeignKey(e => e.CharacterDetailsId)`. |
 | 🟡 | Add explicit FK config for: `DialogueNode.SpeakerId`, `IdentityValue.IdentityDefinitionId`, `IdentityValue.ProjectTemplateId`, `EngineFieldMapping.ProjectId`, `TemplateIdentityDefinition.IdentityDefinitionId`, `TemplateAttributeSetDefinition.AttributeSetDefinitionId`, `Comment.CommentedByUserId`. |
 | 🟡 | Fix `Project.Tags` implicit M2M — add junction entity or `ProjectId` to `Tag`. |
 | 🟡 | Fix `Project.MediaAttachments` implicit M2M — remove from `Project` model or add `ProjectId` to `MediaAttachment`. |

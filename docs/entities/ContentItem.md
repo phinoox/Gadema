@@ -1,15 +1,15 @@
-# 📄 **ContentItem Entity Definition** – What Should It Be?
+# 📄 **MetaInfo Entity Definition** – What Should It Be?
 
 ---
 
-## **📋 Overview: What is ContentItem?**
+## **📋 Overview: What is MetaInfo?**
 
-Based on our domain-clustering architecture and the ~57-table schema we've built for GaDeMa, here's what `ContentItem` should be:
+Based on our domain-clustering architecture and the ~57-table schema we've built for GaDeMa, here's what `MetaInfo` should be:
 
 ### **Definition:**
 ```csharp
-// ✅ CORRECT - ContentItem entity structure (from SCHEMA.md)
-public class ContentItem
+// ✅ CORRECT - MetaInfo entity structure (from SCHEMA.md)
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -60,8 +60,8 @@ public class ContentItem
     public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
 }
 
-// ✅ CORRECT - Navigation properties on ContentItem (from SCHEMA.md)
-public class ContentItem
+// ✅ CORRECT - Navigation properties on MetaInfo (from SCHEMA.md)
+public class MetaInfo
 {
     // ✅ NAVIGATION PROPERTY: Project (parent project FK)
     public virtual Project Project { get; set; }
@@ -107,8 +107,8 @@ Tracks content through stages from draft to published status with version contro
 ## **🔧 Entity Relationship Structure:**
 
 ```csharp
-// ✅ CORRECT - ContentItem has 6 navigation properties (all defined)
-public class ContentItem
+// ✅ CORRECT - MetaInfo has 6 navigation properties (all defined)
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -120,8 +120,8 @@ public class ContentItem
     public virtual Project Project { get; set; }  // ⚠️ NEEDS TO BE ADDED!
 }
 
-// ✅ CORRECT - All navigation properties on ContentItem
-public class ContentItem
+// ✅ CORRECT - All navigation properties on MetaInfo
+public class MetaInfo
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
@@ -147,7 +147,7 @@ public class ContentItem
 
 ---
 
-## **❌ What ContentItem Should NOT Be:**
+## **❌ What MetaInfo Should NOT Be:**
 
 | ❌ Wrong Pattern | Reason | Notes |
 | :--- | :--- | :--- |
@@ -160,13 +160,13 @@ public class ContentItem
 
 ## **🔧 Fluent API Configuration (Updated)**
 
-### **ContentItemEntityTypeConfiguration.cs:**
+### **MetaInfoEntityTypeConfiguration.cs:**
 
 ```csharp
-// ✅ CORRECT - ContentItem entity configuration with all navigation properties (from SCHEMA.md)
-public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
+// ✅ CORRECT - MetaInfo entity configuration with all navigation properties (from SCHEMA.md)
+public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo>
 {
-    public void Configure(EntityTypeBuilder<ContentItem> builder)
+    public void Configure(EntityTypeBuilder<MetaInfo> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
@@ -178,39 +178,39 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
         builder.HasIndex(e => e.Published);         // Filter by published flag
         
         // ✅ NAVIGATION PROPERTY: Project (parent project FK with back-reference)
-        builder.HasOne(ci => ci.Project)  // ⚠️ Forward reference on ContentItem!
-            .WithMany(p => p.ContentItems)  // ⚠️ Back-reference needed on Project!
+        builder.HasOne(ci => ci.Project)  // ⚠️ Forward reference on MetaInfo!
+            .WithMany(p => p.MetaInfos)  // ⚠️ Back-reference needed on Project!
             .HasForeignKey(ci => ci.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // ✅ Cascade delete content when project deleted
         
         // ✅ NAVIGATION PROPERTY: MediaAttachments (collection of files)
         builder.HasMany(ci => ci.MediaAttachments)
-            .WithOne(m => m.ContentItem)  // ⚠️ Back-reference needed!
-            .HasForeignKey(m => m.ContentItemId)
+            .WithOne(m => m.MetaInfo)  // ⚠️ Back-reference needed!
+            .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);  // ✅ Cascade delete attachments when content deleted
         
         // ✅ NAVIGATION PROPERTY: ContentTags (junction table relationship)
         builder.HasMany(ci => ci.ContentTags)
-            .WithOne(ct => ct.ContentItem)  // ⚠️ Back-reference needed!
-            .HasForeignKey(ct => ct.ContentItemId)
+            .WithOne(ct => ct.MetaInfo)  // ⚠️ Back-reference needed!
+            .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);  // ✅ Keep tag entity alive when content deleted
         
         // ✅ NAVIGATION PROPERTY: ExternalReferences (collection of resources)
         builder.HasMany(ci => ci.ExternalReferences)
-            .WithOne(er => er.ContentItem)  // ⚠️ Back-reference needed!
-            .HasForeignKey(er => er.ContentItemId)
+            .WithOne(er => er.MetaInfo)  // ⚠️ Back-reference needed!
+            .HasForeignKey(er => er.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Maintain link history
         
         // ✅ NAVIGATION PROPERTY: ProjectTasks (collection of related tasks)
         builder.HasMany(ci => ci.ProjectTasks)
-            .WithOne(pt => pt.ContentItem)  // ⚠️ Back-reference needed!
-            .HasForeignKey(pt => pt.ContentItemId)
+            .WithOne(pt => pt.MetaInfo)  // ⚠️ Back-reference needed!
+            .HasForeignKey(pt => pt.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Maintain task history
         
         // ✅ NAVIGATION PROPERTY: CharacterIdentities (collection of identities)
         builder.HasMany(ci => ci.CharacterIdentities)
-            .WithOne(ci => ci.ContentItem)  // ⚠️ Back-reference needed!
-            .HasForeignKey(ci => ci.ContentItemId)
+            .WithOne(ci => ci.MetaInfo)  // ⚠️ Back-reference needed!
+            .HasForeignKey(ci => ci.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Maintain identity history
         
         // Properties configuration (not navigation properties)
@@ -226,11 +226,11 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
 
 ---
 
-## **📊 Summary Table for ContentItem Entity:**
+## **📊 Summary Table for MetaInfo Entity:**
 
 | Aspect | Value/Pattern | Notes |
 | :--- | :--- | :--- |
-| **Entity Name** | `ContentItem` | Main content unit for all game development elements |
+| **Entity Name** | `MetaInfo` | Main content unit for all game development elements |
 | **Primary Key** | `Id` (Guid, auto-generated) | Standard EF Core pattern |
 | **FKs** | 1 FK: ProjectId + implicit FKs from navigation properties | No redundant data! Domain separation! |
 | **Navigation Properties** | 6 total (Project, MediaAttachments, ContentTags, ExternalReferences, ProjectTasks, CharacterIdentities) | ✅ All defined for eager loading pattern! |
@@ -239,15 +239,15 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
 
 ---
 
-## **🎯 Example: Using ContentItem in Code:**
+## **🎯 Example: Using MetaInfo in Code:**
 
 ```csharp
 // ✅ CORRECT - Query content item with all relationships (eager loading)
-public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+public async Task<MetaInfo> GetMetaInfoWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     // ✅ Eager loading prevents N+1 query problem (Performance.md requirement!)
-    var contentItem = await _context.ContentItems
-        .Include(ci => ci.Project)  // ⚠️ Forward reference on ContentItem!
+    var MetaInfo = await _context.MetaInfos
+        .Include(ci => ci.Project)  // ⚠️ Forward reference on MetaInfo!
         .Include(ci => ci.MediaAttachments)  // ⚠️ Back-reference needed!
             .ThenInclude(ma => ma.StoragePath)  // Nested eager loading!
         .Include(ci => ci.ContentTags).ThenInclude(ct => ct.Tag)  // Junction table eager loading!
@@ -256,26 +256,26 @@ public async Task<ContentItem> GetContentItemWithFullDataAsync(Guid id, ViewMode
         .Include(ci => ci.CharacterIdentities).ThenInclude(ciIdentity => ciIdentity.IdentityType)  // Nested eager loading!
         .FirstOrDefaultAsync(ci => ci.Id == id);
     
-    return contentItem;
+    return MetaInfo;
 }
 
 // ❌ INCORRECT - Without eager loading, this causes N+1 query problem!
-public async Task<ContentItem> GetContentItemWithFullDataAsync_Bad(Guid id)  // ⚠️ Avoid!
+public async Task<MetaInfo> GetMetaInfoWithFullDataAsync_Bad(Guid id)  // ⚠️ Avoid!
 {
-    var items = await _context.ContentItems.ToListAsync();
+    var items = await _context.MetaInfos.ToListAsync();
     
     foreach (var item in items)  // ❌ N+1 query!
     {
-        var attachments = await _context.MediaAttachments.Where(m => m.ContentItemId == item.Id).ToListAsync();  // ⚠️ Bad pattern!
+        var attachments = await _context.MediaAttachments.Where(m => m.MetaInfoId == item.Id).ToListAsync();  // ⚠️ Bad pattern!
     }
 }
 
 // ✅ CORRECT - Update content item with view mode separation
-public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] ContentItemUpdateDto dto)
+public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] MetaInfoUpdateDto dto)
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    if (contentItem == null)
+    if (MetaInfo == null)
         return NotFound(new 
         {
             success = false,
@@ -283,11 +283,11 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
             message = "Resource not found"
         });  // ✅ WRAPPED response pattern! Domain-aware patterns!
     
-    contentItem.Title = dto.Title;
-    contentItem.Description = dto.Description ?? "";
-    contentItem.ViewMode = dto.ViewMode;
-    contentItem.Published = dto.Published;
-    contentItem.LastModifiedAt = DateTime.UtcNow;
+    MetaInfo.Title = dto.Title;
+    MetaInfo.Description = dto.Description ?? "";
+    MetaInfo.ViewMode = dto.ViewMode;
+    MetaInfo.Published = dto.Published;
+    MetaInfo.LastModifiedAt = DateTime.UtcNow;
     
     await _context.SaveChangesAsync();
     
@@ -297,48 +297,48 @@ public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] Cont
         message = "Content item updated successfully",
         data = new 
         {
-            id = contentItem.Id,
-            title = contentItem.Title,
-            description = contentItem.Description,
-            viewMode = contentItem.ViewMode,
-            published = contentItem.Published
+            id = MetaInfo.Id,
+            title = MetaInfo.Title,
+            description = MetaInfo.Description,
+            viewMode = MetaInfo.ViewMode,
+            published = MetaInfo.Published
         }
     });  // ✅ WRAPPED response pattern for update confirmation! Domain-aware patterns!
 }
 
 // ❌ INCORRECT - Without eager loading, this causes N+1 query problem! (Performance.md violation!)
-public async Task<ContentItem> GetContentItemAsync_Bad(Guid id)  // ⚠️ Avoid!
+public async Task<MetaInfo> GetMetaInfoAsync_Bad(Guid id)  // ⚠️ Avoid!
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
     
-    if (contentItem == null)
-        return NotFound(contentItem.Id);  // ✅ RAW response pattern! Domain-aware patterns!
+    if (MetaInfo == null)
+        return NotFound(MetaInfo.Id);  // ✅ RAW response pattern! Domain-aware patterns!
 }
 
 // ✅ CORRECT - Presentation mode excludes identity information for clean public view
-public async Task<ContentItem> GetContentItemPresentationModeAsync(Guid id)
+public async Task<MetaInfo> GetMetaInfoPresentationModeAsync(Guid id)
 {
     // ✅ Eager loading with ViewMode separation (hide identities in Presentation mode)
-    var contentItem = await _context.ContentItems
-        .Include(ci => ci.Project)  // ⚠️ Forward reference on ContentItem!
+    var MetaInfo = await _context.MetaInfos
+        .Include(ci => ci.Project)  // ⚠️ Forward reference on MetaInfo!
         .Include(ci => ci.MediaAttachments).ThenInclude(ma => ma.StoragePath)  // ✅ Media attachments OK!
         .Include(ci => ci.ExternalReferences).ThenInclude(er => er.Url)  // ✅ External refs OK!
         .Exclude(ci => ci.CharacterIdentities)  // ⚠️ Exclude identities for clean public view!
         .FirstOrDefaultAsync(ci => ci.Id == id);
     
-    return contentItem;
+    return MetaInfo;
 }
 
 // ❌ INCORRECT - Without eager loading, this causes N+1 query problem! (Performance.md violation!)
-public async Task<ContentItem> GetContentItemPresentationModeAsync_Bad(Guid id)  // ⚠️ Avoid!
+public async Task<MetaInfo> GetMetaInfoPresentationModeAsync_Bad(Guid id)  // ⚠️ Avoid!
 {
-    var contentItem = await _context.ContentItems.FindAsync(id);  // ❌ No eager loading! N+1 problem!
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);  // ❌ No eager loading! N+1 problem!
 }
 ```
 
 ---
 
-## **📋 Summary of ContentItem Entity Definition:**
+## **📋 Summary of MetaInfo Entity Definition:**
 
 | Feature | Value/Pattern | Notes |
 | :--- | :--- | :--- |
@@ -352,11 +352,11 @@ public async Task<ContentItem> GetContentItemPresentationModeAsync_Bad(Guid id) 
 
 ## **🐱 Summary**
 
-This entity definition ensures that **`ContentItem`**:
+This entity definition ensures that **`MetaInfo`**:
 - ✅ Is the main content unit for all game development elements (characters, worlds, mechanics, etc.)
 - ✅ Has 6 navigation properties defined (Project back-reference, MediaAttachments, ContentTags, ExternalReferences, ProjectTasks, CharacterIdentities)
 - ✅ Follows eager loading pattern to prevent N+1 queries (Performance.md requirement!)
 - ✅ Supports view mode separation for admin/public content viewing
 - ✅ Maintains content integrity through proper cascade delete behavior
 
-The **ContentItem entity** is essential for managing all game development content within the GaDeMa system! 📚✨
+The **MetaInfo entity** is essential for managing all game development content within the GaDeMa system! 📚✨

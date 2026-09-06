@@ -14,7 +14,7 @@ The **ViewMode** query parameter allows switching between:
 
 ```csharp
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(
+public async Task<IActionResult> GetMetaInfoAsync(
     Guid id, 
     [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
@@ -84,7 +84,7 @@ public async Task<IActionResult> GetContentItemAsync(
 ### PrivateWriting DTO Projection
 
 ```csharp
-public class ContentItemPrivateWritingDto
+public class MetaInfoPrivateWritingDto
 {
     public Guid Id { get; set; }
     
@@ -120,7 +120,7 @@ public class ContentItemPrivateWritingDto
 ### Presentation DTO Projection
 
 ```csharp
-public class ContentItemPresentationDto
+public class MetaInfoPresentationDto
 {
     [Display(Name = "Content ID")]
     public Guid Id { get; set; }
@@ -142,19 +142,19 @@ public class ContentItemPresentationDto
 
 ## Controller Implementation Examples
 
-### ContentItemController Example
+### MetaInfoController Example
 
 ```csharp
 [HttpGet("{id}")]
-public async Task<IActionResult> GetContentItemAsync(
+public async Task<IActionResult> GetMetaInfoAsync(
     Guid id, 
     [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
 {
     try
     {
-        var contentItem = await _context.ContentItems.FindAsync(id);
+        var MetaInfo = await _context.MetaInfos.FindAsync(id);
         
-        if (contentItem == null)
+        if (MetaInfo == null)
             return NotFound(new 
             {
                 success = false,
@@ -165,30 +165,30 @@ public async Task<IActionResult> GetContentItemAsync(
         // PrivateWriting mode: return full content + admin tools
         if (viewMode == ViewModeEnum.PrivateWriting)
         {
-            var projection = new ContentItemPrivateWritingDto
+            var projection = new MetaInfoPrivateWritingDto
             {
-                Id = contentItem.Id,
-                Title = contentItem.Title,
-                Description = contentItem.Description,
-                ShortDesc = contentItem.ShortDesc,
-                Published = contentItem.Published,
+                Id = MetaInfo.Id,
+                Title = MetaInfo.Title,
+                Description = MetaInfo.Description,
+                ShortDesc = MetaInfo.ShortDesc,
+                Published = MetaInfo.Published,
                 ViewMode = ViewModeEnum.PrivateWriting,
-                Version = contentItem.Version,
-                Status = contentItem.Status,
-                CreatedAt = contentItem.CreatedAt,
-                LastModifiedAt = contentItem.LastModifiedAt
+                Version = MetaInfo.Version,
+                Status = MetaInfo.Status,
+                CreatedAt = MetaInfo.CreatedAt,
+                LastModifiedAt = MetaInfo.LastModifiedAt
             };
             
             return Ok(projection);  // ✅ WRAPPED for admin tools data retrieval
         }
         
         // Presentation mode: return only published fields + clean layout
-        var presentationDto = new ContentItemPresentationDto
+        var presentationDto = new MetaInfoPresentationDto
         {
-            Id = contentItem.Id,
-            Title = contentItem.Title,
-            Description = contentItem.Description,
-            Slug = contentItem.Slug
+            Id = MetaInfo.Id,
+            Title = MetaInfo.Title,
+            Description = MetaInfo.Description,
+            Slug = MetaInfo.Slug
         };
         
         return Ok(presentationDto);  // ✅ RAW for simple data retrieval
@@ -282,7 +282,7 @@ public async Task<List<StorySequence>> GetSequencesWithCacheAsync(Guid projectId
 ### Published Content (Presentation Mode)
 
 ```csharp
-public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.Presentation)
+public async Task<MetaInfo> GetPublishedContentAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.Presentation)
 {
     var cacheKey = $"published-content:{id}";
     
@@ -292,16 +292,16 @@ public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum vi
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);  // Published content: 1 hour TTL
             
-            var contentItem = await _context.ContentItems.FindAsync(id);
+            var MetaInfo = await _context.MetaInfos.FindAsync(id);
             
-            if (contentItem != null && contentItem.Published)
+            if (MetaInfo != null && MetaInfo.Published)
             {
-                return new ContentItemPresentationDto
+                return new MetaInfoPresentationDto
                 {
-                    Id = contentItem.Id,
-                    Title = contentItem.Title,
-                    Description = contentItem.Description,
-                    Slug = contentItem.Slug
+                    Id = MetaInfo.Id,
+                    Title = MetaInfo.Title,
+                    Description = MetaInfo.Description,
+                    Slug = MetaInfo.Slug
                 };
             }
             
@@ -310,8 +310,8 @@ public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum vi
     }
     
     // PrivateWriting mode: no caching, query DB directly
-    var contentItem = await _context.ContentItems.FindAsync(id);
-    return contentItem;  // Return full entity with all admin fields
+    var MetaInfo = await _context.MetaInfos.FindAsync(id);
+    return MetaInfo;  // Return full entity with all admin fields
 }
 ```
 
@@ -323,10 +323,10 @@ public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum vi
 
 ```razor
 @page "/projects/{projectId}/content/{contentId}"
-@model ContentItemPageModel
+@model MetaInfoPageModel
 
 @{
-    ViewData["Title"] = Model.ContentItem.Title;
+    ViewData["Title"] = Model.MetaInfo.Title;
     var viewMode = Context.Request.Query[ViewModeEnum.ToString()] ?? ViewModeEnum.PrivateWriting;
 }
 
@@ -342,22 +342,22 @@ public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum vi
 @if (viewMode == ViewModeEnum.Presentation)
 {
     <div class="public-view">
-        <h1>@Model.ContentItem.Title</h1>
-        <p class="published-description">@Model.ContentItem.Description</p>
+        <h1>@Model.MetaInfo.Title</h1>
+        <p class="published-description">@Model.MetaInfo.Description</p>
         <nav class="navigation-links">
             <a href="@Model.Slug">@Model.Slug</a>
         </nav>
     </div>
 }
 
-@if (viewMode == ViewModeEnum.Presentation && Model.ContentItem.Published)
+@if (viewMode == ViewModeEnum.Presentation && Model.MetaInfo.Published)
 {
     <script>
         // SEO-friendly meta tags for public view mode
-        document.title = `@Model.ContentItem.Title - GaDeMa`;
+        document.title = `@Model.MetaInfo.Title - GaDeMa`;
         var metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.content = @Model.ContentItem.Description;
+            metaDescription.content = @Model.MetaInfo.Description;
         }
     </script>
 }
@@ -382,7 +382,7 @@ public async Task<ContentItem> GetPublishedContentAsync(Guid id, ViewModeEnum vi
 | Anti-Pattern | Example | ✅ Correct Approach |
 | :--- | :--- | :--- |
 | **Missing View Mode Check** | Always returning full content regardless of viewMode | ❌ Don't do this! Check viewMode before response |
-| **Using Same DTO for Both Modes** | One `ContentItemResponseDto` for all views | ✅ Use separate DTOs: `PrivateWritingDto`, `PresentationDto` |
+| **Using Same DTO for Both Modes** | One `MetaInfoResponseDto` for all views | ✅ Use separate DTOs: `PrivateWritingDto`, `PresentationDto` |
 | **Caching Draft Content** | Caching unpublished content in Presentation mode | ❌ Never cache draft content! |
 | **Admin Tools in Public View** | Showing version control buttons in Presentation mode | ✅ Admin tools only in PrivateWriting mode |
 

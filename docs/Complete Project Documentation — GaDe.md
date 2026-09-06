@@ -42,14 +42,14 @@ src/
 │   │   ├── Authentication/      # SignInDto, GoogleCallbackDto, 2FA DTOs
 │   │   ├── Characters/          # CharacterDetails DTOs
 │   │   ├── Comments/            # CreateCommentDto, CommentListResponseDto
-│   │   ├── ContentItems/        # CreateContentItemDto, UpdateContentItemDto
+│   │   ├── MetaInfos/        # CreateMetaInfoDto, UpdateMetaInfoDto
 │   │   ├── DialogueTrees/       # BranchResponseDto, CreateBranchDto
 │   │   ├── Export/              # ExportJsonDto, ExportPdfDto, ExportXmlGddDto
 │   │   ├── ExternalReferences/  # ReferenceResponseDto
 │   │   ├── Narrative/           # SequenceResponseDto
 │   │   ├── Projects/            # ProjectResponseDto, CreateProjectDto
 │   │   ├── Reviews/             # ApproveContentDto
-│   │   ├── Search/              # SearchContentItemsDto
+│   │   ├── Search/              # SearchMetaInfosDto
 │   │   ├── Tags/                # AddTagsDto, TagListResponseDto
 │   │   ├── Tasks/               # TaskResponseDto
 │   │   └── Versioning/          # RollbackDto
@@ -65,7 +65,7 @@ src/
 │   │   ├── Authentication/      # UserEntityTypeConfiguration.cs, TeamMember...
 │   │   │   └── Projects/Narrative/Characters/Attributes/Abilities/Tasks/Versioning/Inventory/Templates/Identity/EngineIntegration/
 │   │   ├── Characters/          # CharacterDetailsEntityTypeConfiguration.cs (polymorphic inheritance)
-│   │   ├── Content/             # ContentItemEntityTypeConfiguration.cs, DialogueBranch...
+│   │   ├── Content/             # MetaInfoEntityTypeConfiguration.cs, DialogueBranch...
 │   │   ├── EngineIntegration/   # AssetLinkEntityTypeConfiguration.cs
 │   │   ├── Identity/            # ProjectIdentityDefinitionEntityTypeConfiguration.cs
 │   │   ├── Inventory/           # EndingDefinitionEntityTypeConfiguration.cs
@@ -83,7 +83,7 @@ src/
 │   ├── Controllers/              # 12 REST controllers
 │   │   ├── Authentication/AuthController.cs                     # POST /api/v1/auth/signin, Google OAuth callback
 │   │   ├── Content/CommentsController.cs                        # GET/POST /api/v1/content-items/{id}/comments
-│   │   ├── Content/ContentItemsController.cs                    # CRUD + upload/media + autosave/rollback
+│   │   ├── Content/MetaInfosController.cs                    # CRUD + upload/media + autosave/rollback
 │   │   ├── Content/DialogueBranchesController.cs                # POST /api/v1/projects/{id}/dialogue/branches
 │   │   ├── Content/ExternalReferencesController.cs              # External link management
 │   │   ├── Content/ReviewStatusController.cs                    # Review/approve workflow
@@ -95,7 +95,7 @@ src/
 │   │   └── Tasks/ProjectTaskController.cs                       # Flat task structure (ADHD-friendly)
 │   ├── Services/                 # 11 service implementations
 │   │   ├── Authentication/ApiAuthService.cs                     # JWT, Google OAuth, TOTP 2FA
-│   │   ├── Content/ContentItemService.cs                        # Core content CRUD + versioning
+│   │   ├── Content/MetaInfoService.cs                        # Core content CRUD + versioning
 │   │   ├── Content/DialogueService.cs                           # Branch tree management
 │   │   ├── Content/ExternalReferenceService.cs                  # External link resolver
 │   │   ├── Content/TagService.cs                                # Tag resolution service
@@ -145,7 +145,7 @@ src/
 │   ├── Factory/ApiWebApplicationFactory.cs    # Test hosting environment factory
 │   ├── Integration/ApiIntegrationTests.cs     # End-to-end API tests with in-memory DB
 │   ├── Models/ModelValidationTests.cs         # DTO validation + entity constraints
-│   └── Services/ContentItemServiceUnitTest.cs # Unit tests for content service
+│   └── Services/MetaInfoServiceUnitTest.cs # Unit tests for content service
 ├── docs/                         # Technical documentation (~60 files)
 │   ├── SCHEMAv2.md               # Complete database schema reference
 │   ├── API-CONTRACTSv2.md        # REST endpoint specs with request/response examples
@@ -189,7 +189,7 @@ src/
 │   │  • Swagger/OpenAPI documentation                      │ │
 │   └──────────┬─────────────┬──────────────┬──────────────┘ │
 │              │             │               │                │
-│    ContentItemService    ProjectService    ExportService     │
+│    MetaInfoService    ProjectService    ExportService     │
 │    DialogueService       TaskService       AuthService      │
 ├──────────────┼─────────────┴──────────────┼─────────────────┤
 │              ▼                             ▼                  │

@@ -15,7 +15,7 @@ src/
     ├── Projects/
     │   └── Project.cs
     ├── Content/
-    │   ├── ContentItem.cs
+    │   ├── MetaInfo.cs
     │   ├── StoryOutline.cs
     │   └── DialogueBranch.cs
     ├── Tasks/
@@ -37,9 +37,9 @@ src/
     │   ├── UpdateProjectDto.cs
     │   └── ProjectResponseDto.cs
     ├── Content/
-    │   ├── CreateContentItemDto.cs
-    │   ├── UpdateContentItemDto.cs
-    │   └── ContentItemResponseDto.cs
+    │   ├── CreateMetaInfoDto.cs
+    │   ├── UpdateMetaInfoDto.cs
+    │   └── MetaInfoResponseDto.cs
     └── Tasks/
         ├── ProjectTaskCreateDto.cs
         ├── ProjectTaskUpdateDto.cs
@@ -58,7 +58,7 @@ src/
     ├── Projects/
     │   └── ProjectService.cs
     ├── Content/
-    │   └── ContentItemService.cs
+    │   └── MetaInfoService.cs
     ├── Tasks/
     │   └── ProjectTaskService.cs
 ```
@@ -73,7 +73,7 @@ src/
     ├── Projects/
     │   └── ProjectsController.cs
     ├── Content/
-    │   └── ContentItemsController.cs
+    │   └── MetaInfosController.cs
     ├── Tasks/
     │   └── TasksController.cs
 ```
@@ -89,7 +89,7 @@ src/
     ├── Projects/
     │   └── ProjectConfiguration.cs
     ├── Content/
-    │   ├── ContentItemConfiguration.cs
+    │   ├── MetaInfoConfiguration.cs
     │   └── StoryOutlineConfiguration.cs
     ├── Tasks/
     │   ├── ProjectTaskConfiguration.cs
@@ -113,9 +113,9 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
 
 | Operation Type | Naming Pattern | Example |
 | :--- | :--- | :--- |
-| **Create** | `Create[Entity]Dto` | `CreateProjectDto.cs`, `CreateContentItemDto.cs` |
-| **Update** | `Update[Entity]Dto` | `UpdateProjectDto.cs`, `UpdateContentItemDto.cs` |
-| **Response** | `[Entity]ResponseDto` | `ProjectResponseDto.cs`, `ContentItemResponseDto.cs` |
+| **Create** | `Create[Entity]Dto` | `CreateProjectDto.cs`, `CreateMetaInfoDto.cs` |
+| **Update** | `Update[Entity]Dto` | `UpdateProjectDto.cs`, `UpdateMetaInfoDto.cs` |
+| **Response** | `[Entity]ResponseDto` | `ProjectResponseDto.cs`, `MetaInfoResponseDto.cs` |
 
 ### Controller Files
 
@@ -123,7 +123,7 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
 
 ```csharp
 public class ProjectsController : ControllerBase  // ✅ Correct
-public class ContentItemsController : ControllerBase  // ✅ Correct
+public class MetaInfosController : ControllerBase  // ✅ Correct
 public class ProjectTasksController : ControllerBase  // ✅ Correct (updated from Task)
 ```
 
@@ -131,8 +131,8 @@ public class ProjectTasksController : ControllerBase  // ✅ Correct (updated fr
 
 | Type | Naming Pattern | Example |
 | :--- | :--- | :--- |
-| **Implementation** | `[Entity]Service` | `ProjectTaskService.cs`, `ContentItemService.cs` |
-| **Interface** | `I[Entity]Service` | `IProjectTaskService.cs`, `IContentItemService.cs` |
+| **Implementation** | `[Entity]Service` | `ProjectTaskService.cs`, `MetaInfoService.cs` |
+| **Interface** | `I[Entity]Service` | `IProjectTaskService.cs`, `IMetaInfoService.cs` |
 
 ---
 
@@ -153,9 +153,9 @@ src/
 
 ```csharp
 // ✅ CORRECT - Domain-aware cross-domain service configuration
-public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
+public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo>
 {
-    public void Configure(EntityTypeBuilder<ContentItem> builder)
+    public void Configure(EntityTypeBuilder<MetaInfo> builder)
     {
         // ... content configuration here
         
@@ -176,7 +176,7 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
 ```bash
 src/
 └── Gadema.Core/Models/Content/
-    ├── ContentItem.cs
+    ├── MetaInfo.cs
     ├── StoryOutline.cs
     ├── DialogueBranch.cs
     ├── ExternalReference.cs
@@ -192,13 +192,13 @@ src/
 src/
 └── Gadema.Core/Dtos/Content/
     ├── CreateDto/
-    │   ├── CreateContentItemDto.cs
+    │   ├── CreateMetaInfoDto.cs
     │   └── CreateStoryOutlineDto.cs
     ├── UpdateDto/
-    │   ├── UpdateContentItemDto.cs
+    │   ├── UpdateMetaInfoDto.cs
     │   └── UpdateStoryOutlineDto.cs
     └── ResponseDto/
-        ├── ContentItemResponseDto.cs
+        ├── MetaInfoResponseDto.cs
         └── StoryOutlineResponseDto.cs
 ```
 
@@ -270,7 +270,7 @@ src/
 | **Flat Structure** | All models in `Gadema.Core/Models/` without domain folders | ❌ Don't do this! Use domain folders |
 | **Mixed DTOs** | CreatingDto.cs and UpdateDto.cs in same file | ✅ Separate files per operation type |
 | **Generic Names** | Service.cs, Entity.cs (no context) | ✅ Descriptive names: InventoryService.cs |
-| **Cross-Domain Mixing** | TaskConfiguration.cs with ContentItem properties | ✅ Keep configurations domain-specific |
+| **Cross-Domain Mixing** | TaskConfiguration.cs with MetaInfo properties | ✅ Keep configurations domain-specific |
 
 ---
 
@@ -295,9 +295,9 @@ public class Entity1Configuration : IEntityTypeConfiguration<User> { }  // ❌ N
 | File Type | Must Cluster by Domain? | Priority | Example |
 | :--- | :--- | :--- | :--- |
 | **Models** | ✅ Yes | Critical | `Tasks/ProjectTask.cs` |
-| **DTOs (Create)** | ✅ Yes | High | `Content/CreateDto/CreateContentItemDto.cs` |
+| **DTOs (Create)** | ✅ Yes | High | `Content/CreateDto/CreateMetaInfoDto.cs` |
 | **DTOs (Update)** | ✅ Yes | High | `Projects/UpdateDto/UpdateProjectDto.cs` |
-| **DTOs (Response)** | ✅ Yes | High | `Content/ResponseDto/ContentItemResponseDto.cs` |
+| **DTOs (Response)** | ✅ Yes | High | `Content/ResponseDto/MetaInfoResponseDto.cs` |
 | **Services** | ✅ Yes | High | `Tasks/ProjectTaskService.cs` |
 | **Controllers** | ✅ Yes | Critical | `Projects/ProjectsController.cs` |
 | **Configurations** | ✅ Yes | High | `Tasks/ProjectTaskConfiguration.cs` |

@@ -20,7 +20,7 @@
 - `Content/DialogueNodeEntityTypeConfiguration.cs`
 - `Content/ExternalReferenceEntityTypeConfiguration.cs`
 - `Content/MediaAttachmentEntityTypeConfiguration.cs`
-- `Content/ContentItemEntityTypeConfiguration.cs`
+- `Content/MetaInfoEntityTypeConfiguration.cs`
 - `Content/StoryOutlineEntityTypeConfiguration.cs`
 - `Content/TagEntityTypeConfiguration.cs`
 - `Content/MediaTagsEntityTypeConfiguration.cs`
@@ -87,7 +87,7 @@ public void Configure(EntityTypeBuilder<ContentTags> builder)
     builder.HasKey(e => e.Id);
 
     // Indexes for the many-to-many lookups (bidirectional filtering)
-    builder.HasIndex(e => e.ContentItemId).HasDatabaseName("IX_ContentTags_ContentItem");
+    builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_ContentTags_MetaInfo");
     builder.HasIndex(e => e.TagId).HasDatabaseName("IX_ContentTags_Tag");
 
     // Order index for tag ordering within a content item
@@ -97,7 +97,7 @@ public void Configure(EntityTypeBuilder<ContentTags> builder)
 
 **Why this pattern?**
 - No separate `ContentTagAssociation` table — the junction columns live inline on the entity itself
-- The model uses `Guid ContentItemId` and `Guid TagId` as FKs, plus a self PK
+- The model uses `Guid MetaInfoId` and `Guid TagId` as FKs, plus a self PK
 - EF Core infers the relationship from these two properties + the configuration
 
 ---
@@ -231,16 +231,16 @@ var activeProjects = await _context.Projects
 
 ### 8. Optional FKs with Explicit Nullability
 
-#### `ProjectTask.ContentItemId` — Task may or may not reference content
+#### `ProjectTask.MetaInfoId` — Task may or may not reference content
 
 ```csharp
 // In ProjectTaskEntityTypeConfiguration.cs
-builder.HasOne(pt => pt.ContentItem)
+builder.HasOne(pt => pt.MetaInfo)
     .WithMany() // No reverse navigation needed (task doesn't need to "know" its content)
-    .HasForeignKey(pt => pt.ContentItemId)
+    .HasForeignKey(pt => pt.MetaInfoId)
     .OnDelete(DeleteBehavior.SetNull);  // ← Task survives even if content is deleted
 
-// In model: public Guid? ContentItemId { get; set; }
+// In model: public Guid? MetaInfoId { get; set; }
 ```
 
 **Why `SetNull` instead of `Cascade`?** A task represents work — it should persist even if the linked content item is moved or deprecated. The task becomes "untethered" but remains actionable.
@@ -277,10 +277,10 @@ builder.HasIndex(e => new { e.Title, e.Url });
 | `DialogueBranches` | `Id` (Guid) | `ParentNodeId` → Self | Cascade | Optional parent tree |
 | `DialogueNodes` | `Id` (Guid) | `BranchId`, `ParentNodeId` | Cascade on both | Nested dialogue choices |
 | `StoryBeats` | `Id` (Guid) | `SequenceId` | SetNull | Beat survives sequence deletion |
-| `ProjectTasks` | `Id` (Guid) | `ContentItemId` (nullable) | **SetNull** | Task independent of content lifecycle |
+| `ProjectTasks` | `Id` (Guid) | `MetaInfoId` (nullable) | **SetNull** | Task independent of content lifecycle |
 | `TaskComments` | `Id` (Guid) | `TaskId` → ProjectTasks | **Cascade** | Comments die with task |
 | `ContentTags` | `Id` (Guid) | — | — | Self-composite key junction table |
-| `CharacterDetails` | `Id` (Guid) | `ClassTemplateId`, `ContentItemId` | Cascade on content | Child of ContentItem |
+| `CharacterDetails` | `Id` (Guid) | `ClassTemplateId`, `MetaInfoId` | Cascade on content | Child of MetaInfo |
 
 ---
 

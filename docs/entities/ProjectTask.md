@@ -38,7 +38,7 @@ public class ProjectTask
     [Display(Name = "Is Quick Win?")]
     public bool IsQuickWin { get; set; } = false;
     
-    public Guid? ContentItemId { get; set; }  // Optional FK to ContentItem (for content-specific tasks)
+    public Guid? MetaInfoId { get; set; }  // Optional FK to MetaInfo (for content-specific tasks)
     
     public Guid? AssignedToUserId { get; set; }  // FK to User (who owns this task)
     
@@ -55,8 +55,8 @@ public class ProjectTask
     // ✅ NAVIGATION PROPERTY: Project (parent project FK with back-reference)
     public virtual Project Project { get; set; }
     
-    // ✅ NAVIGATION PROPERTY: ContentItem (optional relationship to content item)
-    public virtual ContentItem? ContentItem { get; set; }
+    // ✅ NAVIGATION PROPERTY: MetaInfo (optional relationship to content item)
+    public virtual MetaInfo? MetaInfo { get; set; }
     
     // ✅ NAVIGATION PROPERTY: Assigned User (back-reference for task ownership)
     public virtual User? AssignedToUser { get; set; }
@@ -113,8 +113,8 @@ public class ProjectTask
     // ✅ Navigation property: Project (back-reference to parent project)
     public virtual Project Project { get; set; }  // ⚠️ NEEDS TO BE ADDED!
     
-    // ✅ Navigation property: ContentItem (optional relationship to content item)
-    public virtual ContentItem? ContentItem { get; set; }  // ⚠️ NEEDS TO BE ADDED!
+    // ✅ Navigation property: MetaInfo (optional relationship to content item)
+    public virtual MetaInfo? MetaInfo { get; set; }  // ⚠️ NEEDS TO BE ADDED!
     
     // ✅ Navigation property: Assigned User (back-reference for task ownership)
     public virtual User? AssignedToUser { get; set; }  // ⚠️ NEEDS TO BE ADDED!
@@ -135,8 +135,8 @@ public class ProjectTask
 | :--- | :--- | :--- |
 | `int Status` (no enum) | Use TaskStatusEnum for type safety (Backlog, InProgress, Review, Done) | Domain-aware pattern requires typed enums! |
 | `int Difficulty` (magic numbers) | Should have explicit difficulty levels defined as enum or constants | Avoids magic number 0/1/2 confusion! |
-| No navigation properties | Missing back-references on Project, User, ContentItem, TaskComments | Violates eager loading pattern (Performance.md)! |
-| Mandatory FK to ContentItem | Should be optional (nullable) since tasks can be project-level OR content-specific | Domain separation requires proper optional relationships! |
+| No navigation properties | Missing back-references on Project, User, MetaInfo, TaskComments | Violates eager loading pattern (Performance.md)! |
+| Mandatory FK to MetaInfo | Should be optional (nullable) since tasks can be project-level OR content-specific | Domain separation requires proper optional relationships! |
 
 ---
 # 📋 **ProjectTask Entity Definition** – What Should It Be? (Continued)
@@ -169,10 +169,10 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
             .HasForeignKey(pt => pt.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);  // ✅ Cascade delete tasks when project deleted
         
-        // ✅ NAVIGATION PROPERTY: ContentItem (optional relationship to content item)
-        builder.HasOne(pt => pt.ContentItem)  // ⚠️ Forward reference on ContentItem!
-            .WithMany(c => c.ProjectTasks)  // ⚠️ Back-reference needed on ContentItem!
-            .HasForeignKey(pt => pt.ContentItemId)
+        // ✅ NAVIGATION PROPERTY: MetaInfo (optional relationship to content item)
+        builder.HasOne(pt => pt.MetaInfo)  // ⚠️ Forward reference on MetaInfo!
+            .WithMany(c => c.ProjectTasks)  // ⚠️ Back-reference needed on MetaInfo!
+            .HasForeignKey(pt => pt.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);  // ✅ Maintain task history!
         
         // ✅ NAVIGATION PROPERTY: Assigned User (back-reference for task ownership)
@@ -212,8 +212,8 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
 | :--- | :--- | :--- |
 | **Entity Name** | `ProjectTask` (renamed from Task) ⭐ | Avoids ambiguity with System.Threading.Task! |
 | **Primary Key** | `Id` (Guid, auto-generated) | Standard EF Core pattern |
-| **FKs** | 1 FK: ProjectId + optional FK to ContentItem/AssignedToUser | Domain separation requires proper optional relationships! |
-| **Navigation Properties** | 5 total (Project, ContentItem, AssignedToUser, TaskComments, ReviewStatus) ✅ All defined for eager loading! | Performance.md requirement! |
+| **FKs** | 1 FK: ProjectId + optional FK to MetaInfo/AssignedToUser | Domain separation requires proper optional relationships! |
+| **Navigation Properties** | 5 total (Project, MetaInfo, AssignedToUser, TaskComments, ReviewStatus) ✅ All defined for eager loading! | Performance.md requirement! |
 | **Enum Types** | `TaskStatusEnum` (Backlog, InProgress, Review, Done) + Difficulty levels | Type safety over magic numbers! |
 | **OnDelete Behavior** | Cascade (Project, TaskComments), SetNull (User, ReviewStatus) | Maintain task history! |
 
@@ -230,7 +230,7 @@ public async Task<List<ProjectTask>> GetQuickWinTasksAsync(Guid projectId)
     // ✅ Eager loading pattern prevents N+1 queries!
     var quickWinTasks = await _context.ProjectTasks
         .Where(pt => pt.ProjectId == projectId && pt.IsQuickWin)
-        .Include(pt => pt.ContentItem).ThenInclude(ci => ci.Project)  // Nested eager loading!
+        .Include(pt => pt.MetaInfo).ThenInclude(ci => ci.Project)  // Nested eager loading!
             .Include(pt => pt.TaskComments)
                 .ThenInclude(tc => tc.CreatedByUser)
         .Include(pt => pt.AssignedToUser)
@@ -249,7 +249,7 @@ public async Task<List<ProjectTask>> GetQuickWinTasksAsync_Bad(Guid projectId)  
     
     foreach (var task in quickWinTasks)  // ❌ N+1 query!
     {
-        var contentItem = await _context.ContentItems.FindAsync(task.ContentItemId);  // ⚠️ Bad pattern!
+        var MetaInfo = await _context.MetaInfos.FindAsync(task.MetaInfoId);  // ⚠️ Bad pattern!
         var comments = await _context.TaskComments.Where(tc => tc.ProjectTaskId == task.Id).ToListAsync();  // ⚠️ N+1 problem!
     }
 }
@@ -304,10 +304,10 @@ public async Task<ProjectTaskDto> GetProjectTaskWithFullDataAsync(Guid projectId
 {
     // ✅ Eager loading prevents N+1 query problem (Performance.md requirement!)
     var projectTask = await _context.ProjectTasks
-        .Include(pt => pt.Project).ThenInclude(p => p.ContentItems).ThenInclude(ci => ci.MediaAttachments)  // Nested eager loading!
+        .Include(pt => pt.Project).ThenInclude(p => p.MetaInfos).ThenInclude(ci => ci.MediaAttachments)  // Nested eager loading!
             .Include(pt => pt.AssignedToUser).ThenInclude(u => u.TeamMemberships).ThenInclude(tm => tm.Team)  // Nested eager loading!
         .Include(pt => pt.TaskComments).ThenInclude(tc => tc.CreatedByUser)
-        .Include(pt => pt.ContentItem).ThenInclude(ci => ci.ExternalReferences)  // Nested eager loading!
+        .Include(pt => pt.MetaInfo).ThenInclude(ci => ci.ExternalReferences)  // Nested eager loading!
             .Include(ci => ci.CharacterIdentities)  // Nested eager loading for character tasks!
             .FirstOrDefaultAsync(pt => pt.Id == taskId);
     
@@ -321,7 +321,7 @@ public async Task<ProjectTaskDto> GetProjectTaskWithFullDataAsync(Guid projectId
         EstimatedMinutes = projectTask.EstimatedMinutes,
         IsQuickWin = projectTask.IsQuickWin,
         AssignedToUserId = projectTask.AssignedToUserId,
-        ContentItemId = projectTask.ContentItemId,
+        MetaInfoId = projectTask.MetaInfoId,
         CompletedAt = projectTask.CompletedAt
     };  // ✅ RAW response pattern for data retrieval! Domain-aware patterns!
 }
@@ -335,7 +335,7 @@ public async Task<ProjectTaskDto> GetProjectTaskWithFullDataAsync_Bad(Guid proje
         return null;
     
     // ❌ Multiple separate queries for same task data! N+1 problem!
-    var contentItem = await _context.ContentItems.FindAsync(projectTask.ContentItemId);  // ⚠️ Bad pattern!
+    var MetaInfo = await _context.MetaInfos.FindAsync(projectTask.MetaInfoId);  // ⚠️ Bad pattern!
     var assignedToUser = await _context.Users.FindAsync(projectTask.AssignedToUserId);  // ⚠️ Bad pattern!
     
     return new ProjectTaskDto { ... };  // ❌ No wrapping for data retrieval! Domain-aware pattern violation!
@@ -349,8 +349,8 @@ public async Task<ProjectTaskDto> GetProjectTaskWithFullDataAsync_Bad(Guid proje
 | Feature | Value/Pattern | Notes |
 | :--- | :--- | :--- |
 | **Purpose** | ADHD-friendly task management with quick win filtering and difficulty levels | Core entity for writing/design work! |
-| **FKs** | 1 FK to Project + optional FK to ContentItem, AssignedToUser | Domain separation requires proper optional relationships! |
-| **Navigation Properties** | 5 total (Project, ContentItem, AssignedToUser, TaskComments, ReviewStatus) ✅ All defined for eager loading! | Performance.md requirement! |
+| **FKs** | 1 FK to Project + optional FK to MetaInfo, AssignedToUser | Domain separation requires proper optional relationships! |
+| **Navigation Properties** | 5 total (Project, MetaInfo, AssignedToUser, TaskComments, ReviewStatus) ✅ All defined for eager loading! | Performance.md requirement! |
 | **Enum Types** | `TaskStatusEnum` + Difficulty levels (Easy/Medium/Hard) | Type safety over magic numbers! |
 | **OnDelete Behavior** | Cascade (Project, TaskComments), SetNull (User, ReviewStatus) | Maintain task history! |
 
@@ -360,9 +360,9 @@ public async Task<ProjectTaskDto> GetProjectTaskWithFullDataAsync_Bad(Guid proje
 
 This entity definition ensures that **`ProjectTask`**:
 - ✅ Is the ADHD-friendly task management entity with quick win filtering and difficulty levels
-- ✅ Has 5 navigation properties defined (Project back-reference, ContentItem, AssignedToUser, TaskComments, ReviewStatus)
+- ✅ Has 5 navigation properties defined (Project back-reference, MetaInfo, AssignedToUser, TaskComments, ReviewStatus)
 - ✅ Follows eager loading pattern to prevent N+1 queries (Performance.md requirement!)
-- ✅ Supports content-specific tasks via optional FK to ContentItem
+- ✅ Supports content-specific tasks via optional FK to MetaInfo
 - ✅ Maintains task history through proper cascade delete behavior
 
 The **ProjectTask entity** is essential for ADHD-friendly task management and writing/design workflow tracking within the GaDeMa system! 🎯✨

@@ -124,7 +124,7 @@ public class InternalServerException : Exception
 ```csharp
 // ✅ CORRECT - Validate DTO before processing logic
 [HttpPost]
-public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dto)
+public async Task<IActionResult> CreateContentAsync([FromBody] MetaInfoDto dto)
 {
     // Step 1: Always check validation first
     if (!ModelState.IsValid)
@@ -141,7 +141,7 @@ public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dt
     }
 
     // Step 2: Process business logic
-    var item = new ContentItem 
+    var item = new MetaInfo 
     {
         ProjectId = dto.ProjectId,
         ContentType = dto.ContentType,
@@ -149,7 +149,7 @@ public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dt
         Description = dto.Description ?? ""
     };
 
-    await _context.ContentItems.AddAsync(item);
+    await _context.MetaInfos.AddAsync(item);
     await _context.SaveChangesAsync();
 
     // Step 3: Return created item with appropriate response format
@@ -167,7 +167,7 @@ public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dt
 ```csharp
 // ✅ CORRECT - Catch specific exceptions and map to appropriate responses
 [HttpPost]
-public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dto)
+public async Task<IActionResult> CreateContentAsync([FromBody] MetaInfoDto dto)
 {
     try
     {
@@ -219,14 +219,14 @@ public async Task<IActionResult> CreateContentAsync([FromBody] ContentItemDto dt
 
 ```csharp
 // ❌ INCORRECT - Don't throw generic exceptions
-public async Task CreateContentAsync(ContentItemDto dto)
+public async Task CreateContentAsync(MetaInfoDto dto)
 {
     if (dto.Title.Length > 100)
         throw new Exception("Title too long");  // ❌ Too vague!
 }
 
 // ✅ CORRECT - Use specific exception type
-public async Task<ContentItem> CreateContentAsync(ContentItemDto dto)
+public async Task<MetaInfo> CreateContentAsync(MetaInfoDto dto)
 {
     if (dto.Title.Length > 100)
         throw new BadRequestException("Title must be 100 characters or less");  // ✅ Specific!
@@ -241,7 +241,7 @@ public async Task<ContentItem> CreateContentAsync(ContentItemDto dto)
 
 ```csharp
 // ✅ CORRECT - Aggregate multiple validation errors
-public async Task CreateContentAsync(ContentItemDto dto)
+public async Task CreateContentAsync(MetaInfoDto dto)
 {
     var errors = new List<string>();
 
@@ -261,7 +261,7 @@ public async Task CreateContentAsync(ContentItemDto dto)
 
 ```csharp
 // ✅ CORRECT - Clear, user-friendly error messages
-public class ContentItemDto
+public class MetaInfoDto
 {
     [Required(ErrorMessage = "Title is required")]
     [MaxLength(128, ErrorMessage = "Title must not exceed 128 characters")]
@@ -305,7 +305,7 @@ catch (DbUpdateException ex) when (ex.InnerException != null)
 // ✅ CORRECT - Log sensitive data separately (not in exceptions)
 _logger.LogInformation(
     "Content item created: Id={Id}, Title={Title}", 
-    contentItem.Id, contentItem.Title);
+    MetaInfo.Id, MetaInfo.Title);
 ```
 
 ### Never Log Sensitive Data
