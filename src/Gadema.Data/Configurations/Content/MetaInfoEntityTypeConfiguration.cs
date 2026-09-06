@@ -8,14 +8,14 @@ using Gadema.Core.Models;
 namespace Gadema.Data.Configurations.Content;
 
 /// <summary>
-/// Configuration for ContentItem entity in game development management system.
+/// Configuration for MetaInfo entity in game development management system.
 /// </summary>
-public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<ContentItem>
+public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo>
 {
     /// <summary>
-    /// Configure ContentItem entity properties and relationships.
+    /// Configure MetaInfo entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<ContentItem> builder)
+    public void Configure(EntityTypeBuilder<MetaInfo> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
@@ -28,34 +28,34 @@ public class ContentItemEntityTypeConfiguration : IEntityTypeConfiguration<Conte
         
         // Navigation property: Project (Cascade delete)
         builder.HasOne(ci => ci.Project)
-            .WithMany(p => p.ContentItems)
+            .WithMany(p => p.MetaInfos)
             .HasForeignKey(ci => ci.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
         
         // Navigation property: MediaAttachments (SetNull to preserve attachment history)
         builder.HasMany(ci => ci.MediaAttachments)
-            .WithOne(m => m.ContentItem)
-            .HasForeignKey(m => m.ContentItemId)
+            .WithOne(m => m.MetaInfo)
+            .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
 
         
-        // Navigation property: ContentTags (SetNull to preserve tags)
-        builder.HasMany(ci => ci.ContentItemTags)
-            .WithOne(ct => ct.ContentItem)
-            .HasForeignKey(ct => ct.ContentItemId)
+        // Navigation property: MetaInfoTags (SetNull to preserve tags)
+        builder.HasMany(ci => ci.MetaInfoTagRelations)
+            .WithOne(ct => ct.MetaInfo)
+            .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
         // Navigation property: ReviewStatus (SetNull to preserve review history)
         builder.HasOne(ci => ci.ReviewStatus)
             .WithOne()
-            .HasForeignKey<ReviewStatus>(rs => rs.ContentItemId)
+            .HasForeignKey<ReviewStatus>(rs => rs.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);
         
         // Navigation property: Comments (SetNull to preserve comment history)
         builder.HasMany(ci => ci.Comments)
-            .WithOne(c => c.ContentItem)
-            .HasForeignKey(c => c.ContentItemId)
+            .WithOne(c => c.MetaInfo)
+            .HasForeignKey(c => c.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
     }

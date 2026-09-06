@@ -29,7 +29,7 @@ namespace Gadema.Data.Migrations
                     b.Property<int>("AbilityType")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("CooldownSeconds")
@@ -67,7 +67,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("AbilityType");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("Name");
 
@@ -83,7 +83,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -111,7 +111,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("ProjectId");
 
@@ -176,7 +176,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EngineAssetId")
@@ -195,7 +195,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.ToTable("AssetLinks");
                 });
@@ -206,7 +206,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("DefaultMax")
@@ -245,7 +245,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("Name");
 
@@ -263,7 +263,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("DisplayOrder")
@@ -282,7 +282,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("DisplayOrder");
 
@@ -326,7 +326,7 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.CharacterAttributes", b =>
                 {
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("AttributeDefinitionId")
@@ -341,18 +341,18 @@ namespace Gadema.Data.Migrations
                     b.Property<bool>("OverridesFormula")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ContentItemId", "AttributeDefinitionId");
+                    b.HasKey("MetaInfoId", "AttributeDefinitionId");
 
                     b.HasIndex("AttributeDefinitionId");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.ToTable("CharacterAttributes");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.CharacterBackground", b =>
                 {
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("CharacterDetailsId")
@@ -368,7 +368,7 @@ namespace Gadema.Data.Migrations
                     b.Property<bool>("Published")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ContentItemId");
+                    b.HasKey("MetaInfoId");
 
                     b.ToTable("CharacterBackgrounds");
                 });
@@ -382,7 +382,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid?>("ClassTemplateId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Level")
@@ -400,7 +400,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId")
+                    b.HasIndex("MetaInfoId")
                         .IsUnique();
 
                     b.ToTable("CharacterDetails");
@@ -412,7 +412,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DisplayText")
@@ -438,7 +438,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("IdentityDefinitionId");
 
@@ -459,7 +459,7 @@ namespace Gadema.Data.Migrations
                     b.Property<int>("BaseLevel")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -477,7 +477,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("AttributeSetId");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -493,7 +493,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid>("AttributeDefinitionId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("DefaultMaxValue")
@@ -513,7 +513,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("AttributeDefinitionId");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.ToTable("ClassTemplateAttribute");
                 });
@@ -532,7 +532,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid>("CommentedByUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -546,32 +546,32 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("CommentedByUserId");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("CreatedAt");
 
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.Content.ContentItemTag", b =>
+            modelBuilder.Entity("Gadema.Core.Models.Content.MetaInfoTagRelation", b =>
                 {
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentTagId")
+                    b.Property<Guid>("MetaInfoTagId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ContentItemId", "ContentTagId");
+                    b.HasKey("MetaInfoId", "MetaInfoTagId");
 
-                    b.HasIndex("ContentTagId");
+                    b.HasIndex("MetaInfoTagId");
 
-                    b.ToTable("ContentItemTags");
+                    b.ToTable("MetaInfoTagRelations");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.Content.ContentTag", b =>
+            modelBuilder.Entity("Gadema.Core.Models.Content.MetaInfoTag", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -598,10 +598,10 @@ namespace Gadema.Data.Migrations
                     b.HasIndex("Slug")
                         .IsUnique();
 
-                    b.ToTable("ContentTags");
+                    b.ToTable("MetaInfoTags");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.ContentItem", b =>
+            modelBuilder.Entity("Gadema.Core.Models.MetaInfo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -673,7 +673,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("Status");
 
-                    b.ToTable("ContentItems");
+                    b.ToTable("MetaInfos");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.ContentSnapshot", b =>
@@ -682,7 +682,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -704,7 +704,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("CreatedAt");
 
@@ -730,7 +730,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid>("ChangedByUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -741,7 +741,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("VersionNumber");
 
@@ -758,7 +758,7 @@ namespace Gadema.Data.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsRoot")
@@ -790,7 +790,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("IsRoot");
 
@@ -821,7 +821,7 @@ namespace Gadema.Data.Migrations
                         .HasMaxLength(4096)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NodeText")
@@ -839,7 +839,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("ParentNodeId");
 
@@ -1135,7 +1135,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ItemName")
@@ -1159,7 +1159,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("ItemType");
 
@@ -1180,7 +1180,7 @@ namespace Gadema.Data.Migrations
                         .HasMaxLength(4096)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("LoreType")
@@ -1205,7 +1205,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("LoreType");
 
@@ -1223,7 +1223,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ContentType")
@@ -1251,7 +1251,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.ToTable("MediaAttachments");
                 });
@@ -1313,7 +1313,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid?>("AssignedToUserId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -1362,7 +1362,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("Difficulty");
 
@@ -1662,10 +1662,10 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("ContentItemId")
+                    b.Property<Guid>("MetaInfoId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId1")
+                    b.Property<Guid?>("MetaInfoId1")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ReviewComments")
@@ -1683,10 +1683,10 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId")
+                    b.HasIndex("MetaInfoId")
                         .IsUnique();
 
-                    b.HasIndex("ContentItemId1");
+                    b.HasIndex("MetaInfoId1");
 
                     b.HasIndex("ReviewedAt");
 
@@ -1703,7 +1703,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal?>("DamagePerTick")
@@ -1735,7 +1735,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("EffectType");
 
@@ -1797,7 +1797,7 @@ namespace Gadema.Data.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("OutlineStatus")
@@ -1820,7 +1820,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("SequenceId");
 
@@ -1835,7 +1835,7 @@ namespace Gadema.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("OrderIndex")
@@ -1872,7 +1872,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("ParentSequenceId");
 
@@ -2073,7 +2073,7 @@ namespace Gadema.Data.Migrations
                     b.Property<Guid?>("ContentId")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("ContentItemId")
+                    b.Property<Guid?>("MetaInfoId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("IPAddress")
@@ -2098,7 +2098,7 @@ namespace Gadema.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContentItemId");
+                    b.HasIndex("MetaInfoId");
 
                     b.HasIndex("ProjectId");
 
@@ -2201,18 +2201,18 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.AbilityDefinition", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.AbilitySet", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany()
@@ -2220,7 +2220,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
                 });
@@ -2245,29 +2245,29 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.AssetLink", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany("AssetLinks")
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.AttributeDefinition", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.AttributeSet", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany()
@@ -2275,7 +2275,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
                 });
@@ -2299,52 +2299,52 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AttributeDefinition");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.CharacterBackground", b =>
                 {
                     b.HasOne("Gadema.Core.Models.CharacterDetails", "CharacterDetails")
                         .WithMany("CharacterBackgrounds")
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CharacterDetails");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.CharacterDetails", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithOne()
-                        .HasForeignKey("Gadema.Core.Models.CharacterDetails", "ContentItemId")
+                        .HasForeignKey("Gadema.Core.Models.CharacterDetails", "MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.CharacterIdentity", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2359,7 +2359,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("IdentityDefinition");
 
@@ -2374,13 +2374,13 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.Navigation("AttributeSet");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.ClassTemplateAttribute", b =>
@@ -2397,51 +2397,51 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.Navigation("AttributeDefinition");
 
                     b.Navigation("ClassTemplate");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.Comment", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany("Comments")
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.Content.ContentItemTag", b =>
+            modelBuilder.Entity("Gadema.Core.Models.Content.MetaInfoTagRelation", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
-                        .WithMany("ContentItemTags")
-                        .HasForeignKey("ContentItemId")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
+                        .WithMany("MetaInfoTagRelations")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.Content.ContentTag", "ContentTag")
-                        .WithMany("ContentItemTags")
-                        .HasForeignKey("ContentTagId")
+                    b.HasOne("Gadema.Core.Models.Content.MetaInfoTag", "MetaInfoTag")
+                        .WithMany("MetaInfoTagRelations")
+                        .HasForeignKey("MetaInfoTagId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
-                    b.Navigation("ContentTag");
+                    b.Navigation("MetaInfoTag");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.ContentItem", b =>
+            modelBuilder.Entity("Gadema.Core.Models.MetaInfo", b =>
                 {
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
-                        .WithMany("ContentItems")
+                        .WithMany("MetaInfos")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2451,20 +2451,20 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.ContentVersionLog", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany("VersionLogs")
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.DialogueBranch", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.DialogueBranch", "ParentNode")
                         .WithMany()
@@ -2477,7 +2477,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("ParentNode");
 
@@ -2492,9 +2492,9 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.DialogueNode", "ParentNode")
                         .WithMany("ChildNodes")
@@ -2506,7 +2506,7 @@ namespace Gadema.Data.Migrations
 
                     b.Navigation("Branch");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("ParentNode");
 
@@ -2557,7 +2557,7 @@ namespace Gadema.Data.Migrations
             modelBuilder.Entity("Gadema.Core.Models.ExternalReference", b =>
                 {
                     b.HasOne("Gadema.Core.Models.ExternalReference", null)
-                        .WithMany("ContentItemReferences")
+                        .WithMany("MetaInfoReferences")
                         .HasForeignKey("ExternalReferenceId");
 
                     b.HasOne("Gadema.Core.Models.MediaAttachment", null)
@@ -2601,9 +2601,9 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.InventoryItem", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany()
@@ -2611,16 +2611,16 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.LoreEntry", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany()
@@ -2628,20 +2628,20 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.MediaAttachment", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany("MediaAttachments")
-                        .HasForeignKey("ContentItemId")
+                        .HasForeignKey("MetaInfoId")
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.MediaTags", b =>
@@ -2652,7 +2652,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.Content.ContentTag", "Tag")
+                    b.HasOne("Gadema.Core.Models.Content.MetaInfoTag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2676,9 +2676,9 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.ProjectTask", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany("Tasks")
@@ -2686,7 +2686,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
                 });
@@ -2775,33 +2775,33 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.ReviewStatus", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", null)
+                    b.HasOne("Gadema.Core.Models.MetaInfo", null)
                         .WithOne("ReviewStatus")
-                        .HasForeignKey("Gadema.Core.Models.ReviewStatus", "ContentItemId")
+                        .HasForeignKey("Gadema.Core.Models.ReviewStatus", "MetaInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId1");
+                        .HasForeignKey("MetaInfoId1");
 
                     b.HasOne("Gadema.Core.Models.User", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewedByUserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Reviewer");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.StatusEffectDefinition", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.StoryBeat", b =>
@@ -2817,9 +2817,9 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.StoryOutline", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.StorySequence", "StorySequence")
                         .WithMany()
@@ -2831,16 +2831,16 @@ namespace Gadema.Data.Migrations
                         .WithMany("Outlines")
                         .HasForeignKey("StorySequenceId");
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("StorySequence");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.StorySequence", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.StorySequence", "ParentSequence")
                         .WithMany("ChildSequences")
@@ -2853,7 +2853,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("ParentSequence");
 
@@ -2952,9 +2952,9 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.TokenUsageLog", b =>
                 {
-                    b.HasOne("Gadema.Core.Models.ContentItem", "ContentItem")
+                    b.HasOne("Gadema.Core.Models.MetaInfo", "MetaInfo")
                         .WithMany()
-                        .HasForeignKey("ContentItemId");
+                        .HasForeignKey("MetaInfoId");
 
                     b.HasOne("Gadema.Core.Models.Projects.Project", "Project")
                         .WithMany()
@@ -2966,7 +2966,7 @@ namespace Gadema.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ContentItem");
+                    b.Navigation("MetaInfo");
 
                     b.Navigation("Project");
 
@@ -2989,18 +2989,18 @@ namespace Gadema.Data.Migrations
                     b.Navigation("CharacterBackgrounds");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.Content.ContentTag", b =>
+            modelBuilder.Entity("Gadema.Core.Models.Content.MetaInfoTag", b =>
                 {
-                    b.Navigation("ContentItemTags");
+                    b.Navigation("MetaInfoTagRelations");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.ContentItem", b =>
+            modelBuilder.Entity("Gadema.Core.Models.MetaInfo", b =>
                 {
                     b.Navigation("AssetLinks");
 
                     b.Navigation("Comments");
 
-                    b.Navigation("ContentItemTags");
+                    b.Navigation("MetaInfoTagRelations");
 
                     b.Navigation("MediaAttachments");
 
@@ -3022,7 +3022,7 @@ namespace Gadema.Data.Migrations
 
             modelBuilder.Entity("Gadema.Core.Models.ExternalReference", b =>
                 {
-                    b.Navigation("ContentItemReferences");
+                    b.Navigation("MetaInfoReferences");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.MediaAttachment", b =>
@@ -3044,7 +3044,7 @@ namespace Gadema.Data.Migrations
                 {
                     b.Navigation("ActivityLogs");
 
-                    b.Navigation("ContentItems");
+                    b.Navigation("MetaInfos");
 
                     b.Navigation("ProjectTags");
 

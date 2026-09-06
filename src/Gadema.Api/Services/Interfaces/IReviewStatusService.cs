@@ -21,10 +21,10 @@ public interface IReviewStatusService
     /// <summary>
     /// Get review status for content item.
     /// </summary>
-    Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid contentItemId);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid MetaInfoId);
 
     /// <summary>
     /// Approve/reject content item.
     /// </summary>
-    Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid MetaInfoId, ApproveContentDto approveDto);
 }

@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents an attribute definition for character/class templates.
 /// Used for defining ability systems and character stats with scaling formulas.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class AttributeDefinition
 {
     /// <summary>
@@ -19,10 +19,10 @@ public class AttributeDefinition
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
 
     
     /// <summary>

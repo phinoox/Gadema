@@ -23,7 +23,7 @@ public class CharacterDetailsEntityTypeConfiguration : IEntityTypeConfiguration<
     {
         builder.HasKey(e => e.Id);
         // Primary key: FK as PK pattern (FK = content item ID)
-        builder.HasOne(e => e.ContentItem).WithOne().HasForeignKey<CharacterDetails>(e => e.ContentItemId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne(e => e.MetaInfo).WithOne().HasForeignKey<CharacterDetails>(e => e.MetaInfoId).OnDelete(DeleteBehavior.Cascade);
                 
         // Properties configuration
         builder.Property(e => e.Name).IsRequired();
@@ -32,7 +32,7 @@ public class CharacterDetailsEntityTypeConfiguration : IEntityTypeConfiguration<
         // This enables lazy loading to access all background associations for this character
         builder.HasMany(cd => cd.CharacterBackgrounds);  // Enable lazy loading
 
-        builder.HasIndex(e => e.ContentItemId).IsUnique();
+        builder.HasIndex(e => e.MetaInfoId).IsUnique();
     }
 }
 

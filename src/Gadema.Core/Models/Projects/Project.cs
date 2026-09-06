@@ -82,7 +82,7 @@ public class Project
     /// <summary>
     /// Collection of content items for this project.
     /// </summary>
-    public virtual ICollection<ContentItem> ContentItems { get; set; } = new List<ContentItem>();
+    public virtual ICollection<MetaInfo> MetaInfos { get; set; } = new List<MetaInfo>();
 
     /// <summary>
     /// Collection of sequences for this project.
@@ -137,4 +137,44 @@ public class Project
     public ProjectStatusEnum Status { get; set; } = ProjectStatusEnum.Draft;
 
     public virtual ICollection<ProjectTagRelation> ProjectTags { get; set; } = new List<ProjectTagRelation>();
+
+    // ========================================================================
+    // Core Compass Fields (Phase 1: Project Creation)
+    // These fields tailor the workspace based on the project's primary format.
+    // ========================================================================
+
+    /// <summary>
+    /// Primary format of the project (Book, Manga, Game, Hybrid).
+    /// Determines default UI emphasis and suggestion engines.
+    /// </summary>
+    [EnumDataType(typeof(PrimaryFormatEnum)), Required, Display(Name = "Primary Format")]
+    public PrimaryFormatEnum PrimaryFormat { get; set; } = PrimaryFormatEnum.Book;
+
+    /// <summary>
+    /// Genre of the project (e.g., Fantasy, Sci-Fi, Romance).
+    /// Auto-suggests relevant StoryBeats and structural hints.
+    /// </summary>
+    [MaxLength(128), Display(Name = "Genre")]
+    public string? Genre { get; set; }
+
+    /// <summary>
+    /// Central theme of the project (e.g., Redemption, Survival, Love).
+    /// Influences narrative structure suggestions.
+    /// </summary>
+    [MaxLength(128), Display(Name = "Theme")]
+    public string? Theme { get; set; }
+
+    /// <summary>
+    /// Tone of the project (e.g., Dark, Light, Humorous, Serious).
+    /// Influences pacing and emotional beat suggestions.
+    /// </summary>
+    [EnumDataType(typeof(ToneEnum)), Display(Name = "Tone")]
+    public ToneEnum Tone { get; set; } = ToneEnum.Neutral;
+
+    /// <summary>
+    /// Target audience for the project (e.g., Children, Teen, Adult, All Ages).
+    /// Influences content warnings and complexity suggestions.
+    /// </summary>
+    [EnumDataType(typeof(AudienceEnum)), Display(Name = "Audience")]
+    public AudienceEnum Audience { get; set; } = AudienceEnum.AllAges;
 }

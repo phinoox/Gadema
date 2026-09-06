@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Gadema.Core.Dtos.Comments;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Dtos.Export;
 using Gadema.Core.Dtos.Reviews;
 using Gadema.Core.Dtos.Search;
@@ -35,8 +35,8 @@ public interface IDialogueService
 /// </summary>
 public interface IExternalReferenceService
 {
-    Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid contentItemId);
-    Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto);
+    Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid MetaInfoId);
+    Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid MetaInfoId, CreateExternalReferenceDto createDto);
 }
 
 /// <summary>
@@ -67,8 +67,8 @@ public interface IExportService
 /// </summary>
 public interface IReviewService
 {
-    Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid contentItemId);
-    Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid contentItemId, ApproveContentDto approveDto);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid MetaInfoId);
+    Task<ApiResponseDto<ReviewStatusResponseDto>> ApproveContentAsync(Guid MetaInfoId, ApproveContentDto approveDto);
 }
 
 /// <summary>
@@ -76,8 +76,8 @@ public interface IReviewService
 /// </summary>
 public interface ICommentService
 {
-    Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid contentItemId, string? visibility = null);
-    Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto);
+    Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid MetaInfoId, string? visibility = null);
+    Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid MetaInfoId, CreateCommentDto createDto);
 }
 
 /// <summary>
@@ -85,8 +85,8 @@ public interface ICommentService
 /// </summary>
 public interface ITagService
 {
-    Task<ApiResponseDto<TagListResponseDto>> GetTagsAsync(Guid contentItemId);
-    Task<ApiResponseDto<TagListResponseDto>> AddTagsAsync(Guid contentItemId, AddTagsDto addDto);
+    Task<ApiResponseDto<TagListResponseDto>> GetTagsAsync(Guid MetaInfoId);
+    Task<ApiResponseDto<TagListResponseDto>> AddTagsAsync(Guid MetaInfoId, AddTagsDto addDto);
 }
 
 /// <summary>
@@ -94,5 +94,5 @@ public interface ITagService
 /// </summary>
 public interface ISearchService
 {
-    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> SearchContentItemsAsync(SearchContentItemsDto searchDto);
+    Task<ApiResponseDto<PaginationResponse<MetaInfoResponseDto>>> SearchMetaInfosAsync(SearchMetaInfosDto searchDto);
 }

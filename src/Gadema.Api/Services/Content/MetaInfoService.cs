@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Dtos.Response;
@@ -23,17 +23,17 @@ namespace Gadema.Api.Services;
 /// <summary>
 /// Implementation of content item service.
 /// </summary>
-public class ContentItemService : IGademaService,  IContentService
+public class MetaInfoService : IGademaService,  IContentService
 {
     private readonly GameDbContext _context;
-    private readonly ILogger<ContentItemService> _logger;
+    private readonly ILogger<MetaInfoService> _logger;
 
     public ServiceTypeEnum ServiceType => ServiceTypeEnum.ContentService;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ContentItemService(GameDbContext context, ILogger<ContentItemService> logger)
+    public MetaInfoService(GameDbContext context, ILogger<MetaInfoService> logger)
     {
         _context = context;
         _logger = logger;
@@ -42,14 +42,14 @@ public class ContentItemService : IGademaService,  IContentService
     /// <summary>
     /// List all content items (paginated).
     /// </summary>
-    public async Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> GetContentItemsAsync(
+    public async Task<ApiResponseDto<PaginationResponse<MetaInfoResponseDto>>> GetMetaInfosAsync(
         Guid? projectId,
         ContentTypeEnum? contentType,
         ContentStatusEnum? status,
         bool published,
         ViewModeEnum viewMode)
     {
-        var query = _context.ContentItems.AsQueryable();
+        var query = _context.MetaInfos.AsQueryable();
         
         if (projectId.HasValue)
         {
@@ -73,7 +73,7 @@ public class ContentItemService : IGademaService,  IContentService
         
         query = query.OrderByDescending(c => c.CreatedAt);
         
-        var items = await query.Skip(0).Take(20).Select(c => new ContentItemResponseDto
+        var items = await query.Skip(0).Take(20).Select(c => new MetaInfoResponseDto
         {
             Id = c.Id,
             ProjectId = c.ProjectId,
@@ -86,24 +86,24 @@ public class ContentItemService : IGademaService,  IContentService
             Status = c.Status,
             ViewMode = viewMode.ToString(),
             Version = c.Version
-        }).ToListAsync<ContentItemResponseDto>();
+        }).ToListAsync<MetaInfoResponseDto>();
         
-        return ApiResponseDto<PaginationResponse<ContentItemResponseDto>>.Success(new PaginationResponse<ContentItemResponseDto>());
+        return ApiResponseDto<PaginationResponse<MetaInfoResponseDto>>.Success(new PaginationResponse<MetaInfoResponseDto>());
     }
 
     /// <summary>
     /// Get content item by ID.
     /// </summary>
-    public async Task<ApiResponseDto<ContentItemResponseDto>> GetContentItemAsync(Guid id, ViewModeEnum viewMode)
+    public async Task<ApiResponseDto<MetaInfoResponseDto>> GetMetaInfoAsync(Guid id, ViewModeEnum viewMode)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<MetaInfoResponseDto>.NotFound($"MetaInfo with ID {id} not found");
         }
         
-        var response = new ContentItemResponseDto
+        var response = new MetaInfoResponseDto
         {
             Id = item.Id,
             ProjectId = item.ProjectId,
@@ -118,17 +118,17 @@ public class ContentItemService : IGademaService,  IContentService
             Version = item.Version
         };
         
-        return ApiResponseDto<ContentItemResponseDto>.Success(response);
+        return ApiResponseDto<MetaInfoResponseDto>.Success(response);
     }
 
     /// <summary>
     /// Create/edit content item.
     /// </summary>
-    public async Task<ApiResponseDto<ContentItemResponseDto>> CreateContentItemAsync(CreateContentItemDto createDto)
+    public async Task<ApiResponseDto<MetaInfoResponseDto>> CreateMetaInfoAsync(CreateMetaInfoDto createDto)
     {
         var now = DateTime.UtcNow;
         
-        var item = new ContentItem
+        var item = new MetaInfo
         {
             Id = Guid.NewGuid(),
             ProjectId = createDto.ProjectId,
@@ -148,10 +148,10 @@ public class ContentItemService : IGademaService,  IContentService
             CreatedAt = now
         };
         
-        _context.ContentItems.Add(item);
+        _context.MetaInfos.Add(item);
         await _context.SaveChangesAsync();
         
-        var response = new ContentItemResponseDto
+        var response = new MetaInfoResponseDto
         {
             Id = item.Id,
             ProjectId = item.ProjectId,
@@ -166,19 +166,19 @@ public class ContentItemService : IGademaService,  IContentService
             Version = item.Version
         };
         
-        return ApiResponseDto<ContentItemResponseDto>.Success(response);
+        return ApiResponseDto<MetaInfoResponseDto>.Success(response);
     }
 
     /// <summary>
     /// Update content item.
     /// </summary>
-    public async Task<ApiResponseDto<ContentItemResponseDto>> UpdateContentItemAsync(Guid id, UpdateContentItemDto updateDto)
+    public async Task<ApiResponseDto<MetaInfoResponseDto>> UpdateMetaInfoAsync(Guid id, UpdateMetaInfoDto updateDto)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<ContentItemResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<MetaInfoResponseDto>.NotFound($"MetaInfo with ID {id} not found");
         }
         
         if (!string.IsNullOrWhiteSpace(updateDto.Description))
@@ -205,7 +205,7 @@ public class ContentItemService : IGademaService,  IContentService
         _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         await _context.SaveChangesAsync();
         
-        var response = new ContentItemResponseDto
+        var response = new MetaInfoResponseDto
         {
             Id = item.Id,
             ProjectId = item.ProjectId,
@@ -220,22 +220,22 @@ public class ContentItemService : IGademaService,  IContentService
             Version = item.Version + 1
         };
         
-        return ApiResponseDto<ContentItemResponseDto>.Success(response);
+        return ApiResponseDto<MetaInfoResponseDto>.Success(response);
     }
 
     /// <summary>
     /// Delete content item.
     /// </summary>
-    public async Task<ApiResponseDto<SimpleResponseDto>> DeleteContentItemAsync(Guid id)
+    public async Task<ApiResponseDto<SimpleResponseDto>> DeleteMetaInfoAsync(Guid id)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<SimpleResponseDto>.NotFound($"MetaInfo with ID {id} not found");
         }
         
-        _context.ContentItems.Remove(item);
+        _context.MetaInfos.Remove(item);
         await _context.SaveChangesAsync();
         
         return ApiResponseDto<SimpleResponseDto>.Success(new SimpleResponseDto(){ Success = true, Message = "Content item has been deleted successfully" });
@@ -246,11 +246,11 @@ public class ContentItemService : IGademaService,  IContentService
     /// </summary>
     public async Task<ApiResponseDto<MediaAttachmentResponseDto>> UploadMediaAsync(Guid id, IFormFile file)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<MediaAttachmentResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<MediaAttachmentResponseDto>.NotFound($"MetaInfo with ID {id} not found");
         }
         
         if (file.Length > FileConfigurationConstants.MaxFileSize)
@@ -268,7 +268,7 @@ public class ContentItemService : IGademaService,  IContentService
         var attachment = new MediaAttachment
         {
             Id = Guid.NewGuid(),
-            ContentItemId = id,
+            MetaInfoId = id,
             FileName = uniqueFileName,
             ContentType = file.ContentType ?? "application/octet-stream",
             StoragePath = storagePath,
@@ -295,19 +295,19 @@ public class ContentItemService : IGademaService,  IContentService
     /// </summary>
     public async Task<ApiResponseDto<SimpleResponseDto>> AutosaveAsync(Guid id)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<SimpleResponseDto>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<SimpleResponseDto>.NotFound($"MetaInfo with ID {id} not found");
         }
         
         // Create snapshot for version control
         var snapshot = new ContentSnapshot
         {
             Id = Guid.NewGuid(),
-            ContentItemId = id,
-            SnapshotVersion = item.Version + 1,
+            MetaInfoId = id,
+            VersionNumber = item.Version + 1,
             SnapshotType = 0, // AutoGenerated
             SnapshotDataJson = JsonSerializer.Serialize(item),
             CreatedByUserId = UserHelper.GetUserId(),
@@ -330,16 +330,16 @@ public class ContentItemService : IGademaService,  IContentService
     /// </summary>
     public async Task<ApiResponseDto<VersionInfo>> RollbackAsync(Guid id, RollbackDto rollbackDto)
     {
-        var item = await _context.ContentItems.FindAsync(id);
+        var item = await _context.MetaInfos.FindAsync(id);
         
         if (item == null)
         {
-            return ApiResponseDto<VersionInfo>.NotFound($"ContentItem with ID {id} not found");
+            return ApiResponseDto<VersionInfo>.NotFound($"MetaInfo with ID {id} not found");
         }
         
         // Find the target snapshot
         var snapshot = await _context.ContentSnapshots
-            .FirstOrDefaultAsync(s => s.ContentItemId == id && s.SnapshotVersion <= rollbackDto.TargetVersion);
+            .FirstOrDefaultAsync(s => s.MetaInfoId == id && s.VersionNumber <= rollbackDto.TargetVersion);
         
         if (snapshot == null)
         {
@@ -347,7 +347,7 @@ public class ContentItemService : IGademaService,  IContentService
         }
         
         // Restore from snapshot data
-        var restoredData = JsonSerializer.Deserialize<ContentItem>(snapshot.SnapshotDataJson!);
+        var restoredData = JsonSerializer.Deserialize<MetaInfo>(snapshot.SnapshotDataJson!);
         if (restoredData == null)
         {
             return ApiResponseDto<VersionInfo>.BadRequest($"Could not load restored data for version {rollbackDto.TargetVersion}");
@@ -370,8 +370,8 @@ public class ContentItemService : IGademaService,  IContentService
         var newSnapshot = new ContentSnapshot
         {
             Id = Guid.NewGuid(),
-            ContentItemId = id,
-            SnapshotVersion = item.Version,
+            MetaInfoId = id,
+            VersionNumber = item.Version,
             SnapshotType = 2, // RollbackPoint
             SnapshotDataJson = JsonSerializer.Serialize(item),
             CreatedByUserId = UserHelper.GetUserId(),

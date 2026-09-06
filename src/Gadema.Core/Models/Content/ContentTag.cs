@@ -5,10 +5,10 @@ using Gadema.Core.DependencyResolver;
 namespace Gadema.Core.Models.Content;
 
 /// <summary>
-/// Represents a tag specifically for ContentItems (Characters, World, Mechanics, etc.).
+/// Represents a tag specifically for MetaInfos (Characters, World, Mechanics, etc.).
 /// </summary>
 [DependencyResolver.ModelDependency(typeof(RootMarker))]
-public class ContentTag
+public class MetaInfoTag
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
@@ -22,5 +22,5 @@ public class ContentTag
     public string? ColorHex { get; set; }
 
     // Navigation
-    public virtual ICollection<ContentItemTag> ContentItemTags { get; set; } = new List<ContentItemTag>();
+    public virtual ICollection<MetaInfoTagRelation> MetaInfoTagRelations { get; set; } = new List<MetaInfoTagRelation>();
 }

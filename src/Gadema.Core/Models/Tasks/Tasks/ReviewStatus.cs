@@ -10,7 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a review status for content items.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class ReviewStatus
 {
     /// <summary>
@@ -22,11 +22,11 @@ public class ReviewStatus
     /// ID of the content item this review belongs to.
     /// </summary>
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    // Navigation property: ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    // Navigation property: MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
     
     /// <summary>
     /// Status: 0=Pending, 1=Approved, 2=Rejected.

@@ -37,8 +37,8 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
             .HasForeignKey(pt => pt.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // ContentItems (Cascade delete)
-        builder.HasMany(p => p.ContentItems)
+        // MetaInfos (Cascade delete)
+        builder.HasMany(p => p.MetaInfos)
             .WithOne(ci => ci.Project)
             .HasForeignKey(ci => ci.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);

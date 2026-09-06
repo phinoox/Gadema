@@ -60,6 +60,6 @@ public class TokenUsageLog
 
     //Navigation Properties
     public virtual ProjectToken ProjectToken { get; set; }
-    public virtual ContentItem? ContentItem { get; set; }
+    public virtual MetaInfo? MetaInfo { get; set; }
     public virtual Project Project { get; set; }
 }

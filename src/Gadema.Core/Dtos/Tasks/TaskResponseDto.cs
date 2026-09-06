@@ -52,11 +52,11 @@ public class ProjectTaskResponseDto
     // NEW: Add missing properties from ProjectTask model
     public Guid ProjectId { get; set; }
     [MaxLength(256)]
-    public string? TaskDescription { get; set; }  // For ContentItemId compatibility
+    public string? TaskDescription { get; set; }  // For MetaInfoId compatibility
 /// <summary>
     /// ID of the content item this task is associated with.
 /// </summary>
-    public Guid? ContentItemId { get; set; }
+    public Guid? MetaInfoId { get; set; }
     
     public int? DifficultyValue { get; set; }  // For nullable difficulty
     [MaxLength(512)]

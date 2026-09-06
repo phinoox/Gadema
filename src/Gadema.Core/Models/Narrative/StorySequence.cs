@@ -21,10 +21,10 @@ public class StorySequence
     public Guid Id { get; set; } = Guid.NewGuid();
 
     //[Fixture(FixtureHintEnum.Omit)]
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
 
     
     /// <summary>

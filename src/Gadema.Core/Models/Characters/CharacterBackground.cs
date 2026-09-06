@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a background element for a character.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class CharacterBackground
 {
     /// <summary>
@@ -23,11 +23,11 @@ public class CharacterBackground
     /// ID of the content item this background belongs to.
     /// </summary>
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
-    // Navigation property: ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property: MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
 
     /// <summary>
     /// ID of the character details this background is associated with.

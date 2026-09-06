@@ -38,7 +38,7 @@ public partial class Program
         }
 
         // Register service implementations
-        builder.Services.AddScoped<IContentService, ContentItemService>();
+        builder.Services.AddScoped<IContentService, MetaInfoService>();
         builder.Services.AddScoped<IProjectService, ProjectService>();
         builder.Services.AddScoped<IDialogueService, DialogueService>();
         builder.Services.AddScoped<IProjectTaskService, ProjectTaskService>();

@@ -2,12 +2,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// Response data for content item autosave operations.
 /// </summary>
-public class ContentItemAutosaveResponseDto
+public class MetaInfoAutosaveResponseDto
 {
     public Guid Id { get; set; }
     
@@ -27,7 +27,7 @@ public class ContentItemAutosaveResponseDto
 /// </summary>
 public class VersionInfo
 {
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public int FromVersion { get; set; }
     

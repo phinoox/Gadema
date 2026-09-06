@@ -21,16 +21,16 @@ public class CharacterAttributesEntityTypeConfiguration : IEntityTypeConfigurati
     public void Configure(EntityTypeBuilder<CharacterAttributes> builder)
     {
         // Primary key (composite)
-        builder.HasKey(e => new { e.ContentItemId, e.AttributeDefinitionId });
+        builder.HasKey(e => new { e.MetaInfoId, e.AttributeDefinitionId });
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ContentItemId);
+        builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.AttributeDefinitionId);
         
         // Navigation properties (both required)
-        builder.HasOne(ca => ca.ContentItem)
+        builder.HasOne(ca => ca.MetaInfo)
             .WithMany()
-            .HasForeignKey(ca => ca.ContentItemId);
+            .HasForeignKey(ca => ca.MetaInfoId);
         
         builder.HasOne(ca => ca.AttributeDefinition)
             .WithMany()

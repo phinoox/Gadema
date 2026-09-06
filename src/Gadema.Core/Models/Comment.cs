@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a comment on a content item.
 /// Supports visibility control (private, team-only, public).
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class Comment
 {
     /// <summary>
@@ -23,11 +23,11 @@ public class Comment
     /// ID of the content item this comment belongs to.
     /// </summary>
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    // Navigation property: ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property: MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
     
     /// <summary>
     /// ID of the user who commented.

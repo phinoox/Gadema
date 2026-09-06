@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents an external reference (Google Docs, Pinterest boards, etc.).
 /// Used for linking to external resources like GDD documents or art references.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class ExternalReference
 {
     /// <summary>
@@ -20,7 +20,7 @@ public class ExternalReference
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// Type of parent entity (0=ContentItem, 1=Task, 2=Comment).
+    /// Type of parent entity (0=MetaInfo, 1=Task, 2=Comment).
     /// </summary>
     public int ParentType { get; set; }
     
@@ -60,6 +60,6 @@ public class ExternalReference
     /// Collection of external references for this content item.
     /// Used by eager loading pattern: Include(ci => ci.ExternalReferences)
     /// </summary>
-    public virtual ICollection<ExternalReference> ContentItemReferences { get; set; } = new List<ExternalReference>();
+    public virtual ICollection<ExternalReference> MetaInfoReferences { get; set; } = new List<ExternalReference>();
 
 }

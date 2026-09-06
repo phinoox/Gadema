@@ -36,7 +36,7 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
             .OnDelete(DeleteBehavior.SetNull);  // Allow multiple identity values over time
 
         // Properties configuration
-        builder.Property(e => e.ContentItemId).IsRequired();
+        builder.Property(e => e.MetaInfoId).IsRequired();
         builder.Property(e => e.IdentityTypeId).IsRequired();
         builder.Property(e => e.IdentityValueId).IsRequired();
 

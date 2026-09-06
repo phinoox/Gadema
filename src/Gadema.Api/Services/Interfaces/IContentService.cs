@@ -6,7 +6,7 @@ using Gadema.Core.Dtos;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Gadema.Data.Database;
 using Microsoft.Extensions.Logging;
@@ -20,12 +20,12 @@ namespace Gadema.Api.Services;
 /// </summary>
 public interface IContentService
 {
-    Task<ApiResponseDto<PaginationResponse<ContentItemResponseDto>>> GetContentItemsAsync(Guid? projectId, ContentTypeEnum? contentType, ContentStatusEnum? status, bool published, ViewModeEnum viewMode);
-    Task<ApiResponseDto<ContentItemResponseDto>> GetContentItemAsync(Guid id, ViewModeEnum viewMode);
-    Task<ApiResponseDto<ContentItemResponseDto>> CreateContentItemAsync(CreateContentItemDto createDto);
-    Task<ApiResponseDto<ContentItemResponseDto>> UpdateContentItemAsync(Guid id, UpdateContentItemDto updateDto);
-    Task<ApiResponseDto<SimpleResponseDto>> DeleteContentItemAsync(Guid id);
+    Task<ApiResponseDto<PaginationResponse<MetaInfoResponseDto>>> GetMetaInfosAsync(Guid? projectId, ContentTypeEnum? contentType, ContentStatusEnum? status, bool published, ViewModeEnum viewMode);
+    Task<ApiResponseDto<MetaInfoResponseDto>> GetMetaInfoAsync(Guid id, ViewModeEnum viewMode);
+    Task<ApiResponseDto<MetaInfoResponseDto>> CreateMetaInfoAsync(CreateMetaInfoDto createDto);
+    Task<ApiResponseDto<MetaInfoResponseDto>> UpdateMetaInfoAsync(Guid id, UpdateMetaInfoDto updateDto);
+    Task<ApiResponseDto<SimpleResponseDto>> DeleteMetaInfoAsync(Guid id);
     Task<ApiResponseDto<MediaAttachmentResponseDto>> UploadMediaAsync(Guid id, IFormFile file);
-    Task<ApiResponseDto<SimpleResponseDto>> AutosaveAsync(Guid contentItemId);
+    Task<ApiResponseDto<SimpleResponseDto>> AutosaveAsync(Guid MetaInfoId);
     Task<ApiResponseDto<VersionInfo>> RollbackAsync(Guid id, RollbackDto rollbackDto);
 }

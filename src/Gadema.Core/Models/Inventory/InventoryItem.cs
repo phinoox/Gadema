@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents an inventory item for game assets (collectibles, keys, achievements).
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class InventoryItem
 {
     /// <summary>
@@ -19,10 +19,10 @@ public class InventoryItem
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
 
     
     /// <summary>

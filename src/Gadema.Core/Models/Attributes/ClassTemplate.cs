@@ -19,10 +19,10 @@ public class ClassTemplate
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
 
     
     /// <summary>

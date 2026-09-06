@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// DTO for updating a content item.
 /// </summary>
-public class UpdateContentItemDto
+public class UpdateMetaInfoDto
 {
     /// <summary>
     /// Updated description (optional).

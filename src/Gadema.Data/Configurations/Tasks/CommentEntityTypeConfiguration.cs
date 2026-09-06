@@ -24,14 +24,14 @@ public class CommentEntityTypeConfiguration : IEntityTypeConfiguration<Comment>
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ContentItemId);
+        builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.CommentedByUserId);
         builder.HasIndex(e => e.CreatedAt);
         
-        // Navigation property: ContentItem (Cascade delete)
-        builder.HasOne(c => c.ContentItem)
+        // Navigation property: MetaInfo (Cascade delete)
+        builder.HasOne(c => c.MetaInfo)
             .WithMany(ci => ci.Comments)
-            .HasForeignKey(c => c.ContentItemId)
+            .HasForeignKey(c => c.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete comments when content deleted
         
         // Properties configuration

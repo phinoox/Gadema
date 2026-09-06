@@ -28,7 +28,7 @@ public class ReviewStatusResponseDto
     public Guid Id { get; set; }
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     public int Status { get; set; }  // Pending, Approved, Rejected
     

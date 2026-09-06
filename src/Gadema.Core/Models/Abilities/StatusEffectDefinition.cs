@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Represents a status effect definition for character/class templates.
 /// Used for defining buffs, debuffs, and other status effects (GAS-like architecture).
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class StatusEffectDefinition
 {
     /// <summary>
@@ -19,10 +19,10 @@ public class StatusEffectDefinition
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem? ContentItem { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo? MetaInfo { get; set; }
 
     
     /// <summary>

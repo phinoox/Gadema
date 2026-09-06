@@ -14,7 +14,7 @@ public class CreateCommentDto
     /// ID of the content item this comment belongs to (required).
     /// </summary>
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     /// <summary>
     /// Comment text (Markdown/HTML) (required).

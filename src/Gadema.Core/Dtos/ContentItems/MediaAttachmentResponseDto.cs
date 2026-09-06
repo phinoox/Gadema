@@ -5,7 +5,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// Single media attachment response.
@@ -15,7 +15,7 @@ public class MediaAttachmentResponseDto
     public Guid Id { get; set; }
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required, MaxLength(256)]
     public string FileName { get; set; } = "";

@@ -14,7 +14,7 @@ public class CreateExternalReferenceDto
     /// ID of the parent content item (required).
     /// </summary>
     [Required]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     /// <summary>
     /// External URL (required).

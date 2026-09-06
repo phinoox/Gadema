@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Gadema.Api.Services;
 using Gadema.Core.Dtos.Authentication;
 using Gadema.Core.Dtos.Projects;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Gadema.Core.Dtos.Tasks;
 using Gadema.Core.Dtos.Export;
@@ -231,18 +231,18 @@ public class ProjectServiceIntegrationTests : IClassFixture<ApiWebApplicationFac
 /// <summary>
 /// Integration tests for content item service.
 /// </summary>
-public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
+public class MetaInfoServiceIntegrationTests : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly ApiWebApplicationFactory _factory;
-    private readonly IContentService _contentItemService;
+    private readonly IContentService _MetaInfoService;
 
     /// <summary>
     /// Setup test environment.
     /// </summary>
-    public ContentItemServiceIntegrationTests(ApiWebApplicationFactory factory)
+    public MetaInfoServiceIntegrationTests(ApiWebApplicationFactory factory)
     {
         _factory = factory;
-        _contentItemService = factory.GetScopedService<IContentService>();
+        _MetaInfoService = factory.GetScopedService<IContentService>();
         _factory.ResetDb();
 
     }
@@ -251,17 +251,17 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     /// Test: Create content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateContentItemAsync_ShouldReturnSuccessful()
+    public async Task CreateMetaInfoAsync_ShouldReturnSuccessful()
     {
         var scope = _factory.GetScope();
 
-        // Ancestor path for ContentItem — explicit, in FK order:
+        // Ancestor path for MetaInfo — explicit, in FK order:
         // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
 
-        var result = await _contentItemService.CreateContentItemAsync(new CreateContentItemDto
+        var result = await _MetaInfoService.CreateMetaInfoAsync(new CreateMetaInfoDto
         {
             ProjectId = project.Id,
             //Project = seededProject,
@@ -281,19 +281,19 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     /// Test: Get content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task GetContentItemAsync_ShouldReturnSuccessful()
+    public async Task GetMetaInfoAsync_ShouldReturnSuccessful()
     {
         //arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
         item.Title = "C";
         DbSeeder.Seed(scope, item);
 
         // act — need the id; if result.Data exposes Id use it
-        var fetched = await _contentItemService.GetContentItemAsync(item.Id.Value, ViewModeEnum.PrivateWriting);
+        var fetched = await _MetaInfoService.GetMetaInfoAsync(item.Id.Value, ViewModeEnum.PrivateWriting);
 
         // assert real behavior
         fetched.Successful.Should().BeTrue();
@@ -301,9 +301,9 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     }
 
     [Fact]
-    public async Task GetContentItemAsync_ReturnsNotFound_ForUnknownId()
+    public async Task GetMetaInfoAsync_ReturnsNotFound_ForUnknownId()
     {
-        var result = await _contentItemService.GetContentItemAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
+        var result = await _MetaInfoService.GetMetaInfoAsync(Guid.NewGuid(), ViewModeEnum.PrivateWriting);
         result.Successful.Should().BeFalse(); // a random id should NOT be "successful"
     }
 
@@ -311,18 +311,18 @@ public class ContentItemServiceIntegrationTests : IClassFixture<ApiWebApplicatio
     /// Test: Delete content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
+    public async Task DeleteMetaInfoAsync_ShouldReturnSuccessful()
     {
         //arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
 
         //act
-        var result = await _contentItemService.DeleteContentItemAsync(item.Id.Value);
+        var result = await _MetaInfoService.DeleteMetaInfoAsync(item.Id.Value);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -515,7 +515,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
 
         // Act
@@ -537,9 +537,9 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<ContentItem>(i => i.Project = project);
+        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
-        var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.ContentItem = item);
+        var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.MetaInfo = item);
         //DbSeeder.Seed<ReviewStatus>(scope,reviewStatus);
         // Act
         var result = await _reviewStatusService.ApproveContentAsync(reviewStatus.Id, new ApproveContentDto

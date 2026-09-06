@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 
 // =============================================================================
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// DTO for uploading media file to content item.

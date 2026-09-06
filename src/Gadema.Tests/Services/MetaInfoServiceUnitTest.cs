@@ -1,5 +1,5 @@
 // =============================================================================
-// Gadema.Tests - Unit Tests for ContentItemService (No Factory)
+// Gadema.Tests - Unit Tests for MetaInfoService (No Factory)
 // =============================================================================
 
 namespace Gadema.Tests.Services;
@@ -10,19 +10,19 @@ using System.Net;
 using Gadema.Data.Database;
 using Gadema.Api.Services;
 using Microsoft.EntityFrameworkCore;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 
 /// <summary>
-/// Unit tests for ContentItemService business logic.
+/// Unit tests for MetaInfoService business logic.
 /// Uses in-memory database with direct service instantiation.
 /// </summary>
-public class ContentItemServiceUnitTest
+public class MetaInfoServiceUnitTest
 {
     private readonly IContentService _service;
     private GameDbContext _context;
 
-    public ContentItemServiceUnitTest()
+    public MetaInfoServiceUnitTest()
     {
         // Setup in-memory database context
         var options = new DbContextOptionsBuilder<GameDbContext>()
@@ -30,17 +30,17 @@ public class ContentItemServiceUnitTest
             .Options;
         
         _context = new GameDbContext(options);  // ✅ Fixed: Create instance with correct type
-        _service = new ContentItemService(_context, null!);
+        _service = new MetaInfoService(_context, null!);
     }
 
     /// <summary>
     /// Test: Create content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task CreateContentItemAsync_ShouldReturnSuccessful()
+    public async Task CreateMetaInfoAsync_ShouldReturnSuccessful()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -51,7 +51,7 @@ public class ContentItemServiceUnitTest
         };
 
         // Act
-        var result = await _service.CreateContentItemAsync(createDto);
+        var result = await _service.CreateMetaInfoAsync(createDto);
 
         // Assert
         result.Successful.Should().BeTrue();
@@ -62,10 +62,10 @@ public class ContentItemServiceUnitTest
     /// Test: Get content item by ID should return data.
     /// </summary>
     [Fact]
-    public async Task GetContentItemAsync_WhenIdExists_ShouldReturnData()
+    public async Task GetMetaInfoAsync_WhenIdExists_ShouldReturnData()
     {
         // Arrange - create first
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -75,10 +75,10 @@ public class ContentItemServiceUnitTest
             ShortDesc = "Witcher"
         };
 
-        var createResult = await _service.CreateContentItemAsync(createDto);
+        var createResult = await _service.CreateMetaInfoAsync(createDto);
 
         // Act - get by ID
-        var getResult = await _service.GetContentItemAsync(
+        var getResult = await _service.GetMetaInfoAsync(
             createResult.Data!.Id.Value, 
             ViewModeEnum.PrivateWriting);
 
@@ -90,10 +90,10 @@ public class ContentItemServiceUnitTest
     /// Test: Update content item should persist changes.
     /// </summary>
     [Fact]
-    public async Task UpdateContentItemAsync_ShouldPersistChanges()
+    public async Task UpdateMetaInfoAsync_ShouldPersistChanges()
     {
         // Arrange - create first
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -103,17 +103,17 @@ public class ContentItemServiceUnitTest
             ShortDesc = "Witcher"
         };
 
-        var createResult = await _service.CreateContentItemAsync(createDto);
+        var createResult = await _service.CreateMetaInfoAsync(createDto);
 
         // Act - update
-        var updateDto = new UpdateContentItemDto
+        var updateDto = new UpdateMetaInfoDto
         {
             Description = "Updated description",
             Published = true,
             ViewMode = null!
         };
 
-        var updateResult = await _service.UpdateContentItemAsync(
+        var updateResult = await _service.UpdateMetaInfoAsync(
             createResult.Data!.Id.Value, 
             updateDto);
 
@@ -125,10 +125,10 @@ public class ContentItemServiceUnitTest
     /// Test: Delete content item should return Successful.
     /// </summary>
     [Fact]
-    public async Task DeleteContentItemAsync_ShouldReturnSuccessful()
+    public async Task DeleteMetaInfoAsync_ShouldReturnSuccessful()
     {
         // Arrange - create first
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -138,10 +138,10 @@ public class ContentItemServiceUnitTest
             ShortDesc = "Witcher"
         };
 
-        var createResult = await _service.CreateContentItemAsync(createDto);
+        var createResult = await _service.CreateMetaInfoAsync(createDto);
 
         // Act - delete
-        var deleteResult = await _service.DeleteContentItemAsync(
+        var deleteResult = await _service.DeleteMetaInfoAsync(
             createResult.Data!.Id.Value);
 
         // Assert

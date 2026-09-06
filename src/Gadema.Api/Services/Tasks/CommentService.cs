@@ -37,9 +37,9 @@ public class CommentService : IGademaService,  ICommentService
     /// <summary>
     /// List comments for content item.
     /// </summary>
-    public async Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid contentItemId, string? visibility = null)
+    public async Task<ApiResponseDto<CommentListResponseDto>> GetCommentsAsync(Guid MetaInfoId, string? visibility = null)
     {
-        var query = _context.Comments.Where(c => c.ContentItemId == contentItemId);
+        var query = _context.Comments.Where(c => c.MetaInfoId == MetaInfoId);
         
         if (!string.IsNullOrWhiteSpace(visibility))
         {
@@ -56,7 +56,7 @@ public class CommentService : IGademaService,  ICommentService
     /// <summary>
     /// Create comment on content item.
     /// </summary>
-    public async Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid contentItemId, CreateCommentDto createDto)
+    public async Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid MetaInfoId, CreateCommentDto createDto)
     {
         var now = DateTime.UtcNow;
 
@@ -66,7 +66,7 @@ public class CommentService : IGademaService,  ICommentService
         var comment = new Comment
         {
             Id = Guid.NewGuid(),
-            ContentItemId = contentItemId,
+            MetaInfoId = MetaInfoId,
             CommentedByUserId = UserHelper.GetUserId(),
             CommentText = escapedCommentText,
             Visibility = createDto.Visibility ?? "private",

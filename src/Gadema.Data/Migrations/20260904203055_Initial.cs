@@ -16,7 +16,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     SnapshotVersion = table.Column<int>(type: "INTEGER", nullable: false),
                     SnapshotType = table.Column<int>(type: "INTEGER", nullable: false),
                     SnapshotDataJson = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false),
@@ -29,7 +29,7 @@ namespace Gadema.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContentTags",
+                name: "MetaInfoTags",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -39,7 +39,7 @@ namespace Gadema.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContentTags", x => x.Id);
+                    table.PrimaryKey("PK_MetaInfoTags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -358,7 +358,7 @@ namespace Gadema.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContentItems",
+                name: "MetaInfos",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -380,9 +380,9 @@ namespace Gadema.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContentItems", x => x.Id);
+                    table.PrimaryKey("PK_MetaInfos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContentItems_Projects_ProjectId",
+                        name: "FK_MetaInfos_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
@@ -611,7 +611,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     slug = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
@@ -626,9 +626,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_AbilityDefinitions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AbilityDefinitions_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_AbilityDefinitions_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                 });
 
@@ -637,7 +637,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     slug = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
@@ -649,9 +649,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_AbilitySets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AbilitySets_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_AbilitySets_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AbilitySets_Projects_ProjectId",
@@ -666,7 +666,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     EnginePath = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: false),
                     EngineAssetId = table.Column<string>(type: "TEXT", maxLength: 128, nullable: true),
                     EngineFileType = table.Column<string>(type: "TEXT", maxLength: 64, nullable: false)
@@ -675,9 +675,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_AssetLinks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AssetLinks_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_AssetLinks_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -687,7 +687,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     slug = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
@@ -702,9 +702,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_AttributeDefinitions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AttributeDefinitions_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_AttributeDefinitions_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                 });
 
@@ -713,7 +713,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     DisplayOrder = table.Column<int>(type: "INTEGER", nullable: false),
@@ -723,9 +723,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_AttributeSets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AttributeSets_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_AttributeSets_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_AttributeSets_Projects_ProjectId",
@@ -740,7 +740,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     ClassTemplateId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Level = table.Column<int>(type: "INTEGER", nullable: false),
@@ -751,9 +751,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_CharacterDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CharacterDetails_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_CharacterDetails_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -763,7 +763,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     CommentedByUserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     CommentText = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: false),
                     Visibility = table.Column<string>(type: "TEXT", maxLength: 64, nullable: true),
@@ -773,34 +773,34 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_Comments_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ContentItemTags",
+                name: "MetaInfoTagRelations",
                 columns: table => new
                 {
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentTagId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoTagId = table.Column<Guid>(type: "TEXT", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ContentItemTags", x => new { x.ContentItemId, x.ContentTagId });
+                    table.PrimaryKey("PK_MetaInfoTags", x => new { x.MetaInfoId, x.MetaInfoTagId });
                     table.ForeignKey(
-                        name: "FK_ContentItemTags_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_MetaInfoTags_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_ContentItemTags_ContentTags_ContentTagId",
-                        column: x => x.ContentTagId,
-                        principalTable: "ContentTags",
+                        name: "FK_MetaInfoTags_MetaInfoTags_MetaInfoTagId",
+                        column: x => x.MetaInfoTagId,
+                        principalTable: "MetaInfoTags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -810,7 +810,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ChangedByUserId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ChangeDescription = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: true),
                     VersionNumber = table.Column<int>(type: "INTEGER", nullable: false),
@@ -820,9 +820,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_ContentVersionLogs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContentVersionLogs_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_ContentVersionLogs_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
@@ -833,7 +833,7 @@ namespace Gadema.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Title = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     slug = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     VisualNodeImageUri = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: true),
@@ -846,9 +846,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_DialogueBranches", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DialogueBranches_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_DialogueBranches_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_DialogueBranches_DialogueBranches_ParentNodeId",
@@ -869,7 +869,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ItemName = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     ItemType = table.Column<int>(type: "INTEGER", nullable: false),
@@ -880,9 +880,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_InventoryItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_InventoryItems_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_InventoryItems_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_InventoryItems_Projects_ProjectId",
@@ -897,7 +897,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
                     LoreType = table.Column<int>(type: "INTEGER", nullable: false),
                     Title = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
@@ -909,9 +909,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_LoreEntries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LoreEntries_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_LoreEntries_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_LoreEntries_Projects_ProjectId",
@@ -926,7 +926,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     FileName = table.Column<string>(type: "TEXT", nullable: false),
                     ContentType = table.Column<string>(type: "TEXT", nullable: false),
                     storage_path = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: false),
@@ -938,9 +938,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_MediaAttachments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MediaAttachments_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_MediaAttachments_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
@@ -951,7 +951,7 @@ namespace Gadema.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     TaskTitle = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
@@ -970,9 +970,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_ProjectTasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProjectTasks_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_ProjectTasks_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ProjectTasks_Projects_ProjectId",
@@ -987,8 +987,8 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId1 = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId1 = table.Column<Guid>(type: "TEXT", nullable: true),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     ReviewedByUserId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ReviewComments = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
@@ -998,15 +998,15 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_ReviewStatuses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ReviewStatuses_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_ReviewStatuses_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ReviewStatuses_ContentItems_ContentItemId1",
-                        column: x => x.ContentItemId1,
-                        principalTable: "ContentItems",
+                        name: "FK_ReviewStatuses_MetaInfos_MetaInfoId1",
+                        column: x => x.MetaInfoId1,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ReviewStatuses_Users_ReviewedByUserId",
@@ -1021,7 +1021,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     slug = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
@@ -1034,9 +1034,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_StatusEffectDefinitions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StatusEffectDefinitions_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_StatusEffectDefinitions_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                 });
 
@@ -1045,7 +1045,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     ProjectId = table.Column<Guid>(type: "TEXT", nullable: false),
                     ParentSequenceId = table.Column<Guid>(type: "TEXT", nullable: true),
                     SequenceName = table.Column<string>(type: "TEXT", maxLength: 128, nullable: false),
@@ -1059,9 +1059,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_StorySequences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StorySequences_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_StorySequences_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_StorySequences_Projects_ProjectId",
@@ -1115,7 +1115,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     IdentityDefinitionId = table.Column<Guid>(type: "TEXT", nullable: true),
                     IdentityValueId = table.Column<Guid>(type: "TEXT", nullable: false),
                     DisplayText = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: true),
@@ -1127,9 +1127,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_CharacterIdentities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CharacterIdentities_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_CharacterIdentities_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -1159,15 +1159,15 @@ namespace Gadema.Data.Migrations
                     ContentId = table.Column<Guid>(type: "TEXT", nullable: true),
                     UsedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ProjectTokenId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TokenUsageLogs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TokenUsageLogs_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_TokenUsageLogs_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TokenUsageLogs_ProjectTokens_ProjectTokenId",
@@ -1186,7 +1186,7 @@ namespace Gadema.Data.Migrations
                 name: "CharacterAttributes",
                 columns: table => new
                 {
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     AttributeDefinitionId = table.Column<Guid>(type: "TEXT", nullable: false),
                     CurrentValue = table.Column<decimal>(type: "TEXT", nullable: true),
                     CalculatedFromTemplate = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -1194,7 +1194,7 @@ namespace Gadema.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CharacterAttributes", x => new { x.ContentItemId, x.AttributeDefinitionId });
+                    table.PrimaryKey("PK_CharacterAttributes", x => new { x.MetaInfoId, x.AttributeDefinitionId });
                     table.ForeignKey(
                         name: "FK_CharacterAttributes_AttributeDefinitions_AttributeDefinitionId",
                         column: x => x.AttributeDefinitionId,
@@ -1202,9 +1202,9 @@ namespace Gadema.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CharacterAttributes_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_CharacterAttributes_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1214,7 +1214,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
                     AttributeSetId = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -1231,9 +1231,9 @@ namespace Gadema.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClassTemplate_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_ClassTemplate_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                 });
 
@@ -1241,7 +1241,7 @@ namespace Gadema.Data.Migrations
                 name: "CharacterBackgrounds",
                 columns: table => new
                 {
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     CharacterDetailsId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", maxLength: 2048, nullable: true),
@@ -1249,17 +1249,17 @@ namespace Gadema.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CharacterBackgrounds", x => x.ContentItemId);
+                    table.PrimaryKey("PK_CharacterBackgrounds", x => x.MetaInfoId);
                     table.ForeignKey(
-                        name: "FK_CharacterBackgrounds_CharacterDetails_ContentItemId",
-                        column: x => x.ContentItemId,
+                        name: "FK_CharacterBackgrounds_CharacterDetails_MetaInfoId",
+                        column: x => x.MetaInfoId,
                         principalTable: "CharacterDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CharacterBackgrounds_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_CharacterBackgrounds_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1269,7 +1269,7 @@ namespace Gadema.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     BranchId = table.Column<Guid>(type: "TEXT", nullable: false),
                     NodeText = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: false),
                     SpeakerId = table.Column<Guid>(type: "TEXT", nullable: true),
@@ -1281,9 +1281,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_DialogueNodes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_DialogueNodes_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_DialogueNodes_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_DialogueNodes_DialogueBranches_BranchId",
@@ -1350,9 +1350,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_MediaTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MediaTags_ContentTags_TagId",
+                        name: "FK_MediaTags_MetaInfoTags_TagId",
                         column: x => x.TagId,
-                        principalTable: "ContentTags",
+                        principalTable: "MetaInfoTags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -1414,7 +1414,7 @@ namespace Gadema.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     SequenceId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Summary = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: false),
                     CharacterSnapshot = table.Column<string>(type: "TEXT", maxLength: 512, nullable: true),
                     ThemeStatement = table.Column<string>(type: "TEXT", maxLength: 1024, nullable: true),
@@ -1425,9 +1425,9 @@ namespace Gadema.Data.Migrations
                 {
                     table.PrimaryKey("PK_StoryOutlines", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StoryOutlines_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_StoryOutlines_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_StoryOutlines_StorySequences_SequenceId",
@@ -1449,7 +1449,7 @@ namespace Gadema.Data.Migrations
                     ClassTemplateId = table.Column<Guid>(type: "TEXT", nullable: false),
                     AttributeDefinitionId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    ContentItemId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    MetaInfoId = table.Column<Guid>(type: "TEXT", nullable: true),
                     OverrideFormulaExpression = table.Column<string>(type: "TEXT", maxLength: 4096, nullable: true),
                     DefaultMinValue = table.Column<decimal>(type: "TEXT", nullable: true),
                     DefaultMaxValue = table.Column<decimal>(type: "TEXT", nullable: true)
@@ -1470,9 +1470,9 @@ namespace Gadema.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClassTemplateAttribute_ContentItems_ContentItemId",
-                        column: x => x.ContentItemId,
-                        principalTable: "ContentItems",
+                        name: "FK_ClassTemplateAttribute_MetaInfos_MetaInfoId",
+                        column: x => x.MetaInfoId,
+                        principalTable: "MetaInfos",
                         principalColumn: "Id");
                 });
 
@@ -1482,9 +1482,9 @@ namespace Gadema.Data.Migrations
                 column: "AbilityType");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbilityDefinitions_ContentItemId",
+                name: "IX_AbilityDefinitions_MetaInfoId",
                 table: "AbilityDefinitions",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbilityDefinitions_Name",
@@ -1498,9 +1498,9 @@ namespace Gadema.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbilitySets_ContentItemId",
+                name: "IX_AbilitySets_MetaInfoId",
                 table: "AbilitySets",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbilitySets_ProjectId",
@@ -1539,14 +1539,14 @@ namespace Gadema.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssetLinks_ContentItemId",
+                name: "IX_AssetLinks_MetaInfoId",
                 table: "AssetLinks",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AttributeDefinitions_ContentItemId",
+                name: "IX_AttributeDefinitions_MetaInfoId",
                 table: "AttributeDefinitions",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttributeDefinitions_Name",
@@ -1570,9 +1570,9 @@ namespace Gadema.Data.Migrations
                 column: "ProjectTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AttributeSets_ContentItemId",
+                name: "IX_AttributeSets_MetaInfoId",
                 table: "AttributeSets",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttributeSets_DisplayOrder",
@@ -1595,20 +1595,20 @@ namespace Gadema.Data.Migrations
                 column: "AttributeDefinitionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CharacterAttributes_ContentItemId",
+                name: "IX_CharacterAttributes_MetaInfoId",
                 table: "CharacterAttributes",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CharacterDetails_ContentItemId",
+                name: "IX_CharacterDetails_MetaInfoId",
                 table: "CharacterDetails",
-                column: "ContentItemId",
+                column: "MetaInfoId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_CharacterIdentities_ContentItemId",
+                name: "IX_CharacterIdentities_MetaInfoId",
                 table: "CharacterIdentities",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CharacterIdentities_IdentityDefinitionId",
@@ -1626,9 +1626,9 @@ namespace Gadema.Data.Migrations
                 column: "AttributeSetId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassTemplate_ContentItemId",
+                name: "IX_ClassTemplate_MetaInfoId",
                 table: "ClassTemplate",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClassTemplate_Name",
@@ -1642,9 +1642,9 @@ namespace Gadema.Data.Migrations
                 column: "AttributeDefinitionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ClassTemplateAttribute_ContentItemId",
+                name: "IX_ClassTemplateAttribute_MetaInfoId",
                 table: "ClassTemplateAttribute",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_CommentedByUserId",
@@ -1652,9 +1652,9 @@ namespace Gadema.Data.Migrations
                 column: "CommentedByUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_ContentItemId",
+                name: "IX_Comments_MetaInfoId",
                 table: "Comments",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_CreatedAt",
@@ -1662,40 +1662,40 @@ namespace Gadema.Data.Migrations
                 column: "CreatedAt");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItems_ContentType",
-                table: "ContentItems",
+                name: "IX_MetaInfos_ContentType",
+                table: "MetaInfos",
                 column: "ContentType");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItems_ProjectId",
-                table: "ContentItems",
+                name: "IX_MetaInfos_ProjectId",
+                table: "MetaInfos",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItems_Published",
-                table: "ContentItems",
+                name: "IX_MetaInfos_Published",
+                table: "MetaInfos",
                 column: "Published");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItems_slug",
-                table: "ContentItems",
+                name: "IX_MetaInfos_slug",
+                table: "MetaInfos",
                 column: "slug",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItems_Status",
-                table: "ContentItems",
+                name: "IX_MetaInfos_Status",
+                table: "MetaInfos",
                 column: "Status");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentItemTags_ContentTagId",
-                table: "ContentItemTags",
-                column: "ContentTagId");
+                name: "IX_MetaInfoTags_MetaInfoTagId",
+                table: "MetaInfoTagRelations",
+                column: "MetaInfoTagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentSnapshots_ContentItemId",
+                name: "IX_ContentSnapshots_MetaInfoId",
                 table: "ContentSnapshots",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ContentSnapshots_CreatedAt",
@@ -1718,20 +1718,20 @@ namespace Gadema.Data.Migrations
                 column: "SnapshotVersion");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentTags_Name",
-                table: "ContentTags",
+                name: "IX_MetaInfoTags_Name",
+                table: "MetaInfoTags",
                 column: "Name");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentTags_Slug",
-                table: "ContentTags",
+                name: "IX_MetaInfoTags_Slug",
+                table: "MetaInfoTags",
                 column: "Slug",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContentVersionLogs_ContentItemId",
+                name: "IX_ContentVersionLogs_MetaInfoId",
                 table: "ContentVersionLogs",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ContentVersionLogs_VersionNumber",
@@ -1739,9 +1739,9 @@ namespace Gadema.Data.Migrations
                 column: "VersionNumber");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DialogueBranches_ContentItemId",
+                name: "IX_DialogueBranches_MetaInfoId",
                 table: "DialogueBranches",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DialogueBranches_IsRoot",
@@ -1770,9 +1770,9 @@ namespace Gadema.Data.Migrations
                 column: "BranchId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DialogueNodes_ContentItemId",
+                name: "IX_DialogueNodes_MetaInfoId",
                 table: "DialogueNodes",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DialogueNodes_ParentNodeId",
@@ -1867,9 +1867,9 @@ namespace Gadema.Data.Migrations
                 column: "ProjectTemplateId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InventoryItems_ContentItemId",
+                name: "IX_InventoryItems_MetaInfoId",
                 table: "InventoryItems",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InventoryItems_ItemType",
@@ -1887,9 +1887,9 @@ namespace Gadema.Data.Migrations
                 column: "Quantity");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LoreEntries_ContentItemId",
+                name: "IX_LoreEntries_MetaInfoId",
                 table: "LoreEntries",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LoreEntries_LoreType",
@@ -1908,9 +1908,9 @@ namespace Gadema.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MediaAttachments_ContentItemId",
+                name: "IX_MediaAttachments_MetaInfoId",
                 table: "MediaAttachments",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MediaTags_Attachment",
@@ -1977,9 +1977,9 @@ namespace Gadema.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectTasks_ContentItemId",
+                name: "IX_ProjectTasks_MetaInfoId",
                 table: "ProjectTasks",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectTasks_Difficulty",
@@ -2033,15 +2033,15 @@ namespace Gadema.Data.Migrations
                 column: "ProjectId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReviewStatuses_ContentItemId",
+                name: "IX_ReviewStatuses_MetaInfoId",
                 table: "ReviewStatuses",
-                column: "ContentItemId",
+                column: "MetaInfoId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReviewStatuses_ContentItemId1",
+                name: "IX_ReviewStatuses_MetaInfoId1",
                 table: "ReviewStatuses",
-                column: "ContentItemId1");
+                column: "MetaInfoId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReviewStatuses_ReviewedAt",
@@ -2059,9 +2059,9 @@ namespace Gadema.Data.Migrations
                 column: "Status");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StatusEffectDefinitions_ContentItemId",
+                name: "IX_StatusEffectDefinitions_MetaInfoId",
                 table: "StatusEffectDefinitions",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StatusEffectDefinitions_EffectType",
@@ -2091,9 +2091,9 @@ namespace Gadema.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_StoryOutlines_ContentItemId",
+                name: "IX_StoryOutlines_MetaInfoId",
                 table: "StoryOutlines",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StoryOutlines_SequenceId",
@@ -2106,9 +2106,9 @@ namespace Gadema.Data.Migrations
                 column: "StorySequenceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StorySequences_ContentItemId",
+                name: "IX_StorySequences_MetaInfoId",
                 table: "StorySequences",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StorySequences_ParentSequenceId",
@@ -2189,9 +2189,9 @@ namespace Gadema.Data.Migrations
                 column: "IdentityDefinitionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TokenUsageLogs_ContentItemId",
+                name: "IX_TokenUsageLogs_MetaInfoId",
                 table: "TokenUsageLogs",
-                column: "ContentItemId");
+                column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TokenUsageLogs_ProjectId",
@@ -2254,7 +2254,7 @@ namespace Gadema.Data.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "ContentItemTags");
+                name: "MetaInfoTagRelations");
 
             migrationBuilder.DropTable(
                 name: "ContentSnapshots");
@@ -2347,7 +2347,7 @@ namespace Gadema.Data.Migrations
                 name: "EngineExportConfigs");
 
             migrationBuilder.DropTable(
-                name: "ContentTags");
+                name: "MetaInfoTags");
 
             migrationBuilder.DropTable(
                 name: "MediaAttachments");
@@ -2380,7 +2380,7 @@ namespace Gadema.Data.Migrations
                 name: "ProjectTemplates");
 
             migrationBuilder.DropTable(
-                name: "ContentItems");
+                name: "MetaInfos");
 
             migrationBuilder.DropTable(
                 name: "Projects");

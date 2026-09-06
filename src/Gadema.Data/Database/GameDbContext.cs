@@ -7,6 +7,8 @@ using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Models.Content;
+using Gadema.Core.Models.Narrative;
+using Gadema.Core.Models.Characters;
 
 namespace Gadema.Data.Database;
 
@@ -32,9 +34,9 @@ public class GameDbContext : DbContext
     public DbSet<TeamMember> TeamMembers { get; set; }
     
     /// <summary>
-    /// ContentItem entity set.
+    /// MetaInfo entity set.
     /// </summary>
-    public DbSet<ContentItem> ContentItems { get; set; }
+    public DbSet<MetaInfo> MetaInfos { get; set; }
     
     /// <summary>
     /// StoryOutline entity set.
@@ -67,13 +69,13 @@ public class GameDbContext : DbContext
     public DbSet<ProjectTagRelation> ProjectTagRelations { get; set; }
     
     /// <summary>
-    /// ContentTags junction table.
+    /// MetaInfoTags junction table.
     /// </summary>
     public DbSet<ProjectTag> ProjectTags { get; set; }
 
-    public DbSet<ContentTag> ContentTags { get; set; }
+    public DbSet<MetaInfoTag> MetaInfoTags { get; set; }
     
-    public DbSet<ContentItemTag> ContentItemTags { get; set; }
+    public DbSet<MetaInfoTagRelation> MetaInfoTagRelations { get; set; }
     /// <summary>
     /// MediaTags junction table.
     /// </summary>
@@ -88,6 +90,26 @@ public class GameDbContext : DbContext
     /// StoryBeat entity set.
     /// </summary>
     public DbSet<StoryBeat> StoryBeats { get; set; }
+    
+    /// <summary>
+    /// Scene entity set - The "Unit of Work" for writing.
+    /// </summary>
+    public DbSet<Scene> Scenes { get; set; }
+    
+    /// <summary>
+    /// ContentSegment entity set - Unique token markers for shortcodes.
+    /// </summary>
+    public DbSet<ContentSegment> ContentSegments { get; set; }
+    
+    /// <summary>
+    /// SceneStoryBeatMapping junction entity set.
+    /// </summary>
+    public DbSet<SceneStoryBeatMapping> SceneStoryBeatMappings { get; set; }
+    
+    /// <summary>
+    /// CharacterRelation entity set - Evolving character relationships.
+    /// </summary>
+    public DbSet<CharacterRelation> CharacterRelations { get; set; }
     
     /// <summary>
     /// LoreEntry entity set.

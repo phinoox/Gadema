@@ -34,8 +34,8 @@ public class SearchController : ControllerBase
     /// Search content items.
     /// </summary>
     [HttpPost("content-items")]
-    public async Task<IActionResult> SearchContentItemsAsync([FromBody] SearchContentItemsDto searchDto)
+    public async Task<IActionResult> SearchMetaInfosAsync([FromBody] SearchMetaInfosDto searchDto)
     {
-        return Ok(await _searchService.SearchContentItemsAsync(searchDto));
+        return Ok(await _searchService.SearchMetaInfosAsync(searchDto));
     }
 }

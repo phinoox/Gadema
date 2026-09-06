@@ -9,7 +9,7 @@ namespace Gadema.Core.Dtos.Search;
 /// <summary>
 /// DTO for searching content items.
 /// </summary>
-public class SearchContentItemsDto
+public class SearchMetaInfosDto
 {
     /// <summary>
     /// Search query (title, description, slug) (required).

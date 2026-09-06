@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// Links content items to engine asset systems.
 /// Used for tracking exported assets and cross-referencing with game engines.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class AssetLink
 {
     /// <summary>
@@ -23,11 +23,11 @@ public class AssetLink
     /// FK to the content item this asset belongs to (Primary Key).
     /// </summary>
     [Required, Display(Name = "Content Item")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    // Navigation property for ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property for MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
 
     /// <summary>
     /// Path in the game engine's asset directory.

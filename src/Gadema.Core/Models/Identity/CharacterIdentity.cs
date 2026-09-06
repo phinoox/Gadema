@@ -12,17 +12,17 @@ namespace Gadema.Core.Models;
 /// Identity assignment for a specific character/content item.
 /// Links a content item with selected identity definitions and values.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class CharacterIdentity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    // Navigation property for ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property for MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
     
     public Guid? IdentityDefinitionId { get; set; }  // Nullable FK to IdentityDefinition
 

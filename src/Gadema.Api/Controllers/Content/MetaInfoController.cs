@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 using Gadema.Api.Services;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,15 +18,15 @@ namespace Gadema.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/v1/content/items")]
-public class ContentItemsController : ControllerBase
+public class MetaInfosController : ControllerBase
 {
     private readonly IContentService _contentService;
-    private readonly ILogger<ContentItemsController> _logger;
+    private readonly ILogger<MetaInfosController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ContentItemsController(IContentService contentService, ILogger<ContentItemsController> logger)
+    public MetaInfosController(IContentService contentService, ILogger<MetaInfosController> logger)
     {
         _contentService = contentService;
         _logger = logger;
@@ -36,50 +36,50 @@ public class ContentItemsController : ControllerBase
     /// List all content items (paginated).
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetContentItemsAsync(
+    public async Task<IActionResult> GetMetaInfosAsync(
         [FromQuery] Guid? projectId = null,
         [FromQuery] ContentTypeEnum? contentType = null,
         [FromQuery] ContentStatusEnum? status = null,
         [FromQuery] bool published = true,
         [FromQuery] ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
     {
-        return Ok(await _contentService.GetContentItemsAsync(projectId, contentType, status, published, viewMode));
+        return Ok(await _contentService.GetMetaInfosAsync(projectId, contentType, status, published, viewMode));
     }
 
     /// <summary>
     /// Get content item by ID.
     /// </summary>
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetContentItemAsync(Guid id, [FromQuery] ViewModeEnum? viewMode = null)
+    public async Task<IActionResult> GetMetaInfoAsync(Guid id, [FromQuery] ViewModeEnum? viewMode = null)
     {
-        return Ok(await _contentService.GetContentItemAsync(id, viewMode ?? ViewModeEnum.PrivateWriting));
+        return Ok(await _contentService.GetMetaInfoAsync(id, viewMode ?? ViewModeEnum.PrivateWriting));
     }
 
     /// <summary>
     /// Create/edit content item.
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> CreateContentItemAsync([FromBody] CreateContentItemDto createDto)
+    public async Task<IActionResult> CreateMetaInfoAsync([FromBody] CreateMetaInfoDto createDto)
     {
-        return Ok(await _contentService.CreateContentItemAsync(createDto));
+        return Ok(await _contentService.CreateMetaInfoAsync(createDto));
     }
 
     /// <summary>
     /// Update content item.
     /// </summary>
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateContentItemAsync(Guid id, [FromBody] UpdateContentItemDto updateDto)
+    public async Task<IActionResult> UpdateMetaInfoAsync(Guid id, [FromBody] UpdateMetaInfoDto updateDto)
     {
-        return Ok(await _contentService.UpdateContentItemAsync(id, updateDto));
+        return Ok(await _contentService.UpdateMetaInfoAsync(id, updateDto));
     }
 
     /// <summary>
     /// Delete content item (admin only).
     /// </summary>
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteContentItemAsync(Guid id)
+    public async Task<IActionResult> DeleteMetaInfoAsync(Guid id)
     {
-        return Ok(await _contentService.DeleteContentItemAsync(id));
+        return Ok(await _contentService.DeleteMetaInfoAsync(id));
     }
 
     /// <summary>

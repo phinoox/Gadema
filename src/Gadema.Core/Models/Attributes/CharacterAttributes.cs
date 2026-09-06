@@ -9,20 +9,20 @@ namespace Gadema.Core.Models;
 
 /// <summary>
 /// Character attributes stored as a child entity.
-/// Uses ContentItemId and AttributeDefinitionId as composite primary key.
+/// Uses MetaInfoId and AttributeDefinitionId as composite primary key.
 /// Stores calculated or manually set attribute values per character.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem), typeof(AttributeDefinition))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo), typeof(AttributeDefinition))]
 public class CharacterAttributes
 {
     /// <summary>
     /// FK to the content item this belongs to (used as Primary Key).
     /// </summary>
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    // Navigation property for ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property for MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
     
     /// <summary>
     /// FK to the attribute definition being stored.

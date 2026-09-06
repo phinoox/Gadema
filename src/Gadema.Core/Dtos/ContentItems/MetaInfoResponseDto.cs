@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// DTO for content item list/response.
 /// </summary>
-public class ContentItemResponseDto
+public class MetaInfoResponseDto
 {
     /// <summary>
     /// Unique identifier for the content item.

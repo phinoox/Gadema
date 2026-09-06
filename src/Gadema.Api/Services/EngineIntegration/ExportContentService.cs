@@ -24,7 +24,7 @@ public class ExportContentService : IGademaService,  IExportContentService
     {
         var projects = await _context.Projects
             .Where(p => p.Id == projectId)
-            .Include(p => p.ContentItems)
+            .Include(p => p.MetaInfos)
                 //.ThenInclude(ci => ci.MediaAttachments)
                 //    .ThenInclude(ma => ma.ExternalReferences)  // ✅ Correct navigation
             .ToListAsync();
@@ -32,7 +32,7 @@ public class ExportContentService : IGademaService,  IExportContentService
         var content = new
         {
             project = projects.First(),
-            contentItems = dto.Sections?.Split(',') ?? []
+            MetaInfos = dto.Sections?.Split(',') ?? []
         };
 
         return JsonSerializer.Serialize(content);
@@ -40,7 +40,7 @@ public class ExportContentService : IGademaService,  IExportContentService
 
     public async Task<string> GenerateCsvExportAsync(Guid projectId, ExportCsvDto dto)
     {
-      var items = _context.ContentItems
+      var items = _context.MetaInfos
             .Where(ci => ci.ProjectId == projectId && 
                         ci.ContentType == dto.ContentType && 
                         ci.Published)
@@ -58,7 +58,7 @@ public class ExportContentService : IGademaService,  IExportContentService
 
     public async Task<string> GenerateXmlExportAsync(Guid projectId, ExportXmlGddDto dto)
     {
-         var items = _context.ContentItems
+         var items = _context.MetaInfos
             .Where(ci => ci.ProjectId == projectId && 
                         ci.ContentType == dto.ContentType && 
                         ci.Published)

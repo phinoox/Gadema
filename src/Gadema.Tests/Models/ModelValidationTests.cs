@@ -7,7 +7,7 @@ namespace Gadema.Tests.Models;
 using Xunit;
 using FluentAssertions;
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Dtos.Projects;
 using Gadema.Core.Dtos.Tasks;
 using Gadema.Core.Enums;
@@ -15,13 +15,13 @@ using Gadema.Core.Enums;
 /// <summary>
 /// Validation tests for content item DTOs.
 /// </summary>
-public class CreateContentItemDtoValidationTests
+public class CreateMetaInfoDtoValidationTests
 {
     [Fact]
     public void ProjectId_ShouldBeRequired()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -40,7 +40,7 @@ public class CreateContentItemDtoValidationTests
     public void ContentType_ShouldBeValidEnum()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -59,7 +59,7 @@ public class CreateContentItemDtoValidationTests
     public void Title_ShouldBeRequired()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -78,7 +78,7 @@ public class CreateContentItemDtoValidationTests
     public void Slug_ShouldBeOptional()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -96,7 +96,7 @@ public class CreateContentItemDtoValidationTests
     public void Description_ShouldBeOptional()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -114,7 +114,7 @@ public class CreateContentItemDtoValidationTests
     public void ShortDesc_ShouldBeOptional()
     {
         // Arrange
-        var createDto = new CreateContentItemDto
+        var createDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,

@@ -38,10 +38,10 @@ public class ExternalReferenceService : IGademaService,  IExternalReferenceServi
     /// <summary>
     /// List external references for content item.
     /// </summary>
-    public async Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid contentItemId)
+    public async Task<ApiResponseDto<ReferenceListResponseDto>> GetReferencesAsync(Guid MetaInfoId)
     {
         var references = await _context.ExternalReferences
-            .Where(r => r.ParentType == 0 && r.ParentId == contentItemId && r.IsActive)
+            .Where(r => r.ParentType == 0 && r.ParentId == MetaInfoId && r.IsActive)
             .ToListAsync();
 
         return ApiResponseDto<ReferenceListResponseDto>.Success(new ReferenceListResponseDto());
@@ -50,15 +50,15 @@ public class ExternalReferenceService : IGademaService,  IExternalReferenceServi
     /// <summary>
     /// Create external reference.
     /// </summary>
-    public async Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid contentItemId, CreateExternalReferenceDto createDto)
+    public async Task<ApiResponseDto<ReferenceResponseDto>> CreateReferenceAsync(Guid MetaInfoId, CreateExternalReferenceDto createDto)
     {
         var now = DateTime.UtcNow;
         
         var reference = new ExternalReference
         {
             Id = Guid.NewGuid(),
-            ParentType = 0, // ContentItem
-            ParentId = contentItemId,
+            ParentType = 0, // MetaInfo
+            ParentId = MetaInfoId,
             Url = createDto.Url,
             Title = createDto.Title ?? Path.GetFileName(createDto.Url),
             Type = createDto.Type,

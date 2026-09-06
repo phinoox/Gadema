@@ -10,9 +10,9 @@ namespace Gadema.Core.Models;
 
 /// <summary>
 /// Child entity for character details (FK as Primary Key pattern).
-/// Stores detailed character information linked to ContentItem.
+/// Stores detailed character information linked to MetaInfo.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class CharacterDetails
 {
     /// <summary>
@@ -20,13 +20,13 @@ public class CharacterDetails
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
     /// <summary>
-    /// FK as Primary Key - links to ContentItem.Id
+    /// FK as Primary Key - links to MetaInfo.Id
     /// </summary>
-    public Guid ContentItemId { get; set; }  // FK as Primary Key
+    public Guid MetaInfoId { get; set; }  // FK as Primary Key
 
-    // Navigation property: ContentItem (Many-to-One)
-    [ForeignKey("ContentItemId")]
-    public virtual ContentItem ContentItem { get; set; }
+    // Navigation property: MetaInfo (Many-to-One)
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; }
 
     /// <summary>
     /// Character name.
@@ -58,7 +58,7 @@ public class CharacterDetails
     /// <summary>
     /// Navigation property: Collection of character background associations
     /// via CharacterDetailsCharacterBackground junction table.
-    /// Foreign key: ContentItemId (matches FK in CharacterBackground)
+    /// Foreign key: MetaInfoId (matches FK in CharacterBackground)
     /// </summary>
     public virtual ICollection<CharacterBackground> CharacterBackgrounds { get; set; } = new List<CharacterBackground>();
 

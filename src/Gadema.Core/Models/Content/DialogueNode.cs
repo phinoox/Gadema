@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue node within a branch.
 /// Contains the actual dialogue text and choices.
 /// </summary>
-[ModelDependency(typeof(DialogueBranch),typeof(ContentItem))]
+[ModelDependency(typeof(DialogueBranch),typeof(MetaInfo))]
 public class DialogueNode
 {
     /// <summary>
@@ -20,11 +20,11 @@ public class DialogueNode
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? ContentItemId { get; set; }  
+    public Guid? MetaInfoId { get; set; }  
     
-    [ForeignKey("ContentItemId")]
+    [ForeignKey("MetaInfoId")]
     [Fixture(FixtureHintEnum.Omit)]
-    public virtual ContentItem? ContentItem { get; set; }
+    public virtual MetaInfo? MetaInfo { get; set; }
 
 
     /// <summary>

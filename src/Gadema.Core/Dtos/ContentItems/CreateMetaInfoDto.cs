@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.ContentItems;
+namespace Gadema.Core.Dtos.MetaInfos;
 
 /// <summary>
 /// DTO for creating a new content item.
 /// </summary>
-public class CreateContentItemDto
+public class CreateMetaInfoDto
 {
     /// <summary>
     /// ID of the project this content item belongs to (required).

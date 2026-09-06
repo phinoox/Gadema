@@ -11,7 +11,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Junction table for many-to-many relationship between MediaAttachments and Tags.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(ContentItem))]
+[DependencyResolver.ModelDependency(typeof(MetaInfo))]
 public class MediaTags
 {
     /// <summary>
@@ -36,6 +36,6 @@ public class MediaTags
     public Guid TagId { get; set; }
 
     // Navigation property: Tag (Many-to-One)
-    public virtual ContentTag Tag { get; set; }
+    public virtual MetaInfoTag Tag { get; set; }
 
 }

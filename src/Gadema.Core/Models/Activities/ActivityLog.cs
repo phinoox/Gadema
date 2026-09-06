@@ -43,7 +43,7 @@ public class ActivityLog
     /// <summary>
     /// Type of related entity.
     /// </summary>
-    public int RelatedEntityType { get; set; }  // Enum: ContentItem, Task, etc.
+    public int RelatedEntityType { get; set; }  // Enum: MetaInfo, Task, etc.
 
     /// <summary>
     /// Activity title.

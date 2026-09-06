@@ -28,7 +28,7 @@ public class CommentResponseDto
     public Guid Id { get; set; }
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid ContentItemId { get; set; }
+    public Guid MetaInfoId { get; set; }
     
     [Required, MaxLength(256)]
     public string CommentedByUserName { get; set; } = "";

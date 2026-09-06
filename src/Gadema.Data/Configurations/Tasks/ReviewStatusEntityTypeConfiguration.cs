@@ -23,7 +23,7 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ContentItemId);
+        builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.Status);  // Filter by status
         builder.HasIndex(e => e.ReviewerId);
         builder.HasIndex(e => e.ReviewedAt);  // Query recent reviews

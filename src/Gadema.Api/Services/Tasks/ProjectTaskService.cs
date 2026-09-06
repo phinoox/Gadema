@@ -73,7 +73,7 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService
         {
             Id = t.Id,
             ProjectId = t.ProjectId,
-            ContentItemId = t.ContentItemId,
+            MetaInfoId = t.MetaInfoId,
             TaskTitle = t.TaskTitle,
             Description = t.Description,
             Status = t.Status,
@@ -101,7 +101,7 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService
         {
             Id = Guid.NewGuid(),
             ProjectId = createDto.ProjectId,
-            ContentItemId = null!,
+            MetaInfoId = null!,
             TaskTitle = createDto.TaskTitle,
             Description = createDto.Description,
             Status = createDto.Status ?? 0,
@@ -122,7 +122,7 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService
         {
             Id = task.Id,
             ProjectId = task.ProjectId,
-            ContentItemId = task.ContentItemId,
+            MetaInfoId = task.MetaInfoId,
             TaskTitle = task.TaskTitle,
             Description = task.Description,
             Status = task.Status,
@@ -171,7 +171,7 @@ public class ProjectTaskService : IGademaService,  IProjectTaskService
         {
             Id = task.Id,
             ProjectId = task.ProjectId,
-            ContentItemId = task.ContentItemId,
+            MetaInfoId = task.MetaInfoId,
             TaskTitle = task.TaskTitle,
             Description = task.Description,
             Status = task.Status,

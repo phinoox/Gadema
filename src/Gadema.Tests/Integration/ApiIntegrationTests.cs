@@ -12,7 +12,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Builder;
 using Gadema.Core.Dtos.Projects;
 using System.Net.Http.Json;
-using Gadema.Core.Dtos.ContentItems;
+using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Gadema.Core.Dtos.Tasks;
 using Gadema.Core.Dtos.Export;
@@ -90,10 +90,10 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
     /// Test: Create content item should return 200 OK.
     /// </summary>
     [Fact]
-    public async Task CreateContentItem_ShouldReturnOk()
+    public async Task CreateMetaInfo_ShouldReturnOk()
     {
         // Arrange
-        var createContentDto = new CreateContentItemDto
+        var createContentDto = new CreateMetaInfoDto
         {
             ProjectId = Guid.NewGuid(),
             ContentType = ContentTypeEnum.Character,
@@ -166,7 +166,7 @@ public class ApiIntegrationTests : IClassFixture<ApiWebApplicationFactory>
         // Arrange
         var createReferenceDto = new CreateExternalReferenceDto
         {
-            ContentItemId = Guid.NewGuid(),
+            MetaInfoId = Guid.NewGuid(),
             Url = "https://example.com",
             Type = 0
         };
