@@ -1339,7 +1339,7 @@ namespace Gadema.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MediaTags",
+                name: "MediaAttachmentTagRelations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -1348,15 +1348,15 @@ namespace Gadema.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MediaTags", x => x.Id);
+                    table.PrimaryKey("PK_MediaAttachmentTagRelations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MediaTags_MetaInfoTags_TagId",
+                        name: "FK_MediaAttachmentTagRelations_MetaInfoTags_TagId",
                         column: x => x.TagId,
                         principalTable: "MetaInfoTags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MediaTags_MediaAttachments_MediaAttachmentId",
+                        name: "FK_MediaAttachmentTagRelations_MediaAttachments_MediaAttachmentId",
                         column: x => x.MediaAttachmentId,
                         principalTable: "MediaAttachments",
                         principalColumn: "Id",
@@ -1913,13 +1913,13 @@ namespace Gadema.Data.Migrations
                 column: "MetaInfoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MediaTags_Attachment",
-                table: "MediaTags",
+                name: "IX_MediaAttachmentTagRelations_Attachment",
+                table: "MediaAttachmentTagRelations",
                 column: "MediaAttachmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MediaTags_Tag",
-                table: "MediaTags",
+                name: "IX_MediaAttachmentTagRelations_Tag",
+                table: "MediaAttachmentTagRelations",
                 column: "TagId");
 
             migrationBuilder.CreateIndex(
@@ -2281,7 +2281,7 @@ namespace Gadema.Data.Migrations
                 name: "LoreEntries");
 
             migrationBuilder.DropTable(
-                name: "MediaTags");
+                name: "MediaAttachmentTagRelations");
 
             migrationBuilder.DropTable(
                 name: "ProjectIdentityDefinitions");

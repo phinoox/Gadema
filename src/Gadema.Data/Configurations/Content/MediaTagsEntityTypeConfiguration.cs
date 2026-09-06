@@ -11,21 +11,21 @@ using Gadema.Core.Models;
 namespace Gadema.Data.Configurations.Content;
 
 /// <summary>
-/// Configuration for MediaTags junction entity in game development management system.
+/// Configuration for MediaAttachmentTagRelations junction entity in game development management system.
 /// </summary>
-public class MediaTagsEntityTypeConfiguration : IEntityTypeConfiguration<MediaTags>
+public class MediaAttachmentTagRelationsEntityTypeConfiguration : IEntityTypeConfiguration<MediaAttachmentTagRelation>
 {
     /// <summary>
-    /// Configure MediaTags junction entity properties and relationships.
+    /// Configure MediaAttachmentTagRelations junction entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<MediaTags> builder)
+    public void Configure(EntityTypeBuilder<MediaAttachmentTagRelation> builder)
     {
         // Primary key (self-composite)
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.MediaAttachmentId).HasDatabaseName("IX_MediaTags_Attachment");
-        builder.HasIndex(e => e.TagId).HasDatabaseName("IX_MediaTags_Tag");
+        builder.HasIndex(e => e.MediaAttachmentId).HasDatabaseName("IX_MediaAttachmentTagRelations_Attachment");
+        builder.HasIndex(e => e.TagId).HasDatabaseName("IX_MediaAttachmentTagRelations_Tag");
     }
 }
 //ToDo : check foreign key

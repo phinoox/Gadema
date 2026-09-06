@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Junction table for many-to-many relationship between MediaAttachments and Tags.
 /// </summary>
 [DependencyResolver.ModelDependency(typeof(MetaInfo))]
-public class MediaTags
+public class MediaAttachmentTagRelation
 {
     /// <summary>
     /// Unique identifier for the junction record.

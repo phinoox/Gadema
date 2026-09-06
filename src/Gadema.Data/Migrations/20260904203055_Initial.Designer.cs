@@ -1256,7 +1256,7 @@ namespace Gadema.Data.Migrations
                     b.ToTable("MediaAttachments");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.MediaTags", b =>
+            modelBuilder.Entity("Gadema.Core.Models.MediaAttachmentTagRelations", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1271,12 +1271,12 @@ namespace Gadema.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MediaAttachmentId")
-                        .HasDatabaseName("IX_MediaTags_Attachment");
+                        .HasDatabaseName("IX_MediaAttachmentTagRelations_Attachment");
 
                     b.HasIndex("TagId")
-                        .HasDatabaseName("IX_MediaTags_Tag");
+                        .HasDatabaseName("IX_MediaAttachmentTagRelations_Tag");
 
-                    b.ToTable("MediaTags");
+                    b.ToTable("MediaAttachmentTagRelations");
                 });
 
             modelBuilder.Entity("Gadema.Core.Models.ProjectIdentityDefinition", b =>
@@ -2644,7 +2644,7 @@ namespace Gadema.Data.Migrations
                     b.Navigation("MetaInfo");
                 });
 
-            modelBuilder.Entity("Gadema.Core.Models.MediaTags", b =>
+            modelBuilder.Entity("Gadema.Core.Models.MediaAttachmentTagRelations", b =>
                 {
                     b.HasOne("Gadema.Core.Models.MediaAttachment", "MediaAttachment")
                         .WithMany()

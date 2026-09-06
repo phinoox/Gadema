@@ -77,9 +77,9 @@ public class GameDbContext : DbContext
     
     public DbSet<MetaInfoTagRelation> MetaInfoTagRelations { get; set; }
     /// <summary>
-    /// MediaTags junction table.
+    /// MediaAttachmentTagRelations junction table.
     /// </summary>
-    public DbSet<MediaTags> MediaTags { get; set; }
+    public DbSet<MediaAttachmentTagRelation> MediaAttachmentTagRelations { get; set; }
     
     /// <summary>
     /// StorySequence entity set.
