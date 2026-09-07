@@ -23,8 +23,7 @@ public class ProjectTokenDto
     public string? PermissionsJson { get; set; } = null!;
     
     /// <summary>
-    /// Expiration timestamp (ISO 8601 date/time, optional).
+    /// Expiration timestamp (optional).
     /// </summary>
-    [MaxLength(512)]
-    public string? ExpiresAt { get; set; } = null!;
+    public DateTime? ExpiresAt { get; set; }
 }

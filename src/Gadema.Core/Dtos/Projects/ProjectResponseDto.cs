@@ -1,6 +1,5 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 // =============================================================================
 
@@ -29,19 +28,21 @@ public class ProjectResponseDto
     public string Slug { get; set; } = "";
     
     /// <summary>
-    /// Owner type: 0=User, 1=Team.
+    /// Project-wide description.
     /// </summary>
-    public int OwnerType { get; set; }
+    [MaxLength(4096)]
+    public string? Description { get; set; }
     
     /// <summary>
-    /// ID of the owner (user or team).
+    /// ID of the user who created this project.
     /// </summary>
-    public Guid OwnerId { get; set; }
+    [Display(Name = "User ID")]
+    public Guid UserId { get; set; }
     
     /// <summary>
     /// Series ID (optional).
     /// </summary>
-    public Guid? SeriesId { get; set; } = null!;
+    public Guid? ProjectSeriesId { get; set; }
     
     /// <summary>
     /// Visibility: 1=Private, 2=Public.
@@ -69,10 +70,46 @@ public class ProjectResponseDto
     /// View mode: PrivateWriting or Presentation.
     /// </summary>
     [Display(Name = "View Mode")]
-    public string ViewMode { get; set; } = "";
+    public ViewModeEnum ViewMode { get; set; }
     
     /// <summary>
     /// Project creation timestamp.
     /// </summary>
     public DateTime CreatedAt { get; set; }
+    
+    /// <summary>
+    /// Last modified timestamp.
+    /// </summary>
+    [Display(Name = "Last Modified At")]
+    public DateTime? LastModifiedAt { get; set; }
+    
+    /// <summary>
+    /// Primary format of the project (Book, Manga, Game, Hybrid).
+    /// </summary>
+    [Display(Name = "Primary Format")]
+    public PrimaryFormatEnum PrimaryFormat { get; set; }
+    
+    /// <summary>
+    /// Genre of the project.
+    /// </summary>
+    [Display(Name = "Genre")]
+    public string? Genre { get; set; }
+    
+    /// <summary>
+    /// Central theme of the project.
+    /// </summary>
+    [Display(Name = "Theme")]
+    public string? Theme { get; set; }
+    
+    /// <summary>
+    /// Tone of the project.
+    /// </summary>
+    [Display(Name = "Tone")]
+    public ToneEnum Tone { get; set; }
+    
+    /// <summary>
+    /// Target audience for the project.
+    /// </summary>
+    [Display(Name = "Audience")]
+    public AudienceEnum Audience { get; set; }
 }

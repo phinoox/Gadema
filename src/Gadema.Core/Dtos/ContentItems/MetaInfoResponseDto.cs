@@ -1,7 +1,5 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
-
-using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.MetaInfos;
@@ -22,10 +20,10 @@ public class MetaInfoResponseDto
     public Guid ProjectId { get; set; }
     
     /// <summary>
-    /// Content type.
+    /// Content type (Character, World, Mechanic, etc.).
     /// </summary>
     [Display(Name = "Content Type")]
-    public int ContentType { get; set; }
+    public ContentTypeEnum ContentType { get; set; }
     
     /// <summary>
     /// Title of the content item.
@@ -67,10 +65,40 @@ public class MetaInfoResponseDto
     /// View mode: PrivateWriting or Presentation.
     /// </summary>
     [Display(Name = "View Mode")]
-    public string ViewMode { get; set; } = "";
+    public ViewModeEnum ViewMode { get; set; }
     
     /// <summary>
     /// Current version number.
     /// </summary>
     public int Version { get; set; }
+    
+    /// <summary>
+    /// Order index for sorting.
+    /// </summary>
+    [Display(Name = "Order Index")]
+    public int OrderIndex { get; set; }
+    
+    /// <summary>
+    /// External references (JSON string).
+    /// </summary>
+    [Display(Name = "References")]
+    public string? References { get; set; }
+    
+    /// <summary>
+    /// ID of the user who created this content item.
+    /// </summary>
+    [Display(Name = "Created By User ID")]
+    public Guid CreatedByUserId { get; set; }
+    
+    /// <summary>
+    /// Last modification timestamp.
+    /// </summary>
+    [Display(Name = "Last Modified At")]
+    public DateTime LastModifiedAt { get; set; }
+    
+    /// <summary>
+    /// Creation timestamp.
+    /// </summary>
+    [Display(Name = "Created At")]
+    public DateTime CreatedAt { get; set; }
 }

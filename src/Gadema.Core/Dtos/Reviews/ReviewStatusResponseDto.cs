@@ -30,9 +30,20 @@ public class ReviewStatusResponseDto
     [Required, Display(Name = "Content Item ID")]
     public Guid MetaInfoId { get; set; }
     
-    public int Status { get; set; }  // Pending, Approved, Rejected
+    /// <summary>
+    /// Review status (0=Pending, 1=Approved, 2=Rejected).
+    /// </summary>
+    public int Status { get; set; }
     
+    /// <summary>
+    /// ID of the user who reviewed this content.
+    /// </summary>
     public Guid? ReviewedByUserId { get; set; }
+    
+    /// <summary>
+    /// Name of the reviewer.
+    /// </summary>
+    public string? ReviewerName { get; set; }
     
     [MaxLength(4096)]
     public string? ReviewComments { get; set; }

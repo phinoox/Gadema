@@ -36,5 +36,11 @@ public class CommentResponseDto
     [MaxLength(4096)]
     public string CommentText { get; set; } = "";
     
+    /// <summary>
+    /// Visibility: private, team-only, public.
+    /// </summary>
+    [MaxLength(64)]
+    public string? Visibility { get; set; }
+    
     public DateTime CreatedAt { get; set; }
 }

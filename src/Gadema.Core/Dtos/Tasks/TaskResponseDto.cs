@@ -49,18 +49,27 @@ public class ProjectTaskResponseDto
     
     public DateTime CreatedAt { get; set; }
 
-    // NEW: Add missing properties from ProjectTask model
+    /// <summary>
+    /// ID of the user who created this task.
+    /// </summary>
+    [Display(Name = "Created By User ID")]
+    public Guid CreatedByUserId { get; set; }
+
+    /// <summary>
+    /// Last modified timestamp.
+    /// </summary>
+    [Display(Name = "Last Modified At")]
+    public DateTime LastModifiedAt { get; set; }
+
+    /// <summary>
+    /// ID of the project this task belongs to.
+    /// </summary>
     public Guid ProjectId { get; set; }
-    [MaxLength(256)]
-    public string? TaskDescription { get; set; }  // For MetaInfoId compatibility
-/// <summary>
+
+    /// <summary>
     /// ID of the content item this task is associated with.
 /// </summary>
     public Guid? MetaInfoId { get; set; }
-    
-    public int? DifficultyValue { get; set; }  // For nullable difficulty
-    [MaxLength(512)]
-    public string? DifficultyName { get; set; }  // Enum name
 }
 
 /// <summary>

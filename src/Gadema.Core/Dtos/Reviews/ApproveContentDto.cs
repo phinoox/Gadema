@@ -10,6 +10,12 @@ namespace Gadema.Core.Dtos.Reviews;
 public class ApproveContentDto
 {
     /// <summary>
+    /// ID of the content item being reviewed (required).
+    /// </summary>
+    [Required]
+    public Guid MetaInfoId { get; set; }
+    
+    /// <summary>
     /// Review status: 0=Pending, 1=Approved, 2=Rejected (required).
     /// </summary>
     [Required, Range(0, 2)]

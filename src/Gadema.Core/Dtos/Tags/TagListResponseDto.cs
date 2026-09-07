@@ -33,11 +33,6 @@ public class TagResponseDto
     [MaxLength(128)]
     public string Slug { get; set; } = "";
     
-    [MaxLength(128)]
-    public string? Description { get; set; }
-    
     [MaxLength(36)]
     public string? ColorHex { get; set; }
-    
-    public bool IsActive { get; set; }
 }

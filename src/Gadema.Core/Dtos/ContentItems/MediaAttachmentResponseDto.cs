@@ -3,7 +3,6 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gadema.Core.Dtos.MetaInfos;
 
@@ -23,7 +22,7 @@ public class MediaAttachmentResponseDto
     [MaxLength(4096)]
     public string ContentType { get; set; } = "application/octet-stream";
     
-    [Column("storage_path"), MaxLength(2048)]
+    [MaxLength(2048)]
     public string StoragePath { get; set; } = "";
     
     [Required, Display(Name = "File Size")]
