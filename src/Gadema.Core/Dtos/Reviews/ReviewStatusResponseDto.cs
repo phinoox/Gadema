@@ -3,7 +3,8 @@
 // =============================================================================
 
 using System.ComponentModel.DataAnnotations;
-
+using Gadema.Core.Models;
+using Gadema.Core.Enums;
 namespace Gadema.Core.Dtos.Reviews;
 
 /// <summary>
@@ -33,7 +34,7 @@ public class ReviewStatusResponseDto
     /// <summary>
     /// Review status (0=Pending, 1=Approved, 2=Rejected).
     /// </summary>
-    public int Status { get; set; }
+    public ReviewStatusEnum Status { get; set; }
     
     /// <summary>
     /// ID of the user who reviewed this content.
