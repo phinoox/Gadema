@@ -115,7 +115,8 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
         Assert.True(missing.Count == 0, $"Missing [ModelDependency] attribute on: {string.Join(", ", missing.Select(t => t.Name))}");
     }
 
-    [Fact(Skip = "this test should only be run manually")]
+    //[Fact(Skip = "this test should only be run manually")]
+    [Fact(Timeout = 25000)] 
     public void AutoSeed_AllModels_ShouldSucceedInFKOrder()
     {
         var assembly = typeof(ModelDependencyAttribute).Assembly;
