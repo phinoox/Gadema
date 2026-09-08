@@ -110,16 +110,7 @@ public class Scene
     // Metadata & Tracking
     // ========================================================================
     
-    /// <summary>
-    /// Timestamp when this scene was created.
-    /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-    /// <summary>
-    /// Timestamp when this scene was last modified.
-    /// </summary>
-    public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
-
+   
     /// <summary>
     /// Order index for sorting scenes within an Outline.
     /// </summary>

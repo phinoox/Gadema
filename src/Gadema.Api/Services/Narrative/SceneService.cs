@@ -43,8 +43,8 @@ public class SceneService : CoreService
                 OrderIndex = s.OrderIndex,
                 HasGameLogic = s.HasGameLogic,
                 Status = s.Status,
-                CreatedAt = s.CreatedAt,
-                LastModifiedAt = s.LastModifiedAt
+                CreatedAt = s.MetaInfo.CreatedAt,
+                LastModifiedAt = s.MetaInfo.LastModifiedAt
             })
             .ToListAsync();
 
@@ -78,8 +78,8 @@ public class SceneService : CoreService
             OrderIndex = scene.OrderIndex,
             HasGameLogic = scene.HasGameLogic,
             Status = scene.Status,
-            CreatedAt = scene.CreatedAt,
-            LastModifiedAt = scene.LastModifiedAt
+            CreatedAt = scene.MetaInfo.CreatedAt,
+            LastModifiedAt = scene.MetaInfo.LastModifiedAt
         });
     }
 
@@ -130,8 +130,6 @@ public class SceneService : CoreService
             OrderIndex = createDto.OrderIndex ?? 0,
             HasGameLogic = false,
             Status = ContentStatusEnum.Draft,
-            CreatedAt = DateTime.UtcNow,
-            LastModifiedAt = DateTime.UtcNow
         };
 
         _db.Scenes.Add(scene);
@@ -192,7 +190,7 @@ public class SceneService : CoreService
         if (updateDto.Status.HasValue)
             scene.Status = updateDto.Status.Value;
 
-        scene.LastModifiedAt = DateTime.UtcNow;
+        scene.MetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
@@ -205,8 +203,8 @@ public class SceneService : CoreService
             OrderIndex = scene.OrderIndex,
             HasGameLogic = scene.HasGameLogic,
             Status = scene.Status,
-            CreatedAt = scene.CreatedAt,
-            LastModifiedAt = scene.LastModifiedAt
+            CreatedAt = scene.MetaInfo.CreatedAt,
+            LastModifiedAt = scene.MetaInfo.LastModifiedAt
         });
     }
 

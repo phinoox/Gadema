@@ -9,40 +9,42 @@ namespace Gadema.Core.Enums;
 /// </summary>
 public enum ContentTypeEnum
 {
+     /// <summary>Other</summary>
+    Other = 0,
     /// <summary>Character</summary>
-    Character = 0,
+    Character = 1,
     
     /// <summary>World/Location</summary>
-    World = 1,
+    World = 2,
     
     /// <summary>Mechanic/System</summary>
-    Mechanic = 2,
+    Mechanic = 3,
     
     /// <summary>Plot Point</summary>
-    PlotPoint = 3,
+    PlotPoint = 4,
     
     /// <summary>Quest</summary>
-    Quest = 4,
+    Quest = 5,
     
     /// <summary>Item/Artifact</summary>
-    Item = 5,
+    Item = 6,
     
     /// <summary>Faction</summary>
-    Faction = 6,
+    Faction = 7,
     
     /// <summary>Enemy/Monster</summary>
-    Enemy = 7,
+    Enemy = 8,
     
     /// <summary>Ability/Skill</summary>
-    Ability = 8,
+    Ability = 9,
     
     /// <summary>Spell/Magic</summary>
-    Spell = 9,
+    Spell = 10,
     
     /// <summary>Vehicle/Transport</summary>
-    Vehicle = 10,
+    Vehicle = 11,
     
-    /// <summary>Other</summary>
-    Other = 99,
-    Scene = 12
+   
+    Scene = 12,
+    LoreEntry = 13
 }
