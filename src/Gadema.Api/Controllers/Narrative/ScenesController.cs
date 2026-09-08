@@ -12,7 +12,7 @@ namespace Gadema.Api.Controllers.Narrative;
 /// Controller for scene management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/scenes")]
+[Route("api/v1/projects/{projectId:guid}/scenes")]
 public class ScenesController : ControllerBase
 {
     private readonly SceneService _sceneService;
@@ -30,7 +30,7 @@ public class ScenesController : ControllerBase
         return Ok(await _sceneService.GetScenesAsync(projectId));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetSceneAsync(Guid id)
     {
         return Ok(await _sceneService.GetSceneAsync(id));
@@ -42,13 +42,13 @@ public class ScenesController : ControllerBase
         return Ok(await _sceneService.CreateSceneAsync(projectId, createDto));
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateSceneAsync(Guid id, [FromBody] SceneUpdateDto updateDto)
     {
         return Ok(await _sceneService.UpdateSceneAsync(id, updateDto));
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteSceneAsync(Guid id)
     {
         return Ok(await _sceneService.DeleteSceneAsync(id));

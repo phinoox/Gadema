@@ -1,32 +1,37 @@
-// src/Gadema.Api/Services/Narrative/SceneService.cs
-
+// =============================================================================
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Dtos.Narrative;
 using Gadema.Core.Enums;
-using Gadema.Core.Interfaces;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Narrative;
+using Gadema.Core.Services;
+using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Narrative;
 
-public class SceneService
+/// <summary>
+/// Service for managing Scenes within the narrative domain.
+/// Handles CRUD operations including MetaInfo creation and authorization.
+/// </summary>
+public class SceneService : CoreService
 {
-    private readonly ApplicationDbContext _db;
-    private readonly ILogger<SceneService> _logger;
-    private readonly IUserContext _userContext;
+    public SceneService(GameDbContext db, ILogger<SceneService> logger, IUserContext userContext)
+        : base(db, logger, userContext) { }
 
-    public SceneService(ApplicationDbContext db, ILogger<SceneService> logger, IUserContext userContext)
-    {
-        _db = db;
-        _logger = logger;
-        _userContext = userContext;
-    }
+    // ========================================================================
+    // GET - List all scenes for a project
+    // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<SceneResponseDto>>> GetScenesAsync(Guid projectId)
     {
+        var error = await ValidateProjectAccessAsync<IEnumerable<SceneResponseDto>>(projectId);
+        if (error != null) return error;
+
         var scenes = await _db.Scenes
-            .Where(s => s.ProjectId == projectId)
+            .Include(s => s.MetaInfo)
+            .Where(s => s.MetaInfo.ProjectId == projectId)
             .OrderBy(s => s.OrderIndex)
             .Select(s => new SceneResponseDto
             {
@@ -46,6 +51,10 @@ public class SceneService
         return ApiResponseDto<IEnumerable<SceneResponseDto>>.Success(scenes);
     }
 
+    // ========================================================================
+    // GET - Single scene by ID
+    // ========================================================================
+
     public async Task<ApiResponseDto<SceneResponseDto>> GetSceneAsync(Guid id)
     {
         var scene = await _db.Scenes
@@ -54,6 +63,10 @@ public class SceneService
 
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
+
+        // Authorization: verify user has access to the project
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.MetaInfo.ProjectId);
+        if (error != null) return error;
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
         {
@@ -70,16 +83,21 @@ public class SceneService
         });
     }
 
+    // ========================================================================
+    // POST - Create a new scene
+    // ========================================================================
+
     public async Task<ApiResponseDto<SceneCreateResponseDto>> CreateSceneAsync(Guid projectId, SceneCreateDto createDto)
     {
-        var user = _userContext.CurrentUser;
-        if (user == null)
-            return ApiResponseDto<SceneCreateResponseDto>.Unauthorized("Not authenticated.");
+        // Validate project access (projectId from route matches CreateData.ProjectId)
+        var error = await ValidateProjectAccessAsync<SceneCreateResponseDto>(projectId);
+        if (error != null) return error;
 
-        // Validate project access
-        var project = await _db.Projects.FindAsync(projectId);
-        if (project is null || !project.IsActive)
-            return ApiResponseDto<SceneCreateResponseDto>.NotFound($"Project with ID {projectId} not found.");
+        var user = _userContext.CurrentUser!;
+
+        // Verify ProjectId in body matches route parameter
+        if (createDto.CreateData.ProjectId != projectId)
+            return ApiResponseDto<SceneCreateResponseDto>.BadRequest("Project ID in request body does not match route.");
 
         // Create MetaInfo first
         var metaInfo = new MetaInfo
@@ -87,11 +105,11 @@ public class SceneService
             Id = Guid.NewGuid(),
             ProjectId = projectId,
             ContentType = ContentTypeEnum.Scene,
-            Title = createDto.MetaInfo.Title,
-            Slug = string.IsNullOrWhiteSpace(createDto.MetaInfo.Slug)
-                ? GenerateSlug(createDto.MetaInfo.Title)
-                : createDto.MetaInfo.Slug,
-            ShortDesc = createDto.MetaInfo.ShortDesc,
+            Title = createDto.CreateData.Title,
+            Slug = string.IsNullOrWhiteSpace(createDto.CreateData.Slug)
+                ? GenerateSlug(createDto.CreateData.Title)
+                : createDto.CreateData.Slug,
+            ShortDesc = createDto.CreateData.ShortDesc,
             Status = ContentStatusEnum.Draft,
             ViewMode = ViewModeEnum.PrivateWriting,
             CreatedByUserId = user.Id,
@@ -106,10 +124,10 @@ public class SceneService
         var scene = new Scene
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = metaInfo.Id.Value,
             RawText = string.Empty,
-            StoryOutlineId = Guid.Empty,
-            OrderIndex = createDto.OrderIndex,
+            StoryOutlineId = createDto.StoryOutlineId,
+            OrderIndex = createDto.OrderIndex ?? 0,
             HasGameLogic = false,
             Status = ContentStatusEnum.Draft,
             CreatedAt = DateTime.UtcNow,
@@ -121,18 +139,21 @@ public class SceneService
 
         return ApiResponseDto<SceneCreateResponseDto>.Success(new SceneCreateResponseDto
         {
-            Id = scene.Id,
-            MetaInfoId = metaInfo.Id,
-            ProjectId = projectId
+            Data = new CreateResponseDto
+            {
+                EntityId = scene.Id,
+                MetaInfoId = metaInfo.Id.Value,
+                ProjectId = projectId
+            }
         });
     }
 
+    // ========================================================================
+    // PUT - Partial update of a scene
+    // ========================================================================
+
     public async Task<ApiResponseDto<SceneResponseDto>> UpdateSceneAsync(Guid id, SceneUpdateDto updateDto)
     {
-        var user = _userContext.CurrentUser;
-        if (user == null)
-            return ApiResponseDto<SceneResponseDto>.Unauthorized("Not authenticated.");
-
         var scene = await _db.Scenes
             .Include(s => s.MetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
@@ -140,13 +161,21 @@ public class SceneService
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
-        // Apply only non-null fields
-        if (!string.IsNullOrWhiteSpace(updateDto.Title))
+        // Authorization: verify user has access to the project
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.MetaInfo.ProjectId);
+        if (error != null) return error;
+
+        // Apply only non-null fields (partial update)
+        if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo?.Title))
         {
-            scene.MetaInfo.Title = updateDto.Title;
-            if (!string.IsNullOrWhiteSpace(updateDto.Slug))
-                scene.MetaInfo.Slug = updateDto.Slug;
+            scene.MetaInfo.Title = updateDto.MetaInfo.Title;
         }
+
+        if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo?.Slug))
+                scene.MetaInfo.Slug = updateDto.MetaInfo.Slug;
+
+        if (updateDto.MetaInfo?.ShortDesc != null)
+            scene.MetaInfo.ShortDesc = updateDto.MetaInfo.ShortDesc;
 
         if (updateDto.RawText != null)
             scene.RawText = updateDto.RawText;
@@ -154,17 +183,16 @@ public class SceneService
         if (updateDto.StoryOutlineId.HasValue)
             scene.StoryOutlineId = updateDto.StoryOutlineId.Value;
 
-        if (updateDto.OrderIndex != null)
+        if (updateDto.OrderIndex.HasValue)
             scene.OrderIndex = updateDto.OrderIndex.Value;
 
-        if (updateDto.HasGameLogic != null)
+        if (updateDto.HasGameLogic.HasValue)
             scene.HasGameLogic = updateDto.HasGameLogic.Value;
 
-        if (updateDto.Status != null)
+        if (updateDto.Status.HasValue)
             scene.Status = updateDto.Status.Value;
 
         scene.LastModifiedAt = DateTime.UtcNow;
-
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
@@ -182,12 +210,12 @@ public class SceneService
         });
     }
 
+    // ========================================================================
+    // DELETE - Remove a scene
+    // ========================================================================
+
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSceneAsync(Guid id)
     {
-        var user = _userContext.CurrentUser;
-        if (user == null)
-            return ApiResponseDto<DeleteResponseDto>.Unauthorized("Not authenticated.");
-
         var scene = await _db.Scenes
             .Include(s => s.MetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
@@ -195,7 +223,11 @@ public class SceneService
         if (scene is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene with ID {id} not found.");
 
-        // Delete MetaInfo first (cascade), then Scene
+        // Authorization: verify user has access to the project
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.MetaInfo.ProjectId);
+        if (error != null) return error;
+
+        // Delete MetaInfo first (FK dependency), then Scene
         _db.MetaInfos.Remove(scene.MetaInfo);
         _db.Scenes.Remove(scene);
         await _db.SaveChangesAsync();
@@ -203,19 +235,7 @@ public class SceneService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = scene.ProjectId
+            ProjectId = scene.MetaInfo.ProjectId
         });
-    }
-
-    private static string GenerateSlug(string title)
-    {
-        var slug = title.ToLowerInvariant()
-            .Replace(" ", "-")
-            .Replace("_", "-");
-        
-        foreach (var c in new[] { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')' })
-            slug = slug.Replace(c.ToString(), string.Empty);
-
-        return slug;
     }
 }

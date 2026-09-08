@@ -4,43 +4,39 @@ using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Narrative;
 
-/// <summary>
-/// DTO for creating a scene.
-/// </summary>
+
 public class SceneCreateDto
 {
-    /// <summary>
-    /// ID of the content item (MetaInfo) this scene belongs to.
-    /// </summary>
-    [Required]
-    public Guid MetaInfoId { get; set; }
-
-    /// <summary>
-    /// Raw Markdown text of the scene.
-    /// </summary>
-    [Required]
-    public string RawText { get; set; } = "";
-
+    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    
     /// <summary>
     /// ID of the StoryOutline this scene belongs to.
     /// </summary>
-    [Required]
-    public Guid StoryOutlineId { get; set; }
+    [Required] public Guid StoryOutlineId { get; set; }
 
     /// <summary>
-    /// Order index for sorting scenes within an Outline.
+    /// Order index for sorting within the outline. Defaults to last if not provided.
     /// </summary>
-    public int OrderIndex { get; set; } = 0;
+    public int? OrderIndex { get; set; }
+}
 
-    /// <summary>
-    /// Indicates if this scene has been linked to game logic.
-    /// </summary>
-    public bool HasGameLogic { get; set; } = false;
+public class SceneCreateResponseDto
+{
+    public CreateResponseDto Data { get; set; } = new();
+}
 
-    /// <summary>
-    /// Status of the scene (Draft, InProgress, Finalized, Archived).
-    /// </summary>
-    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
+/// <summary>
+/// DTO for creating a scene.
+/// </summary>
+public class SceneUpdateDto : UpdateRequestDto
+{
+    [MaxLength(4096)] public string? RawText { get; set; }
+    public Guid? StoryOutlineId { get; set; }
+    public int? OrderIndex { get; set; }
+    public bool? HasGameLogic { get; set; }
+    public ContentStatusEnum? Status { get; set; }
+    
+    public MetaInfoUpdateData? MetaInfo {get;set;}
 }
 
 /// <summary>

@@ -27,6 +27,11 @@ public class GameDbContext : DbContext
     /// Team entity set.
     /// </summary>
     public DbSet<Team> Teams { get; set; }
+
+    /// <summary>
+    /// ProjectTeam entity set.
+    /// </summary>
+    public DbSet<ProjectTeam> ProjectTeams { get; set; }
     
     /// <summary>
     /// TeamMember entity set.

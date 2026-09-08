@@ -43,5 +43,6 @@ public enum ContentTypeEnum
     Vehicle = 10,
     
     /// <summary>Other</summary>
-    Other = 11
+    Other = 99,
+    Scene = 12
 }
