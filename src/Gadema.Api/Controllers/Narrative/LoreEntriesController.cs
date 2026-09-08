@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Narrative;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,13 +10,13 @@ namespace Gadema.Api.Controllers.Narrative;
 /// Controller for lore entry management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/lore-entries")]
+[Route("api/v1/projects/{projectId:guid}/lore-entries")]
 public class LoreEntriesController : ControllerBase
 {
-    private readonly ILoreEntryService _loreEntryService;
+    private readonly LoreEntryService _loreEntryService;
     private readonly ILogger<LoreEntriesController> _logger;
 
-    public LoreEntriesController(ILoreEntryService loreEntryService, ILogger<LoreEntriesController> logger)
+    public LoreEntriesController(LoreEntryService loreEntryService, ILogger<LoreEntriesController> logger)
     {
         _loreEntryService = loreEntryService;
         _logger = logger;
@@ -27,7 +28,7 @@ public class LoreEntriesController : ControllerBase
         return Ok(await _loreEntryService.GetLoreEntriesAsync(projectId));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetLoreEntryAsync(Guid id)
     {
         return Ok(await _loreEntryService.GetLoreEntryAsync(id));
@@ -39,13 +40,13 @@ public class LoreEntriesController : ControllerBase
         return Ok(await _loreEntryService.CreateLoreEntryAsync(projectId, createDto));
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateLoreEntryAsync(Guid id, [FromBody] LoreEntryUpdateDto updateDto)
     {
         return Ok(await _loreEntryService.UpdateLoreEntryAsync(id, updateDto));
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteLoreEntryAsync(Guid id)
     {
         return Ok(await _loreEntryService.DeleteLoreEntryAsync(id));

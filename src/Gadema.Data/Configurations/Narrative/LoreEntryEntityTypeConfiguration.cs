@@ -22,19 +22,20 @@ public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEnt
     {
         // Primary key
         builder.HasKey(e => e.Id);
-        
+
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectId);
-        builder.HasIndex(e => e.Slug).IsUnique();
         builder.HasIndex(e => e.LoreType);
-        
-        // Navigation property: Project (Cascade delete)
-        builder.HasOne(le => le.Project)
-            .WithMany()
-            .HasForeignKey(le => le.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete lore when project deleted
-        
-        // Properties configuration
-        builder.Property(e => e.Title).IsRequired().HasMaxLength(128);
+        builder.HasIndex(e => e.MetaInfoId);
+
+        // Navigation property: MetaInfo (Cascade delete)
+        builder.HasOne(le => le.MetaInfo)
+                .WithMany()
+                .HasForeignKey(le => le.MetaInfoId)
+                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade through MetaInfo (we delete manually in service)
+
+        builder.Property(e => e.RawText).HasMaxLength(4096);
+        builder.Property(e => e.LoreType).IsRequired();
+        builder.Property(e => e.Published).HasDefaultValue(false);
+
     }
 }
