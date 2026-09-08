@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Narrative;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,13 +10,13 @@ namespace Gadema.Api.Controllers.Narrative;
 /// Controller for story outline management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/story-outlines")]
+[Route("api/v1/projects/{projectId:guid}/story-outlines")]
 public class StoryOutlinesController : ControllerBase
 {
-    private readonly IStoryOutlineService _storyOutlineService;
+    private readonly StoryOutlineService _storyOutlineService;
     private readonly ILogger<StoryOutlinesController> _logger;
 
-    public StoryOutlinesController(IStoryOutlineService storyOutlineService, ILogger<StoryOutlinesController> logger)
+    public StoryOutlinesController(StoryOutlineService storyOutlineService, ILogger<StoryOutlinesController> logger)
     {
         _storyOutlineService = storyOutlineService;
         _logger = logger;
@@ -27,7 +28,7 @@ public class StoryOutlinesController : ControllerBase
         return Ok(await _storyOutlineService.GetStoryOutlinesAsync(projectId));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetStoryOutlineAsync(Guid id)
     {
         return Ok(await _storyOutlineService.GetStoryOutlineAsync(id));
@@ -39,13 +40,13 @@ public class StoryOutlinesController : ControllerBase
         return Ok(await _storyOutlineService.CreateStoryOutlineAsync(projectId, createDto));
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateStoryOutlineAsync(Guid id, [FromBody] StoryOutlineUpdateDto updateDto)
     {
         return Ok(await _storyOutlineService.UpdateStoryOutlineAsync(id, updateDto));
     }
 
-    [HttpDelete("{id}"]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteStoryOutlineAsync(Guid id)
     {
         return Ok(await _storyOutlineService.DeleteStoryOutlineAsync(id));

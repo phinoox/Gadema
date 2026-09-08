@@ -24,15 +24,9 @@ public class StoryOutline
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    /// <summary>
-    /// ID of the project this outline belongs to (direct link, no intermediate Sequence).
-    /// </summary>
-    [Required]
-    public Guid ProjectId { get; set; }
-
-    // Navigation property: Project
-    [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; } = null!;
+    [Required] public Guid MetaInfoId { get; set; }
+    [ForeignKey("MetaInfoId")]
+    public virtual MetaInfo MetaInfo { get; set; } = null!;
 
     /// <summary>
     /// RawText - The "Prototype" document (Markdown).
@@ -68,17 +62,7 @@ public class StoryOutline
     /// </summary>
     [EnumDataType(typeof(OutlineStatusEnum)), Required, Display(Name = "Outline Status")]
     public OutlineStatusEnum OutlineStatus { get; set; } = OutlineStatusEnum.DraftOutline;
-
-    /// <summary>
-    /// Timestamp when this outline was created.
-    /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-    /// <summary>
-    /// Timestamp when this outline was last modified.
-    /// </summary>
-    public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
-
+   
     // ========================================================================
     // Navigation Properties
     // ========================================================================
