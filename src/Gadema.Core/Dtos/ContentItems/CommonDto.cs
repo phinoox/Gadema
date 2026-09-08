@@ -9,8 +9,8 @@ namespace Gadema.Core.Dtos;
 /// </summary>
 public class MetaInfoCreateData
 {
-   // [Required]
- //   public Guid ProjectId { get; set; }
+    [Required]
+    public Guid ProjectId { get; set; }
 
     [Required]
     public string Title { get; set; } = "";
