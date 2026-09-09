@@ -122,9 +122,5 @@ public class Scene
     /// </summary>
     public bool HasGameLogic { get; set; } = false;
 
-    /// <summary>
-    /// Status of the scene (Draft, InProgress, Finalized, Archived).
-    /// </summary>
-    [EnumDataType(typeof(ContentStatusEnum))]
-    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
+   
 }

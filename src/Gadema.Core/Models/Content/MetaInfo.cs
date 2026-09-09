@@ -56,16 +56,11 @@ public class MetaInfo
     [MaxLength(4096)]
     public string? ShortDesc { get; set; }
 
-    /// <summary>
-    /// Full description (Markdown/HTML).
-    /// </summary>
-    [MaxLength(4096)]
-    public string? Description { get; set; }
-
+   
     /// <summary>
     /// Indicates if the content item is published.
     /// </summary>
-    public bool Published { get; set; } = false;
+    public bool IsPublic { get; set; } = false;
 
     /// <summary>
     /// Current status (Draft, InProgress, Published, Archived).
