@@ -46,5 +46,6 @@ public enum ContentTypeEnum
     
    
     Scene = 12,
-    LoreEntry = 13
+    LoreEntry = 13,
+    StoryOutline = 14
 }

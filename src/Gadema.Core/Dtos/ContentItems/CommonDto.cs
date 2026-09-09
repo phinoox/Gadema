@@ -1,5 +1,6 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos;
 
@@ -10,9 +11,6 @@ namespace Gadema.Core.Dtos;
 public class MetaInfoCreateData
 {
     [Required]
-    public Guid ProjectId { get; set; }
-
-    [Required]
     public string Title { get; set; } = "";
 
     [MaxLength(128)]
@@ -20,14 +18,31 @@ public class MetaInfoCreateData
 
     [MaxLength(4096)]
     public string? ShortDesc { get; set; }
+
+     /// <summary>
+    /// Workflow status of the content (Draft, InProgress, Published, Archived).
+    /// </summary>
+    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
+
+    /// <summary>
+    /// Indicates if this content is visible to users who are not project members.
+    /// </summary>
+    public bool IsPublic { get; set; } = false;
 }
 
+/// <summary>
+/// Unified response for create operations.
+/// Contains only the identifiers needed to navigate to the entity's edit UI.
+/// Client already knows Status + IsPublic from the request body.
+/// </summary>
 public class CreateResponseDto
 {
     [Required, Display(Name = "Entity ID")]
     public Guid EntityId { get; set; }
+    
     [Required, Display(Name = "MetaInfo ID")]
     public Guid MetaInfoId { get; set; }
+    
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
 }
@@ -37,6 +52,14 @@ public class MetaInfoUpdateData
     [MaxLength(128)] public string? Title { get; set; }
     [MaxLength(128)] public string? Slug { get; set; }
     [MaxLength(4096)] public string? ShortDesc { get; set; }
+
+     /// <summary>
+    /// Workflow status of the content (Draft, InProgress, Published, Archived).
+    /// </summary>
+    public ContentStatusEnum? Status { get; set; } = ContentStatusEnum.Draft;
+
+
+    public bool? IsPublic { get; set; } = false;
 }
 
 /// <summary>
@@ -63,4 +86,20 @@ public abstract class UpdateRequestDto
     /// </summary>
     [Required, Display(Name = "Entity ID")]
     public Guid EntityId { get; set; }
+}
+
+public abstract class MetaInfoResponseBaseDto
+{
+    public Guid Id { get; set; }
+    public Guid MetaInfoId { get; set; }
+    public string? MetaInfoTitle { get; set; }
+    public bool IsPublic { get; set; }  // ✅ Visibility of MetaInfo wrapper
+    public DateTime CreatedAt { get; set; }
+    public DateTime LastModifiedAt { get; set; }
+
+     /// <summary>
+    /// Workflow status of the content (Draft, InProgress, Published, Archived).
+    /// </summary>
+    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
+
 }

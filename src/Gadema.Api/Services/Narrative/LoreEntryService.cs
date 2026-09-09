@@ -36,11 +36,12 @@ public class LoreEntryService : CoreService
                 Id = le.Id,
                 MetaInfoId = le.MetaInfoId,
                 MetaInfoTitle = le.MetaInfo.Title,
-                LoreType = (int)le.LoreType,
-                RawText = le.RawText,
-                Published = le.Published,
+                Status = le.MetaInfo.Status,
+                IsPublic = le.MetaInfo.IsPublic,
                 CreatedAt = le.MetaInfo.CreatedAt,
-                LastModifiedAt = le.MetaInfo.LastModifiedAt
+                LastModifiedAt = le.MetaInfo.LastModifiedAt,
+                LoreType = (int)le.LoreType,
+                RawText = le.RawText
             })
             .ToListAsync();
 
@@ -69,11 +70,12 @@ public class LoreEntryService : CoreService
             Id = loreEntry.Id,
             MetaInfoId = loreEntry.MetaInfoId,
             MetaInfoTitle = loreEntry.MetaInfo.Title,
-            LoreType = (int)loreEntry.LoreType,
-            RawText = loreEntry.RawText,
-            Published = loreEntry.Published,
+            Status = loreEntry.MetaInfo.Status,
+            IsPublic = loreEntry.MetaInfo.IsPublic,
             CreatedAt = loreEntry.MetaInfo.CreatedAt,
-            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt
+            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt,
+            LoreType = (int)loreEntry.LoreType,
+            RawText = loreEntry.RawText
         });
     }
 
@@ -81,35 +83,15 @@ public class LoreEntryService : CoreService
     // POST - Create a new lore entry
     // ========================================================================
 
-    public async Task<ApiResponseDto<LoreEntryCreateResponseDto>> CreateLoreEntryAsync(Guid projectId, LoreEntryCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateLoreEntryAsync(Guid projectId, LoreEntryCreateDto createDto)
     {
         // Validate project access
-        var error = await ValidateProjectAccessAsync<LoreEntryCreateResponseDto>(projectId);
+        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var user = _userContext.CurrentUser!;
-
-        // Verify ProjectId in body matches route parameter
-        if (createDto.CreateData.ProjectId != projectId)
-            return ApiResponseDto<LoreEntryCreateResponseDto>.BadRequest("Project ID in request body does not match route.");
-
-        // Create MetaInfo first
-        var metaInfo = new MetaInfo
-        {
-            Id = Guid.NewGuid(),
-            ProjectId = projectId,
-            ContentType = ContentTypeEnum.LoreEntry,
-            Title = createDto.CreateData.Title,
-            Slug = string.IsNullOrWhiteSpace(createDto.CreateData.Slug)
-                ? GenerateSlug(createDto.CreateData.Title)
-                : createDto.CreateData.Slug,
-            ShortDesc = createDto.CreateData.ShortDesc,
-            Status = ContentStatusEnum.Draft,
-            ViewMode = ViewModeEnum.PrivateWriting,
-            CreatedByUserId = user.Id,
-            CreatedAt = DateTime.UtcNow,
-            LastModifiedAt = DateTime.UtcNow
-        };
+        
+        // Create MetaInfo using helper
+        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.LoreEntry, createDto.CreateData);
 
         _db.MetaInfos.Add(metaInfo);
         await _db.SaveChangesAsync();
@@ -121,20 +103,16 @@ public class LoreEntryService : CoreService
             MetaInfoId = metaInfo.Id.Value,
             RawText = string.Empty,
             LoreType = createDto.LoreType,
-            Published = false,
         };
 
         _db.LoreEntries.Add(loreEntry);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<LoreEntryCreateResponseDto>.Success(new LoreEntryCreateResponseDto
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
-            Data = new CreateResponseDto
-            {
-                EntityId = loreEntry.Id,
-                MetaInfoId = metaInfo.Id.Value,
-                ProjectId = projectId
-            }
+            EntityId = loreEntry.Id,
+            MetaInfoId = metaInfo.Id.Value,
+            ProjectId = projectId
         });
     }
 
@@ -155,24 +133,12 @@ public class LoreEntryService : CoreService
         var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply only non-null fields (partial update)
-        if (updateDto.MetaInfo != null)
-        {
-            if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo.Title))
-                loreEntry.MetaInfo.Title = updateDto.MetaInfo.Title;
-
-            if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo.Slug))
-                loreEntry.MetaInfo.Slug = updateDto.MetaInfo.Slug;
-
-            if (updateDto.MetaInfo.ShortDesc != null)
-                loreEntry.MetaInfo.ShortDesc = updateDto.MetaInfo.ShortDesc;
-        }
+        // Apply MetaInfo updates via helper (replaces manual if-blocks)
+        ApplyMetaInfoUpdates(loreEntry.MetaInfo, updateDto.MetaInfo);
 
         if (updateDto.RawText != null)
             loreEntry.RawText = updateDto.RawText;
 
-        if (updateDto.Published.HasValue)
-            loreEntry.Published = updateDto.Published.Value;
 
         loreEntry.MetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
@@ -182,11 +148,12 @@ public class LoreEntryService : CoreService
             Id = loreEntry.Id,
             MetaInfoId = loreEntry.MetaInfoId,
             MetaInfoTitle = loreEntry.MetaInfo.Title,
-            LoreType = (int)loreEntry.LoreType,
-            RawText = loreEntry.RawText,
-            Published = loreEntry.Published,
+            Status = loreEntry.MetaInfo.Status,
+            IsPublic = loreEntry.MetaInfo.IsPublic,
             CreatedAt = loreEntry.MetaInfo.CreatedAt,
-            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt
+            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt,
+            LoreType = (int)loreEntry.LoreType,
+            RawText = loreEntry.RawText
         });
     }
 

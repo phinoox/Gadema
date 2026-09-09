@@ -11,31 +11,20 @@ public class LoreEntryCreateDto
     public LoreTypeEnum LoreType { get; set; }
 }
 
-public class LoreEntryCreateResponseDto
-{
-    public CreateResponseDto Data { get; set; } = new();
-}
-
-// UpdateDto — inherits UpdateRequestDto, nullable fields + nested MetaInfo
+// UpdateDto — inherits UpdateRequestDto, nullable fields + nested MetaInfoUpdateData
 public class LoreEntryUpdateDto : UpdateRequestDto
 {
     public MetaInfoUpdateData? MetaInfo { get; set; }
     
     public string? RawText { get; set; }
-    public bool? Published { get; set; }
+    public bool? IsPublic { get; set; }
 }
 
-// ResponseDto — includes MetaInfoId, MetaInfoTitle (denormalized); no direct Title/Slug/ProjectId
-public class LoreEntryResponseDto
+// ResponseDto — inherits MetaInfoResponseBaseDto (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt)
+public class LoreEntryResponseDto : MetaInfoResponseBaseDto
 {
-    public Guid Id { get; set; }
-    public Guid MetaInfoId { get; set; }
-    public string? MetaInfoTitle { get; set; }
     public int LoreType { get; set; }
     public string? RawText { get; set; }
-    public bool Published { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime LastModifiedAt { get; set; }
 }
 
 // ListResponseDto — standard wrapper (already correct)

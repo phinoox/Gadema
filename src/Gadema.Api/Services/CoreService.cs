@@ -1,5 +1,8 @@
 // =============================================================================
 using Gadema.Core.Dtos;
+using Gadema.Core.Enums;
+
+using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +14,10 @@ namespace Gadema.Api.Services;
 /// - Database context access
 /// - User authentication via IUserContext
 /// - Project access validation (ownership + team membership)
+/// - Project ID consistency validation (route vs body)
 /// - Slug generation utility
+/// - MetaInfo creation helper
+/// - MetaInfo update application helper
 /// </summary>
 public abstract class CoreService
 {
@@ -25,6 +31,10 @@ public abstract class CoreService
         _logger = logger;
         _userContext = userContext;
     }
+
+    // ========================================================================
+    // AUTHORIZATION HELPERS
+    // ========================================================================
 
     /// <summary>
     /// Validates that the current user has access to the specified project.
@@ -61,6 +71,83 @@ public abstract class CoreService
 
         return null; // ✅ Team member has access
     }
+
+    /// <summary>
+    /// Validates that the ProjectId in the request body matches the route parameter.
+    /// Ensures consistency between client intent and server routing.
+    /// Returns null if IDs match, or a BadRequest error if they don't.
+    /// </summary>
+    protected Task<ApiResponseDto<T>?> ValidateProjectIdMatch<T>(Guid routeId, Guid bodyId) where T : class
+    {
+        if (routeId != bodyId)
+            return Task.FromResult(ApiResponseDto<T>.BadRequest("Project ID in request body does not match route."));
+        return Task.FromResult<ApiResponseDto<T>?>(null);
+    }
+
+    // ========================================================================
+    // METAINFO HELPERS
+    // ========================================================================
+
+    /// <summary>
+    /// Creates a new MetaInfo entity from creation data.
+    /// Sets default ContentType, ViewMode, and timestamps.
+    /// Generates a slug if none provided in the create data.
+    /// </summary>
+    protected MetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, MetaInfoCreateData createData)
+    {
+        var user = _userContext.CurrentUser;
+        if (user == null)
+            throw new UnauthorizedAccessException("Not authenticated.");
+
+        return new MetaInfo
+        {
+            Id = Guid.NewGuid(),
+            ProjectId = projectId,
+            ContentType = contentType,
+            Title = createData.Title,
+            Slug = string.IsNullOrWhiteSpace(createData.Slug)
+                ? GenerateSlug(createData.Title)
+                : createData.Slug,
+            ShortDesc = createData.ShortDesc,
+            Status = createData.Status,
+            IsPublic = createData.IsPublic,
+            ViewMode = ViewModeEnum.PrivateWriting,
+            CreatedByUserId = user.Id,
+            CreatedAt = DateTime.UtcNow,
+            LastModifiedAt = DateTime.UtcNow
+        };
+    }
+
+    /// <summary>
+    /// Applies MetaInfoUpdateData fields to an existing MetaInfo entity.
+    /// Only non-null/non-empty fields are applied (partial update pattern).
+    /// Returns true if any field was actually updated.
+    /// </summary>
+    protected bool ApplyMetaInfoUpdates(MetaInfo metaInfo, MetaInfoUpdateData? updateData)
+    {
+        if (updateData == null) return false;
+
+        if (!string.IsNullOrWhiteSpace(updateData.Title))
+            metaInfo.Title = updateData.Title;
+
+        if (!string.IsNullOrWhiteSpace(updateData.Slug))
+            metaInfo.Slug = updateData.Slug;
+
+        if (updateData.ShortDesc != null)
+            metaInfo.ShortDesc = updateData.ShortDesc;
+
+        if (updateData.Status.HasValue)
+            metaInfo.Status = updateData.Status.Value;
+
+        if (updateData.IsPublic.HasValue)
+            metaInfo.IsPublic = updateData.IsPublic.Value;
+
+        return true;
+    }
+
+    // ========================================================================
+    // UTILITY HELPERS
+    // ========================================================================
 
     /// <summary>
     /// Generates a URL-friendly slug from a title string.

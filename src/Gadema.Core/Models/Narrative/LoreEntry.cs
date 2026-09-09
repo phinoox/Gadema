@@ -40,9 +40,5 @@ public class LoreEntry
     [MaxLength(4096)]
     public string? RawText { get; set; }
     
-    /// <summary>
-    /// Indicates if the lore entry is published.
-    /// </summary>
-    public bool Published { get; set; } = false;
-
+   
 }

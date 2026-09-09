@@ -16,11 +16,6 @@ public class StoryOutlineCreateDto
     public OutlineStatusEnum? OutlineStatus { get; set; }
 }
 
-public class StoryOutlineCreateResponseDto
-{
-    public CreateResponseDto Data { get; set; } = new();
-}
-
 // UpdateDto — inherits UpdateRequestDto, all fields nullable + nested MetaInfoUpdateData
 public class StoryOutlineUpdateDto : UpdateRequestDto
 {
@@ -33,19 +28,14 @@ public class StoryOutlineUpdateDto : UpdateRequestDto
     public OutlineStatusEnum? OutlineStatus { get; set; }
 }
 
-// ResponseDto — includes MetaInfoId, MetaInfoTitle; no direct ProjectId
-public class StoryOutlineResponseDto
+// ResponseDto — inherits MetaInfoResponseBaseDto (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt)
+public class StoryOutlineResponseDto : MetaInfoResponseBaseDto
 {
-    public Guid Id { get; set; }
-    public Guid MetaInfoId { get; set; }
-    public string? MetaInfoTitle { get; set; }
     public string RawText { get; set; } = "";
     public string? Summary { get; set; }
     public string? CharacterSnapshot { get; set; }
     public string? ThemeStatement { get; set; }
     public OutlineStatusEnum OutlineStatus { get; set; }
-    public DateTime CreatedAt { get; set; }   // from MetaInfo
-    public DateTime LastModifiedAt { get; set; }  // from MetaInfo
 }
 
 // ListResponseDto — already correct (standard wrapper)

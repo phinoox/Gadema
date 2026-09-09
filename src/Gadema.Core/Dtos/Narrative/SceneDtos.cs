@@ -20,11 +20,6 @@ public class SceneCreateDto
     public int? OrderIndex { get; set; }
 }
 
-public class SceneCreateResponseDto
-{
-    public CreateResponseDto Data { get; set; } = new();
-}
-
 /// <summary>
 /// DTO for creating a scene.
 /// </summary>
@@ -34,7 +29,6 @@ public class SceneUpdateDto : UpdateRequestDto
     public Guid? StoryOutlineId { get; set; }
     public int? OrderIndex { get; set; }
     public bool? HasGameLogic { get; set; }
-    public ContentStatusEnum? Status { get; set; }
     
     public MetaInfoUpdateData? MetaInfo {get;set;}
 }
@@ -42,18 +36,12 @@ public class SceneUpdateDto : UpdateRequestDto
 /// <summary>
 /// Response DTO for a scene.
 /// </summary>
-public class SceneResponseDto
+public class SceneResponseDto : MetaInfoResponseBaseDto
 {
-    public Guid Id { get; set; }
-    public Guid MetaInfoId { get; set; }
-    public string? MetaInfoTitle { get; set; }
     public string RawText { get; set; } = "";
     public Guid StoryOutlineId { get; set; }
     public int OrderIndex { get; set; }
     public bool HasGameLogic { get; set; }
-    public ContentStatusEnum Status { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime LastModifiedAt { get; set; }
 }
 
 /// <summary>

@@ -42,9 +42,9 @@ public class SceneService : CoreService
                 StoryOutlineId = s.StoryOutlineId,
                 OrderIndex = s.OrderIndex,
                 HasGameLogic = s.HasGameLogic,
-                Status = s.Status,
+                Status = s.MetaInfo.Status,
                 CreatedAt = s.MetaInfo.CreatedAt,
-                LastModifiedAt = s.MetaInfo.LastModifiedAt
+                LastModifiedAt = s.MetaInfo.LastModifiedAt,
             })
             .ToListAsync();
 
@@ -77,7 +77,7 @@ public class SceneService : CoreService
             StoryOutlineId = scene.StoryOutlineId,
             OrderIndex = scene.OrderIndex,
             HasGameLogic = scene.HasGameLogic,
-            Status = scene.Status,
+            Status = scene.MetaInfo.Status,
             CreatedAt = scene.MetaInfo.CreatedAt,
             LastModifiedAt = scene.MetaInfo.LastModifiedAt
         });
@@ -87,35 +87,14 @@ public class SceneService : CoreService
     // POST - Create a new scene
     // ========================================================================
 
-    public async Task<ApiResponseDto<SceneCreateResponseDto>> CreateSceneAsync(Guid projectId, SceneCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateSceneAsync(Guid projectId, SceneCreateDto createDto)
     {
         // Validate project access (projectId from route matches CreateData.ProjectId)
-        var error = await ValidateProjectAccessAsync<SceneCreateResponseDto>(projectId);
+        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
         var user = _userContext.CurrentUser!;
-
-        // Verify ProjectId in body matches route parameter
-        if (createDto.CreateData.ProjectId != projectId)
-            return ApiResponseDto<SceneCreateResponseDto>.BadRequest("Project ID in request body does not match route.");
-
-        // Create MetaInfo first
-        var metaInfo = new MetaInfo
-        {
-            Id = Guid.NewGuid(),
-            ProjectId = projectId,
-            ContentType = ContentTypeEnum.Scene,
-            Title = createDto.CreateData.Title,
-            Slug = string.IsNullOrWhiteSpace(createDto.CreateData.Slug)
-                ? GenerateSlug(createDto.CreateData.Title)
-                : createDto.CreateData.Slug,
-            ShortDesc = createDto.CreateData.ShortDesc,
-            Status = ContentStatusEnum.Draft,
-            ViewMode = ViewModeEnum.PrivateWriting,
-            CreatedByUserId = user.Id,
-            CreatedAt = DateTime.UtcNow,
-            LastModifiedAt = DateTime.UtcNow
-        };
+        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
 
         _db.MetaInfos.Add(metaInfo);
         await _db.SaveChangesAsync();
@@ -129,20 +108,19 @@ public class SceneService : CoreService
             StoryOutlineId = createDto.StoryOutlineId,
             OrderIndex = createDto.OrderIndex ?? 0,
             HasGameLogic = false,
-            Status = ContentStatusEnum.Draft,
         };
 
         _db.Scenes.Add(scene);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<SceneCreateResponseDto>.Success(new SceneCreateResponseDto
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
-            Data = new CreateResponseDto
-            {
+            
+            
                 EntityId = scene.Id,
                 MetaInfoId = metaInfo.Id.Value,
                 ProjectId = projectId
-            }
+            
         });
     }
 
@@ -163,17 +141,6 @@ public class SceneService : CoreService
         var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply only non-null fields (partial update)
-        if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo?.Title))
-        {
-            scene.MetaInfo.Title = updateDto.MetaInfo.Title;
-        }
-
-        if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo?.Slug))
-                scene.MetaInfo.Slug = updateDto.MetaInfo.Slug;
-
-        if (updateDto.MetaInfo?.ShortDesc != null)
-            scene.MetaInfo.ShortDesc = updateDto.MetaInfo.ShortDesc;
 
         if (updateDto.RawText != null)
             scene.RawText = updateDto.RawText;
@@ -187,8 +154,8 @@ public class SceneService : CoreService
         if (updateDto.HasGameLogic.HasValue)
             scene.HasGameLogic = updateDto.HasGameLogic.Value;
 
-        if (updateDto.Status.HasValue)
-            scene.Status = updateDto.Status.Value;
+        ApplyMetaInfoUpdates(scene.MetaInfo, updateDto.MetaInfo);
+        
 
         scene.MetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
@@ -202,7 +169,7 @@ public class SceneService : CoreService
             StoryOutlineId = scene.StoryOutlineId,
             OrderIndex = scene.OrderIndex,
             HasGameLogic = scene.HasGameLogic,
-            Status = scene.Status,
+            Status = scene.MetaInfo.Status,
             CreatedAt = scene.MetaInfo.CreatedAt,
             LastModifiedAt = scene.MetaInfo.LastModifiedAt
         });

@@ -24,7 +24,7 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
         builder.HasIndex(e => e.Slug).IsUnique();
         builder.HasIndex(e => e.ContentType);
         builder.HasIndex(e => e.Status);
-        builder.HasIndex(e => e.Published);
+        builder.HasIndex(e => e.IsPublic);
         
         // Navigation property: Project (Cascade delete)
         builder.HasOne(ci => ci.Project)

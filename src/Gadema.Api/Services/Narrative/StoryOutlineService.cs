@@ -36,13 +36,15 @@ public class StoryOutlineService : CoreService
                 Id = so.Id,
                 MetaInfoId = so.MetaInfoId,
                 MetaInfoTitle = so.MetaInfo.Title,
+                Status = so.MetaInfo.Status,
+                IsPublic = so.MetaInfo.IsPublic,
+                CreatedAt = so.MetaInfo.CreatedAt,
+                LastModifiedAt = so.MetaInfo.LastModifiedAt,
                 RawText = so.RawText,
                 Summary = so.Summary,
                 CharacterSnapshot = so.CharacterSnapshot,
                 ThemeStatement = so.ThemeStatement,
-                OutlineStatus = so.OutlineStatus,
-                CreatedAt = so.MetaInfo.CreatedAt,
-                LastModifiedAt = so.MetaInfo.LastModifiedAt
+                OutlineStatus = so.OutlineStatus
             })
             .ToListAsync();
 
@@ -71,13 +73,15 @@ public class StoryOutlineService : CoreService
             Id = outline.Id,
             MetaInfoId = outline.MetaInfoId,
             MetaInfoTitle = outline.MetaInfo.Title,
+            Status = outline.MetaInfo.Status,
+            IsPublic = outline.MetaInfo.IsPublic,
+            CreatedAt = outline.MetaInfo.CreatedAt,
+            LastModifiedAt = outline.MetaInfo.LastModifiedAt,
             RawText = outline.RawText,
             Summary = outline.Summary,
             CharacterSnapshot = outline.CharacterSnapshot,
             ThemeStatement = outline.ThemeStatement,
-            OutlineStatus = outline.OutlineStatus,
-            CreatedAt = outline.MetaInfo.CreatedAt,
-            LastModifiedAt = outline.MetaInfo.LastModifiedAt
+            OutlineStatus = outline.OutlineStatus
         });
     }
 
@@ -85,35 +89,14 @@ public class StoryOutlineService : CoreService
     // POST - Create a new story outline
     // ========================================================================
 
-    public async Task<ApiResponseDto<StoryOutlineCreateResponseDto>> CreateStoryOutlineAsync(Guid projectId, StoryOutlineCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryOutlineAsync(Guid projectId, StoryOutlineCreateDto createDto)
     {
         // Validate project access
-        var error = await ValidateProjectAccessAsync<StoryOutlineCreateResponseDto>(projectId);
+        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var user = _userContext.CurrentUser!;
-
-        // Verify ProjectId in body matches route parameter
-        if (createDto.CreateData.ProjectId != projectId)
-            return ApiResponseDto<StoryOutlineCreateResponseDto>.BadRequest("Project ID in request body does not match route.");
-
-        // Create MetaInfo first
-        var metaInfo = new MetaInfo
-        {
-            Id = Guid.NewGuid(),
-            ProjectId = projectId,
-            ContentType = ContentTypeEnum.StoryOutline,
-            Title = createDto.CreateData.Title,
-            Slug = string.IsNullOrWhiteSpace(createDto.CreateData.Slug)
-                ? GenerateSlug(createDto.CreateData.Title)
-                : createDto.CreateData.Slug,
-            ShortDesc = createDto.CreateData.ShortDesc,
-            Status = ContentStatusEnum.Draft,
-            ViewMode = ViewModeEnum.PrivateWriting,
-            CreatedByUserId = user.Id,
-            CreatedAt = DateTime.UtcNow,
-            LastModifiedAt = DateTime.UtcNow
-        };
+        // Create MetaInfo using helper
+        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
 
         _db.MetaInfos.Add(metaInfo);
         await _db.SaveChangesAsync();
@@ -133,14 +116,11 @@ public class StoryOutlineService : CoreService
         _db.StoryOutlines.Add(outline);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<StoryOutlineCreateResponseDto>.Success(new StoryOutlineCreateResponseDto
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
-            Data = new CreateResponseDto
-            {
-                EntityId = outline.Id,
-                MetaInfoId = metaInfo.Id.Value,
-                ProjectId = projectId
-            }
+            EntityId = outline.Id,
+            MetaInfoId = metaInfo.Id.Value,
+            ProjectId = projectId
         });
     }
 
@@ -161,18 +141,8 @@ public class StoryOutlineService : CoreService
         var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply only non-null fields (partial update)
-        if (updateDto.MetaInfo != null)
-        {
-            if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo.Title))
-                outline.MetaInfo.Title = updateDto.MetaInfo.Title;
-
-            if (!string.IsNullOrWhiteSpace(updateDto.MetaInfo.Slug))
-                outline.MetaInfo.Slug = updateDto.MetaInfo.Slug;
-
-            if (updateDto.MetaInfo.ShortDesc != null)
-                outline.MetaInfo.ShortDesc = updateDto.MetaInfo.ShortDesc;
-        }
+        // Apply MetaInfo updates via helper (replaces manual if-blocks)
+        ApplyMetaInfoUpdates(outline.MetaInfo, updateDto.MetaInfo);
 
         if (updateDto.RawText != null)
             outline.RawText = updateDto.RawText;
