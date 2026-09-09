@@ -17,31 +17,30 @@ namespace Gadema.Data.Configurations.Narrative;
 /// </summary>
 public class StoryBeatEntityTypeConfiguration : IEntityTypeConfiguration<StoryBeat>
 {
-    public void Configure(EntityTypeBuilder<StoryBeat> builder)
+   public void Configure(EntityTypeBuilder<StoryBeat> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
         
-        // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.StoryOutlineId);
-        builder.HasIndex(e => e.Slug).IsUnique();
-        builder.HasIndex(e => e.OrderIndex);
-        builder.HasIndex(e => e.Published);
-        builder.HasIndex(e => e.CreatedAt);
         
-        // Navigation property: StoryOutline (The Map)
+        builder.HasIndex(e => e.MetaInfoId);           
+        builder.HasIndex(e => e.StoryOutlineId);       
+        builder.HasIndex(e => e.OrderIndex);           
+        
+        // MetaInfo relationship (REQUIRED, not nullable)
+        builder.HasOne(sb => sb.MetaInfo)
+            .WithMany()
+            .HasForeignKey(sb => sb.MetaInfoId)
+            .OnDelete(DeleteBehavior.Restrict);        
+        
+        // StoryOutline relationship
         builder.HasOne(sb => sb.StoryOutline)
             .WithMany(o => o.StoryBeats)
             .HasForeignKey(sb => sb.StoryOutlineId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete beats when outline deleted
+            .OnDelete(DeleteBehavior.Cascade);         
         
-        // Properties configuration
-        builder.Property(e => e.BeatTitle).IsRequired().HasMaxLength(128);
-        builder.Property(e => e.Slug).HasMaxLength(128);
+        // Properties (only fields that still exist on the model)
         builder.Property(e => e.Description).HasMaxLength(4096);
         builder.Property(e => e.OrderIndex).HasDefaultValue(0);
-        builder.Property(e => e.Published).HasDefaultValue(false);
-        builder.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-        builder.Property(e => e.LastModifiedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

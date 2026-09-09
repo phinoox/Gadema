@@ -1,6 +1,7 @@
 // =============================================================================
-using Gadema.Api.Services;
+using Gadema.Api.Services.Narrative;
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Narrative;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Narrative;
@@ -9,13 +10,13 @@ namespace Gadema.Api.Controllers.Narrative;
 /// Controller for story beat management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/story-beats")]
+[Route("api/v1/projects/{projectId:guid}/story-beats")]
 public class StoryBeatsController : ControllerBase
 {
-    private readonly IStoryBeatService _storyBeatService;
+    private readonly StoryBeatService _storyBeatService;
     private readonly ILogger<StoryBeatsController> _logger;
 
-    public StoryBeatsController(IStoryBeatService storyBeatService, ILogger<StoryBeatsController> logger)
+    public StoryBeatsController(StoryBeatService storyBeatService, ILogger<StoryBeatsController> logger)
     {
         _storyBeatService = storyBeatService;
         _logger = logger;
@@ -27,7 +28,7 @@ public class StoryBeatsController : ControllerBase
         return Ok(await _storyBeatService.GetStoryBeatsAsync(projectId));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetStoryBeatAsync(Guid id)
     {
         return Ok(await _storyBeatService.GetStoryBeatAsync(id));
@@ -39,13 +40,13 @@ public class StoryBeatsController : ControllerBase
         return Ok(await _storyBeatService.CreateStoryBeatAsync(projectId, createDto));
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateStoryBeatAsync(Guid id, [FromBody] StoryBeatUpdateDto updateDto)
     {
         return Ok(await _storyBeatService.UpdateStoryBeatAsync(id, updateDto));
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteStoryBeatAsync(Guid id)
     {
         return Ok(await _storyBeatService.DeleteStoryBeatAsync(id));

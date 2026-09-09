@@ -95,6 +95,18 @@ public class Scene
     /// Used for the "Character Relations" graph in the Right Panel.
     /// </summary>
     public virtual ICollection<CharacterRelation> CharacterRelations { get; set; } = new List<CharacterRelation>();
+    
+    /// <summary>
+    /// Collection of character states established or changed in this scene.
+    /// Links back to CharacterState.TriggerSceneId for event-driven tracking.
+    /// </summary>
+    public virtual ICollection<Models.Characters.CharacterState> CharacterStates { get; set; } = new List<Models.Characters.CharacterState>();
+    
+    /// <summary>
+    /// Collection of story events that occurred in this scene.
+    /// Tracks all changes (state, relations, factions, etc.) triggered by this scene.
+    /// </summary>
+    public virtual ICollection<Models.Characters.StoryEvent> StoryEvents { get; set; } = new List<Models.Characters.StoryEvent>();
 
     // ========================================================================
     // Versioning & History

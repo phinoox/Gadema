@@ -47,5 +47,8 @@ public enum ContentTypeEnum
    
     Scene = 12,
     LoreEntry = 13,
-    StoryOutline = 14
+    StoryOutline = 14,
+    StoryBeat = 15,
+    WorldLocation = 16,
+    CharacterState = 17
 }

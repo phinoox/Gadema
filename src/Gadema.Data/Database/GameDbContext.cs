@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Narrative;
 using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.WorldBuilding;
 
 namespace Gadema.Data.Database;
 
@@ -269,6 +270,26 @@ public class GameDbContext : DbContext
     public DbSet<EngineFieldMapping> EngineFieldMappings { get; set; }
 
     public DbSet<UserProviderLink> UserProviderLinks => Set<UserProviderLink>();
+
+    public DbSet<Faction> Factions { get;set;}
+
+    public DbSet<WorldLocation> WorldLocations{ get; set; }
+    public DbSet<CharacterState> CharacterStates { get; set; }
+    
+    /// <summary>
+    /// Character glue entity set.
+    /// </summary>
+    public DbSet<Character> Characters { get; set; }
+    
+    /// <summary>
+    /// CharacterStoryProfile entity set (static backstory/traits).
+    /// </summary>
+    public DbSet<CharacterStoryProfile> CharacterStoryProfiles { get; set; }
+    
+    /// <summary>
+    /// StoryEvent entity set (generic event tracker for story changes).
+    /// </summary>
+    public DbSet<StoryEvent> StoryEvents { get; set; }
 
     /// <summary>
     /// Database connection string name.
