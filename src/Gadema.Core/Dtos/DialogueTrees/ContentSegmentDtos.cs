@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.DialogueTrees;
 /// <summary>
 /// DTO for creating a content segment within a scene.
 /// </summary>
-public class ContentSegmentCreateDto
+public class ContentSegmentUpdateDto
 {
     /// <summary>
     /// ID of the scene this segment belongs to.

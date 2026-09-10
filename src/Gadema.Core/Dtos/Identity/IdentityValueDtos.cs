@@ -7,7 +7,7 @@ namespace Gadema.Core.Dtos.Identity;
 /// <summary>
 /// DTO for creating an identity value (specific race, faction option, etc.).
 /// </summary>
-public class IdentityValueCreateDto
+public class IdentityValueUpdateDto
 {
     /// <summary>
     /// ID of the identity definition this value belongs to.

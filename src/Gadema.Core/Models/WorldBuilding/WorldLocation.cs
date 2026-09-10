@@ -5,7 +5,7 @@ using Gadema.Core.Models;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.Projects;
 
-[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(MetaInfo))]
 public class WorldLocation
 {
     public Guid Id { get; set; } = Guid.NewGuid();

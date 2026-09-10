@@ -12,10 +12,10 @@ namespace Gadema.Api.Controllers.Characters;
 [Route("api/v1/projects/{projectId}/character-relations")]
 public class CharacterRelationsController : ControllerBase
 {
-    private readonly ICharacterRelationService _characterRelationService;
+    private readonly CharacterRelationService _characterRelationService;
     private readonly ILogger<CharacterRelationsController> _logger;
 
-    public CharacterRelationsController(ICharacterRelationService characterRelationService, ILogger<CharacterRelationsController> logger)
+    public CharacterRelationsController(CharacterRelationService characterRelationService, ILogger<CharacterRelationsController> logger)
     {
         _characterRelationService = characterRelationService;
         _logger = logger;

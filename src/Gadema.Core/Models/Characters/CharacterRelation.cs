@@ -13,7 +13,7 @@ namespace Gadema.Core.Models.Characters;
 /// Tracks evolving relationships between characters throughout the story.
 /// This is an event-driven junction table that allows relationships to change over time.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(CharacterDetails), typeof(Scene))]
+[DependencyResolver.ModelDependency(typeof(Character), typeof(Scene))]
 public class CharacterRelation
 {
     /// <summary>
@@ -29,7 +29,7 @@ public class CharacterRelation
 
     // Navigation property: Source Character
     [ForeignKey("SourceCharacterId")]
-    public virtual CharacterDetails SourceCharacter { get; set; } = null!;
+    public virtual Character SourceCharacter { get; set; } = null!;
 
     /// <summary>
     /// ID of the target character (the one being related to).
@@ -39,7 +39,7 @@ public class CharacterRelation
 
     // Navigation property: Target Character
     [ForeignKey("TargetCharacterId")]
-    public virtual CharacterDetails TargetCharacter { get; set; } = null!;
+    public virtual Character TargetCharacter { get; set; } = null!;
 
     /// <summary>
     /// Type of relationship (Ally, Enemy, Family, Romantic, etc.).

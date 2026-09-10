@@ -23,9 +23,6 @@ public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.StoryOutlineId);
-        builder.HasIndex(e => e.Status);
-        builder.HasIndex(e => e.CreatedAt);
-        builder.HasIndex(e => e.LastModifiedAt);
         
         // Navigation property: MetaInfo (MetaInfo) - The metadata wrapper
         builder.HasOne(s => s.MetaInfo)
@@ -41,7 +38,6 @@ public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
         
         // Properties configuration
         builder.Property(e => e.RawText).IsRequired();
-        builder.Property(e => e.Status).HasDefaultValue(ContentStatusEnum.Draft);
         builder.Property(e => e.HasGameLogic).HasDefaultValue(false);
         builder.Property(e => e.OrderIndex).HasDefaultValue(0);
         

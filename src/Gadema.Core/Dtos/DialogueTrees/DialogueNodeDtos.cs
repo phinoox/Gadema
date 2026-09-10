@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.DialogueTrees;
 /// <summary>
 /// DTO for creating a dialogue node within a branch.
 /// </summary>
-public class DialogueNodeCreateDto
+public class DialogueNodeUpdateDto
 {
     /// <summary>
     /// ID of the content item this node belongs to (optional).

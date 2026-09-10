@@ -7,7 +7,7 @@ namespace Gadema.Core.Dtos.Identity;
 /// <summary>
 /// DTO for creating an identity definition (race, faction, alignment, etc.).
 /// </summary>
-public class IdentityDefinitionCreateDto
+public class IdentityDefinitionUpdateDto
 {
     /// <summary>
     /// ID of the project this definition belongs to.

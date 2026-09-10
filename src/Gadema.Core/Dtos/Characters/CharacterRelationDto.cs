@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.Characters;
 /// <summary>
 /// DTO for creating a character relation.
 /// </summary>
-public class CharacterRelationCreateDto
+public class CharacterRelationUpdateDto
 {
     /// <summary>
     /// ID of the source character.

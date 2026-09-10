@@ -1,4 +1,5 @@
 // src/Gadema.Core/Dtos/Characters/StoryEventDtos.cs
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Characters;
 
 namespace Gadema.Core.Dtos.Characters;

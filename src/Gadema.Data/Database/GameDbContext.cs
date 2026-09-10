@@ -122,15 +122,6 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<LoreEntry> LoreEntries { get; set; }
     
-    /// <summary>
-    /// CharacterDetails child entity.
-    /// </summary>
-    public DbSet<CharacterDetails> CharacterDetails { get; set; }
-    
-    /// <summary>
-    /// CharacterBackground child entity.
-    /// </summary>
-    public DbSet<CharacterBackground> CharacterBackgrounds { get; set; }
     
     /// <summary>
     /// AttributeSet entity set.

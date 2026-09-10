@@ -35,7 +35,6 @@ public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEnt
 
         builder.Property(e => e.RawText).HasMaxLength(4096);
         builder.Property(e => e.LoreType).IsRequired();
-        builder.Property(e => e.Published).HasDefaultValue(false);
 
     }
 }

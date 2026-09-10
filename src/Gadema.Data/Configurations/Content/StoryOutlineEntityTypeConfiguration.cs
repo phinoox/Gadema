@@ -24,16 +24,12 @@ public class StoryOutlineEntityTypeConfiguration : IEntityTypeConfiguration<Stor
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ProjectId);
         builder.HasIndex(e => e.OutlineStatus);
-        builder.HasIndex(e => e.CreatedAt);
-        builder.HasIndex(e => e.LastModifiedAt);
         
-        // Navigation property: Project (direct link, no intermediate Sequence)
-        builder.HasOne(s => s.Project)
+        builder.HasOne(so => so.MetaInfo)
             .WithMany()
-            .HasForeignKey(s => s.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete outline when project deleted
+            .HasForeignKey(so => so.MetaInfoId)
+            .OnDelete(DeleteBehavior.Restrict);      
         
         // Properties configuration
         builder.Property(e => e.RawText).IsRequired();
@@ -41,8 +37,6 @@ public class StoryOutlineEntityTypeConfiguration : IEntityTypeConfiguration<Stor
         builder.Property(e => e.CharacterSnapshot).HasMaxLength(512);  // Legacy field
         builder.Property(e => e.ThemeStatement).HasMaxLength(1024);  // Legacy field
         builder.Property(e => e.OutlineStatus).HasDefaultValue(OutlineStatusEnum.DraftOutline);
-        builder.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
-        builder.Property(e => e.LastModifiedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
         
         // Collection navigation: StoryBeats (The Landmarks)
         builder.HasMany(o => o.StoryBeats)

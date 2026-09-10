@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.Projects;
 /// <summary>
 /// DTO for assigning a team to a project.
 /// </summary>
-public class ProjectTeamCreateDto
+public class ProjectTeamUpdateDto
 {
     /// <summary>
     /// ID of the project.

@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.Versioning;
 /// <summary>
 /// DTO for creating a content snapshot (save ritual).
 /// </summary>
-public class ContentSnapshotCreateDto
+public class ContentSnapshotUpdateDto
 {
     /// <summary>
     /// ID of the content item this snapshot belongs to.
