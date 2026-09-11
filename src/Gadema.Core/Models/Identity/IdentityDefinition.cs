@@ -14,7 +14,7 @@ namespace Gadema.Core.Models;
 /// Definition of identity types (race, faction, alignment, guild) for a project.
 /// Configures what character identities can be selected within this specific project.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(DependencyResolver.RootMarker))]
+[ModelDependency(typeof(RootMarker))]
 public class IdentityDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();
@@ -40,7 +40,7 @@ public class IdentityDefinition
 
 
 // Keep ProjectIdentityDefinition for specific project-scoped identity definitions
-[DependencyResolver.ModelDependency(typeof(IdentityDefinition),typeof(IdentityValue))]
+[ModelDependency(typeof(IdentityDefinition),typeof(IdentityValue))]
 public class ProjectIdentityDefinition 
 {
 

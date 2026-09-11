@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a task in the project workflow.
 /// Flat structure for ADHD-friendly task management (no hierarchical epics/stories).
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(MetaInfo))]
 public class ProjectTask
 {
     /// <summary>

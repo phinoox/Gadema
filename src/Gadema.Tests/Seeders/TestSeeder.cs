@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using Gadema.Core.DependencyResolver;
+
 using Gadema.Core.Models;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;

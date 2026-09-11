@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Security.Principal;
 using Gadema.Api;
 using Gadema.Api.Services;
-using Gadema.Core.DependencyResolver;
+
 using Gadema.Core.Models.Projects;
 using Gadema.Data.Database;
 using Gadema.Tests.Helpers;

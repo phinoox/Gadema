@@ -4,7 +4,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.DependencyResolver;
+
 using Gadema.Core.Models.Projects;
 
 namespace Gadema.Core.Models;

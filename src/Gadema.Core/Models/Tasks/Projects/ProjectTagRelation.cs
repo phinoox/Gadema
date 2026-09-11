@@ -7,7 +7,7 @@ namespace Gadema.Core.Models.Projects;
 /// <summary>
 /// Junction table linking Project to ProjectTag.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(Project), typeof(ProjectTag))]
+[ModelDependency(typeof(Project), typeof(ProjectTag))]
 public class ProjectTagRelation
 {
     [Required]

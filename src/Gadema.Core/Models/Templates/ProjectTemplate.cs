@@ -1,5 +1,5 @@
 // =============================================================================
-using Gadema.Core.DependencyResolver;
+
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a project template for quick project creation.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(RootMarker))]
 public class ProjectTemplate
 {
     /// <summary>

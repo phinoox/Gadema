@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
-using Gadema.Core.DependencyResolver;
 
 namespace Gadema.Core.Models.Projects;
 

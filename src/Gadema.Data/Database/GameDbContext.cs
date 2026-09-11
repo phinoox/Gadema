@@ -10,6 +10,7 @@ using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Narrative;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.WorldBuilding;
+using Gadema.Core.Models.Game.EngineIntegration;
 
 namespace Gadema.Data.Database;
 

@@ -10,7 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a review status for content items.
 /// </summary>
-[DependencyResolver.ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(MetaInfo))]
 public class ReviewStatus
 {
     /// <summary>

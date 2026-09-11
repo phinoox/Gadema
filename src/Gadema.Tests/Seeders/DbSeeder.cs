@@ -2,12 +2,12 @@ using System.Diagnostics;
 using System.Reflection;
 using AutoFixture;
 using AutoFixture.Kernel;
-using Gadema.Core.DependencyResolver;
+
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
-using Gadema.Core.DependencyResolver;
+
 using Microsoft.Data.Sqlite;
 
 namespace Gadema.Tests.Seeders;
