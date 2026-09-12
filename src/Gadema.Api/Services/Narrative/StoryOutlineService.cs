@@ -3,6 +3,7 @@ using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Narrative;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Writing;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
@@ -40,11 +41,7 @@ public class StoryOutlineService : CoreService
                 IsPublic = so.MetaInfo.IsPublic,
                 CreatedAt = so.MetaInfo.CreatedAt,
                 LastModifiedAt = so.MetaInfo.LastModifiedAt,
-                RawText = so.RawText,
                 Summary = so.Summary,
-                CharacterSnapshot = so.CharacterSnapshot,
-                ThemeStatement = so.ThemeStatement,
-                OutlineStatus = so.OutlineStatus
             })
             .ToListAsync();
 
@@ -77,11 +74,7 @@ public class StoryOutlineService : CoreService
             IsPublic = outline.MetaInfo.IsPublic,
             CreatedAt = outline.MetaInfo.CreatedAt,
             LastModifiedAt = outline.MetaInfo.LastModifiedAt,
-            RawText = outline.RawText,
             Summary = outline.Summary,
-            CharacterSnapshot = outline.CharacterSnapshot,
-            ThemeStatement = outline.ThemeStatement,
-            OutlineStatus = outline.OutlineStatus
         });
     }
 
@@ -105,12 +98,8 @@ public class StoryOutlineService : CoreService
         var outline = new StoryOutline
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            RawText = string.Empty,
+            MetaInfoId = metaInfo.Id,
             Summary = createDto.Summary,
-            CharacterSnapshot = createDto.CharacterSnapshot,
-            ThemeStatement = createDto.ThemeStatement,
-            OutlineStatus = createDto.OutlineStatus ?? OutlineStatusEnum.DraftOutline,
         };
 
         _db.StoryOutlines.Add(outline);
@@ -119,7 +108,7 @@ public class StoryOutlineService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = outline.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -144,20 +133,10 @@ public class StoryOutlineService : CoreService
         // Apply MetaInfo updates via helper (replaces manual if-blocks)
         ApplyMetaInfoUpdates(outline.MetaInfo, updateDto.MetaInfo);
 
-        if (updateDto.RawText != null)
-            outline.RawText = updateDto.RawText;
 
         if (updateDto.Summary != null)
             outline.Summary = updateDto.Summary;
 
-        if (updateDto.CharacterSnapshot != null)
-            outline.CharacterSnapshot = updateDto.CharacterSnapshot;
-
-        if (updateDto.ThemeStatement != null)
-            outline.ThemeStatement = updateDto.ThemeStatement;
-
-        if (updateDto.OutlineStatus.HasValue)
-            outline.OutlineStatus = updateDto.OutlineStatus.Value;
 
         await _db.SaveChangesAsync();
 
@@ -166,11 +145,7 @@ public class StoryOutlineService : CoreService
             Id = outline.Id,
             MetaInfoId = outline.MetaInfoId,
             MetaInfoTitle = outline.MetaInfo.Title,
-            RawText = outline.RawText,
             Summary = outline.Summary,
-            CharacterSnapshot = outline.CharacterSnapshot,
-            ThemeStatement = outline.ThemeStatement,
-            OutlineStatus = outline.OutlineStatus,
             CreatedAt = outline.MetaInfo.CreatedAt,
             LastModifiedAt = outline.MetaInfo.LastModifiedAt
         });

@@ -31,8 +31,8 @@ public class CharacterEntityTypeConfiguration : IEntityTypeConfiguration<Charact
 
         // SetNull: CurrentState is optional — if the current state is deleted, just clear the reference
         builder.HasOne(e => e.CurrentState)
-            .WithMany(cs => cs.Characters)
-            .HasForeignKey(e => e.CurrentStateId)
+            .WithOne(cs => cs.Character)
+            .HasForeignKey<CharacterState>(cs => cs.CharacterId)
             .OnDelete(DeleteBehavior.SetNull);
     }
 }

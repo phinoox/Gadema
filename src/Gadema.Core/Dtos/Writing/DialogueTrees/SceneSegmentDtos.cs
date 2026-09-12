@@ -1,7 +1,21 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Dtos.DialogueTrees;
+
+
+
+public class SceneSegmentCreateDto
+{
+    [Required] public Guid SceneId { get; set; }
+
+    [Required] public SegmentType Type { get; set; }
+
+    public int? OrderIndex { get; set; }
+
+    [MaxLength(4096)] public string? MetadataJson { get; set; }
+}
 
 /// <summary>
 /// DTO for creating a content segment within a scene.
@@ -18,7 +32,7 @@ public class SceneSegmentUpdateDto
     /// Type of segment (Dialogue, StoryBeat, Custom).
     /// </summary>
     [Required]
-    public int Type { get; set; }
+    public SegmentType Type { get; set; }
 
     /// <summary>
     /// Optional metadata JSON for this segment.
@@ -34,7 +48,7 @@ public class SceneSegmentResponseDto
 {
     public Guid Id { get; set; }
     public Guid SceneId { get; set; }
-    public int Type { get; set; }
+    public SegmentType Type { get; set; }
     public string? MetadataJson { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime? LastSyncedAt { get; set; }

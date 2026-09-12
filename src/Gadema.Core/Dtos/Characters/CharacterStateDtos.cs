@@ -29,7 +29,7 @@ public class CharacterStateCreateDto
     /// <summary>
     /// The character's current life status.
     /// </summary>
-    [Required] public CharacterLifeStatus LifeStatus { get; set; } = CharacterLifeStatus.Alive;
+    [Required] public CharacterStatus LifeStatus { get; set; } = CharacterStatus.Alive;
 
     /// <summary>
     /// Optional note about the current state.
@@ -47,7 +47,7 @@ public class CharacterStateUpdateDto : UpdateRequestDto
     public CharacterRole? Role { get; set; }
     public Guid? FactionId { get; set; }
     public Guid? LocationId { get; set; }
-    public CharacterLifeStatus? LifeStatus { get; set; }
+    public CharacterStatus? LifeStatus { get; set; }
     [MaxLength(1024)] public string? Note { get; set; }
 }
 
@@ -61,7 +61,7 @@ public class CharacterStateResponseDto : MetaInfoResponseBaseDto
     public string? FactionName { get; set; }  // Denormalized for convenience
     public Guid? LocationId { get; set; }
     public string? LocationName { get; set; }  // Denormalized for convenience
-    public CharacterLifeStatus LifeStatus { get; set; }
+    public CharacterStatus LifeStatus { get; set; }
     public string? Note { get; set; }
 }
 

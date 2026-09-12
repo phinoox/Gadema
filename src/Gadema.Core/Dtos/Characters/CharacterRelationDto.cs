@@ -3,6 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Dtos.Characters;
 
+
+public class CharacterRelationCreateDto
+{
+    [Required] public Guid SourceCharacterId { get; set; }
+
+    [Required] public Guid TargetCharacterId { get; set; }
+
+    [Required] public int RelationType { get; set; }
+
+    [Required] public Guid TriggerSceneId { get; set; }
+
+    [MaxLength(1024)] public string? Description { get; set; }
+}
+
 /// <summary>
 /// DTO for creating a character relation.
 /// </summary>

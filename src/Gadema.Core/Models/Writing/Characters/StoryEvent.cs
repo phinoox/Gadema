@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Narrative;
+using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Characters;
 

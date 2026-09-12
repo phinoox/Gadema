@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Game;
 

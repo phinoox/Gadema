@@ -40,6 +40,8 @@ public class Scene
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo MetaInfo { get; set; } = null!;
 
+    public int? OrderIndex { get; set; }
+
      [Required] public Guid StoryChapterId { get; set; }
     [ForeignKey("StoryChapterId")] public virtual StoryChapter StoryChapter { get; set; } = null!;
 
@@ -103,6 +105,5 @@ public class Scene
     /// Backs the "Save Ritual" timeline in the Top Panel.
     /// </summary>
     public virtual ICollection<ContentSnapshot> Snapshots { get; set; } = new List<ContentSnapshot>();
-   
-   
+    
 }

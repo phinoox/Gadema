@@ -5,6 +5,7 @@ using Gadema.Core.Dtos.Narrative;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Narrative;
+using Gadema.Core.Models.Writing;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
@@ -39,9 +40,8 @@ public class SceneService : CoreService
                 MetaInfoId = s.MetaInfoId,
                 MetaInfoTitle = s.MetaInfo.Title,
                 RawText = s.RawText,
-                StoryOutlineId = s.StoryOutlineId,
+                StoryChapterId = s.StoryChapterId,
                 OrderIndex = s.OrderIndex,
-                HasGameLogic = s.HasGameLogic,
                 Status = s.MetaInfo.Status,
                 CreatedAt = s.MetaInfo.CreatedAt,
                 LastModifiedAt = s.MetaInfo.LastModifiedAt,
@@ -74,9 +74,8 @@ public class SceneService : CoreService
             MetaInfoId = scene.MetaInfoId,
             MetaInfoTitle = scene.MetaInfo.Title,
             RawText = scene.RawText,
-            StoryOutlineId = scene.StoryOutlineId,
+            StoryChapterId = scene.StoryChapterId,
             OrderIndex = scene.OrderIndex,
-            HasGameLogic = scene.HasGameLogic,
             Status = scene.MetaInfo.Status,
             CreatedAt = scene.MetaInfo.CreatedAt,
             LastModifiedAt = scene.MetaInfo.LastModifiedAt
@@ -103,11 +102,10 @@ public class SceneService : CoreService
         var scene = new Scene
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             RawText = string.Empty,
-            StoryOutlineId = createDto.StoryOutlineId,
+            StoryChapterId = createDto.StoryChapterId,
             OrderIndex = createDto.OrderIndex ?? 0,
-            HasGameLogic = false,
         };
 
         _db.Scenes.Add(scene);
@@ -118,7 +116,7 @@ public class SceneService : CoreService
             
             
                 EntityId = scene.Id,
-                MetaInfoId = metaInfo.Id.Value,
+                MetaInfoId = metaInfo.Id,
                 ProjectId = projectId
             
         });
@@ -145,14 +143,11 @@ public class SceneService : CoreService
         if (updateDto.RawText != null)
             scene.RawText = updateDto.RawText;
 
-        if (updateDto.StoryOutlineId.HasValue)
-            scene.StoryOutlineId = updateDto.StoryOutlineId.Value;
+            scene.StoryChapterId = updateDto.StoryChapterId;
 
         if (updateDto.OrderIndex.HasValue)
             scene.OrderIndex = updateDto.OrderIndex.Value;
 
-        if (updateDto.HasGameLogic.HasValue)
-            scene.HasGameLogic = updateDto.HasGameLogic.Value;
 
         ApplyMetaInfoUpdates(scene.MetaInfo, updateDto.MetaInfo);
         
@@ -166,9 +161,8 @@ public class SceneService : CoreService
             MetaInfoId = scene.MetaInfoId,
             MetaInfoTitle = scene.MetaInfo.Title,
             RawText = scene.RawText,
-            StoryOutlineId = scene.StoryOutlineId,
+            StoryChapterId = scene.StoryChapterId,
             OrderIndex = scene.OrderIndex,
-            HasGameLogic = scene.HasGameLogic,
             Status = scene.MetaInfo.Status,
             CreatedAt = scene.MetaInfo.CreatedAt,
             LastModifiedAt = scene.MetaInfo.LastModifiedAt

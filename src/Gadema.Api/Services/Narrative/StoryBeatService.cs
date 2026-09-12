@@ -3,6 +3,7 @@ using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Narrative;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Writing;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ public class StoryBeatService : CoreService
                 IsPublic = sb.MetaInfo.IsPublic,
                 CreatedAt = sb.MetaInfo.CreatedAt,
                 LastModifiedAt = sb.MetaInfo.LastModifiedAt,
-                StoryOutlineId = sb.StoryOutlineId,
+                StoryId = sb.StoryId,
                 Description = sb.Description,
                 OrderIndex = sb.OrderIndex
             })
@@ -75,7 +76,7 @@ public class StoryBeatService : CoreService
             IsPublic = beat.MetaInfo.IsPublic,
             CreatedAt = beat.MetaInfo.CreatedAt,
             LastModifiedAt = beat.MetaInfo.LastModifiedAt,
-            StoryOutlineId = beat.StoryOutlineId,
+            StoryId = beat.StoryId,
             Description = beat.Description,
             OrderIndex = beat.OrderIndex
         });
@@ -101,8 +102,8 @@ public class StoryBeatService : CoreService
         var beat = new StoryBeat
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            StoryOutlineId = createDto.StoryOutlineId,
+            MetaInfoId = metaInfo.Id,
+            StoryId = createDto.StoryId,
             Description = createDto.Description,
             OrderIndex = createDto.OrderIndex ?? 0,
         };
@@ -113,7 +114,7 @@ public class StoryBeatService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = beat.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -155,7 +156,7 @@ public class StoryBeatService : CoreService
             IsPublic = beat.MetaInfo.IsPublic,
             CreatedAt = beat.MetaInfo.CreatedAt,
             LastModifiedAt = beat.MetaInfo.LastModifiedAt,
-            StoryOutlineId = beat.StoryOutlineId,
+            StoryId = beat.StoryId,
             Description = beat.Description,
             OrderIndex = beat.OrderIndex
         });
