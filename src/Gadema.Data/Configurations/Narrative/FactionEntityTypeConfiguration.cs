@@ -3,6 +3,8 @@ using Gadema.Core.Models.WorldBuilding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace Gadema.Data.Configurations.Narrative;
+
 public class FactionEntityTypeConfiguration : IEntityTypeConfiguration<Faction>
 {
     public void Configure(EntityTypeBuilder<Faction> builder)

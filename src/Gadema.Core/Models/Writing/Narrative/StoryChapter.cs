@@ -22,7 +22,8 @@ public class StoryChapter
     public Guid Id { get; set; } = Guid.NewGuid();
 
     //[Fixture(FixtureHintEnum.Omit)]
-    public Guid? MetaInfoId { get; set; }  
+    [Required]
+    public Guid MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo? MetaInfo { get; set; }

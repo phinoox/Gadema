@@ -3,6 +3,8 @@ using Gadema.Core.Models.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace Gadema.Data.Configurations.Narrative;
+
 public class CharacterRelationEntityTypeConfiguration : IEntityTypeConfiguration<CharacterRelation>
 {
     public void Configure(EntityTypeBuilder<CharacterRelation> builder)

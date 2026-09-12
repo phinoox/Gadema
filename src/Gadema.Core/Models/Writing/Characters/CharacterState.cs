@@ -81,10 +81,6 @@ public class CharacterState
     /// </summary>
     [ForeignKey("CharacterId")]
     public virtual Character? Character { get; set; }
-
-    // Metadata
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
 }
 
 /// <summary>

@@ -3,6 +3,8 @@ using Gadema.Core.Models.Writing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace Gadema.Data.Configurations.Narrative;
+
 public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
 {
     public void Configure(EntityTypeBuilder<Scene> builder)

@@ -3,6 +3,8 @@ using Gadema.Core.Models.Writing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace Gadema.Data.Configurations.Narrative;
+
 public class StoryOutlineEntityTypeConfiguration : IEntityTypeConfiguration<StoryOutline>
 {
     public void Configure(EntityTypeBuilder<StoryOutline> builder)

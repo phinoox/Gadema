@@ -43,15 +43,5 @@ public class StoryOutline
     // Replaced single RawText with dynamic, reorderable sections
     public virtual ICollection<OutlineSection> Sections { get; set; } = new List<OutlineSection>();
 
-       
-    // ========================================================================
-    // Navigation Properties
-    // ========================================================================
-
-    /// <summary>
-    /// Collection of StoryBeats (Landmarks) within this Outline.
-    /// Beats are major keypoints that can be dragged and reordered in the UI.
-    /// </summary>
-    public virtual ICollection<StoryBeat> StoryBeats { get; set; } = new List<StoryBeat>();
     
 }

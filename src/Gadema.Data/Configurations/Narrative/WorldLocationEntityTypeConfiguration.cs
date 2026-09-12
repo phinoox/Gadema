@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace Gadema.Data.Configurations.Narrative;
+
 public class WorldLocationEntityTypeConfiguration : IEntityTypeConfiguration<WorldLocation>
 {
     public void Configure(EntityTypeBuilder<WorldLocation> builder)
