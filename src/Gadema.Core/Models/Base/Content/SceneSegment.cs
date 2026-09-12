@@ -15,7 +15,7 @@ namespace Gadema.Core.Models;
 /// Provides robustness against text edits while enabling Hyperfocus Mode and Auto-Parse.
 /// </summary>
 [ModelDependency(typeof(Scene))]
-public class ContentSegment
+public class SceneSegment
 {
     /// <summary>
     /// Unique identifier used as the token in shortcodes (e.g., [dialog:Id]).

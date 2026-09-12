@@ -10,11 +10,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Narrative;
+namespace Gadema.Core.Models.Writing;
 
 /// <summary>
 /// Represents a Scene - the "Unit of Work" for writing in GaDeMa.
-/// Contains RawText (Markdown) and links to MetaInfo, StoryBeats, and ContentSegments.
+/// Contains RawText (Markdown) and links to MetaInfo, StoryBeats, and SceneSegments.
 /// This is where the writer enters "Flow State" with zero friction.
 /// </summary>
 [ModelDependency(typeof(Project), typeof(StoryOutline))]
@@ -40,6 +40,9 @@ public class Scene
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo MetaInfo { get; set; } = null!;
 
+     [Required] public Guid StoryChapterId { get; set; }
+    [ForeignKey("StoryChapterId")] public virtual StoryChapter StoryChapter { get; set; } = null!;
+
     // ========================================================================
     // RawText (The "Canvas")
     // ========================================================================
@@ -55,26 +58,15 @@ public class Scene
     // Narrative Structure Links
     // ========================================================================
     
-    /// <summary>
-    /// FK to the StoryOutline this scene belongs to (The "Map").
-    /// Scenes are execution units that fulfill the Outline's plan.
-    /// </summary>
-    [Required]
-    public Guid StoryOutlineId { get; set; }
-
-    // Navigation property: StoryOutline (The Map)
-    [ForeignKey("StoryOutlineId")]
-    public virtual StoryOutline StoryOutline { get; set; } = null!;
-
     // ========================================================================
-    // ContentSegments (The "Markers")
+    // SceneSegments (The "Markers")
     // ========================================================================
     
     /// <summary>
-    /// Collection of ContentSegments (unique token markers) within this scene.
+    /// Collection of SceneSegments (unique token markers) within this scene.
     /// Segments index interactive elements like [dialog:123] without storing text indices.
     /// </summary>
-    public virtual ICollection<ContentSegment> ContentSegments { get; set; } = new List<ContentSegment>();
+    public virtual ICollection<SceneSegment> SceneSegments { get; set; } = new List<SceneSegment>();
 
     // ========================================================================
     // StoryBeats (The "Landmarks")
@@ -102,12 +94,6 @@ public class Scene
     /// </summary>
     public virtual ICollection<Models.Characters.CharacterState> CharacterStates { get; set; } = new List<Models.Characters.CharacterState>();
     
-    /// <summary>
-    /// Collection of story events that occurred in this scene.
-    /// Tracks all changes (state, relations, factions, etc.) triggered by this scene.
-    /// </summary>
-    public virtual ICollection<Models.Characters.StoryEvent> StoryEvents { get; set; } = new List<Models.Characters.StoryEvent>();
-
     // ========================================================================
     // Versioning & History
     // ========================================================================
@@ -117,22 +103,6 @@ public class Scene
     /// Backs the "Save Ritual" timeline in the Top Panel.
     /// </summary>
     public virtual ICollection<ContentSnapshot> Snapshots { get; set; } = new List<ContentSnapshot>();
-
-    // ========================================================================
-    // Metadata & Tracking
-    // ========================================================================
-    
    
-    /// <summary>
-    /// Order index for sorting scenes within an Outline.
-    /// </summary>
-    public int OrderIndex { get; set; } = 0;
-
-    /// <summary>
-    /// Indicates if this scene has been linked to game logic (has active ContentSegments).
-    /// Used for the "Chapter Overview" tree view showing Game Logic vs raw text.
-    /// </summary>
-    public bool HasGameLogic { get; set; } = false;
-
    
 }

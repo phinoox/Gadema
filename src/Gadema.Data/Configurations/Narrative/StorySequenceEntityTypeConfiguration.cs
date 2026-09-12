@@ -13,12 +13,12 @@ namespace Gadema.Data.Configurations.Narrative;
 /// <summary>
 /// Configuration for StorySequence entity in game development management system.
 /// </summary>
-public class StorySequenceEntityTypeConfiguration : IEntityTypeConfiguration<StorySequence>
+public class StorySequenceEntityTypeConfiguration : IEntityTypeConfiguration<StoryChapter>
 {
     /// <summary>
     /// Configure StorySequence entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<StorySequence> builder)
+    public void Configure(EntityTypeBuilder<StoryChapter> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);

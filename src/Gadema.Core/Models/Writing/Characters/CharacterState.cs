@@ -5,6 +5,7 @@ using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Narrative;
 using Gadema.Core.Models.Projects;
 using Gadema.Core.Models.WorldBuilding;
+using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Characters;
 
@@ -51,7 +52,11 @@ public class CharacterState
     /// The character's current life status (Alive, Deceased, Missing, etc.)
     /// This can change as the story progresses.
     /// </summary>
-    [Required] public CharacterLifeStatus LifeStatus { get; set; } = CharacterLifeStatus.Alive;
+    [Required]
+     public CharacterStatus LifeStatus { get; set; } = CharacterStatus.Alive;
+
+
+
 
     /// <summary>
     /// Optional note about the current state (e.g., "Wounded in battle", "In hiding").
@@ -68,10 +73,14 @@ public class CharacterState
     [ForeignKey("TriggerSceneId")]
     public virtual Scene? TriggerScene { get; set; }
     
+
+    public Guid? CharacterId {get;set;}
+
     /// <summary>
     /// Collection of Characters that reference this state (mostly CurrentState back-references).
     /// </summary>
-    public virtual ICollection<Character> Characters { get; set; } = new List<Character>();
+    [ForeignKey("CharacterId")]
+    public virtual Character? Character { get; set; }
 
     // Metadata
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -95,7 +104,7 @@ public enum CharacterRole
 /// <summary>
 /// Enum for character life status.
 /// </summary>
-public enum CharacterLifeStatus
+public enum CharacterStatus
 {
     Alive = 0,
     Deceased = 1,

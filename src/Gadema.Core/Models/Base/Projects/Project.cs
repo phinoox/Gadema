@@ -55,7 +55,7 @@ public class Project
     /// <summary>
     /// Navigation property: User who created this project.
     /// </summary>
-    [ForeignKey("Userd")]
+    [ForeignKey("UserId")]
     public virtual User User { get; set; } = null!;
 
     /// <summary>
@@ -79,16 +79,7 @@ public class Project
     /// </summary>
     public virtual ICollection<ProjectToken> ProjectTokens { get; set; } = new List<ProjectToken>();
 
-    /// <summary>
-    /// Collection of content items for this project.
-    /// </summary>
-    public virtual ICollection<MetaInfo> MetaInfos { get; set; } = new List<MetaInfo>();
-
-    /// <summary>
-    /// Collection of sequences for this project.
-    /// </summary>
-    public virtual ICollection<StorySequence> Sequences { get; set; } = new List<StorySequence>();
-
+       
     /// <summary>
     /// Collection of tasks for this project.
     /// </summary>

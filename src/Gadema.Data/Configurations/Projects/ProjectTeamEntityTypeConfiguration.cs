@@ -13,7 +13,6 @@ public class ProjectTeamEntityTypeConfiguration : IEntityTypeConfiguration<Proje
 
         // Indexes for performance
         builder.HasIndex(e => e.TeamId);
-        builder.HasIndex(e => e.RoleId);
 
         // Relationships
         builder.HasOne(pt => pt.Project)
@@ -27,6 +26,6 @@ public class ProjectTeamEntityTypeConfiguration : IEntityTypeConfiguration<Proje
             .OnDelete(DeleteBehavior.Cascade);
 
         // Properties
-        builder.Property(pt => pt.RoleId).IsRequired();
+        builder.Property(pt => pt.Role).IsRequired();
     }
 }

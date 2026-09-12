@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Writing;
 
 /// <summary>
 /// Represents a Story Outline - the "Map" of the project's narrative intent.
@@ -28,13 +28,9 @@ public class StoryOutline
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo MetaInfo { get; set; } = null!;
 
-    /// <summary>
-    /// RawText - The "Prototype" document (Markdown).
-    /// Users write high-level summaries, plot points, and scene prototypes here.
-    /// Markers like [beat:123] can be used to reference StoryBeats within this text.
-    /// </summary>
-    [Required]
-    public string RawText { get; set; } = "";
+    [Required] public Guid StoryId { get; set; }
+    [ForeignKey("StoryId")] 
+    public virtual Story Story { get; set; } = null!;
 
     /// <summary>
     /// Summary of the outline section (legacy field, superseded by RawText).
@@ -43,26 +39,11 @@ public class StoryOutline
     [MaxLength(4096)]
     public string? Summary { get; set; } = "";
 
-    /// <summary>
-    /// Snapshot of character state at this point in the story (legacy field).
-    /// Kept for backward compatibility.
-    /// </summary>
-    [MaxLength(512)]
-    public string? CharacterSnapshot { get; set; }
+       
+    // Replaced single RawText with dynamic, reorderable sections
+    public virtual ICollection<OutlineSection> Sections { get; set; } = new List<OutlineSection>();
 
-    /// <summary>
-    /// Theme statement for this section (legacy field).
-    /// Kept for backward compatibility.
-    /// </summary>
-    [MaxLength(1024)]
-    public string? ThemeStatement { get; set; }
-
-    /// <summary>
-    /// Outline status (DraftOutline, Finalized, Published).
-    /// </summary>
-    [EnumDataType(typeof(OutlineStatusEnum)), Required, Display(Name = "Outline Status")]
-    public OutlineStatusEnum OutlineStatus { get; set; } = OutlineStatusEnum.DraftOutline;
-   
+       
     // ========================================================================
     // Navigation Properties
     // ========================================================================
@@ -72,10 +53,5 @@ public class StoryOutline
     /// Beats are major keypoints that can be dragged and reordered in the UI.
     /// </summary>
     public virtual ICollection<StoryBeat> StoryBeats { get; set; } = new List<StoryBeat>();
-
-    /// <summary>
-    /// Collection of Scenes that belong to this Outline.
-    /// Scenes are the execution units that fulfill the Outline's plan.
-    /// </summary>
-    public virtual ICollection<Scene> Scenes { get; set; } = new List<Scene>();
+    
 }

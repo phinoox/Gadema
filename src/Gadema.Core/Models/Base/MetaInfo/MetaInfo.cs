@@ -20,7 +20,7 @@ public class MetaInfo
     /// <summary>
     /// Unique identifier for the content item.
     /// </summary>
-    public Guid? Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
     /// ID of the project this content item belongs to.

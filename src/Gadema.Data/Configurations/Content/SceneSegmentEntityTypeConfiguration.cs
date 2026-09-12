@@ -8,13 +8,13 @@ using Gadema.Core.Models;
 namespace Gadema.Data.Configurations.Content;
 
 /// <summary>
-/// Configuration for ContentSegment entity in game development management system.
+/// Configuration for SceneSegment entity in game development management system.
 /// Acts as an index for unique token markers (shortcodes) without storing text indices.
 /// Provides robustness against text edits while enabling Hyperfocus Mode and Auto-Parse.
 /// </summary>
-public class ContentSegmentEntityTypeConfiguration : IEntityTypeConfiguration<ContentSegment>
+public class SceneSegmentEntityTypeConfiguration : IEntityTypeConfiguration<SceneSegment>
 {
-    public void Configure(EntityTypeBuilder<ContentSegment> builder)
+    public void Configure(EntityTypeBuilder<SceneSegment> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
@@ -26,7 +26,7 @@ public class ContentSegmentEntityTypeConfiguration : IEntityTypeConfiguration<Co
         
         // Navigation property: Scene (Many-to-One)
         builder.HasOne(cs => cs.Scene)
-            .WithMany(s => s.ContentSegments)
+            .WithMany(s => s.SceneSegments)
             .HasForeignKey(cs => cs.SceneId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete segments when scene deleted
         

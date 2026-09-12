@@ -6,14 +6,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Writing;
 
 /// <summary>
 /// Represents a Story Beat - a "Landmark" or major keypoint within a StoryOutline.
 /// Beats act as structural anchors for scenes and become draggable "Cards" in the Right Panel.
 /// Hierarchy: StoryOutline → StoryBeat ↔ Scene (Many-to-Many via junction table)
 /// </summary>
-[ModelDependency(typeof(StoryOutline))]
+[ModelDependency(typeof(MetaInfo), typeof(Story))]
 public class StoryBeat
 {
     /// <summary>
@@ -25,16 +25,8 @@ public class StoryBeat
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo MetaInfo { get; set; } = null!;
 
-    /// <summary>
-    /// ID of the StoryOutline this beat belongs to (The "Map").
-    /// Beats are structural elements owned by an Outline.
-    /// </summary>
-    [Required, Display(Name = "Story Outline ID")]
-    public Guid StoryOutlineId { get; set; }
-
-    // Navigation property: StoryOutline (Many-to-One)
-    [ForeignKey("StoryOutlineId")]
-    public virtual StoryOutline StoryOutline { get; set; } = null!;
+    [Required] public Guid StoryId { get; set; }
+    [ForeignKey("StoryId")] public virtual Story Story { get; set; } = null!;
 
     /// <summary>
     /// Description of the beat's narrative intent.
@@ -48,7 +40,7 @@ public class StoryBeat
     /// </summary>
     public int OrderIndex { get; set; } = 0;
 
-    
+
     // ========================================================================
     // Navigation Properties
     // ========================================================================
@@ -58,4 +50,9 @@ public class StoryBeat
     /// A beat can be referenced by many scenes (Many-to-Many).
     /// </summary>
     public virtual ICollection<Scene> Scenes { get; set; } = new List<Scene>();
+
+    /// <summary>
+    /// Collection of OutlineSections that link to this beat.
+    /// </summary>
+    public virtual ICollection<OutlineSection> LinkedOutlineSections { get; set; } = new List<OutlineSection>();
 }

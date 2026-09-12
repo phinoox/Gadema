@@ -1,6 +1,7 @@
 // =============================================================================
 
 using Gadema.Core.Models.Narrative;
+using Gadema.Core.Models.Writing;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

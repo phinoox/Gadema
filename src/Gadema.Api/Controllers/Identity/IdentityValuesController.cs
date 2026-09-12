@@ -1,6 +1,7 @@
 // =============================================================================
 using Gadema.Api.Services;
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Identity;

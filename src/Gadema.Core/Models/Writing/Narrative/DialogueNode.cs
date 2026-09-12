@@ -1,5 +1,6 @@
 // =============================================================================
 
+using Gadema.Core.Models.Characters;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +13,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue node within a branch.
 /// Contains the actual dialogue text and choices.
 /// </summary>
-[ModelDependency(typeof(DialogueBranch),typeof(MetaInfo))]
+[ModelDependency(typeof(DialogueBranch),typeof(MetaInfo),typeof(Character))]
 public class DialogueNode
 {
     /// <summary>
@@ -48,11 +49,11 @@ public class DialogueNode
     /// ID of the speaker (character) for this node.
     /// </summary>
     //[Fixture(FixtureHintEnum.Omit)]
-    //public Guid? SpeakerId { get; set; }
+    public Guid? SpeakerId { get; set; }
 
     // Navigation property: Speaker (User - Many-to-One)
     //[ForeignKey("SpeakerId")]
-    public virtual string? Speaker { get; set; } //ToDo: this should be a character
+    public virtual Character? Speaker { get; set; } 
 
     /// <summary>
     /// Choice options (JSON array).

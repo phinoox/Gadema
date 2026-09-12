@@ -25,12 +25,8 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
         builder.HasIndex(e => e.ContentType);
         builder.HasIndex(e => e.Status);
         builder.HasIndex(e => e.IsPublic);
+        builder.HasIndex(e => e.ProjectId);
         
-        // Navigation property: Project (Cascade delete)
-        builder.HasOne(ci => ci.Project)
-            .WithMany(p => p.MetaInfos)
-            .HasForeignKey(ci => ci.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);
         
         // Navigation property: MediaAttachments (SetNull to preserve attachment history)
         builder.HasMany(ci => ci.MediaAttachments)
@@ -38,7 +34,10 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
             .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
-
+        builder.HasOne(mi => mi.Project).
+                WithMany().
+                HasForeignKey(mi => mi.ProjectId).
+                OnDelete(DeleteBehavior.Cascade); 
         
         // Navigation property: MetaInfoTags (SetNull to preserve tags)
         builder.HasMany(ci => ci.MetaInfoTagRelations)

@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.DialogueTrees;
 /// <summary>
 /// DTO for creating a content segment within a scene.
 /// </summary>
-public class ContentSegmentUpdateDto
+public class SceneSegmentUpdateDto
 {
     /// <summary>
     /// ID of the scene this segment belongs to.
@@ -30,7 +30,7 @@ public class ContentSegmentUpdateDto
 /// <summary>
 /// Response DTO for a content segment.
 /// </summary>
-public class ContentSegmentResponseDto
+public class SceneSegmentResponseDto
 {
     public Guid Id { get; set; }
     public Guid SceneId { get; set; }
@@ -43,8 +43,8 @@ public class ContentSegmentResponseDto
 /// <summary>
 /// List response for content segments.
 /// </summary>
-public class ContentSegmentListResponseDto
+public class SceneSegmentListResponseDto
 {
-    public IEnumerable<ContentSegmentResponseDto> Items { get; set; } = Enumerable.Empty<ContentSegmentResponseDto>();
+    public IEnumerable<SceneSegmentResponseDto> Items { get; set; } = Enumerable.Empty<SceneSegmentResponseDto>();
     public int TotalCount { get; set; }
 }

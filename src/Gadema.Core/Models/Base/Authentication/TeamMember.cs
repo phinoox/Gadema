@@ -32,7 +32,7 @@ public class TeamMember
     /// <summary>
     /// Role ID: 0=Admin, 1=Editor, 2=Viewer.
     /// </summary>
-    public int RoleId { get; set; }
+    public TeamMemberRoleEnum Role { get; set; }
     
     /// <summary>
     /// Timestamp when the user joined the team.

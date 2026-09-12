@@ -10,30 +10,23 @@ using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Content;
 
-/// <summary>
-/// Configuration for DialogueNode entity in game development management system.
-/// </summary>
+// src/Gadema.Data/Configurations/Writing/DialogueNodeEntityTypeConfiguration.cs
 public class DialogueNodeEntityTypeConfiguration : IEntityTypeConfiguration<DialogueNode>
 {
-    /// <summary>
-    /// Configure DialogueNode entity properties and relationships.
-    /// </summary>
     public void Configure(EntityTypeBuilder<DialogueNode> builder)
     {
-        // Primary key
+        builder.ToTable("DialogueNodes");
+
         builder.HasKey(e => e.Id);
-        
-        // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.DialogueBranchId);
-        //builder.HasIndex(e => e.SpeakerId);
-        
-        // Navigation property: DialogueBranch (Cascade delete)
-        builder.HasOne(dn => dn.DialogueBranch)
-            .WithMany(db => db.ChildNodes)
-            .HasForeignKey(dn => dn.DialogueBranchId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete nodes when branch deleted*
-        
-        // Properties configuration
-        builder.Property(e => e.NodeText).IsRequired().HasMaxLength(4096);
+
+        // Updated Speaker Relationship
+        builder.HasOne(e => e.Speaker)
+               .WithMany() // Adjust if Character has a collection of nodes
+               .HasForeignKey(e => e.SpeakerId)
+               .OnDelete(DeleteBehavior.SetNull);
+
+        // Indexes
+        builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_DialogueNode_MetaInfoId");
+        builder.HasIndex(e => e.DialogueBranchId).HasDatabaseName("IX_DialogueNode_BranchId");
     }
 }

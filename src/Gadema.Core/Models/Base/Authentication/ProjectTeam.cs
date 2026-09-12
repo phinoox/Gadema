@@ -36,7 +36,7 @@ public class ProjectTeam
     /// Role ID for this team within this project (e.g., Admin, Editor, Viewer).
     /// </summary>
     [Required]
-    public int RoleId { get; set; }
+    public TeamMemberRoleEnum Role { get; set; }
 
     /// <summary>
     /// Navigation property: The Project.

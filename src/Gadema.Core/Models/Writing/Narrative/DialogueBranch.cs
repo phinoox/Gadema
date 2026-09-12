@@ -21,17 +21,7 @@ public class DialogueBranch
     /// </summary>
     public Guid Id { get; set; }
     
-    /// <summary>
-    /// ID of the project this branch belongs to.
-    /// </summary>
-    [Required, Display(Name = "Project ID")]
-    [Fixture(FixtureHintEnum.Omit)]
-    public Guid ProjectId { get; set; }
-
-    // Navigation property: Project (Many-to-One)
-    [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
-
+   
     [Fixture(FixtureHintEnum.Omit)]
     public Guid? MetaInfoId { get; set; }  
     

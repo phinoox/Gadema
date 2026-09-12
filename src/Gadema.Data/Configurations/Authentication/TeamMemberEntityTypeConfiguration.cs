@@ -23,8 +23,6 @@ public class TeamMemberEntityTypeConfiguration : IEntityTypeConfiguration<TeamMe
         // Primary key
         builder.HasKey(e => e.Id);
         
-        // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.RoleId).IsUnique();
         
         // Foreign key constraints with cascade behavior
         builder.HasOne(tm => tm.Team)

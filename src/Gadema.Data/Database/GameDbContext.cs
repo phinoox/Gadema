@@ -91,7 +91,7 @@ public class GameDbContext : DbContext
     /// <summary>
     /// StorySequence entity set.
     /// </summary>
-    public DbSet<StorySequence> StorySequences { get; set; }
+    public DbSet<StoryChapter> StorySequences { get; set; }
     
     /// <summary>
     /// StoryBeat entity set.
@@ -104,9 +104,9 @@ public class GameDbContext : DbContext
     public DbSet<Scene> Scenes { get; set; }
     
     /// <summary>
-    /// ContentSegment entity set - Unique token markers for shortcodes.
+    /// SceneSegment entity set - Unique token markers for shortcodes.
     /// </summary>
-    public DbSet<ContentSegment> ContentSegments { get; set; }
+    public DbSet<SceneSegment> SceneSegments { get; set; }
     
     /// <summary>
     /// SceneStoryBeatMapping junction entity set.

@@ -2,6 +2,7 @@
 using Gadema.Api.Services;
 using Gadema.Api.Services.Narrative;
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Narrative;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Narrative;
