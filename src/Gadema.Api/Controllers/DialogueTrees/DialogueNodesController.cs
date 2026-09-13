@@ -1,9 +1,6 @@
-// =============================================================================
-using Gadema.Api.Services;
-using Gadema.Api.Services.Content;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.DialogueTrees;
 using Microsoft.AspNetCore.Mvc;
+using Gadema.Core.Dtos.DialogueTrees;
+using Gadema.Api.Services.DialogueTrees;
 
 namespace Gadema.Api.Controllers.DialogueTrees;
 
@@ -11,45 +8,45 @@ namespace Gadema.Api.Controllers.DialogueTrees;
 /// Controller for dialogue node management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/dialogue-nodes")]
+[Route("api/v1/projects/{projectId:guid}/branches/{branchId:guid}/nodes")]
 public class DialogueNodesController : ControllerBase
 {
-    private readonly DialogueNodeService _dialogueNodeService;
+    private readonly DialogueNodeService _service;
     private readonly ILogger<DialogueNodesController> _logger;
 
-    public DialogueNodesController(DialogueNodeService dialogueNodeService, ILogger<DialogueNodesController> logger)
+    public DialogueNodesController(DialogueNodeService service, ILogger<DialogueNodesController> logger)
     {
-        _dialogueNodeService = dialogueNodeService;
+        _service = service;
         _logger = logger;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetDialogueNodesAsync(Guid projectId)
+    public async Task<IActionResult> GetNodesAsync(Guid projectId, Guid branchId)
     {
-        return Ok(await _dialogueNodeService.GetDialogueNodesAsync(projectId));
+        return Ok(await _service.GetNodesAsync(projectId, branchId));
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetDialogueNodeAsync(Guid id)
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetNodeAsync(Guid projectId, Guid branchId, Guid id)
     {
-        return Ok(await _dialogueNodeService.GetDialogueNodeAsync(id));
+        return Ok(await _service.GetNodeByIdAsync(id));
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateDialogueNodeAsync(Guid projectId, [FromBody] DialogueNodeCreateDto createDto)
+    public async Task<IActionResult> CreateNodeAsync(Guid projectId, Guid branchId, [FromBody] DialogueNodeCreateDto dto)
     {
-        return Ok(await _dialogueNodeService.CreateDialogueNodeAsync(projectId, createDto));
+        return Ok(await _service.CreateNodeAsync(projectId, branchId, dto));
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateDialogueNodeAsync(Guid id, [FromBody] DialogueNodeUpdateDto updateDto)
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateNodeAsync(Guid projectId, Guid branchId, Guid id, [FromBody] DialogueNodeUpdateDto dto)
     {
-        return Ok(await _dialogueNodeService.UpdateDialogueNodeAsync(id, updateDto));
+        return Ok(await _service.UpdateNodeAsync(projectId, branchId, id, dto));
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteDialogueNodeAsync(Guid id)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteNodeAsync(Guid projectId, Guid branchId, Guid id)
     {
-        return Ok(await _dialogueNodeService.DeleteDialogueNodeAsync(id));
+        return Ok(await _service.DeleteNodeAsync(id));
     }
 }

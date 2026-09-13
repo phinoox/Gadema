@@ -26,30 +26,30 @@ public class DialogueBranchesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetDialogueBranchesAsync(Guid projectId)
     {
-        return Ok(await _dialogueBranchService.GetDialogueBranchesAsync(projectId));
+        return Ok(await _dialogueBranchService.GetBranchesAsync(projectId));
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetDialogueBranchAsync(Guid id)
     {
-        return Ok(await _dialogueBranchService.GetDialogueBranchAsync(id));
+        return Ok(await _dialogueBranchService.GetBranchAsync(id));
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateDialogueBranchAsync(Guid projectId, [FromBody] DialogueBranchCreateDto createDto)
     {
-        return Ok(await _dialogueBranchService.CreateDialogueBranchAsync(projectId, createDto));
+        return Ok(await _dialogueBranchService.CreateBranchAsync(projectId, createDto));
     }
 
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateDialogueBranchAsync(Guid id, [FromBody] DialogueBranchUpdateDto updateDto)
     {
-        return Ok(await _dialogueBranchService.UpdateDialogueBranchAsync(id, updateDto));
+        return Ok(await _dialogueBranchService.UpdateBranchAsync(id, updateDto));
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteDialogueBranchAsync(Guid id)
     {
-        return Ok(await _dialogueBranchService.DeleteDialogueBranchAsync(id));
+        return Ok(await _dialogueBranchService.DeleteBranchAsync(id));
     }
 }

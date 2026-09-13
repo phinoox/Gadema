@@ -15,7 +15,7 @@ public class DialogueBranchService : CoreService
     public DialogueBranchService(GameDbContext db, ILogger<DialogueBranchService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    public async Task<ApiResponseDto<ListResponseDto<DialogueBranchResponseDto>>> GetDialogueBranchesAsync(Guid projectId)
+    public async Task<ApiResponseDto<ListResponseDto<DialogueBranchResponseDto>>> GetBranchesAsync(Guid projectId)
     {
         var error = await ValidateProjectAccessAsync<ListResponseDto<DialogueBranchResponseDto>>(projectId);
         if (error != null) return error;
@@ -26,7 +26,7 @@ public class DialogueBranchService : CoreService
             .Select(b => new DialogueBranchResponseDto
             {
                 Id = b.Id,
-                MetaInfoId = b.MetaInfoId,
+                MetaInfoId = b.MetaInfoId.Value,
                 Title = b.MetaInfo.Title,
                 Slug = b.MetaInfo.Slug,
                 Status = b.MetaInfo.Status,
@@ -41,7 +41,7 @@ public class DialogueBranchService : CoreService
         });
     }
 
-    public async Task<ApiResponseDto<DialogueBranchResponseDto>> GetDialogueBranchAsync(Guid id)
+    public async Task<ApiResponseDto<DialogueBranchResponseDto>> GetBranchAsync(Guid id)
     {
         var branch = await _db.DialogueBranches
             .Include(b => b.MetaInfo)
@@ -63,7 +63,7 @@ public class DialogueBranchService : CoreService
         });
     }
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateDialogueBranchAsync(Guid projectId, DialogueBranchCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateBranchAsync(Guid projectId, DialogueBranchCreateDto createDto)
     {
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
@@ -91,7 +91,7 @@ public class DialogueBranchService : CoreService
         });
     }
 
-    public async Task<ApiResponseDto<DialogueBranchResponseDto>> UpdateDialogueBranchAsync(Guid id, DialogueBranchUpdateDto updateDto)
+    public async Task<ApiResponseDto<DialogueBranchResponseDto>> UpdateBranchAsync(Guid id, DialogueBranchUpdateDto updateDto)
     {
         var branch = await _db.DialogueBranches
             .Include(b => b.MetaInfo)
@@ -118,7 +118,7 @@ public class DialogueBranchService : CoreService
         });
     }
 
-    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteDialogueBranchAsync(Guid id)
+    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteBranchAsync(Guid id)
     {
         var branch = await _db.DialogueBranches
             .Include(b => b.MetaInfo)

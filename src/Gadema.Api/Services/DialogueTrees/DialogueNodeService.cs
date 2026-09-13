@@ -1,4 +1,5 @@
-// =============================================================================
+// ... existing imports ...
+
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.DialogueTrees;
 using Gadema.Core.Models;
@@ -6,111 +7,154 @@ using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Content;
+namespace Gadema.Api.Services.DialogueTrees;
 
-/// <summary>
-/// Service for managing DialogueNodes - individual nodes within a dialogue branch.
-/// Each node contains text and an optional choice that leads to the next node.
-/// </summary>
 public class DialogueNodeService : CoreService
 {
     public DialogueNodeService(GameDbContext db, ILogger<DialogueNodeService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    private DialogueNodeResponseDto CreateResponseDto(DialogueNode node)
+    #region Mapping Helpers
+
+    private DialogueNodeResponseDto MapToResponseDto(DialogueNode node)
         => new()
         {
             Id = node.Id,
-            BranchId = node.BranchId,
-            Text = node.Text,
-            ChoiceOptions = node.ChoiceOptions != null ? node.ChoiceOptions.Select(co => new DialogueChoiceOptionResponseDto
-            {
-                Key = co.Key,
-                Value = co.Value,
-            }).ToList() : Enumerable.Empty<DialogueChoiceOptionResponseDto>().ToList(),
-            NextNodeId = node.NextNodeId,
+            DialogueBranchId = node.DialogueBranchId,
+            BranchTitle = node.DialogueBranch?.MetaInfo?.Title ?? "Unknown Branch",
+            NodeText = node.NodeText,
+            SpeakerId = node.SpeakerId,
+            SpeakerName = node.Speaker?.MetaInfo?.Title, 
+            ChoiceOptions = node.ChoiceOptions,
+            Conditions = node.Conditions,
+            ParentNodeId = node.ParentNodeId,
         };
+
+    #endregion
+
+    #region Internal Helpers
+
+    private async Task<ApiResponseDto<DialogueBranch>> GetBranchAndValidateAsync(Guid projectId, Guid branchId)
+    {
+        var branch = await _db.DialogueBranches
+            .Include(b => b.MetaInfo)
+            .FirstOrDefaultAsync(b => b.Id == branchId && b.MetaInfo.ProjectId == projectId);
+
+        if (branch == null) 
+            return ApiResponseDto<DialogueBranch>.BadRequest("Branch not found or access denied.");
+
+        return ApiResponseDto<DialogueBranch>.Success(branch);
+    }
+
+    #endregion
 
     public async Task<ApiResponseDto<IEnumerable<DialogueNodeResponseDto>>> GetNodesAsync(Guid projectId, Guid? branchId = null)
     {
         var error = await ValidateProjectAccessAsync<IEnumerable<DialogueNodeResponseDto>>(projectId);
         if (error != null) return error;
 
-        var query = _db.DialogueNodes.Where(n => n.BranchId == null && n.MetaInfo.ProjectId == projectId).OrderBy(n => n.Id);
+        var query = _db.DialogueNodes
+            .Include(n => n.DialogueBranch).ThenInclude(b => b.MetaInfo)
+            .Include(n => n.Speaker).ThenInclude(s => s.MetaInfo)
+            .Where(n => n.DialogueBranch.MetaInfo.ProjectId == projectId);
 
-        if (branchId.HasValue) query = query.Where(n => n.BranchId == branchId.Value);
+        if (branchId.HasValue) 
+            query = query.Where(n => n.DialogueBranchId == branchId.Value);
 
         var nodes = await query.ToListAsync();
-        return ApiResponseDto<IEnumerable<DialogueNodeResponseDto>>.Success(nodes.Select(CreateResponseDto));
+        return ApiResponseDto<IEnumerable<DialogueNodeResponseDto>>.Success(nodes.Select(MapToResponseDto));
     }
 
     public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeByIdAsync(Guid id)
     {
-        var node = await _db.DialogueNodes.Include(n => n.Branch).FirstOrDefaultAsync(n => n.Id == id);
-        if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Dialogue node with ID {id} not found.");
+        var node = await _db.DialogueNodes
+            .Include(n => n.DialogueBranch).ThenInclude(b => b.MetaInfo)
+            .Include(n => n.Speaker).ThenInclude(s => s.MetaInfo)
+            .FirstOrDefaultAsync(n => n.Id == id);
 
-        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.MetaInfo.ProjectId);
+        if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {id} not found.");
+
+        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<DialogueNodeResponseDto>.Success(CreateResponseDto(node));
+        return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
     }
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateNodeAsync(Guid projectId, DialogueNodeCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateNodeAsync(Guid projectId, Guid branchId, DialogueNodeCreateDto createDto)
     {
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Find or get the branch to set BranchId
-        var metaInfo = _db.MetaInfos.FirstOrDefault(m => m.Id == createDto.BranchId && m.ProjectId == projectId);
-        if (metaInfo is null) return ApiResponseDto<CreateResponseDto>.BadRequest("Branch not found.");
+        // Use the helper to validate and fetch the branch in one go
+        var branchResult = await GetBranchAndValidateAsync(projectId, branchId);
+        if (!branchResult.Successful) return ApiResponseDto<CreateResponseDto>.BadRequest(branchResult.Message);
+        var branch = branchResult;
 
         var node = new DialogueNode
         {
             Id = Guid.NewGuid(),
-            BranchId = metaInfo.Id,
-            Text = createDto.Text,
-            ChoiceOptions = createDto.ChoiceOptions?.Select(co => new DialogueChoiceOption { Key = co.Key, Value = co.Value }).ToList() ?? Enumerable.Empty<DialogueChoiceOption>(),
-            NextNodeId = createDto.NextNodeId,
+            DialogueBranchId = branchId,
+            NodeText = createDto.NodeText,
+            SpeakerId = createDto.SpeakerId,
+            ParentNodeId = createDto.ParentNodeId,
+            ChoiceOptions = createDto.ChoiceOptions,
+            Conditions = createDto.Conditions
         };
 
         _db.DialogueNodes.Add(node);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = node.Id, MetaInfoId = metaInfo.Id, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
+        { 
+            EntityId = node.Id, 
+            ProjectId = projectId 
+        });
     }
 
-    public async Task<ApiResponseDto<DialogueNodeResponseDto>> UpdateNodeAsync(Guid id, DialogueNodeUpdateDto updateDto)
+    public async Task<ApiResponseDto<DialogueNodeResponseDto>> UpdateNodeAsync(Guid projectId, Guid branchId, Guid nodeId, DialogueNodeUpdateDto updateDto)
     {
-        var node = await _db.DialogueNodes.Include(n => n.Branch).FirstOrDefaultAsync(n => n.Id == id);
-        if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Dialogue node with ID {id} not found.");
+        // 1. Fetch the node
+        var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == nodeId);
+        if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {nodeId} not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueNodeUpdateDto>(node.MetaInfo.ProjectId);
+        // 2. Verify Contextual Integrity: Does this node actually belong to the branch in the URL?
+        if (node.DialogueBranchId != branchId)
+            return ApiResponseDto<DialogueNodeResponseDto>.BadRequest("The node does not belong to the specified branch.");
+
+        // 3. Validate Project Access via the branch's MetaInfo
+        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(projectId);
         if (error != null) return error;
 
-        if (!string.IsNullOrWhiteSpace(updateDto.Text)) node.Text = updateDto.Text;
-
-        if (updateDto.ChoiceOptions?.Any() == true)
-            node.ChoiceOptions = updateDto.ChoiceOptions.Select(co => new DialogueChoiceOption { Key = co.Key, Value = co.Value }).ToList();
-        else if (updateDto.ChoiceOptions != null && !updateDto.ChoiceOptions.Any())
-            node.ChoiceOptions = Enumerable.Empty<DialogueChoiceOption>();
-
-        if (!string.IsNullOrEmpty(updateDto.NextNodeId)) node.NextNodeId = updateDto.NextNodeId;
+        // 4. Apply updates to content
+        ApplyUpdateToModel(node, updateDto);
 
         await _db.SaveChangesAsync();
-        return ApiResponseDto<DialogueNodeResponseDto>.Success(CreateResponseDto(node));
+        return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
+    }
+    private void ApplyUpdateToModel(DialogueNode node, DialogueNodeUpdateDto dto)
+    {
+        if (!string.IsNullOrWhiteSpace(dto.NodeText)) node.NodeText = dto.NodeText;
+        if (dto.SpeakerId.HasValue) node.SpeakerId = dto.SpeakerId;
+        if (dto.ParentNodeId.HasValue) node.ParentNodeId = dto.ParentNodeId;
+        if (dto.ChoiceOptions != null) node.ChoiceOptions = dto.ChoiceOptions;
+        if (dto.Conditions != null) node.Conditions = dto.Conditions;
     }
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteNodeAsync(Guid id)
     {
-        var node = await _db.DialogueNodes.Include(n => n.Branch).FirstOrDefaultAsync(n => n.Id == id);
-        if (node is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Dialogue node with ID {id} not found.");
+        var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == id);
+        if (node is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.MetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.DialogueNodes.Remove(node);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = node.MetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
+        { 
+            EntityId = id, 
+            ProjectId = node.DialogueBranch.MetaInfo.ProjectId 
+        });
     }
 }

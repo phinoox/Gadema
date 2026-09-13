@@ -1,11 +1,7 @@
-// =============================================================================
-
-using Gadema.Core.Models.Characters;
-using Microsoft.EntityFrameworkCore;
+// ... existing code ...
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
+using Gadema.Core.Models.Characters;
 
 namespace Gadema.Core.Models;
 
@@ -13,77 +9,40 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue node within a branch.
 /// Contains the actual dialogue text and choices.
 /// </summary>
-[ModelDependency(typeof(DialogueBranch),typeof(MetaInfo),typeof(Character))]
+[ModelDependency(typeof(DialogueBranch), typeof(Character))]
 public class DialogueNode
 {
-    /// <summary>
-    /// Unique identifier for the dialogue node.
-    /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
-
-    public Guid? MetaInfoId { get; set; }  
-    
-    [ForeignKey("MetaInfoId")]
-    [Fixture(FixtureHintEnum.Omit)]
-    public virtual MetaInfo? MetaInfo { get; set; }
-
 
     /// <summary>
     /// ID of the branch this node belongs to.
     /// </summary>
-    [Required, Display(Name = "Branch ID")]
-    [Fixture(FixtureHintEnum.Omit)]
+    [Required]
     public Guid DialogueBranchId { get; set; }
 
-    // Navigation property: DialogueBranch (Many-to-One)
-    [ForeignKey("BranchId")]
-    public virtual DialogueBranch DialogueBranch { get; set; }
+    [ForeignKey("DialogueBranchId")]
+    public virtual DialogueBranch DialogueBranch { get; set; } = null!;
 
-    /// <summary>
-    /// Text content of the dialogue node.
-    /// </summary>
     [MaxLength(4096)]
     public string NodeText { get; set; } = "";
 
-    /// <summary>
-    /// ID of the speaker (character) for this node.
-    /// </summary>
-    //[Fixture(FixtureHintEnum.Omit)]
     public Guid? SpeakerId { get; set; }
 
-    // Navigation property: Speaker (User - Many-to-One)
-    //[ForeignKey("SpeakerId")]
+    [ForeignKey("SpeakerId")]
     public virtual Character? Speaker { get; set; } 
 
-    /// <summary>
-    /// Choice options (JSON array).
-    /// </summary>
+    // In a real implementation, this would be a serialized JSON or a separate entity.
+    // For this refactor, we treat it as the structural choice data.
     [MaxLength(4096)]
-    public string? ChoiceOptions { get; set; }  // JSON array
+    public string? ChoiceOptions { get; set; } 
 
-    /// <summary>
-    /// Conditions for this node (JSON).
-    /// </summary>
     [MaxLength(4096)]
-    public string? Conditions { get; set; }  // JSON conditions
+    public string? Conditions { get; set; }
 
-    // Self-referencing navigation properties for tree hierarchy
-    /// <summary>
-    /// Parent node ID for hierarchical dialogue structure.
-    /// Used for branching conversations in visual novels.
-    /// </summary>
-    [Fixture(FixtureHintEnum.Omit)]
     public Guid? ParentNodeId { get; set; }
 
-    // Navigation property: Parent Node (self-referencing, optional)
     [ForeignKey("ParentNodeId")]
     public virtual DialogueNode? ParentNode { get; set; }
     
-    /// <summary>
-    /// Collection of child nodes (for dialogue tree).
-    /// Foreign key: ParentNodeId (matches FK in DialogueNode)
-    /// </summary>
-    [Fixture(FixtureHintEnum.Omit)]
     public virtual ICollection<DialogueNode> ChildNodes { get; set; } = new List<DialogueNode>();
-
 }
