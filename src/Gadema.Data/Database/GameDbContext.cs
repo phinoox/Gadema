@@ -184,7 +184,7 @@ public class GameDbContext : DbContext
     /// <summary>
     /// TaskComments entity set.
     /// </summary>
-    public DbSet<ProjectTaskComments> TaskComments { get; set; }
+    public DbSet<ProjectTaskComment> ProjectTaskComments { get; set; }
 
     #endregion
 
@@ -298,6 +298,9 @@ public class GameDbContext : DbContext
     public DbSet<UserProviderLink> UserProviderLinks => Set<UserProviderLink>();
 
     public DbSet<ProjectMember> ProjectMembers { get; set; }
+    
+    public DbSet<ProjectSeries> ProjectSeries { get; set; }
+    public DbSet<IdentityDefinition> IdentityDefinitions { get; set; }
 
 
     /// <summary>

@@ -13,12 +13,12 @@ namespace Gadema.Data.Configurations.Tasks;
 /// <summary>
 /// Configuration for ProjectTaskComments entity in game development management system.
 /// </summary>
-public class ProjectTaskCommentsEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTaskComments>
+public class ProjectTaskCommentsEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTaskComment>
 {
     /// <summary>
     /// Configure ProjectTaskComments entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<ProjectTaskComments> builder)
+    public void Configure(EntityTypeBuilder<ProjectTaskComment> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);

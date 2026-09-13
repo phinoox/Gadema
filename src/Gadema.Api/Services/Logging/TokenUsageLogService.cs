@@ -164,4 +164,51 @@ public class TokenUsageLogService : CoreService
         // each API call made with a project token.
         return DateTime.MinValue;
     }
+
+        // ========================================================================
+    // GET - List token usage logs for a project (paginated)
+    // ========================================================================
+
+    public async Task<ApiResponseDto<PagedResponseDto<ActivityLogResponseDto>>> GetLogsAsync(
+        Guid projectId, 
+        int page = 1, 
+        int pageSize = 20)
+    {
+        var error = await ValidateProjectAccessAsync<PagedResponseDto<ActivityLogResponseDto>>(projectId);
+        if (error != null) return error;
+
+        // Assuming usage logs are stored in ActivityLogs with EntityType = "TokenUsage"
+        var query = _db.ActivityLogs
+            .Where(l => l.ProjectId == projectId && l.EntityType == "tokenusage")
+            .OrderByDescending(l => l.CreatedAt);
+
+        var total = await query.CountAsync();
+        var logs = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+        return ApiResponseDto<PagedResponseDto<ActivityLogResponseDto>>.Success(new PagedResponseDto<ActivityLogResponseDto>
+        {
+            Items = logs.Select(CreateActivityLogResponseDto).ToList(),
+            TotalCount = total,
+            Page = page,
+            PageSize = pageSize,
+            TotalPages = (int)Math.Ceiling(total / (double)pageSize)
+        });
+    }
+
+    // Helper to map ActivityLog to ActivityLogResponseDto (if not already present in ActivityLogService)
+    private ActivityLogResponseDto CreateActivityLogResponseDto(ActivityLog log)
+        => new()
+        {
+            Id = log.Id,
+            UserId = log.UserId,
+            EventType = log.EventType,
+            RelatedEntityId = log.RelatedEntityId,
+            RelatedEntityType = log.RelatedEntityType,
+            Title = log.Title,
+            Description = log.Description,
+            CreatedAt = log.CreatedAt,
+            ProjectId = log.ProjectId
+        };
+
+
 }

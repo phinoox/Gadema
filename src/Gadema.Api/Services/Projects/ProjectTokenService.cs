@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Activities;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Projects;
 using Gadema.Core.Dtos.Response;

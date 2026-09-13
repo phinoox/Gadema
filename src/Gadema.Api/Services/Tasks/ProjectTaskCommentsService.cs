@@ -17,7 +17,7 @@ public class ProjectTaskCommentsService : CoreService
     public ProjectTaskCommentsService(GameDbContext db, ILogger<ProjectTaskCommentsService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    private TaskCommentResponseDto CreateResponseDto(ProjectTaskComments comment)
+    private TaskCommentResponseDto CreateResponseDto(ProjectTaskComment comment)
         => new()
         {
             Id = comment.Id,
@@ -28,7 +28,7 @@ public class ProjectTaskCommentsService : CoreService
             CreatedAt = comment.CreatedAt,
         };
 
-    private ListResponseDto<TaskCommentResponseDto> CreateListResponseDto(IEnumerable<ProjectTaskComments> comments)
+    private ListResponseDto<TaskCommentResponseDto> CreateListResponseDto(IEnumerable<ProjectTaskComment> comments)
         => new() { Items = comments.Select(CreateResponseDto).ToList(), TotalCount = comments.Count() };
 
     public async Task<ApiResponseDto<ListResponseDto<TaskCommentResponseDto>>> GetCommentsAsync(Guid projectId, Guid? taskId = null)
@@ -61,7 +61,7 @@ public class ProjectTaskCommentsService : CoreService
         if (error != null) return error;
 
         // Use FK-as-PK pattern: ProjectTaskId matches the comment's ID for junction table
-        var comment = new ProjectTaskComments
+        var comment = new ProjectTaskComment
         {
             Id = Guid.NewGuid(),
             MetaInfoId = Guid.Empty, // Not applicable for comments

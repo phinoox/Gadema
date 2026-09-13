@@ -49,5 +49,5 @@ public class ContentVersionLog
     /// Timestamp when the version was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
+    public Guid CreatedByUserId { get; set; }
 }

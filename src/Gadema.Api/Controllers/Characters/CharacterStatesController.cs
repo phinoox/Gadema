@@ -22,13 +22,13 @@ public class CharacterStatesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetCharacterStatesAsync(Guid projectId)
     {
-        return Ok(await _characterStateService.GetCharacterStatesAsync(projectId));
+        return Ok(await _characterStateService.GetStatesAsync(projectId));
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetCharacterStateAsync(Guid id)
     {
-        return Ok(await _characterStateService.GetCharacterStateAsync(id));
+        return Ok(await _characterStateService.GetStateAsync(id));
     }
 
     [HttpPost]

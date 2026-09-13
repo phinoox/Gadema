@@ -103,3 +103,9 @@ public abstract class MetaInfoResponseBaseDto
     public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
 
 }
+
+public class AutosaveResponseDto
+{
+    public Guid VersionLogId { get; set; }
+    public int VersionNumber { get; set; }
+}

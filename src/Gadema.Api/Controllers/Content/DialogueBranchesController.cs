@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Gadema.Core.Dtos.Content.Branches;
 using Gadema.Api.Services.Content;
+using Gadema.Api.Services.DialogueTrees;
 
 namespace Gadema.Api.Controllers;
 

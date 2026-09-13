@@ -46,4 +46,5 @@ public class CreateMetaInfoDto
     /// </summary>
     [MaxLength(4096)]
     public string? ShortDesc { get; set; } = null!;
+    public bool IsPublic { get; set; }
 }

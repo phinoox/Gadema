@@ -9,6 +9,7 @@ using Gadema.Api.Services;
 using Gadema.Core.Dtos.Tags;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Gadema.Api.Services.Content;
 
 namespace Gadema.Api.Controllers;
 
@@ -25,7 +26,7 @@ public class TagsController : ControllerBase
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public TagsController(TagService tagService, ILogger<TagsController> logger)
+    public TagsController(TagsService tagService, ILogger<TagsController> logger)
     {
         _tagService = tagService;
         _logger = logger;

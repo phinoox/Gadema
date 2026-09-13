@@ -107,7 +107,7 @@ public class ProjectTask
     /// Navigation property: Collection of comments for this task.
     /// Foreign key: ProjectTaskId (matches FK in ProjectTaskComments)
     /// </summary>
-    public virtual ICollection<ProjectTaskComments> Comments { get; set; } = new List<ProjectTaskComments>();
+    public virtual ICollection<ProjectTaskComment> Comments { get; set; } = new List<ProjectTaskComment>();
 
     /// <summary>
     /// FK to ProjectTask.Id (for junction table FK-as-PK pattern).

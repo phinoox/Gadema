@@ -26,13 +26,13 @@ public class CharacterRelationsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetCharacterRelationsAsync(Guid projectId)
     {
-        return Ok(await _characterRelationService.GetCharacterRelationsAsync(projectId));
+        return Ok(await _characterRelationService.GetRelationsAsync(projectId));
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCharacterRelationAsync(Guid id)
     {
-        return Ok(await _characterRelationService.GetCharacterRelationAsync(id));
+        return Ok(await _characterRelationService.GetRelationByIdAsync(id));
     }
 
     [HttpPost]

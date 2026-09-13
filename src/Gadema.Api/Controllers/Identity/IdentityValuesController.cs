@@ -26,30 +26,30 @@ public class IdentityValuesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetIdentityValuesAsync(Guid projectId)
     {
-        return Ok(await _identityValueService.GetIdentityValuesAsync(projectId));
+        return Ok(await _identityValueService.GetValuesAsync(projectId));
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetIdentityValueAsync(Guid id)
     {
-        return Ok(await _identityValueService.GetIdentityValueAsync(id));
+        return Ok(await _identityValueService.GetValuesByIdAsync(id));
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateIdentityValueAsync(Guid projectId, [FromBody] IdentityValueCreateDto createDto)
     {
-        return Ok(await _identityValueService.CreateIdentityValueAsync(projectId, createDto));
+        return Ok(await _identityValueService.CreateValueAsync(projectId, createDto));
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateIdentityValueAsync(Guid id, [FromBody] IdentityValueUpdateDto updateDto)
     {
-        return Ok(await _identityValueService.UpdateIdentityValueAsync(id, updateDto));
+        return Ok(await _identityValueService.UpdateValueAsync(id, updateDto));
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteIdentityValueAsync(Guid id)
     {
-        return Ok(await _identityValueService.DeleteIdentityValueAsync(id));
+        return Ok(await _identityValueService.DeleteValueAsync(id));
     }
 }

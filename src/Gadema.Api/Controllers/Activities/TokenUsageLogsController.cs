@@ -23,8 +23,12 @@ public class TokenUsageLogsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetTokenUsageLogsAsync(Guid projectId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
+    public async Task<IActionResult> GetTokenUsageLogsAsync(
+        Guid projectId, 
+        [FromQuery] int page = 1, 
+        [FromQuery] int pageSize = 20)
     {
-        return Ok(await _tokenUsageLogService.GetTokenUsageLogsAsync(projectId, page, pageSize));
+        // Delegate to the existing GetLogsAsync method which has the full functionality
+        return Ok(await _tokenUsageLogService.GetLogsAsync(projectId, page, pageSize));
     }
 }

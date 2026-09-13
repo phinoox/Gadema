@@ -15,8 +15,9 @@ public class DialogueNodeCreateDto
 /// <summary>
 /// DTO for creating a dialogue node within a branch.
 /// </summary>
-public class DialogueNodeUpdateDto
+public class DialogueNodeUpdateDto : UpdateRequestDto
 {
+    public MetaInfoUpdateData? MetaInfo { get; set; }
     /// <summary>
     /// ID of the content item this node belongs to (optional).
     /// </summary>

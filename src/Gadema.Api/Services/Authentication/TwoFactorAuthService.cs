@@ -1,5 +1,7 @@
 // =============================================================================
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Authentication;
+using Gadema.Core.Dtos.Response;
 using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -48,23 +50,23 @@ public class TwoFactorAuthService : CoreService
     // POST /api/v1/auth/tfa/verify - Verify TOTP code from authenticator app
     // ========================================================================
 
-    public async Task<ApiResponseDto<bool>> Verify2FACodeAsync(Guid userId, string totpCode)
+    public async Task<ApiResponseDto<SimpleResponseDto>> Verify2FACodeAsync(Guid userId, string totpCode)
     {
         var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is null || !user.IsTeamMemberOnly)
-            return ApiResponseDto<bool>.Forbidden("User not found or not eligible for 2FA.");
+            return ApiResponseDto<SimpleResponseDto>.Forbidden("User not found or not eligible for 2FA.");
 
         // Verify TOTP code (placeholder - in production use a proper TOTP library like Google.Authenticator)
         var isValid = await VerifyTotpCode(user.TwoFactorSecret, totpCode);
 
         if (!isValid)
-            return ApiResponseDto<bool>.BadRequest("Invalid 2FA code. Please check your authenticator app.");
+            return ApiResponseDto<SimpleResponseDto>.BadRequest("Invalid 2FA code. Please check your authenticator app.");
 
         // Mark the last verified time (optional: for rate limiting)
         user.Last2FAVerifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<bool>.Success(true);
+        return ApiResponseDto<SimpleResponseDto>.Success(true);
     }
 
     // ========================================================================

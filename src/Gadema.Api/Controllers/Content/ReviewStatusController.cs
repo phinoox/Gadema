@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
 using Gadema.Api.Services;
-using Gadema.Core.Dtos.Reviews;
+//using Gadema.Core.Dtos.Reviews;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Gadema.Api.Services.Content;

@@ -2,6 +2,7 @@
 using Gadema.Api.Services;
 using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.DialogueTrees;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.DialogueTrees;
