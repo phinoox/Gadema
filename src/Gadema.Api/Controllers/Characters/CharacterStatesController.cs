@@ -31,10 +31,10 @@ public class CharacterStatesController : ControllerBase
         return Ok(await _characterStateService.GetStateAsync(id));
     }
 
-    [HttpPost]
-    public async Task<IActionResult> CreateCharacterStateAsync(Guid projectId, [FromBody] CharacterStateCreateDto createDto)
+    [HttpPost("{id:guid}")]
+    public async Task<IActionResult> CreateCharacterStateAsync(Guid projectId,Guid id, [FromBody] CharacterStateCreateDto createDto)
     {
-        return Ok(await _characterStateService.CreateCharacterStateAsync(projectId, createDto));
+        return Ok(await _characterStateService.CreateCharacterStateAsync(projectId,id, createDto));
     }
 
     [HttpPut("{id:guid}")]

@@ -22,24 +22,24 @@ public class CharacterStoryProfilesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetStoryProfileAsync(Guid characterId)
     {
-        return Ok(await _storyProfileService.GetStoryProfileAsync(characterId));
+        return Ok(await _storyProfileService.GetProfileAsync(characterId));
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateStoryProfileAsync(Guid projectId, Guid characterId, [FromBody] CharacterStoryProfileCreateDto createDto)
     {
-        return Ok(await _storyProfileService.CreateStoryProfileAsync(projectId, characterId, createDto));
+        return Ok(await _storyProfileService.CreateProfileAsync(projectId, characterId, createDto));
     }
 
     [HttpPut]
     public async Task<IActionResult> UpdateStoryProfileAsync(Guid characterId, [FromBody] CharacterStoryProfileUpdateDto updateDto)
     {
-        return Ok(await _storyProfileService.UpdateStoryProfileAsync(characterId, updateDto));
+        return Ok(await _storyProfileService.UpdateProfileAsync(characterId, updateDto));
     }
 
     [HttpDelete]
     public async Task<IActionResult> DeleteStoryProfileAsync(Guid characterId)
     {
-        return Ok(await _storyProfileService.DeleteStoryProfileAsync(characterId));
+        return Ok(await _storyProfileService.DeleteProfileAsync(characterId));
     }
 }

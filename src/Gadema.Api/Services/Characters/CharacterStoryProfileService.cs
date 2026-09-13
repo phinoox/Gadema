@@ -84,12 +84,12 @@ public class CharacterStoryProfileService : CoreService
     // POST - Create a profile for an existing character
     // ========================================================================
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateProfileAsync(Guid projectId, CharacterStoryProfileCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateProfileAsync(Guid projectId,Guid characterId, CharacterStoryProfileCreateDto createDto)
     {
         // 1. Validate character exists and belongs to project
         var character = await _db.Characters
             .Include(c => c.MetaInfo)
-            .FirstOrDefaultAsync(c => c.Id == createDto.CharacterId && c.MetaInfo.ProjectId == projectId);
+            .FirstOrDefaultAsync(c => c.Id == characterId && c.MetaInfo.ProjectId == projectId);
 
         if (character is null)
             return ApiResponseDto<CreateResponseDto>.NotFound("The specified character does not exist in this project.");
@@ -98,7 +98,7 @@ public class CharacterStoryProfileService : CoreService
         var profile = new CharacterStoryProfile
         {
             Id = Guid.NewGuid(),
-            CharacterId = createDto.CharacterId,
+            CharacterId = characterId,
             OriginStory = createDto.OriginStory,
             FamilyBackground = createDto.FamilyBackground,
             Backstory = createDto.Backstory,

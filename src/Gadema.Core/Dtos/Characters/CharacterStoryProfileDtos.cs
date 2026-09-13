@@ -12,7 +12,7 @@ public class CharacterStoryProfileCreateDto
     /// <summary>
     /// The character this profile belongs to.
     /// </summary>
-    [Required] public Guid CharacterId { get; set; }
+   // [Required] public Guid CharacterId { get; set; } //retrieved via route
     
     // === Origin & Background ===
     
