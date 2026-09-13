@@ -241,14 +241,6 @@ git commit -m "docs: update README with v0.1 features"
 
 ---
 
-## 📞 Support & Contact
-
-For questions, issues, or contributions:
-- 📧 Email: [support@gadema.com](mailto:support@gadema.com)
-- 💬 Discord: [Join our community](https://discord.gg/gadema)
-- 🐛 Issues: [GitHub Issues](https://github.com/gadema/gadema/issues)
-
----
 
 ## 📜 License
 
@@ -265,7 +257,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Version**: v0.1 (Pre-Release MVP)  
-**Status**: Production-Ready Architecture ✅  
-**Last Updated**: 2024  
+**Status**: prototyping ✅  
+**Last Updated**: 2026  
 
 🐱 **GaDeMa Team** 🛠️
