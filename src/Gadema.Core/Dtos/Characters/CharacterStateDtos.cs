@@ -10,7 +10,12 @@ namespace Gadema.Core.Dtos.Characters;
 public class CharacterStateCreateDto
 {
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
-    
+
+    [Required, MaxLength(128)] public string StateName { get; set; } = "";
+    [MaxLength(2048)] public string? Description { get; set; }
+    public double CurrentValue { get; set; } = 0;
+
+
     /// <summary>
     /// The character's current role in the story.
     /// </summary>
@@ -35,6 +40,7 @@ public class CharacterStateCreateDto
     /// Optional note about the current state.
     /// </summary>
     [MaxLength(1024)] public string? Note { get; set; }
+    public Guid? TriggerSceneId { get; set; }
 }
 
 /// <summary>
@@ -44,11 +50,16 @@ public class CharacterStateUpdateDto : UpdateRequestDto
 {
     public MetaInfoUpdateData? MetaInfo { get; set; }
 
+    public string? StateName { get; set; }
+    public string? Description { get; set; }
+    public double? CurrentValue { get; set; }
+
     public CharacterRole? Role { get; set; }
     public Guid? FactionId { get; set; }
     public Guid? LocationId { get; set; }
     public CharacterStatus? LifeStatus { get; set; }
     [MaxLength(1024)] public string? Note { get; set; }
+    public Guid? TriggerSceneId { get; set; }
 }
 
 /// <summary>
@@ -63,6 +74,11 @@ public class CharacterStateResponseDto : MetaInfoResponseBaseDto
     public string? LocationName { get; set; }  // Denormalized for convenience
     public CharacterStatus LifeStatus { get; set; }
     public string? Note { get; set; }
+
+    public string StateName { get; set; } = ""; // Added
+    public string? Description { get; set; }   // Added
+    public double CurrentValue { get; set; }    // Added
+    public Guid? TriggerSceneId { get; set; }
 }
 
 /// <summary>

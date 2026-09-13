@@ -1,6 +1,7 @@
-// src/Gadema.Api/Services/Characters/CharacterStoryProfileService.cs
+// =============================================================================
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Characters;
+using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Services;
@@ -9,33 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Characters;
 
+/// <summary>
+/// Service for managing CharacterStoryProfile - the static backstory and personality of a character.
+/// Access is validated via the parent Character's MetaInfo.
+/// </summary>
 public class CharacterStoryProfileService : CoreService
 {
     public CharacterStoryProfileService(GameDbContext db, ILogger<CharacterStoryProfileService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    // ========================================================================
-    // GET - Get story profile for a character
-    // ========================================================================
-
-    public async Task<ApiResponseDto<CharacterStoryProfileResponseDto>> GetStoryProfileAsync(Guid characterId)
-    {
-        var character = await _db.Characters
-            .Include(c => c.StoryProfile)
-            .FirstOrDefaultAsync(c => c.Id == characterId);
-
-        if (character is null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Character with ID {characterId} not found.");
-
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(character.MetaInfo.ProjectId);
-        if (error != null) return error;
-
-        if (character.StoryProfile is null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile for character {characterId} not found.");
-
-        var profile = character.StoryProfile;
-
-        return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(new CharacterStoryProfileResponseDto
+    /// <summary>Creates a response DTO from a CharacterStoryProfile entity.</summary>
+    private CharacterStoryProfileResponseDto CreateResponseDto(CharacterStoryProfile profile)
+        => new()
         {
             Id = profile.Id,
             CharacterId = profile.CharacterId,
@@ -52,37 +38,67 @@ public class CharacterStoryProfileService : CoreService
             ArcType = profile.ArcType,
             ArcSummary = profile.ArcSummary,
             KeyRelationships = profile.KeyRelationships
-        });
+        };
+
+    // ========================================================================
+    // GET - List all profiles for a project (via Characters)
+    // ========================================================================
+
+    public async Task<ApiResponseDto<IEnumerable<CharacterStoryProfileResponseDto>>> GetProfilesAsync(Guid projectId)
+    {
+        var error = await ValidateProjectAccessAsync<IEnumerable<CharacterStoryProfileResponseDto>>(projectId);
+        if (error != null) return error;
+
+        var profiles = await _db.CharacterStoryProfiles
+            .Include(p => p.Character)
+                .ThenInclude(c => c.MetaInfo)
+            .Where(p => p.Character.MetaInfo.ProjectId == projectId)
+            .ToListAsync();
+        
+        var projectedProfiles = profiles.Select(CreateResponseDto).ToList();
+
+        return ApiResponseDto<IEnumerable<CharacterStoryProfileResponseDto>>.Success(projectedProfiles);
     }
 
     // ========================================================================
-    // POST - Create a new story profile for a character
+    // GET - Single profile by ID
     // ========================================================================
 
-    public async Task<ApiResponseDto<CharacterStoryProfileResponseDto>> CreateStoryProfileAsync(Guid projectId, Guid characterId, CharacterStoryProfileCreateDto createDto)
+    public async Task<ApiResponseDto<CharacterStoryProfileResponseDto>> GetProfileAsync(Guid id)
     {
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(projectId);
+        var profile = await _db.CharacterStoryProfiles
+            .Include(p => p.Character)
+                .ThenInclude(c => c.MetaInfo)
+            .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (profile is null)
+            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
+
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Verify character exists and belongs to this project
+        return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(CreateResponseDto(profile));
+    }
+
+    // ========================================================================
+    // POST - Create a profile for an existing character
+    // ========================================================================
+
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateProfileAsync(Guid projectId, CharacterStoryProfileCreateDto createDto)
+    {
+        // 1. Validate character exists and belongs to project
         var character = await _db.Characters
-            .Include(c => c.StoryProfile)
-            .FirstOrDefaultAsync(c => c.Id == characterId);
+            .Include(c => c.MetaInfo)
+            .FirstOrDefaultAsync(c => c.Id == createDto.CharacterId && c.MetaInfo.ProjectId == projectId);
 
         if (character is null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Character with ID {characterId} not found.");
+            return ApiResponseDto<CreateResponseDto>.NotFound("The specified character does not exist in this project.");
 
-        if (character.MetaInfo.ProjectId != projectId)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.BadRequest("Character does not belong to this project.");
-
-        // Check if story profile already exists (one-to-one relationship)
-        if (character.StoryProfile != null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.Conflict($"Story profile already exists for character {characterId}.");
-
+        // 2. Create the profile
         var profile = new CharacterStoryProfile
         {
             Id = Guid.NewGuid(),
-            CharacterId = characterId,
+            CharacterId = createDto.CharacterId,
             OriginStory = createDto.OriginStory,
             FamilyBackground = createDto.FamilyBackground,
             Backstory = createDto.Backstory,
@@ -101,47 +117,31 @@ public class CharacterStoryProfileService : CoreService
         _db.CharacterStoryProfiles.Add(profile);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(new CharacterStoryProfileResponseDto
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
-            Id = profile.Id,
-            CharacterId = profile.CharacterId,
-            OriginStory = profile.OriginStory,
-            FamilyBackground = profile.FamilyBackground,
-            Backstory = profile.Backstory,
-            PersonalityTraits = profile.PersonalityTraits,
-            Motivation = profile.Motivation,
-            Fear = profile.Fear,
-            Beliefs = profile.Beliefs,
-            SpeechPattern = profile.SpeechPattern,
-            Quirks = profile.Quirks,
-            StoryRole = profile.StoryRole,
-            ArcType = profile.ArcType,
-            ArcSummary = profile.ArcSummary,
-            KeyRelationships = profile.KeyRelationships
+            EntityId = profile.Id,
+            ProjectId = projectId
         });
     }
 
     // ========================================================================
-    // PUT - Update story profile
+    // PUT - Update a profile
     // ========================================================================
 
-    public async Task<ApiResponseDto<CharacterStoryProfileResponseDto>> UpdateStoryProfileAsync(Guid characterId, CharacterStoryProfileUpdateDto updateDto)
+    public async Task<ApiResponseDto<CharacterStoryProfileResponseDto>> UpdateProfileAsync(Guid id, CharacterStoryProfileUpdateDto updateDto)
     {
-        var character = await _db.Characters
-            .Include(c => c.StoryProfile)
-            .FirstOrDefaultAsync(c => c.Id == characterId);
+        var profile = await _db.CharacterStoryProfiles
+            .Include(p => p.Character)
+                .ThenInclude(c => c.MetaInfo)
+            .FirstOrDefaultAsync(p => p.Id == id);
 
-        if (character is null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Character with ID {characterId} not found.");
-
-        var profile = character.StoryProfile;
         if (profile is null)
-            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile for character {characterId} not found.");
+            return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(character.MetaInfo.ProjectId);
-        if (error != null) return error;
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.MetaInfo.ProjectId);
+        if (error != null) return ApiResponseDto<CharacterStoryProfileResponseDto>.Unauthorized(error.Message ?? "not authorized");
 
-        // Apply updates (only non-null values are updated)
+        // Update fields if provided in DTO
         if (updateDto.OriginStory != null) profile.OriginStory = updateDto.OriginStory;
         if (updateDto.FamilyBackground != null) profile.FamilyBackground = updateDto.FamilyBackground;
         if (updateDto.Backstory != null) profile.Backstory = updateDto.Backstory;
@@ -158,44 +158,24 @@ public class CharacterStoryProfileService : CoreService
 
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(new CharacterStoryProfileResponseDto
-        {
-            Id = profile.Id,
-            CharacterId = profile.CharacterId,
-            OriginStory = profile.OriginStory,
-            FamilyBackground = profile.FamilyBackground,
-            Backstory = profile.Backstory,
-            PersonalityTraits = profile.PersonalityTraits,
-            Motivation = profile.Motivation,
-            Fear = profile.Fear,
-            Beliefs = profile.Beliefs,
-            SpeechPattern = profile.SpeechPattern,
-            Quirks = profile.Quirks,
-            StoryRole = profile.StoryRole,
-            ArcType = profile.ArcType,
-            ArcSummary = profile.ArcSummary,
-            KeyRelationships = profile.KeyRelationships
-        });
+        return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(CreateResponseDto(profile));
     }
 
     // ========================================================================
-    // DELETE - Delete story profile
+    // DELETE - Remove a profile
     // ========================================================================
 
-    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryProfileAsync(Guid characterId)
+    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteProfileAsync(Guid id)
     {
-        var character = await _db.Characters
-            .Include(c => c.StoryProfile)
-            .FirstOrDefaultAsync(c => c.Id == characterId);
+        var profile = await _db.CharacterStoryProfiles
+            .Include(p => p.Character)
+                .ThenInclude(c => c.MetaInfo)
+            .FirstOrDefaultAsync(p => p.Id == id);
 
-        if (character is null)
-            return ApiResponseDto<DeleteResponseDto>.NotFound($"Character with ID {characterId} not found.");
-
-        var profile = character.StoryProfile;
         if (profile is null)
-            return ApiResponseDto<DeleteResponseDto>.NotFound($"Story profile for character {characterId} not found.");
+            return ApiResponseDto<DeleteResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.MetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.CharacterStoryProfiles.Remove(profile);
@@ -203,8 +183,8 @@ public class CharacterStoryProfileService : CoreService
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
-            EntityId = profile.Id,
-            ProjectId = character.MetaInfo.ProjectId
+            EntityId = id,
+            ProjectId = profile.Character.MetaInfo.ProjectId
         });
     }
 }

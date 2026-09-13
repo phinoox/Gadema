@@ -18,6 +18,30 @@ Every new entity follows this exact sequence:
 
 ---
 
+### Modular Entity Pattern (Progressive Disclosure)
+For complex entities that consist of both a core identity and optional, evolving modules (e.g., a Character having a Biography, multiple States, or Game Attributes), we follow the Progressive Disclosure pattern.
+
+The Workflow
+Phase 1: Identity Creation (The Container)
+
+The user creates the base entity (e.g., Character).
+This endpoint only requires the core MetaInfo data and essential identity fields.
+Result: A valid, searchable ID in the system that acts as the "anchor" for all future data.
+Phase 2: Modular Expansion (The Components)
+
+Users add specialized data via dedicated endpoints (e.g., POST /api/v1/characters/{id}/story-profile).
+Each module has its own lifecycle, service, and DTOs.
+Benefit: Reduces API payload complexity, prevents "God DTOs," and allows the UI to load core data instantly while fetching heavy details asynchronously.
+Example: Character Hierarchy
+Level	Entity	Responsibility
+Anchor	Character	Core identity (Name, MetaInfo)
+Module A	CharacterStoryProfile	Static narrative (Backstory, Personality)
+Module B	CharacterState	Dynamic snapshots (Current Role, Location)
+Module C	CharacterRelation	Connections to other characters
+
+
+---
+
 ## 2. Domain Folder Structure
 
 ```

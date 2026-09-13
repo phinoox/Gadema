@@ -63,6 +63,26 @@ public class CharacterState
     /// Provides context for why the character is in this particular state.
     /// </summary>
     [MaxLength(1024)] public string? Note { get; set; }
+
+
+    
+    /// <summary>
+    /// The name of this specific state (e.g., "The Great War Era").
+    /// </summary>
+    [Required, MaxLength(128)]
+    public string StateName { get; set; } = "";
+
+    /// <summary>
+    /// A description of what this state implies for the character.
+    /// </summary>
+    [MaxLength(2048)]
+    public string? Description { get; set; }
+
+    /// <summary>
+    /// A numeric value representing a key attribute in this state (e.g., health, power level).
+    /// </summary>
+    public double CurrentValue { get; set; } = 0;
+
     
     /// <summary>
     /// The scene where this state was established or last changed.
@@ -81,6 +101,7 @@ public class CharacterState
     /// </summary>
     [ForeignKey("CharacterId")]
     public virtual Character? Character { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 
 /// <summary>

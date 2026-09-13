@@ -46,7 +46,7 @@ public class CharacterRelation
     /// Type of relationship (Ally, Enemy, Family, Romantic, etc.).
     /// </summary>
     [Required]
-    public RelationType RelationType { get; set; } = RelationType.Alien;
+    public RelationTypeEnum RelationType { get; set; } = RelationTypeEnum.Alien;
 
     /// <summary>
     /// The scene where this relationship evolved or was first established.
@@ -74,7 +74,7 @@ public class CharacterRelation
 /// <summary>
 /// Enum for character relationship types.
 /// </summary>
-public enum RelationType
+public enum RelationTypeEnum
 {
     /// <summary>No established relationship</summary>
     Alien = 0,

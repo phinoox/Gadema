@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Characters;
 
 /// <summary>
 /// Service for managing Character Relations - connections between characters.
-/// Handles relationship types, strength tracking, and bidirectional relations.
+/// Access is validated via the TriggerScene's project ownership.
 /// </summary>
 public class CharacterRelationService : CoreService
 {
@@ -24,130 +24,147 @@ public class CharacterRelationService : CoreService
         => new()
         {
             Id = relation.Id,
-            MetaInfoId = relation.MetaInfoId,
-            RelationType = (int)relation.RelationType,
-            Strength = relation.Strength,
+            RelationType = relation.RelationType,
             Description = relation.Description,
-            CharacterAId = relation.CharacterAId,
-            CharacterBId = relation.CharacterBId,
-            CreatedAt = relation.CreatedAt,
+            SourceCharacterId = relation.SourceCharacterId,
+            TargetCharacterId = relation.TargetCharacterId,
+            TriggerSceneId = relation.TriggerSceneId,
+            CreatedAt = relation.CreatedAt
         };
 
     // ========================================================================
     // GET - List all character relations for a project
     // ========================================================================
 
-        public Task<ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>> GetRelationsAsync(Guid projectId)
+    public async Task<ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>> GetRelationsAsync(Guid projectId)
     {
-        var error = ValidateProjectAccessAsync<IEnumerable<CharacterRelationResponseDto>>(projectId);
-        if (error != null) return Task.FromResult(error);
+        // Validate access via the Scene's MetaInfo
+        var error = await ValidateProjectAccessAsync<IEnumerable<CharacterRelationResponseDto>>(projectId);
+        if (error != null) return error;
 
-        var relations = _db.CharacterRelations
-            .Include(cr => cr.MetaInfo)
-            .Where(cr => cr.MetaInfo.ProjectId == projectId)
-            .OrderBy(cr => cr.RelationType).ThenBy(cr => cr.Strength)
-            .Select(CreateResponseDto)
+        var relations = await _db.CharacterRelations
+            .Include(cr => cr.TriggerScene)
+                .ThenInclude(s => s.MetaInfo)
+            .Where(cr => cr.TriggerScene.MetaInfo.ProjectId == projectId)
+            .OrderBy(cr => cr.RelationType)
             .ToListAsync();
 
-        return Task.FromResult(ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>.Success(relations));
+        var projected = relations.Select(CreateResponseDto).ToList();
+        return ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>.Success(projected);
     }
 
     public async Task<ApiResponseDto<CharacterRelationResponseDto>> GetRelationByIdAsync(Guid id)
     {
-        var relation = await _db.CharacterRelations.Include(cr => cr.MetaInfo).FirstOrDefaultAsync(cr => cr.Id == id);
+        var relation = await _db.CharacterRelations
+            .Include(cr => cr.TriggerScene)
+                .ThenInclude(s => s.MetaInfo)
+            .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.MetaInfo.ProjectId);
+        // Validate access via the Scene's MetaInfo
+        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.MetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterRelationResponseDto>.Success(CreateResponseDto(relation));
     }
 
+    // ========================================================================
+    // POST - Create a new character relation
+    // ========================================================================
+
     public async Task<ApiResponseDto<CreateResponseDto>> CreateCharacterRelationAsync(Guid projectId, CharacterRelationCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
-        if (error != null) return error;
+        // 1. Validate project access via the scene provided in DTO
+        var scene = await _db.Scenes
+            .Include(s => s.MetaInfo)
+            .FirstOrDefaultAsync(s => s.Id == createDto.TriggerSceneId && s.MetaInfo.ProjectId == projectId);
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.CharacterRelation, createDto.CreateData);
+        if (scene == null)
+            return ApiResponseDto<CreateResponseDto>.NotFound("The specified scene does not exist in this project.");
 
-        _db.MetaInfos.Add(metaInfo);
-        await _db.SaveChangesAsync();
+        // 2. Verify characters belong to the same project (optional but recommended for data integrity)
+        var charAExists = await _db.Characters.AnyAsync(c => c.Id == createDto.SourceCharacterId && c.MetaInfo.ProjectId == projectId);
+        var charBExists = await _db.Characters.AnyAsync(c => c.Id == createDto.TargetCharacterId && c.MetaInfo.ProjectId == projectId);
 
-        // Ensure bidirectional relation exists
-        var existing = await _db.CharacterRelations.FirstOrDefaultAsync(
-            cr => (cr.CharacterAId == createDto.CharacterAId && cr.CharacterBId == createDto.CharacterBId) ||
-                  (cr.CharacterAId == createDto.CharacterBId && cr.CharacterBId == createDto.CharacterAId));
+        if (!charAExists || !charBExists)
+            return ApiResponseDto<CreateResponseDto>.BadRequest("One or both characters do not belong to this project.");
 
-        if (existing != null) return ApiResponseDto<CreateResponseDto>.Conflict("Relation already exists.");
+        // 3. Check for existing relation (to prevent duplicates)
+        var exists = await _db.CharacterRelations.AnyAsync(cr => 
+            cr.SourceCharacterId == createDto.SourceCharacterId && 
+            cr.TargetCharacterId == createDto.TargetCharacterId &&
+            cr.TriggerSceneId == createDto.TriggerSceneId);
 
+        if (exists) return ApiResponseDto<CreateResponseDto>.Conflict("This specific relation already exists in this scene.");
+
+        // 4. Create the entity
         var relation = new CharacterRelation
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            RelationType = (CharacterRelationTypeEnum)createDto.RelationType,
-            Strength = createDto.Strength ?? 50,
+            SourceCharacterId = createDto.SourceCharacterId,
+            TargetCharacterId = createDto.TargetCharacterId,
+            RelationType = createDto.RelationType,
+            TriggerSceneId = createDto.TriggerSceneId,
             Description = createDto.Description,
-            CharacterAId = createDto.CharacterAId,
-            CharacterBId = createDto.CharacterBId,
+            CreatedAt = DateTime.UtcNow
         };
 
         _db.CharacterRelations.Add(relation);
         await _db.SaveChangesAsync();
 
-        // Create reverse relation
-        var reverseRelation = new CharacterRelation
-        {
-            Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            RelationType = createDto.RelationType.Reverse(),
-            Strength = createDto.Strength ?? 50,
-            Description = createDto.Description,
-            CharacterAId = createDto.CharacterBId,
-            CharacterBId = createDto.CharacterAId,
-        };
-
-        _db.CharacterRelations.Add(reverseRelation);
-        await _db.SaveChangesAsync();
-
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = relation.Id,
-            MetaInfoId = metaInfo.Id.Value,
             ProjectId = projectId
         });
     }
 
+    // ========================================================================
+    // PUT - Partial update of a character relation
+    // ========================================================================
+
     public async Task<ApiResponseDto<CharacterRelationResponseDto>> UpdateCharacterRelationAsync(Guid id, CharacterRelationUpdateDto updateDto)
     {
-        var relation = await _db.CharacterRelations.Include(cr => cr.MetaInfo).FirstOrDefaultAsync(cr => cr.Id == id);
+        var relation = await _db.CharacterRelations
+            .Include(cr => cr.TriggerScene)
+                .ThenInclude(s => s.MetaInfo)
+            .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.MetaInfo.ProjectId);
-        if (error != null) return error;
+        // Validate access via the Scene's MetaInfo
+        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.MetaInfo.ProjectId);
+        if (error != null) return ApiResponseDto<CharacterRelationResponseDto>.Unauthorized(error.Message ?? " not authorized");
 
-        ApplyMetaInfoUpdates(relation.MetaInfo, updateDto.MetaInfo);
-
-        if (updateDto.RelationType.HasValue) relation.RelationType = (CharacterRelationTypeEnum)updateDto.RelationType.Value;
-        if (updateDto.Strength.HasValue) relation.Strength = updateDto.Strength.Value;
-        if (!string.IsNullOrWhiteSpace(updateDto.Description)) relation.Description = updateDto.Description;
+        // Update properties if provided in DTO
+        relation.RelationType = updateDto.RelationType;
+        if (updateDto.Description != null) relation.Description = updateDto.Description;
+        relation.TriggerSceneId = updateDto.TriggerSceneId;
 
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<CharacterRelationResponseDto>.Success(CreateResponseDto(relation));
     }
 
+    // ========================================================================
+    // DELETE - Remove a character relation
+    // ========================================================================
+
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteCharacterRelationAsync(Guid id)
     {
-        var relation = await _db.CharacterRelations.Include(cr => cr.MetaInfo).FirstOrDefaultAsync(cr => cr.Id == id);
+        var relation = await _db.CharacterRelations
+            .Include(cr => cr.TriggerScene)
+                .ThenInclude(s => s.MetaInfo)
+            .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.MetaInfo.ProjectId);
+        // Validate access via the Scene's MetaInfo
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.MetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.CharacterRelations.Remove(relation);
@@ -156,7 +173,7 @@ public class CharacterRelationService : CoreService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = relation.MetaInfo.ProjectId
+            ProjectId = relation.TriggerScene.MetaInfo.ProjectId
         });
     }
 }

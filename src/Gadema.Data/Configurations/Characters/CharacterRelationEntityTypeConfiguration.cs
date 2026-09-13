@@ -45,7 +45,7 @@ public class CharacterRelationEntityTypeConfiguration : IEntityTypeConfiguration
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete relations when scene deleted
         
         // Properties configuration
-        builder.Property(e => e.RelationType).HasDefaultValue(RelationType.Alien);
+        builder.Property(e => e.RelationType).HasDefaultValue(RelationTypeEnum.Alien);
         builder.Property(e => e.Description).HasMaxLength(1024);
         builder.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
