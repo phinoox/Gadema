@@ -10,6 +10,7 @@ using Gadema.Core.Dtos.MetaInfos;
 using Gadema.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Gadema.Api.Services.Content;
 
 namespace Gadema.Api.Controllers;
 
@@ -20,13 +21,13 @@ namespace Gadema.Api.Controllers;
 [Route("api/v1/content/items")]
 public class MetaInfosController : ControllerBase
 {
-    private readonly IContentService _contentService;
+    private readonly ContentService _contentService;
     private readonly ILogger<MetaInfosController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public MetaInfosController(IContentService contentService, ILogger<MetaInfosController> logger)
+    public MetaInfosController(ContentService contentService, ILogger<MetaInfosController> logger)
     {
         _contentService = contentService;
         _logger = logger;

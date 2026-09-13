@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Activities;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,10 @@ namespace Gadema.Api.Controllers.Activities;
 [Route("api/v1/projects/{projectId}/token-usage-logs")]
 public class TokenUsageLogsController : ControllerBase
 {
-    private readonly ITokenUsageLogService _tokenUsageLogService;
+    private readonly TokenUsageLogService _tokenUsageLogService;
     private readonly ILogger<TokenUsageLogsController> _logger;
 
-    public TokenUsageLogsController(ITokenUsageLogService tokenUsageLogService, ILogger<TokenUsageLogsController> logger)
+    public TokenUsageLogsController(TokenUsageLogService tokenUsageLogService, ILogger<TokenUsageLogsController> logger)
     {
         _tokenUsageLogService = tokenUsageLogService;
         _logger = logger;

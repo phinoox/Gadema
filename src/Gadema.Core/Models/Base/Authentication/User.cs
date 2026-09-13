@@ -42,7 +42,7 @@ public class User
     /// Full name of the user.
     /// </summary>
     [MaxLength(4096), Display(Name = "Full Name")]
-    public string? FullName { get; set; } = null!;
+    public string? DisplayName { get; set; } = null!;
 
     /// <summary>
     /// URL to user profile image.
@@ -82,19 +82,6 @@ public class User
     /// </summary>
     public bool IsActive { get; set; } = true;
 
-    /// <summary>
-    /// Collection of team memberships for this user.
-    /// Enables lazy loading to access all teams a user belongs to.
-    /// Foreign key: UserId (matches FK in TeamMember)
-    /// </summary>
-    public virtual ICollection<TeamMember> TeamMemberships { get; set; } = new List<TeamMember>();
-
-    /// <summary>
-    /// Navigation property: Collection of teams this user owns/created.
-    /// Enables lazy loading to access all teams owned by the user.
-    /// Foreign key: CreatedByUserId (matches FK in Team)
-    /// </summary>
-    public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
     public string? PasswordHash { get; set; }
     public string? TwoFactorSecret { get; set; }
 

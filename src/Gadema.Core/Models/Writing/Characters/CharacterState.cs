@@ -66,7 +66,7 @@ public class CharacterState
     
     /// <summary>
     /// The scene where this state was established or last changed.
-    /// Links to StoryEvent for event-driven tracking of state changes.
+    /// Links to scene for event-driven tracking of state changes.
     /// </summary>
     public Guid? TriggerSceneId { get; set; }
     

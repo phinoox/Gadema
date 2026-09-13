@@ -17,6 +17,5 @@ public interface IUserContext : IDisposable
     // Roles for authorization checks
     List<string> Roles { get; }
     
-    // Team memberships for RBAC
-    List<TeamMember>? TeamMemberships { get; }
+    
 }

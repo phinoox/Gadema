@@ -1,0 +1,830 @@
+Gadema_Api_Test_Suite_Story.http
+
+# GaDeMa API Test Suite — Writing Domain
+# Focus: Story Outline, Scenes, Characters, World-Building, Dialogue
+
+> **Protocol:** `HTTP/1.1` | **Base URL:** `http://localhost:5000/api/v1`  
+> **Format:** RFC 2616-compliant with VS Code REST Client extension syntax
+
+---
+
+🧪 VS Code REST Client Tips
+To use these in VS Code:
+
+Install the REST Client extension (Huachao Mao)
+Save this file as docs/GaDeMa_Writing_Domain_Test_Suite.http
+Run with: Ctrl+Alt+N or click "▶ Send Request" in the editor
+Responses appear below each request automatically
+Pro tips:
+
+Replace all <*_ID_FROM_STEP_X> placeholders with actual IDs returned from previous requests
+Use environment variables for repeated values: {{PROJECT_ID}}, {{TOKEN}}
+Chain requests using response variables: @PROJECT_ID = response.body.data.id
+The sequence follows a realistic writer's workflow: Project → Story → Outline → Beats → Chapters → Scenes → Characters → World → Dialogue
+Deletion steps (46-56) reverse the creation order to test cascade behavior
+This test suite covers the complete Writing domain workflow:
+
+Narrative Structure: Story → StoryOutline → OutlineSections → StoryBeats → StoryChapters → Scenes
+Character Management: Characters → CharacterStates → CharacterRelations
+World-Building: Factions → WorldLocations (hierarchical)
+Dialogue Trees: DialogueBranches → DialogueNodes (tree structure)
+Full CRUD: Create, Read, Update, Delete for all entities
+Relationships: Linking Beats to Sections, Scenes to Beats, Characters to Relations
+Error Handling: 404, 401, 400 tests
+
+
+## 📋 Prerequisites: Authentication & Project Setup
+
+```http
+### ===== STEP 1: REGISTER A NEW USER =====
+POST https://localhost:5001/api/v1/auth/email/register HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+
+{
+    "Email": "writer@example.com",
+    "Password": "SecureP@ssw0rd!",
+    "PasswordConfirmation": "SecureP@ssw0rd!",
+    "Name": "Jane Writer"
+}
+###
+
+### ===== STEP 2: SIGN IN =====
+POST https://localhost:5001/api/v1/auth/email/signin HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "writer@example.com",
+    "password": "SecureP@ssw0rd!"
+}
+###
+
+### ===== STEP 3: CREATE A NEW PROJECT =====
+POST https://localhost:5001/api/v1/projects HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "title": "Fantasy RPG: The Lost Kingdom",
+    "description": "A narrative-driven RPG with branching dialogue and character relationships.",
+    "visibility": 0,
+    "slug": "lost-kingdom"
+}
+###
+
+### ===== STEP 4: CREATE STORY =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "The Lost Kingdom Saga",
+        "slug": "lost-kingdom-saga",
+        "shortDesc": "Main story arc spanning three acts.",
+        "status": 0,
+        "isPublic": false
+    },
+    "description": "The complete narrative arc of the Lost Kingdom, including character journeys and world events."
+}
+###
+
+### ===== STEP 5: CREATE STORY OUTLINE =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-outlines HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Act I: The Awakening",
+        "slug": "act-i-awakening",
+        "shortDesc": "Introduction to the world and main characters.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyId": "<STORY_ID_FROM_STEP_4>",
+    "summary": "Elara discovers her magical abilities while exploring the ruins of her ancestral home."
+}
+###
+
+### ===== STEP 6: CREATE OUTLINE SECTION 1 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/outline-sections HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "storyOutlineId": "<STORY_OUTLINE_ID_FROM_STEP_5>",
+    "title": "Chapter 1: The Ruins",
+    "rawText": "Elara enters the ancient ruins, discovering hidden chambers and forgotten lore.",
+    "sortOrder": 0
+}
+###
+
+### ===== STEP 7: CREATE OUTLINE SECTION 2 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/outline-sections HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "storyOutlineId": "<STORY_OUTLINE_ID_FROM_STEP_5>",
+    "title": "Chapter 2: The Discovery",
+    "rawText": "A mysterious artifact is found, revealing Elara's true heritage.",
+    "sortOrder": 1
+}
+###
+
+### ===== STEP 8: CREATE STORY BEAT 1 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-beats HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "The First Discovery",
+        "slug": "first-discovery",
+        "shortDesc": "Elara finds the ancient artifact.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyId": "<STORY_ID_FROM_STEP_4>",
+    "description": "Elara discovers a glowing artifact in the ruins that responds to her touch.",
+    "orderIndex": 0
+}
+###
+
+### ===== STEP 9: CREATE STORY BEAT 2 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-beats HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "The Mentor Appears",
+        "slug": "mentor-appears",
+        "shortDesc": "A wise old scholar guides Elara.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyId": "<STORY_ID_FROM_STEP_4>",
+    "description": "Professor Aldric appears and explains the artifact's significance.",
+    "orderIndex": 1
+}
+###
+
+### ===== STEP 10: UPDATE OUTLINE SECTION (Link Beats) =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/outline-sections/<OUTLINE_SECTION_ID_FROM_STEP_6> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<OUTLINE_SECTION_ID_FROM_STEP_6>",
+    "storyOutlineId": "<STORY_OUTLINE_ID_FROM_STEP_5>",
+    "title": "Chapter 1: The Ruins (Updated)",
+    "rawText": "Elara enters the ancient ruins, discovering hidden chambers and forgotten lore. This section includes the discovery of the artifact.",
+    "sortOrder": 0,
+    "linkedBeatIds": [
+        "<BEAT_ID_FROM_STEP_8>"
+    ]
+}
+###
+
+### ===== STEP 11: CREATE STORY CHAPTER =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-chapters HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Chapter 1: The Awakening",
+        "slug": "chapter-1-awakening",
+        "shortDesc": "First chapter of the story.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyId": "<STORY_ID_FROM_STEP_4>",
+    "description": "Elara's journey begins in the ruins of her ancestral home.",
+    "orderIndex": 0
+}
+###
+
+### ===== STEP 12: CREATE SCENE 1 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "The Ruins Exploration",
+        "slug": "ruins-exploration",
+        "shortDesc": "Elara explores the ancient ruins and discovers the artifact.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyChapterId": "<STORY_CHAPTER_ID_FROM_STEP_11>",
+    "rawText": "# The Ruins Exploration\n\nElara stepped through the crumbling archway, her torch casting long shadows on the moss-covered walls.\n\n\"This place... it's been here for centuries,\" she whispered.\n\nAs she moved deeper into the chamber, something glowed faintly in the corner—a stone pedestal with a crystalline artifact resting upon it."
+}
+###
+
+### ===== STEP 13: CREATE SCENE 2 =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Meeting Professor Aldric",
+        "slug": "meeting-aldric",
+        "shortDesc": "Elara meets the mysterious scholar.",
+        "status": 0,
+        "isPublic": false
+    },
+    "storyChapterId": "<STORY_CHAPTER_ID_FROM_STEP_11>",
+    "rawText": "# Meeting Professor Aldric\n\n\"You shouldn't be here,\" a voice called from the shadows.\n\nElara spun around, her heart pounding. An elderly man with silver hair and wise eyes stepped into the light.\n\n\"I'm Professor Aldric. I've been expecting you.\""
+}
+###
+
+### ===== STEP 14: UPDATE SCENE (Link to Beats) =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes/<SCENE_ID_FROM_STEP_12> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<SCENE_ID_FROM_STEP_12>",
+    "storyChapterId": "<STORY_CHAPTER_ID_FROM_STEP_11>",
+    "rawText": "# The Ruins Exploration\n\nElara stepped through the crumbling archway, her torch casting long shadows on the moss-covered walls.\n\n\"This place... it's been here for centuries,\" she whispered.\n\nAs she moved deeper into the chamber, something glowed faintly in the corner—a stone pedestal with a crystalline artifact resting upon it.\n\n*This is the discovery beat.*",
+    "linkedBeatIds": [
+        "<BEAT_ID_FROM_STEP_8>"
+    ]
+}
+###
+
+### ===== STEP 15: CREATE CHARACTER 1 (Elara) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/characters HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Elara Moonwhisper",
+        "slug": "elara-moonwhisper",
+        "shortDesc": "Protagonist, a young mage with latent powers.",
+        "status": 0,
+        "isPublic": false
+    },
+    "name": "Elara Moonwhisper",
+    "description": "A half-elf rogue mage seeking redemption for her past failures."
+}
+###
+
+### ===== STEP 16: CREATE CHARACTER 2 (Aldric) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/characters HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Professor Aldric",
+        "slug": "professor-aldric",
+        "shortDesc": "Mentor figure, ancient scholar.",
+        "status": 0,
+        "isPublic": false
+    },
+    "name": "Professor Aldric",
+    "description": "A wise old scholar who has guarded the ruins for decades."
+}
+###
+
+### ===== STEP 17: CREATE CHARACTER STATE (Elara) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-states HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Elara's Current State",
+        "slug": "elara-current-state",
+        "shortDesc": "Elara's state at the beginning of Act I.",
+        "status": 0,
+        "isPublic": false
+    },
+    "role": 1,
+    "lifeStatus": 0,
+    "note": "Just discovered her magical abilities. Uncertain but determined."
+}
+###
+
+### ===== STEP 18: CREATE CHARACTER RELATION =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-relations HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "sourceCharacterId": "<CHARACTER_ID_FROM_STEP_15>",
+    "targetCharacterId": "<CHARACTER_ID_FROM_STEP_16>",
+    "relationType": 6,
+    "triggerSceneId": "<SCENE_ID_FROM_STEP_13>",
+    "description": "Elara first meets Professor Aldric and begins to trust him as a mentor."
+}
+###
+
+### ===== STEP 19: CREATE FACTION =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/factions HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "The Shadow Council",
+        "slug": "shadow-council",
+        "shortDesc": "A secret society seeking to control the ancient artifacts.",
+        "status": 0,
+        "isPublic": false
+    },
+    "ideology": "Power through knowledge. They believe artifacts should be controlled by the worthy.",
+    "goals": "Collect all ancient artifacts and use them to reshape the world order."
+}
+###
+
+### ===== STEP 20: CREATE WORLD LOCATION (Country) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/world-locations HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Aethelgard",
+        "slug": "aethelgard",
+        "shortDesc": "The ancient kingdom where the story begins.",
+        "status": 0,
+        "isPublic": false
+    },
+    "locationType": 0,
+    "description": "A once-great kingdom now crumbling under the influence of the Shadow Council."
+}
+###
+
+### ===== STEP 21: CREATE WORLD LOCATION (City, child of Country) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/world-locations HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Capital City: Luminar",
+        "slug": "luminar",
+        "shortDesc": "The capital city of Aethelgard.",
+        "status": 0,
+        "isPublic": false
+    },
+    "locationType": 2,
+    "parentId": "<WORLD_LOCATION_ID_FROM_STEP_20>",
+    "description": "Once a beacon of light and learning, now under siege by corruption."
+}
+###
+
+### ===== STEP 22: CREATE DIALOGUE BRANCH =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-branches HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "createData": {
+        "title": "Chapter 1 Dialogue",
+        "slug": "chapter-1-dialogue",
+        "shortDesc": "Branching dialogue for Chapter 1.",
+        "status": 0,
+        "isPublic": false
+    },
+    "title": "Chapter 1: The Awakening",
+    "slug": "chapter-1-awakening",
+    "isRoot": true,
+    "orderIndex": 0
+}
+###
+
+### ===== STEP 23: CREATE DIALOGUE NODE (Root) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-nodes HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "dialogueBranchId": "<DIALOGUE_BRANCH_ID_FROM_STEP_22>",
+    "nodeText": "\"You shouldn't be here,\" a voice called from the shadows.",
+    "speakerId": "<CHARACTER_ID_FROM_STEP_16>",
+    "choiceOptions": "[{\"id\":\"choice_a\",\"label\":\"Who are you?\",\"nextNodeId\":\"node_b\"},{\"id\":\"choice_b\",\"label\":\"*draws dagger*\",\"nextNodeId\":\"node_c\"}]",
+    "conditions": null,
+    "parentNodeId": null
+}
+###
+
+### ===== STEP 24: CREATE DIALOGUE NODE (Child - Choice A) =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-nodes HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "dialogueBranchId": "<DIALOGUE_BRANCH_ID_FROM_STEP_22>",
+    "nodeText": "\"I am Professor Aldric. I've been expecting you, Elara.\"",
+    "speakerId": "<CHARACTER_ID_FROM_STEP_16>",
+    "choiceOptions": "[{\"id\":\"choice_d\",\"label\":\"What do you know about me?\",\"nextNodeId\":\"node_d\"}]",
+    "conditions": null,
+    "parentNodeId": "<DIALOGUE_NODE_ID_FROM_STEP_23>"
+}
+###
+
+### ===== STEP 25: LIST ALL STORIES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 26: GET STORY BY ID =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories/<STORY_ID_FROM_STEP_4> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 27: LIST ALL STORY OUTLINES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-outlines HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 27: LIST ALL STORY OUTLINES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-outlines HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 28: LIST ALL STORY BEATS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-beats HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 29: LIST ALL STORY CHAPTERS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-chapters HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 30: LIST ALL SCENES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 31: LIST ALL OUTLINE SECTIONS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/outline-sections HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 32: LIST ALL FACTIONS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/factions HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 33: LIST ALL WORLD LOCATIONS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/world-locations HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 34: LIST ALL DIALOGUE BRANCHES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-branches HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 35: LIST ALL DIALOGUE NODES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-nodes HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 36: LIST ALL CHARACTER STATES =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-states HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 37: LIST ALL CHARACTER RELATIONS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-relations HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 38: UPDATE STORY =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories/<STORY_ID_FROM_STEP_4> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<STORY_ID_FROM_STEP_4>",
+    "metaInfo": {
+        "title": "The Lost Kingdom Saga (Updated)",
+        "shortDesc": "Main story arc spanning three acts. Now includes character development."
+    },
+    "description": "The complete narrative arc of the Lost Kingdom, including character journeys, world events, and branching dialogue."
+}
+###
+
+ ### ===== STEP 39: UPDATE STORY OUTLINE =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-outlines/<STORY_OUTLINE_ID_FROM_STEP_5> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<STORY_OUTLINE_ID_FROM_STEP_5>",
+    "metaInfo": {
+        "title": "Act I: The Awakening (Revised)",
+        "status": 1
+    },
+    "summary": "Elara discovers her magical abilities while exploring the ruins of her ancestral home. This act introduces the Shadow Council."
+}
+###
+
+### ===== STEP 40: UPDATE STORY BEAT =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-beats/<BEAT_ID_FROM_STEP_8> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<BEAT_ID_FROM_STEP_8>",
+    "metaInfo": {
+        "title": "The First Discovery (Revised)",
+        "shortDesc": "Elara finds the ancient artifact that unlocks her powers."
+    },
+    "description": "Elara discovers a glowing artifact in the ruins that responds to her touch, revealing her latent magical abilities.",
+    "orderIndex": 0
+}
+###
+
+### ===== STEP 41: UPDATE SCENE =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes/<SCENE_ID_FROM_STEP_12> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<SCENE_ID_FROM_STEP_12>",
+    "metaInfo": {
+        "title": "The Ruins Exploration (Expanded)",
+        "status": 1
+    },
+    "storyChapterId": "<STORY_CHAPTER_ID_FROM_STEP_11>",
+    "rawText": "# The Ruins Exploration\n\nElara stepped through the crumbling archway, her torch casting long shadows on the moss-covered walls.\n\n\"This place... it's been here for centuries,\" she whispered.\n\nAs she moved deeper into the chamber, something glowed faintly in the corner—a stone pedestal with a crystalline artifact resting upon it.\n\n*This is the discovery beat.*\n\n*The artifact hums with energy, resonating with her own latent magic.*"
+}
+###
+
+### ===== STEP 42: UPDATE CHARACTER STATE =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-states/<CHARACTER_STATE_ID_FROM_STEP_17> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<CHARACTER_STATE_ID_FROM_STEP_17>",
+    "metaInfo": {
+        "title": "Elara's Current State (Revised)",
+        "shortDesc": "Elara's state after discovering her powers."
+    },
+    "role": 1,
+    "lifeStatus": 0,
+    "note": "Has discovered her magical abilities. Now under the guidance of Professor Aldric. Uncertain but determined."
+}
+###
+
+### ===== STEP 43: UPDATE FACTION =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/factions/<FACTION_ID_FROM_STEP_19> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<FACTION_ID_FROM_STEP_19>",
+    "metaInfo": {
+        "title": "The Shadow Council (Updated)",
+        "shortDesc": "A secret society seeking to control the ancient artifacts and reshape the world."
+    },
+    "ideology": "Power through knowledge. They believe artifacts should be controlled by the worthy, not the masses.",
+    "goals": "Collect all ancient artifacts and use them to reshape the world order. Establish a new kingdom ruled by the enlightened."
+}
+###
+
+### ===== STEP 44: UPDATE WORLD LOCATION =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/world-locations/<WORLD_LOCATION_ID_FROM_STEP_20> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<WORLD_LOCATION_ID_FROM_STEP_20>",
+    "metaInfo": {
+        "title": "Aethelgard (Updated)",
+        "shortDesc": "The ancient kingdom, now crumbling under corruption."
+    },
+    "locationType": 0,
+    "description": "A once-great kingdom now crumbling under the influence of the Shadow Council. The capital city Luminar falls first."
+}
+###
+
+### ===== STEP 45: UPDATE DIALOGUE BRANCH =====
+PUT https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-branches/<DIALOGUE_BRANCH_ID_FROM_STEP_22> HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{
+    "entityId": "<DIALOGUE_BRANCH_ID_FROM_STEP_22>",
+    "metaInfo": {
+        "title": "Chapter 1 Dialogue (Revised)",
+        "status": 1
+    },
+    "title": "Chapter 1: The Awakening (Revised)",
+    "slug": "chapter-1-awakening",
+    "isRoot": true,
+    "orderIndex": 0
+}
+###
+
+### ===== STEP 46: DELETE DIALOGUE NODE =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-nodes/<DIALOGUE_NODE_ID_FROM_STEP_24> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 47: DELETE DIALOGUE BRANCH =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/dialogue-branches/<DIALOGUE_BRANCH_ID_FROM_STEP_22> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 48: DELETE CHARACTER RELATION =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-relations/<RELATION_ID_FROM_STEP_18> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 49: DELETE CHARACTER STATE =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/character-states/<CHARACTER_STATE_ID_FROM_STEP_17> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 50: DELETE SCENE =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/scenes/<SCENE_ID_FROM_STEP_13> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 51: DELETE WORLD LOCATION =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/world-locations/<WORLD_LOCATION_ID_FROM_STEP_21> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 52: DELETE FACTION =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/factions/<FACTION_ID_FROM_STEP_19> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 53: DELETE STORY BEAT =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-beats/<BEAT_ID_FROM_STEP_9> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 54: DELETE OUTLINE SECTION =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/outline-sections/<OUTLINE_SECTION_ID_FROM_STEP_7> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 55: DELETE STORY CHAPTER =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-chapters/<STORY_CHAPTER_ID_FROM_STEP_11> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 56: DELETE STORY OUTLINE =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/story-outlines/<STORY_OUTLINE_ID_FROM_STEP_5> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 57: DELETE STORY =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories/<STORY_ID_FROM_STEP_4> HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 58: TEST 404 - DELETE NON-EXISTENT STORY =====
+DELETE https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories/00000000-0000-0000-0000-000000000000 HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+###
+
+### ===== STEP 59: TEST 403 - UNAUTHORIZED ACCESS =====
+GET https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories HTTP/1.1
+Host: localhost:5001
+Accept: application/json
+###
+
+### ===== STEP 60: TEST 400 - INVALID JSON =====
+POST https://localhost:5001/api/v1/projects/<PROJECT_ID_FROM_STEP_3>/stories HTTP/1.1
+Host: localhost:5001
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer <ACCESS_TOKEN_FROM_STEP_2>
+
+{invalid json here
+###

@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Api.Services.Content;
 using Gadema.Api.Services.DialogueTrees;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.DialogueTrees;

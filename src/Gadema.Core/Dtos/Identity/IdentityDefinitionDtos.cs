@@ -4,11 +4,18 @@ using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Identity;
 
+
+
 /// <summary>
 /// DTO for creating an identity definition (race, faction, alignment, etc.).
 /// </summary>
-public class IdentityDefinitionUpdateDto
+public class IdentityDefinitionCreateDto
 {
+    /// <summary>
+    /// MetaInfo data for the definition's identity.
+    /// </summary>
+    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+
     /// <summary>
     /// ID of the project this definition belongs to.
     /// </summary>
@@ -46,18 +53,38 @@ public class IdentityDefinitionUpdateDto
 }
 
 /// <summary>
-/// Response DTO for an identity definition.
+/// DTO for updating an identity definition (partial update).
 /// </summary>
-public class IdentityDefinitionResponseDto
+public class IdentityDefinitionUpdateDto : UpdateRequestDto
 {
-    public Guid Id { get; set; }
-    public Guid ProjectId { get; set; }
-    public int IdentityType { get; set; }
-    public string IdentityTypeName { get; set; } = "";
+    /// <summary>
+    /// MetaInfo fields (nullable — omit to keep current values).
+    /// </summary>
+    public MetaInfoUpdateData? MetaInfo { get; set; }
+
+    [MaxLength(128)] public string? IdentityTypeName { get; set; }
+    public IdentityTypeEnum? IdentityType { get; set; }
+    public bool? IsRequired { get; set; }
+    [MaxLength(256)] public string? DefaultValue { get; set; }
+    [MaxLength(1024)] public string? Description { get; set; }
+}
+
+/// <summary>
+/// Response DTO for an identity definition. Inherits MetaInfo state.
+/// </summary>
+public class IdentityDefinitionResponseDto : MetaInfoResponseBaseDto
+{
+    [Required, MaxLength(128)] public string IdentityTypeName { get; set; } = "";
+    
+    public IdentityTypeEnum IdentityType { get; set; }
     public bool IsRequired { get; set; }
-    public string? DefaultValue { get; set; }
-    public bool IsActive { get; set; }
-    public string? Description { get; set; }
+    [MaxLength(256)] public string? DefaultValue { get; set; }
+    [MaxLength(1024)] public string? Description { get; set; }
+
+    /// <summary>
+    /// Number of characters that have this identity.
+    /// </summary>
+    public int AssignedCount { get; set; }
 }
 
 /// <summary>
@@ -67,6 +94,4 @@ public class IdentityDefinitionListResponseDto
 {
     public IEnumerable<IdentityDefinitionResponseDto> Items { get; set; } = Enumerable.Empty<IdentityDefinitionResponseDto>();
     public int TotalCount { get; set; }
-    public int PageNumber { get; set; }
-    public int PageSize { get; set; }
 }

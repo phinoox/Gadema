@@ -9,6 +9,8 @@ using Gadema.Api.Services;
 using Gadema.Core.Dtos.DialogueTrees;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Gadema.Core.Dtos.Content.Branches;
+using Gadema.Api.Services.Content;
 
 namespace Gadema.Api.Controllers;
 
@@ -19,13 +21,13 @@ namespace Gadema.Api.Controllers;
 [Route("api/v1/projects/{id}/dialogue/branches")]
 public class DialogueBranchesController : ControllerBase
 {
-    private readonly IDialogueService _dialogueService;
+    private readonly DialogueBranchService _dialogueService;
     private readonly ILogger<DialogueBranchesController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public DialogueBranchesController(IDialogueService dialogueService, ILogger<DialogueBranchesController> logger)
+    public DialogueBranchesController(DialogueBranchService dialogueService, ILogger<DialogueBranchesController> logger)
     {
         _dialogueService = dialogueService;
         _logger = logger;

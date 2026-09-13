@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Identity;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,10 @@ namespace Gadema.Api.Controllers.Identity;
 [Route("api/v1/projects/{projectId}/identity-values")]
 public class IdentityValuesController : ControllerBase
 {
-    private readonly IIdentityValueService _identityValueService;
+    private readonly IdentityValueService _identityValueService;
     private readonly ILogger<IdentityValuesController> _logger;
 
-    public IdentityValuesController(IIdentityValueService identityValueService, ILogger<IdentityValuesController> logger)
+    public IdentityValuesController(IdentityValueService identityValueService, ILogger<IdentityValuesController> logger)
     {
         _identityValueService = identityValueService;
         _logger = logger;

@@ -7,6 +7,13 @@ using Gadema.Core.Models;
 using Gadema.Core.Enums;
 namespace Gadema.Core.Dtos.Reviews;
 
+
+public class ReviewStatusCreateDto
+{
+    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ReviewStatusEnum Status { get; set; }
+    public string? Notes { get; set; }
+}
 /// <summary>
 /// List of review statuses response.
 /// </summary>

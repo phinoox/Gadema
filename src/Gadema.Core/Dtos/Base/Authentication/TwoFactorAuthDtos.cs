@@ -3,6 +3,15 @@ using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Authentication;
 
+
+
+public class QrCodeResponse
+{
+    public string QrCodeUrl { get; set; } = "";
+    public string SecretKey { get; set; } = "";
+    public bool IsNewSetup { get; set; }
+}
+
 public class Enable2FAResponseDto
 {
     public string Base32Secret { get; set; } = "";

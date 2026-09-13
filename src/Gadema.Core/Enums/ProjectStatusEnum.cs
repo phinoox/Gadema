@@ -19,5 +19,6 @@ public enum ProjectStatusEnum
     Published = 2,
     
     /// <summary>Archived</summary>
-    Archived = 3
+    Archived = 3,
+    Deleted = 4
 }

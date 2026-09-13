@@ -19,13 +19,13 @@ namespace Gadema.Api.Controllers;
 [Route("api/v1/content-items/{id}/tags")]
 public class TagsController : ControllerBase
 {
-    private readonly ITagService _tagService;
+    private readonly TagsService _tagService;
     private readonly ILogger<TagsController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public TagsController(ITagService tagService, ILogger<TagsController> logger)
+    public TagsController(TagService tagService, ILogger<TagsController> logger)
     {
         _tagService = tagService;
         _logger = logger;

@@ -1,4 +1,4 @@
-StoryController// =============================================================================
+
 using Gadema.Api.Services.Narrative;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Narrative;

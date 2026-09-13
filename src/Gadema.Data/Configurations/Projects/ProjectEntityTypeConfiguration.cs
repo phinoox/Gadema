@@ -32,7 +32,7 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
             .OnDelete(DeleteBehavior.Restrict);
 
         // ProjectTeams (Cascade delete: if project deleted, memberships gone)
-        builder.HasMany(p => p.ProjectTeams)
+        builder.HasMany(p => p.Members)
             .WithOne(pt => pt.Project)
             .HasForeignKey(pt => pt.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);

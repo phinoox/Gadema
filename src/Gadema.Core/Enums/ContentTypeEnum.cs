@@ -50,5 +50,9 @@ public enum ContentTypeEnum
     StoryOutline = 14,
     StoryBeat = 15,
     WorldLocation = 16,
-    CharacterState = 17
+    CharacterState = 17,
+    IdentityDefinition = 18,
+    ExternalReference = 19,
+    ContentReview = 20,
+    ProjectSeries = 21
 }

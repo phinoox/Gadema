@@ -69,10 +69,10 @@ public class Project
     [ForeignKey("ProjectSeriesId")]
     public virtual ProjectSeries? ProjectSeries { get; set; }
 
-    /// <summary>
-    /// Collection of teams with access to this project.
+     /// <summary>
+    /// Collection of members (users with access) for this project.
     /// </summary>
-    public virtual ICollection<ProjectTeam> ProjectTeams { get; set; } = new List<ProjectTeam>();
+    public virtual ICollection<ProjectMember> Members { get; set; } = new List<ProjectMember>();
 
     /// <summary>
     /// Collection of project tokens for this project.

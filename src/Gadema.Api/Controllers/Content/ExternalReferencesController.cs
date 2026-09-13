@@ -9,6 +9,7 @@ using Gadema.Api.Services;
 using Gadema.Core.Dtos.ExternalReferences;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Gadema.Api.Services.Content;
 
 namespace Gadema.Api.Controllers;
 
@@ -19,13 +20,13 @@ namespace Gadema.Api.Controllers;
 [Route("api/v1/content-items/{id}/references")]
 public class ExternalReferencesController : ControllerBase
 {
-    private readonly IExternalReferenceService _referenceService;
+    private readonly ExternalReferenceService _referenceService;
     private readonly ILogger<ExternalReferencesController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ExternalReferencesController(IExternalReferenceService referenceService, ILogger<ExternalReferencesController> logger)
+    public ExternalReferencesController(ExternalReferenceService referenceService, ILogger<ExternalReferencesController> logger)
     {
         _referenceService = referenceService;
         _logger = logger;

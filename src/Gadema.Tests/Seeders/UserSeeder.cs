@@ -33,7 +33,7 @@ public static class TestUserContextHelper
                 Id = Guid.NewGuid(),
                 Email = "test@example.com",
                 UserName = "test@example.com",
-                FullName = "Test User",
+                DisplayName = "Test User",
                 Provider = Core.Enums.UserAuthProviderEnum.Password,
                 PasswordHash = Gadema.Api.Services.Authentication.PasswordHasher.Hash("Password123!"),
                 IsActive = true,

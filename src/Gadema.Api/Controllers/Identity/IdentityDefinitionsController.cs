@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Identity;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,10 @@ namespace Gadema.Api.Controllers.Identity;
 [Route("api/v1/projects/{projectId}/identity-definitions")]
 public class IdentityDefinitionsController : ControllerBase
 {
-    private readonly IIdentityDefinitionService _identityDefinitionService;
+    private readonly IdentityDefinitionService _identityDefinitionService;
     private readonly ILogger<IdentityDefinitionsController> _logger;
 
-    public IdentityDefinitionsController(IIdentityDefinitionService identityDefinitionService, ILogger<IdentityDefinitionsController> logger)
+    public IdentityDefinitionsController(IdentityDefinitionService identityDefinitionService, ILogger<IdentityDefinitionsController> logger)
     {
         _identityDefinitionService = identityDefinitionService;
         _logger = logger;

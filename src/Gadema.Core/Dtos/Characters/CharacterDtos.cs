@@ -9,16 +9,14 @@ namespace Gadema.Core.Dtos.Characters;
 /// </summary>
 public class CharacterCreateDto
 {
-    /// <summary>
-    /// MetaInfo data for the character's identity.
-    /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
-    
-    /// <summary>
-    /// Optional story profile data to create alongside the character.
-    /// If not provided, create separately via CharacterStoryProfile endpoint.
-    /// </summary>
-    public CharacterStoryProfileCreateDto? StoryProfile { get; set; }
+
+    [Required, MaxLength(128)] public string Name { get; set; } = "";
+
+    [MaxLength(256)] public string? NickName { get; set; }
+
+    public Guid? CurrentStateId { get; set; }
+    public Guid? StoryProfileId { get; set; }
 }
 
 /// <summary>
@@ -26,14 +24,11 @@ public class CharacterCreateDto
 /// </summary>
 public class CharacterUpdateDto : UpdateRequestDto
 {
-    /// <summary>
-    /// Mark a specific state as the current state.
-    /// </summary>
+    [MaxLength(128)] public string? Name { get; set; }
+
+    [MaxLength(256)] public string? NickName { get; set; }
+
     public Guid? CurrentStateId { get; set; }
-    
-    /// <summary>
-    /// Link an existing story profile to this character.
-    /// </summary>
     public Guid? StoryProfileId { get; set; }
 }
 
@@ -42,20 +37,12 @@ public class CharacterUpdateDto : UpdateRequestDto
 /// </summary>
 public class CharacterResponseDto : MetaInfoResponseBaseDto
 {
-    /// <summary>
-    /// The linked story profile (static backstory/traits).
-    /// </summary>
-    public CharacterStoryProfileResponseDto? StoryProfile { get; set; }
-    
-    /// <summary>
-    /// The current state ID.
-    /// </summary>
+    [Required, MaxLength(128)] public string Name { get; set; } = "";
+
+    [MaxLength(256)] public string? NickName { get; set; }
+
     public Guid? CurrentStateId { get; set; }
-    
-    /// <summary>
-    /// The current state data (role, faction, location, status).
-    /// </summary>
-    public CharacterStateResponseDto? CurrentStateData { get; set; }
+    public Guid? StoryProfileId { get; set; }
 }
 
 /// <summary>

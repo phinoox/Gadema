@@ -9,6 +9,7 @@ using Gadema.Api.Services;
 using Gadema.Core.Dtos.Reviews;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Gadema.Api.Services.Content;
 
 namespace Gadema.Api.Controllers;
 
@@ -19,13 +20,13 @@ namespace Gadema.Api.Controllers;
 [Route("api/v1/content-items/{id}/review")]
 public class ReviewStatusController : ControllerBase
 {
-    private readonly IReviewService _reviewService;
+    private readonly ReviewStatusService _reviewService;
     private readonly ILogger<ReviewStatusController> _logger;
 
     /// <summary>
     /// Constructor with dependency injection.
     /// </summary>
-    public ReviewStatusController(IReviewService reviewService, ILogger<ReviewStatusController> logger)
+    public ReviewStatusController(ReviewStatusService reviewService, ILogger<ReviewStatusController> logger)
     {
         _reviewService = reviewService;
         _logger = logger;

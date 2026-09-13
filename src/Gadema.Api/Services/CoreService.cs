@@ -41,35 +41,27 @@ public abstract class CoreService
     /// Checks both direct ownership and team membership.
     /// Returns null if access is granted, or an error ApiResponseDto if denied.
     /// </summary>
-    protected async Task<ApiResponseDto<T>?> ValidateProjectAccessAsync<T>(Guid projectId) where T : class
+    protected async Task<ApiResponseDto<T>?> ValidateProjectAccessAsync<T>(Guid projectId, ProjectMemberRoleEnum minimumRole = ProjectMemberRoleEnum.Viewer) where T : class
     {
         var user = _userContext.CurrentUser;
         if (user == null)
             return ApiResponseDto<T>.Unauthorized("Not authenticated.");
 
-        // Check 1: Direct project ownership
+        // Owner always has access
         var isOwner = await _db.Projects
             .AnyAsync(p => p.Id == projectId && p.UserId == user.Id);
 
         if (isOwner)
-            return null; // ✅ Owner has access
+            return null;
 
-        // Check 2: Team-based access
-        // User → TeamMember → ProjectTeam → Project
-        var isInTeam = await _db.ProjectTeams
-            .Where(pt => pt.ProjectId == projectId)
-            .Join(
-                _db.TeamMembers,
-                pt => pt.TeamId,
-                tm => tm.TeamId,
-                (pt, tm) => tm.UserId
-            )
-            .AnyAsync(userId => userId == user.Id);
+        // Check membership with minimum role
+        var member = await _db.ProjectMembers
+            .FirstOrDefaultAsync(pm => pm.ProjectId == projectId && pm.UserId == user.Id);
 
-        if (!isInTeam)
-            return ApiResponseDto<T>.Forbidden("You do not have access to this project.");
+        if (member == null || member.Role > minimumRole)
+            return ApiResponseDto<T>.Forbidden("You do not have sufficient access to this project.");
 
-        return null; // ✅ Team member has access
+        return null;
     }
 
     /// <summary>

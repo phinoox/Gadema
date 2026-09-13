@@ -25,52 +25,15 @@ public class CharacterService : CoreService
         if (error != null) return error;
 
         var characters = await _db.Characters
-            .Include(c => c.MetaInfo)
-            .Include(c => c.CharacterDetails)
-            .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
-            .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
-            .Where(c => c.MetaInfo.ProjectId == projectId)
-            .OrderBy(c => c.MetaInfo.Title)
-            .Select(c => new CharacterResponseDto
-            {
-                Id = c.Id,
-                MetaInfoId = c.MetaInfoId,
-                MetaInfoTitle = c.MetaInfo.Title,
-                Status = c.MetaInfo.Status,
-                IsPublic = c.MetaInfo.IsPublic,
-                CreatedAt = c.MetaInfo.CreatedAt,
-                LastModifiedAt = c.MetaInfo.LastModifiedAt,
-                CharacterDetailsId = c.CharacterDetailsId,
-                Details = new CharacterDetailsResponseDto
-                {
-                    Id = c.CharacterDetails.Id,
-                    MetaInfoId = c.CharacterDetails.MetaInfoId,
-                    Name = c.CharacterDetails.Name,
-                    ClassTemplateId = c.CharacterDetails.ClassTemplateId,
-                    Level = c.CharacterDetails.Level,
-                    Role = c.CharacterDetails.Role,
-                    Status = c.CharacterDetails.Status
-                },
-                CurrentStateId = c.CurrentStateId,
-                CurrentStateData = c.CurrentState != null ? new CharacterStateResponseDto
-                {
-                    Id = c.CurrentState.Id,
-                    MetaInfoId = c.CurrentState.MetaInfoId,
-                    MetaInfoTitle = c.CurrentState.MetaInfo.Title,
-                    Status = c.CurrentState.MetaInfo.Status,
-                    IsPublic = c.CurrentState.MetaInfo.IsPublic,
-                    CreatedAt = c.CurrentState.MetaInfo.CreatedAt,
-                    LastModifiedAt = c.CurrentState.MetaInfo.LastModifiedAt,
-                    Role = c.CurrentState.Role,
-                    FactionId = c.CurrentState.FactionId,
-                    FactionName = c.CurrentState.Faction != null ? c.CurrentState.Faction.MetaInfo.Title : null,
-                    LocationId = c.CurrentState.LocationId,
-                    LocationName = c.CurrentState.Location != null ? c.CurrentState.Location.MetaInfo.Title : null,
-                    LifeStatus = c.CurrentState.LifeStatus,
-                    Note = c.CurrentState.Note
-                } : null
-            })
-            .ToListAsync();
+     .Include(c => c.MetaInfo)
+     .Include(c => c.StoryProfile)
+     .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
+     .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
+     .Where(c => c.MetaInfo.ProjectId == projectId)
+     .OrderBy(c => c.Name)
+     .ThenBy(c => c.MetaInfo.Title)
+     .Select(c => CreateResponseDto(c))
+     .ToListAsync();
 
         return ApiResponseDto<IEnumerable<CharacterResponseDto>>.Success(characters);
     }
@@ -83,7 +46,6 @@ public class CharacterService : CoreService
     {
         var character = await _db.Characters
             .Include(c => c.MetaInfo)
-            .Include(c => c.CharacterDetails)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -94,45 +56,7 @@ public class CharacterService : CoreService
         var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<CharacterResponseDto>.Success(new CharacterResponseDto
-        {
-            Id = character.Id,
-            MetaInfoId = character.MetaInfoId,
-            MetaInfoTitle = character.MetaInfo.Title,
-            Status = character.MetaInfo.Status,
-            IsPublic = character.MetaInfo.IsPublic,
-            CreatedAt = character.MetaInfo.CreatedAt,
-            LastModifiedAt = character.MetaInfo.LastModifiedAt,
-            CharacterDetailsId = character.CharacterDetailsId,
-            Details = new CharacterDetailsResponseDto
-            {
-                Id = character.CharacterDetails.Id,
-                MetaInfoId = character.CharacterDetails.MetaInfoId,
-                Name = character.CharacterDetails.Name,
-                ClassTemplateId = character.CharacterDetails.ClassTemplateId,
-                Level = character.CharacterDetails.Level,
-                Role = character.CharacterDetails.Role,
-                Status = character.CharacterDetails.Status
-            },
-            CurrentStateId = character.CurrentStateId,
-            CurrentStateData = character.CurrentState != null ? new CharacterStateResponseDto
-            {
-                Id = character.CurrentState.Id,
-                MetaInfoId = character.CurrentState.MetaInfoId,
-                MetaInfoTitle = character.CurrentState.MetaInfo.Title,
-                Status = character.CurrentState.MetaInfo.Status,
-                IsPublic = character.CurrentState.MetaInfo.IsPublic,
-                CreatedAt = character.CurrentState.MetaInfo.CreatedAt,
-                LastModifiedAt = character.CurrentState.MetaInfo.LastModifiedAt,
-                Role = character.CurrentState.Role,
-                FactionId = character.CurrentState.FactionId,
-                FactionName = character.CurrentState.Faction != null ? character.CurrentState.Faction.MetaInfo.Title : null,
-                LocationId = character.CurrentState.LocationId,
-                LocationName = character.CurrentState.Location != null ? character.CurrentState.Location.MetaInfo.Title : null,
-                LifeStatus = character.CurrentState.LifeStatus,
-                Note = character.CurrentState.Note
-            } : null
-        });
+        return ApiResponseDto<CharacterResponseDto>.Success(CreateResponseDto(character));
     }
 
     // ========================================================================
@@ -144,16 +68,6 @@ public class CharacterService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Verify CharacterDetails exists and belongs to the project
-        var characterDetails = await _db.CharacterDetails
-            .Include(cd => cd.MetaInfo)
-            .FirstOrDefaultAsync(cd => cd.Id == createDto.CharacterDetailsId);
-
-        if (characterDetails is null)
-            return ApiResponseDto<CreateResponseDto>.NotFound($"CharacterDetails with ID {createDto.CharacterDetailsId} not found.");
-
-        if (characterDetails.MetaInfo.ProjectId != projectId)
-            return ApiResponseDto<CreateResponseDto>.BadRequest("CharacterDetails does not belong to this project.");
 
         // Create MetaInfo for the character identity
         var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Character, createDto.CreateData);
@@ -165,8 +79,11 @@ public class CharacterService : CoreService
         var character = new Character
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            CharacterDetailsId = createDto.CharacterDetailsId
+            MetaInfoId = metaInfo.Id,
+            Name = createDto.Name,
+            NickName = createDto.NickName,
+            StoryProfileId = createDto.StoryProfileId,
+            CurrentStateId = null
         };
 
         _db.Characters.Add(character);
@@ -175,7 +92,7 @@ public class CharacterService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = character.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -188,7 +105,6 @@ public class CharacterService : CoreService
     {
         var character = await _db.Characters
             .Include(c => c.MetaInfo)
-            .Include(c => c.CharacterDetails)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -199,20 +115,15 @@ public class CharacterService : CoreService
         var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Update CharacterDetails linkage if provided
-        if (updateDto.CharacterDetailsId.HasValue)
+        if (updateDto.Name != null)
+            character.Name = updateDto.Name;
+
+        if (updateDto.NickName != null)
+            character.NickName = updateDto.NickName;
+
+        if (updateDto.StoryProfileId.HasValue)
         {
-            var newDetails = await _db.CharacterDetails
-                .Include(cd => cd.MetaInfo)
-                .FirstOrDefaultAsync(cd => cd.Id == updateDto.CharacterDetailsId.Value);
-
-            if (newDetails is null)
-                return ApiResponseDto<CharacterResponseDto>.NotFound($"CharacterDetails with ID {updateDto.CharacterDetailsId.Value} not found.");
-
-            if (newDetails.MetaInfo.ProjectId != character.MetaInfo.ProjectId)
-                return ApiResponseDto<CharacterResponseDto>.BadRequest("New CharacterDetails does not belong to this project.");
-
-            character.CharacterDetailsId = updateDto.CharacterDetailsId.Value;
+            character.StoryProfileId = updateDto.StoryProfileId.Value;
         }
 
         // Update CurrentState linkage if provided
@@ -234,45 +145,7 @@ public class CharacterService : CoreService
         await _db.SaveChangesAsync();
 
         // Return updated response with full details
-        return ApiResponseDto<CharacterResponseDto>.Success(new CharacterResponseDto
-        {
-            Id = character.Id,
-            MetaInfoId = character.MetaInfoId,
-            MetaInfoTitle = character.MetaInfo.Title,
-            Status = character.MetaInfo.Status,
-            IsPublic = character.MetaInfo.IsPublic,
-            CreatedAt = character.MetaInfo.CreatedAt,
-            LastModifiedAt = character.MetaInfo.LastModifiedAt,
-            CharacterDetailsId = character.CharacterDetailsId,
-            Details = new CharacterDetailsResponseDto
-            {
-                Id = character.CharacterDetails.Id,
-                MetaInfoId = character.CharacterDetails.MetaInfoId,
-                Name = character.CharacterDetails.Name,
-                ClassTemplateId = character.CharacterDetails.ClassTemplateId,
-                Level = character.CharacterDetails.Level,
-                Role = character.CharacterDetails.Role,
-                Status = character.CharacterDetails.Status
-            },
-            CurrentStateId = character.CurrentStateId,
-            CurrentStateData = character.CurrentState != null ? new CharacterStateResponseDto
-            {
-                Id = character.CurrentState.Id,
-                MetaInfoId = character.CurrentState.MetaInfoId,
-                MetaInfoTitle = character.CurrentState.MetaInfo.Title,
-                Status = character.CurrentState.MetaInfo.Status,
-                IsPublic = character.CurrentState.MetaInfo.IsPublic,
-                CreatedAt = character.CurrentState.MetaInfo.CreatedAt,
-                LastModifiedAt = character.CurrentState.MetaInfo.LastModifiedAt,
-                Role = character.CurrentState.Role,
-                FactionId = character.CurrentState.FactionId,
-                FactionName = character.CurrentState.Faction != null ? character.CurrentState.Faction.MetaInfo.Title : null,
-                LocationId = character.CurrentState.LocationId,
-                LocationName = character.CurrentState.Location != null ? character.CurrentState.Location.MetaInfo.Title : null,
-                LifeStatus = character.CurrentState.LifeStatus,
-                Note = character.CurrentState.Note
-            } : null
-        });
+        return ApiResponseDto<CharacterResponseDto>.Success(CreateResponseDto(character));
     }
 
     // ========================================================================
@@ -293,7 +166,7 @@ public class CharacterService : CoreService
 
         // Delete MetaInfo (cascades to Character from that side)
         _db.MetaInfos.Remove(character.MetaInfo);
-        
+
         // Remove the Character record (but NOT CharacterDetails — it may be shared)
         _db.Characters.Remove(character);
         await _db.SaveChangesAsync();
@@ -303,5 +176,23 @@ public class CharacterService : CoreService
             EntityId = id,
             ProjectId = character.MetaInfo.ProjectId
         });
+    }
+
+    private CharacterResponseDto CreateResponseDto(Character character)
+    {
+        return new CharacterResponseDto()
+        {
+            Id = character.Id,
+            MetaInfoId = character.MetaInfoId,
+            MetaInfoTitle = character.MetaInfo.Title,
+            Status = character.MetaInfo.Status,
+            IsPublic = character.MetaInfo.IsPublic,
+            CreatedAt = character.MetaInfo.CreatedAt,
+            LastModifiedAt = character.MetaInfo.LastModifiedAt,
+            CurrentStateId = character.CurrentStateId,
+            StoryProfileId = character.StoryProfileId,
+            Name = character.Name,
+            NickName = character.NickName
+        };
     }
 }

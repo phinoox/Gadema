@@ -4,6 +4,12 @@ using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Identity;
 
+public class IdentityValueCreateDto
+{
+    [Required] public Guid DefinitionId { get; set; }
+    [Required] public string Value { get; set; } = "";
+}
+
 /// <summary>
 /// DTO for creating an identity value (specific race, faction option, etc.).
 /// </summary>

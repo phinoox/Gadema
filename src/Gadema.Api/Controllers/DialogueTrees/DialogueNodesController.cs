@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,10 @@ namespace Gadema.Api.Controllers.DialogueTrees;
 [Route("api/v1/projects/{projectId}/dialogue-nodes")]
 public class DialogueNodesController : ControllerBase
 {
-    private readonly IDialogueNodeService _dialogueNodeService;
+    private readonly DialogueNodeService _dialogueNodeService;
     private readonly ILogger<DialogueNodesController> _logger;
 
-    public DialogueNodesController(IDialogueNodeService dialogueNodeService, ILogger<DialogueNodesController> logger)
+    public DialogueNodesController(DialogueNodeService dialogueNodeService, ILogger<DialogueNodesController> logger)
     {
         _dialogueNodeService = dialogueNodeService;
         _logger = logger;

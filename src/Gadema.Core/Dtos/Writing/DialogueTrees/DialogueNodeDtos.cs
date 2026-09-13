@@ -3,6 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Dtos.DialogueTrees;
 
+
+
+public class DialogueNodeCreateDto
+{
+    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    public Guid? ParentNodeId { get; set; }
+}
+
+
 /// <summary>
 /// DTO for creating a dialogue node within a branch.
 /// </summary>

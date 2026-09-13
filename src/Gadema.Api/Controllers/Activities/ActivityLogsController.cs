@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Api.Services;
+using Gadema.Api.Services.Activities;
 using Gadema.Core.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,10 @@ namespace Gadema.Api.Controllers.Activities;
 [Route("api/v1/projects/{projectId}/activity-logs")]
 public class ActivityLogsController : ControllerBase
 {
-    private readonly IActivityLogService _activityLogService;
+    private readonly ActivityLogService _activityLogService;
     private readonly ILogger<ActivityLogsController> _logger;
 
-    public ActivityLogsController(IActivityLogService activityLogService, ILogger<ActivityLogsController> logger)
+    public ActivityLogsController(ActivityLogService activityLogService, ILogger<ActivityLogsController> logger)
     {
         _activityLogService = activityLogService;
         _logger = logger;

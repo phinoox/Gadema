@@ -1,5 +1,6 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Characters;
 
 namespace Gadema.Core.Dtos.Characters;
 
@@ -10,7 +11,7 @@ public class CharacterRelationCreateDto
 
     [Required] public Guid TargetCharacterId { get; set; }
 
-    [Required] public int RelationType { get; set; }
+    [Required] public RelationType RelationType { get; set; }
 
     [Required] public Guid TriggerSceneId { get; set; }
 
@@ -38,7 +39,7 @@ public class CharacterRelationUpdateDto
     /// Type of relationship (Ally, Enemy, Family, etc.).
     /// </summary>
     [Required]
-    public int RelationType { get; set; }
+    public RelationType RelationType { get; set; }
 
     /// <summary>
     /// The scene where this relationship evolved or was first established.
@@ -63,7 +64,7 @@ public class CharacterRelationResponseDto
     public string? SourceCharacterName { get; set; }
     public Guid TargetCharacterId { get; set; }
     public string? TargetCharacterName { get; set; }
-    public int RelationType { get; set; }
+    public RelationType RelationType { get; set; }
     public Guid TriggerSceneId { get; set; }
     public string? Description { get; set; }
     public DateTime CreatedAt { get; set; }

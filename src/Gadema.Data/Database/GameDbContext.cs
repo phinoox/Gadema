@@ -27,21 +27,7 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<User> Users { get; set; }
 
-    /// <summary>
-    /// Team entity set.
-    /// </summary>
-    public DbSet<Team> Teams { get; set; }
-
-    /// <summary>
-    /// ProjectTeam entity set.
-    /// </summary>
-    public DbSet<ProjectTeam> ProjectTeams { get; set; }
-
-    /// <summary>
-    /// TeamMember entity set.
-    /// </summary>
-    public DbSet<TeamMember> TeamMembers { get; set; }
-
+    
     #endregion
 
     /// <summary>
@@ -156,11 +142,7 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<CharacterStoryProfile> CharacterStoryProfiles { get; set; }
 
-    /// <summary>
-    /// StoryEvent entity set (generic event tracker for story changes).
-    /// </summary>
-    public DbSet<StoryEvent> StoryEvents { get; set; }
-
+    
 
     #endregion
 
@@ -314,6 +296,8 @@ public class GameDbContext : DbContext
     public DbSet<EngineFieldMapping> EngineFieldMappings { get; set; }
 
     public DbSet<UserProviderLink> UserProviderLinks => Set<UserProviderLink>();
+
+    public DbSet<ProjectMember> ProjectMembers { get; set; }
 
 
     /// <summary>

@@ -25,6 +25,12 @@ public class Character
     
     [ForeignKey("MetaInfoId")]
     public virtual MetaInfo MetaInfo { get; set; } = null!;
+
+    [Required, MaxLength(128)]
+    public string Name { get; set; } = "";
+    
+    [MaxLength(256)]
+    public string? NickName { get; set; }    
     
     /// <summary>
     /// Static backstory and personality information (one-to-one).

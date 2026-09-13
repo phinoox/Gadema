@@ -1,41 +1,42 @@
-// =============================================================================
-using Microsoft.AspNetCore.Http;
-// Gadema.Api - ASP.NET Core Web API Controllers
-// =============================================================================
-
-using System.Threading.Tasks;
-using Gadema.Api.Services;
+using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos.Search;
+using Gadema.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Gadema.Api.Controllers;
+namespace Gadema.Api.Controllers.Content;
 
-/// <summary>
-/// Controller for search endpoints.
-/// </summary>
 [ApiController]
 [Route("api/v1/search")]
 public class SearchController : ControllerBase
 {
-    private readonly ISearchService _searchService;
+    private readonly ContentSearchService _searchService;
     private readonly ILogger<SearchController> _logger;
 
-    /// <summary>
-    /// Constructor with dependency injection.
-    /// </summary>
-    public SearchController(ISearchService searchService, ILogger<SearchController> logger)
+    public SearchController(ContentSearchService searchService, ILogger<SearchController> logger)
     {
         _searchService = searchService;
         _logger = logger;
     }
 
-    /// <summary>
-    /// Search content items.
-    /// </summary>
     [HttpPost("content-items")]
-    public async Task<IActionResult> SearchMetaInfosAsync([FromBody] SearchMetaInfosDto searchDto)
+    public async Task<IActionResult> SearchAsync([FromBody] SearchQueryDto searchQuery)
     {
-        return Ok(await _searchService.SearchMetaInfosAsync(searchDto));
+        return Ok(await _searchService.SearchAsync(
+            query: searchQuery.Query,
+            contentType: searchQuery.ContentType,
+            status: searchQuery.Status,
+            tags: searchQuery.Tags?.ToArray(),
+            page: searchQuery.Page ,
+            pageSize: searchQuery.PageSize 
+        ));
     }
 }
+
+public record SearchQueryDto(
+    string Query,
+    int? ContentType = null,
+    ContentStatusEnum? Status = null,
+    string[]? Tags = null,
+    int Page = 1,
+    int PageSize = 20);

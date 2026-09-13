@@ -1,8 +1,8 @@
 // =============================================================================
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.WorldBuilding;
 using Gadema.Core.Enums;
-
 using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -12,49 +12,61 @@ namespace Gadema.Api.Services.WorldBuilding;
 
 /// <summary>
 /// Service for managing WorldLocations within the world-building domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles hierarchical location tree (Country → Region → City → Village).
 /// </summary>
 public class WorldLocationService : CoreService
 {
     public WorldLocationService(GameDbContext db, ILogger<WorldLocationService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
+    /// <summary>Creates a response DTO from a WorldLocation entity.</summary>
+    private WorldLocationResponseDto CreateResponseDto(WorldLocation location)
+        => new()
+        {
+            Id = location.Id,
+            MetaInfoId = location.MetaInfoId,
+            MetaInfoTitle = location.MetaInfo.Title,
+            Status = location.MetaInfo.Status,
+            IsPublic = location.MetaInfo.IsPublic,
+            LocationType = location.LocationType,
+            ParentId = location.ParentId,
+            Description = location.Description,
+            CreatedAt = location.MetaInfo.CreatedAt,
+            LastModifiedAt = location.MetaInfo.LastModifiedAt,
+        };
+
+    /// <summary>Creates a list response DTO from collection.</summary>
+    private ListResponseDto<WorldLocationResponseDto> CreateListResponseDto(IEnumerable<WorldLocation> locations)
+        => new() { Items = locations.Select(CreateResponseDto).ToList(), TotalCount = locations.Count() };
+
     // ========================================================================
-    // GET - List all world locations for a project
+    // GET - List all world locations for a project (with optional filter)
     // ========================================================================
 
-    public async Task<ApiResponseDto<IEnumerable<WorldLocationResponseDto>>> GetWorldLocationsAsync(Guid projectId)
+    public async Task<ApiResponseDto<ListResponseDto<WorldLocationResponseDto>>> GetLocationsAsync(Guid projectId, int? locationType = null, Guid? parentId = null)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<WorldLocationResponseDto>>(projectId);
+        var error = await ValidateProjectAccessAsync<ListResponseDto<WorldLocationResponseDto>>(projectId);
         if (error != null) return error;
 
-        var locations = await _db.WorldLocations
+        IQueryable<WorldLocation> query = _db.WorldLocations
             .Include(wl => wl.MetaInfo)
-            .Where(wl => wl.MetaInfo.ProjectId == projectId)
-            .OrderBy(wl => wl.MetaInfo.Title)
-            .Select(wl => new WorldLocationResponseDto
-            {
-                Id = wl.Id,
-                MetaInfoId = wl.MetaInfoId,
-                MetaInfoTitle = wl.MetaInfo.Title,
-                Status = wl.MetaInfo.Status,
-                IsPublic = wl.MetaInfo.IsPublic,
-                CreatedAt = wl.MetaInfo.CreatedAt,
-                LastModifiedAt = wl.MetaInfo.LastModifiedAt,
-                LocationType = wl.LocationType,
-                ParentId = wl.ParentId,
-                Description = wl.Description
-            })
-            .ToListAsync();
+            .Where(wl => wl.MetaInfo.ProjectId == projectId);
 
-        return ApiResponseDto<IEnumerable<WorldLocationResponseDto>>.Success(locations);
+        if (locationType.HasValue)
+            query = query.Where(wl => wl.LocationType == locationType.Value);
+
+        if (parentId.HasValue)
+            query = query.Where(wl => wl.ParentId == parentId.Value || wl.ParentId == null);
+
+        var locations = await query.OrderBy(wl => wl.LocationType).ThenBy(wl => wl.Id).ToListAsync();
+        return ApiResponseDto<ListResponseDto<WorldLocationResponseDto>>.Success(CreateListResponseDto(locations));
     }
 
     // ========================================================================
     // GET - Single world location by ID
     // ========================================================================
 
-    public async Task<ApiResponseDto<WorldLocationResponseDto>> GetWorldLocationAsync(Guid id)
+    public async Task<ApiResponseDto<WorldLocationResponseDto>> GetLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
             .Include(wl => wl.MetaInfo)
@@ -66,26 +78,14 @@ public class WorldLocationService : CoreService
         var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.MetaInfo.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<WorldLocationResponseDto>.Success(new WorldLocationResponseDto
-        {
-            Id = location.Id,
-            MetaInfoId = location.MetaInfoId,
-            MetaInfoTitle = location.MetaInfo.Title,
-            Status = location.MetaInfo.Status,
-            IsPublic = location.MetaInfo.IsPublic,
-            CreatedAt = location.MetaInfo.CreatedAt,
-            LastModifiedAt = location.MetaInfo.LastModifiedAt,
-            LocationType = location.LocationType,
-            ParentId = location.ParentId,
-            Description = location.Description
-        });
+        return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
     }
 
     // ========================================================================
     // POST - Create a new world location
     // ========================================================================
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateWorldLocationAsync(Guid projectId, WorldLocationCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateLocationAsync(Guid projectId, WorldLocationCreateDto createDto)
     {
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
@@ -98,8 +98,8 @@ public class WorldLocationService : CoreService
         var location = new WorldLocation
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
-            LocationType = createDto.LocationType,
+            MetaInfoId = metaInfo.Id,
+            LocationType = (LocationType)createDto.LocationType,
             ParentId = createDto.ParentId,
             Description = createDto.Description,
         };
@@ -110,7 +110,7 @@ public class WorldLocationService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = location.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -119,7 +119,7 @@ public class WorldLocationService : CoreService
     // PUT - Partial update of a world location
     // ========================================================================
 
-    public async Task<ApiResponseDto<WorldLocationResponseDto>> UpdateWorldLocationAsync(Guid id, WorldLocationUpdateDto updateDto)
+    public async Task<ApiResponseDto<WorldLocationResponseDto>> UpdateLocationAsync(Guid id, WorldLocationUpdateDto updateDto)
     {
         var location = await _db.WorldLocations
             .Include(wl => wl.MetaInfo)
@@ -134,7 +134,7 @@ public class WorldLocationService : CoreService
         ApplyMetaInfoUpdates(location.MetaInfo, updateDto.MetaInfo);
 
         if (updateDto.LocationType.HasValue)
-            location.LocationType = updateDto.LocationType.Value;
+            location.LocationType = (LocationType)updateDto.LocationType.Value;
 
         if (updateDto.ParentId.HasValue)
             location.ParentId = updateDto.ParentId.Value;
@@ -144,26 +144,14 @@ public class WorldLocationService : CoreService
 
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<WorldLocationResponseDto>.Success(new WorldLocationResponseDto
-        {
-            Id = location.Id,
-            MetaInfoId = location.MetaInfoId,
-            MetaInfoTitle = location.MetaInfo.Title,
-            Status = location.MetaInfo.Status,
-            IsPublic = location.MetaInfo.IsPublic,
-            CreatedAt = location.MetaInfo.CreatedAt,
-            LastModifiedAt = location.MetaInfo.LastModifiedAt,
-            LocationType = location.LocationType,
-            ParentId = location.ParentId,
-            Description = location.Description
-        });
+        return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
     }
 
     // ========================================================================
     // DELETE - Remove a world location
     // ========================================================================
 
-    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteWorldLocationAsync(Guid id)
+    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
             .Include(wl => wl.MetaInfo)

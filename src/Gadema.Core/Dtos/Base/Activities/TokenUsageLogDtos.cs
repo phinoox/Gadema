@@ -3,6 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Dtos.Activities;
 
+
+public class TokenUsageStats
+{
+    public int TotalUsage { get; set; }
+    public int RemainingUsage { get; set; }
+    public DateTime? ExpiresAt { get; set; }
+    public bool IsExpired { get; set; }
+}
+
 /// <summary>
 /// Response DTO for a token usage log entry.
 /// </summary>
