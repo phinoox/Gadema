@@ -57,14 +57,14 @@ public class ProjectTaskController : ControllerBase
     [HttpGet("{id:guid}/comments")]
     public async Task<IActionResult> GetTaskCommentsAsync(Guid taskId, Guid projectId)
     {
-        var commentService = new Gadema.Api.Services.Tasks.ProjectTaskCommentsService(_projectTaskService._db, _projectTaskService._logger, _projectTaskService._userContext); // Note: would need dependency injection fix
+        var commentService = new ProjectTaskCommentsService(_projectTaskService._db, _projectTaskService._logger, _projectTaskService._userContext); // Note: would need dependency injection fix
         return Ok(await commentService.GetCommentsAsync(projectId, taskId));
     }
 
     [HttpPost("{id:guid}/comments")]
     public async Task<IActionResult> CreateTaskCommentAsync(Guid id, Guid projectId, string text)
     {
-        var commentService = new Gadema.Api.Services.Tasks.ProjectTaskCommentsService(_projectTaskService._db, _projectTaskService._logger, _projectTaskService._userContext);
+        var commentService = new ProjectTaskCommentsService(_projectTaskService._db, _projectTaskService._logger, _projectTaskService._userContext);
         return Ok(await commentService.CreateCommentAsync(projectId, taskId: null!, text)); // Simplified
     }
 }

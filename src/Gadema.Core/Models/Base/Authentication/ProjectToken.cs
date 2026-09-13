@@ -44,6 +44,17 @@ public class ProjectToken
     /// </summary>
     [MaxLength(512)]
     public string TokenHash { get; set; } = "";
+
+    // <summary>
+    /// The maximum number of requests allowed with this token.
+    /// 0 indicates an unlimited quota.
+    /// </summary>
+    public int MaxRequests { get; set; } = 0;
+
+    /// <summary>
+    /// The number of requests already consumed by this token.
+    /// </summary>
+    public int CurrentUsage { get; set; } = 0;
     
     /// <summary>
     /// Indicates if the token is active.

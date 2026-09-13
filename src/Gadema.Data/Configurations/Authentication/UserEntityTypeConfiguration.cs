@@ -35,6 +35,5 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(u => u.Provider).HasDefaultValue(UserAuthProviderEnum.Password);
         // Email is already [Required] + [MaxLength(256)] — ensure unique index:
         builder.HasIndex(u => u.Email).IsUnique();
-        builder.HasIndex(u => u.GoogleSubjectId).IsUnique().HasFilter("\"GoogleSubjectId\" IS NOT NULL");
     }
 }

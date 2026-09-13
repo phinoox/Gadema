@@ -2,9 +2,7 @@
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Activities;
 using Gadema.Core.Dtos.Base.Projects;
-using Gadema.Core.Dtos.Projects;
 using Gadema.Core.Dtos.Response;
-using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -16,9 +14,9 @@ namespace Gadema.Api.Services.Projects;
 /// Service for managing Project API Tokens (authentication tokens for external integrations).
 /// Handles token generation, revocation, and usage tracking.
 /// </summary>
-public class TokenUsageLogService : CoreService
+public class ProjectTokenService : CoreService
 {
-    public TokenUsageLogService(GameDbContext db, ILogger<TokenUsageLogService> logger, IUserContext userContext)
+    public ProjectTokenService(GameDbContext db, ILogger<ProjectTokenService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
     /// <summary>Creates a response DTO from a ProjectToken entity.</summary>
@@ -26,11 +24,11 @@ public class TokenUsageLogService : CoreService
         => new()
         {
             Id = token.Id,
-            MetaInfoId = token.MetaInfoId,
-            TokenType = (int)token.TokenType,
-            Token = token.IsRevoked ? null : token.Token,
-            IsRevoked = token.IsRevoked,
-            ExpirationDate = token.ExpirationDate,
+            TokenName = token.TokenName, 
+            TokenType = 1, // Defaulting to ReadWrite (1)
+            Token = null,  // Never return raw token in list view for security
+            IsRevoked = !token.IsActive, 
+            ExpirationDate = token.ExpiresAt,
             CreatedAt = token.CreatedAt,
         };
 
@@ -44,23 +42,22 @@ public class TokenUsageLogService : CoreService
 
     public async Task<ApiResponseDto<ProjectTokenResponseDto>> CreateTokenAsync(Guid projectId, ProjectTokenCreateDto createDto)
     {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<ProjectTokenResponseDto>.NotFound($"Project with ID {projectId} not found.");
+        var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
+        if (!projectExists) return ApiResponseDto<ProjectTokenResponseDto>.NotFound($"Project with ID {projectId} not found.");
 
-        // Generate a random API token string
-        var tokenValue = $"gadema_{projectId}_{Guid.NewGuid():N}";
-
-        // Determine expiration date based on request or default to 1 year from now
-        var expiresAt = createDto.ExpirationDate ?? DateTime.UtcNow.AddYears(1);
+        var rawTokenValue = $"gadema_{projectId}_{Guid.NewGuid():N}";
 
         var token = new ProjectToken
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = project.Id, // FK: MetaInfo has PK = Project.Id for this relationship
-            TokenType = (ProjectTokenType)createDto.TokenType ?? ProjectTokenType.ReadWrite,
-            Token = tokenValue,
-            ExpirationDate = expiresAt,
-            IsRevoked = false,
+            ProjectId = projectId,
+            TokenName = createDto.TokenName ?? "New API Token", 
+            TokenHash = rawTokenValue, // In production: Hash this!
+            MaxRequests = createDto.MaxRequests, // Using the new property
+            CurrentUsage = 0,                  // Starts at zero
+            IsActive = true,
+            ExpiresAt = createDto.ExpirationDate,
+            CreatedAt = DateTime.UtcNow
         };
 
         _db.ProjectTokens.Add(token);
@@ -69,11 +66,12 @@ public class TokenUsageLogService : CoreService
         return ApiResponseDto<ProjectTokenResponseDto>.Success(new ProjectTokenResponseDto
         {
             Id = token.Id,
-            TokenType = (int)token.TokenType,
-            Token = createDto.RevealToken ? tokenValue : null,
+            TokenName = token.TokenName,
+            TokenType = 1,
+            Token = createDto.RevealToken ? rawTokenValue : null,
             IsRevoked = false,
-            ExpirationDate = expiresAt,
-            CreatedAt = DateTime.UtcNow,
+            ExpirationDate = token.ExpiresAt,
+            CreatedAt = token.CreatedAt
         });
     }
 
@@ -83,17 +81,15 @@ public class TokenUsageLogService : CoreService
 
     public async Task<ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>> GetTokensAsync(Guid projectId)
     {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.NotFound($"Project with ID {projectId} not found.");
+        var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
+        if (!projectExists) return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.NotFound($"Project not found.");
 
         var tokens = await _db.ProjectTokens
-            .Include(t => t.MetaInfo)
-            .Where(t => t.MetaInfo.ProjectId == projectId)
+            .Where(t => t.ProjectId == projectId)
             .OrderByDescending(t => t.CreatedAt)
-            .Select(CreateResponseDto)
             .ToListAsync();
 
-        return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.Success(new ListResponseDto<ProjectTokenResponseDto> { Items = tokens, TotalCount = tokens.Count });
+        return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.Success(CreateListResponseDto(tokens));
     }
 
     // ========================================================================
@@ -102,17 +98,13 @@ public class TokenUsageLogService : CoreService
 
     public async Task<ApiResponseDto<string>> RevokeTokenAsync(Guid tokenId)
     {
-        var token = await _db.ProjectTokens.Include(t => t.MetaInfo).FirstOrDefaultAsync(t => t.Id == tokenId);
-
+        var token = await _db.ProjectTokens.FindAsync(tokenId);
         if (token is null) return ApiResponseDto<string>.NotFound($"API Token with ID {tokenId} not found.");
 
-        // Check project access
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(token.MetaInfo.ProjectId);
-        if (error != null) return error;
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(token.ProjectId);
+        if (error != null) return ApiResponseDto<string>.Unauthorized(error.Message);
 
-        token.IsRevoked = true;
-        token.ExpirationDate = DateTime.UtcNow;
-
+        token.IsActive = false;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<string>.Success($"API Token {tokenId} has been revoked.");
@@ -124,18 +116,35 @@ public class TokenUsageLogService : CoreService
 
     public async Task<ApiResponseDto<TokenUsageStats>> GetUsageStatsAsync(Guid projectId)
     {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<TokenUsageStats>.NotFound($"Project with ID {projectId} not found.");
+        var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
+        if (!projectExists) return ApiResponseDto<TokenUsageStats>.NotFound($"Project not found.");
 
-        // In production, this would query a TokenUsageLog table that records each API call.
-        // For now, return placeholder stats.
+        // Find the most recent active token to report its usage/quota status
+        var token = await _db.ProjectTokens
+            .Where(t => t.ProjectId == projectId && t.IsActive)
+            .OrderByDescending(t => t.CreatedAt)
+            .FirstOrDefaultAsync();
+
+        if (token is null)
+        {
+             return ApiResponseDto<TokenUsageStats>.Success(new TokenUsageStats
+             {
+                 TotalUsage = 0,
+                 RemainingUsage = 0,
+                 ExpiresAt = null,
+                 IsExpired = false
+             });
+        }
+
+        var now = DateTime.UtcNow;
+        bool isExpired = token.ExpiresAt.HasValue && token.ExpiresAt <= now;
+
         return ApiResponseDto<TokenUsageStats>.Success(new TokenUsageStats
         {
-            ProjectId = projectId,
-            TotalTokens = await _db.ProjectTokens.CountAsync(t => t.MetaInfo.ProjectId == projectId),
-            ActiveTokens = await _db.ProjectTokens.CountAsync(t => t.MetaInfo.ProjectId == projectId && !t.IsRevoked),
-            RevokedTokens = await _db.ProjectTokens.CountAsync(t => t.MetaInfo.ProjectId == projectId && t.IsRevoked),
-            LastUsedAt = DateTime.MinValue, // Would be populated from a usage log table
+            TotalUsage = token.CurrentUsage,
+            RemainingUsage = token.MaxRequests > 0 ? Math.Max(0, token.MaxRequests - token.CurrentUsage) : 0,
+            ExpiresAt = token.ExpiresAt,
+            IsExpired = isExpired
         });
     }
 }

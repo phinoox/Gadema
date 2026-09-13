@@ -54,6 +54,8 @@ public class ProjectTokenCreateDto : UpdateRequestDto
     /// Default: false (security best practice).
     /// </summary>
     public bool RevealToken { get; set; } = false;
+    public string? TokenName { get; set; }
+    public int MaxRequests { get; set; }
 
     // Inherited from UpdateRequestDto:
     //   Guid Id { get; set; } — used for upsert patterns if needed
@@ -114,6 +116,7 @@ public class ProjectTokenResponseDto : MetaInfoResponseBaseDto
     /// The date/time when the token expires (or null for non-expiring).
     /// </summary>
     public DateTime? ExpirationDate { get; set; }
+    public string TokenName { get; set; }
 
     // Inherited from MetaInfoResponseBaseDto:
     //   Guid Id, Guid ProjectId, string Title, ContentStatusEnum Status, bool IsPublic,

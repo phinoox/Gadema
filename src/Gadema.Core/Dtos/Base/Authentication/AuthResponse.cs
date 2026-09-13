@@ -21,11 +21,7 @@ public class UserResponse
     /// Email.
     /// </summary>
     public string Email { get; set; } = "";
-
-    /// <summary>
-    /// Google Subject ID.
-    /// </summary>
-    public string? GoogleSubjectId { get; set; } = null!;
+  
 }
 
 /// <summary>
@@ -42,9 +38,7 @@ public class AuthResponse
     public int ExpiresInSeconds { get; set; }  // TTL for the returned token
     public string? Message { get; set; }       // Optional human-readable message on success/failure
                                         // add to existing AuthResponse:
-    public bool TwoFactorRequired { get; set; }
-    public string? TwoFactorToken { get; set; } // short-lived pending token, sent to 2FA signin
-    
+   
     public UserResponse User {get;set;}   
 }
 

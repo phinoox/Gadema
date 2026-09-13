@@ -20,10 +20,5 @@ public class SignInDto
     /// </summary>
     [MaxLength(128)]
     public string? Password { get; set; } = null!;
-    
-    /// <summary>
-    /// Two-factor authentication token (optional).
-    /// </summary>
-    [MaxLength(64)]
-    public string? TwoFactorToken { get; set; } = null!;
+   
 }

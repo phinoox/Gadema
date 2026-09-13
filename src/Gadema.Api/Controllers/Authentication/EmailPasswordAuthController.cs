@@ -14,17 +14,16 @@ public class EmailPasswordAuthController : ControllerBase
     public EmailPasswordAuthController(EmailPasswordAuthService service) => _service = service;
 
     [HttpPost("register")]
-    public Task<IActionResult> RegisterAsync([FromBody] RegisterDto dto)
-        => Task.FromResult(ToResult(_service.Register(dto)));
+    public async Task<IActionResult> RegisterAsync([FromBody] RegisterDto dto){
+       return Ok(await _service.RegisterAsync(dto));
+    }
 
     [HttpPost("signin")]
-    public Task<IActionResult> SignInAsync([FromBody] SignInDto dto)
-        => Task.FromResult(ToResult(_service.SignIn(dto)));
+    public async Task<IActionResult> SignInAsync([FromBody] SignInDto dto){
+       return Ok(await _service.SignInAsync(dto));
+    }
 
-    [HttpPost("link")]
-    public Task<IActionResult> LinkProviderAsync([FromBody] LinkProviderDto dto)
-        => Task.FromResult(ToResult(_service.LinkProvider(dto)));
-
+  
     private IActionResult ToResult(ApiResponseDto<AuthResponse> r) => r.Successful
         ? StatusCode((int)r.StatusCode, r)
         : Problem(statusCode: (int)r.StatusCode, detail: r.Message);

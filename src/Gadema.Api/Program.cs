@@ -16,6 +16,11 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Security.Claims;
+using Gadema.Api.Services.Content;
+using Gadema.Api.Services.Projects;
+using Gadema.Api.Services.Tasks;
+using Gadema.Api.Services.Narrative;
+using Gadema.Api.Services.DialogueTrees;
 
 namespace Gadema.Api;
 
@@ -38,24 +43,21 @@ public partial class Program
         }
 
         // Register service implementations
-        builder.Services.AddScoped<IContentService, MetaInfoService>();
-        builder.Services.AddScoped<IProjectService, ProjectService>();
-        builder.Services.AddScoped<IDialogueService, DialogueService>();
-        builder.Services.AddScoped<IProjectTaskService, ProjectTaskService>();
-        builder.Services.AddScoped<ICommentService, CommentService>();
-        builder.Services.AddScoped<IExternalReferenceService, ExternalReferenceService>();
-        builder.Services.AddScoped<IStoryOutlineService, StoryOutlineService>();
-        builder.Services.AddScoped<IExportService, ExportService>();
-        builder.Services.AddScoped<ITagService, TagService>();
-        builder.Services.AddScoped<IReviewStatusService, ReviewStatusService>();
+        builder.Services.AddScoped<ContentService, MetaInfoService>();
+        builder.Services.AddScoped<ProjectService, ProjectService>();
+        builder.Services.AddScoped<DialogueBranchService, DialogueBranchService>();
+        builder.Services.AddScoped<ProjectTaskService, ProjectTaskService>();
+        builder.Services.AddScoped<CommentService, CommentService>();
+        builder.Services.AddScoped<ExternalReferenceService, ExternalReferenceService>();
+        builder.Services.AddScoped<StoryOutlineService, StoryOutlineService>();
+        builder.Services.AddScoped<TagsService, TagsService>();
+        builder.Services.AddScoped<ReviewStatusService, ReviewStatusService>();
         builder.Services.AddScoped<IUserContext, UserContext>();
 
         // ── Authentication ──────────────────────────────────────────────────
         builder.Services.AddSingleton<JwtTokenService>();
         builder.Services.AddScoped<EmailPasswordAuthService>();
-        builder.Services.AddScoped<TwoFactorAuthService>();
-        builder.Services.AddScoped<GoogleOAuthService>();
-
+        
         // HttpClient for Google JWKS (or other outbound calls)
         builder.Services.AddHttpClient("GoogleOAuth");
         builder.Services.AddHttpContextAccessor();

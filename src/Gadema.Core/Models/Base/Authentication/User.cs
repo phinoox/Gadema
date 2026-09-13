@@ -50,16 +50,6 @@ public class User
     [MaxLength(1024)]
     public string? ImageUri { get; set; }
 
-    /// <summary>
-    /// Google OAuth subject ID for linked accounts.
-    /// </summary>
-    [MaxLength(512)]
-    public string? GoogleSubjectId { get; set; }
-
-    /// <summary>
-    /// Indicates if two-factor authentication is enabled.
-    /// </summary>
-    public bool TwoFactorEnabled { get; set; } = false;
 
     /// <summary>
     /// Hashed recovery code for account access.
@@ -83,10 +73,10 @@ public class User
     public bool IsActive { get; set; } = true;
 
     public string? PasswordHash { get; set; }
-    public string? TwoFactorSecret { get; set; }
 
     // add to existing User class:
     public UserAuthProviderEnum Provider { get; set; } = UserAuthProviderEnum.Password;
     public virtual ICollection<UserProviderLink> ProviderLinks { get; set; } = new List<UserProviderLink>();
+    public bool EmailConfirmed { get; set; }
     // (RecoveryCodeHash, TwoFactorSecret, PasswordHash already exist — keep them)
 }
