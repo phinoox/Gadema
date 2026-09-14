@@ -1,6 +1,8 @@
 // =============================================================================
+using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Characters;
+using Gadema.Core.Dtos.Search;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Characters;
@@ -14,10 +16,46 @@ namespace Gadema.Api.Services.Characters;
 /// Service for managing Characters - the central glue entity in the character domain.
 /// Supports progressive creation: Identity (MetaInfo + Character) first, then modular components.
 /// </summary>
-public class CharacterService : CoreService
+public class CharacterService : CoreService, ISearchableProvider
 {
     public CharacterService(GameDbContext db, ILogger<CharacterService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
+
+
+    /// <summary>
+    /// Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
+    /// </summary>
+    public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    {
+        var dbQuery = _db.Characters
+            .Include(c => c.MetaInfo)
+            .AsQueryable();
+
+        // 1. Filter by Project Scope if provided
+        if (projectId.HasValue)
+        {
+            dbQuery = dbQuery.Where(c => c.MetaInfo.ProjectId == projectId.Value);
+        }
+
+        // 2. Search across identity properties (Title in MetaInfo, Name/Nickname in Character)
+        var matches = await dbQuery
+            .Where(c => c.MetaInfo.Title.Contains(query) || 
+                        c.Name.Contains(query) || 
+                        (c.NickName != null && c.NickName.Contains(query)))
+            .ToListAsync();
+
+        // 3. Project into the standardized SearchHitDto
+        return matches.Select(c => new SearchHitDto
+        {
+            ResourceId = c.Id,
+            DisplayName = c.MetaInfo.Title, // Using Title as the primary display name per convention
+            Slug = c.MetaInfo.Slug,
+            ResourceType = "Character",
+            ScopeId = c.MetaInfo.ProjectId,
+            ResourceLink = $"/api/v1/projects/{c.MetaInfo.ProjectId}/characters/{c.Id}"
+        });
+    }
+
 
     // ========================================================================
     // GET - List all characters for a project

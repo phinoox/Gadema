@@ -1,11 +1,11 @@
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Interfaces.Search;
+
 using Microsoft.Extensions.Logging;
 
 namespace Gadema.Api.Services.Search;
 
-public class SearchOrchestrator
+internal class SearchOrchestrator
 {
     private readonly IEnumerable<ISearchableProvider> _providers;
     private readonly ILogger<SearchOrchestrator> _logger;
@@ -57,4 +57,5 @@ public class SearchOrchestrator
 
 internal interface ISearchableProvider
 {
+    Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId);
 }

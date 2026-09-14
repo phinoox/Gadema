@@ -6,11 +6,11 @@ namespace Gadema.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/search")]
-public class SearchController : ControllerBase
+internal class SearchController : ControllerBase
 {
     private readonly SearchOrchestrator _orchestrator;
 
-    public SearchController(SearchOrchestrator orchestrator)
+    internal SearchController(SearchOrchestrator orchestrator)
     {
         _orchestrator = orchestrator;
     }

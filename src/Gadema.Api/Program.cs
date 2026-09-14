@@ -24,6 +24,8 @@ using Gadema.Api.Services.DialogueTrees;
 using Gadema.Core.Interfaces.Identity;
 using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Api.Services.Tags;
+using Gadema.Api.Services.Search;
+using Gadema.Api.Services.Characters;
 
 namespace Gadema.Api;
 
@@ -60,6 +62,10 @@ public partial class Program
         builder.Services.AddScoped<IUserContext, UserContext>();
         builder.Services.AddScoped<MetaTagService>(); // Previously TagService
         builder.Services.AddScoped<ProjectService>();
+
+        //search
+        builder.Services.AddScoped<ISearchableProvider, ProjectService>(); // Already implemented
+        builder.Services.AddScoped<ISearchableProvider, CharacterService>(); 
 
         // ── Authentication ──────────────────────────────────────────────────
         builder.Services.AddSingleton<JwtTokenService>();
