@@ -10,10 +10,15 @@ public class ProjectSeriesEntityTypeConfiguration : IEntityTypeConfiguration<Pro
     {
         builder.HasKey(e => e.Id);
 
-        // Indexes
-        builder.HasIndex(e => e.Slug).IsUnique();
+        // Note: Title, Slug, and Description are no longer on the ProjectSeries entity itself.
+        // They are now managed by ProjectSeriesMetaInfo.
 
         // Relationships
-        // Note: The inverse relationship (Projects -> ProjectSeries) is configured in ProjectEntityTypeConfiguration
+        builder.HasOne(e => e.MetaInfo)
+               .WithOne() 
+               .HasForeignKey<ProjectSeriesMetaInfo>(m => m.ProjectSeriesId)
+               .OnDelete(DeleteBehavior.Cascade);
+
+        // The inverse relationship (Projects -> ProjectSeries) is configured in ProjectEntityTypeConfiguration
     }
 }

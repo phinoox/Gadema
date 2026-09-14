@@ -3,26 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Dtos.Projects;
 
+
 /// <summary>
 /// DTO for creating a project series.
 /// </summary>
 public class ProjectSeriesCreateDto
 {
     /// <summary>
-    /// Title of the series.
+    /// The identity data for the series.
     /// </summary>
-    [Required, MaxLength(128)]
-    public string Title { get; set; } = "";
+    [Required] 
+    public ProjectSeriesMetaInfoCreateData ContentMetaInfo { get; set; } = new();
 
-    /// <summary>
-    /// URL-friendly slug.
-    /// </summary>
-    [MaxLength(128)]
-    public string? Slug { get; set; }
-
-    /// <summary>
-    /// Series-wide description.
-    /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
 }
@@ -33,27 +25,32 @@ public class ProjectSeriesCreateDto
 public class ProjectSeriesUpdateDto
 {
     /// <summary>
-    /// Title of the series.
+    /// The identity data payload used by the Identity Sync Strategy.
     /// </summary>
-    [MaxLength(128)]
-    public string? Title { get; set; }
+    public ProjectSeriesMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
-    /// <summary>
-    /// URL-friendly slug.
-    /// </summary>
-    [MaxLength(128)]
-    public string? Slug { get; set; }
-
-    /// <summary>
-    /// Series-wide description.
-    /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
 }
 
-/// <summary>
-/// Response DTO for a project series.
-/// </summary>
+// --- Data Payloads (The "What") ---
+
+public class ProjectSeriesMetaInfoCreateData : MetaInfoCreateData
+{
+    [Required, MaxLength(128)] public string Title { get; set; } = "";
+    [MaxLength(128)] public string? Slug { get; set; }
+    public List<Guid> TagIds { get; set; } = new();
+}
+
+public class ProjectSeriesMetaInfoUpdateData : MetaInfoUpdateData
+{
+    [MaxLength(128)] public string? Title { get; set; }
+    [MaxLength(128)] public string? Slug { get; set; }
+    public List<Guid> TagIds { get; set; } = new();
+}
+
+// --- Response DTOs (The "Contract") ---
+
 public class ProjectSeriesResponseDto
 {
     public Guid Id { get; set; }
@@ -62,9 +59,6 @@ public class ProjectSeriesResponseDto
     public string? Description { get; set; }
 }
 
-/// <summary>
-/// List response for project series.
-/// </summary>
 public class ProjectSeriesListResponseDto
 {
     public IEnumerable<ProjectSeriesResponseDto> Items { get; set; } = Enumerable.Empty<ProjectSeriesResponseDto>();

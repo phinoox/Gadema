@@ -66,13 +66,15 @@ public abstract class CoreService
     }
 
     /// <summary>
-    /// Verifies that the target ID provided actually belongs to a ContentMetaInfo entry within the specified project.
-    /// This is crucial for ancillary data like Comments or Tags.
-    /// </summary>
-    protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
-    {
-        return await _db.MetaInfos.AnyAsync(m => m.Id == targetId && m.ProjectId == projectId);
-    }
+/// Verifies that the target ID provided actually belongs to a MetaInfo entry within the specified project.
+/// </summary>
+protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+{
+    // We use OfType<T> because it is compatible with EF Core's SQL translation.
+    // This checks if the ID exists in any of our known subtype tables and matches the ProjectId.
+    return await _db.Set<BaseMetaInfo>().OfType<ContentMetaInfo>().AnyAsync(m => m.Id == targetId && m.ProjectId == projectId) ||
+           await _db.Set<BaseMetaInfo>().OfType<ProjectMetaInfo>().AnyAsync(m => m.Id == targetId && m.ProjectId == projectId);
+}
 
     /// <summary>
     /// Checks if the current user has a specific role within the given project.
@@ -138,10 +140,8 @@ public abstract class CoreService
     // ContentMetaInfo HELPERS
     // ========================================================================
 
-    /// <summary>
-    /// Creates a new ContentMetaInfo entity from creation data.
-    /// Sets default ContentType, ViewMode, and timestamps.
-    /// Generates a slug if none provided in the create data.
+     /// <summary>
+    /// [Obsolete] Use the generic CreateMetaInfo<T> instead.
     /// </summary>
     protected ContentMetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, MetaInfoCreateData createData)
     {
@@ -169,10 +169,9 @@ public abstract class CoreService
     }
 
     /// <summary>
-    /// Applies MetaInfoUpdateData fields to an existing ContentMetaInfo entity.
-    /// Only non-null/non-empty fields are applied (partial update pattern).
-    /// Returns true if any field was actually updated.
+    /// [Obsolete] Use ApplyIdentitySyncAsync with an IIdentitySyncStrategy instead.
     /// </summary>
+    [Obsolete("Use ApplyIdentitySyncAsync with a specialized strategy to ensure consistent sync logic.")]
     protected bool ApplyMetaInfoUpdates(ContentMetaInfo ContentMetaInfo, MetaInfoUpdateData? updateData)
     {
         if (updateData == null) return false;
@@ -193,6 +192,38 @@ public abstract class CoreService
             ContentMetaInfo.IsPublic = updateData.IsPublic.Value;
 
         return true;
+    }
+
+    /// <summary>
+    /// Creates a new MetaInfo anchor of type T.
+    /// Handles universal properties like Title, Slug, and IsPublic.
+    /// </summary>
+    /// <typeparam name="T">The specific MetaInfo implementation (e.g., ProjectMetaInfo).</typeparam>
+    /// <param name="createData">Initial data from the request body.</param>
+    /// <param name="initialize">A delegate to handle domain-specific initialization (like assigning ProjectId or User).</param>
+    protected T CreateMetaInfo<T>(MetaInfoCreateData createData, Action<T> initialize) where T : BaseMetaInfo
+    {
+        var user = _userContext.CurrentUser;
+        if (user == null)
+            throw new UnauthorizedAccessException("Not authenticated.");
+
+        // 1. Instantiate the specific MetaInfo type
+        T meta = Activator.CreateInstance<T>();
+
+        // 2. Apply universal properties from createData
+        meta.Title = createData.Title;
+        meta.Slug = string.IsNullOrWhiteSpace(createData.Slug)
+            ? GenerateSlug(createData.Title)
+            : createData.Slug;
+        meta.IsPublic = createData.IsPublic;
+        meta.ShortDesc = createData.ShortDesc;
+        meta.CreatedAt = DateTime.UtcNow;
+        meta.LastModifiedAt = DateTime.UtcNow;
+
+        // 3. Let the caller handle domain-specific initialization (e.g., setting ProjectId)
+        initialize(meta);
+
+        return meta;
     }
 
      /// <summary>

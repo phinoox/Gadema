@@ -198,7 +198,6 @@ public class ProjectService : CoreService, ISearchableProvider
         Title = p.ContentMetaInfo.Title,
         Slug = p.ContentMetaInfo.Slug,
         Status = p.ContentMetaInfo.Status,
-        Visibility = p.ContentMetaInfo.Visibility,
         ViewMode = p.ContentMetaInfo.ViewMode,
         CreatedAt = p.ContentMetaInfo.CreatedAt,
         Description = p.Description,

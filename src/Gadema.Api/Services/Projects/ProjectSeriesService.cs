@@ -1,8 +1,10 @@
-// =============================================================================
+using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Projects;
-using Gadema.Core.Dtos.Response;
+using Gadema.Core.Dtos.Search;
 using Gadema.Core.Enums;
+using Gadema.Core.Models;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Projects;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -10,114 +12,123 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Projects;
 
-/// <summary>
-/// Service for managing ProjectSeries - organizational series within a project.
-/// </summary>
-public class ProjectSeriesService : CoreService
+public class ProjectSeriesService : CoreService, ISearchableProvider
 {
     public ProjectSeriesService(GameDbContext db, ILogger<ProjectSeriesService> logger, IUserContext userContext)
-            : base(db, logger, userContext) { }
+        : base(db, logger, userContext) { }
 
-    private ProjectSeriesResponseDto CreateResponseDto(ProjectSeries series)
-        => new()
-        {
-            Id = series.Id,
-            MetaInfoId = series.MetaInfoId,
-            MetaInfoTitle = series.ContentMetaInfo.Title,
-            SeriesName = series.SeriesName,
-            Description = series.Description,
-            OrderIndex = series.OrderIndex,
-            IsPublished = series.IsPublished,
-            CreatedAt = series.CreatedAt,
-        };
-
-    private ListResponseDto<ProjectSeriesResponseDto> CreateListResponseDto(IEnumerable<ProjectSeries> series)
-        => new() { Items = series.Select(CreateResponseDto).ToList(), TotalCount = series.Count() };
-
-    public async Task<ApiResponseDto<ListResponseDto<ProjectSeriesResponseDto>>> GetSeriesAsync(Guid projectId, int? orderIndex = null)
+    public async Task<ApiResponseDto<IEnumerable<ProjectSeriesResponseDto>>> GetSeriesAsync()
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<ProjectSeriesResponseDto>>(projectId);
-        if (error != null) return error;
+        var series = await _db.ProjectSeries.ToListAsync();
 
-        IQueryable<ProjectSeries> query = _db.ProjectSeries.Where(ps => ps.ContentMetaInfo.ProjectId == projectId).OrderBy(ps => ps.OrderIndex);
+        var projected = series.Select(s => new ProjectSeriesResponseDto
+        {
+            Id = s.Id,
+            Title = s.MetaInfo.Title,
+            Slug = s.MetaInfo.Slug,
+            Description = s.MetaInfo.Description
+        }).ToList();
 
-        if (orderIndex.HasValue) query = query.Where(ps => ps.OrderIndex == orderIndex.Value);
-
-        var series = await query.ToListAsync();
-        return ApiResponseDto<ListResponseDto<ProjectSeriesResponseDto>>.Success(CreateListResponseDto(series));
+        return ApiResponseDto<IEnumerable<ProjectSeriesResponseDto>>.Success(projected);
     }
 
     public async Task<ApiResponseDto<ProjectSeriesResponseDto>> GetSeriesAsync(Guid id)
     {
-        var series = await _db.ProjectSeries.Include(ps => ps.ContentMetaInfo).FirstOrDefaultAsync(ps => ps.Id == id);
-        if (series is null) return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Project series with ID {id} not found.");
+        var series = await _db.ProjectSeries.FindAsync(id);
 
-        var error = await ValidateProjectAccessAsync<ProjectSeriesResponseDto>(series.ContentMetaInfo.ProjectId);
-        if (error != null) return error;
+        if (series == null)
+            return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Series with ID {id} not found.");
 
-        return ApiResponseDto<ProjectSeriesResponseDto>.Success(CreateResponseDto(series));
+        return ApiResponseDto<ProjectSeriesResponseDto>.Success(new ProjectSeriesResponseDto
+        {
+            Id = series.Id,
+            Title = series.MetaInfo.Title,
+            Slug = series.MetaInfo.Slug,
+            Description = series.MetaInfo.Description
+        });
     }
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateSeriesAsync(Guid projectId, ProjectSeriesCreateDto createDto)
+   public async Task<ApiResponseDto<CreateResponseDto>> CreateSeriesAsync(ProjectSeriesCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
-        if (error != null) return error;
+        // 1. Create the MetaInfo anchor using the generic helper
+        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.ContentMetaInfo, m => {
+            // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
+        });
 
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.ProjectSeries, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
-
-        // Auto-increment order index
-        var maxIndex = await _db.ProjectSeries.Where(ps => ps.ContentMetaInfo.ProjectId == projectId).MaxAsync(ps => ps.OrderIndex) ?? 0;
-
+        // 2. Create the ProjectSeries entity with only its own domain properties
         var series = new ProjectSeries
         {
-            Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id.Value,
-            SeriesName = createDto.SeriesName,
-            Description = createDto.Description,
-            OrderIndex = maxIndex + 1,
-            IsPublished = false,
+            Id = meta.Id, // The anchor's ID becomes the primary key for the series
+            // Title and Slug are NOT here; they live in the MetaInfo anchor
         };
 
         _db.ProjectSeries.Add(series);
+        _db.Set<ProjectSeriesMetaInfo>().Add(meta);
+        
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = series.Id, MetaInfoId = ContentMetaInfo.Id.Value, ProjectId = projectId });
-    }
-
-    public async Task<ApiResponseDto<ProjectSeriesResponseDto>> UpdateSeriesAsync(Guid id, ProjectSeriesUpdateDto updateDto)
-    {
-        var series = await _db.ProjectSeries.Include(ps => ps.ContentMetaInfo).FirstOrDefaultAsync(ps => ps.Id == id);
-        if (series is null) return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Project series with ID {id} not found.");
-
-        var error = await ValidateProjectAccessAsync<ProjectSeriesUpdateDto>(series.ContentMetaInfo.ProjectId);
-        if (error != null) return error;
-
-        ApplyMetaInfoUpdates(series.ContentMetaInfo, updateDto.ContentMetaInfo);
-
-        if (!string.IsNullOrWhiteSpace(updateDto.SeriesName)) series.SeriesName = updateDto.SeriesName;
-        if (updateDto.Description != null) series.Description = updateDto.Description;
-        if (updateDto.OrderIndex.HasValue) series.OrderIndex = updateDto.OrderIndex.Value;
-        if (updateDto.IsPublished.HasValue) series.IsPublished = updateDto.IsPublished.Value;
-
-        await _db.SaveChangesAsync();
-        return ApiResponseDto<ProjectSeriesResponseDto>.Success(CreateResponseDto(series));
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
+        {
+            EntityId = series.Id,
+            MetaInfoId = meta.Id
+        });
     }
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSeriesAsync(Guid id)
     {
-        var series = await _db.ProjectSeries.Include(ps => ps.ContentMetaInfo).FirstOrDefaultAsync(ps => ps.Id == id);
-        if (series is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Project series with ID {id} not found.");
+        var series = await _db.ProjectSeries.FindAsync(id);
+        if (series == null)
+            return ApiResponseDto<DeleteResponseDto>.NotFound($"Series with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(series.ContentMetaInfo.ProjectId);
-        if (error != null) return error;
-
-        _db.MetaInfos.Remove(series.ContentMetaInfo);
+        var meta = await _db.Set<ProjectSeriesMetaInfo>().FirstOrDefaultAsync(m => m.ProjectSeriesId == id);
+        
         _db.ProjectSeries.Remove(series);
+        if (meta != null) _db.Set<ProjectSeriesMetaInfo>().Remove(meta);
+
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = series.ContentMetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id });
+    }
+
+    public async Task<ApiResponseDto<ProjectSeriesResponseDto>> UpdateSeriesAsync(Guid id, ProjectSeriesUpdateDto updateDto)
+    {
+        var series = await _db.ProjectSeries.FindAsync(id);
+        if (series == null)
+            return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Series with ID {id} not found.");
+
+        // 1. Update Domain properties
+        if (updateDto.Description != null) series.MetaInfo.Description = updateDto.Description;
+
+        // 2. Update Identity via Strategy
+        if (updateDto.ContentMetaInfo != null)
+        {
+            await ApplyIdentitySyncAsync(series.Id, updateDto.ContentMetaInfo, new ProjectSeriesIdentityStrategy(_db));
+        }
+
+        await _db.SaveChangesAsync();
+
+        return ApiResponseDto<ProjectSeriesResponseDto>.Success(new ProjectSeriesResponseDto
+        {
+            Id = series.Id,
+            Title = series.MetaInfo.Title,
+            Slug = series.MetaInfo.Slug,
+            Description = series.MetaInfo.Description
+        });
+    }
+
+    public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    {
+        return await _db.ProjectSeries
+            .Where(s => s.MetaInfo.Title.Contains(query) || s.MetaInfo.Slug.Contains(query))
+            .Select(s => new SearchHitDto
+            {
+                ResourceId = s.Id,
+                DisplayName = s.MetaInfo.Title,
+                Slug = s.MetaInfo.Slug,
+                ResourceType = "ProjectSeries",
+                ScopeId = s.Id,
+                ResourceLink = $"/api/v1/project-series/{s.Id}"
+            })
+            .ToListAsync();
     }
 }

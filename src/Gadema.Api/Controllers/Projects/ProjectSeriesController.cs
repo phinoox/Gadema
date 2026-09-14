@@ -1,51 +1,41 @@
-using Gadema.Api.Services.Projects;
-using Gadema.Core.Dtos.Base.Projects;
-using Gadema.Core.Dtos.Projects;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Projects;
+using Gadema.Api.Services.Projects;
 
 namespace Gadema.Api.Controllers.Projects;
 
 [ApiController]
-[Route("api/v1/projects/{projectId:guid}/series")]
+[Route("api/v1/project-series")]
 public class ProjectSeriesController : ControllerBase
 {
-    private readonly ProjectSeriesService _projectSeriesService;
-    private readonly ILogger<ProjectSeriesController> _logger;
+    private readonly ProjectSeriesService _service;
 
-    public ProjectSeriesController(ProjectSeriesService projectSeriesService, ILogger<ProjectSeriesController> logger)
+    public ProjectSeriesController(ProjectSeriesService service)
     {
-        _projectSeriesService = projectSeriesService;
-        _logger = logger;
+        _service = service;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetProjectSeriesAsync(Guid projectId)
-    {
-        return Ok(await _projectSeriesService.GetSeriesAsync(projectId));
-    }
+    public async Task<IActionResult> GetAll() 
+        => Ok(await _service.GetSeriesAsync());
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetProjectSeriesByIdAsync(Guid id, Guid projectId)
-    {
-        return Ok(await _projectSeriesService.GetSeriesAsync(id));
-    }
+    public async Task<IActionResult> GetById(Guid id) 
+        => Ok(await _service.GetSeriesAsync(id));
 
     [HttpPost]
-    public async Task<IActionResult> CreateProjectSeriesAsync(Guid projectId, [FromBody] ProjectSeriesCreateDto createDto)
+    public async Task<IActionResult> Create([FromBody] ProjectSeriesCreateDto dto)
     {
-        return Ok(await _projectSeriesService.CreateSeriesAsync(projectId, createDto));
+        var result = await _service.CreateSeriesAsync(dto);
+        return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateProjectSeriesAsync(Guid id, Guid projectId, [FromBody] ProjectSeriesUpdateDto updateDto)
-    {
-        return Ok(await _projectSeriesService.UpdateSeriesAsync(id, updateDto));
-    }
+    public async Task<IActionResult> Update(Guid id, [FromBody] ProjectSeriesUpdateDto dto) 
+        => Ok(await _service.UpdateSeriesAsync(id, dto));
 
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteProjectSeriesAsync(Guid id, Guid projectId)
-    {
-        return Ok(await _projectSeriesService.DeleteSeriesAsync(id));
-    }
+    public async Task<IActionResult> Delete(Guid id) 
+        => Ok(await _service.DeleteSeriesAsync(id));
 }

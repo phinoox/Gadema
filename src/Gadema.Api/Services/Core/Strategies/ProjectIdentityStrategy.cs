@@ -32,7 +32,6 @@ public class ProjectIdentityStrategy : IIdentitySyncStrategy
         if (updateData.ProjectStatus.HasValue) 
             ContentMetaInfo.Status = (ProjectStatusEnum)updateData.ProjectStatus.Value;
 
-        if (updateData.Visibility.HasValue) ContentMetaInfo.Visibility = updateData.Visibility.Value;
         if (updateData.ViewMode.HasValue) ContentMetaInfo.ViewMode = updateData.ViewMode.Value;
 
         // 2. Sync Tags
