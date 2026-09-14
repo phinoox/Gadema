@@ -65,6 +65,15 @@ public abstract class CoreService
     }
 
     /// <summary>
+    /// Verifies that the target ID provided actually belongs to a MetaInfo entry within the specified project.
+    /// This is crucial for ancillary data like Comments or Tags.
+    /// </summary>
+    protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+    {
+        return await _db.MetaInfos.AnyAsync(m => m.Id == targetId && m.ProjectId == projectId);
+    }
+
+    /// <summary>
     /// Validates that the ProjectId in the request body matches the route parameter.
     /// Ensures consistency between client intent and server routing.
     /// Returns null if IDs match, or a BadRequest error if they don't.

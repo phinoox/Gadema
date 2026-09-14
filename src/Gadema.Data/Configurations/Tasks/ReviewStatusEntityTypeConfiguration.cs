@@ -1,11 +1,8 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
+// ... existing imports ...
 
-// =============================================================================
-
+using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Tasks;
 
@@ -23,18 +20,17 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.MetaInfoId);
+        builder.HasIndex(e => e.TargetId).HasDatabaseName("IX_ReviewStatus_TargetId"); // Replaced MetaInfoId
         builder.HasIndex(e => e.Status);  // Filter by status
-        builder.HasIndex(e => e.ReviewerId);
+        builder.HasIndex(e => e.ReviewedByUserId).HasDatabaseName("IX_ReviewStatus_ReviewerId"); // Fixed property name
         builder.HasIndex(e => e.ReviewedAt);  // Query recent reviews
                 
         // Navigation property: Reviewer (Optional FK to User)
         builder.HasOne(rs => rs.Reviewer)
             .WithMany()
-            .HasForeignKey(rs => rs.ReviewerId)
-            .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
+            .HasForeignKey(rs => rs.ReviewedByUserId) // Fixed property name
+            .OnDelete(DeleteBehavior.Restrict);
 
-        
         // Properties configuration
         builder.Property(e => e.Status).IsRequired();
     }

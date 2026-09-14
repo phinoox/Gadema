@@ -45,17 +45,5 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
             .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
-        // Navigation property: ReviewStatus (SetNull to preserve review history)
-        builder.HasOne(ci => ci.ReviewStatus)
-            .WithOne()
-            .HasForeignKey<ReviewStatus>(rs => rs.MetaInfoId)
-            .OnDelete(DeleteBehavior.Cascade);
-        
-        // Navigation property: Comments (SetNull to preserve comment history)
-        builder.HasMany(ci => ci.Comments)
-            .WithOne(c => c.MetaInfo)
-            .HasForeignKey(c => c.MetaInfoId)
-            .OnDelete(DeleteBehavior.SetNull);
-        
     }
 }

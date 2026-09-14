@@ -5,15 +5,11 @@
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models;
 using Gadema.Core.Enums;
+
+
 namespace Gadema.Core.Dtos.Reviews;
 
 
-public class ReviewStatusCreateDto
-{
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
-    [Required] public ReviewStatusEnum Status { get; set; }
-    public string? Notes { get; set; }
-}
 /// <summary>
 /// List of review statuses response.
 /// </summary>
@@ -28,6 +24,14 @@ public class ReviewStatusListResponseDto
     public int PageSize { get; set; }
 }
 
+
+public class ReviewStatusCreateDto
+{
+    [Required] public Guid TargetId { get; set; } // Pointing to the content being reviewed
+    [Required] public ReviewStatusEnum Status { get; set; }
+    public string? ReviewComments { get; set; }
+}
+
 /// <summary>
 /// Single review status response.
 /// </summary>
@@ -36,21 +40,12 @@ public class ReviewStatusResponseDto
     public Guid Id { get; set; }
     
     [Required, Display(Name = "Content Item ID")]
-    public Guid MetaInfoId { get; set; }
+    public Guid TargetId { get; set; } // Replaced MetaInfoId
     
-    /// <summary>
-    /// Review status (0=Pending, 1=Approved, 2=Rejected).
-    /// </summary>
     public ReviewStatusEnum Status { get; set; }
     
-    /// <summary>
-    /// ID of the user who reviewed this content.
-    /// </summary>
     public Guid? ReviewedByUserId { get; set; }
     
-    /// <summary>
-    /// Name of the reviewer.
-    /// </summary>
     public string? ReviewerName { get; set; }
     
     [MaxLength(4096)]
@@ -58,3 +53,5 @@ public class ReviewStatusResponseDto
     
     public DateTime? ReviewedAt { get; set; }
 }
+
+// ... ListResponseDto remains unchanged ...

@@ -14,30 +14,6 @@ using Gadema.Core.Dtos.Response;
 
 namespace Gadema.Core.Dtos.Tasks;
 
-/// <summary>Task status enumeration.</summary>
-public enum TaskStatusEnum
-{
-    Backlog = 0,
-    InProgress = 1,
-    Review = 2,
-    Done = 3
-}
-
-/// <summary>Priority level enumeration.</summary>
-public enum PriorityEnum
-{
-    High = 0,
-    Medium = 1,
-    Low = 2
-}
-
-/// <summary>Difficulty/complexity level (ADHD-friendly).</summary>
-public enum DifficultyEnum
-{
-    Easy = 0,
-    Medium = 1,
-    Hard = 2
-}
 
 // ========================================================================
 // TASK — CREATE DTO (flat, no nesting)
@@ -56,10 +32,10 @@ public class ProjectTaskCreateDto : UpdateRequestDto
     public int? Status { get; set; } = (int)TaskStatusEnum.Backlog;
 
     /// <summary>Priority level: 0=High, 1=Medium, 2=Low</summary>
-    public int? Priority { get; set; } = (int)PriorityEnum.Medium;
+    public int? Priority { get; set; } = (int)TaskPriorityEnum.Medium;
 
     /// <summary>Difficulty/Effort estimate: 0=Easy, 1=Medium, 2=Hard (ADHD-friendly)</summary>
-    public int? Difficulty { get; set; } = (int)DifficultyEnum.Medium;
+    public int? Difficulty { get; set; } = (int)TaskDifficultyEnum.Medium;
 
     /// <summary>Estimated time in minutes.</summary>
     public decimal? EstimatedMinutes { get; set; }
@@ -128,10 +104,10 @@ public class TaskResponseDto : MetaInfoResponseBaseDto
     public int Status { get; set; } = (int)TaskStatusEnum.Backlog;
 
     /// <summary>Priority level: 0=High, 1=Medium, 2=Low</summary>
-    public int Priority { get; set; } = (int)PriorityEnum.Medium;
+    public int Priority { get; set; } = (int)TaskPriorityEnum.Medium;
 
     /// <summary>Difficulty/Effort: 0=Easy, 1=Medium, 2=Hard</summary>
-    public int Difficulty { get; set; } = (int)DifficultyEnum.Medium;
+    public int Difficulty { get; set; } = (int)TaskDifficultyEnum.Medium;
 
     /// <summary>Estimated time in minutes.</summary>
     public decimal? EstimatedMinutes { get; set; }
@@ -357,34 +333,34 @@ public static class TaskStatusEnumExtensions
 
 public static class PriorityEnumExtensions
 {
-    public static string ToDescription(this PriorityEnum priority) => priority switch
+    public static string ToDescription(this TaskPriorityEnum priority) => priority switch
     {
-        PriorityEnum.High => "High 🔥",
-        PriorityEnum.Medium => "Medium ⚡",
-        PriorityEnum.Low => "Low 🐢",
+        TaskPriorityEnum.High => "High 🔥",
+        TaskPriorityEnum.Medium => "Medium ⚡",
+        TaskPriorityEnum.Low => "Low 🐢",
         _ => $"Unknown {(int)priority}"
     };
 
-    public static int ToSortOrder(this PriorityEnum priority) => (int)(3 - priority); // High=0 sorts first, Low=2 sorts last
+    public static int ToSortOrder(this TaskPriorityEnum priority) => (int)(3 - priority); // High=0 sorts first, Low=2 sorts last
 }
 
 public static class DifficultyEnumExtensions
 {
-    public static string ToDescription(this DifficultyEnum difficulty) => difficulty switch
+    public static string ToDescription(this TaskDifficultyEnum difficulty) => difficulty switch
     {
-        DifficultyEnum.Easy => "Easy 🟢",
-        DifficultyEnum.Medium => "Medium 🟡",
-        DifficultyEnum.Hard => "Hard 🔴",
+        TaskDifficultyEnum.Easy => "Easy 🟢",
+        TaskDifficultyEnum.Medium => "Medium 🟡",
+        TaskDifficultyEnum.Hard => "Hard 🔴",
         _ => $"Unknown {(int)difficulty}"
     };
 
-    public static decimal ToEstimateMultiplier(this DifficultyEnum difficulty) => difficulty switch
+    public static decimal ToEstimateMultiplier(this TaskDifficultyEnum difficulty) => difficulty switch
     {
-        DifficultyEnum.Easy => 0.5m,   // Reduce estimate by half for easy tasks (ADHD-friendly optimism)
-        DifficultyEnum.Medium => 1.0m,  // No adjustment
-        DifficultyEnum.Hard => 1.5m,   // Increase estimate by 50% for hard tasks (buffer)
+        TaskDifficultyEnum.Easy => 0.5m,   // Reduce estimate by half for easy tasks (ADHD-friendly optimism)
+        TaskDifficultyEnum.Medium => 1.0m,  // No adjustment
+        TaskDifficultyEnum.Hard => 1.5m,   // Increase estimate by 50% for hard tasks (buffer)
         _ => 1.0m
     };
 
-    public static int ToSortOrder(this DifficultyEnum difficulty) => (int)(2 - difficulty); // Easy=0 sorts first
+    public static int ToSortOrder(this TaskDifficultyEnum difficulty) => (int)(2 - difficulty); // Easy=0 sorts first
 }

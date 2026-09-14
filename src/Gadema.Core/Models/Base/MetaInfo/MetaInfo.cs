@@ -127,13 +127,7 @@ public class MetaInfo
     /// </summary>
     public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
 
-    /// <summary>
-    /// Navigation property: Collection of comments for this content item.
-    /// Enables lazy loading to access all comments.
-    /// Foreign key: MetaInfoId (matches FK in Comment)
-    /// </summary>
-    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
-
+   
     // Reference navigation properties (Many-to-One relationships)
     /// <summary>
     /// Navigation property: Review status for this content item (Many-to-One).

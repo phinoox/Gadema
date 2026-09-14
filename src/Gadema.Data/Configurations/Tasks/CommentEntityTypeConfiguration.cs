@@ -1,12 +1,8 @@
-// =============================================================================
+// ... existing imports ...
 
-// Gadema.Core - Shared Domain Models & Interfaces
-
-// =============================================================================
-
+using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Tasks;
 
@@ -24,17 +20,13 @@ public class CommentEntityTypeConfiguration : IEntityTypeConfiguration<Comment>
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.MetaInfoId);
-        builder.HasIndex(e => e.CommentedByUserId);
+        builder.HasIndex(e => e.TargetId).HasDatabaseName("IX_Comment_TargetId"); // Replaced MetaInfoId
+        builder.HasIndex(e => e.AuthorUserId).HasDatabaseName("IX_Comment_AuthorUserId"); // Replaced CommentedByUserId
         builder.HasIndex(e => e.CreatedAt);
-        
-        // Navigation property: MetaInfo (Cascade delete)
-        builder.HasOne(c => c.MetaInfo)
-            .WithMany(ci => ci.Comments)
-            .HasForeignKey(c => c.MetaInfoId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete comments when content deleted
+        builder.HasIndex(e => e.ParentCommentId); // Added index for threaded replies
         
         // Properties configuration
-        builder.Property(e => e.CommentText).IsRequired().HasMaxLength(4096);
+        builder.Property(e => e.Text).IsRequired().HasMaxLength(4096); // Updated from CommentText to match model
+        builder.Property(e => e.CreatedAt).IsRequired();
     }
 }

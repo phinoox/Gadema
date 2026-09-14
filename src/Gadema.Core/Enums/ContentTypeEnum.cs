@@ -54,5 +54,6 @@ public enum ContentTypeEnum
     IdentityDefinition = 18,
     ExternalReference = 19,
     ContentReview = 20,
-    ProjectSeries = 21
+    ProjectSeries = 21,
+    Comment = 22
 }

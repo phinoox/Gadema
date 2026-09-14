@@ -98,7 +98,7 @@ public class FactionService : CoreService
         var faction = new Faction
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             Ideology = createDto.Ideology,
             Goals = createDto.Goals,
             LocationId = createDto.LocationId,
@@ -110,7 +110,7 @@ public class FactionService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = faction.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }

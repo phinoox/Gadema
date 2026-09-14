@@ -1,55 +1,32 @@
 using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos.Comments;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace Gadema.Api.Controllers.Content;
 
 [ApiController]
-[Route("api/v1/projects/{projectId:guid}/comments")]
+[Route("api/v1/projects/{projectId:guid}/content/{targetId:guid}/comments")]
 public class CommentsController : ControllerBase
 {
-    private readonly CommentService _commentService;
-    private readonly ILogger<CommentsController> _logger;
+    private readonly CommentService _service;
 
-    public CommentsController(CommentService commentService, ILogger<CommentsController> logger)
-    {
-        _commentService = commentService;
-        _logger = logger;
-    }
+    public CommentsController(CommentService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetCommentsAsync(
-        Guid projectId,
-        [FromQuery] int? metaInfoId = null,
-        [FromQuery] string? authorEmail = null,
-        [FromQuery] int? parentId = null,
-        [FromQuery] int page = 1,
-        [FromQuery] int pageSize = 50)
-    {
-        return Ok(await _commentService.GetCommentsAsync(projectId, metaInfoId, authorEmail, parentId, page, pageSize));
-    }
+    public async Task<IActionResult> Get(Guid projectId, Guid targetId) 
+        => Ok(await _service.GetCommentsByTargetAsync(projectId, targetId));
 
     [HttpPost]
-    public async Task<IActionResult> CreateCommentAsync(
-        Guid projectId,
-        [FromBody] CommentCreateDto createDto)
+    public async Task<IActionResult> Create(Guid projectId, Guid targetId, [FromBody] CreateCommentDto dto)
     {
-        return Ok(await _commentService.CreateCommentAsync(projectId, createDto.MetaInfoId, createDto.Text, createDto.ParentId));
+        // Ensure the DTO's TargetId matches the route for integrity
+        if (dto.TargetId != targetId) return BadRequest("Target ID mismatch.");
+        return Ok(await _service.CreateCommentAsync(projectId, dto));
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateCommentAsync(Guid id, [FromBody] CommentUpdateDto updateDto)
-    {
-        return Ok(await _commentService.UpdateCommentAsync(id, updateDto.Text));
-    }
+    public async Task<IActionResult> Update(Guid projectId, Guid targetId, Guid id, [FromBody] UpdateCommentDto dto)
+        => Ok(await _service.UpdateCommentAsync(id, dto));
 
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteCommentAsync(Guid id)
-    {
-        return Ok(await _commentService.DeleteCommentAsync(id));
-    }
+    public async Task<IActionResult> Delete(Guid projectId, Guid targetId, Guid id)
+        => Ok(await _service.DeleteCommentAsync(id));
 }
-
-public record CommentCreateDto(string Text, Guid MetaInfoId, Guid? ParentId = null);
-public record CommentUpdateDto(string Text);
