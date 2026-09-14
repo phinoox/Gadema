@@ -58,8 +58,21 @@ public class MetaInfoUpdateData
     /// </summary>
     public ContentStatusEnum? Status { get; set; } = ContentStatusEnum.Draft;
 
-
     public bool? IsPublic { get; set; } = false;
+
+    /// <summary>
+    /// The full list of tags that should exist on this entity after the update.
+    /// Used for the "Sync Pattern".
+    /// </summary>
+    public List<Guid>? TagIds { get; set; } 
+}
+
+public class ProjectMetaInfoUpdateData : MetaInfoUpdateData
+{
+    // Project-specific identity fields
+    public ProjectStatusEnum? ProjectStatus { get; set; }
+    public ProjectVisibilityEnum? Visibility { get; set; }
+    public ViewModeEnum? ViewMode { get; set; }
 }
 
 /// <summary>

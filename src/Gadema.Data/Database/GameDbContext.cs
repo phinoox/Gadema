@@ -12,6 +12,8 @@ using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.WorldBuilding;
 using Gadema.Core.Models.Game.EngineIntegration;
 using Gadema.Core.Models.Writing;
+using Gadema.Core.Models.Base;
+using Gadema.Core.Models.Tags;
 
 namespace Gadema.Data.Database;
 
@@ -50,6 +52,10 @@ public class GameDbContext : DbContext
     /// Tag entity set.
     /// </summary>
     public DbSet<ProjectTagRelation> ProjectTagRelations { get; set; }
+
+    public DbSet<ContentTagRelation> ContentTagRelations { get;set;}
+
+    public DbSet<MetaTag> MetaTags {get;set;}
 
     /// <summary>
     /// MetaInfoTags junction table.

@@ -1,9 +1,7 @@
-// =============================================================================
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Projects;
-using Gadema.Core.Dtos.Response;
 using Gadema.Core.Enums;
+using Gadema.Core.Interfaces.Identity;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 using Gadema.Core.Services;
@@ -12,227 +10,180 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Projects;
 
-/// <summary>
-/// Service for managing Projects - the foundational container for all content.
-/// Handles project CRUD, team management, and API token lifecycle.
-/// </summary>
 public class ProjectService : CoreService
 {
-    public ProjectService(GameDbContext db, ILogger<ProjectService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+   private readonly IIdentitySyncStrategy _identityStrategy; // Injected strategy
 
-    /// <summary>Creates a response DTO from a Project entity.</summary>
-    private ProjectResponseDto CreateResponseDto(Project project)
-        => new()
+    public ProjectService(
+        GameDbContext db, 
+        ILogger<ProjectService> logger, 
+        IUserContext userContext,
+        IIdentitySyncStrategy projectStrategy) // We can inject the specific strategy needed
+        : base(db, logger, userContext) 
+    {
+        // In a more advanced setup, we'd use a factory or named DI to get the right strategy.
+        // For now, we assume ProjectService gets its dedicated ProjectIdentityStrategy.
+        _identityStrategy = projectStrategy;
+    }
+    /// <summary>
+    /// Creates a new project and its associated MetaInfo.
+    /// </summary>
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(Guid projectId, ProjectCreateDto dto)
+    {
+        // 1. Validation: Ensure user can create projects in this context (if applicable)
+        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        if (error != null) return error;
+
+        using var transaction = await _db.Database.BeginTransactionAsync();
+        try
         {
-            Id = project.Id,
-            Title = project.Title,
-            Slug = project.Slug,
-            Description = project.Description,
-            Status = project.Status,
-            Visibility = project.Visibility,
-            CreatedAt = project.CreatedAt,
-            LastModifiedAt = project.LastModifiedAt,
-        };
+            // 2. Create the Project Anchor
+            var project = new Project
+            {
+                Id = Guid.NewGuid(), // We generate a new ID for the root anchor
+                UserId = _userContext.UserId.Value,
+                Description = dto.Description,
+                IsActive = true,
+                EnableUserRegistration = dto.EnableUserRegistration,
+                AllowManualInvites = dto.AllowManualInvites,
+                PrimaryFormat = dto.PrimaryFormat,
+                Genre = dto.Genre,
+                Theme = dto.Theme,
+                Tone = dto.Tone,
+                Audience = dto.Audience
+            };
 
-    /// <summary>Creates a list response DTO from collection.</summary>
-    private ListResponseDto<ProjectResponseDto> CreateListResponseDto(IEnumerable<Project> projects)
-        => new() { Items = projects.Select(CreateResponseDto).ToList(), TotalCount = projects.Count() };
+            // 3. Create the MetaInfo (Identity)
+            var metaInfo = new ProjectMetaInfo
+            {
+                Id = project.Id, // Identity is tied to the Anchor ID
+                Title = dto.MetaInfo.Title,
+                Slug = dto.MetaInfo.Slug,
+                Status = dto.MetaInfo.Status,
+                Visibility = dto.MetaInfo.Visibility,
+                ViewMode = dto.MetaInfo.ViewMode,
+                ProjectId = project.Id,
+                CreatedAt = DateTime.Now,
+            };
 
-    // ========================================================================
-    // GET /api/v1/projects — List all user's projects (paginated, filterable)
-    // ========================================================================
+            _db.Projects.Add(project);
+            _db.Set<ProjectMetaInfo>().Add(metaInfo); // Adding to the set directly
 
-    public async Task<ApiResponseDto<ListResponseDto<ProjectResponseDto>>> GetProjectsAsync(
-        int page = 1,
-        int pageSize = 20,
-        string? status = null,
-        ProjectVisibilityEnum? visibility = null,
-        string? searchQuery = null)
-    {
-        var user = _userContext.CurrentUser;
-        if (user == null) return ApiResponseDto<ListResponseDto<ProjectResponseDto>>.Unauthorized("Not authenticated.");
+            await _db.SaveChangesAsync();
+            await transaction.CommitAsync();
 
-        IQueryable<Project> query = _db.Projects.Where(p => p.UserId == user.Id).OrderByDescending(p => p.CreatedAt);
+            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{metaInfo.Title}' created.");
 
-        // Filter by status
-        if (!string.IsNullOrWhiteSpace(status))
-            query = query.Where(p => Enum.TryParse(status, ignoreCase: true, out ProjectStatusEnum s) && p.Status == s);
-
-        // Filter by visibility (0=Private, 1=Team, 2=Public)
-        if (visibility.HasValue)
-            query = query.Where(p => p.Visibility >= visibility.Value);
-
-        // Search filter (searches title and description)
-        if (!string.IsNullOrWhiteSpace(searchQuery))
-            query = query.Where(p => p.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-                                    p.Description?.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) == true);
-
-        var total = await query.CountAsync();
-        var projects = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
-
-        return ApiResponseDto<ListResponseDto<ProjectResponseDto>>.Success(new ListResponseDto<ProjectResponseDto>
+            return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
+            {
+                EntityId = project.Id,
+                ProjectId = projectId // The context project (if any)
+            });
+        }
+        catch (Exception ex)
         {
-            
-            Items = CreateListResponseDto(projects),
-            TotalCount = total,
-        });
+            await transaction.RollbackAsync();
+            _logger.LogError(ex, "Error creating project");
+            return ApiResponseDto<CreateResponseDto>.ServerError("An error occurred while creating the project.");
+        }
     }
 
-    // ========================================================================
-    // GET /api/v1/projects/{id} — Single project by ID
-    // ========================================================================
-
-    public async Task<ApiResponseDto<ProjectResponseDto>> GetProjectAsync(Guid id)
+    /// <summary>
+    /// Retrieves a project and its denormalized response DTO.
+    /// </summary>
+    public async Task<ApiResponseDto<ProjectResponseDto>> GetAsync(Guid projectId, Guid contextProjectId)
     {
-        var project = await _db.Projects.Include(p => p.Members).FirstOrDefaultAsync(p => p.Id == id);
+        var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
+        if (error != null) return error;
 
-        if (project is null)
-            return ApiResponseDto<ProjectResponseDto>.NotFound($"Project with ID {id} not found.");
+        var project = await _db.Projects
+            .Include(p => p.MetaInfo)
+            .FirstOrDefaultAsync(p => p.Id == projectId && p.UserId == _userContext.UserId);
 
-        // Authorization: only the owner can access their own projects via direct GET
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<ProjectResponseDto>.Forbidden("You do not have access to this project.");
+        if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
 
-        return ApiResponseDto<ProjectResponseDto>.Success(CreateResponseDto(project));
+        return ApiResponseDto<ProjectResponseDto>.Success(MapToResponseDto(project));
     }
 
-    // ========================================================================
-    // POST /api/v1/projects — Create a new project
-    // ========================================================================
-
-    public async Task<ApiResponseDto<ProjectResponseDto>> CreateProjectAsync(ProjectCreateDto createDto)
+    /// <summary>
+    /// Updates the project domain data and/or its MetaInfo.
+    /// </summary>
+     public async Task<ApiResponseDto<ProjectResponseDto>> UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)
     {
-        var user = _userContext.CurrentUser;
-        if (user == null) return ApiResponseDto<ProjectResponseDto>.Unauthorized("Not authenticated.");
+        var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
+        if (error != null) return error;
 
-        // Generate slug from title
-        var slug = string.IsNullOrWhiteSpace(createDto.Slug) ? GenerateSlug(createDto.Title) : createDto.Slug;
-
-        var project = new Project
+        using var transaction = await _db.Database.BeginTransactionAsync();
+        try
         {
-            Id = Guid.NewGuid(),
-            UserId = user.Id,
-            Title = createDto.Title,
-            Slug = slug,
-            Description = createDto.Description,
-            Status = createDto.Status,
-            Visibility = createDto.Visibility,
-        };
+            var project = await _db.Projects
+                .Include(p => p.MetaInfo)
+                .FirstOrDefaultAsync(p => p.Id == projectId && p.UserId == _userContext.UserId);
 
-        _db.Projects.Add(project);
-        await _db.SaveChangesAsync();
-     
-        return ApiResponseDto<ProjectResponseDto>.Success(CreateResponseDto(project));
+            if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
+
+            // 1. Update Domain Data
+            if (dto.Description != null) project.Description = dto.Description;
+            if (dto.EnableUserRegistration.HasValue) project.EnableUserRegistration = dto.EnableUserRegistration.Value;
+            if (dto.AllowManualInvites.HasValue) project.AllowManualInvites = dto.AllowManualInvites.Value;
+            if (dto.PrimaryFormat.HasValue) project.PrimaryFormat = dto.PrimaryFormat.Value;
+            if (dto.Genre != null) project.Genre = dto.Genre;
+            if (dto.Theme != null) project.Theme = dto.Theme;
+            if (dto.Tone.HasValue) project.Tone = dto.Tone.Value;
+            if (dto.Audience.HasValue) project.Audience = dto.Audience.Value;
+
+            // 2. Delegate Identity Sync to the Strategy
+            if (dto.MetaInfo != null)
+            {
+                await ApplyIdentitySyncAsync(projectId, dto.MetaInfo, _identityStrategy);
+            }
+
+            await _db.SaveChangesAsync();
+            await transaction.CommitAsync();
+
+            await LogDbAsync(contextProjectId, "Updated", "Project", project.Id, "Project and identity updated.");
+
+            return ApiResponseDto<ProjectResponseDto>.Success(MapToResponseDto(project));
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            _logger.LogError(ex, "Error updating project");
+            return ApiResponseDto<ProjectResponseDto>.ServerError("An error occurred during the update.");
+        }
     }
 
-    // ========================================================================
-    // PUT /api/v1/projects/{id} — Update a project
-    // ========================================================================
-
-    public async Task<ApiResponseDto<ProjectResponseDto>> UpdateProjectAsync(Guid id, ProjectUpdateDto updateDto)
+    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteAsync(Guid projectId, Guid contextProjectId)
     {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == id);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(contextProjectId);
+        if (error != null) return error;
 
-        if (project is null)
-            return ApiResponseDto<ProjectResponseDto>.NotFound($"Project with ID {id} not found.");
+        var project = await _db.Projects.FindAsync(projectId);
+        if (project == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Project not found.");
 
-        // Authorization: only owner can update
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<ProjectResponseDto>.Forbidden("You do not have permission to edit this project.");
-
-        if (!string.IsNullOrWhiteSpace(updateDto.Title)) project.Title = updateDto.Title;
-        if (updateDto.Description != null) project.Description = updateDto.Description;
-        if (updateDto.Status.HasValue) project.Status = (ProjectStatusEnum)updateDto.Status.Value;
-        if (updateDto.Visibility.HasValue) project.Visibility = updateDto.Visibility.Value;
-
-        project.LastModifiedAt = DateTime.UtcNow;
-
-        await _db.SaveChangesAsync();
-
-        return ApiResponseDto<ProjectResponseDto>.Success(CreateResponseDto(project));
-    }
-
-    // ========================================================================
-    // DELETE /api/v1/projects/{id} — Transfer or delete a project
-    // ========================================================================
-
-    public async Task<ApiResponseDto<string>> TransferOrDeleteProjectAsync(Guid id)
-    {
-        var project = await _db.Projects.Include(p => p.Members).FirstOrDefaultAsync(p => p.Id == id);
-
-        if (project is null)
-            return ApiResponseDto<string>.NotFound($"Project with ID {id} not found.");
-
-        // Authorization: only owner can transfer/delete
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<string>.Forbidden("You do not have permission to modify this project.");
-
-        var action = request.Method.Equals(HttpMethods.Delete, StringComparison.OrdinalIgnoreCase) ? "delete" : "transfer";
-
-        // Soft delete: set status to Deleted, don't cascade delete MetaInfos (they might be referenced elsewhere)
-        project.Status = ProjectStatusEnum.Deleted;
+        _db.Projects.Remove(project); // Cascade will handle MetaInfo and Members/Tasks
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<string>.Success($"Project '{project.Title}' has been {action}d successfully.");
+        await LogDbAsync(contextProjectId, "Deleted", "Project", projectId, "Project deleted.");
+
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = projectId, ProjectId = contextProjectId });
     }
 
-    // ========================================================================
-    // POST /api/v1/projects/{id}/tokens — Create API token (via ProjectTokenService)
-    // ========================================================================
-
-    public async Task<ApiResponseDto<ProjectTokenResponseDto>> CreateApiTokenAsync(Guid projectId, ProjectTokenCreateDto createDto)
+    private ProjectResponseDto MapToResponseDto(Project p) => new()
     {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<ProjectTokenResponseDto>.NotFound($"Project with ID {projectId} not found.");
-
-        // Authorization: only owner can create tokens
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<ProjectTokenResponseDto>.Forbidden("You do not have permission to manage API tokens for this project.");
-
-        var tokenService = new Gadema.Api.Services.Projects.TokenUsageLogService(_db, _logger, _userContext);
-        return await tokenService.CreateTokenAsync(projectId, createDto);
-    }
-
-    // ========================================================================
-    // GET /api/v1/projects/{id}/tokens — List API tokens (via ProjectTokenService)
-    // ========================================================================
-
-    public async Task<ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>> GetProjectTokensAsync(Guid projectId)
-    {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.NotFound($"Project with ID {projectId} not found.");
-
-        // Authorization: only owner can list tokens
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.Forbidden("You do not have permission to access API tokens for this project.");
-
-        var tokenService = new Gadema.Api.Services.Projects.TokenUsageLogService(_db, _logger, _userContext);
-        return await tokenService.GetTokensAsync(projectId);
-    }
-
-    // ========================================================================
-    // DELETE /api/v1/projects/{id}/tokens/{tokenId} — Revoke API token (via ProjectTokenService)
-    // ========================================================================
-
-    public async Task<ApiResponseDto<string>> RevokeApiTokenAsync(Guid projectId, Guid tokenId)
-    {
-        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
-        if (project is null) return ApiResponseDto<string>.NotFound($"Project with ID {projectId} not found.");
-
-        // Authorization: only owner can revoke tokens
-        var user = _userContext.CurrentUser;
-        if (user == null || project.UserId != user.Id)
-            return ApiResponseDto<string>.Forbidden("You do not have permission to manage API tokens for this project.");
-
-        var tokenService = new Gadema.Api.Services.Projects.TokenUsageLogService(_db, _logger, _userContext);
-        await tokenService.RevokeTokenAsync(tokenId);
-
-        return ApiResponseDto<string>.Success($"API Token {tokenId} has been revoked successfully.");
-    }
+        Id = p.Id,
+        Title = p.MetaInfo.Title,
+        Slug = p.MetaInfo.Slug,
+        Status = p.MetaInfo.Status,
+        Visibility = p.MetaInfo.Visibility,
+        ViewMode = p.MetaInfo.ViewMode,
+        CreatedAt = p.MetaInfo.CreatedAt,
+        Description = p.Description,
+        IsActive = p.IsActive,
+        PrimaryFormat = p.PrimaryFormat,
+        Genre = p.Genre,
+        Theme = p.Theme,
+        Tone = p.Tone,
+        Audience = p.Audience
+    };
 }

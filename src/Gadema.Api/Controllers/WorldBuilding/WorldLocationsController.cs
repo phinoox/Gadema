@@ -55,5 +55,3 @@ public class WorldLocationsController : ControllerBase
     }
 }
 
-public record WorldLocationCreateDto(CreateMetaInfoDto CreateData, int LocationType, Guid? ParentId = null, string? Description = null);
-public record WorldLocationUpdateDto(UpdateMetaInfoDto MetaInfo, int? LocationType = null, Guid? ParentId = null, string? Description = null);

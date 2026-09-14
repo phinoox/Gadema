@@ -1,70 +1,76 @@
 using Gadema.Core.Enums;
-using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Dtos.Response;
 
-namespace Gadema.Core.Dtos.Base.Projects;
+namespace Gadema.Core.Dtos.Projects;
 
-/// <summary>
-/// DTO for creating a new project.
-/// </summary>
-public class ProjectCreateDto
+// 1. Identity Data for creation
+public class ProjectMetaInfoCreateDto
 {
-    [Required, MaxLength(256)]
     public string Title { get; set; } = "";
-
-    [MaxLength(128)]
-    public string? Slug { get; set; }
-
-    [MaxLength(4096)]
-    public string? Description { get; set; }
-
-    [Required]
-    public ProjectStatusEnum Status { get; set; } = ProjectStatusEnum.Draft;
-
-    [Required]
-    public ProjectVisibilityEnum Visibility { get; set; } = ProjectVisibilityEnum.Private;
-
-    [Required]
-    public PrimaryFormatEnum PrimaryFormat { get; set; } = PrimaryFormatEnum.Book;
-
-    [MaxLength(128)]
-    public string? Genre { get; set; }
-
-    [MaxLength(128)]
-    public string? Theme { get; set; }
-
-    public ToneEnum Tone { get; set; } = ToneEnum.Neutral;
-
-    public AudienceEnum Audience { get; set; } = AudienceEnum.AllAges;
+    public string Slug { get; set; } = "";
+    public ProjectStatusEnum Status { get; set; }
+    public ProjectVisibilityEnum Visibility { get; set; }
+    public ViewModeEnum ViewMode { get; set; }
 }
 
-/// <summary>
-/// DTO for updating an existing project.
-/// All properties are nullable to support partial updates.
-/// </summary>
+// 2. Create DTO (The entry point)
+public class ProjectCreateDto
+{
+    public ProjectMetaInfoCreateDto MetaInfo { get; set; } = null!;
+    public string? Description { get; set; }
+    public bool EnableUserRegistration { get; set; }
+    public bool AllowManualInvites { get; set; }
+    public PrimaryFormatEnum PrimaryFormat { get; set; }
+    public string? Genre { get; set; }
+    public string? Theme { get; set; }
+    public ToneEnum Tone { get; set; }
+    public AudienceEnum Audience { get; set; }
+}
+
+// 3. Update DTO (The sync payload)
 public class ProjectUpdateDto
 {
-    [MaxLength(256)]
-    public string? Title { get; set; }
-
-    [MaxLength(128)]
-    public string? Slug { get; set; }
-
-    [MaxLength(4096)]
     public string? Description { get; set; }
-
-    public ProjectStatusEnum? Status { get; set; }
-
-    public ProjectVisibilityEnum? Visibility { get; set; }
-
+    public bool? EnableUserRegistration { get; set; }
+    public bool? AllowManualInvites { get; set; }
     public PrimaryFormatEnum? PrimaryFormat { get; set; }
-
-    [MaxLength(128)]
     public string? Genre { get; set; }
-
-    [MaxLength(128)]
     public string? Theme { get; set; }
-
     public ToneEnum? Tone { get; set; }
-
     public AudienceEnum? Audience { get; set; }
+    
+    // The identity payload that includes the tags to sync
+    public ProjectMetaInfoUpdateData? MetaInfo { get; set; }
+}
+
+// 4. Identity Update DTO (Used within ProjectUpdateDto)
+public class ProjectMetaInfoUpdateDto
+{
+    public string? Title { get; set; }
+    public string? Slug { get; set; }
+    public ProjectStatusEnum? Status { get; set; }
+    public ProjectVisibilityEnum? Visibility { get; set; }
+    public ViewModeEnum? ViewMode { get; set; }
+    
+    // The source of truth for tags during a sync
+    public List<Guid> TagIds { get; set; } = new(); 
+}
+
+// 5. Response DTO (The flattened "Contract")
+public class ProjectResponseDto 
+{
+    public Guid Id { get; set; }
+    public string Title { get; set; } = "";
+    public string Slug { get; set; } = "";
+    public ProjectStatusEnum Status { get; set; }
+    public ProjectVisibilityEnum Visibility { get; set; }
+    public ViewModeEnum ViewMode { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public string? Description { get; set; }
+    public bool IsActive { get; set; }
+    public PrimaryFormatEnum PrimaryFormat { get; set; }
+    public string? Genre { get; set; }
+    public string? Theme { get; set; }
+    public ToneEnum Tone { get; set; }
+    public AudienceEnum Audience { get; set; }
 }

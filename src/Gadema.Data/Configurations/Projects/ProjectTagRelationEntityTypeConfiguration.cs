@@ -8,18 +8,19 @@ public class ProjectTagRelationEntityTypeConfiguration : IEntityTypeConfiguratio
 {
     public void Configure(EntityTypeBuilder<ProjectTagRelation> builder)
     {
-        builder.HasKey(e => new { e.ProjectId, e.ProjectTagId });
+        // Composite Primary Key: A project can only have a specific tag once
+        builder.HasKey(r => new { r.ProjectMetaInfoId, r.TagId });
 
-        builder.HasIndex(e => e.ProjectTagId);
+        // Relationship to Project (The Root Anchor)
+        builder.HasOne(r => r.ProjectMetaInfo)
+            .WithMany()
+            .HasForeignKey(r => r.ProjectMetaInfoId)
+            .OnDelete(DeleteBehavior.Cascade); // If project is deleted, its tag relations are gone
 
-        builder.HasOne(pt => pt.Project)
-            .WithMany(p => p.ProjectTags) // Requires adding this collection to Project.cs
-            .HasForeignKey(pt => pt.ProjectId)
+        // Relationship to MetaTag
+        builder.HasOne(r => r.Tag)
+            .WithMany() // Tag doesn't need a collection of relations back to projects
+            .HasForeignKey(r => r.TagId)
             .OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasOne(pt => pt.ProjectTag)
-            .WithMany(t => t.ProjectTags)
-            .HasForeignKey(pt => pt.ProjectTagId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

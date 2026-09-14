@@ -33,7 +33,7 @@ public class ReviewStatus
     public virtual User? Reviewer { get; set; }
     
     [MaxLength(4096)]
-    public string? ReviewComments { get; set; }
+    public string? ReviewComment { get; set; }
     
     public DateTime? ReviewedAt { get; set; }
     public DateTime CreatedAt { get; set; }

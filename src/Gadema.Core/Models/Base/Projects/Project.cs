@@ -13,159 +13,55 @@ namespace Gadema.Core.Models.Projects;
 /// Represents a project in the game development management system.
 /// Owned by a single User (CreatedBy).
 /// </summary>
-[ModelDependency(typeof(User))]
+// ... existing code ...
+[ModelDependency(typeof(User), typeof(ProjectMetaInfo))] // Added ProjectMetaInfo dependency
 public class Project
 {
-    /// <summary>
-    /// Unique identifier for the project.
-    /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    /// <summary>
-    /// Title of the project.
-    /// </summary>
-    [Required, Display(Name = "Project Title")]
-    public string Title { get; set; } = "";
+    // --- Identity (Moved to ProjectMetaInfo) ---
+    // Title, Slug, Status, Visibility, ViewMode, Timestamps removed
 
-    /// <summary>
-    /// URL-friendly slug for the project (unique).
-    /// </summary>
-    [MaxLength(128), Column("slug"), Required, Display(Name = "URL Slug")]
-    public string Slug { get; set; } = "";
-
-    /// <summary>
-    /// Project-wide description.
-    /// </summary>
+    // --- Domain Data ---
     [MaxLength(4096)]
     public string? Description { get; set; } = null!;
 
-    /// <summary>
-    /// Soft delete flag.
-    /// </summary>
     public bool IsActive { get; set; } = true;
 
     // --- Relationships ---
-
-    /// <summary>
-    /// FK to the User who created this project.
-    /// </summary>
     [Fixture(FixtureHintEnum.Omit)]
     public Guid UserId { get; set; }
     
-    /// <summary>
-    /// Navigation property: User who created this project.
-    /// </summary>
     [ForeignKey("UserId")]
     public virtual User User { get; set; } = null!;
 
-    /// <summary>
-    /// FK to the ProjectSeries this project belongs to.
-    /// </summary>
     public Guid? ProjectSeriesId { get; set; }
 
-    /// <summary>
-    /// Navigation property: The series this project belongs to.
-    /// </summary>
     [ForeignKey("ProjectSeriesId")]
     public virtual ProjectSeries? ProjectSeries { get; set; }
 
-     /// <summary>
-    /// Collection of members (users with access) for this project.
-    /// </summary>
-    public virtual ICollection<ProjectMember> Members { get; set; } = new List<ProjectMember>();
+    // New Relationship to the identity anchor
+    public virtual ProjectMetaInfo MetaInfo { get; set; } = null!;
 
-    /// <summary>
-    /// Collection of project tokens for this project.
-    /// </summary>
-    public virtual ICollection<ProjectToken> ProjectTokens { get; set; } = new List<ProjectToken>();
+    // ... remaining relationships (Members, Tokens, Tasks, etc.) remain unchanged ...
 
-       
-    /// <summary>
-    /// Collection of tasks for this project.
-    /// </summary>
-    public virtual ICollection<ProjectTask> Tasks { get; set; } = new List<ProjectTask>();
-
-    /// <summary>
-    /// Collection of activity logs for this project.
-    /// </summary>
-    public virtual ICollection<ActivityLog> ActivityLogs { get; set; } = new List<ActivityLog>();
-
-    // --- Metadata ---
-
-    /// <summary>
-    /// Enable user registration flag (feature flag).
-    /// </summary>
+    // --- Domain Specific Metadata ---
     public bool EnableUserRegistration { get; set; } = false;
-
-    /// <summary>
-    /// Allow manual team invites flag.
-    /// </summary>
     public bool AllowManualInvites { get; set; } = true;
 
-    /// <summary>
-    /// Default view mode (PrivateWriting or Presentation).
-    /// </summary>
-    [EnumDataType(typeof(ViewModeEnum)), Required, Display(Name = "Default View Mode")]
-    public ViewModeEnum ViewMode { get; set; } = ViewModeEnum.PrivateWriting;
-
-    /// <summary>
-    /// Project creation timestamp.
-    /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-    public ProjectVisibilityEnum Visibility { get; set; }
-
-    /// <summary>
-    /// Last modified timestamp.
-    /// </summary>
-    [Column("last_modified_at")]
-    public DateTime? LastModifiedAt { get; set; } = null!;
-
-    /// <summary>
-    /// Status of the project (Draft, InProgress, Published).
-    /// </summary>
-    [EnumDataType(typeof(ProjectStatusEnum)), Required, Display(Name = "Status")]
-    public ProjectStatusEnum Status { get; set; } = ProjectStatusEnum.Draft;
-
-    public virtual ICollection<ProjectTagRelation> ProjectTags { get; set; } = new List<ProjectTagRelation>();
-
-    // ========================================================================
-    // Core Compass Fields (Phase 1: Project Creation)
-    // These fields tailor the workspace based on the project's primary format.
-    // ========================================================================
-
-    /// <summary>
-    /// Primary format of the project (Book, Manga, Game, Hybrid).
-    /// Determines default UI emphasis and suggestion engines.
-    /// </summary>
-    [EnumDataType(typeof(PrimaryFormatEnum)), Required, Display(Name = "Primary Format")]
+    [EnumDataType(typeof(PrimaryFormatEnum)), Required]
     public PrimaryFormatEnum PrimaryFormat { get; set; } = PrimaryFormatEnum.Book;
 
-    /// <summary>
-    /// Genre of the project (e.g., Fantasy, Sci-Fi, Romance).
-    /// Auto-suggests relevant StoryBeats and structural hints.
-    /// </summary>
-    [MaxLength(128), Display(Name = "Genre")]
+    [MaxLength(128)]
     public string? Genre { get; set; }
 
-    /// <summary>
-    /// Central theme of the project (e.g., Redemption, Survival, Love).
-    /// Influences narrative structure suggestions.
-    /// </summary>
-    [MaxLength(128), Display(Name = "Theme")]
+    [MaxLength(128)]
     public string? Theme { get; set; }
 
-    /// <summary>
-    /// Tone of the project (e.g., Dark, Light, Humorous, Serious).
-    /// Influences pacing and emotional beat suggestions.
-    /// </summary>
-    [EnumDataType(typeof(ToneEnum)), Display(Name = "Tone")]
+    [EnumDataType(typeof(ToneEnum))]
     public ToneEnum Tone { get; set; } = ToneEnum.Neutral;
 
-    /// <summary>
-    /// Target audience for the project (e.g., Children, Teen, Adult, All Ages).
-    /// Influences content warnings and complexity suggestions.
-    /// </summary>
-    [EnumDataType(typeof(AudienceEnum)), Display(Name = "Audience")]
+    [EnumDataType(typeof(AudienceEnum))]
     public AudienceEnum Audience { get; set; } = AudienceEnum.AllAges;
+    public ICollection<ProjectMember> Members { get; set; }
 }

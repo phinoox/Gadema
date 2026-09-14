@@ -25,7 +25,7 @@ public class ReviewStatusService : CoreService
             TargetId = status.TargetId, // Replaced MetaInfoId
             Status = status.Status,
             ReviewedByUserId = status.ReviewedByUserId,
-            ReviewComments = status.ReviewComments,
+            ReviewComments = status.ReviewComment,
             ReviewedAt = status.ReviewedAt
         };
 
@@ -90,18 +90,11 @@ public class ReviewStatusService : CoreService
         // 3. Update the status and metadata
         status.Status = approveDto.Status;
         status.ReviewedByUserId = user.Id;
-        status.ReviewComments = approveDto.Notes;
+        status.ReviewComment = approveDto.ReviewComment;
         status.ReviewedAt = DateTime.UtcNow;
 
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<string>.Success($"Content status updated to {approveDto.Status}.");
     }
-}
-
-// Helper DTO for the controller (moved here or kept in DTO file)
-public class ApproveContentDto
-{
-    public ReviewStatusEnum Status { get; set; }
-    public string? Notes { get; set; }
 }

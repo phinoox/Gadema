@@ -1,7 +1,7 @@
 // =============================================================================
 using Gadema.Core.Dtos;
 using Gadema.Core.Enums;
-
+using Gadema.Core.Interfaces.Identity;
 using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -191,6 +191,21 @@ public abstract class CoreService
         if (updateData.IsPublic.HasValue)
             metaInfo.IsPublic = updateData.IsPublic.Value;
 
+        return true;
+    }
+
+     /// <summary>
+    /// Executes a specialized identity update using the provided strategy.
+    /// This allows for polymorphic updates of Title, Slug, Status, and Tags.
+    /// </summary>
+    protected async Task<bool> ApplyIdentitySyncAsync(
+        Guid identityId, 
+        MetaInfoUpdateData updateData, 
+        IIdentitySyncStrategy strategy)
+    {
+        // The transaction is managed by the calling service to ensure 
+        // atomicity across both domain and identity updates.
+        await strategy.SyncAsync(identityId, updateData);
         return true;
     }
 

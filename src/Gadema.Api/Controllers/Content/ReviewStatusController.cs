@@ -1,31 +1,21 @@
-// =============================================================================
-using Microsoft.AspNetCore.Http;
-// Gadema.Api - ASP.NET Core Web API Controllers
-// =============================================================================
-
-using System;
-using System.Threading.Tasks;
-using Gadema.Api.Services;
-//using Gadema.Core.Dtos.Reviews;
+using Gadema.Api.Services.Content;
+using Gadema.Core.Dtos.Reviews; // Ensure this matches your actual DTO namespace
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Gadema.Api.Services.Content;
 
-namespace Gadema.Api.Controllers;
+namespace Gadema.Api.Controllers.Content;
 
 /// <summary>
 /// Controller for review status endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/content-items/{id}/review")]
+// Updated to follow the project-scoped routing pattern: api/v1/projects/{projectId}/...
+[Route("api/v1/projects/{projectId:guid}/review-status")]
 public class ReviewStatusController : ControllerBase
 {
     private readonly ReviewStatusService _reviewService;
     private readonly ILogger<ReviewStatusController> _logger;
 
-    /// <summary>
-    /// Constructor with dependency injection.
-    /// </summary>
     public ReviewStatusController(ReviewStatusService reviewService, ILogger<ReviewStatusController> logger)
     {
         _reviewService = reviewService;
@@ -33,20 +23,22 @@ public class ReviewStatusController : ControllerBase
     }
 
     /// <summary>
-    /// Get review status for content item.
+    /// Get review status for a specific content item.
     /// </summary>
-    [HttpGet]
-    public async Task<IActionResult> GetReviewStatusAsync(Guid id)
+    [HttpGet("{id:guid}")] // The id is the target (the component/anchor)
+    public async Task<IActionResult> GetReviewStatusAsync(Guid projectId, Guid id)
     {
-        return Ok(await _reviewService.GetReviewStatusAsync(id));
+        // Service now receives both IDs to perform project access validation
+        return Ok(await _reviewService.GetReviewStatusAsync(projectId, id));
     }
 
     /// <summary>
     /// Approve/reject content item.
     /// </summary>
-    [HttpPut]
-    public async Task<IActionResult> ApproveContentAsync(Guid id, [FromBody] ApproveContentDto approveDto)
+    [HttpPut("{id:guid}")] // The id is the target (the component/anchor)
+    public async Task<IActionResult> ApproveContentAsync(Guid projectId, Guid id, [FromBody] ApproveContentDto approveDto)
     {
-        return Ok(await _reviewService.ApproveContentAsync(id, approveDto));
+        // Service now receives both IDs to perform project access validation
+        return Ok(await _reviewService.ApproveContentAsync(projectId, id, approveDto));
     }
 }
