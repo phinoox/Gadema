@@ -11,6 +11,7 @@ public class ProjectMetaInfoCreateDto
     public ProjectStatusEnum Status { get; set; }
     public ProjectVisibilityEnum Visibility { get; set; }
     public ViewModeEnum ViewMode { get; set; }
+    public List<Guid> TagIds { get; set; } = new List<Guid>();
 }
 
 // 2. Create DTO (The entry point)
@@ -25,6 +26,7 @@ public class ProjectCreateDto
     public string? Theme { get; set; }
     public ToneEnum Tone { get; set; }
     public AudienceEnum Audience { get; set; }
+    public ContentStatusEnum? ProjectStatus { get; set; }
 }
 
 // 3. Update DTO (The sync payload)

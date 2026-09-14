@@ -1,42 +1,31 @@
-using Gadema.Api.Services.Content;
+using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Enums;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
-namespace Gadema.Api.Controllers.Content;
+namespace Gadema.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/search")]
 public class SearchController : ControllerBase
 {
-    private readonly SearchService _searchService;
-    private readonly ILogger<SearchController> _logger;
+    private readonly SearchOrchestrator _orchestrator;
 
-    public SearchController(SearchService searchService, ILogger<SearchController> logger)
+    public SearchController(SearchOrchestrator orchestrator)
     {
-        _searchService = searchService;
-        _logger = logger;
+        _orchestrator = orchestrator;
     }
 
-    [HttpPost("content-items")]
-    public async Task<IActionResult> SearchAsync([FromBody] SearchQueryDto searchQuery)
+    [HttpGet]
+    public async Task<IActionResult> GlobalSearch(
+        [FromQuery] string query, 
+        [FromQuery] Guid? projectId, 
+        [FromQuery] int page = 1, 
+        [FromQuery] int pageSize = 20)
     {
-        return Ok(await _searchService.SearchAsync(
-            query: searchQuery.Query,
-            contentType: searchQuery.ContentType,
-            status: searchQuery.Status,
-            tags: searchQuery.Tags?.ToArray(),
-            page: searchQuery.Page ,
-            pageSize: searchQuery.PageSize 
-        ));
+        if (string.IsNullOrWhiteSpace(query))
+            return BadRequest("Search query cannot be empty.");
+
+        var results = await _orchestrator.GlobalSearchAsync(query, projectId, page, pageSize);
+        return Ok(results);
     }
 }
-
-public record SearchQueryDto(
-    string Query,
-    int? ContentType = null,
-    ContentStatusEnum? Status = null,
-    string[]? Tags = null,
-    int Page = 1,
-    int PageSize = 20);

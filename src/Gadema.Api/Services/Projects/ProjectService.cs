@@ -1,47 +1,84 @@
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Projects;
+using Gadema.Core.Dtos.Search;
 using Gadema.Core.Enums;
-using Gadema.Core.Interfaces.Identity;
-using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 using Gadema.Core.Services;
+using Gadema.Core.Interfaces.Identity;
+
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
+using Gadema.Api.Services.Search;
 
 namespace Gadema.Api.Services.Projects;
 
-public class ProjectService : CoreService
+/// <summary>
+/// Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.
+/// </summary>
+public class ProjectService : CoreService, ISearchableProvider
 {
-   private readonly IIdentitySyncStrategy _identityStrategy; // Injected strategy
+    private readonly IIdentitySyncStrategy _identityStrategy;
 
     public ProjectService(
         GameDbContext db, 
         ILogger<ProjectService> logger, 
         IUserContext userContext,
-        IIdentitySyncStrategy projectStrategy) // We can inject the specific strategy needed
-        : base(db, logger, userContext) 
+        IIdentitySyncStrategy projectIdentityStrategy) 
+        : base(db, logger, userContext)
     {
-        // In a more advanced setup, we'd use a factory or named DI to get the right strategy.
-        // For now, we assume ProjectService gets its dedicated ProjectIdentityStrategy.
-        _identityStrategy = projectStrategy;
+        _identityStrategy = projectIdentityStrategy;
     }
+
+    // ========================================================================
+    // SEARCH PROVIDER IMPLEMENTATION (The "Read" Strategy)
+    // ========================================================================
+
     /// <summary>
-    /// Creates a new project and its associated MetaInfo.
+    /// Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
     /// </summary>
+   public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    {
+        // We query the MetaInfos table because that is where the searchable 
+        // identity data (Title, Slug) actually resides.
+        var metaQuery = _db.MetaInfos.AsQueryable();
+
+        // If a scope is provided, filter by ProjectId
+        if (projectId.HasValue)
+        {
+            metaQuery = metaQuery.Where(m => m.ProjectId == projectId.Value);
+        }
+
+        // Perform text-based discovery on the Identity properties
+        return await metaQuery
+            .Where(m => m.Title.Contains(query) || m.Slug.Contains(query))
+            .Select(m => new SearchHitDto
+            {
+                ResourceId = m.Id, // The anchor ID
+                DisplayName = m.Title,
+                Slug = m.Slug,
+                ResourceType = "Project",
+                ScopeId = null, // Projects are the root level
+                ResourceLink = $"/api/v1/projects/{m.Id}"
+            })
+            .ToListAsync();
+    }
+
+    // ========================================================================
+    // DOMAIN OPERATIONS (The "Write" Side)
+    // ========================================================================
+
     public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(Guid projectId, ProjectCreateDto dto)
     {
-        // 1. Validation: Ensure user can create projects in this context (if applicable)
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
         using var transaction = await _db.Database.BeginTransactionAsync();
         try
         {
-            // 2. Create the Project Anchor
             var project = new Project
             {
-                Id = Guid.NewGuid(), // We generate a new ID for the root anchor
-                UserId = _userContext.UserId.Value,
+                Id = Guid.NewGuid(),
+                UserId = _userContext.CurrentUser!.Id,
                 Description = dto.Description,
                 IsActive = true,
                 EnableUserRegistration = dto.EnableUserRegistration,
@@ -53,44 +90,29 @@ public class ProjectService : CoreService
                 Audience = dto.Audience
             };
 
-            // 3. Create the MetaInfo (Identity)
-            var metaInfo = new ProjectMetaInfo
-            {
-                Id = project.Id, // Identity is tied to the Anchor ID
-                Title = dto.MetaInfo.Title,
-                Slug = dto.MetaInfo.Slug,
-                Status = dto.MetaInfo.Status,
-                Visibility = dto.MetaInfo.Visibility,
-                ViewMode = dto.MetaInfo.ViewMode,
-                ProjectId = project.Id,
-                CreatedAt = DateTime.Now,
-            };
+            // The identity strategy handles the creation of MetaInfo and its tags
+            await _identityStrategy.SyncAsync(project.Id, dto.MetaInfo);
 
             _db.Projects.Add(project);
-            _db.Set<ProjectMetaInfo>().Add(metaInfo); // Adding to the set directly
-
             await _db.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{metaInfo.Title}' created.");
+            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{project.Title}' created.");
 
-            return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
-            {
-                EntityId = project.Id,
-                ProjectId = projectId // The context project (if any)
+            return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
+            { 
+                EntityId = project.Id, 
+                ProjectId = projectId 
             });
         }
         catch (Exception ex)
         {
             await transaction.RollbackAsync();
-            _logger.LogError(ex, "Error creating project");
-            return ApiResponseDto<CreateResponseDto>.ServerError("An error occurred while creating the project.");
+            _logger?.LogError(ex, "Error creating project");
+            return ApiResponseDto<CreateResponseDto>.ServerError("Creation failed.");
         }
     }
 
-    /// <summary>
-    /// Retrieves a project and its denormalized response DTO.
-    /// </summary>
     public async Task<ApiResponseDto<ProjectResponseDto>> GetAsync(Guid projectId, Guid contextProjectId)
     {
         var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
@@ -98,17 +120,14 @@ public class ProjectService : CoreService
 
         var project = await _db.Projects
             .Include(p => p.MetaInfo)
-            .FirstOrDefaultAsync(p => p.Id == projectId && p.UserId == _userContext.UserId);
+            .FirstOrDefaultAsync(p => p.Id == projectId);
 
         if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
 
         return ApiResponseDto<ProjectResponseDto>.Success(MapToResponseDto(project));
     }
 
-    /// <summary>
-    /// Updates the project domain data and/or its MetaInfo.
-    /// </summary>
-     public async Task<ApiResponseDto<ProjectResponseDto>> UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)
+    public async Task<ApiResponseDto<ProjectResponseDto>> UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)
     {
         var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
         if (error != null) return error;
@@ -118,7 +137,7 @@ public class ProjectService : CoreService
         {
             var project = await _db.Projects
                 .Include(p => p.MetaInfo)
-                .FirstOrDefaultAsync(p => p.Id == projectId && p.UserId == _userContext.UserId);
+                .FirstOrDefaultAsync(p => p.Id == projectId);
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
 
@@ -132,10 +151,10 @@ public class ProjectService : CoreService
             if (dto.Tone.HasValue) project.Tone = dto.Tone.Value;
             if (dto.Audience.HasValue) project.Audience = dto.Audience.Value;
 
-            // 2. Delegate Identity Sync to the Strategy
+            // 2. Sync Identity via Strategy (Handles ProjectMetaInfo and Tags)
             if (dto.MetaInfo != null)
             {
-                await ApplyIdentitySyncAsync(projectId, dto.MetaInfo, _identityStrategy);
+                await _identityStrategy.SyncAsync(projectId, dto.MetaInfo);
             }
 
             await _db.SaveChangesAsync();
@@ -148,8 +167,8 @@ public class ProjectService : CoreService
         catch (Exception ex)
         {
             await transaction.RollbackAsync();
-            _logger.LogError(ex, "Error updating project");
-            return ApiResponseDto<ProjectResponseDto>.ServerError("An error occurred during the update.");
+            _logger?.LogError(ex, "Error updating project");
+            return ApiResponseDto<ProjectResponseDto>.ServerError("Update failed.");
         }
     }
 
@@ -161,12 +180,16 @@ public class ProjectService : CoreService
         var project = await _db.Projects.FindAsync(projectId);
         if (project == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Project not found.");
 
-        _db.Projects.Remove(project); // Cascade will handle MetaInfo and Members/Tasks
+        _db.Projects.Remove(project);
         await _db.SaveChangesAsync();
 
         await LogDbAsync(contextProjectId, "Deleted", "Project", projectId, "Project deleted.");
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = projectId, ProjectId = contextProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
+        { 
+            EntityId = projectId, 
+            ProjectId = contextProjectId 
+        });
     }
 
     private ProjectResponseDto MapToResponseDto(Project p) => new()
