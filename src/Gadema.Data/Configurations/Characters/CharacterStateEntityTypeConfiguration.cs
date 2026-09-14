@@ -33,8 +33,8 @@ public class CharacterStateEntityTypeConfiguration : IEntityTypeConfiguration<Ch
         builder.HasIndex(e => e.TriggerSceneId)
             .HasDatabaseName("IX_CharacterState_TriggerSceneId");
 
-        // Restrict: if MetaInfo is deleted, cascade the delete (state loses identity)
-        builder.HasOne(e => e.MetaInfo)
+        // Restrict: if ContentMetaInfo is deleted, cascade the delete (state loses identity)
+        builder.HasOne(e => e.ContentMetaInfo)
             .WithMany()
             .HasForeignKey(e => e.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);

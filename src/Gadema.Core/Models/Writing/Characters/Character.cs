@@ -7,24 +7,24 @@ using Gadema.Core.Models;
 namespace Gadema.Core.Models.Characters;
 
 /// <summary>
-/// Entry point for all character information. Links MetaInfo (identity/searching) with:
+/// Entry point for all character information. Links ContentMetaInfo (identity/searching) with:
 /// - CharacterStoryProfile (static backstory/traits, one-to-one)
 /// - CharacterState (dynamic story state, one-to-many)
 /// This is the glue between story and game-related character data.
 /// </summary>
-[ModelDependency(typeof(MetaInfo), typeof(CharacterStoryProfile))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(CharacterStoryProfile))]
 public class Character
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// Links to MetaInfo for the character's identity (title = character name, slug, description).
+    /// Links to ContentMetaInfo for the character's identity (title = character name, slug, description).
     /// Enables searching and filtering by character name.
     /// </summary>
     [Required] public Guid MetaInfoId { get; set; }
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [Required, MaxLength(128)]
     public string Name { get; set; } = "";

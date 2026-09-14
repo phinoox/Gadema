@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,7 @@ namespace Gadema.Core.Models;
 /// Represents an attribute set for character/class templates.
 /// Used for defining ability systems and character stats.
 /// </summary>
-[ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class AttributeSet
 {
     /// <summary>
@@ -23,7 +24,7 @@ public class AttributeSet
     public Guid? MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     
     /// <summary>

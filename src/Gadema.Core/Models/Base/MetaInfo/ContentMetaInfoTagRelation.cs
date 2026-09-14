@@ -1,3 +1,4 @@
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Content;
 using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +8,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Gadema.Core.Models.Content;
 
 /// <summary>
-/// Junction table linking MetaInfo to MetaInfoTag.
+/// Junction table linking ContentMetaInfo to MetaInfoTag.
 /// </summary>
-[ModelDependency(typeof(MetaInfo),typeof(MetaInfoTag))]
-public class MetaInfoTagRelation
+[ModelDependency(typeof(ContentMetaInfo),typeof(ContentMetaInfoTag))]
+public class ContentMetaInfoTagRelation
 {
     [Required]
     public Guid MetaInfoId { get; set; }
@@ -20,9 +21,9 @@ public class MetaInfoTagRelation
 
     // Navigation
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [ForeignKey("MetaInfoTagId")]
-    public virtual MetaInfoTag MetaInfoTag { get; set; } = null!;
+    public virtual ContentMetaInfoTag MetaInfoTag { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
 }

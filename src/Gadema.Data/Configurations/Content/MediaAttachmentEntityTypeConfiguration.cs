@@ -26,8 +26,8 @@ public class MediaAttachmentEntityTypeConfiguration : IEntityTypeConfiguration<M
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.MetaInfoId);
         
-        // Navigation property: MetaInfo (SetNull to preserve attachment history)
-        builder.HasOne(m => m.MetaInfo)
+        // Navigation property: ContentMetaInfo (SetNull to preserve attachment history)
+        builder.HasOne(m => m.ContentMetaInfo)
             .WithMany(ci => ci.MediaAttachments)
             .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);  // Keep attachments when content deleted

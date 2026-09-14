@@ -12,7 +12,7 @@ namespace Gadema.Core.Dtos.Identity;
 public class IdentityDefinitionCreateDto
 {
     /// <summary>
-    /// MetaInfo data for the definition's identity.
+    /// ContentMetaInfo data for the definition's identity.
     /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
 
@@ -58,9 +58,9 @@ public class IdentityDefinitionCreateDto
 public class IdentityDefinitionUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current values).
+    /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(128)] public string? IdentityTypeName { get; set; }
     public IdentityTypeEnum? IdentityType { get; set; }
@@ -70,7 +70,7 @@ public class IdentityDefinitionUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for an identity definition. Inherits MetaInfo state.
+/// Response DTO for an identity definition. Inherits ContentMetaInfo state.
 /// </summary>
 public class IdentityDefinitionResponseDto : MetaInfoResponseBaseDto
 {

@@ -15,14 +15,14 @@ public class ContentIdentityStrategy : IIdentitySyncStrategy
 
     public async Task SyncAsync(Guid metaInfoId, MetaInfoUpdateData updateData)
     {
-        var metaInfo = await _db.MetaInfos.FindAsync(metaInfoId);
-        if (metaInfo == null) throw new Exception("MetaInfo not found.");
+        var ContentMetaInfo = await _db.MetaInfos.FindAsync(metaInfoId);
+        if (ContentMetaInfo == null) throw new Exception("ContentMetaInfo not found.");
 
         // 1. Update Identity Properties
-        if (updateData.Title != null) metaInfo.Title = updateData.Title;
-        if (updateData.Slug != null) metaInfo.Slug = updateData.Slug;
-        if (updateData.Status.HasValue) metaInfo.Status = updateData.Status.Value;
-        if (updateData.IsPublic.HasValue) metaInfo.IsPublic = updateData.IsPublic.Value;
+        if (updateData.Title != null) ContentMetaInfo.Title = updateData.Title;
+        if (updateData.Slug != null) ContentMetaInfo.Slug = updateData.Slug;
+        if (updateData.Status.HasValue) ContentMetaInfo.Status = updateData.Status.Value;
+        if (updateData.IsPublic.HasValue) ContentMetaInfo.IsPublic = updateData.IsPublic.Value;
 
         // 2. Sync Tags
         if (updateData.TagIds != null)
@@ -48,7 +48,7 @@ public class ContentIdentityStrategy : IIdentitySyncStrategy
             }
         }
 
-        metaInfo.LastModifiedAt = DateTime.UtcNow;
+        ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
     }
 }

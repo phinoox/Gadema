@@ -11,7 +11,7 @@ namespace Gadema.Core.Models.Game.EngineIntegration;
 
 /// <summary>
 /// Maps content fields to their corresponding engine property names.
-/// Example: MetaInfo.Title -> "Player.Name" in Unreal Engine.
+/// Example: ContentMetaInfo.Title -> "Player.Name" in Unreal Engine.
 /// </summary>
 [ModelDependency(typeof(EngineExportConfig))]
 public class EngineFieldMapping

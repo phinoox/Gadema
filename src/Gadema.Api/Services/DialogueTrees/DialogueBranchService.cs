@@ -21,16 +21,16 @@ public class DialogueBranchService : CoreService
         if (error != null) return error;
 
         var branches = await _db.DialogueBranches
-            .Where(b => b.MetaInfo.ProjectId == projectId)
-            .OrderByDescending(b => b.MetaInfo.CreatedAt)
+            .Where(b => b.ContentMetaInfo.ProjectId == projectId)
+            .OrderByDescending(b => b.ContentMetaInfo.CreatedAt)
             .Select(b => new DialogueBranchResponseDto
             {
                 Id = b.Id,
                 MetaInfoId = b.MetaInfoId.Value,
-                Title = b.MetaInfo.Title,
-                Slug = b.MetaInfo.Slug,
-                Status = b.MetaInfo.Status,
-                CreatedAt = b.MetaInfo.CreatedAt
+                Title = b.ContentMetaInfo.Title,
+                Slug = b.ContentMetaInfo.Slug,
+                Status = b.ContentMetaInfo.Status,
+                CreatedAt = b.ContentMetaInfo.CreatedAt
             })
             .ToListAsync();
 
@@ -44,22 +44,22 @@ public class DialogueBranchService : CoreService
     public async Task<ApiResponseDto<DialogueBranchResponseDto>> GetBranchAsync(Guid id)
     {
         var branch = await _db.DialogueBranches
-            .Include(b => b.MetaInfo)
+            .Include(b => b.ContentMetaInfo)
             .FirstOrDefaultAsync(b => b.Id == id);
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueBranchResponseDto>.Success(new DialogueBranchResponseDto
         {
             Id = branch.Id,
             MetaInfoId = branch.MetaInfoId.Value,
-            Title = branch.MetaInfo.Title,
-            Slug = branch.MetaInfo.Slug,
-            Status = branch.MetaInfo.Status,
-            CreatedAt = branch.MetaInfo.CreatedAt
+            Title = branch.ContentMetaInfo.Title,
+            Slug = branch.ContentMetaInfo.Slug,
+            Status = branch.ContentMetaInfo.Status,
+            CreatedAt = branch.ContentMetaInfo.CreatedAt
         });
     }
 
@@ -68,15 +68,15 @@ public class DialogueBranchService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var branch = new DialogueBranch
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             // Add branch-specific fields here if needed
         };
 
@@ -86,7 +86,7 @@ public class DialogueBranchService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = branch.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -94,15 +94,15 @@ public class DialogueBranchService : CoreService
     public async Task<ApiResponseDto<DialogueBranchResponseDto>> UpdateBranchAsync(Guid id, DialogueBranchUpdateDto updateDto)
     {
         var branch = await _db.DialogueBranches
-            .Include(b => b.MetaInfo)
+            .Include(b => b.ContentMetaInfo)
             .FirstOrDefaultAsync(b => b.Id == id);
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(branch.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(branch.ContentMetaInfo, updateDto.ContentMetaInfo);
         // Update branch-specific fields here if needed
 
         await _db.SaveChangesAsync();
@@ -111,32 +111,32 @@ public class DialogueBranchService : CoreService
         {
             Id = branch.Id,
             MetaInfoId = branch.MetaInfoId.Value,
-            Title = branch.MetaInfo.Title,
-            Slug = branch.MetaInfo.Slug,
-            Status = branch.MetaInfo.Status,
-            CreatedAt = branch.MetaInfo.CreatedAt
+            Title = branch.ContentMetaInfo.Title,
+            Slug = branch.ContentMetaInfo.Slug,
+            Status = branch.ContentMetaInfo.Status,
+            CreatedAt = branch.ContentMetaInfo.CreatedAt
         });
     }
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteBranchAsync(Guid id)
     {
         var branch = await _db.DialogueBranches
-            .Include(b => b.MetaInfo)
+            .Include(b => b.ContentMetaInfo)
             .FirstOrDefaultAsync(b => b.Id == id);
 
         if (branch == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(branch.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(branch.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(branch.MetaInfo);
+        _db.MetaInfos.Remove(branch.ContentMetaInfo);
         _db.DialogueBranches.Remove(branch);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = branch.MetaInfo.ProjectId
+            ProjectId = branch.ContentMetaInfo.ProjectId
         });
     }
 }

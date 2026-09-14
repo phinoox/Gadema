@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing Stories within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class StoryService : CoreService
 {
@@ -29,18 +29,18 @@ public class StoryService : CoreService
         if (error != null) return error;
 
         var stories = await _db.Stories
-            .Include(s => s.MetaInfo)
-            .Where(s => s.MetaInfo.ProjectId == projectId)
-            .OrderBy(s => s.MetaInfo.Title)
+            .Include(s => s.ContentMetaInfo)
+            .Where(s => s.ContentMetaInfo.ProjectId == projectId)
+            .OrderBy(s => s.ContentMetaInfo.Title)
             .Select(s => new StoryResponseDto
             {
                 Id = s.Id,
                 MetaInfoId = s.MetaInfoId,
-                MetaInfoTitle = s.MetaInfo.Title,
-                Status = s.MetaInfo.Status,
-                IsPublic = s.MetaInfo.IsPublic,
-                CreatedAt = s.MetaInfo.CreatedAt,
-                LastModifiedAt = s.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = s.ContentMetaInfo.Title,
+                Status = s.ContentMetaInfo.Status,
+                IsPublic = s.ContentMetaInfo.IsPublic,
+                CreatedAt = s.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = s.ContentMetaInfo.LastModifiedAt,
                 Description = s.Description
             })
             .ToListAsync();
@@ -55,24 +55,24 @@ public class StoryService : CoreService
     public async Task<ApiResponseDto<StoryResponseDto>> GetStoryAsync(Guid id)
     {
         var story = await _db.Stories
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<StoryResponseDto>.Success(new StoryResponseDto
         {
             Id = story.Id,
             MetaInfoId = story.MetaInfoId,
-            MetaInfoTitle = story.MetaInfo.Title,
-            Status = story.MetaInfo.Status,
-            IsPublic = story.MetaInfo.IsPublic,
-            CreatedAt = story.MetaInfo.CreatedAt,
-            LastModifiedAt = story.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = story.ContentMetaInfo.Title,
+            Status = story.ContentMetaInfo.Status,
+            IsPublic = story.ContentMetaInfo.IsPublic,
+            CreatedAt = story.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = story.ContentMetaInfo.LastModifiedAt,
             Description = story.Description
         });
     }
@@ -86,15 +86,15 @@ public class StoryService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var story = new Story
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             Name = createDto.CreateData.Title,
             Description = createDto.Description,
         };
@@ -105,7 +105,7 @@ public class StoryService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = story.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -117,16 +117,16 @@ public class StoryService : CoreService
     public async Task<ApiResponseDto<StoryResponseDto>> UpdateStoryAsync(Guid id, StoryUpdateDto updateDto)
     {
         var story = await _db.Stories
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(story.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(story.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.Description != null)
             story.Description = updateDto.Description;
@@ -137,11 +137,11 @@ public class StoryService : CoreService
         {
             Id = story.Id,
             MetaInfoId = story.MetaInfoId,
-            MetaInfoTitle = story.MetaInfo.Title,
-            Status = story.MetaInfo.Status,
-            IsPublic = story.MetaInfo.IsPublic,
-            CreatedAt = story.MetaInfo.CreatedAt,
-            LastModifiedAt = story.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = story.ContentMetaInfo.Title,
+            Status = story.ContentMetaInfo.Status,
+            IsPublic = story.ContentMetaInfo.IsPublic,
+            CreatedAt = story.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = story.ContentMetaInfo.LastModifiedAt,
             Description = story.Description
         });
     }
@@ -153,23 +153,23 @@ public class StoryService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryAsync(Guid id)
     {
         var story = await _db.Stories
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (story is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(story.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(story.MetaInfo);
+        _db.MetaInfos.Remove(story.ContentMetaInfo);
         _db.Stories.Remove(story);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = story.MetaInfo.ProjectId
+            ProjectId = story.ContentMetaInfo.ProjectId
         });
     }
 }

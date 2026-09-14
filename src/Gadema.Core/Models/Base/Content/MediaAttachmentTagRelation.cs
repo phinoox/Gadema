@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Content;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +12,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Junction table for many-to-many relationship between MediaAttachments and Tags.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class MediaAttachmentTagRelation
 {
     /// <summary>
@@ -36,6 +37,6 @@ public class MediaAttachmentTagRelation
     public Guid TagId { get; set; }
 
     // Navigation property: Tag (Many-to-One)
-    public virtual MetaInfoTag Tag { get; set; }
+    public virtual ContentMetaInfoTag Tag { get; set; }
 
 }

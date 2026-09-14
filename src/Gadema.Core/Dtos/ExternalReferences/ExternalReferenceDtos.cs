@@ -9,7 +9,7 @@ namespace Gadema.Core.Dtos.Content.ExternalReferences;
 public class ExternalReferenceCreateDto
 {
     /// <summary>
-    /// MetaInfo data for the reference's identity.
+    /// ContentMetaInfo data for the reference's identity.
     /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
 
@@ -50,9 +50,9 @@ public class ExternalReferenceCreateDto
 public class ExternalReferenceUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current values).
+    /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(2048)] public string? Url { get; set; }
     [MaxLength(256)] public string? Title { get; set; }
@@ -62,7 +62,7 @@ public class ExternalReferenceUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for an external reference. Inherits MetaInfo state.
+/// Response DTO for an external reference. Inherits ContentMetaInfo state.
 /// </summary>
 public class ExternalReferenceResponseDto : MetaInfoResponseBaseDto
 {

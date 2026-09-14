@@ -11,7 +11,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing LoreEntries within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class LoreEntryService : CoreService
 {
@@ -28,18 +28,18 @@ public class LoreEntryService : CoreService
         if (error != null) return error;
 
         var loreEntries = await _db.LoreEntries
-            .Include(le => le.MetaInfo)
-            .Where(le => le.MetaInfo.ProjectId == projectId)
-            .OrderBy(le => le.MetaInfo.Title)
+            .Include(le => le.ContentMetaInfo)
+            .Where(le => le.ContentMetaInfo.ProjectId == projectId)
+            .OrderBy(le => le.ContentMetaInfo.Title)
             .Select(le => new LoreEntryResponseDto
             {
                 Id = le.Id,
                 MetaInfoId = le.MetaInfoId,
-                MetaInfoTitle = le.MetaInfo.Title,
-                Status = le.MetaInfo.Status,
-                IsPublic = le.MetaInfo.IsPublic,
-                CreatedAt = le.MetaInfo.CreatedAt,
-                LastModifiedAt = le.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = le.ContentMetaInfo.Title,
+                Status = le.ContentMetaInfo.Status,
+                IsPublic = le.ContentMetaInfo.IsPublic,
+                CreatedAt = le.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = le.ContentMetaInfo.LastModifiedAt,
                 LoreType = (int)le.LoreType,
                 RawText = le.RawText
             })
@@ -55,25 +55,25 @@ public class LoreEntryService : CoreService
     public async Task<ApiResponseDto<LoreEntryResponseDto>> GetLoreEntryAsync(Guid id)
     {
         var loreEntry = await _db.LoreEntries
-            .Include(le => le.MetaInfo)
+            .Include(le => le.ContentMetaInfo)
             .FirstOrDefaultAsync(le => le.Id == id);
 
         if (loreEntry is null)
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<LoreEntryResponseDto>.Success(new LoreEntryResponseDto
         {
             Id = loreEntry.Id,
             MetaInfoId = loreEntry.MetaInfoId,
-            MetaInfoTitle = loreEntry.MetaInfo.Title,
-            Status = loreEntry.MetaInfo.Status,
-            IsPublic = loreEntry.MetaInfo.IsPublic,
-            CreatedAt = loreEntry.MetaInfo.CreatedAt,
-            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = loreEntry.ContentMetaInfo.Title,
+            Status = loreEntry.ContentMetaInfo.Status,
+            IsPublic = loreEntry.ContentMetaInfo.IsPublic,
+            CreatedAt = loreEntry.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = loreEntry.ContentMetaInfo.LastModifiedAt,
             LoreType = (int)loreEntry.LoreType,
             RawText = loreEntry.RawText
         });
@@ -90,17 +90,17 @@ public class LoreEntryService : CoreService
         if (error != null) return error;
 
         
-        // Create MetaInfo using helper
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.LoreEntry, createDto.CreateData);
+        // Create ContentMetaInfo using helper
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.LoreEntry, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // Create the LoreEntry entity
         var loreEntry = new LoreEntry
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             RawText = string.Empty,
             LoreType = createDto.LoreType,
         };
@@ -111,7 +111,7 @@ public class LoreEntryService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = loreEntry.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -123,35 +123,35 @@ public class LoreEntryService : CoreService
     public async Task<ApiResponseDto<LoreEntryResponseDto>> UpdateLoreEntryAsync(Guid id, LoreEntryUpdateDto updateDto)
     {
         var loreEntry = await _db.LoreEntries
-            .Include(le => le.MetaInfo)
+            .Include(le => le.ContentMetaInfo)
             .FirstOrDefaultAsync(le => le.Id == id);
 
         if (loreEntry is null)
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply MetaInfo updates via helper (replaces manual if-blocks)
-        ApplyMetaInfoUpdates(loreEntry.MetaInfo, updateDto.MetaInfo);
+        // Apply ContentMetaInfo updates via helper (replaces manual if-blocks)
+        ApplyMetaInfoUpdates(loreEntry.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.RawText != null)
             loreEntry.RawText = updateDto.RawText;
 
 
-        loreEntry.MetaInfo.LastModifiedAt = DateTime.UtcNow;
+        loreEntry.ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<LoreEntryResponseDto>.Success(new LoreEntryResponseDto
         {
             Id = loreEntry.Id,
             MetaInfoId = loreEntry.MetaInfoId,
-            MetaInfoTitle = loreEntry.MetaInfo.Title,
-            Status = loreEntry.MetaInfo.Status,
-            IsPublic = loreEntry.MetaInfo.IsPublic,
-            CreatedAt = loreEntry.MetaInfo.CreatedAt,
-            LastModifiedAt = loreEntry.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = loreEntry.ContentMetaInfo.Title,
+            Status = loreEntry.ContentMetaInfo.Status,
+            IsPublic = loreEntry.ContentMetaInfo.IsPublic,
+            CreatedAt = loreEntry.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = loreEntry.ContentMetaInfo.LastModifiedAt,
             LoreType = (int)loreEntry.LoreType,
             RawText = loreEntry.RawText
         });
@@ -164,25 +164,25 @@ public class LoreEntryService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteLoreEntryAsync(Guid id)
     {
         var loreEntry = await _db.LoreEntries
-            .Include(le => le.MetaInfo)
+            .Include(le => le.ContentMetaInfo)
             .FirstOrDefaultAsync(le => le.Id == id);
 
         if (loreEntry is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(loreEntry.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Delete MetaInfo first (FK dependency), then LoreEntry
-        _db.MetaInfos.Remove(loreEntry.MetaInfo);
+        // Delete ContentMetaInfo first (FK dependency), then LoreEntry
+        _db.MetaInfos.Remove(loreEntry.ContentMetaInfo);
         _db.LoreEntries.Remove(loreEntry);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = loreEntry.MetaInfo.ProjectId
+            ProjectId = loreEntry.ContentMetaInfo.ProjectId
         });
     }
 }

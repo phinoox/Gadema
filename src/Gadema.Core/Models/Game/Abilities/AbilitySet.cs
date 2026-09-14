@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents an ability set for character/class templates.
 /// Used for defining ability systems and character skills (GAS-like architecture).
 /// </summary>
-[ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class AbilitySet
 {
     /// <summary>
@@ -23,7 +23,7 @@ public class AbilitySet
     public Guid? MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     
     /// <summary>

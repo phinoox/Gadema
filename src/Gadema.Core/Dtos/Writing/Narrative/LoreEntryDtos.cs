@@ -14,7 +14,7 @@ public class LoreEntryCreateDto
 // UpdateDto — inherits UpdateRequestDto, nullable fields + nested MetaInfoUpdateData
 public class LoreEntryUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
     
     public string? RawText { get; set; }
     public bool? IsPublic { get; set; }

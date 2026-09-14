@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +13,7 @@ namespace Gadema.Core.Models;
 /// Uses MetaInfoId and AttributeDefinitionId as composite primary key.
 /// Stores calculated or manually set attribute values per character.
 /// </summary>
-[ModelDependency(typeof(MetaInfo), typeof(AttributeDefinition))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(AttributeDefinition))]
 public class CharacterAttributes
 {
     /// <summary>
@@ -20,9 +21,9 @@ public class CharacterAttributes
     /// </summary>
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property for MetaInfo (Many-to-One)
+    // Navigation property for ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; }
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; }
     
     /// <summary>
     /// FK to the attribute definition being stored.

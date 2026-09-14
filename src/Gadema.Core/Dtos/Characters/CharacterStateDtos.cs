@@ -48,7 +48,7 @@ public class CharacterStateCreateDto
 /// </summary>
 public class CharacterStateUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     public string? StateName { get; set; }
     public string? Description { get; set; }
@@ -63,7 +63,7 @@ public class CharacterStateUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for a character state. Inherits MetaInfo state.
+/// Response DTO for a character state. Inherits ContentMetaInfo state.
 /// </summary>
 public class CharacterStateResponseDto : MetaInfoResponseBaseDto
 {

@@ -25,23 +25,23 @@ public class FactionService : CoreService
         if (error != null) return error;
 
         var factions = await _db.Factions
-            .Include(f => f.MetaInfo)
+            .Include(f => f.ContentMetaInfo)
             .Include(f => f.Location)
-            .Where(f => f.MetaInfo.ProjectId == projectId)
-            .OrderBy(f => f.MetaInfo.Title)
+            .Where(f => f.ContentMetaInfo.ProjectId == projectId)
+            .OrderBy(f => f.ContentMetaInfo.Title)
             .Select(f => new FactionResponseDto
             {
                 Id = f.Id,
                 MetaInfoId = f.MetaInfoId,
-                MetaInfoTitle = f.MetaInfo.Title,
-                Status = f.MetaInfo.Status,
-                IsPublic = f.MetaInfo.IsPublic,
-                CreatedAt = f.MetaInfo.CreatedAt,
-                LastModifiedAt = f.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = f.ContentMetaInfo.Title,
+                Status = f.ContentMetaInfo.Status,
+                IsPublic = f.ContentMetaInfo.IsPublic,
+                CreatedAt = f.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = f.ContentMetaInfo.LastModifiedAt,
                 Ideology = f.Ideology,
                 Goals = f.Goals,
                 LocationId = f.LocationId,
-                LocationName = f.Location != null ? f.Location.MetaInfo.Title : null
+                LocationName = f.Location != null ? f.Location.ContentMetaInfo.Title : null
             })
             .ToListAsync();
 
@@ -55,29 +55,29 @@ public class FactionService : CoreService
     public async Task<ApiResponseDto<FactionResponseDto>> GetFactionAsync(Guid id)
     {
         var faction = await _db.Factions
-            .Include(f => f.MetaInfo)
+            .Include(f => f.ContentMetaInfo)
             .Include(f => f.Location)
             .FirstOrDefaultAsync(f => f.Id == id);
 
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<FactionResponseDto>.Success(new FactionResponseDto
         {
             Id = faction.Id,
             MetaInfoId = faction.MetaInfoId,
-            MetaInfoTitle = faction.MetaInfo.Title,
-            Status = faction.MetaInfo.Status,
-            IsPublic = faction.MetaInfo.IsPublic,
-            CreatedAt = faction.MetaInfo.CreatedAt,
-            LastModifiedAt = faction.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = faction.ContentMetaInfo.Title,
+            Status = faction.ContentMetaInfo.Status,
+            IsPublic = faction.ContentMetaInfo.IsPublic,
+            CreatedAt = faction.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = faction.ContentMetaInfo.LastModifiedAt,
             Ideology = faction.Ideology,
             Goals = faction.Goals,
             LocationId = faction.LocationId,
-            LocationName = faction.Location != null ? faction.Location.MetaInfo.Title : null
+            LocationName = faction.Location != null ? faction.Location.ContentMetaInfo.Title : null
         });
     }
 
@@ -90,15 +90,15 @@ public class FactionService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Faction, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Faction, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var faction = new Faction
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             Ideology = createDto.Ideology,
             Goals = createDto.Goals,
             LocationId = createDto.LocationId,
@@ -110,7 +110,7 @@ public class FactionService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = faction.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -122,16 +122,16 @@ public class FactionService : CoreService
     public async Task<ApiResponseDto<FactionResponseDto>> UpdateFactionAsync(Guid id, FactionUpdateDto updateDto)
     {
         var faction = await _db.Factions
-            .Include(f => f.MetaInfo)
+            .Include(f => f.ContentMetaInfo)
             .FirstOrDefaultAsync(f => f.Id == id);
 
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(faction.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(faction.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.Ideology != null)
             faction.Ideology = updateDto.Ideology;
@@ -148,15 +148,15 @@ public class FactionService : CoreService
         {
             Id = faction.Id,
             MetaInfoId = faction.MetaInfoId,
-            MetaInfoTitle = faction.MetaInfo.Title,
-            Status = faction.MetaInfo.Status,
-            IsPublic = faction.MetaInfo.IsPublic,
-            CreatedAt = faction.MetaInfo.CreatedAt,
-            LastModifiedAt = faction.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = faction.ContentMetaInfo.Title,
+            Status = faction.ContentMetaInfo.Status,
+            IsPublic = faction.ContentMetaInfo.IsPublic,
+            CreatedAt = faction.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = faction.ContentMetaInfo.LastModifiedAt,
             Ideology = faction.Ideology,
             Goals = faction.Goals,
             LocationId = faction.LocationId,
-            LocationName = faction.Location != null ? faction.Location.MetaInfo.Title : null
+            LocationName = faction.Location != null ? faction.Location.ContentMetaInfo.Title : null
         });
     }
 
@@ -167,23 +167,23 @@ public class FactionService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteFactionAsync(Guid id)
     {
         var faction = await _db.Factions
-            .Include(f => f.MetaInfo)
+            .Include(f => f.ContentMetaInfo)
             .FirstOrDefaultAsync(f => f.Id == id);
 
         if (faction is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(faction.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(faction.MetaInfo);
+        _db.MetaInfos.Remove(faction.ContentMetaInfo);
         _db.Factions.Remove(faction);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = faction.MetaInfo.ProjectId
+            ProjectId = faction.ContentMetaInfo.ProjectId
         });
     }
 }

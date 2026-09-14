@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing StoryOutlines within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class StoryOutlineService : CoreService
 {
@@ -29,18 +29,18 @@ public class StoryOutlineService : CoreService
         if (error != null) return error;
 
         var outlines = await _db.StoryOutlines
-            .Include(so => so.MetaInfo)
-            .Where(so => so.MetaInfo.ProjectId == projectId)
-            .OrderBy(so => so.MetaInfo.Title)
+            .Include(so => so.ContentMetaInfo)
+            .Where(so => so.ContentMetaInfo.ProjectId == projectId)
+            .OrderBy(so => so.ContentMetaInfo.Title)
             .Select(so => new StoryOutlineResponseDto
             {
                 Id = so.Id,
                 MetaInfoId = so.MetaInfoId,
-                MetaInfoTitle = so.MetaInfo.Title,
-                Status = so.MetaInfo.Status,
-                IsPublic = so.MetaInfo.IsPublic,
-                CreatedAt = so.MetaInfo.CreatedAt,
-                LastModifiedAt = so.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = so.ContentMetaInfo.Title,
+                Status = so.ContentMetaInfo.Status,
+                IsPublic = so.ContentMetaInfo.IsPublic,
+                CreatedAt = so.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = so.ContentMetaInfo.LastModifiedAt,
                 Summary = so.Summary,
             })
             .ToListAsync();
@@ -55,25 +55,25 @@ public class StoryOutlineService : CoreService
     public async Task<ApiResponseDto<StoryOutlineResponseDto>> GetStoryOutlineAsync(Guid id)
     {
         var outline = await _db.StoryOutlines
-            .Include(so => so.MetaInfo)
+            .Include(so => so.ContentMetaInfo)
             .FirstOrDefaultAsync(so => so.Id == id);
 
         if (outline is null)
             return ApiResponseDto<StoryOutlineResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<StoryOutlineResponseDto>.Success(new StoryOutlineResponseDto
         {
             Id = outline.Id,
             MetaInfoId = outline.MetaInfoId,
-            MetaInfoTitle = outline.MetaInfo.Title,
-            Status = outline.MetaInfo.Status,
-            IsPublic = outline.MetaInfo.IsPublic,
-            CreatedAt = outline.MetaInfo.CreatedAt,
-            LastModifiedAt = outline.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = outline.ContentMetaInfo.Title,
+            Status = outline.ContentMetaInfo.Status,
+            IsPublic = outline.ContentMetaInfo.IsPublic,
+            CreatedAt = outline.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = outline.ContentMetaInfo.LastModifiedAt,
             Summary = outline.Summary,
         });
     }
@@ -88,17 +88,17 @@ public class StoryOutlineService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Create MetaInfo using helper
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
+        // Create ContentMetaInfo using helper
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // Create the StoryOutline entity
         var outline = new StoryOutline
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             Summary = createDto.Summary,
         };
 
@@ -108,7 +108,7 @@ public class StoryOutlineService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = outline.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -120,18 +120,18 @@ public class StoryOutlineService : CoreService
     public async Task<ApiResponseDto<StoryOutlineResponseDto>> UpdateStoryOutlineAsync(Guid id, StoryOutlineUpdateDto updateDto)
     {
         var outline = await _db.StoryOutlines
-            .Include(so => so.MetaInfo)
+            .Include(so => so.ContentMetaInfo)
             .FirstOrDefaultAsync(so => so.Id == id);
 
         if (outline is null)
             return ApiResponseDto<StoryOutlineResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply MetaInfo updates via helper (replaces manual if-blocks)
-        ApplyMetaInfoUpdates(outline.MetaInfo, updateDto.MetaInfo);
+        // Apply ContentMetaInfo updates via helper (replaces manual if-blocks)
+        ApplyMetaInfoUpdates(outline.ContentMetaInfo, updateDto.ContentMetaInfo);
 
 
         if (updateDto.Summary != null)
@@ -144,10 +144,10 @@ public class StoryOutlineService : CoreService
         {
             Id = outline.Id,
             MetaInfoId = outline.MetaInfoId,
-            MetaInfoTitle = outline.MetaInfo.Title,
+            MetaInfoTitle = outline.ContentMetaInfo.Title,
             Summary = outline.Summary,
-            CreatedAt = outline.MetaInfo.CreatedAt,
-            LastModifiedAt = outline.MetaInfo.LastModifiedAt
+            CreatedAt = outline.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = outline.ContentMetaInfo.LastModifiedAt
         });
     }
 
@@ -158,25 +158,25 @@ public class StoryOutlineService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryOutlineAsync(Guid id)
     {
         var outline = await _db.StoryOutlines
-            .Include(so => so.MetaInfo)
+            .Include(so => so.ContentMetaInfo)
             .FirstOrDefaultAsync(so => so.Id == id);
 
         if (outline is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(outline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(outline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Delete MetaInfo first (FK dependency), then StoryOutline
-        _db.MetaInfos.Remove(outline.MetaInfo);
+        // Delete ContentMetaInfo first (FK dependency), then StoryOutline
+        _db.MetaInfos.Remove(outline.ContentMetaInfo);
         _db.StoryOutlines.Remove(outline);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = outline.MetaInfo.ProjectId
+            ProjectId = outline.ContentMetaInfo.ProjectId
         });
     }
 }

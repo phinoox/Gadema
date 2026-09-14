@@ -8,14 +8,14 @@ using Gadema.Core.Models;
 namespace Gadema.Data.Configurations.Content;
 
 /// <summary>
-/// Configuration for MetaInfo entity in game development management system.
+/// Configuration for ContentMetaInfo entity in game development management system.
 /// </summary>
-public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo>
+public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<ContentMetaInfo>
 {
     /// <summary>
-    /// Configure MetaInfo entity properties and relationships.
+    /// Configure ContentMetaInfo entity properties and relationships.
     /// </summary>
-    public void Configure(EntityTypeBuilder<MetaInfo> builder)
+    public void Configure(EntityTypeBuilder<ContentMetaInfo> builder)
     {
         // Primary key
         builder.HasKey(e => e.Id);
@@ -30,7 +30,7 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
         
         // Navigation property: MediaAttachments (SetNull to preserve attachment history)
         builder.HasMany(ci => ci.MediaAttachments)
-            .WithOne(m => m.MetaInfo)
+            .WithOne(m => m.ContentMetaInfo)
             .HasForeignKey(m => m.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         
@@ -41,7 +41,7 @@ public class MetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfo
         
         // Navigation property: MetaInfoTags (SetNull to preserve tags)
         builder.HasMany(ci => ci.MetaInfoTagRelations)
-            .WithOne(ct => ct.MetaInfo)
+            .WithOne(ct => ct.ContentMetaInfo)
             .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);
         

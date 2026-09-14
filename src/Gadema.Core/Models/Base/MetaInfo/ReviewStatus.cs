@@ -8,7 +8,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a review status for content items.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))] // Still dependency of MetaInfo conceptually, but no direct navigation
+[ModelDependency(typeof(ContentMetaInfo))] // Still dependency of ContentMetaInfo conceptually, but no direct navigation
 public class ReviewStatus
 {
     public Guid Id { get; set; } = Guid.NewGuid();

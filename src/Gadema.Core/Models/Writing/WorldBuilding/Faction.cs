@@ -10,14 +10,14 @@ namespace Gadema.Core.Models.WorldBuilding;
 /// Represents a faction, organization, or group within the game world.
 /// Has ideology, goals, and optional location reference.
 /// </summary>
-[ModelDependency(typeof(Project), typeof(MetaInfo), typeof(WorldLocation))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo), typeof(WorldLocation))]
 public class Faction
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     /// <summary>
     /// The faction's ideology, mission, or core purpose.

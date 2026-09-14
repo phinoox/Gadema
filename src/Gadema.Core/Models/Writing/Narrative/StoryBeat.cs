@@ -13,7 +13,7 @@ namespace Gadema.Core.Models.Writing;
 /// Beats act as structural anchors for scenes and become draggable "Cards" in the Right Panel.
 /// Hierarchy: StoryOutline → StoryBeat ↔ Scene (Many-to-Many via junction table)
 /// </summary>
-[ModelDependency(typeof(MetaInfo), typeof(Story))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(Story))]
 public class StoryBeat
 {
     /// <summary>
@@ -23,7 +23,7 @@ public class StoryBeat
 
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [Required] public Guid StoryId { get; set; }
     [ForeignKey("StoryId")] public virtual Story Story { get; set; } = null!;

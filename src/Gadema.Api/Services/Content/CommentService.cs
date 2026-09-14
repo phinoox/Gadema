@@ -79,7 +79,7 @@ public class CommentService : CoreService
         // We use the TargetId to check if the anchor belongs to this project
         var error = await ValidateProjectAccessAsync<CommentResponseDto>(comment.TargetId); 
         // Note: If your ValidateProjectAccessAsync expects a ProjectId, you might need 
-        // an overload or to fetch the ProjectId from MetaInfo first.
+        // an overload or to fetch the ProjectId from ContentMetaInfo first.
         if (error != null) return error;
 
         if (!string.IsNullOrWhiteSpace(dto.CommentText)) comment.Text = dto.CommentText;

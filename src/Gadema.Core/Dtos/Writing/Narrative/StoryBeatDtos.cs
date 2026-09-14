@@ -34,9 +34,9 @@ public class StoryBeatResponseDto : MetaInfoResponseBaseDto
 public class StoryBeatUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current).
+    /// ContentMetaInfo fields (nullable — omit to keep current).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     /// <summary>
     /// Description of the beat's narrative intent.

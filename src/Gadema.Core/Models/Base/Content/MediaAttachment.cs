@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a media file attached to a content item (images, PDFs, etc.).
 /// Supports file upload with storage path tracking.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class MediaAttachment
 {
     /// <summary>
@@ -26,9 +27,9 @@ public class MediaAttachment
     [Required, Display(Name = "Content Item ID")]
     public Guid MetaInfoId { get; set; }  // ✅ FIX: Changed from MediaAttachmentId
 
-    // Navigation property: MetaInfo (Many-to-One)
+    // Navigation property: ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; }
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; }
     
     /// <summary>
     /// Original file name.

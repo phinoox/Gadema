@@ -27,11 +27,11 @@ public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEnt
         builder.HasIndex(e => e.LoreType);
         builder.HasIndex(e => e.MetaInfoId);
 
-        // Navigation property: MetaInfo (Cascade delete)
-        builder.HasOne(le => le.MetaInfo)
+        // Navigation property: ContentMetaInfo (Cascade delete)
+        builder.HasOne(le => le.ContentMetaInfo)
                 .WithMany()
                 .HasForeignKey(le => le.MetaInfoId)
-                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade through MetaInfo (we delete manually in service)
+                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade through ContentMetaInfo (we delete manually in service)
 
         builder.Property(e => e.RawText).HasMaxLength(4096);
         builder.Property(e => e.LoreType).IsRequired();

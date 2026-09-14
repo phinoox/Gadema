@@ -38,9 +38,9 @@ public class SceneSegmentService : CoreService
     {
         var error = await ValidateProjectAccessAsync<ListResponseDto<SceneSegmentResponseDto>>(projectId);
         if (error != null) return error;
-        var query = _db.SceneSegments.Where(s => s.MetaInfo.ProjectId == projectId).OrderByDescending(s => s.Position);
+        var query = _db.SceneSegments.Where(s => s.ContentMetaInfo.ProjectId == projectId).OrderByDescending(s => s.Position);
 
-        if (sceneId.HasValue) query = query.Where(s => s.MetaInfo.SceneId == sceneId.Value);
+        if (sceneId.HasValue) query = query.Where(s => s.ContentMetaInfo.SceneId == sceneId.Value);
 
         var segments = await query.ToListAsync();
         return ApiResponseDto<ListResponseDto<SceneSegmentResponseDto>>.Success(CreateListResponseDto(segments));
@@ -48,10 +48,10 @@ public class SceneSegmentService : CoreService
 
     public async Task<ApiResponseDto<SceneSegmentResponseDto>> GetSegmentByIdAsync(Guid id)
     {
-        var segment = await _db.SceneSegments.Include(s => s.MetaInfo).FirstOrDefaultAsync(s => s.Id == id);
+        var segment = await _db.SceneSegments.Include(s => s.ContentMetaInfo).FirstOrDefaultAsync(s => s.Id == id);
         if (segment is null) return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<SceneSegmentResponseDto>.Success(CreateResponseDto(segment));
@@ -62,14 +62,14 @@ public class SceneSegmentService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Find the scene by MetaInfo.SceneId
-        var metaInfo = _db.MetaInfos.FirstOrDefault(m => m.Id == createDto.SceneId && m.ProjectId == projectId);
-        if (metaInfo is null) return ApiResponseDto<CreateResponseDto>.BadRequest("Scene not found.");
+        // Find the scene by ContentMetaInfo.SceneId
+        var ContentMetaInfo = _db.MetaInfos.FirstOrDefault(m => m.Id == createDto.SceneId && m.ProjectId == projectId);
+        if (ContentMetaInfo is null) return ApiResponseDto<CreateResponseDto>.BadRequest("Scene not found.");
 
         var segment = new SceneSegment
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             Position = createDto.Position,
             Type = createDto.Type,
             Value = createDto.Value,
@@ -78,18 +78,18 @@ public class SceneSegmentService : CoreService
         _db.SceneSegments.Add(segment);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = segment.Id, MetaInfoId = metaInfo.Id, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = segment.Id, MetaInfoId = ContentMetaInfo.Id, ProjectId = projectId });
     }
 
     public async Task<ApiResponseDto<SceneSegmentResponseDto>> UpdateSegmentAsync(Guid id, SceneSegmentUpdateDto updateDto)
     {
-        var segment = await _db.SceneSegments.Include(s => s.MetaInfo).FirstOrDefaultAsync(s => s.Id == id);
+        var segment = await _db.SceneSegments.Include(s => s.ContentMetaInfo).FirstOrDefaultAsync(s => s.Id == id);
         if (segment is null) return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(segment.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(segment.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.Position.HasValue) segment.Position = updateDto.Position.Value;
         if (!string.IsNullOrEmpty(updateDto.Type)) segment.Type = updateDto.Type;
@@ -101,15 +101,15 @@ public class SceneSegmentService : CoreService
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSegmentAsync(Guid id)
     {
-        var segment = await _db.SceneSegments.Include(s => s.MetaInfo).FirstOrDefaultAsync(s => s.Id == id);
+        var segment = await _db.SceneSegments.Include(s => s.ContentMetaInfo).FirstOrDefaultAsync(s => s.Id == id);
         if (segment is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.SceneSegments.Remove(segment);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = segment.MetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = segment.ContentMetaInfo.ProjectId });
     }
 }

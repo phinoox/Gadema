@@ -21,10 +21,10 @@ public class DialogueNodeService : CoreService
         {
             Id = node.Id,
             DialogueBranchId = node.DialogueBranchId,
-            BranchTitle = node.DialogueBranch?.MetaInfo?.Title ?? "Unknown Branch",
+            BranchTitle = node.DialogueBranch?.ContentMetaInfo?.Title ?? "Unknown Branch",
             NodeText = node.NodeText,
             SpeakerId = node.SpeakerId,
-            SpeakerName = node.Speaker?.MetaInfo?.Title, 
+            SpeakerName = node.Speaker?.ContentMetaInfo?.Title, 
             ChoiceOptions = node.ChoiceOptions,
             Conditions = node.Conditions,
             ParentNodeId = node.ParentNodeId,
@@ -37,8 +37,8 @@ public class DialogueNodeService : CoreService
     private async Task<ApiResponseDto<DialogueBranch>> GetBranchAndValidateAsync(Guid projectId, Guid branchId)
     {
         var branch = await _db.DialogueBranches
-            .Include(b => b.MetaInfo)
-            .FirstOrDefaultAsync(b => b.Id == branchId && b.MetaInfo.ProjectId == projectId);
+            .Include(b => b.ContentMetaInfo)
+            .FirstOrDefaultAsync(b => b.Id == branchId && b.ContentMetaInfo.ProjectId == projectId);
 
         if (branch == null) 
             return ApiResponseDto<DialogueBranch>.BadRequest("Branch not found or access denied.");
@@ -54,9 +54,9 @@ public class DialogueNodeService : CoreService
         if (error != null) return error;
 
         var query = _db.DialogueNodes
-            .Include(n => n.DialogueBranch).ThenInclude(b => b.MetaInfo)
-            .Include(n => n.Speaker).ThenInclude(s => s.MetaInfo)
-            .Where(n => n.DialogueBranch.MetaInfo.ProjectId == projectId);
+            .Include(n => n.DialogueBranch).ThenInclude(b => b.ContentMetaInfo)
+            .Include(n => n.Speaker).ThenInclude(s => s.ContentMetaInfo)
+            .Where(n => n.DialogueBranch.ContentMetaInfo.ProjectId == projectId);
 
         if (branchId.HasValue) 
             query = query.Where(n => n.DialogueBranchId == branchId.Value);
@@ -68,13 +68,13 @@ public class DialogueNodeService : CoreService
     public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeByIdAsync(Guid id)
     {
         var node = await _db.DialogueNodes
-            .Include(n => n.DialogueBranch).ThenInclude(b => b.MetaInfo)
-            .Include(n => n.Speaker).ThenInclude(s => s.MetaInfo)
+            .Include(n => n.DialogueBranch).ThenInclude(b => b.ContentMetaInfo)
+            .Include(n => n.Speaker).ThenInclude(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(n => n.Id == id);
 
         if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
@@ -121,7 +121,7 @@ public class DialogueNodeService : CoreService
         if (node.DialogueBranchId != branchId)
             return ApiResponseDto<DialogueNodeResponseDto>.BadRequest("The node does not belong to the specified branch.");
 
-        // 3. Validate Project Access via the branch's MetaInfo
+        // 3. Validate Project Access via the branch's ContentMetaInfo
         var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(projectId);
         if (error != null) return error;
 
@@ -145,7 +145,7 @@ public class DialogueNodeService : CoreService
         var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == id);
         if (node is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.DialogueNodes.Remove(node);
@@ -154,7 +154,7 @@ public class DialogueNodeService : CoreService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = node.DialogueBranch.MetaInfo.ProjectId 
+            ProjectId = node.DialogueBranch.ContentMetaInfo.ProjectId 
         });
     }
 }

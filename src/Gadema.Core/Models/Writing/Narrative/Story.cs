@@ -4,7 +4,7 @@ using Gadema.Core.Models.Projects;
 
 namespace Gadema.Core.Models.Writing;
 
-[ModelDependency(typeof(MetaInfo),typeof(Project))]
+[ModelDependency(typeof(ContentMetaInfo),typeof(Project))]
 public class Story
 {
     [Key]
@@ -15,7 +15,7 @@ public class Story
 
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     public string? Description { get; set; }
     

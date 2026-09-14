@@ -10,7 +10,7 @@ namespace Gadema.Core.Dtos.Tags;
 public class TagCreateDto
 {
     /// <summary>
-    /// MetaInfo data for the tag's identity (used as the tag's own identity).
+    /// ContentMetaInfo data for the tag's identity (used as the tag's own identity).
     /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
 
@@ -48,15 +48,15 @@ public class TagUpdateDto : UpdateRequestDto
     public string? TagNameToRemove { get; set; }
 
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current values).
+    /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(128)] public string? ColorHex { get; set; }
 }
 
 /// <summary>
-/// Response DTO for a single tag on a content item. Inherits MetaInfo state.
+/// Response DTO for a single tag on a content item. Inherits ContentMetaInfo state.
 /// </summary>
 public class TagResponseDto : MetaInfoResponseBaseDto
 {

@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,7 +23,7 @@ public class ClassTemplate
     public Guid? MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     
     /// <summary>

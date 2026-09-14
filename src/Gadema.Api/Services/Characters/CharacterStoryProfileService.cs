@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Characters;
 
 /// <summary>
 /// Service for managing CharacterStoryProfile - the static backstory and personality of a character.
-/// Access is validated via the parent Character's MetaInfo.
+/// Access is validated via the parent Character's ContentMetaInfo.
 /// </summary>
 public class CharacterStoryProfileService : CoreService
 {
@@ -51,8 +51,8 @@ public class CharacterStoryProfileService : CoreService
 
         var profiles = await _db.CharacterStoryProfiles
             .Include(p => p.Character)
-                .ThenInclude(c => c.MetaInfo)
-            .Where(p => p.Character.MetaInfo.ProjectId == projectId)
+                .ThenInclude(c => c.ContentMetaInfo)
+            .Where(p => p.Character.ContentMetaInfo.ProjectId == projectId)
             .ToListAsync();
         
         var projectedProfiles = profiles.Select(CreateResponseDto).ToList();
@@ -68,13 +68,13 @@ public class CharacterStoryProfileService : CoreService
     {
         var profile = await _db.CharacterStoryProfiles
             .Include(p => p.Character)
-                .ThenInclude(c => c.MetaInfo)
+                .ThenInclude(c => c.ContentMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == id);
 
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(CreateResponseDto(profile));
@@ -88,8 +88,8 @@ public class CharacterStoryProfileService : CoreService
     {
         // 1. Validate character exists and belongs to project
         var character = await _db.Characters
-            .Include(c => c.MetaInfo)
-            .FirstOrDefaultAsync(c => c.Id == characterId && c.MetaInfo.ProjectId == projectId);
+            .Include(c => c.ContentMetaInfo)
+            .FirstOrDefaultAsync(c => c.Id == characterId && c.ContentMetaInfo.ProjectId == projectId);
 
         if (character is null)
             return ApiResponseDto<CreateResponseDto>.NotFound("The specified character does not exist in this project.");
@@ -132,13 +132,13 @@ public class CharacterStoryProfileService : CoreService
     {
         var profile = await _db.CharacterStoryProfiles
             .Include(p => p.Character)
-                .ThenInclude(c => c.MetaInfo)
+                .ThenInclude(c => c.ContentMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == id);
 
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.ContentMetaInfo.ProjectId);
         if (error != null) return ApiResponseDto<CharacterStoryProfileResponseDto>.Unauthorized(error.Message ?? "not authorized");
 
         // Update fields if provided in DTO
@@ -169,13 +169,13 @@ public class CharacterStoryProfileService : CoreService
     {
         var profile = await _db.CharacterStoryProfiles
             .Include(p => p.Character)
-                .ThenInclude(c => c.MetaInfo)
+                .ThenInclude(c => c.ContentMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == id);
 
         if (profile is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.CharacterStoryProfiles.Remove(profile);
@@ -184,7 +184,7 @@ public class CharacterStoryProfileService : CoreService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = profile.Character.MetaInfo.ProjectId
+            ProjectId = profile.Character.ContentMetaInfo.ProjectId
         });
     }
 }

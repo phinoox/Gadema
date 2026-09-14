@@ -13,7 +13,7 @@ namespace Gadema.Core.Models;
 /// Represents a dialogue branch (node) in a branching narrative tree.
 /// Used for visual novel and interactive story development.
 /// </summary>
-[ModelDependency(typeof(Project),typeof(MetaInfo))]
+[ModelDependency(typeof(Project),typeof(ContentMetaInfo))]
 public class DialogueBranch
 {
     /// <summary>
@@ -26,7 +26,7 @@ public class DialogueBranch
     public Guid? MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
    
     
     /// <summary>

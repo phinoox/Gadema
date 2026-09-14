@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Characters;
 
 /// <summary>
 /// Service for managing Characters - the central glue entity in the character domain.
-/// Supports progressive creation: Identity (MetaInfo + Character) first, then modular components.
+/// Supports progressive creation: Identity (ContentMetaInfo + Character) first, then modular components.
 /// </summary>
 public class CharacterService : CoreService, ISearchableProvider
 {
@@ -28,18 +28,18 @@ public class CharacterService : CoreService, ISearchableProvider
     public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
         var dbQuery = _db.Characters
-            .Include(c => c.MetaInfo)
+            .Include(c => c.ContentMetaInfo)
             .AsQueryable();
 
         // 1. Filter by Project Scope if provided
         if (projectId.HasValue)
         {
-            dbQuery = dbQuery.Where(c => c.MetaInfo.ProjectId == projectId.Value);
+            dbQuery = dbQuery.Where(c => c.ContentMetaInfo.ProjectId == projectId.Value);
         }
 
-        // 2. Search across identity properties (Title in MetaInfo, Name/Nickname in Character)
+        // 2. Search across identity properties (Title in ContentMetaInfo, Name/Nickname in Character)
         var matches = await dbQuery
-            .Where(c => c.MetaInfo.Title.Contains(query) || 
+            .Where(c => c.ContentMetaInfo.Title.Contains(query) || 
                         c.Name.Contains(query) || 
                         (c.NickName != null && c.NickName.Contains(query)))
             .ToListAsync();
@@ -48,11 +48,11 @@ public class CharacterService : CoreService, ISearchableProvider
         return matches.Select(c => new SearchHitDto
         {
             ResourceId = c.Id,
-            DisplayName = c.MetaInfo.Title, // Using Title as the primary display name per convention
-            Slug = c.MetaInfo.Slug,
+            DisplayName = c.ContentMetaInfo.Title, // Using Title as the primary display name per convention
+            Slug = c.ContentMetaInfo.Slug,
             ResourceType = "Character",
-            ScopeId = c.MetaInfo.ProjectId,
-            ResourceLink = $"/api/v1/projects/{c.MetaInfo.ProjectId}/characters/{c.Id}"
+            ScopeId = c.ContentMetaInfo.ProjectId,
+            ResourceLink = $"/api/v1/projects/{c.ContentMetaInfo.ProjectId}/characters/{c.Id}"
         });
     }
 
@@ -67,10 +67,10 @@ public class CharacterService : CoreService, ISearchableProvider
         if (error != null) return error;
 
         var characters = await _db.Characters
-            .Include(c => c.MetaInfo)
+            .Include(c => c.ContentMetaInfo)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
-            .Where(c => c.MetaInfo.ProjectId == projectId)
+            .Where(c => c.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(c => c.Name)
             .ToListAsync();
 
@@ -85,7 +85,7 @@ public class CharacterService : CoreService, ISearchableProvider
     public async Task<ApiResponseDto<CharacterResponseDto>> GetCharacterAsync(Guid id)
     {
         var character = await _db.Characters
-            .Include(c => c.MetaInfo)
+            .Include(c => c.ContentMetaInfo)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -93,7 +93,7 @@ public class CharacterService : CoreService, ISearchableProvider
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterResponseDto>.Success(CreateResponseDto(character));
@@ -108,16 +108,16 @@ public class CharacterService : CoreService, ISearchableProvider
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // 1. Create MetaInfo for the character's identity (Title/Name lives here)
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Character, createDto.CreateData);
-        _db.MetaInfos.Add(metaInfo);
+        // 1. Create ContentMetaInfo for the character's identity (Title/Name lives here)
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Character, createDto.CreateData);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // 2. Create the Character glue entity
         var character = new Character
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             Name = createDto.Name, // Fallback for non-meta identity fields
             NickName = createDto.NickName,
             CurrentStateId = null
@@ -129,7 +129,7 @@ public class CharacterService : CoreService, ISearchableProvider
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = character.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -141,7 +141,7 @@ public class CharacterService : CoreService, ISearchableProvider
     public async Task<ApiResponseDto<CharacterResponseDto>> UpdateCharacterAsync(Guid id, CharacterUpdateDto updateDto)
     {
         var character = await _db.Characters
-            .Include(c => c.MetaInfo)
+            .Include(c => c.ContentMetaInfo)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Faction)
             .Include(c => c.CurrentState).ThenInclude(cs => cs!.Location)
             .FirstOrDefaultAsync(c => c.Id == id);
@@ -149,13 +149,13 @@ public class CharacterService : CoreService, ISearchableProvider
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // 1. Update MetaInfo (Name/Title/Status lives here per convention)
-        if (updateDto.MetaInfo != null)
+        // 1. Update ContentMetaInfo (Name/Title/Status lives here per convention)
+        if (updateDto.ContentMetaInfo != null)
         {
-            ApplyMetaInfoUpdates(character.MetaInfo, updateDto.MetaInfo);
+            ApplyMetaInfoUpdates(character.ContentMetaInfo, updateDto.ContentMetaInfo);
         }
 
         // 2. Update Character Glue properties
@@ -165,14 +165,14 @@ public class CharacterService : CoreService, ISearchableProvider
         if (updateDto.CurrentStateId.HasValue)
         {
             var newState = await _db.CharacterStates
-                .Include(cs => cs.MetaInfo)
+                .Include(cs => cs.ContentMetaInfo)
                 .FirstOrDefaultAsync(cs => cs.Id == updateDto.CurrentStateId.Value);
 
             if (newState is null)
                 return ApiResponseDto<CharacterResponseDto>.NotFound($"CharacterState with ID {updateDto.CurrentStateId.Value} not found.");
 
             // Security check: Ensure the state belongs to the same project
-            if (newState.MetaInfo.ProjectId != character.MetaInfo.ProjectId)
+            if (newState.ContentMetaInfo.ProjectId != character.ContentMetaInfo.ProjectId)
                 return ApiResponseDto<CharacterResponseDto>.BadRequest("The target CharacterState does not belong to this project.");
 
             character.CurrentStateId = updateDto.CurrentStateId.Value;
@@ -184,30 +184,30 @@ public class CharacterService : CoreService, ISearchableProvider
     }
 
     // ========================================================================
-    // DELETE - Remove a character (and its MetaInfo)
+    // DELETE - Remove a character (and its ContentMetaInfo)
     // ========================================================================
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteCharacterAsync(Guid id)
     {
         var character = await _db.Characters
-            .Include(c => c.MetaInfo)
+            .Include(c => c.ContentMetaInfo)
             .FirstOrDefaultAsync(c => c.Id == id);
 
         if (character is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Deleting MetaInfo will cascade to the Character record via DeleteBehavior.Cascade/Restrict 
+        // Deleting ContentMetaInfo will cascade to the Character record via DeleteBehavior.Cascade/Restrict 
         // and remove the character record itself.
-        _db.MetaInfos.Remove(character.MetaInfo);
+        _db.MetaInfos.Remove(character.ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = character.MetaInfo.ProjectId
+            ProjectId = character.ContentMetaInfo.ProjectId
         });
     }
 
@@ -217,13 +217,13 @@ public class CharacterService : CoreService, ISearchableProvider
         {
             Id = character.Id,
             MetaInfoId = character.MetaInfoId,
-            // Map MetaInfo Title to Response Name per convention
-            Name = character.MetaInfo.Title, 
+            // Map ContentMetaInfo Title to Response Name per convention
+            Name = character.ContentMetaInfo.Title, 
             NickName = character.NickName,
-            Status = character.MetaInfo.Status,
-            IsPublic = character.MetaInfo.IsPublic,
-            CreatedAt = character.MetaInfo.CreatedAt,
-            LastModifiedAt = character.MetaInfo.LastModifiedAt,
+            Status = character.ContentMetaInfo.Status,
+            IsPublic = character.ContentMetaInfo.IsPublic,
+            CreatedAt = character.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = character.ContentMetaInfo.LastModifiedAt,
             CurrentStateId = character.CurrentStateId,
             StoryProfileId = character.StoryProfileId
         };

@@ -53,7 +53,7 @@ public class ProjectTaskService : CoreService
         if (error != null) return error;
 
         IQueryable<ProjectTask> query = _db.ProjectTasks
-            .Include(pt => pt.MetaInfo)
+            .Include(pt => pt.ContentMetaInfo)
             .Where(pt => pt.ProjectId == projectId);
 
         if (status.HasValue)
@@ -79,7 +79,7 @@ public class ProjectTaskService : CoreService
     public async Task<ApiResponseDto<TaskResponseDto>> GetTaskAsync(Guid id)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.MetaInfo)
+            .Include(pt => pt.ContentMetaInfo)
             .FirstOrDefaultAsync(pt => pt.Id == id);
 
         if (task is null)
@@ -140,7 +140,7 @@ public class ProjectTaskService : CoreService
     public async Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, ProjectTaskUpdateDto updateDto)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.MetaInfo)
+            .Include(pt => pt.ContentMetaInfo)
             .FirstOrDefaultAsync(pt => pt.Id == id);
 
         if (task is null)
@@ -188,7 +188,7 @@ public class ProjectTaskService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteTaskAsync(Guid id)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.MetaInfo)
+            .Include(pt => pt.ContentMetaInfo)
             .FirstOrDefaultAsync(pt => pt.Id == id);
 
         if (task is null)
@@ -197,7 +197,7 @@ public class ProjectTaskService : CoreService
         var error = await ValidateProjectAccessAsync<DeleteResponseDto>(task.ProjectId);
         if (error != null) return error;
 
-        // Soft delete: set title to empty and mark as done, don't cascade delete MetaInfo
+        // Soft delete: set title to empty and mark as done, don't cascade delete ContentMetaInfo
         task.TaskTitle = "[DELETED]";
         task.Status = (int)TaskStatusEnum.Done;
         await _db.SaveChangesAsync();
@@ -210,7 +210,7 @@ public class ProjectTaskService : CoreService
     }
 
     // ========================================================================
-    // HELPER: Get or create MetaInfo from task title keywords
+    // HELPER: Get or create ContentMetaInfo from task title keywords
     // ========================================================================
 
     private Guid? GetOrCreateMetaInfoForTask(Guid projectId, string taskTitle)
@@ -219,10 +219,10 @@ public class ProjectTaskService : CoreService
         foreach (var keyword in keywords)
         {
             if (taskTitle.ToLowerInvariant().Contains(keyword))
-                return null; // Task title suggests it's about an entity, let user create MetaInfo separately
+                return null; // Task title suggests it's about an entity, let user create ContentMetaInfo separately
         }
 
-        var metaInfo = _db.MetaInfos.FirstOrDefault(m => m.ProjectId == projectId && m.Title.ToLowerInvariant() == taskTitle.ToLowerInvariant());
-        return metaInfo?.Id;
+        var ContentMetaInfo = _db.MetaInfos.FirstOrDefault(m => m.ProjectId == projectId && m.Title.ToLowerInvariant() == taskTitle.ToLowerInvariant());
+        return ContentMetaInfo?.Id;
     }
 }

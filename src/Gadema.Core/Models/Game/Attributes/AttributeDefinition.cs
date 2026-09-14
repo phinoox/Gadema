@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents an attribute definition for character/class templates.
 /// Used for defining ability systems and character stats with scaling formulas.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class AttributeDefinition
 {
     /// <summary>
@@ -22,7 +23,7 @@ public class AttributeDefinition
     public Guid? MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     
     /// <summary>

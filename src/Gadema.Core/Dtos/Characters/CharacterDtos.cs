@@ -20,7 +20,7 @@ public class CharacterCreateDto
 }
 
 /// <summary>
-/// DTO for updating a character's linkage (not MetaInfo or details themselves).
+/// DTO for updating a character's linkage (not ContentMetaInfo or details themselves).
 /// </summary>
 public class CharacterUpdateDto : UpdateRequestDto
 {
@@ -30,7 +30,7 @@ public class CharacterUpdateDto : UpdateRequestDto
 
     public Guid? CurrentStateId { get; set; }
     public Guid? StoryProfileId { get; set; }
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 }
 
 /// <summary>

@@ -9,7 +9,7 @@ namespace Gadema.Core.Dtos.Reviews;
 public class ReviewCreateDto
 {
     /// <summary>
-    /// MetaInfo data for the review's identity (used as the review's own record).
+    /// ContentMetaInfo data for the review's identity (used as the review's own record).
     /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
 
@@ -47,9 +47,9 @@ public class ReviewCreateDto
 public class ReviewUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current values).
+    /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [Range(1, 5)] public int? StarRating { get; set; }
     [MaxLength(8192)] public string? ReviewText { get; set; }
@@ -57,7 +57,7 @@ public class ReviewUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for a single review. Inherits MetaInfo state.
+/// Response DTO for a single review. Inherits ContentMetaInfo state.
 /// </summary>
 public class ReviewResponseDto : MetaInfoResponseBaseDto
 {
@@ -118,7 +118,7 @@ public class ReviewListResponseDto
 public class ReviewAssignmentCreateDto
 {
     /// <summary>
-    /// MetaInfo data for the assignment record.
+    /// ContentMetaInfo data for the assignment record.
     /// </summary>
     [Required] public MetaInfoCreateData CreateData { get; set; } = new();
 

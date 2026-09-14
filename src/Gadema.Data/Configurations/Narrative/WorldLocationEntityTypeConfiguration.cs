@@ -14,6 +14,6 @@ public class WorldLocationEntityTypeConfiguration : IEntityTypeConfiguration<Wor
         // Indexes
         builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_WorldLocation_MetaInfoId");
         
-        // Note: Project access is handled via the MetaInfo in the Service layer
+        // Note: Project access is handled via the ContentMetaInfo in the Service layer
     }
 }

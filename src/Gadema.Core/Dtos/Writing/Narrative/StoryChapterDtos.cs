@@ -17,7 +17,7 @@ public class StoryChapterCreateDto
 
 public class StoryChapterUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [Required] public Guid StoryId { get; set; }
 

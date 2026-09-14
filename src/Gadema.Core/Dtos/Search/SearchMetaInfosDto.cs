@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Gadema.Core.Dtos.Search;
 
 /// <summary>
-/// DTO for searching content items (MetaInfo search).
+/// DTO for searching content items (ContentMetaInfo search).
 /// </summary>
 public class SearchMetaInfosDto
 {
@@ -66,7 +66,7 @@ public class SearchMetaInfosDto
 }
 
 /// <summary>
-/// Response DTO for a single search result item. Inherits MetaInfo state.
+/// Response DTO for a single search result item. Inherits ContentMetaInfo state.
 /// </summary>
 public class SearchResultDto : MetaInfoResponseBaseDto
 {

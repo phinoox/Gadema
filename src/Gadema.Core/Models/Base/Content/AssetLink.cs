@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Links content items to engine asset systems.
 /// Used for tracking exported assets and cross-referencing with game engines.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class AssetLink
 {
     /// <summary>
@@ -25,9 +26,9 @@ public class AssetLink
     [Required, Display(Name = "Content Item")]
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property for MetaInfo (Many-to-One)
+    // Navigation property for ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; }
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; }
 
     /// <summary>
     /// Path in the game engine's asset directory.

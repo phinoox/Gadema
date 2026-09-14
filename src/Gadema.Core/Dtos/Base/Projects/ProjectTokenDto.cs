@@ -156,7 +156,7 @@ public class ProjectTokenListResponseDto : ListResponseDto<ProjectTokenResponseD
  *   "data": {
  *     "id": "a1b2c3d4-...",
  *     "projectId": "{projectId}",
- *     "title": "API Token",          // from MetaInfo.Title (auto-generated)
+ *     "title": "API Token",          // from ContentMetaInfo.Title (auto-generated)
  *     "status": 0,                   // Draft/InProgress/Published
  *     "isPublic": false,
  *     "createdAt": "2025-01-15T10:30:00Z",

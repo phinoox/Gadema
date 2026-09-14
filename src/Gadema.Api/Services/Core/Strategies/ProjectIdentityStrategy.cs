@@ -19,21 +19,21 @@ public class ProjectIdentityStrategy : IIdentitySyncStrategy
         if(updateData == null)
             return;
         // We target the ProjectMetaInfo associated with this project
-        var metaInfo = await _db.Set<ProjectMetaInfo>()
+        var ContentMetaInfo = await _db.Set<ProjectMetaInfo>()
             .FirstOrDefaultAsync(mi => mi.ProjectId == projectMetaInfoId);
 
-        if (metaInfo == null) throw new Exception("Project MetaInfo not found.");
+        if (ContentMetaInfo == null) throw new Exception("Project ContentMetaInfo not found.");
 
         // 1. Update Identity Properties from the updateData
-        if (updateData.Title != null) metaInfo.Title = updateData.Title;
-        if (updateData.Slug != null) metaInfo.Slug = updateData.Slug;
+        if (updateData.Title != null) ContentMetaInfo.Title = updateData.Title;
+        if (updateData.Slug != null) ContentMetaInfo.Slug = updateData.Slug;
         
         // Correcting the Enum type mismatch:
         if (updateData.ProjectStatus.HasValue) 
-            metaInfo.Status = (ProjectStatusEnum)updateData.ProjectStatus.Value;
+            ContentMetaInfo.Status = (ProjectStatusEnum)updateData.ProjectStatus.Value;
 
-        if (updateData.Visibility.HasValue) metaInfo.Visibility = updateData.Visibility.Value;
-        if (updateData.ViewMode.HasValue) metaInfo.ViewMode = updateData.ViewMode.Value;
+        if (updateData.Visibility.HasValue) ContentMetaInfo.Visibility = updateData.Visibility.Value;
+        if (updateData.ViewMode.HasValue) ContentMetaInfo.ViewMode = updateData.ViewMode.Value;
 
         // 2. Sync Tags
         if (updateData.TagIds != null)

@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing StoryBeats within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class StoryBeatService : CoreService
 {
@@ -20,7 +20,7 @@ public class StoryBeatService : CoreService
         : base(db, logger, userContext) { }
 
     // ========================================================================
-    // GET - List all story beats for a project (via MetaInfo.ProjectId)
+    // GET - List all story beats for a project (via ContentMetaInfo.ProjectId)
     // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<StoryBeatResponseDto>>> GetStoryBeatsAsync(Guid projectId)
@@ -29,18 +29,18 @@ public class StoryBeatService : CoreService
         if (error != null) return error;
 
         var beats = await _db.StoryBeats
-            .Include(sb => sb.MetaInfo)
-            .Where(sb => sb.MetaInfo.ProjectId == projectId)
+            .Include(sb => sb.ContentMetaInfo)
+            .Where(sb => sb.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(sb => sb.OrderIndex)
             .Select(sb => new StoryBeatResponseDto
             {
                 Id = sb.Id,
                 MetaInfoId = sb.MetaInfoId,
-                MetaInfoTitle = sb.MetaInfo.Title,
-                Status = sb.MetaInfo.Status,
-                IsPublic = sb.MetaInfo.IsPublic,
-                CreatedAt = sb.MetaInfo.CreatedAt,
-                LastModifiedAt = sb.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = sb.ContentMetaInfo.Title,
+                Status = sb.ContentMetaInfo.Status,
+                IsPublic = sb.ContentMetaInfo.IsPublic,
+                CreatedAt = sb.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = sb.ContentMetaInfo.LastModifiedAt,
                 StoryId = sb.StoryId,
                 Description = sb.Description,
                 OrderIndex = sb.OrderIndex
@@ -57,25 +57,25 @@ public class StoryBeatService : CoreService
     public async Task<ApiResponseDto<StoryBeatResponseDto>> GetStoryBeatAsync(Guid id)
     {
         var beat = await _db.StoryBeats
-            .Include(sb => sb.MetaInfo)
+            .Include(sb => sb.ContentMetaInfo)
             .FirstOrDefaultAsync(sb => sb.Id == id);
 
         if (beat is null)
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<StoryBeatResponseDto>.Success(new StoryBeatResponseDto
         {
             Id = beat.Id,
             MetaInfoId = beat.MetaInfoId,
-            MetaInfoTitle = beat.MetaInfo.Title,
-            Status = beat.MetaInfo.Status,
-            IsPublic = beat.MetaInfo.IsPublic,
-            CreatedAt = beat.MetaInfo.CreatedAt,
-            LastModifiedAt = beat.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = beat.ContentMetaInfo.Title,
+            Status = beat.ContentMetaInfo.Status,
+            IsPublic = beat.ContentMetaInfo.IsPublic,
+            CreatedAt = beat.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = beat.ContentMetaInfo.LastModifiedAt,
             StoryId = beat.StoryId,
             Description = beat.Description,
             OrderIndex = beat.OrderIndex
@@ -92,17 +92,17 @@ public class StoryBeatService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
         
-        // Create MetaInfo using helper
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryBeat, createDto.CreateData);
+        // Create ContentMetaInfo using helper
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryBeat, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // Create the StoryBeat entity
         var beat = new StoryBeat
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             StoryId = createDto.StoryId,
             Description = createDto.Description,
             OrderIndex = createDto.OrderIndex ?? 0,
@@ -114,7 +114,7 @@ public class StoryBeatService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = beat.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -126,18 +126,18 @@ public class StoryBeatService : CoreService
     public async Task<ApiResponseDto<StoryBeatResponseDto>> UpdateStoryBeatAsync(Guid id, StoryBeatUpdateDto updateDto)
     {
         var beat = await _db.StoryBeats
-            .Include(sb => sb.MetaInfo)
+            .Include(sb => sb.ContentMetaInfo)
             .FirstOrDefaultAsync(sb => sb.Id == id);
 
         if (beat is null)
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Apply MetaInfo updates via helper
-        ApplyMetaInfoUpdates(beat.MetaInfo, updateDto.MetaInfo);
+        // Apply ContentMetaInfo updates via helper
+        ApplyMetaInfoUpdates(beat.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.Description != null)
             beat.Description = updateDto.Description;
@@ -151,11 +151,11 @@ public class StoryBeatService : CoreService
         {
             Id = beat.Id,
             MetaInfoId = beat.MetaInfoId,
-            MetaInfoTitle = beat.MetaInfo.Title,
-            Status = beat.MetaInfo.Status,
-            IsPublic = beat.MetaInfo.IsPublic,
-            CreatedAt = beat.MetaInfo.CreatedAt,
-            LastModifiedAt = beat.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = beat.ContentMetaInfo.Title,
+            Status = beat.ContentMetaInfo.Status,
+            IsPublic = beat.ContentMetaInfo.IsPublic,
+            CreatedAt = beat.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = beat.ContentMetaInfo.LastModifiedAt,
             StoryId = beat.StoryId,
             Description = beat.Description,
             OrderIndex = beat.OrderIndex
@@ -169,25 +169,25 @@ public class StoryBeatService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryBeatAsync(Guid id)
     {
         var beat = await _db.StoryBeats
-            .Include(sb => sb.MetaInfo)
+            .Include(sb => sb.ContentMetaInfo)
             .FirstOrDefaultAsync(sb => sb.Id == id);
 
         if (beat is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(beat.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(beat.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Delete MetaInfo first (FK dependency), then StoryBeat
-        _db.MetaInfos.Remove(beat.MetaInfo);
+        // Delete ContentMetaInfo first (FK dependency), then StoryBeat
+        _db.MetaInfos.Remove(beat.ContentMetaInfo);
         _db.StoryBeats.Remove(beat);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = beat.MetaInfo.ProjectId
+            ProjectId = beat.ContentMetaInfo.ProjectId
         });
     }
 }

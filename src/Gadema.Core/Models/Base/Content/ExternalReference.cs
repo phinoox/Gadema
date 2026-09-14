@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents an external reference (Google Docs, Pinterest boards, etc.).
 /// Used for linking to external resources like GDD documents or art references.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class ExternalReference
 {
     /// <summary>
@@ -20,7 +21,7 @@ public class ExternalReference
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// Type of parent entity (0=MetaInfo, 1=Task, 2=Comment).
+    /// Type of parent entity (0=ContentMetaInfo, 1=Task, 2=Comment).
     /// </summary>
     public int ParentType { get; set; }
     

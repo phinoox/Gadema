@@ -90,8 +90,8 @@ public class ProjectService : CoreService, ISearchableProvider
                 Audience = dto.Audience
             };
 
-            // The identity strategy handles the creation of MetaInfo and its tags
-            await _identityStrategy.SyncAsync(project.Id, dto.MetaInfo);
+            // The identity strategy handles the creation of ContentMetaInfo and its tags
+            await _identityStrategy.SyncAsync(project.Id, dto.ContentMetaInfo);
 
             _db.Projects.Add(project);
             await _db.SaveChangesAsync();
@@ -119,7 +119,7 @@ public class ProjectService : CoreService, ISearchableProvider
         if (error != null) return error;
 
         var project = await _db.Projects
-            .Include(p => p.MetaInfo)
+            .Include(p => p.ContentMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == projectId);
 
         if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -136,7 +136,7 @@ public class ProjectService : CoreService, ISearchableProvider
         try
         {
             var project = await _db.Projects
-                .Include(p => p.MetaInfo)
+                .Include(p => p.ContentMetaInfo)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -152,9 +152,9 @@ public class ProjectService : CoreService, ISearchableProvider
             if (dto.Audience.HasValue) project.Audience = dto.Audience.Value;
 
             // 2. Sync Identity via Strategy (Handles ProjectMetaInfo and Tags)
-            if (dto.MetaInfo != null)
+            if (dto.ContentMetaInfo != null)
             {
-                await _identityStrategy.SyncAsync(projectId, dto.MetaInfo);
+                await _identityStrategy.SyncAsync(projectId, dto.ContentMetaInfo);
             }
 
             await _db.SaveChangesAsync();
@@ -195,12 +195,12 @@ public class ProjectService : CoreService, ISearchableProvider
     private ProjectResponseDto MapToResponseDto(Project p) => new()
     {
         Id = p.Id,
-        Title = p.MetaInfo.Title,
-        Slug = p.MetaInfo.Slug,
-        Status = p.MetaInfo.Status,
-        Visibility = p.MetaInfo.Visibility,
-        ViewMode = p.MetaInfo.ViewMode,
-        CreatedAt = p.MetaInfo.CreatedAt,
+        Title = p.ContentMetaInfo.Title,
+        Slug = p.ContentMetaInfo.Slug,
+        Status = p.ContentMetaInfo.Status,
+        Visibility = p.ContentMetaInfo.Visibility,
+        ViewMode = p.ContentMetaInfo.ViewMode,
+        CreatedAt = p.ContentMetaInfo.CreatedAt,
         Description = p.Description,
         IsActive = p.IsActive,
         PrimaryFormat = p.PrimaryFormat,

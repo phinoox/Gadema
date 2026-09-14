@@ -5,14 +5,14 @@ using Gadema.Core.Models;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.Projects;
 
-[ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class WorldLocation
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [Required] public LocationType LocationType { get; set; }
 

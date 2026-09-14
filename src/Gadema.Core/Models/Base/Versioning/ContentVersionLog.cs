@@ -10,7 +10,7 @@ namespace Gadema.Core.Models;
 /// <summary>
 /// Represents a content version log for rollback support.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class ContentVersionLog
 {
     /// <summary>
@@ -24,9 +24,9 @@ public class ContentVersionLog
     [Required]
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property: MetaInfo (Many-to-One)
+    // Navigation property: ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; }
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; }
     
     /// <summary>
     /// ID of the user who made the change.

@@ -4,17 +4,17 @@ using Gadema.Core.Models.Content;
 
 namespace Gadema.Data.Configurations.Content;
 
-public class MetaInfoTagRelationEntityTypeConfiguration : IEntityTypeConfiguration<MetaInfoTagRelation>
+public class MetaInfoTagRelationEntityTypeConfiguration : IEntityTypeConfiguration<ContentMetaInfoTagRelation>
 {
-    public void Configure(EntityTypeBuilder<MetaInfoTagRelation> builder)
+    public void Configure(EntityTypeBuilder<ContentMetaInfoTagRelation> builder)
     {
         builder.HasKey(e => new { e.MetaInfoId, e.MetaInfoTagId });
 
         builder.HasIndex(e => e.MetaInfoTagId);
 
         /*
-        builder.HasOne(ct => ct.MetaInfo)
-            .WithMany(p => p.MetaInfoTagRelations) // Requires adding this collection to MetaInfo.cs
+        builder.HasOne(ct => ct.ContentMetaInfo)
+            .WithMany(p => p.MetaInfoTagRelations) // Requires adding this collection to ContentMetaInfo.cs
             .HasForeignKey(ct => ct.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);
 */

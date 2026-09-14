@@ -17,7 +17,7 @@ public class ProjectMetaInfoCreateDto
 // 2. Create DTO (The entry point)
 public class ProjectCreateDto
 {
-    public ProjectMetaInfoCreateDto MetaInfo { get; set; } = null!;
+    public ProjectMetaInfoCreateDto ContentMetaInfo { get; set; } = null!;
     public string? Description { get; set; }
     public bool EnableUserRegistration { get; set; }
     public bool AllowManualInvites { get; set; }
@@ -42,7 +42,7 @@ public class ProjectUpdateDto
     public AudienceEnum? Audience { get; set; }
     
     // The identity payload that includes the tags to sync
-    public ProjectMetaInfoUpdateData? MetaInfo { get; set; }
+    public ProjectMetaInfoUpdateData? ContentMetaInfo { get; set; }
 }
 
 // 4. Identity Update DTO (Used within ProjectUpdateDto)

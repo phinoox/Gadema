@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing Scenes within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class SceneService : CoreService
 {
@@ -31,20 +31,20 @@ public class SceneService : CoreService
         if (error != null) return error;
 
         var scenes = await _db.Scenes
-            .Include(s => s.MetaInfo)
-            .Where(s => s.MetaInfo.ProjectId == projectId)
+            .Include(s => s.ContentMetaInfo)
+            .Where(s => s.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(s => s.OrderIndex)
             .Select(s => new SceneResponseDto
             {
                 Id = s.Id,
                 MetaInfoId = s.MetaInfoId,
-                MetaInfoTitle = s.MetaInfo.Title,
+                MetaInfoTitle = s.ContentMetaInfo.Title,
                 RawText = s.RawText,
                 StoryChapterId = s.StoryChapterId,
                 OrderIndex = s.OrderIndex,
-                Status = s.MetaInfo.Status,
-                CreatedAt = s.MetaInfo.CreatedAt,
-                LastModifiedAt = s.MetaInfo.LastModifiedAt,
+                Status = s.ContentMetaInfo.Status,
+                CreatedAt = s.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = s.ContentMetaInfo.LastModifiedAt,
             })
             .ToListAsync();
 
@@ -58,27 +58,27 @@ public class SceneService : CoreService
     public async Task<ApiResponseDto<SceneResponseDto>> GetSceneAsync(Guid id)
     {
         var scene = await _db.Scenes
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
         {
             Id = scene.Id,
             MetaInfoId = scene.MetaInfoId,
-            MetaInfoTitle = scene.MetaInfo.Title,
+            MetaInfoTitle = scene.ContentMetaInfo.Title,
             RawText = scene.RawText,
             StoryChapterId = scene.StoryChapterId,
             OrderIndex = scene.OrderIndex,
-            Status = scene.MetaInfo.Status,
-            CreatedAt = scene.MetaInfo.CreatedAt,
-            LastModifiedAt = scene.MetaInfo.LastModifiedAt
+            Status = scene.ContentMetaInfo.Status,
+            CreatedAt = scene.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = scene.ContentMetaInfo.LastModifiedAt
         });
     }
 
@@ -93,16 +93,16 @@ public class SceneService : CoreService
         if (error != null) return error;
 
         var user = _userContext.CurrentUser!;
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // Create the Scene entity
         var scene = new Scene
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             RawText = string.Empty,
             StoryChapterId = createDto.StoryChapterId,
             OrderIndex = createDto.OrderIndex ?? 0,
@@ -116,7 +116,7 @@ public class SceneService : CoreService
             
             
                 EntityId = scene.Id,
-                MetaInfoId = metaInfo.Id,
+                MetaInfoId = ContentMetaInfo.Id,
                 ProjectId = projectId
             
         });
@@ -129,14 +129,14 @@ public class SceneService : CoreService
     public async Task<ApiResponseDto<SceneResponseDto>> UpdateSceneAsync(Guid id, SceneUpdateDto updateDto)
     {
         var scene = await _db.Scenes
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
 
@@ -149,23 +149,23 @@ public class SceneService : CoreService
             scene.OrderIndex = updateDto.OrderIndex.Value;
 
 
-        ApplyMetaInfoUpdates(scene.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(scene.ContentMetaInfo, updateDto.ContentMetaInfo);
         
 
-        scene.MetaInfo.LastModifiedAt = DateTime.UtcNow;
+        scene.ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
         {
             Id = scene.Id,
             MetaInfoId = scene.MetaInfoId,
-            MetaInfoTitle = scene.MetaInfo.Title,
+            MetaInfoTitle = scene.ContentMetaInfo.Title,
             RawText = scene.RawText,
             StoryChapterId = scene.StoryChapterId,
             OrderIndex = scene.OrderIndex,
-            Status = scene.MetaInfo.Status,
-            CreatedAt = scene.MetaInfo.CreatedAt,
-            LastModifiedAt = scene.MetaInfo.LastModifiedAt
+            Status = scene.ContentMetaInfo.Status,
+            CreatedAt = scene.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = scene.ContentMetaInfo.LastModifiedAt
         });
     }
 
@@ -176,25 +176,25 @@ public class SceneService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSceneAsync(Guid id)
     {
         var scene = await _db.Scenes
-            .Include(s => s.MetaInfo)
+            .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (scene is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Delete MetaInfo first (FK dependency), then Scene
-        _db.MetaInfos.Remove(scene.MetaInfo);
+        // Delete ContentMetaInfo first (FK dependency), then Scene
+        _db.MetaInfos.Remove(scene.ContentMetaInfo);
         _db.Scenes.Remove(scene);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = scene.MetaInfo.ProjectId
+            ProjectId = scene.ContentMetaInfo.ProjectId
         });
     }
 }

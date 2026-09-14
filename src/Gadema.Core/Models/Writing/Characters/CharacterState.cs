@@ -15,14 +15,14 @@ namespace Gadema.Core.Models.Characters;
 /// This is NOT the character's permanent identity — those live in Character and CharacterStoryProfile.
 /// A character can have multiple CharacterState records over time (one per story arc/chapter).
 /// </summary>
-[ModelDependency(typeof(Project), typeof(MetaInfo),typeof(Character), typeof(Faction), typeof(WorldLocation))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo),typeof(Character), typeof(Faction), typeof(WorldLocation))]
 public class CharacterState
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     /// <summary>
     /// The character's current role in the story (Protagonist, Antagonist, Mentor, SideCharacter, etc.)

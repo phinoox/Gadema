@@ -26,7 +26,7 @@ public class StoryOutline
 
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [Required] public Guid StoryId { get; set; }
     [ForeignKey("StoryId")] 

@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Stores intentional milestones with user-provided context for version control.
 /// Backs the horizontal timeline in the Top Panel and History tab in the Right Panel.
 /// </summary>
-[ModelDependency(typeof(MetaInfo))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class ContentSnapshot
 {
     /// <summary>
@@ -22,14 +22,14 @@ public class ContentSnapshot
     
     /// <summary>
     /// ID of the content item this snapshot belongs to.
-    /// Links to MetaInfo (MetaInfo) for the saved scene/outline/etc.
+    /// Links to ContentMetaInfo (ContentMetaInfo) for the saved scene/outline/etc.
     /// </summary>
     [Required]
     public Guid MetaInfoId { get; set; }
     
-    // Navigation property: MetaInfo (MetaInfo)
+    // Navigation property: ContentMetaInfo (ContentMetaInfo)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
     
     /// <summary>
     /// User-provided comment explaining why this snapshot was saved.

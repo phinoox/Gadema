@@ -32,8 +32,8 @@ public class ContentSnapshotEntityTypeConfiguration : IEntityTypeConfiguration<C
         builder.HasIndex(e => e.CreatedByUserId);
         builder.HasIndex(e => e.CreatedAt);  // Query recent snapshots
         
-        // Navigation property: MetaInfo (MetaInfo)
-        builder.HasOne(cs => cs.MetaInfo)
+        // Navigation property: ContentMetaInfo (ContentMetaInfo)
+        builder.HasOne(cs => cs.ContentMetaInfo)
             .WithMany()
             .HasForeignKey(cs => cs.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);  // Cascade delete snapshot when content item deleted

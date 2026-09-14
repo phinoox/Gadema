@@ -12,9 +12,9 @@ public class ContentTagRelationEntityTypeConfiguration : IEntityTypeConfiguratio
         // Composite Primary Key: A piece of content can only have a specific tag once
         builder.HasKey(r => new { r.MetaInfoId, r.TagId });
 
-        // Relationship to MetaInfo (The Content Anchor)
-        builder.HasOne(r => r.MetaInfo)
-            .WithMany() // MetaInfo doesn't need a collection of content tags
+        // Relationship to ContentMetaInfo (The Content Anchor)
+        builder.HasOne(r => r.ContentMetaInfo)
+            .WithMany() // ContentMetaInfo doesn't need a collection of content tags
             .HasForeignKey(r => r.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);
 

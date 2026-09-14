@@ -1,17 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Game;
 
-[ModelDependency(typeof(MetaInfo), typeof(SceneSegment))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(SceneSegment))]
 public class GameKeyEvent
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
     [Required] public Guid MetaInfoId { get; set; }
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
     
 
     [Required] public Guid SceneSegmentId { get; set; }

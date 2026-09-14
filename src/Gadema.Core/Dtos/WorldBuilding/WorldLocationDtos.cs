@@ -32,9 +32,9 @@ public class WorldLocationCreateDto
 public class WorldLocationUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// MetaInfo fields (nullable — omit to keep current).
+    /// ContentMetaInfo fields (nullable — omit to keep current).
     /// </summary>
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     /// <summary>
     /// Type of the location.
@@ -53,7 +53,7 @@ public class WorldLocationUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for a world location. Inherits MetaInfo state (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt).
+/// Response DTO for a world location. Inherits ContentMetaInfo state (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt).
 /// </summary>
 public class WorldLocationResponseDto : MetaInfoResponseBaseDto
 {

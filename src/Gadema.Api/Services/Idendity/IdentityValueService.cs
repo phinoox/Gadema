@@ -38,7 +38,7 @@ public class IdentityValueService : CoreService
         var error = await ValidateProjectAccessAsync<ListResponseDto<IdentityValueResponseDto>>(projectId);
         if (error != null) return error;
 
-        IQueryable<IdentityValue> query = _db.IdentityValues.Where(iv => iv.MetaInfo.ProjectId == projectId).OrderByDescending(iv => iv.CreatedAt);
+        IQueryable<IdentityValue> query = _db.IdentityValues.Where(iv => iv.ContentMetaInfo.ProjectId == projectId).OrderByDescending(iv => iv.CreatedAt);
 
         if (definitionId.HasValue) query = query.Where(iv => iv.DefinitionId == definitionId.Value);
 
@@ -51,7 +51,7 @@ public class IdentityValueService : CoreService
         var value = await _db.IdentityValues.Include(iv => iv.Definition).FirstOrDefaultAsync(iv => iv.Id == id);
         if (value is null) return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueResponseDto>(value.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<IdentityValueResponseDto>.Success(CreateResponseDto(value));
@@ -63,18 +63,18 @@ public class IdentityValueService : CoreService
         if (error != null) return error;
 
         // Verify identity definition exists in the project
-        var definition = await _db.IdentityDefinitions.FirstOrDefaultAsync(id => id.Id == createDto.DefinitionId && id.MetaInfo.ProjectId == projectId);
+        var definition = await _db.IdentityDefinitions.FirstOrDefaultAsync(id => id.Id == createDto.DefinitionId && id.ContentMetaInfo.ProjectId == projectId);
         if (definition is null) return ApiResponseDto<CreateResponseDto>.BadRequest("Identity definition not found.");
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.IdentityValue, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.IdentityValue, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var value = new IdentityValue
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = ContentMetaInfo.Id.Value,
             DefinitionId = createDto.DefinitionId,
             Value = createDto.Value,
             IsDefault = createDto.IsDefault ?? false,
@@ -83,7 +83,7 @@ public class IdentityValueService : CoreService
         _db.IdentityValues.Add(value);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = value.Id, MetaInfoId = metaInfo.Id.Value, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = value.Id, MetaInfoId = ContentMetaInfo.Id.Value, ProjectId = projectId });
     }
 
     public async Task<ApiResponseDto<IdentityValueResponseDto>> UpdateValueAsync(Guid id, IdentityValueUpdateDto updateDto)
@@ -91,10 +91,10 @@ public class IdentityValueService : CoreService
         var value = await _db.IdentityValues.Include(iv => iv.Definition).FirstOrDefaultAsync(iv => iv.Id == id);
         if (value is null) return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueUpdateDto>(value.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityValueUpdateDto>(value.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(value.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(value.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (!string.IsNullOrWhiteSpace(updateDto.Value)) value.Value = updateDto.Value;
         if (updateDto.IsDefault.HasValue) value.IsDefault = updateDto.IsDefault.Value;
@@ -108,13 +108,13 @@ public class IdentityValueService : CoreService
         var value = await _db.IdentityValues.Include(iv => iv.Definition).FirstOrDefaultAsync(iv => iv.Id == id);
         if (value is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(value.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(value.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.IdentityValues.Remove(value);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = value.MetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = value.ContentMetaInfo.ProjectId });
     }
 }
    

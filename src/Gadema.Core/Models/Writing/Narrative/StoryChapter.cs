@@ -26,7 +26,7 @@ public class StoryChapter
     public Guid MetaInfoId { get; set; }  
     
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     [Required] public Guid StoryId { get; set; }
     [ForeignKey("StoryId")]

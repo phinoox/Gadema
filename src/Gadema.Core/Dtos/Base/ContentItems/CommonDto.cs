@@ -5,7 +5,7 @@ using Gadema.Core.Enums;
 namespace Gadema.Core.Dtos;
 
 /// <summary>
-/// Shared MetaInfo data for creation of any content entity.
+/// Shared ContentMetaInfo data for creation of any content entity.
 /// ContentType is resolved from the endpoint, not the body.
 /// </summary>
 public class MetaInfoCreateData
@@ -40,7 +40,7 @@ public class CreateResponseDto
     [Required, Display(Name = "Entity ID")]
     public Guid EntityId { get; set; }
     
-    [Required, Display(Name = "MetaInfo ID")]
+    [Required, Display(Name = "ContentMetaInfo ID")]
     public Guid MetaInfoId { get; set; }
     
     [Required, Display(Name = "Project ID")]
@@ -106,7 +106,7 @@ public abstract class MetaInfoResponseBaseDto
     public Guid Id { get; set; }
     public Guid MetaInfoId { get; set; }
     public string? MetaInfoTitle { get; set; }
-    public bool IsPublic { get; set; }  // ✅ Visibility of MetaInfo wrapper
+    public bool IsPublic { get; set; }  // ✅ Visibility of ContentMetaInfo wrapper
     public DateTime CreatedAt { get; set; }
     public DateTime LastModifiedAt { get; set; }
 

@@ -15,7 +15,7 @@ public class FactionEntityTypeConfiguration : IEntityTypeConfiguration<Faction>
         // Indexes
         builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_Faction_MetaInfoId");
         
-        // Note: Project access is handled via the MetaInfo in the Service layer
+        // Note: Project access is handled via the ContentMetaInfo in the Service layer
         // builder.HasIndex(e => e.ProjectId).HasDatabaseName("IX_Faction_ProjectId"); // Removed per convention
     }
 }

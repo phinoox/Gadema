@@ -12,7 +12,7 @@ namespace Gadema.Core.Models;
 /// Represents a task in the project workflow.
 /// Flat structure for ADHD-friendly task management (no hierarchical epics/stories).
 /// </summary>
-[ModelDependency(typeof(Project), typeof(MetaInfo))]
+[ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class ProjectTask
 {
     /// <summary>
@@ -31,13 +31,13 @@ public class ProjectTask
     public virtual Project Project { get; set; }
 
     /// <summary>
-    /// Optional FK to MetaInfo (nullable).
+    /// Optional FK to ContentMetaInfo (nullable).
     /// </summary>
-    public Guid? MetaInfoId { get; set; }  // Nullable FK to MetaInfo
+    public Guid? MetaInfoId { get; set; }  // Nullable FK to ContentMetaInfo
 
-    // Navigation property: MetaInfo (optional)
+    // Navigation property: ContentMetaInfo (optional)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo? MetaInfo { get; set; }
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
 
     /// <summary>
     /// Task title.

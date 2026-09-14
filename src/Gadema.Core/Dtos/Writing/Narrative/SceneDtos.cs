@@ -18,7 +18,7 @@ public class SceneCreateDto
 
 public class SceneUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [Required] public Guid StoryChapterId { get; set; }   // ← CHANGED
 

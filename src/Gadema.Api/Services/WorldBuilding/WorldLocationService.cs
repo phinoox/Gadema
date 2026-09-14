@@ -25,14 +25,14 @@ public class WorldLocationService : CoreService
         {
             Id = location.Id,
             MetaInfoId = location.MetaInfoId,
-            MetaInfoTitle = location.MetaInfo.Title,
-            Status = location.MetaInfo.Status,
-            IsPublic = location.MetaInfo.IsPublic,
+            MetaInfoTitle = location.ContentMetaInfo.Title,
+            Status = location.ContentMetaInfo.Status,
+            IsPublic = location.ContentMetaInfo.IsPublic,
             LocationType = location.LocationType,
             ParentId = location.ParentId,
             Description = location.Description,
-            CreatedAt = location.MetaInfo.CreatedAt,
-            LastModifiedAt = location.MetaInfo.LastModifiedAt,
+            CreatedAt = location.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = location.ContentMetaInfo.LastModifiedAt,
         };
 
     /// <summary>Creates a list response DTO from collection.</summary>
@@ -49,8 +49,8 @@ public class WorldLocationService : CoreService
         if (error != null) return error;
 
         IQueryable<WorldLocation> query = _db.WorldLocations
-            .Include(wl => wl.MetaInfo)
-            .Where(wl => wl.MetaInfo.ProjectId == projectId);
+            .Include(wl => wl.ContentMetaInfo)
+            .Where(wl => wl.ContentMetaInfo.ProjectId == projectId);
 
         if (locationType.HasValue)
             query = query.Where(wl => wl.LocationType == (LocationType)locationType.Value);
@@ -69,13 +69,13 @@ public class WorldLocationService : CoreService
     public async Task<ApiResponseDto<WorldLocationResponseDto>> GetLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
-            .Include(wl => wl.MetaInfo)
+            .Include(wl => wl.ContentMetaInfo)
             .FirstOrDefaultAsync(wl => wl.Id == id);
 
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
@@ -90,15 +90,15 @@ public class WorldLocationService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.WorldLocation, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.WorldLocation, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var location = new WorldLocation
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             LocationType = (LocationType)createDto.LocationType,
             ParentId = createDto.ParentId,
             Description = createDto.Description,
@@ -110,7 +110,7 @@ public class WorldLocationService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = location.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -122,16 +122,16 @@ public class WorldLocationService : CoreService
     public async Task<ApiResponseDto<WorldLocationResponseDto>> UpdateLocationAsync(Guid id, WorldLocationUpdateDto updateDto)
     {
         var location = await _db.WorldLocations
-            .Include(wl => wl.MetaInfo)
+            .Include(wl => wl.ContentMetaInfo)
             .FirstOrDefaultAsync(wl => wl.Id == id);
 
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(location.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(location.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.LocationType.HasValue)
             location.LocationType = (LocationType)updateDto.LocationType.Value;
@@ -154,23 +154,23 @@ public class WorldLocationService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
-            .Include(wl => wl.MetaInfo)
+            .Include(wl => wl.ContentMetaInfo)
             .FirstOrDefaultAsync(wl => wl.Id == id);
 
         if (location is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(location.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(location.MetaInfo);
+        _db.MetaInfos.Remove(location.ContentMetaInfo);
         _db.WorldLocations.Remove(location);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = location.MetaInfo.ProjectId
+            ProjectId = location.ContentMetaInfo.ProjectId
         });
     }
 }

@@ -14,7 +14,7 @@ namespace Gadema.Core.Models.Writing;
 
 /// <summary>
 /// Represents a Scene - the "Unit of Work" for writing in GaDeMa.
-/// Contains RawText (Markdown) and links to MetaInfo, StoryBeats, and SceneSegments.
+/// Contains RawText (Markdown) and links to ContentMetaInfo, StoryBeats, and SceneSegments.
 /// This is where the writer enters "Flow State" with zero friction.
 /// </summary>
 [ModelDependency(typeof(Project), typeof(StoryOutline))]
@@ -26,19 +26,19 @@ public class Scene
     public Guid Id { get; set; } = Guid.NewGuid();
 
     // ========================================================================
-    // MetaInfo Link (The "Metadata Wrapper")
+    // ContentMetaInfo Link (The "Metadata Wrapper")
     // ========================================================================
     
     /// <summary>
-    /// FK to the MetaInfo (MetaInfo) that holds Title, Slug, Tags for this scene.
-    /// The MetaInfo acts as the source of truth for entity metadata.
+    /// FK to the ContentMetaInfo (ContentMetaInfo) that holds Title, Slug, Tags for this scene.
+    /// The ContentMetaInfo acts as the source of truth for entity metadata.
     /// </summary>
     [Required]
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property: MetaInfo (MetaInfo)
+    // Navigation property: ContentMetaInfo (ContentMetaInfo)
     [ForeignKey("MetaInfoId")]
-    public virtual MetaInfo MetaInfo { get; set; } = null!;
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     public int? OrderIndex { get; set; }
 

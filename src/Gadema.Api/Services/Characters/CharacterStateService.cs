@@ -42,8 +42,8 @@ public class CharacterStateService : CoreService
         if (error != null) return error;
 
         var states = await _db.CharacterStates
-            .Include(cs => cs.MetaInfo)
-            .Where(cs => cs.MetaInfo.ProjectId == projectId)
+            .Include(cs => cs.ContentMetaInfo)
+            .Where(cs => cs.ContentMetaInfo.ProjectId == projectId)
             .OrderByDescending(cs => cs.CreatedAt)
             .ToListAsync();
 
@@ -60,13 +60,13 @@ public class CharacterStateService : CoreService
    public async Task<ApiResponseDto<CharacterStateResponseDto>> GetStateAsync(Guid id)
     {
         var state = await _db.CharacterStates
-            .Include(cs => cs.MetaInfo)
+            .Include(cs => cs.ContentMetaInfo)
             .FirstOrDefaultAsync(cs => cs.Id == id);
 
         if (state is null)
             return ApiResponseDto<CharacterStateResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStateResponseDto>(state.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStateResponseDto>(state.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterStateResponseDto>.Success(CreateResponseDto(state));
@@ -83,23 +83,23 @@ public class CharacterStateService : CoreService
 
         // 1. Ensure the character belongs to this project
         var character = await _db.Characters
-            .Include(c => c.MetaInfo)
-            .FirstOrDefaultAsync(c => c.Id == characterId && c.MetaInfo.ProjectId == projectId);
+            .Include(c => c.ContentMetaInfo)
+            .FirstOrDefaultAsync(c => c.Id == characterId && c.ContentMetaInfo.ProjectId == projectId);
 
         if (character is null)
             return ApiResponseDto<CreateResponseDto>.NotFound($"Character with ID {characterId} not found in this project.");
 
-        // 2. Create MetaInfo wrapper
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.CharacterState, createDto.CreateData);
+        // 2. Create ContentMetaInfo wrapper
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.CharacterState, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         // 3. Create the state entity
         var state = new CharacterState
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             StateName = createDto.StateName,
             Description = createDto.Description,
             CurrentValue = createDto.CurrentValue,
@@ -118,7 +118,7 @@ public class CharacterStateService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = state.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -130,19 +130,19 @@ public class CharacterStateService : CoreService
    public async Task<ApiResponseDto<CharacterStateResponseDto>> UpdateCharacterStateAsync(Guid id, CharacterStateUpdateDto updateDto)
     {
         var state = await _db.CharacterStates
-            .Include(cs => cs.MetaInfo)
+            .Include(cs => cs.ContentMetaInfo)
             .FirstOrDefaultAsync(cs => cs.Id == id);
 
         if (state is null)
             return ApiResponseDto<CharacterStateResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStateUpdateDto>(state.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStateUpdateDto>(state.ContentMetaInfo.ProjectId);
         if (error != null) return ApiResponseDto<CharacterStateResponseDto>.Unauthorized(error.Message ?? "not authorized");
 
-        // Update MetaInfo via helper
-        if (updateDto.MetaInfo != null)
+        // Update ContentMetaInfo via helper
+        if (updateDto.ContentMetaInfo != null)
         {
-            ApplyMetaInfoUpdates(state.MetaInfo, updateDto.MetaInfo);
+            ApplyMetaInfoUpdates(state.ContentMetaInfo, updateDto.ContentMetaInfo);
         }
 
         // Update State properties
@@ -169,24 +169,24 @@ public class CharacterStateService : CoreService
      public async Task<ApiResponseDto<DeleteResponseDto>> DeleteCharacterStateAsync(Guid id)
     {
         var state = await _db.CharacterStates
-            .Include(cs => cs.MetaInfo)
+            .Include(cs => cs.ContentMetaInfo)
             .FirstOrDefaultAsync(cs => cs.Id == id);
 
         if (state is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(state.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(state.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        // Remove MetaInfo and the associated State
-        _db.MetaInfos.Remove(state.MetaInfo);
+        // Remove ContentMetaInfo and the associated State
+        _db.MetaInfos.Remove(state.ContentMetaInfo);
         _db.CharacterStates.Remove(state);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = state.MetaInfo.ProjectId
+            ProjectId = state.ContentMetaInfo.ProjectId
         });
     }
    

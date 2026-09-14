@@ -13,7 +13,7 @@ namespace Gadema.Api.Services.Content;
 
 /// <summary>
 /// Service for managing External References (sources, citations, research materials).
-/// Tracks URLs, authors, titles, and notes with optional MetaInfo wrapper.
+/// Tracks URLs, authors, titles, and notes with optional ContentMetaInfo wrapper.
 /// </summary>
 public class ExternalReferenceService : CoreService
 {
@@ -49,8 +49,8 @@ public class ExternalReferenceService : CoreService
         if (error != null) return error;
 
         IQueryable<ExternalReference> query = _db.ExternalReferences
-            .Include(er => er.MetaInfo)
-            .Where(er => er.MetaInfo.ProjectId == projectId)
+            .Include(er => er.ContentMetaInfo)
+            .Where(er => er.ContentMetaInfo.ProjectId == projectId)
             .OrderByDescending(er => er.CreatedAt);
 
         if (referenceType.HasValue)
@@ -70,10 +70,10 @@ public class ExternalReferenceService : CoreService
 
     public async Task<ApiResponseDto<ReferenceResponseDto>> GetReferenceByIdAsync(Guid id)
     {
-        var reference = await _db.ExternalReferences.Include(er => er.MetaInfo).FirstOrDefaultAsync(er => er.Id == id);
+        var reference = await _db.ExternalReferences.Include(er => er.ContentMetaInfo).FirstOrDefaultAsync(er => er.Id == id);
         if (reference is null) return ApiResponseDto<ReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ReferenceResponseDto>(reference.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<ReferenceResponseDto>(reference.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<ReferenceResponseDto>.Success(CreateResponseDto(reference));
@@ -90,15 +90,15 @@ public class ExternalReferenceService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.ExternalReference, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.ExternalReference, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var reference = new ExternalReference
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = ContentMetaInfo.Id.Value,
             ReferenceType = createDto.ReferenceType ?? 0,
             Url = createDto.Url,
             Author = createDto.Author,
@@ -109,7 +109,7 @@ public class ExternalReferenceService : CoreService
         _db.ExternalReferences.Add(reference);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = reference.Id, MetaInfoId = metaInfo.Id.Value, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = reference.Id, MetaInfoId = ContentMetaInfo.Id.Value, ProjectId = projectId });
     }
 
     // ========================================================================
@@ -118,13 +118,13 @@ public class ExternalReferenceService : CoreService
 
     public async Task<ApiResponseDto<ReferenceResponseDto>> UpdateReferenceAsync(Guid id, ExternalReferenceUpdateDto updateDto)
     {
-        var reference = await _db.ExternalReferences.Include(er => er.MetaInfo).FirstOrDefaultAsync(er => er.Id == id);
+        var reference = await _db.ExternalReferences.Include(er => er.ContentMetaInfo).FirstOrDefaultAsync(er => er.Id == id);
         if (reference is null) return ApiResponseDto<ReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ExternalReferenceUpdateDto>(reference.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<ExternalReferenceUpdateDto>(reference.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(reference.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(reference.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.ReferenceType.HasValue) reference.ReferenceType = (ExternalReferenceTypeEnum)updateDto.ReferenceType.Value;
         if (!string.IsNullOrWhiteSpace(updateDto.Url)) reference.Url = updateDto.Url;
@@ -142,14 +142,14 @@ public class ExternalReferenceService : CoreService
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteReferenceAsync(Guid id)
     {
-        var reference = await _db.ExternalReferences.Include(er => er.MetaInfo).FirstOrDefaultAsync(er => er.Id == id);
+        var reference = await _db.ExternalReferences.Include(er => er.ContentMetaInfo).FirstOrDefaultAsync(er => er.Id == id);
         if (reference is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(reference.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(reference.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.ExternalReferences.Remove(reference);
         await _db.SaveChangesAsync();
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = reference.MetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = reference.ContentMetaInfo.ProjectId });
     }
 }

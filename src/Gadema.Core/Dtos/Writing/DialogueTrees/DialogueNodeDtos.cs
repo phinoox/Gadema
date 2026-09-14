@@ -25,7 +25,7 @@ public class DialogueNodeResponseDto
 {
     public Guid Id { get; set; }
     public Guid DialogueBranchId { get; set; }
-    public string BranchTitle { get; set; } = ""; // Denormalized from Branch MetaInfo
+    public string BranchTitle { get; set; } = ""; // Denormalized from Branch ContentMetaInfo
     public string NodeText { get; set; } = "";
     public Guid? SpeakerId { get; set; }
     public string? SpeakerName { get; set; }

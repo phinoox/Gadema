@@ -27,7 +27,7 @@ public class ExternalReferenceEntityTypeConfiguration : IEntityTypeConfiguration
         builder.HasIndex(e => e.ParentId);
         builder.HasIndex(e => e.Url).IsUnique();
         
-        // Navigation property: MetaInfo/ProjectTask/Comment (Cascade delete)
+        // Navigation property: ContentMetaInfo/ProjectTask/Comment (Cascade delete)
         builder.HasOne(er => er.Parent)  // Parent navigation property
             .WithMany()
             .HasForeignKey(e => e.ParentId)

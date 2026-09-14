@@ -12,7 +12,7 @@ namespace Gadema.Api.Services.Narrative;
 
 /// <summary>
 /// Service for managing StoryChapters within the narrative domain.
-/// Handles CRUD operations including MetaInfo creation and authorization.
+/// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
 public class StoryChapterService : CoreService
 {
@@ -29,18 +29,18 @@ public class StoryChapterService : CoreService
         if (error != null) return error;
 
         var chapters = await _db.StorySequences
-            .Include(sc => sc.MetaInfo)
-            .Where(sc => sc.MetaInfo.ProjectId == projectId)
+            .Include(sc => sc.ContentMetaInfo)
+            .Where(sc => sc.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(sc => sc.OrderIndex)
             .Select(sc => new StoryChapterResponseDto
             {
                 Id = sc.Id,
                 MetaInfoId = sc.MetaInfoId,
-                MetaInfoTitle = sc.MetaInfo.Title,
-                Status = sc.MetaInfo.Status,
-                IsPublic = sc.MetaInfo.IsPublic,
-                CreatedAt = sc.MetaInfo.CreatedAt,
-                LastModifiedAt = sc.MetaInfo.LastModifiedAt,
+                MetaInfoTitle = sc.ContentMetaInfo.Title,
+                Status = sc.ContentMetaInfo.Status,
+                IsPublic = sc.ContentMetaInfo.IsPublic,
+                CreatedAt = sc.ContentMetaInfo.CreatedAt,
+                LastModifiedAt = sc.ContentMetaInfo.LastModifiedAt,
                 StoryId = sc.StoryId,
                 Description = sc.Description,
                 OrderIndex = sc.OrderIndex
@@ -57,24 +57,24 @@ public class StoryChapterService : CoreService
     public async Task<ApiResponseDto<StoryChapterResponseDto>> GetStoryChapterAsync(Guid id)
     {
         var chapter = await _db.StorySequences
-            .Include(sc => sc.MetaInfo)
+            .Include(sc => sc.ContentMetaInfo)
             .FirstOrDefaultAsync(sc => sc.Id == id);
 
         if (chapter is null)
             return ApiResponseDto<StoryChapterResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<StoryChapterResponseDto>.Success(new StoryChapterResponseDto
         {
             Id = chapter.Id,
             MetaInfoId = chapter.MetaInfoId,
-            MetaInfoTitle = chapter.MetaInfo.Title,
-            Status = chapter.MetaInfo.Status,
-            IsPublic = chapter.MetaInfo.IsPublic,
-            CreatedAt = chapter.MetaInfo.CreatedAt,
-            LastModifiedAt = chapter.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = chapter.ContentMetaInfo.Title,
+            Status = chapter.ContentMetaInfo.Status,
+            IsPublic = chapter.ContentMetaInfo.IsPublic,
+            CreatedAt = chapter.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = chapter.ContentMetaInfo.LastModifiedAt,
             StoryId = chapter.StoryId,
             Description = chapter.Description,
             OrderIndex = chapter.OrderIndex
@@ -90,15 +90,15 @@ public class StoryChapterService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var chapter = new StoryChapter
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             StoryId = createDto.StoryId,
             Description = createDto.Description,
             OrderIndex = createDto.OrderIndex ?? 0,
@@ -110,7 +110,7 @@ public class StoryChapterService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = chapter.Id,
-            MetaInfoId = metaInfo.Id,
+            MetaInfoId = ContentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -122,16 +122,16 @@ public class StoryChapterService : CoreService
     public async Task<ApiResponseDto<StoryChapterResponseDto>> UpdateStoryChapterAsync(Guid id, StoryChapterUpdateDto updateDto)
     {
         var chapter = await _db.StorySequences
-            .Include(sc => sc.MetaInfo)
+            .Include(sc => sc.ContentMetaInfo)
             .FirstOrDefaultAsync(sc => sc.Id == id);
 
         if (chapter is null)
             return ApiResponseDto<StoryChapterResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(chapter.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(chapter.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (updateDto.StoryId != Guid.Empty)
             chapter.StoryId = updateDto.StoryId;
@@ -148,11 +148,11 @@ public class StoryChapterService : CoreService
         {
             Id = chapter.Id,
             MetaInfoId = chapter.MetaInfoId,
-            MetaInfoTitle = chapter.MetaInfo.Title,
-            Status = chapter.MetaInfo.Status,
-            IsPublic = chapter.MetaInfo.IsPublic,
-            CreatedAt = chapter.MetaInfo.CreatedAt,
-            LastModifiedAt = chapter.MetaInfo.LastModifiedAt,
+            MetaInfoTitle = chapter.ContentMetaInfo.Title,
+            Status = chapter.ContentMetaInfo.Status,
+            IsPublic = chapter.ContentMetaInfo.IsPublic,
+            CreatedAt = chapter.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = chapter.ContentMetaInfo.LastModifiedAt,
             StoryId = chapter.StoryId,
             Description = chapter.Description,
             OrderIndex = chapter.OrderIndex
@@ -166,23 +166,23 @@ public class StoryChapterService : CoreService
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryChapterAsync(Guid id)
     {
         var chapter = await _db.StorySequences
-            .Include(sc => sc.MetaInfo)
+            .Include(sc => sc.ContentMetaInfo)
             .FirstOrDefaultAsync(sc => sc.Id == id);
 
         if (chapter is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(chapter.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(chapter.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(chapter.MetaInfo);
+        _db.MetaInfos.Remove(chapter.ContentMetaInfo);
         _db.StorySequences.Remove(chapter);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = chapter.MetaInfo.ProjectId
+            ProjectId = chapter.ContentMetaInfo.ProjectId
         });
     }
 }

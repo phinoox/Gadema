@@ -255,7 +255,7 @@ public class MetaInfoServiceIntegrationTests : IClassFixture<ApiWebApplicationFa
     {
         var scope = _factory.GetScope();
 
-        // Ancestor path for MetaInfo — explicit, in FK order:
+        // Ancestor path for ContentMetaInfo — explicit, in FK order:
         // Project.OwnerId is an FK to Projects (self-reference), so seed a parent first.
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
@@ -288,7 +288,7 @@ public class MetaInfoServiceIntegrationTests : IClassFixture<ApiWebApplicationFa
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
+        var item = DbSeeder.Create<ContentMetaInfo>(i => i.Project = project);
         item.Title = "C";
         DbSeeder.Seed(scope, item);
 
@@ -318,7 +318,7 @@ public class MetaInfoServiceIntegrationTests : IClassFixture<ApiWebApplicationFa
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
+        var item = DbSeeder.Create<ContentMetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
 
         //act
@@ -515,7 +515,7 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
+        var item = DbSeeder.Create<ContentMetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
 
         // Act
@@ -537,9 +537,9 @@ public class ReviewStatusServiceIntegrationTests : IClassFixture<ApiWebApplicati
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
-        var item = DbSeeder.Create<MetaInfo>(i => i.Project = project);
+        var item = DbSeeder.Create<ContentMetaInfo>(i => i.Project = project);
         DbSeeder.Seed(scope, item);
-        var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.MetaInfo = item);
+        var reviewStatus = item.ReviewStatus;//DbSeeder.Create<ReviewStatus>(rs => rs.ContentMetaInfo = item);
         //DbSeeder.Seed<ReviewStatus>(scope,reviewStatus);
         // Act
         var result = await _reviewStatusService.ApproveContentAsync(reviewStatus.Id, new ApproveContentDto

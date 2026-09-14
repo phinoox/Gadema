@@ -21,8 +21,8 @@ public class ContentVersionLogEntityTypeConfiguration : IEntityTypeConfiguration
         builder.HasIndex(e => e.MetaInfoId);
         builder.HasIndex(e => e.VersionNumber);  // Query recent versions
         
-        // Navigation property: MetaInfo (SetNull to preserve version history)
-        builder.HasOne(cvl => cvl.MetaInfo)
+        // Navigation property: ContentMetaInfo (SetNull to preserve version history)
+        builder.HasOne(cvl => cvl.ContentMetaInfo)
             .WithMany(ci => ci.VersionLogs)
             .HasForeignKey(cvl => cvl.MetaInfoId)
             .OnDelete(DeleteBehavior.SetNull);

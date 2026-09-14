@@ -33,9 +33,9 @@ public class GameDbContext : DbContext
     #endregion
 
     /// <summary>
-    /// MetaInfo entity set.
+    /// ContentMetaInfo entity set.
     /// </summary>
-    public DbSet<MetaInfo> MetaInfos { get; set; }
+    public DbSet<ContentMetaInfo> MetaInfos { get; set; }
 
 
     /// <summary>
@@ -62,9 +62,9 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<ProjectTag> ProjectTags { get; set; }
 
-    public DbSet<MetaInfoTag> MetaInfoTags { get; set; }
+    public DbSet<ContentMetaInfoTag> MetaInfoTags { get; set; }
 
-    public DbSet<MetaInfoTagRelation> MetaInfoTagRelations { get; set; }
+    public DbSet<ContentMetaInfoTagRelation> MetaInfoTagRelations { get; set; }
     /// <summary>
     /// MediaAttachmentTagRelations junction table.
     /// </summary>

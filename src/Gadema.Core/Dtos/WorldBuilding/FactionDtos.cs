@@ -31,7 +31,7 @@ public class FactionCreateDto
 /// </summary>
 public class FactionUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? MetaInfo { get; set; }
+    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(4096)] public string? Ideology { get; set; }
     [MaxLength(4096)] public string? Goals { get; set; }
@@ -39,7 +39,7 @@ public class FactionUpdateDto : UpdateRequestDto
 }
 
 /// <summary>
-/// Response DTO for a faction. Inherits MetaInfo state.
+/// Response DTO for a faction. Inherits ContentMetaInfo state.
 /// </summary>
 public class FactionResponseDto : MetaInfoResponseBaseDto
 {

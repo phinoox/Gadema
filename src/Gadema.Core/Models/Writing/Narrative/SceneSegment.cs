@@ -4,13 +4,13 @@ using Gadema.Core.Models.Game;
 
 namespace Gadema.Core.Models.Writing;
 
-[ModelDependency(typeof(MetaInfo), typeof(Scene))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(Scene))]
 public class SceneSegment
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
     [Required] public Guid MetaInfoId { get; set; }
-    [ForeignKey("MetaInfoId")] public virtual MetaInfo MetaInfo { get; set; } = null!;
+    [ForeignKey("MetaInfoId")] public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     [Required] public Guid SceneId { get; set; }
     [ForeignKey("SceneId")] public virtual Scene Scene { get; set; } = null!;

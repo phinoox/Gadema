@@ -8,7 +8,7 @@ namespace Gadema.Core.Models.Content;
 /// Represents a tag specifically for MetaInfos (Characters, World, Mechanics, etc.).
 /// </summary>
 [ModelDependency(typeof(RootMarker))]
-public class MetaInfoTag
+public class ContentMetaInfoTag
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
@@ -22,5 +22,5 @@ public class MetaInfoTag
     public string? ColorHex { get; set; }
 
     // Navigation
-    public virtual ICollection<MetaInfoTagRelation> MetaInfoTagRelations { get; set; } = new List<MetaInfoTagRelation>();
+    public virtual ICollection<ContentMetaInfoTagRelation> MetaInfoTagRelations { get; set; } = new List<ContentMetaInfoTagRelation>();
 }

@@ -3,6 +3,7 @@ using Gadema.Core.Dtos;
 using Gadema.Core.Enums;
 using Gadema.Core.Interfaces.Identity;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
@@ -16,8 +17,8 @@ namespace Gadema.Api.Services;
 /// - Project access validation (ownership + team membership)
 /// - Project ID consistency validation (route vs body)
 /// - Slug generation utility
-/// - MetaInfo creation helper
-/// - MetaInfo update application helper
+/// - ContentMetaInfo creation helper
+/// - ContentMetaInfo update application helper
 /// </summary>
 public abstract class CoreService
 {
@@ -65,7 +66,7 @@ public abstract class CoreService
     }
 
     /// <summary>
-    /// Verifies that the target ID provided actually belongs to a MetaInfo entry within the specified project.
+    /// Verifies that the target ID provided actually belongs to a ContentMetaInfo entry within the specified project.
     /// This is crucial for ancillary data like Comments or Tags.
     /// </summary>
     protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
@@ -134,21 +135,21 @@ public abstract class CoreService
     }
 
     // ========================================================================
-    // METAINFO HELPERS
+    // ContentMetaInfo HELPERS
     // ========================================================================
 
     /// <summary>
-    /// Creates a new MetaInfo entity from creation data.
+    /// Creates a new ContentMetaInfo entity from creation data.
     /// Sets default ContentType, ViewMode, and timestamps.
     /// Generates a slug if none provided in the create data.
     /// </summary>
-    protected MetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, MetaInfoCreateData createData)
+    protected ContentMetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, MetaInfoCreateData createData)
     {
         var user = _userContext.CurrentUser;
         if (user == null)
             throw new UnauthorizedAccessException("Not authenticated.");
 
-        return new MetaInfo
+        return new ContentMetaInfo
         {
             Id = Guid.NewGuid(),
             ProjectId = projectId,
@@ -168,28 +169,28 @@ public abstract class CoreService
     }
 
     /// <summary>
-    /// Applies MetaInfoUpdateData fields to an existing MetaInfo entity.
+    /// Applies MetaInfoUpdateData fields to an existing ContentMetaInfo entity.
     /// Only non-null/non-empty fields are applied (partial update pattern).
     /// Returns true if any field was actually updated.
     /// </summary>
-    protected bool ApplyMetaInfoUpdates(MetaInfo metaInfo, MetaInfoUpdateData? updateData)
+    protected bool ApplyMetaInfoUpdates(ContentMetaInfo ContentMetaInfo, MetaInfoUpdateData? updateData)
     {
         if (updateData == null) return false;
 
         if (!string.IsNullOrWhiteSpace(updateData.Title))
-            metaInfo.Title = updateData.Title;
+            ContentMetaInfo.Title = updateData.Title;
 
         if (!string.IsNullOrWhiteSpace(updateData.Slug))
-            metaInfo.Slug = updateData.Slug;
+            ContentMetaInfo.Slug = updateData.Slug;
 
         if (updateData.ShortDesc != null)
-            metaInfo.ShortDesc = updateData.ShortDesc;
+            ContentMetaInfo.ShortDesc = updateData.ShortDesc;
 
         if (updateData.Status.HasValue)
-            metaInfo.Status = updateData.Status.Value;
+            ContentMetaInfo.Status = updateData.Status.Value;
 
         if (updateData.IsPublic.HasValue)
-            metaInfo.IsPublic = updateData.IsPublic.Value;
+            ContentMetaInfo.IsPublic = updateData.IsPublic.Value;
 
         return true;
     }

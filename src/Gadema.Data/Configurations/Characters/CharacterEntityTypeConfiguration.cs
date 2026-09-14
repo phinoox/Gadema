@@ -17,8 +17,8 @@ public class CharacterEntityTypeConfiguration : IEntityTypeConfiguration<Charact
         builder.HasIndex(e => e.StoryProfileId)
             .HasDatabaseName("IX_Character_StoryProfileId");
 
-        // Restrict: if MetaInfo is deleted, cascade the delete (character loses identity)
-        builder.HasOne(e => e.MetaInfo)
+        // Restrict: if ContentMetaInfo is deleted, cascade the delete (character loses identity)
+        builder.HasOne(e => e.ContentMetaInfo)
             .WithMany()
             .HasForeignKey(e => e.MetaInfoId)
             .OnDelete(DeleteBehavior.Restrict);

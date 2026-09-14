@@ -1,6 +1,7 @@
 // =============================================================================
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -41,7 +42,7 @@ public class Project
     public virtual ProjectSeries? ProjectSeries { get; set; }
 
     // New Relationship to the identity anchor
-    public virtual ProjectMetaInfo MetaInfo { get; set; } = null!;
+    public virtual ProjectMetaInfo ContentMetaInfo { get; set; } = null!;
 
     // ... remaining relationships (Members, Tokens, Tasks, etc.) remain unchanged ...
 

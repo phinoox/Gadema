@@ -29,8 +29,8 @@ public class OutlineSectionService : CoreService
 
         var sections = await _db.OutlineSections
             .Include(os => os.StoryOutline)
-            .ThenInclude(so => so.MetaInfo)
-            .Where(os => os.StoryOutline.MetaInfo.ProjectId == projectId)
+            .ThenInclude(so => so.ContentMetaInfo)
+            .Where(os => os.StoryOutline.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(os => os.StoryOutlineId)
             .ThenBy(os => os.SortOrder)
             .Select(os => new OutlineSectionResponseDto
@@ -55,14 +55,14 @@ public class OutlineSectionService : CoreService
     {
         var section = await _db.OutlineSections
             .Include(os => os.StoryOutline)
-            .ThenInclude(so => so.MetaInfo)
+            .ThenInclude(so => so.ContentMetaInfo)
             .Include(os => os.LinkedBeats)
             .FirstOrDefaultAsync(os => os.Id == id);
 
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<OutlineSectionResponseDto>.Success(new OutlineSectionResponseDto
@@ -87,13 +87,13 @@ public class OutlineSectionService : CoreService
 
         // Validate that the StoryOutline belongs to the project
         var outline = await _db.StoryOutlines
-            .Include(so => so.MetaInfo)
+            .Include(so => so.ContentMetaInfo)
             .FirstOrDefaultAsync(so => so.Id == createDto.StoryOutlineId);
 
         if (outline is null)
             return ApiResponseDto<CreateResponseDto>.NotFound($"StoryOutline with ID {createDto.StoryOutlineId} not found.");
 
-        if (outline.MetaInfo.ProjectId != projectId)
+        if (outline.ContentMetaInfo.ProjectId != projectId)
             return ApiResponseDto<CreateResponseDto>.BadRequest("StoryOutline does not belong to the specified project.");
 
         var section = new OutlineSection
@@ -122,7 +122,7 @@ public class OutlineSectionService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = section.Id,
-            MetaInfoId = section.Id, // OutlineSection doesn't have its own MetaInfo
+            MetaInfoId = section.Id, // OutlineSection doesn't have its own ContentMetaInfo
             ProjectId = projectId
         });
     }
@@ -135,14 +135,14 @@ public class OutlineSectionService : CoreService
     {
         var section = await _db.OutlineSections
             .Include(os => os.StoryOutline)
-            .ThenInclude(so => so.MetaInfo)
+            .ThenInclude(so => so.ContentMetaInfo)
             .Include(os => os.LinkedBeats)
             .FirstOrDefaultAsync(os => os.Id == id);
 
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         if (updateDto.Title != null)
@@ -188,13 +188,13 @@ public class OutlineSectionService : CoreService
     {
         var section = await _db.OutlineSections
             .Include(os => os.StoryOutline)
-            .ThenInclude(so => so.MetaInfo)
+            .ThenInclude(so => so.ContentMetaInfo)
             .FirstOrDefaultAsync(os => os.Id == id);
 
         if (section is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(section.StoryOutline.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.OutlineSections.Remove(section);
@@ -203,7 +203,7 @@ public class OutlineSectionService : CoreService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = section.StoryOutline.MetaInfo.ProjectId
+            ProjectId = section.StoryOutline.ContentMetaInfo.ProjectId
         });
     }
 }

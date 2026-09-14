@@ -41,8 +41,8 @@ public class IdentityDefinitionService : CoreService
         if (error != null) return error;
 
         var defs = await _db.IdentityDefinitions
-            .Include(id => id.MetaInfo)
-            .Where(id => id.MetaInfo.ProjectId == projectId)
+            .Include(id => id.ContentMetaInfo)
+            .Where(id => id.ContentMetaInfo.ProjectId == projectId)
             .OrderByDescending(id => id.CreatedAt)
             .Select(CreateResponseDto)
             .ToListAsync();
@@ -52,10 +52,10 @@ public class IdentityDefinitionService : CoreService
 
     public async Task<ApiResponseDto<IdentityDefinitionResponseDto>> GetDefinitionAsync(Guid id)
     {
-        var def = await _db.IdentityDefinitions.Include(id => id.MetaInfo).FirstOrDefaultAsync(id => id.Id == id);
+        var def = await _db.IdentityDefinitions.Include(id => id.ContentMetaInfo).FirstOrDefaultAsync(id => id.Id == id);
         if (def is null) return ApiResponseDto<IdentityDefinitionResponseDto>.NotFound($"Identity definition with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityDefinitionResponseDto>(def.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityDefinitionResponseDto>(def.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<IdentityDefinitionResponseDto>.Success(CreateResponseDto(def));
@@ -66,15 +66,15 @@ public class IdentityDefinitionService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.IdentityDefinition, createDto.CreateData);
+        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.IdentityDefinition, createDto.CreateData);
 
-        _db.MetaInfos.Add(metaInfo);
+        _db.MetaInfos.Add(ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         var def = new IdentityDefinition
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = ContentMetaInfo.Id.Value,
             Name = createDto.Name,
             Description = createDto.Description,
             DataType = (IdentityDataTypeEnum)createDto.DataType,
@@ -85,18 +85,18 @@ public class IdentityDefinitionService : CoreService
         _db.IdentityDefinitions.Add(def);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = def.Id, MetaInfoId = metaInfo.Id.Value, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = def.Id, MetaInfoId = ContentMetaInfo.Id.Value, ProjectId = projectId });
     }
 
     public async Task<ApiResponseDto<IdentityDefinitionResponseDto>> UpdateDefinitionAsync(Guid id, IdentityDefinitionUpdateDto updateDto)
     {
-        var def = await _db.IdentityDefinitions.Include(id => id.MetaInfo).FirstOrDefaultAsync(id => id.Id == id);
+        var def = await _db.IdentityDefinitions.Include(id => id.ContentMetaInfo).FirstOrDefaultAsync(id => id.Id == id);
         if (def is null) return ApiResponseDto<IdentityDefinitionResponseDto>.NotFound($"Identity definition with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityDefinitionUpdateDto>(def.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityDefinitionUpdateDto>(def.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(def.MetaInfo, updateDto.MetaInfo);
+        ApplyMetaInfoUpdates(def.ContentMetaInfo, updateDto.ContentMetaInfo);
 
         if (!string.IsNullOrWhiteSpace(updateDto.Name)) def.Name = updateDto.Name;
         if (updateDto.Description != null) def.Description = updateDto.Description;
@@ -110,16 +110,16 @@ public class IdentityDefinitionService : CoreService
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteDefinitionAsync(Guid id)
     {
-        var def = await _db.IdentityDefinitions.Include(id => id.MetaInfo).FirstOrDefaultAsync(id => id.Id == id);
+        var def = await _db.IdentityDefinitions.Include(id => id.ContentMetaInfo).FirstOrDefaultAsync(id => id.Id == id);
         if (def is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Identity definition with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(def.MetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(def.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(def.MetaInfo);
+        _db.MetaInfos.Remove(def.ContentMetaInfo);
         _db.IdentityDefinitions.Remove(def);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = def.MetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = def.ContentMetaInfo.ProjectId });
     }
 }

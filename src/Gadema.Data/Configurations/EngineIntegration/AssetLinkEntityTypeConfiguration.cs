@@ -25,8 +25,8 @@ public class AssetLinkEntityTypeConfiguration : IEntityTypeConfiguration<AssetLi
         // Indexes for frequently filtered columns
         builder.HasIndex(e => e.MetaInfoId);  // Filter by content item
         
-        // Navigation property: MetaInfo (Cascade delete)
-        builder.HasOne(al => al.MetaInfo)
+        // Navigation property: ContentMetaInfo (Cascade delete)
+        builder.HasOne(al => al.ContentMetaInfo)
             .WithMany(ci => ci.AssetLinks)  // Lazy loading navigation
             .HasForeignKey(al => al.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);

@@ -38,14 +38,14 @@ public class CharacterRelationService : CoreService
 
     public async Task<ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>> GetRelationsAsync(Guid projectId)
     {
-        // Validate access via the Scene's MetaInfo
+        // Validate access via the Scene's ContentMetaInfo
         var error = await ValidateProjectAccessAsync<IEnumerable<CharacterRelationResponseDto>>(projectId);
         if (error != null) return error;
 
         var relations = await _db.CharacterRelations
             .Include(cr => cr.TriggerScene)
-                .ThenInclude(s => s.MetaInfo)
-            .Where(cr => cr.TriggerScene.MetaInfo.ProjectId == projectId)
+                .ThenInclude(s => s.ContentMetaInfo)
+            .Where(cr => cr.TriggerScene.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(cr => cr.RelationType)
             .ToListAsync();
 
@@ -57,14 +57,14 @@ public class CharacterRelationService : CoreService
     {
         var relation = await _db.CharacterRelations
             .Include(cr => cr.TriggerScene)
-                .ThenInclude(s => s.MetaInfo)
+                .ThenInclude(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's MetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.MetaInfo.ProjectId);
+        // Validate access via the Scene's ContentMetaInfo
+        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterRelationResponseDto>.Success(CreateResponseDto(relation));
@@ -78,15 +78,15 @@ public class CharacterRelationService : CoreService
     {
         // 1. Validate project access via the scene provided in DTO
         var scene = await _db.Scenes
-            .Include(s => s.MetaInfo)
-            .FirstOrDefaultAsync(s => s.Id == createDto.TriggerSceneId && s.MetaInfo.ProjectId == projectId);
+            .Include(s => s.ContentMetaInfo)
+            .FirstOrDefaultAsync(s => s.Id == createDto.TriggerSceneId && s.ContentMetaInfo.ProjectId == projectId);
 
         if (scene == null)
             return ApiResponseDto<CreateResponseDto>.NotFound("The specified scene does not exist in this project.");
 
         // 2. Verify characters belong to the same project (optional but recommended for data integrity)
-        var charAExists = await _db.Characters.AnyAsync(c => c.Id == createDto.SourceCharacterId && c.MetaInfo.ProjectId == projectId);
-        var charBExists = await _db.Characters.AnyAsync(c => c.Id == createDto.TargetCharacterId && c.MetaInfo.ProjectId == projectId);
+        var charAExists = await _db.Characters.AnyAsync(c => c.Id == createDto.SourceCharacterId && c.ContentMetaInfo.ProjectId == projectId);
+        var charBExists = await _db.Characters.AnyAsync(c => c.Id == createDto.TargetCharacterId && c.ContentMetaInfo.ProjectId == projectId);
 
         if (!charAExists || !charBExists)
             return ApiResponseDto<CreateResponseDto>.BadRequest("One or both characters do not belong to this project.");
@@ -129,14 +129,14 @@ public class CharacterRelationService : CoreService
     {
         var relation = await _db.CharacterRelations
             .Include(cr => cr.TriggerScene)
-                .ThenInclude(s => s.MetaInfo)
+                .ThenInclude(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's MetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.MetaInfo.ProjectId);
+        // Validate access via the Scene's ContentMetaInfo
+        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
         if (error != null) return ApiResponseDto<CharacterRelationResponseDto>.Unauthorized(error.Message ?? " not authorized");
 
         // Update properties if provided in DTO
@@ -157,14 +157,14 @@ public class CharacterRelationService : CoreService
     {
         var relation = await _db.CharacterRelations
             .Include(cr => cr.TriggerScene)
-                .ThenInclude(s => s.MetaInfo)
+                .ThenInclude(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(cr => cr.Id == id);
 
         if (relation is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's MetaInfo
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.MetaInfo.ProjectId);
+        // Validate access via the Scene's ContentMetaInfo
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
         _db.CharacterRelations.Remove(relation);
@@ -173,7 +173,7 @@ public class CharacterRelationService : CoreService
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = relation.TriggerScene.MetaInfo.ProjectId
+            ProjectId = relation.TriggerScene.ContentMetaInfo.ProjectId
         });
     }
 }

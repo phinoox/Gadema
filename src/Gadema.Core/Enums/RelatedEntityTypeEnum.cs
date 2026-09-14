@@ -7,9 +7,9 @@ namespace Gadema.Core.Enums;
 /// </summary>
 public enum RelatedEntityTypeEnum
 {
-    /// <summary>MetaInfo (characters, worlds, mechanics, etc.)</summary>
+    /// <summary>ContentMetaInfo (characters, worlds, mechanics, etc.)</summary>
     [Display(Name = "Content Item")]
-    MetaInfo = 0,
+    ContentMetaInfo = 0,
 
     /// <summary>ProjectTask (tasks and workflows)</summary>
     [Display(Name = "Task")]
