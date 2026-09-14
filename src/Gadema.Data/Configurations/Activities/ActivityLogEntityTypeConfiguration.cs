@@ -1,11 +1,8 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
+// ... existing imports ...
 
-// =============================================================================
-
+using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Activities;
 
@@ -17,30 +14,29 @@ public class ActivityLogEntityTypeConfiguration : IEntityTypeConfiguration<Activ
     /// <summary>
     /// Configure ActivityLog entity properties and relationships.
     /// </summary>
+    // ... existing code ...
+
     public void Configure(EntityTypeBuilder<ActivityLog> builder)
     {
-        // Primary key
         builder.HasKey(e => e.Id);
         
-        // Indexes for frequently filtered columns
+        // Relationship configuration for Cascade Delete
+        builder.HasOne(al => al.Project)
+            .WithMany() // Project doesn't need to know about logs, but we link them here
+            .HasForeignKey(al => al.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade); 
+
+        // Indexes
         builder.HasIndex(e => e.ProjectId);
         builder.HasIndex(e => e.UserId);
-        builder.HasIndex(e => e.EventType);
-        builder.HasIndex(e => e.CreatedAt);  // Query recent activities
-        
-        // Navigation property: Project (Cascade delete)
-        builder.HasOne(al => al.Project)
-            .WithMany()
-            .HasForeignKey(al => al.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);
-        
-        // Navigation property: User (Optional FK) - Changed from HasOptional to proper navigation
-        builder.HasOne(al => al.User)
-            .WithMany()
-            .HasForeignKey(al => al.UserId)
-            .OnDelete(DeleteBehavior.Restrict);  // Don't cascade delete, maintain history
-        
-        // Properties configuration
-        builder.Property(e => e.EventType).IsRequired();
+        builder.HasIndex(e => e.Action);
+        builder.HasIndex(e => e.RelatedEntityId);
+        builder.HasIndex(e => e.CreatedAt);
+
+        // Property constraints
+        builder.Property(e => e.Action).IsRequired().HasMaxLength(64);
+        builder.Property(e => e.RelatedEntityType).IsRequired().HasMaxLength(64);
+        builder.Property(e => e.Description).HasMaxLength(1024);
     }
+// ... 
 }

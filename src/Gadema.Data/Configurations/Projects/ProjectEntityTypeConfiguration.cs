@@ -43,10 +43,6 @@ public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
             .HasForeignKey(t => t.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        // ActivityLogs (Cascade delete)
-        builder.HasMany(p => p.ActivityLogs)
-            .WithOne(al => al.Project)
-            .HasForeignKey(al => al.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);
+        
     }
 }

@@ -1,15 +1,13 @@
-// =============================================================================
-using Gadema.Api.Services.Activities;
-using Gadema.Core.Dtos;
+using Gadema.Api.Services.Content;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Activities;
 
 /// <summary>
-/// Controller for activity log management endpoints.
+/// Controller for viewing project activity logs.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/activity-logs")]
+[Route("api/v1/projects/{projectId:guid}/activity-logs")]
 public class ActivityLogsController : ControllerBase
 {
     private readonly ActivityLogService _activityLogService;
@@ -21,24 +19,12 @@ public class ActivityLogsController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Gets a paginated list of activity logs for the specified project.
+    /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetActivityLogsAsync(
-        Guid projectId, 
-        [FromQuery] int page = 1, 
-        [FromQuery] int pageSize = 20,
-        [FromQuery] int? actionId = null, 
-        [FromQuery] string? entityId = null, 
-        [FromQuery] DateTime? startDate = null, 
-        [FromQuery] DateTime? endDate = null)
+    public async Task<IActionResult> GetActivityLogsAsync(Guid projectId, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
     {
-        // Delegate to the existing GetLogsAsync method which has the full functionality
-        return Ok(await _activityLogService.GetLogsAsync(
-            projectId, 
-            actionId, 
-            entityId, 
-            startDate, 
-            endDate, 
-            page, 
-            pageSize));
+        return Ok(await _activityLogService.GetLogsAsync(projectId, page, pageSize));
     }
 }

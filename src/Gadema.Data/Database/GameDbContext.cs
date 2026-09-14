@@ -215,11 +215,7 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<ProjectToken> ProjectTokens { get; set; }
 
-    /// <summary>
-    /// TokenUsageLog entity set.
-    /// </summary>
-    public DbSet<TokenUsageLog> TokenUsageLogs { get; set; }
-
+    
     /// <summary>
     /// ContentSnapshot entity set.
     /// </summary>

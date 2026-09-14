@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Projects;
 
 namespace Gadema.Core.Models;
 
@@ -10,9 +12,12 @@ public class ActivityLog
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    // The "Anchor" this log belongs to (The Project)
-    [Required] public Guid ProjectId { get; set; }
+   [Required] 
+    public Guid ProjectId { get; set; }
 
+    // Necessary for EF Core to perform Cascade Delete
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; } = null!;
     // Who did it
     [Required] public Guid UserId { get; set; }
 
