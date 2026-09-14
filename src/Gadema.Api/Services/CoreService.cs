@@ -74,10 +74,31 @@ public abstract class CoreService
     }
 
     /// <summary>
+    /// Checks if the current user has a specific role within the given project.
+    /// </summary>
+    protected async Task<bool> HasRoleAsync(Guid projectId, ProjectMemberRoleEnum role)
+    {
+        if (_userContext.CurrentUser == null) return false;
+
+        return await _db.ProjectMembers.AnyAsync(pm => 
+            pm.ProjectId == projectId && 
+            pm.UserId == _userContext.CurrentUser.Id && 
+            pm.Role >= role); // Using >= allows roles to inherit permissions (e.s. Admin > Editor)
+    }
+
+    /// <summary>
+    /// Convenience wrapper to check if the current user is an Administrator for a project.
+    /// </summary>
+    protected async Task<bool> IsAdminAsync(Guid projectId)
+    {
+        return await HasRoleAsync(projectId, ProjectMemberRoleEnum.Admin);
+    }
+
+    /// <summary>
     /// Records a business-level audit event into the database.
     /// This is for accountability (e.g., "User X updated Character Y").
     /// </summary>
-    protected async Task LogAsync(
+    protected async Task LogDbAsync(
         Guid projectId, 
         string action, 
         string relatedEntityType, 

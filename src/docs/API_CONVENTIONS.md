@@ -190,6 +190,17 @@ public class EntityNamesController : ControllerBase { }
 | `PUT/{id:guid}` | Partial update | Update entity |
 | `DELETE/{id:guid}` | Delete | Remove entity |
 
+#### Return Pattern: The "Thin Controller"
+Controllers should be as thin as possible. Instead of manual status code mapping, use the `Ok(await ...)` pattern:
+```csharp
+[HttpGet("{id:guid}")]
+public async Task<IActionResult> Get(Guid id) 
+    => Ok(await _service.GetAsync(id));
+```
+This works because the Service returns an `ApiResponseDto<T>`, which already encapsulates the success/failure state and metadata. The controller simply wraps this payload in a standard HTTP 200 response, letting the DTO manage the internal application status.
+
+---
+
 ---
 
 ## 7. Service Conventions
@@ -210,12 +221,61 @@ public class EntityService : CoreService {
 | Project access check | `ValidateProjectAccessAsync<T>(projectId)` | `var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);` |
 | MetaInfo creation | `CreateMetaInfo(projectId, ContentTypeEnum.X, createData)` | `var metaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);` |
 | Partial MetaInfo update | `ApplyMetaInfoUpdates(metaInfo, updateData)` | `ApplyMetaInfoUpdates(entity.MetaInfo, updateDto.MetaInfo);` |
+| Record business event | `LogDbAsync(projectId, action, type, id, desc)` | `await LogDbAsync(pid, "Created", "Character", charId, "...");` |
+
+### Logging Hierarchy
+
+To maintain a clean and professional audit trail, do not confuse technical telemetry with business history.
+
+1. **Technical Logs (Developer Stream)**
+   - **Tool**: Standard `ILogger<T>`
+   - **Purpose**: Debugging, error tracing, performance monitoring, and system health.
+   - **Target**: Console, File System, or External Sinks (ELK, Datadog).
+   - **Note**: These are "noise" to end-users but vital for engineers.
+
+2. **Business Audit Logs (User Stream)**
+   - **Tool**: `LogDbAsync(...)` 
+   - **Purpose**: Accountability and historical context (e.g., "Who changed this character's name?").
+   - **Target**: The Application Database (`ActivityLogs` table).
+   - **Note**: These are "signal" for Project Owners and Administrators.
+
 
 ### Project Access Validation Pattern
 ```csharp
 var error = await ValidateProjectAccessAsync<ResponseType>(projectId);
 if (error != null) return error;  // Early return on failure
 ```
+
+#### ⚠️ CRITICAL: Validation Type Safety
+When using `ValidateProjectAccessAsync<T>(...)`, the returned error object is of type `ApiResponseDto<T>`. 
+
+**You must return this exact object to satisfy the method's signature.** You cannot return an error from a different DTO type (e.g., returning an error typed for `UserResponseDto` inside a method that returns `DialogueNodeResponseDto`).
+
+```csharp
+// ✅ CORRECT: Error type matches method return type
+public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeAsync(Guid id) {
+    var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(projectId);
+    if (error != null) return error; // 'error' is ApiResponseDto<DialogueNodeResponseDto>
+    // ...
+}
+
+// ❌ INCORRECT: Type mismatch will cause compilation errors
+public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeAsync(Guid id) {
+    var error = await ValidateProjectAccessAsync<UserResponseDto>(projectId); // Wrong T!
+    if (error != null) return error; 
+    // ...
+}
+```
+
+#### Permission & Audit Helpers
+Use these methods for authorization logic and recording business-level events.
+
+| Scenario | Helper Method | Example |
+|---|---|---|
+| Record business event | `LogAsync(projectId, action, type, id, desc)` | `await LogAsync(pid, "Created", "Character", charId, "New character setup");` |
+| Check project role | `HasRoleAsync(projectId, role)` | `if (await HasRoleAsync(pid, ProjectMemberRoleEnum.Editor)) { ... }` |
+| Quick Admin check | `IsAdminAsync(projectId)` | `if (!await IsAdminAsync(pid)) return Forbidden(...);` |
+
 
 ### Create Response Pattern
 ```csharp
@@ -255,6 +315,31 @@ Every content entity has a **MetaInfo wrapper** that holds:
 - `CreatedByUserId` — who created it
 
 **ProjectId lives on MetaInfo**, not on child entities. This is the single source of truth for project scoping.
+
+### 1. The Anchor Pattern (Primary Content)
+**Use this for:** Anything that represents a "thing" in the story world that users search for, title, and publish (e.g., `Characters`, `LoreEntries`, `Scenes`, `DialogueBranches`).
+
+* **Identity**: Has its own `MetaInfo` (Title, Slug, Status).
+* **Lifecycle**: Can be created, updated, or archived independently.
+* **Relationship**: Acts as the "Parent" or "Anchor" for other data.
+* **API Path**: `/api/v1/projects/{projectId}/{entity-name}`
+
+### 2. The Component Pattern (Ancillary Data)
+**Use this for:** Anything that is a structural part of an anchor, or metadata about a process (e.g., `DialogueNodes`, `Comments`, `ReviewStatus`, `Tags`).
+
+* **Identity**: Does **NOT** have its own `MetaInfo`. It is "anonymous" until attached to an Anchor.
+* **Lifecycle**: Tied to the life of the Anchor. If the anchor is deleted, these are gone.
+* **Relationship**: Must contain a `TargetId` pointing back to an Anchor.
+* **API Path**: `/api/v1/projects/{projectId}/{anchor-name}/{anchor-id}/{component-name}`
+
+| Feature | Anchor (Content) | Component (Data) |
+| :--- | :--- | :--- |
+| **Has MetaInfo?** | ✅ Yes | ❌ No |
+| **Independent Lifecycle?** | ✅ Yes | ❌ No |
+| **Searchable/Slugged?** | ✅ Yes | ❌ No |
+| **Primary Key Link** | `Id` | `TargetId` (points to Anchor) |
+
+---
 
 ### ContentTypeEnum Values
 ```csharp
@@ -328,3 +413,12 @@ public class NewEntitiesController : ControllerBase {
 
 // Step 5: Service (Services/Story/NewEntityService.cs) — see Section 7 above
 ```
+
+## 12. Service Security Responsibility
+
+Every service method that modifies or retrieves data must be responsible for two levels of validation:
+
+1.  **Project Ownership**: Does this resource (or its target anchor) actually belong to the project in the URL?
+2.  **User Permission**: Does the current user have the required role (e.g., Admin, Editor) to perform this specific action?
+
+**Always use the `CoreService` helpers (`ValidateProjectAccessAsync`, `HasRoleAsync`, etc.) to enforce these checks at the start of your method.**

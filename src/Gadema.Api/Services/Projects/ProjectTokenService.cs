@@ -63,6 +63,8 @@ public class ProjectTokenService : CoreService
         _db.ProjectTokens.Add(token);
         await _db.SaveChangesAsync();
 
+         await LogDbAsync(projectId, "Created", nameof(ProjectToken), token.Id, $"Created new API token: {token.TokenName}");
+
         return ApiResponseDto<ProjectTokenResponseDto>.Success(new ProjectTokenResponseDto
         {
             Id = token.Id,
@@ -92,6 +94,31 @@ public class ProjectTokenService : CoreService
         return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.Success(CreateListResponseDto(tokens));
     }
 
+    public async Task<ApiResponseDto<string>> DeleteTokenAsync(Guid id)
+    {
+        var token = await _db.ProjectTokens.FirstOrDefaultAsync(t => t.Id == id);
+        if (token is null) return ApiResponseDto<string>.NotFound($"API Token with ID {id} not found.");
+
+        var user = _userContext.CurrentUser;
+        if (user is null )
+            return ApiResponseDto<string>.Forbidden("Only administrators can permanently delete API tokens.");
+        
+        if (!await IsAdminAsync(token.ProjectId))
+            return ApiResponseDto<string>.Forbidden("Only administrators can permanently delete API tokens.");
+
+        // Capture info before deletion to log it
+        var projectId = token.ProjectId;
+        var tokenName = token.TokenName;
+
+        _db.ProjectTokens.Remove(token);
+        await _db.SaveChangesAsync();
+
+        // --- NEW: LOG THE DELETION ---
+        await LogDbAsync(projectId, "Deleted", nameof(ProjectToken), id, $"Permanently deleted API token: {tokenName}");
+
+        return ApiResponseDto<string>.Success($"API token has been permanently deleted.");
+    }
+
     // ========================================================================
     // DELETE /api/v1/projects/{projectId}/tokens/{tokenId} — Revoke a token
     // ========================================================================
@@ -106,6 +133,8 @@ public class ProjectTokenService : CoreService
 
         token.IsActive = false;
         await _db.SaveChangesAsync();
+
+        await LogDbAsync(token.ProjectId, "Revoked", nameof(ProjectToken), token.Id, $"Revoked API token: {token.TokenName}");
 
         return ApiResponseDto<string>.Success($"API Token {tokenId} has been revoked.");
     }
