@@ -100,7 +100,7 @@ public class LoreEntryService : CoreService
         var loreEntry = new LoreEntry
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             RawText = string.Empty,
             LoreType = createDto.LoreType,
         };
@@ -111,7 +111,7 @@ public class LoreEntryService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = loreEntry.Id,
-            MetaInfoId = metaInfo.Id.Value,
+            MetaInfoId = metaInfo.Id,
             ProjectId = projectId
         });
     }

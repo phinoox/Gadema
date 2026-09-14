@@ -53,7 +53,7 @@ public class WorldLocationService : CoreService
             .Where(wl => wl.MetaInfo.ProjectId == projectId);
 
         if (locationType.HasValue)
-            query = query.Where(wl => wl.LocationType == locationType.Value);
+            query = query.Where(wl => wl.LocationType == (LocationType)locationType.Value);
 
         if (parentId.HasValue)
             query = query.Where(wl => wl.ParentId == parentId.Value || wl.ParentId == null);

@@ -10,6 +10,7 @@ using Gadema.Core.Dtos.ExternalReferences;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Gadema.Api.Services.Content;
+using Gadema.Core.Dtos.Content.ExternalReferences;
 
 namespace Gadema.Api.Controllers;
 
@@ -45,7 +46,7 @@ public class ExternalReferencesController : ControllerBase
     /// Create external reference.
     /// </summary>
     [HttpPost]
-    public async Task<IActionResult> CreateReferenceAsync(Guid id, [FromBody] CreateExternalReferenceDto createDto)
+    public async Task<IActionResult> CreateReferenceAsync(Guid id, [FromBody] ExternalReferenceCreateDto createDto)
     {
         return Ok(await _referenceService.CreateReferenceAsync(id, createDto));
     }

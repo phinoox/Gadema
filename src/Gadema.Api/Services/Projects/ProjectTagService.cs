@@ -55,28 +55,28 @@ public class ProjectTagService : CoreService
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = tag.Id });
     }
 
-    public async Task<ApiResponseDto<string>> AddTagsToProjectAsync(Guid projectId, AddTagsToProjectDto dto)
+    public async Task<ApiResponseDto<string>> AddTagsToProjectAsync(Guid projectMetaInfoId, AddTagsToProjectDto dto)
     {
-        var error = await ValidateProjectAccessAsync<string>(projectId);
+        var error = await ValidateProjectAccessAsync<string>(projectMetaInfoId);
         if (error != null) return error;
 
         foreach (var tagId in dto.TagIds)
         {
             var exists = await _db.ProjectTagRelations
-                .AnyAsync(r => r.ProjectId == projectId && r.ProjectTagId == tagId);
+                .AnyAsync(r => r.ProjectMetaInfoId == projectMetaInfoId && r.ProjectMetaInfoId == tagId);
 
             if (!exists)
             {
                 _db.ProjectTagRelations.Add(new ProjectTagRelation
                 {
-                    ProjectId = projectId,
-                    ProjectTagId = tagId
+                    ProjectMetaInfoId = projectMetaInfoId,
+                    TagId = tagId
                 });
             }
         }
 
         await _db.SaveChangesAsync();
-        await LogDbAsync(projectId, "Updated", "Project", projectId, "Tags added to project.");
+        await LogDbAsync(projectMetaInfoId, "Updated", "Project", projectMetaInfoId, "Tags added to project.");
 
         return ApiResponseDto<string>.Success("Tags linked successfully.");
     }

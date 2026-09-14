@@ -10,10 +10,10 @@ namespace Gadema.Api.Controllers.Content;
 [Route("api/v1/search")]
 public class SearchController : ControllerBase
 {
-    private readonly ContentSearchService _searchService;
+    private readonly SearchService _searchService;
     private readonly ILogger<SearchController> _logger;
 
-    public SearchController(ContentSearchService searchService, ILogger<SearchController> logger)
+    public SearchController(SearchService searchService, ILogger<SearchController> logger)
     {
         _searchService = searchService;
         _logger = logger;
