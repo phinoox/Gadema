@@ -9,16 +9,12 @@ namespace Gadema.Core.Dtos.Activities;
 public class ActivityLogResponseDto
 {
     public Guid Id { get; set; }
-    public Guid ProjectId { get; set; }
-    public string? ProjectTitle { get; set; }
-    public Guid? UserId { get; set; }
-    public string? UserName { get; set; }
-    public string EventType { get; set; } = "";
+    public string Action { get; set; } = "";
+    public string RelatedEntityType { get; set; } = "";
     public Guid? RelatedEntityId { get; set; }
-    public int RelatedEntityType { get; set; }
-    public string? Title { get; set; }
-    public string? Description { get; set; }
+    public string Description { get; set; } = "";
     public DateTime CreatedAt { get; set; }
+    public Guid ProjectId { get; set; }
 }
 
 /// <summary>

@@ -1,68 +1,31 @@
-// =============================================================================
-using Gadema.Core.Models.Projects;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
 
 namespace Gadema.Core.Models;
 
 /// <summary>
-/// Represents an activity log entry for project events.
+/// Represents a business-level audit event within a project.
+/// This is ancillary data used for accountability and history tracking.
 /// </summary>
-[ModelDependency(typeof(Project))]
 public class ActivityLog
 {
-    /// <summary>
-    /// Unique identifier for the activity log entry.
-    /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    /// <summary>
-    /// ID of the project this activity belongs to.
-    /// </summary>
-    [Required]
-    public Guid ProjectId { get; set; }
+    // The "Anchor" this log belongs to (The Project)
+    [Required] public Guid ProjectId { get; set; }
 
-    /// <summary>
-    /// ID of the user who performed the action (null if automated).
-    /// </summary>
-    public Guid? UserId { get; set; }  // Null if automated action
+    // Who did it
+    [Required] public Guid UserId { get; set; }
 
-    /// <summary>
-    /// Event type (e.g., "ContentCreated", "TaskCompleted").
-    /// </summary>
-    [MaxLength(128)]
-    public string EventType { get; set; } = "";  // e.g., "ContentCreated", "TaskCompleted"
+    // What happened (e.g., "Created", "Updated", "Deleted", "Revoked")
+    [Required, MaxLength(64)] public string Action { get; set; } = "";
 
-    /// <summary>
-    /// ID of the related entity (nullable FK).
-    /// </summary>
-    public Guid? RelatedEntityId { get; set; }  // Nullable FK to related entity
+    // The type of entity involved (e.g., "Character", "DialogueBranch", "Token")
+    [Required, MaxLength(64)] public string RelatedEntityType { get; set; } = "";
 
-    /// <summary>
-    /// Type of related entity.
-    /// </summary>
-    public int RelatedEntityType { get; set; }  // Enum: MetaInfo, Task, etc.
+    // The ID of the specific object being acted upon
+    public Guid? RelatedEntityId { get; set; }
 
-    /// <summary>
-    /// Activity title.
-    /// </summary>
-    [MaxLength(512)]
-    public string? Title { get; set; }
+    [MaxLength(1024)] public string Description { get; set; } = "";
 
-    /// <summary>
-    /// Activity description.
-    /// </summary>
-    [MaxLength(2048)]
-    public string? Description { get; set; }
-
-    /// <summary>
-    /// Timestamp when the activity occurred.
-    /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-    //Navigation Properties
-    public virtual Project Project { get; set; }
-    public virtual User? User { get; set; }
 }

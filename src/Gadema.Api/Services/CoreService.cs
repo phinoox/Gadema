@@ -74,6 +74,33 @@ public abstract class CoreService
     }
 
     /// <summary>
+    /// Records a business-level audit event into the database.
+    /// This is for accountability (e.g., "User X updated Character Y").
+    /// </summary>
+    protected async Task LogAsync(
+        Guid projectId, 
+        string action, 
+        string relatedEntityType, 
+        Guid? relatedEntityId = null, 
+        string? description = null)
+    {
+        var log = new ActivityLog
+        {
+            ProjectId = projectId,
+            UserId = _userContext.CurrentUser?.Id ?? Guid.Empty, // Fallback if user is system/anonymous
+            Action = action,
+            RelatedEntityType = relatedEntityType,
+            RelatedEntityId = relatedEntityId,
+            Description = description,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        _db.ActivityLogs.Add(log);
+        // We await here to ensure the audit trail is persisted alongside the business transaction
+        await _db.SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Validates that the ProjectId in the request body matches the route parameter.
     /// Ensures consistency between client intent and server routing.
     /// Returns null if IDs match, or a BadRequest error if they don't.
