@@ -7,55 +7,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Tags.Strategies;
 
-public class ContentIdentityStrategy : IIdentitySyncStrategy
+public class ContentIdentityStrategy : BaseIdentityStrategy<ContentMetaInfoUpdateData,ContentMetaInfo>
 {
-    private readonly GameDbContext _db;
+    public ContentIdentityStrategy(GameDbContext db) : base(db) { }
 
-    public ContentIdentityStrategy(GameDbContext db) => _db = db;
-
-    public async Task SyncAsync(Guid metaInfoId, BaseMetaInfoUpdateData updateData)
+    protected override async Task ApplyDomainPropertiesAsync(Guid id, ContentMetaInfoUpdateData updateData)
     {
-        var ContentMetaInfo = await _db.MetaInfos.FindAsync(metaInfoId);
-        if (ContentMetaInfo == null) throw new Exception("ContentMetaInfo not found.");
+      
+        // Now we have access to both the specific entity AND the casted update data!
+        if (updateData.Status.HasValue) 
+            MetaInfo!.Status = updateData.Status.Value;
+       
+    }
 
-        // 1. Update Identity Properties
-        if (updateData.Title != null) ContentMetaInfo.Title = updateData.Title;
-        if (updateData.Slug != null) ContentMetaInfo.Slug = updateData.Slug;
-        if (updateData.IsPublic.HasValue) ContentMetaInfo.IsPublic = updateData.IsPublic.Value;
-
-        if (updateData is ContentMetaInfoUpdateData contentUpdate)
-        {
-            if (contentUpdate.Status.HasValue) 
-                ContentMetaInfo.Status = contentUpdate.Status.Value;
-            
-            // If there were other properties unique to ContentMetaInfo, they would go here.
-        }
-
-        // 2. Sync Tags
-        if (updateData.TagIds != null)
-        {
-            var currentTags = await _db.ContentTagRelations
-                .Where(r => r.MetaInfoId == metaInfoId)
-                .Select(r => r.TagId)
-                .ToListAsync();
-
-            var toAdd = updateData.TagIds.Except(currentTags);
-            var toRemove = currentTags.Except(updateData.TagIds);
-
-            foreach (var id in toRemove)
-            {
-                var relation = await _db.ContentTagRelations
-                    .FirstOrDefaultAsync(r => r.MetaInfoId == metaInfoId && r.TagId == id);
-                if (relation != null) _db.ContentTagRelations.Remove(relation);
-            }
-
-            foreach (var id in toAdd)
-            {
-                _db.ContentTagRelations.Add(new ContentTagRelation { MetaInfoId = metaInfoId, TagId = id });
-            }
-        }
-
-        ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
-        await _db.SaveChangesAsync();
+    protected async override Task<ContentMetaInfo?> FetchMetaInfo(Guid id, ContentMetaInfoUpdateData updateData)
+    {
+       return await _db.Set<ContentMetaInfo>().FindAsync(id);
     }
 }
