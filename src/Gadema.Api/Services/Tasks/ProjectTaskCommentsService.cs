@@ -1,7 +1,6 @@
-// =============================================================================
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Tasks;
+using Gadema.Core.Dtos.Response;
 using Gadema.Core.Models;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
@@ -10,96 +9,121 @@ using Microsoft.EntityFrameworkCore;
 namespace Gadema.Api.Services.Tasks;
 
 /// <summary>
-/// Service for managing ProjectTaskComments - comments on individual tasks.
+/// Service for managing comments on tasks.
+/// Comments are treated as leaf entities belonging to a ProjectTask.
 /// </summary>
-public class ProjectTaskCommentsService : CoreService
+public class ProjectTaskCommentService : CoreService
 {
-    public ProjectTaskCommentsService(GameDbContext db, ILogger<ProjectTaskCommentsService> logger, IUserContext userContext)
+    public ProjectTaskCommentService(GameDbContext db, ILogger<ProjectTaskCommentService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    private TaskCommentResponseDto CreateResponseDto(ProjectTaskComment comment)
-        => new()
+    // ========================================================================
+    // GET - List comments for a specific task
+    // ========================================================================
+
+    public async Task<ApiResponseDto<ListResponseDto<ProjectTaskCommentResponseDto>>> GetCommentsAsync(Guid taskId)
+    {
+        var comments = await _db.ProjectTaskComments
+            .Where(c => c.ProjectTaskId == taskId)
+            .OrderByDescending(c => c.CreatedAt)
+            .ToListAsync();
+
+        return ApiResponseDto<ListResponseDto<ProjectTaskCommentResponseDto>>.Success(new ListResponseDto<ProjectTaskCommentResponseDto>
         {
-            Id = comment.Id,
-            MetaInfoId = comment.MetaInfoId,
-            ProjectTaskId = comment.ProjectTaskId, // FK as PK pattern
-            Text = comment.Text,
-            CreatedByUserId = comment.CreatedByUserId,
-            CreatedAt = comment.CreatedAt,
-        };
-
-    private ListResponseDto<TaskCommentResponseDto> CreateListResponseDto(IEnumerable<ProjectTaskComment> comments)
-        => new() { Items = comments.Select(CreateResponseDto).ToList(), TotalCount = comments.Count() };
-
-    public async Task<ApiResponseDto<ListResponseDto<TaskCommentResponseDto>>> GetCommentsAsync(Guid projectId, Guid? taskId = null)
-    {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<TaskCommentResponseDto>>(projectId);
-        if (error != null) return error;
-
-        var query = _db.ProjectTaskComments.Where(c => c.ContentMetaInfo.ProjectId == projectId).OrderByDescending(c => c.CreatedAt);
-
-        if (taskId.HasValue) query = query.Where(c => c.ProjectTaskId == taskId.Value || c.ProjectTaskId == Guid.Empty); // FK-as-PK pattern
-
-        var comments = await query.ToListAsync();
-        return ApiResponseDto<ListResponseDto<TaskCommentResponseDto>>.Success(CreateListResponseDto(comments));
+            Items = comments.Select(CreateResponseDto),
+            TotalCount = comments.Count
+        });
     }
 
-    public async Task<ApiResponseDto<TaskCommentResponseDto>> GetCommentByIdAsync(Guid id)
-    {
-        var comment = await _db.ProjectTaskComments.Include(c => c.CreatedByUser).FirstOrDefaultAsync(c => c.Id == id);
-        if (comment is null) return ApiResponseDto<TaskCommentResponseDto>.NotFound($"Task comment with ID {id} not found.");
+    // ========================================================================
+    // POST - Add a new comment
+    // ========================================================================
 
-        var error = await ValidateProjectAccessAsync<TaskCommentResponseDto>(comment.ContentMetaInfo.ProjectId);
+    public async Task<ApiResponseDto<CreateResponseDto>> AddCommentAsync(Guid taskId, ProjectTaskCommentCreateDto createDto)
+    {
+        // 1. Verify the task exists and belongs to the user's project scope
+        var task = await _db.ProjectTasks.FindAsync(taskId);
+        if (task == null) 
+            return ApiResponseDto<CreateResponseDto>.NotFound($"Task with ID {taskId} not found.");
+
+        // Validate access to the project via the task
+        var error = await ValidateProjectAccessAsync<CreateResponseDto>(task.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<TaskCommentResponseDto>.Success(CreateResponseDto(comment));
-    }
-
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateCommentAsync(Guid projectId, Guid? taskId, string text)
-    {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
-        if (error != null) return error;
-
-        // Use FK-as-PK pattern: ProjectTaskId matches the comment's ID for junction table
+        // 2. Create the comment
         var comment = new ProjectTaskComment
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = Guid.Empty, // Not applicable for comments
-            ProjectTaskId = taskId ?? Guid.Empty, // If taskId is null, use empty GUID
-            Text = text,
-            CreatedByUserId = _userContext.CurrentUser!.Id,
+            ProjectTaskId = taskId,
+            CommentedByUserId = createDto.CommentedByUserId,
+            CommentText = createDto.CommentText,
+            CreatedAt = DateTime.UtcNow
         };
 
         _db.ProjectTaskComments.Add(comment);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto { EntityId = comment.Id, MetaInfoId = Guid.Empty, ProjectId = projectId });
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
+        { 
+            EntityId = comment.Id, 
+            ProjectId = task.ProjectId 
+        });
     }
 
-    public async Task<ApiResponseDto<TaskCommentResponseDto>> UpdateCommentAsync(Guid id, string text)
+    // ========================================================================
+    // PUT - Update a comment's text
+    // ========================================================================
+
+    public async Task<ApiResponseDto<ProjectTaskCommentResponseDto>> UpdateCommentAsync(Guid id, ProjectTaskCommentUpdateDto updateDto)
     {
-        var comment = await _db.ProjectTaskComments.FirstOrDefaultAsync(c => c.Id == id);
-        if (comment is null) return ApiResponseDto<TaskCommentResponseDto>.NotFound($"Task comment with ID {id} not found.");
+        var comment = await _db.ProjectTaskComments.FindAsync(id);
+        if (comment is null)
+            return ApiResponseDto<ProjectTaskCommentResponseDto>.NotFound($"Comment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<TaskCommentResponseDto>(comment.ContentMetaInfo.ProjectId);
-        if (error != null) return error;
+        // Validate access via the task hierarchy
+        var error = await ValidateProjectAccessAsync<ProjectTaskUpdateDto>(comment.ProjectTask.ProjectId);
+        if (error != null) return ApiResponseDto<ProjectTaskCommentResponseDto>.Unauthorized("not authorized");
 
-        comment.Text = text;
+        // Update content
+        comment.CommentText = updateDto.CommentText;
         await _db.SaveChangesAsync();
-        return ApiResponseDto<TaskCommentResponseDto>.Success(CreateResponseDto(comment));
+
+        return ApiResponseDto<ProjectTaskCommentResponseDto>.Success(CreateResponseDto(comment));
     }
+
+    // ========================================================================
+    // DELETE - Remove a comment
+    // ========================================================================
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteCommentAsync(Guid id)
     {
-        var comment = await _db.ProjectTaskComments.Include(c => c.CreatedByUser).FirstOrDefaultAsync(c => c.Id == id);
-        if (comment is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Task comment with ID {id} not found.");
+        var comment = await _db.ProjectTaskComments.FindAsync(id);
+        if (comment is null)
+            return ApiResponseDto<DeleteResponseDto>.NotFound($"Comment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(comment.ContentMetaInfo.ProjectId);
+        // Validate access via the task hierarchy
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(comment.ProjectTask.ProjectId);
         if (error != null) return error;
 
         _db.ProjectTaskComments.Remove(comment);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto { EntityId = id, ProjectId = comment.ContentMetaInfo.ProjectId });
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
+        { 
+            EntityId = id, 
+            ProjectId = comment.ProjectTask.ProjectId 
+        });
+    }
+
+    private ProjectTaskCommentResponseDto CreateResponseDto(ProjectTaskComment comment)
+    {
+        return new ProjectTaskCommentResponseDto
+        {
+            Id = comment.Id,
+            ProjectTaskId = comment.ProjectTaskId,
+            CommentedByUserId = comment.CommentedByUserId,
+            CommentText = comment.CommentText,
+            CreatedAt = comment.CreatedAt
+        };
     }
 }
