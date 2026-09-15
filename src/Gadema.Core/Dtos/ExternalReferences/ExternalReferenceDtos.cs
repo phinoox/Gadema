@@ -11,7 +11,7 @@ public class ExternalReferenceCreateDto
     /// <summary>
     /// ContentMetaInfo data for the reference's identity.
     /// </summary>
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
     /// ID of the content item this reference belongs to.

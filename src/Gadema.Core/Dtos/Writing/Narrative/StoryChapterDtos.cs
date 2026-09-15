@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.Narrative;
 
 public class StoryChapterCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [Required] public Guid StoryId { get; set; }
 

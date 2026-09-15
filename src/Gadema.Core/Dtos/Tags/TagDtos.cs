@@ -12,7 +12,7 @@ public class TagCreateDto
     /// <summary>
     /// ContentMetaInfo data for the tag's identity (used as the tag's own identity).
     /// </summary>
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
     /// ID of the content item this tag is being attached to.

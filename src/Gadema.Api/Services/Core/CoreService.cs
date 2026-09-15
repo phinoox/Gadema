@@ -143,7 +143,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
      /// <summary>
     /// [Obsolete] Use the generic CreateMetaInfo<T> instead.
     /// </summary>
-    protected ContentMetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, MetaInfoCreateData createData)
+    protected ContentMetaInfo CreateMetaInfo(Guid projectId, ContentTypeEnum contentType, BaseMetaInfoCreateData createData)
     {
         var user = _userContext.CurrentUser;
         if (user == null)
@@ -159,7 +159,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
                 ? GenerateSlug(createData.Title)
                 : createData.Slug,
             ShortDesc = createData.ShortDesc,
-            Status = createData.Status,
+           // Status = createData.Status,
             IsPublic = createData.IsPublic,
             ViewMode = ViewModeEnum.PrivateWriting,
             CreatedByUserId = user.Id,
@@ -201,7 +201,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     /// <typeparam name="T">The specific MetaInfo implementation (e.g., ProjectMetaInfo).</typeparam>
     /// <param name="createData">Initial data from the request body.</param>
     /// <param name="initialize">A delegate to handle domain-specific initialization (like assigning ProjectId or User).</param>
-    protected T CreateMetaInfo<T>(MetaInfoCreateData createData, Action<T> initialize) where T : BaseMetaInfo
+    protected T CreateMetaInfo<T>(BaseMetaInfoCreateData createData, Action<T> initialize) where T : BaseMetaInfo
     {
         var user = _userContext.CurrentUser;
         if (user == null)

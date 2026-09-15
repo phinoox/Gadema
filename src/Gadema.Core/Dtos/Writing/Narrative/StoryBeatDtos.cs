@@ -9,7 +9,7 @@ namespace Gadema.Core.Dtos.Narrative;
 // StoryBeatCreateDto — change StoryOutlineId to StoryId
 public class StoryBeatCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [Required] public Guid StoryId { get; set; }   // ← CHANGED from StoryOutlineId
 

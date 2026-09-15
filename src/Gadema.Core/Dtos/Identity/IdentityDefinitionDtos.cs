@@ -14,7 +14,7 @@ public class IdentityDefinitionCreateDto
     /// <summary>
     /// ContentMetaInfo data for the definition's identity.
     /// </summary>
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
     /// ID of the project this definition belongs to.

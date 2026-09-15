@@ -5,7 +5,7 @@ namespace Gadema.Core.Dtos.DialogueTrees;
 
 public class DialogueBranchCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [Required, MaxLength(128)] public string Title { get; set; } = "";
 

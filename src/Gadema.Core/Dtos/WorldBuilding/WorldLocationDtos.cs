@@ -8,7 +8,7 @@ namespace Gadema.Core.Dtos.WorldBuilding;
 /// </summary>
 public class WorldLocationCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
     
     /// <summary>
     /// Type of the location (Country, Region, City, etc.).

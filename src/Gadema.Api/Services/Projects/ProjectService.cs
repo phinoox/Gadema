@@ -67,10 +67,14 @@ public class ProjectService : CoreService, ISearchableProvider
     // DOMAIN OPERATIONS (The "Write" Side)
     // ========================================================================
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(Guid projectId, ProjectCreateDto dto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(Guid projectId, ProjectCreateDto createDto)
     {
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
+
+         var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
+            // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
+        });
 
         using var transaction = await _db.Database.BeginTransactionAsync();
         try
@@ -78,26 +82,26 @@ public class ProjectService : CoreService, ISearchableProvider
             var project = new Project
             {
                 Id = Guid.NewGuid(),
+                MetaInfoId = meta.Id,
                 UserId = _userContext.CurrentUser!.Id,
-                Description = dto.Description,
+                Description = createDto.Description,
                 IsActive = true,
-                EnableUserRegistration = dto.EnableUserRegistration,
-                AllowManualInvites = dto.AllowManualInvites,
-                PrimaryFormat = dto.PrimaryFormat,
-                Genre = dto.Genre,
-                Theme = dto.Theme,
-                Tone = dto.Tone,
-                Audience = dto.Audience
+                EnableUserRegistration = createDto.EnableUserRegistration,
+                AllowManualInvites = createDto.AllowManualInvites,
+                PrimaryFormat = createDto.PrimaryFormat,
+                Genre = createDto.Genre,
+                Theme = createDto.Theme,
+                Tone = createDto.Tone,
+                Audience = createDto.Audience
             };
 
-            // The identity strategy handles the creation of ContentMetaInfo and its tags
-            await _identityStrategy.SyncAsync(project.Id, dto.ContentMetaInfo);
+            
 
             _db.Projects.Add(project);
             await _db.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{project.Title}' created.");
+            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{project.MetaInfo.Title}' created.");
 
             return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
             { 
@@ -119,7 +123,7 @@ public class ProjectService : CoreService, ISearchableProvider
         if (error != null) return error;
 
         var project = await _db.Projects
-            .Include(p => p.ContentMetaInfo)
+            .Include(p => p.MetaInfo)
             .FirstOrDefaultAsync(p => p.Id == projectId);
 
         if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -136,7 +140,7 @@ public class ProjectService : CoreService, ISearchableProvider
         try
         {
             var project = await _db.Projects
-                .Include(p => p.ContentMetaInfo)
+                .Include(p => p.MetaInfo)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -195,11 +199,11 @@ public class ProjectService : CoreService, ISearchableProvider
     private ProjectResponseDto MapToResponseDto(Project p) => new()
     {
         Id = p.Id,
-        Title = p.ContentMetaInfo.Title,
-        Slug = p.ContentMetaInfo.Slug,
-        Status = p.ContentMetaInfo.Status,
-        ViewMode = p.ContentMetaInfo.ViewMode,
-        CreatedAt = p.ContentMetaInfo.CreatedAt,
+        Title = p.MetaInfo.Title,
+        Slug = p.MetaInfo.Slug,
+        Status = p.MetaInfo.Status,
+        ViewMode = p.MetaInfo.ViewMode,
+        CreatedAt = p.MetaInfo.CreatedAt,
         Description = p.Description,
         IsActive = p.IsActive,
         PrimaryFormat = p.PrimaryFormat,

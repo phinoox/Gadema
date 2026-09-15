@@ -7,7 +7,7 @@ namespace Gadema.Core.Dtos.Narrative;
 
 public class StoryOutlineCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [Required] public Guid StoryId { get; set; }   // ← NEW: explicit Story link
 

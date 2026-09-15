@@ -5,7 +5,7 @@ using Gadema.Core.Enums;
 
 public class LoreEntryCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
     
     [EnumDataType(typeof(LoreTypeEnum)), Required]
     public LoreTypeEnum LoreType { get; set; }

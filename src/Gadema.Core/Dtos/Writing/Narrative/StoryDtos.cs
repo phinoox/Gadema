@@ -6,7 +6,7 @@ namespace Gadema.Core.Dtos.Narrative;
 
 public class StoryCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [MaxLength(4096)] public string? Description { get; set; }
 }

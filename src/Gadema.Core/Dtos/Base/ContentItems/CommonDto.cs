@@ -4,11 +4,12 @@ using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos;
 
+
 /// <summary>
 /// Shared ContentMetaInfo data for creation of any content entity.
 /// ContentType is resolved from the endpoint, not the body.
 /// </summary>
-public class MetaInfoCreateData
+public class BaseMetaInfoCreateData
 {
     [Required]
     public string Title { get; set; } = "";
@@ -19,16 +20,24 @@ public class MetaInfoCreateData
     [MaxLength(4096)]
     public string? ShortDesc { get; set; }
 
-     /// <summary>
-    /// Workflow status of the content (Draft, InProgress, Published, Archived).
-    /// </summary>
-    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
-
+    
     /// <summary>
     /// Indicates if this content is visible to users who are not project members.
     /// </summary>
     public bool IsPublic { get; set; } = false;
 }
+
+public class ContentMetaInfoCreateData : BaseMetaInfoCreateData
+{
+     /// <summary>
+    /// Workflow status of the content (Draft, InProgress, Published, Archived).
+    /// </summary>
+    public ContentStatusEnum Status { get; set; } = ContentStatusEnum.Draft;
+
+}
+
+
+
 
 /// <summary>
 /// Unified response for create operations.

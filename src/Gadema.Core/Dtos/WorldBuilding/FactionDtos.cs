@@ -8,7 +8,7 @@ namespace Gadema.Core.Dtos.WorldBuilding;
 /// </summary>
 public class FactionCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
     
     /// <summary>
     /// The faction's ideology, mission, or core purpose.

@@ -35,7 +35,7 @@ public class ProjectSeriesUpdateDto
 
 // --- Data Payloads (The "What") ---
 
-public class ProjectSeriesMetaInfoCreateData : MetaInfoCreateData
+public class ProjectSeriesMetaInfoCreateData : BaseMetaInfoCreateData
 {
     [Required, MaxLength(128)] public string Title { get; set; } = "";
     [MaxLength(128)] public string? Slug { get; set; }

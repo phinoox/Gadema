@@ -11,7 +11,7 @@ public class ReviewCreateDto
     /// <summary>
     /// ContentMetaInfo data for the review's identity (used as the review's own record).
     /// </summary>
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
     /// ID of the content item being reviewed.
@@ -120,7 +120,7 @@ public class ReviewAssignmentCreateDto
     /// <summary>
     /// ContentMetaInfo data for the assignment record.
     /// </summary>
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
     /// ID of the content item needing review.

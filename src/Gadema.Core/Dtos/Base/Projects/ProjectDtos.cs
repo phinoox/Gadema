@@ -4,12 +4,10 @@ using Gadema.Core.Dtos.Response;
 namespace Gadema.Core.Dtos.Projects;
 
 // 1. Identity Data for creation
-public class ProjectMetaInfoCreateDto
+public class ProjectMetaInfoCreateData : BaseMetaInfoCreateData
 {
-    public string Title { get; set; } = "";
-    public string Slug { get; set; } = "";
     public ProjectStatusEnum Status { get; set; }
-    public ProjectVisibilityEnum Visibility { get; set; }
+    
     public ViewModeEnum ViewMode { get; set; }
     public List<Guid> TagIds { get; set; } = new List<Guid>();
 }
@@ -17,7 +15,7 @@ public class ProjectMetaInfoCreateDto
 // 2. Create DTO (The entry point)
 public class ProjectCreateDto
 {
-    public ProjectMetaInfoCreateDto ContentMetaInfo { get; set; } = null!;
+    public ProjectMetaInfoCreateData MetaInfo { get; set; } = null!;
     public string? Description { get; set; }
     public bool EnableUserRegistration { get; set; }
     public bool AllowManualInvites { get; set; }

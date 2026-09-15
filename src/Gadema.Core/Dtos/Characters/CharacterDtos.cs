@@ -9,7 +9,7 @@ namespace Gadema.Core.Dtos.Characters;
 /// </summary>
 public class CharacterCreateDto
 {
-    [Required] public MetaInfoCreateData CreateData { get; set; } = new();
+    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     [Required, MaxLength(128)] public string Name { get; set; } = "";
 
