@@ -20,47 +20,51 @@ public class ExternalReference
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
     
-    /// <summary>
-    /// Type of parent entity (0=ContentMetaInfo, 1=Task, 2=Comment).
-    /// </summary>
-    public int ParentType { get; set; }
-    
-    /// <summary>
-    /// ID of the parent entity.
-    /// </summary>
-    public Guid? ParentId { get; set; }
+    // --- Identity Anchor (The "Soul") ---
+    [Required]
+    public Guid MetaInfoId { get; set; }
 
-    // Self-referencing navigation for parent
-    [ForeignKey("ParentId")]
-    public virtual ExternalReference? Parent { get; set; }
-    
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
+
+    // --- Domain Properties (The "Body") ---
+
     /// <summary>
-    /// External URL (required).
+    /// The type of reference (e.g., Document, Image, Video).
     /// </summary>
-    [Required, Display(Name = "External URL")]
+    [Required]
+    public ExternalReferenceTypeEnum ReferenceType { get; set; } = ExternalReferenceTypeEnum.Document;
+
+    /// <summary>
+    /// External URL.
+    /// </summary>
+    [Required, MaxLength(2048)]
     public string Url { get; set; } = "";
     
     /// <summary>
     /// Title of the external resource.
     /// </summary>
     [MaxLength(128)]
-    public string Title { get; set; } = "";
+    public string? Title { get; set; }
     
     /// <summary>
-    /// Type: 0=Document, 1=Image, 2=Video, 3=Audio.
+    /// Author or creator of the reference material.
     /// </summary>
-    public int Type { get; set; }
-    
+    [MaxLength(128)]
+    public string? Author { get; set; }
+
     /// <summary>
-    /// Indicates if the reference is active.
+    /// Additional notes or context about this reference.
+    /// </summary>
+    [MaxLength(4096)]
+    public string? Notes { get; set; }
+
+    /// <summary>
+    /// Indicates if the reference is currently active/relevant.
     /// </summary>
     public bool IsActive { get; set; } = true;
 
-    // Navigation properties for back-references to parent entities
-    /// <summary>
-    /// Collection of external references for this content item.
-    /// Used by eager loading pattern: Include(ci => ci.ExternalReferences)
-    /// </summary>
-    public virtual ICollection<ExternalReference> MetaInfoReferences { get; set; } = new List<ExternalReference>();
-
+    // Self-referencing hierarchy (if needed for nested references)
+    [MaxLength(128)]
+    public string? Slug { get; set; } 
 }

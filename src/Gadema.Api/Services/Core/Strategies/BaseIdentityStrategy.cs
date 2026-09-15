@@ -72,12 +72,12 @@ public abstract class BaseIdentityStrategy<TUpdate, TMetaInfo> : IIdentitySyncSt
     }
     private async Task ApplyUniversalPropertiesAsync(BaseMetaInfoUpdateData data)
     {
-        if (data.Title != null) MetaInfo.Title = data.Title;
-        if (data.Slug != null) MetaInfo.Slug = data.Slug;
-        if (data.IsPublic.HasValue) MetaInfo.IsPublic = data.IsPublic.Value;
-        if (data.ShortDesc != null) MetaInfo.ShortDesc = data.ShortDesc;
+        if (data.Title != null) MetaInfo!.Title = data.Title;
+        if (data.Slug != null) MetaInfo!.Slug = data.Slug;
+        if (data.IsPublic.HasValue) MetaInfo!.IsPublic = data.IsPublic.Value;
+        if (data.ShortDesc != null) MetaInfo!.ShortDesc = data.ShortDesc;
 
-        MetaInfo.LastModifiedAt = DateTime.UtcNow;
+        MetaInfo!.LastModifiedAt = DateTime.UtcNow;
     }
 
     protected abstract Task<TMetaInfo?> FetchMetaInfo(Guid id, TUpdate updateData);

@@ -1,53 +1,55 @@
-// =============================================================================
-using Microsoft.AspNetCore.Http;
-// Gadema.Api - ASP.NET Core Web API Controllers
-// =============================================================================
-
-using System;
-using System.Threading.Tasks;
-using Gadema.Api.Services;
-using Gadema.Core.Dtos.ExternalReferences;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Gadema.Api.Services.Content;
-using Gadema.Core.Dtos.Content.ExternalReferences;
+using Gadema.Core.Dtos.ExternalReferences;
 
-namespace Gadema.Api.Controllers;
+namespace Gadema.Api.Controllers.Content;
 
-/// <summary>
-/// Controller for external reference endpoints.
-/// </summary>
 [ApiController]
-[Route("api/v1/content-items/{id}/references")]
+[Route("api/v1/content/external-references")]
 public class ExternalReferencesController : ControllerBase
 {
-    private readonly ExternalReferenceService _referenceService;
-    private readonly ILogger<ExternalReferencesController> _logger;
+    private readonly ExternalReferenceService _service;
 
-    /// <summary>
-    /// Constructor with dependency injection.
-    /// </summary>
-    public ExternalReferencesController(ExternalReferenceService referenceService, ILogger<ExternalReferencesController> logger)
+    public ExternalReferencesController(ExternalReferenceService service)
     {
-        _referenceService = referenceService;
-        _logger = logger;
+        _service = service;
     }
 
     /// <summary>
-    /// List external references for content item.
+    /// List all references. Use query parameters for filtering.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetReferencesAsync(Guid id)
+    public async Task<IActionResult> Get([FromQuery] Guid projectId, [FromQuery] int? referenceType, [FromQuery] string? authorKeyword) 
+        => Ok(await _service.GetReferencesAsync(projectId, referenceType, authorKeyword));
+
+    /// <summary>
+    /// Get a single reference by its ID.
+    /// </summary>
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id) 
+        => Ok(await _service.GetReferenceByIdAsync(id));
+
+    /// <summary>
+    /// Create a new reference within the specified project.
+    /// </summary>
+    [HttpPost("{projectId:guid}")]
+    public async Task<IActionResult> Create(Guid projectId, [FromBody] ExternalReferenceCreateDto dto)
     {
-        return Ok(await _referenceService.GetReferencesAsync(id));
+        var result = await _service.CreateReferenceAsync(projectId, dto);
+        return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
     }
 
     /// <summary>
-    /// Create external reference.
+    /// Update an existing reference.
     /// </summary>
-    [HttpPost]
-    public async Task<IActionResult> CreateReferenceAsync(Guid id, [FromBody] ExternalReferenceCreateDto createDto)
-    {
-        return Ok(await _referenceService.CreateReferenceAsync(id, createDto));
-    }
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] ExternalReferenceUpdateDto dto) 
+        => Ok(await _service.UpdateReferenceAsync(id, dto));
+
+    /// <summary>
+        /// Delete a reference.
+    /// </summary>
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id) 
+        => Ok(await _service.DeleteReferenceAsync(id));
 }

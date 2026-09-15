@@ -24,16 +24,19 @@ public class ExternalReferenceEntityTypeConfiguration : IEntityTypeConfiguration
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.ParentId);
         builder.HasIndex(e => e.Url).IsUnique();
-        
-        // Navigation property: ContentMetaInfo/ProjectTask/Comment (Cascade delete)
-        builder.HasOne(er => er.Parent)  // Parent navigation property
-            .WithMany()
-            .HasForeignKey(e => e.ParentId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete when parent removed
+        builder.HasIndex(e => e.Title); // Added index for search performance
+
+        // Relationship: Link to the ContentMetaInfo anchor (The "Soul")
+        builder.HasOne(er => er.ContentMetaInfo)
+            .WithMany() 
+            .HasForeignKey(e => e.MetaInfoId)
+            .OnDelete(DeleteBehavior.Cascade); // If MetaInfo is deleted, reference is gone
         
         // Properties configuration
-        builder.Property(e => e.Url).IsRequired().HasMaxLength(4096);
+        builder.Property(e => e.Url).IsRequired().HasMaxLength(2048);
+        builder.Property(e => e.Title).HasMaxLength(128);
+        builder.Property(e => e.Author).HasMaxLength(128);
+        builder.Property(e => e.Notes).HasMaxLength(4096);
     }
 }
