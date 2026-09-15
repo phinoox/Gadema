@@ -1,55 +1,40 @@
-// =============================================================================
-using Gadema.Api.Services;
-using Gadema.Api.Services.Identity;
-using Gadema.Core.Dtos;
+using Gadema.Api.Services.Idendity;
 using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Gadema.Api.Controllers.Identity;
-
-/// <summary>
-/// Controller for identity value management endpoints.
-/// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/identity-values")]
-public class IdentityValuesController : ControllerBase
+[Route("api/v1/projects/{projectId:guid}/identity-values")] // Hierarchy in route
+public class IdentityValueController : ControllerBase
 {
-    private readonly IdentityValueService _identityValueService;
-    private readonly ILogger<IdentityValuesController> _logger;
+    private readonly IdentityValueService _service;
 
-    public IdentityValuesController(IdentityValueService identityValueService, ILogger<IdentityValuesController> logger)
+    public IdentityValueController(IdentityValueService service)
     {
-        _identityValueService = identityValueService;
-        _logger = logger;
+        _service = service;
     }
 
+    //definitionid as optionalfilter
     [HttpGet]
-    public async Task<IActionResult> GetIdentityValuesAsync(Guid projectId)
-    {
-        return Ok(await _identityValueService.GetValuesAsync(projectId));
-    }
+    public async Task<IActionResult> Get([FromQuery] Guid? definitionId) 
+        => Ok(await _service.GetValuesAsync(definitionId ?? Guid.Empty));
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetIdentityValueAsync(Guid id)
-    {
-        return Ok(await _identityValueService.GetValuesByIdAsync(id));
-    }
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id) 
+        => Ok(await _service.GetValueAsync(id));
 
     [HttpPost]
-    public async Task<IActionResult> CreateIdentityValueAsync(Guid projectId, [FromBody] IdentityValueCreateDto createDto)
+    public async Task<IActionResult> Create(Guid projectId, [FromBody] IdentityValueCreateDto dto)
     {
-        return Ok(await _identityValueService.CreateValueAsync(projectId, createDto));
+        // The service will use the projectId from the route to validate access/linkage
+        var result = await _service.CreateValueAsync(projectId, dto);
+        return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateIdentityValueAsync(Guid id, [FromBody] IdentityValueUpdateDto updateDto)
-    {
-        return Ok(await _identityValueService.UpdateValueAsync(id, updateDto));
-    }
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid projectId, Guid id, [FromBody] IdentityValueUpdateDto dto) 
+        => Ok(await _service.UpdateValueAsync(id, dto)); // Note: Service still needs the projectId for validation
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteIdentityValueAsync(Guid id)
-    {
-        return Ok(await _identityValueService.DeleteValueAsync(id));
-    }
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid projectId, Guid id) 
+        => Ok(await _service.DeleteValueAsync(id));
 }

@@ -5,7 +5,7 @@ using Gadema.Core.Dtos.Identity;
 namespace Gadema.Api.Controllers.Identity;
 
 [ApiController]
-[Route("api/v1/identity-definitions")]
+[Route("api/v1/projects/{projectId:guid}/identity-definitions")]
 public class IdentityDefinitionController : ControllerBase
 {
     private readonly IdentityDefinitionService _service;

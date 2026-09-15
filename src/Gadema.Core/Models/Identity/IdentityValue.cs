@@ -1,76 +1,60 @@
 // =============================================================================
-// IdentityValue - Entity for selectable identity values (specific races, factions, etc.)
-// =============================================================================
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Enums;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.MetaInfo;
+// =============================================================================
 
 namespace Gadema.Core.Models;
 
 /// <summary>
-/// Specific identity values that can be selected for character identities.
-/// Contains all the available options (e.g., "Human", "Elf", "Orc" for race selection).
+/// A specific instance of an identity type (e.g., "Human" for the "Race" definition).
+/// This is a component that belongs to an IdentityDefinition anchor.
 /// </summary>
-[ModelDependency(typeof(IdentityDefinition), typeof(Project), typeof(ProjectTemplate))]
+[ModelDependency(typeof(IdentityDefinition), typeof(ContentMetaInfo))]
 public class IdentityValue
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    [Required, Display(Name = "Identity Definition ID")]
+    // --- Identity Anchor (The "Soul") ---
+    [Required]
+    public Guid MetaInfoId { get; set; }
+
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
+
+    // --- Domain Properties (The "Body") ---
+
+    [Required]
     public Guid IdentityDefinitionId { get; set; }
 
-    // Navigation property: IdentityDefinition (Many-to-One)
     [ForeignKey("IdentityDefinitionId")]
     public virtual IdentityDefinition IdentityDefinition { get; set; }
 
-    [MaxLength(128), Required, Display(Name = "Value Name")]
+    /// <summary>
+    /// The human-readable name of the value (e.g., "Human").
+    /// </summary>
+    [MaxLength(128), Required]
     public string Name { get; set; } = "";
 
-    [Column("slug"), MaxLength(128)]
+    /// <summary>
+    /// URL-friendly slug for the value.
+    /// </summary>
+    [MaxLength(128), Column("slug")]
     public string Slug { get; set; } = "";
 
+    /// <summary>
+    /// Optional description of this specific value.
+    /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
 
+    /// <summary>
+    /// The order in which this value appears in lists.
+    /// </summary>
     public int OrderIndex { get; set; } = 0;
 
+    /// <summary>
+    /// Indicates if this is the default selection for this identity type.
+    /// </summary>
     public bool IsDefault { get; set; } = false;
-
-    // ⬇️ ADD THESE NEW PROPERTIES (for FK-as-PK pattern with Project) ⬇️
-
-    [Required, Display(Name = "Project ID")]
-    public Guid ProjectId { get; set; }  // Foreign key to Project.Id
-
-    // Navigation property: Project (Many-to-One relationship)
-    [ForeignKey("ProjectId")]
-    public virtual Projects.Project Project { get; set; }
-
-    [EnumDataType(typeof(ProjectTemplateTypeEnum)), Required, Display(Name = "Project Template ID")]
-    public Guid ProjectTemplateId { get; set; }
-
-    /// <summary>
-    /// Name of the identity type (e.g., "Race", "Faction").
-    /// </summary>
-    [MaxLength(128), Required, Display(Name = "Identity Name")]
-    public string IdentityName { get; set; } = "";
-
-    /// <summary>
-    /// The actual identity value (e.g., "Human Male", "Elf Warrior").
-    /// </summary>
-    [MaxLength(4096)]
-    public string? Value { get; set; } = null!;
-
-    /// <summary>
-    /// FK to ProjectTemplate for template-based identity system.
-    /// </summary>
-    [ForeignKey("ProjectTemplateId")]
-    public virtual ProjectTemplate? ProjectTemplate { get; set; }
-
-    [EnumDataType(typeof(IdentityTypeEnum)), Required, Display(Name = "Identity Type")]
-    public int IdentityTypeId { get; set; }  // FK to IdentityDefinition.IdentityType
-
-    [Display(Name = "Is Required?")]
-    public bool IsRequired { get; set; } = false;
 }
