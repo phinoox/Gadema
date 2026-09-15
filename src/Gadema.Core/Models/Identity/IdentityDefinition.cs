@@ -1,12 +1,11 @@
 // =============================================================================
-// IdentityDefinition - Base entity for identity definitions linked to projects
-// This is the base class used by IdentityValue navigation property
-// =============================================================================
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Projects;
+// Gadema.Core - Shared Domain Models & Interfaces
+// =============================================================================
 
 namespace Gadema.Core.Models;
 
@@ -14,55 +13,43 @@ namespace Gadema.Core.Models;
 /// Definition of identity types (race, faction, alignment, guild) for a project.
 /// Configures what character identities can be selected within this specific project.
 /// </summary>
-[ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(Project))]
 public class IdentityDefinition
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    [Required, Display(Name = "Project ID")]
-    public Guid ProjectId { get; set; }
+    // --- Identity Anchor (The "Soul") ---
+    [Required]
+    public Guid MetaInfoId { get; set; }
 
-    public int IdentityType { get; set; }  // Enum: Race, Faction, Alignment, Guild
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
-    [MaxLength(128), Required, Display(Name = "Identity Type Name")]
-    public string IdentityTypeName { get; set; } = "";
+    // --- Domain Properties (The "Body") ---
+    
+    /// <summary>
+    /// The category of this identity (e.g., Race, Faction).
+    /// </summary>
+    [Required]
+    public IdentityDataTypeEnum DataType { get; set; }
+
+    /// <summary>
+    /// The human-readable name (e.g., "Human", "Elf").
+    /// </summary>
+    [MaxLength(128), Required]
+    public string Name { get; set; } = "";
+
+    [MaxLength(256)]
+    public string? Description { get; set; }
 
     public bool IsRequired { get; set; } = false;
 
-    [MaxLength(256)]
-    public string? DefaultValue { get; set; }
-
     public bool IsActive { get; set; } = true;
 
-    [MaxLength(1024)]
-    public string? Description { get; set; }
-}
-
-
-// Keep ProjectIdentityDefinition for specific project-scoped identity definitions
-[ModelDependency(typeof(IdentityDefinition),typeof(IdentityValue))]
-public class ProjectIdentityDefinition 
-{
-
-    public Guid Id { get; set; } = Guid.NewGuid();
-    // Add these properties at the end of the class:
-
-    [EnumDataType(typeof(IdentityTypeEnum)), Required, Display(Name = "Identity Type")]
-    public int IdentityType { get; set; }
-
-    /// <summary>
-    /// Name of the identity (e.g., "Human", "Elf").
-    /// </summary>
-    [MaxLength(128), Required, Display(Name = "Identity Name")]
-    public string IdentityName { get; set; } = "";
-
-    /// <summary>
-    /// FK to Project.
-    /// </summary>
-    [Required, Display(Name = "Project ID")]
+    // Link back to the project for scoping
+    [Required]
     public Guid ProjectId { get; set; }
 
-    // Navigation property: Project
     [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
+    public virtual Project Project { get; set; } = null!;
 }

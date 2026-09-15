@@ -1,55 +1,55 @@
-// =============================================================================
-using Gadema.Api.Services;
-using Gadema.Api.Services.Identity;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Gadema.Api.Services.Idendity; // Note: using your current namespace 'Idendity'
+using Gadema.Core.Dtos.Identity;
 
 namespace Gadema.Api.Controllers.Identity;
 
-/// <summary>
-/// Controller for identity definition management endpoints.
-/// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/identity-definitions")]
-public class IdentityDefinitionsController : ControllerBase
+[Route("api/v1/identity-definitions")]
+public class IdentityDefinitionController : ControllerBase
 {
-    private readonly IdentityDefinitionService _identityDefinitionService;
-    private readonly ILogger<IdentityDefinitionsController> _logger;
+    private readonly IdentityDefinitionService _service;
 
-    public IdentityDefinitionsController(IdentityDefinitionService identityDefinitionService, ILogger<IdentityDefinitionsController> logger)
+    public IdentityDefinitionController(IdentityDefinitionService service)
     {
-        _identityDefinitionService = identityDefinitionService;
-        _logger = logger;
+        _service = service;
     }
 
+    /// <summary>
+    /// List all identity definitions for a project.
+    /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetIdentityDefinitionsAsync(Guid projectId)
+    public async Task<IActionResult> Get([FromQuery] Guid projectId) 
+        => Ok(await _service.GetDefinitionsAsync(projectId));
+
+    /// <summary>
+    /// Get a single identity definition by ID.
+    /// </summary>
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetById(Guid id) 
+        => Ok(await _service.GetDefinitionAsync(id));
+
+    /// <summary>
+    /// Create a new identity definition within the specified project.
+    /// </summary>
+    [HttpPost("{projectId:guid}")]
+    public async Task<IActionResult> Create(Guid projectId, [FromBody] IdentityDefinitionCreateDto dto)
     {
-        return Ok(await _identityDefinitionService.GetDefinitionsAsync(projectId));
+        var result = await _service.CreateDefinitionAsync(projectId, dto);
+        return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetIdentityDefinitionAsync(Guid id)
-    {
-        return Ok(await _identityDefinitionService.GetDefinitionAsync(id));
-    }
+    /// <summary>
+    /// Update an existing identity definition.
+    /// </summary>
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] IdentityDefinitionUpdateDto dto) 
+        => Ok(await _service.UpdateDefinitionAsync(id, dto));
 
-    [HttpPost]
-    public async Task<IActionResult> CreateIdentityDefinitionAsync(Guid projectId, [FromBody] IdentityDefinitionCreateDto createDto)
-    {
-        return Ok(await _identityDefinitionService.CreateDefinitionAsync(projectId, createDto));
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateIdentityDefinitionAsync(Guid id, [FromBody] IdentityDefinitionUpdateDto updateDto)
-    {
-        return Ok(await _identityDefinitionService.UpdateDefinitionAsync(id, updateDto));
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteIdentityDefinitionAsync(Guid id)
-    {
-        return Ok(await _identityDefinitionService.DeleteDefinitionAsync(id));
-    }
+    /// <summary>
+    /// Delete an identity definition.
+    /// </summary>
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id) 
+        => Ok(await _service.DeleteDefinitionAsync(id));
 }

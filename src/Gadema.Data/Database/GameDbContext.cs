@@ -270,11 +270,7 @@ public class GameDbContext : DbContext
     /// </summary>
     public DbSet<TemplateNarrativeStructure> TemplateNarrativeStructures { get; set; }
 
-    /// <summary>
-    /// ProjectIdentityDefinition entity set.
-    /// </summary>
-    public DbSet<ProjectIdentityDefinition> ProjectIdentityDefinitions { get; set; }
-
+    
     /// <summary>
     /// IdentityValue entity set.
     /// </summary>

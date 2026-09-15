@@ -1,90 +1,72 @@
-// =============================================================================
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Identity;
 
-
-
 /// <summary>
-/// DTO for creating an identity definition (race, faction, alignment, etc.).
+/// DTO for creating an identity definition.
 /// </summary>
 public class IdentityDefinitionCreateDto
 {
     /// <summary>
-    /// ContentMetaInfo data for the definition's identity.
-    /// </summary>
-    [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
-
-    /// <summary>
-    /// ID of the project this definition belongs to.
+    /// The nested identity payload.
     /// </summary>
     [Required]
-    public Guid ProjectId { get; set; }
+    public BaseMetaInfoCreateData ContentMetaInfo { get; set; } = new();
 
-    /// <summary>
-    /// Type of identity (Race, Faction, Alignment, Guild).
-    /// </summary>
-    [EnumDataType(typeof(IdentityTypeEnum)), Required]
-    public IdentityTypeEnum IdentityType { get; set; }
+    [Required]
+    public IdentityDataTypeEnum DataType { get; set; }
 
-    /// <summary>
-    /// Display name for the identity type.
-    /// </summary>
     [Required, MaxLength(128)]
-    public string IdentityTypeName { get; set; } = "";
+    public string Name { get; set; } = "";
 
-    /// <summary>
-    /// Whether this identity is required for characters.
-    /// </summary>
+    [MaxLength(256)]
+    public string? Description { get; set; }
+
     public bool IsRequired { get; set; } = false;
 
-    /// <summary>
-    /// Default value for this identity type.
-    /// </summary>
-    [MaxLength(256)]
-    public string? DefaultValue { get; set; }
-
-    /// <summary>
-    /// Description of this identity type.
-    /// </summary>
-    [MaxLength(1024)]
-    public string? Description { get; set; }
+    [Required]
+    public Guid ProjectId { get; set; }
 }
 
 /// <summary>
-/// DTO for updating an identity definition (partial update).
+/// DTO for updating an identity definition.
 /// </summary>
-public class IdentityDefinitionUpdateDto : UpdateRequestDto
+public class IdentityDefinitionUpdateDto
 {
     /// <summary>
-    /// ContentMetaInfo fields (nullable — omit to keep current values).
+    /// The nested identity payload for the sync strategy.
     /// </summary>
     public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
-    [MaxLength(128)] public string? IdentityTypeName { get; set; }
-    public IdentityTypeEnum? IdentityType { get; set; }
+    public IdentityDataTypeEnum? DataType { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; }
     public bool? IsRequired { get; set; }
-    [MaxLength(256)] public string? DefaultValue { get; set; }
-    [MaxLength(1024)] public string? Description { get; set; }
+    public bool? IsActive { get; set; }
 }
 
 /// <summary>
-/// Response DTO for an identity definition. Inherits ContentMetaInfo state.
+/// Response DTO for an identity definition.
+/// Denormalizes properties from the MetaInfo anchor.
 /// </summary>
-public class IdentityDefinitionResponseDto : MetaInfoResponseBaseDto
+public class IdentityDefinitionResponseDto
 {
-    [Required, MaxLength(128)] public string IdentityTypeName { get; set; } = "";
-    
-    public IdentityTypeEnum IdentityType { get; set; }
-    public bool IsRequired { get; set; }
-    [MaxLength(256)] public string? DefaultValue { get; set; }
-    [MaxLength(1024)] public string? Description { get; set; }
+    public Guid Id { get; set; }
+    public Guid MetaInfoId { get; set; }
 
-    /// <summary>
-    /// Number of characters that have this identity.
-    /// </summary>
-    public int AssignedCount { get; set; }
+    // Denormalized Identity Properties
+    public string Title { get; set; } = "";
+    public string Slug { get; set; } = "";
+    public bool IsPublic { get; set; }
+    public DateTime CreatedAt { get; set; }
+
+    // Domain Properties
+    public IdentityDataTypeEnum DataType { get; set; }
+    public string Name { get; set; } = "";
+    public string? Description { get; set; }
+    public bool IsRequired { get; set; }
+    public Guid ProjectId { get;set; } // Matches the anchor's project
 }
 
 /// <summary>
