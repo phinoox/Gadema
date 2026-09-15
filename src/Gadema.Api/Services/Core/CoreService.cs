@@ -172,7 +172,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     /// [Obsolete] Use ApplyIdentitySyncAsync with an IIdentitySyncStrategy instead.
     /// </summary>
     [Obsolete("Use ApplyIdentitySyncAsync with a specialized strategy to ensure consistent sync logic.")]
-    protected bool ApplyMetaInfoUpdates(ContentMetaInfo ContentMetaInfo, MetaInfoUpdateData? updateData)
+    protected bool ApplyMetaInfoUpdates(ContentMetaInfo ContentMetaInfo, BaseMetaInfoUpdateData? updateData)
     {
         if (updateData == null) return false;
 
@@ -232,7 +232,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     /// </summary>
     protected async Task<bool> ApplyIdentitySyncAsync(
         Guid identityId, 
-        MetaInfoUpdateData updateData, 
+        BaseMetaInfoUpdateData updateData, 
         IIdentitySyncStrategy strategy)
     {
         // The transaction is managed by the calling service to ensure 

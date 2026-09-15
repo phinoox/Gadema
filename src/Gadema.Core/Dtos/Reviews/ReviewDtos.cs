@@ -49,7 +49,7 @@ public class ReviewUpdateDto : UpdateRequestDto
     /// <summary>
     /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [Range(1, 5)] public int? StarRating { get; set; }
     [MaxLength(8192)] public string? ReviewText { get; set; }

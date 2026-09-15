@@ -48,7 +48,7 @@ public class CharacterStateCreateDto
 /// </summary>
 public class CharacterStateUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     public string? StateName { get; set; }
     public string? Description { get; set; }

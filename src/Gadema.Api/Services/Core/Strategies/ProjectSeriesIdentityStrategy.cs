@@ -12,7 +12,7 @@ public class ProjectSeriesIdentityStrategy : IIdentitySyncStrategy
 
     public ProjectSeriesIdentityStrategy(GameDbContext db) => _db = db;
 
-    public async Task SyncAsync(Guid identityId, MetaInfoUpdateData updateData)
+    public async Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData)
     {
         var meta = await _db.Set<ProjectSeriesMetaInfo>()
             .FirstOrDefaultAsync(m => m.ProjectSeriesId == identityId);

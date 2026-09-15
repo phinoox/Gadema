@@ -16,7 +16,7 @@ public class StoryOutlineCreateDto
 
 public class StoryOutlineUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(4096)] public string? Summary { get; set; }
 }

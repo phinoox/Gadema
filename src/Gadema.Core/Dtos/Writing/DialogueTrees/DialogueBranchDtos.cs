@@ -22,7 +22,7 @@ public class DialogueBranchCreateDto
 
 public class DialogueBranchUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(128)] public string? Title { get; set; }
 

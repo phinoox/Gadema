@@ -1,54 +1,43 @@
-// =============================================================================
-using Gadema.Api.Services.DialogueTrees;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.DialogueTrees;
 using Microsoft.AspNetCore.Mvc;
+using Gadema.Api.Services.Content;
+using Gadema.Core.Dtos.DialogueTrees;
 
 namespace Gadema.Api.Controllers.DialogueTrees;
 
-/// <summary>
-/// Controller for scene segment management endpoints.
-/// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId:guid}/scene-segments")]
-public class SceneSegmentsController : ControllerBase
+[Route("api/v1/segments")]
+public class SceneSegmentController : ControllerBase
 {
-    private readonly SceneSegmentService _sceneSegmentService;
-    private readonly ILogger<SceneSegmentsController> _logger;
+    private readonly SceneSegmentService _service;
 
-    public SceneSegmentsController(SceneSegmentService sceneSegmentService, ILogger<SceneSegmentsController> logger)
+    public SceneSegmentController(SceneSegmentService service)
     {
-        _sceneSegmentService = sceneSegmentService;
-        _logger = logger;
+        _service = service;
     }
 
+    /// <summary>
+    /// List segments. Use query params for projectId and sceneId to filter.
+    /// </summary>
     [HttpGet]
-    public async Task<IActionResult> GetSceneSegmentsAsync(Guid projectId)
-    {
-        return Ok(await _sceneSegmentService.GetSceneSegmentsAsync(projectId));
-    }
+    public async Task<IActionResult> Get([FromQuery] Guid projectId, [FromQuery] Guid? sceneId) 
+        => Ok(await _service.GetSegmentsAsync(projectId, sceneId));
 
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetSceneSegmentAsync(Guid id)
-    {
-        return Ok(await _sceneSegmentService.GetSceneSegmentAsync(id));
-    }
+    public async Task<IActionResult> GetById(Guid id) 
+        => Ok(await _service.GetSegmentByIdAsync(id));
 
     [HttpPost]
-    public async Task<IActionResult> CreateSceneSegmentAsync(Guid projectId, [FromBody] SceneSegmentCreateDto createDto)
+    public async Task<IActionResult> Create([FromQuery] Guid projectId, [FromBody] SceneSegmentCreateDto dto)
     {
-        return Ok(await _sceneSegmentService.CreateSceneSegmentAsync(projectId, createDto));
+        var result = await _service.CreateSegmentAsync(projectId, dto);
+        return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> UpdateSceneSegmentAsync(Guid id, [FromBody] SceneSegmentUpdateDto updateDto)
-    {
-        return Ok(await _sceneSegmentService.UpdateSceneSegmentAsync(id, updateDto));
-    }
+    public async Task<IActionResult> Update(Guid id, [FromBody] SceneSegmentUpdateDto dto) 
+        => Ok(await _service.UpdateSegmentAsync(id, dto));
 
     [HttpDelete("{id:guid}")]
-    public async Task<IActionResult> DeleteSceneSegmentAsync(Guid id)
-    {
-        return Ok(await _sceneSegmentService.DeleteSceneSegmentAsync(id));
-    }
+    public async Task<IActionResult> Delete(Guid id) 
+        => Ok(await _service.DeleteSegmentAsync(id));
 }

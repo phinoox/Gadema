@@ -4,5 +4,5 @@ namespace Gadema.Core.Interfaces.Identity;
 
 public interface IIdentitySyncStrategy
 {
-    Task SyncAsync(Guid identityId, MetaInfoUpdateData updateData);
+    Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData);
 }

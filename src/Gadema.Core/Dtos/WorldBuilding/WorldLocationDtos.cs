@@ -34,7 +34,7 @@ public class WorldLocationUpdateDto : UpdateRequestDto
     /// <summary>
     /// ContentMetaInfo fields (nullable — omit to keep current).
     /// </summary>
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     /// <summary>
     /// Type of the location.

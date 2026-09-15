@@ -13,7 +13,7 @@ public class ProjectIdentityStrategy : IIdentitySyncStrategy
 
     public ProjectIdentityStrategy(GameDbContext db) => _db = db;
 
-    public async Task SyncAsync(Guid projectMetaInfoId, MetaInfoUpdateData basicUpdateData)
+    public async Task SyncAsync(Guid projectMetaInfoId, BaseMetaInfoUpdateData basicUpdateData)
     {
         var updateData = (ProjectMetaInfoUpdateData)basicUpdateData;
         if(updateData == null)

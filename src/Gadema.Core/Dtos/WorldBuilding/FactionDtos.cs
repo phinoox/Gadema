@@ -31,7 +31,7 @@ public class FactionCreateDto
 /// </summary>
 public class FactionUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(4096)] public string? Ideology { get; set; }
     [MaxLength(4096)] public string? Goals { get; set; }

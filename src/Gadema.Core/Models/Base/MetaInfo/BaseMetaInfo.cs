@@ -44,4 +44,6 @@ public abstract class BaseMetaInfo
     public string? ShortDesc { get; set; }
 
     public bool IsPublic { get; set; } = false;
+
+    public List<Guid>? TagIds { get; set; } 
 }

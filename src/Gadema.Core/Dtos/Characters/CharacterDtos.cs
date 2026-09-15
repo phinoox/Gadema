@@ -30,7 +30,7 @@ public class CharacterUpdateDto : UpdateRequestDto
 
     public Guid? CurrentStateId { get; set; }
     public Guid? StoryProfileId { get; set; }
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 }
 
 /// <summary>

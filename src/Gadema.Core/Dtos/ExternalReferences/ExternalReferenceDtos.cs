@@ -52,7 +52,7 @@ public class ExternalReferenceUpdateDto : UpdateRequestDto
     /// <summary>
     /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(2048)] public string? Url { get; set; }
     [MaxLength(256)] public string? Title { get; set; }

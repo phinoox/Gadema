@@ -55,5 +55,6 @@ public enum ContentTypeEnum
     ExternalReference = 19,
     ContentReview = 20,
     ProjectSeries = 21,
-    Comment = 22
+    Comment = 22,
+    SceneSegment = 23
 }

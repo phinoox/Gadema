@@ -13,7 +13,7 @@ public class ContentIdentityStrategy : IIdentitySyncStrategy
 
     public ContentIdentityStrategy(GameDbContext db) => _db = db;
 
-    public async Task SyncAsync(Guid metaInfoId, MetaInfoUpdateData updateData)
+    public async Task SyncAsync(Guid metaInfoId, BaseMetaInfoUpdateData updateData)
     {
         var ContentMetaInfo = await _db.MetaInfos.FindAsync(metaInfoId);
         if (ContentMetaInfo == null) throw new Exception("ContentMetaInfo not found.");

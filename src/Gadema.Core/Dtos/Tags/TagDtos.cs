@@ -50,7 +50,7 @@ public class TagUpdateDto : UpdateRequestDto
     /// <summary>
     /// ContentMetaInfo fields (nullable — omit to keep current values).
     /// </summary>
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(128)] public string? ColorHex { get; set; }
 }

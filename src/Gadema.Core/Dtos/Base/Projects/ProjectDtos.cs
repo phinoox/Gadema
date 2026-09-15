@@ -9,7 +9,7 @@ public class ProjectMetaInfoCreateData : BaseMetaInfoCreateData
     public ProjectStatusEnum Status { get; set; }
     
     public ViewModeEnum ViewMode { get; set; }
-    public List<Guid> TagIds { get; set; } = new List<Guid>();
+    
 }
 
 // 2. Create DTO (The entry point)
@@ -43,18 +43,7 @@ public class ProjectUpdateDto
     public ProjectMetaInfoUpdateData? ContentMetaInfo { get; set; }
 }
 
-// 4. Identity Update DTO (Used within ProjectUpdateDto)
-public class ProjectMetaInfoUpdateDto
-{
-    public string? Title { get; set; }
-    public string? Slug { get; set; }
-    public ProjectStatusEnum? Status { get; set; }
-    public ProjectVisibilityEnum? Visibility { get; set; }
-    public ViewModeEnum? ViewMode { get; set; }
-    
-    // The source of truth for tags during a sync
-    public List<Guid> TagIds { get; set; } = new(); 
-}
+
 
 // 5. Response DTO (The flattened "Contract")
 public class ProjectResponseDto 

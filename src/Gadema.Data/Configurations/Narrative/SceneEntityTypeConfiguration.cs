@@ -34,18 +34,3 @@ public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
         builder.HasIndex(e => e.StoryChapterId).HasDatabaseName("IX_Scene_StoryChapterId");
     }
 }
-
-// src/Gadema.Data/Configurations/Writing/SceneSegmentEntityTypeConfiguration.cs
-public class SceneSegmentEntityTypeConfiguration : IEntityTypeConfiguration<SceneSegment>
-{
-    public void Configure(EntityTypeBuilder<SceneSegment> builder)
-    {
-        builder.ToTable("SceneSegments");
-
-        builder.HasKey(e => e.Id);
-
-        // Indexes
-        builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_SceneSegment_MetaInfoId");
-        builder.HasIndex(e => e.SceneId).HasDatabaseName("IX_SceneSegment_SceneId");
-    }
-}

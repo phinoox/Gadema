@@ -25,6 +25,8 @@ public class BaseMetaInfoCreateData
     /// Indicates if this content is visible to users who are not project members.
     /// </summary>
     public bool IsPublic { get; set; } = false;
+
+    public List<Guid>? TagIds { get; set; } 
 }
 
 public class ContentMetaInfoCreateData : BaseMetaInfoCreateData
@@ -56,17 +58,15 @@ public class CreateResponseDto
     public Guid ProjectId { get; set; }
 }
 
-public class MetaInfoUpdateData
+
+
+public class BaseMetaInfoUpdateData
 {
     [MaxLength(128)] public string? Title { get; set; }
     [MaxLength(128)] public string? Slug { get; set; }
     [MaxLength(4096)] public string? ShortDesc { get; set; }
 
-     /// <summary>
-    /// Workflow status of the content (Draft, InProgress, Published, Archived).
-    /// </summary>
-    public ContentStatusEnum? Status { get; set; } = ContentStatusEnum.Draft;
-
+  
     public bool? IsPublic { get; set; } = false;
 
     /// <summary>
@@ -76,7 +76,16 @@ public class MetaInfoUpdateData
     public List<Guid>? TagIds { get; set; } 
 }
 
-public class ProjectMetaInfoUpdateData : MetaInfoUpdateData
+public class ContentMetaInfoUpdateData : BaseMetaInfoUpdateData
+{
+       /// <summary>
+    /// Workflow status of the content (Draft, InProgress, Published, Archived).
+    /// </summary>
+    public ContentStatusEnum? Status { get; set; } = ContentStatusEnum.Draft;
+
+}
+
+public class ProjectMetaInfoUpdateData : BaseMetaInfoUpdateData
 {
     // Project-specific identity fields
     public ProjectStatusEnum? ProjectStatus { get; set; }

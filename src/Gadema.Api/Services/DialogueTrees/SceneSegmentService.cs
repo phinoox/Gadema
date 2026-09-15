@@ -1,178 +1,191 @@
-// =============================================================================
+using Gadema.Api.Services.Search;
+using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.DialogueTrees;
+using Gadema.Core.Dtos.Response;
+using Gadema.Core.Dtos.Search;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Writing;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.DialogueTrees;
+namespace Gadema.Api.Services.Content;
 
 /// <summary>
-/// Service for managing SceneSegments within the dialogue trees domain.
-/// Handles CRUD operations including authorization.
+/// Service for managing SceneSegments - markers within a scene's RawText that indicate
+/// interactive elements like [dialog:nodeId], [action:], etc.
 /// </summary>
-public class SceneSegmentService : CoreService
+public class SceneSegmentService : CoreService, ISearchableProvider
 {
     public SceneSegmentService(GameDbContext db, ILogger<SceneSegmentService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    // ========================================================================
-    // GET - List all scene segments for a project
-    // ========================================================================
+   
+    private ListResponseDto<SceneSegmentResponseDto> CreateListResponseDto(IEnumerable<SceneSegment> segments)
+        => new() { Items = segments.Select(CreateResponseDto).ToList(), TotalCount = segments.Count() };
 
-    public async Task<ApiResponseDto<IEnumerable<SceneSegmentResponseDto>>> GetSceneSegmentsAsync(Guid projectId)
+    public async Task<ApiResponseDto<ListResponseDto<SceneSegmentResponseDto>>> GetSegmentsAsync(Guid projectId, Guid? sceneId = null)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<SceneSegmentResponseDto>>(projectId);
+        var error = await ValidateProjectAccessAsync<ListResponseDto<SceneSegmentResponseDto>>(projectId);
         if (error != null) return error;
 
-        var segments = await _db.SceneSegments
-            .Include(ss => ss.Scene)
-            .ThenInclude(s => s.ContentMetaInfo)
-            .Where(ss => ss.Scene.ContentMetaInfo.ProjectId == projectId)
-            .OrderBy(ss => ss.SceneId)
-            .ThenBy(ss => ss.OrderIndex)
-            .Select(ss => new SceneSegmentResponseDto
-            {
-                Id = ss.Id,
-                SceneId = ss.SceneId,
-                Type = ss.Type,
-                CreatedAt = ss.ContentMetaInfo.CreatedAt,
-                LastSyncedAt = null
-            })
-            .ToListAsync();
+        var query = _db.SceneSegments
+            .Include(s => s.ContentMetaInfo)
+            .Where(s => s.ContentMetaInfo.ProjectId == projectId)
+            .OrderByDescending(s => s.Position)
+            .AsQueryable();
 
-        return ApiResponseDto<IEnumerable<SceneSegmentResponseDto>>.Success(segments);
+        if (sceneId.HasValue) 
+            query = query.Where(s => s.SceneId == sceneId.Value);
+
+        var segments = await query.ToListAsync();
+        return ApiResponseDto<ListResponseDto<SceneSegmentResponseDto>>.Success(CreateListResponseDto(segments));
     }
 
-    // ========================================================================
-    // GET - Single scene segment by ID
-    // ========================================================================
-
-    public async Task<ApiResponseDto<SceneSegmentResponseDto>> GetSceneSegmentAsync(Guid id)
+    public async Task<ApiResponseDto<SceneSegmentResponseDto>> GetSegmentByIdAsync(Guid id)
     {
         var segment = await _db.SceneSegments
-            .Include(ss => ss.Scene)
-            .ThenInclude(s => s.ContentMetaInfo)
-            .FirstOrDefaultAsync(ss => ss.Id == id);
+            .Include(s => s.ContentMetaInfo)
+            .FirstOrDefaultAsync(s => s.Id == id);
 
-        if (segment is null)
+        if (segment is null) 
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.Scene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<SceneSegmentResponseDto>.Success(new SceneSegmentResponseDto
-        {
-            Id = segment.Id,
-            SceneId = segment.SceneId,
-            Type = segment.Type,
-            CreatedAt = segment.ContentMetaInfo.CreatedAt,
-            LastSyncedAt = null
-        });
+        return ApiResponseDto<SceneSegmentResponseDto>.Success(CreateResponseDto(segment));
     }
 
-    // ========================================================================
-    // POST - Create a new scene segment
-    // ========================================================================
-
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateSceneSegmentAsync(Guid projectId, SceneSegmentCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateSegmentAsync(Guid projectId, SceneSegmentCreateDto createDto)
     {
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Validate that the Scene belongs to the project
+        // 1. Find the parent scene to ensure it belongs to this project
         var scene = await _db.Scenes
             .Include(s => s.ContentMetaInfo)
-            .FirstOrDefaultAsync(s => s.Id == createDto.SceneId);
+            .FirstOrDefaultAsync(s => s.Id == createDto.SceneId && s.ContentMetaInfo.ProjectId == projectId);
 
-        if (scene is null)
-            return ApiResponseDto<CreateResponseDto>.NotFound($"Scene with ID {createDto.SceneId} not found.");
+        if (scene == null) 
+            return ApiResponseDto<CreateResponseDto>.BadRequest("Target scene not found or access denied.");
 
-        if (scene.ContentMetaInfo.ProjectId != projectId)
-            return ApiResponseDto<CreateResponseDto>.BadRequest("Scene does not belong to the specified project.");
+        // 2. Create the MetaInfo anchor using the generic helper
+        var meta = CreateMetaInfo<ContentMetaInfo>(createDto.CreateData, m => {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.SceneSegment; // Assuming this exists in your enum
+        });
 
+        // 3. Create the SceneSegment component
         var segment = new SceneSegment
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = Guid.NewGuid(), // SceneSegments have their own ContentMetaInfo
-            SceneId = createDto.SceneId,
-            Type = (SegmentType)createDto.Type,
-            OrderIndex = createDto.OrderIndex ?? 0,
+            MetaInfoId = meta.Id,
+            SceneId = scene.Id,
+            Type = createDto.Type,
+            Position = createDto.Position,
+            Value = createDto.Value,
+            OrderIndex = createDto.OrderIndex
         };
 
         _db.SceneSegments.Add(segment);
+        _db.Set<ContentMetaInfo>().Add(meta);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
-        {
-            EntityId = segment.Id,
-            MetaInfoId = segment.MetaInfoId,
-            ProjectId = projectId
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
+        { 
+            EntityId = segment.Id, 
+            MetaInfoId = meta.Id, 
+            ProjectId = projectId 
         });
     }
 
-    // ========================================================================
-    // PUT - Partial update of a scene segment
-    // ========================================================================
-
-    public async Task<ApiResponseDto<SceneSegmentResponseDto>> UpdateSceneSegmentAsync(Guid id, SceneSegmentUpdateDto updateDto)
+    public async Task<ApiResponseDto<SceneSegmentResponseDto>> UpdateSegmentAsync(Guid id, SceneSegmentUpdateDto updateDto)
     {
         var segment = await _db.SceneSegments
-            .Include(ss => ss.Scene)
-            .ThenInclude(s => s.ContentMetaInfo)
-            .FirstOrDefaultAsync(ss => ss.Id == id);
+            .Include(s => s.ContentMetaInfo)
+            .FirstOrDefaultAsync(s => s.Id == id);
 
         if (segment is null)
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.Scene.ContentMetaInfo.ProjectId);
-        if (error != null) return error;
+        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.ContentMetaInfo.ProjectId);
+        if (error != null) return ApiResponseDto<SceneSegmentResponseDto>.Unauthorized("not authorized");
 
-        if (updateDto.SceneId != Guid.Empty)
-            segment.SceneId = updateDto.SceneId;
+        // 1. Delegate Identity Updates to the Strategy
+        if (updateDto.ContentMetaInfo != null)
+        {
+            await ApplyIdentitySyncAsync(segment.MetaInfoId, updateDto.ContentMetaInfo, new ContentIdentityStrategy(_db));
+        }
 
-        segment.Type = (SegmentType)updateDto.Type;
-
+        // 2. Update Domain Properties
+        if (updateDto.Position.HasValue) segment.Position = updateDto.Position.Value;
+        if (updateDto.Type.HasValue) segment.Type = updateDto.Type.Value;
+        if (updateDto.Value != null) segment.Value = updateDto.Value;
+        if (updateDto.OrderIndex.HasValue) segment.OrderIndex = updateDto.OrderIndex.Value;
 
         await _db.SaveChangesAsync();
-
-        return ApiResponseDto<SceneSegmentResponseDto>.Success(new SceneSegmentResponseDto
-        {
-            Id = segment.Id,
-            SceneId = segment.SceneId,
-            Type = segment.Type,
-            CreatedAt = segment.ContentMetaInfo.CreatedAt,
-            LastSyncedAt = null
-        });
+        return ApiResponseDto<SceneSegmentResponseDto>.Success(CreateResponseDto(segment));
     }
 
-    // ========================================================================
-    // DELETE - Remove a scene segment
-    // ========================================================================
-
-    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSceneSegmentAsync(Guid id)
+    public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSegmentAsync(Guid id)
     {
         var segment = await _db.SceneSegments
-            .Include(ss => ss.Scene)
-            .ThenInclude(s => s.ContentMetaInfo)
-            .FirstOrDefaultAsync(ss => ss.Id == id);
+            .Include(s => s.ContentMetaInfo)
+            .FirstOrDefaultAsync(s => s.Id == id);
 
         if (segment is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.Scene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(segment.ContentMetaInfo);
-        _db.SceneSegments.Remove(segment);
+        // Removing the MetaInfo anchor will cascade to the Segment via the relationship
+        _db.Set<ContentMetaInfo>().Remove(segment.ContentMetaInfo);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
-        {
-            EntityId = id,
-            ProjectId = segment.Scene.ContentMetaInfo.ProjectId
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
+        { 
+            EntityId = id, 
+            ProjectId = segment.ContentMetaInfo.ProjectId 
         });
+    }
+
+    public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    {
+        var queryable = _db.SceneSegments
+            .Include(s => s.ContentMetaInfo)
+            .AsQueryable();
+
+        if (projectId.HasValue)
+            queryable = queryable.Where(s => s.ContentMetaInfo.ProjectId == projectId.Value);
+
+        return await queryable
+            .Where(s => s.ContentMetaInfo.Title.Contains(query) || 
+                        s.Type.ToString().Contains(query))
+            .Select(s => new SearchHitDto
+            {
+                ResourceId = s.Id,
+                DisplayName = s.ContentMetaInfo.Title,
+                Slug = s.ContentMetaInfo.Slug,
+                ResourceType = "SceneSegment",
+                ScopeId = s.ContentMetaInfo.ProjectId,
+                ResourceLink = $"/api/v1/projects/{s.ContentMetaInfo.ProjectId}/scenes/{s.SceneId}/segments/{s.Id}"
+            })
+            .ToListAsync();
+    }
+
+    private SceneSegmentResponseDto CreateResponseDto(SceneSegment segment)
+    {
+        return new SceneSegmentResponseDto
+        {
+            Id = segment.Id,
+            Position = segment.Position,
+            Type = segment.Type,
+            Value = segment.Value,
+            OrderIndex = segment.OrderIndex,
+            CreatedAt = segment.ContentMetaInfo.CreatedAt
+        };
     }
 }

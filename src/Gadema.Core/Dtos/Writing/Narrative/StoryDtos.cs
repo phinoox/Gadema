@@ -13,7 +13,7 @@ public class StoryCreateDto
 
 public class StoryUpdateDto : UpdateRequestDto
 {
-    public MetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     [MaxLength(4096)] public string? Description { get; set; }
 }

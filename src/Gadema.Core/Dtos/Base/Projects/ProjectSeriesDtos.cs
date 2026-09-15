@@ -37,16 +37,12 @@ public class ProjectSeriesUpdateDto
 
 public class ProjectSeriesMetaInfoCreateData : BaseMetaInfoCreateData
 {
-    [Required, MaxLength(128)] public string Title { get; set; } = "";
-    [MaxLength(128)] public string? Slug { get; set; }
-    public List<Guid> TagIds { get; set; } = new();
+    
 }
 
-public class ProjectSeriesMetaInfoUpdateData : MetaInfoUpdateData
+public class ProjectSeriesMetaInfoUpdateData : BaseMetaInfoUpdateData
 {
-    [MaxLength(128)] public string? Title { get; set; }
-    [MaxLength(128)] public string? Slug { get; set; }
-    public List<Guid> TagIds { get; set; } = new();
+ 
 }
 
 // --- Response DTOs (The "Contract") ---

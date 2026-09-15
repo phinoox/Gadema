@@ -18,6 +18,10 @@ public class SceneSegment
     public SegmentType Type { get; set; } = SegmentType.Description;
     public int OrderIndex { get; set; } = 0;
 
+    public int Position { get; set; } = 0;
+    public string? Value { get; set; }
+
+
     // Game Mechanics Migration: Moved from generic KeyEvent
     public ICollection<GameKeyEvent> GameEvents { get; set; } = new List<GameKeyEvent>();
 }
