@@ -59,7 +59,7 @@ public partial class Program
         builder.Services.AddScoped<ExternalReferenceService, ExternalReferenceService>();
         builder.Services.AddScoped<StoryOutlineService, StoryOutlineService>();
         builder.Services.AddScoped<ReviewStatusService, ReviewStatusService>();
-        builder.Services.AddScoped<IUserContext, UserContext>();
+        builder.Services.AddScoped<IUserContext, IUserContext>();
         builder.Services.AddScoped<MetaTagService>(); // Previously TagService
         builder.Services.AddScoped<ProjectService>();
 
