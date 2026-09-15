@@ -185,8 +185,6 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
         if (updateData.ShortDesc != null)
             ContentMetaInfo.ShortDesc = updateData.ShortDesc;
 
-        if (updateData.Status.HasValue)
-            ContentMetaInfo.Status = updateData.Status.Value;
 
         if (updateData.IsPublic.HasValue)
             ContentMetaInfo.IsPublic = updateData.IsPublic.Value;

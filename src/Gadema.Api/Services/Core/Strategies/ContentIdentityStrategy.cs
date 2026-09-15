@@ -21,8 +21,15 @@ public class ContentIdentityStrategy : IIdentitySyncStrategy
         // 1. Update Identity Properties
         if (updateData.Title != null) ContentMetaInfo.Title = updateData.Title;
         if (updateData.Slug != null) ContentMetaInfo.Slug = updateData.Slug;
-        if (updateData.Status.HasValue) ContentMetaInfo.Status = updateData.Status.Value;
         if (updateData.IsPublic.HasValue) ContentMetaInfo.IsPublic = updateData.IsPublic.Value;
+
+        if (updateData is ContentMetaInfoUpdateData contentUpdate)
+        {
+            if (contentUpdate.Status.HasValue) 
+                ContentMetaInfo.Status = contentUpdate.Status.Value;
+            
+            // If there were other properties unique to ContentMetaInfo, they would go here.
+        }
 
         // 2. Sync Tags
         if (updateData.TagIds != null)
