@@ -1,98 +1,69 @@
-// =============================================================================
+using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Response;
-using Gadema.Core.Dtos.Tags;
 using Gadema.Core.Dtos.Tasks;
+using Gadema.Core.Dtos.Response;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
+using Gadema.Api.Services.Tags.Strategies;
+using Gadema.Core.Dtos.Search;
 
 namespace Gadema.Api.Services.Tasks;
 
 /// <summary>
-/// Service for managing ProjectTasks within the tasks domain.
-/// Flat task structure with ADHD-friendly features (quick win flag, difficulty).
+/// Service for managing ProjectTasks - actionable items within a project workflow.
 /// </summary>
-public class ProjectTaskService : CoreService
+public class ProjectTaskService : CoreService, ISearchableProvider
 {
     public ProjectTaskService(GameDbContext db, ILogger<ProjectTaskService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 
-    /// <summary>Creates a response DTO from a ProjectTask entity.</summary>
-    private TagResponseDto CreateResponseDto(ProjectTask task)
-        => new()
-        {
-            Id = task.Id,
-            MetaInfoId = task.MetaInfoId,
-            Status = (int)task.Status,
-            Priority = (int)task.Priority,
-            Difficulty = (int)task.Difficulty,
-            TaskTitle = task.TaskTitle,
-            Description = task.Description,
-            EstimatedMinutes = task.EstimatedMinutes,
-            AssignedToUserId = task.AssignedToUserId,
-            DueDate = task.DueDate,
-            IsQuickWin = task.IsQuickWin,
-            CreatedAt = task.CreatedAt,
-            LastModifiedAt = task.LastModifiedAt,
-        };
-
-    /// <summary>Creates a list response DTO from collection.</summary>
-    private ListResponseDto<TaskResponseDto> CreateListResponseDto(IEnumerable<ProjectTask> tasks)
-        => new() { Items = tasks.Select(CreateResponseDto).ToList(), TotalCount = tasks.Count() };
-
     // ========================================================================
-    // GET - List all tasks for a project (with optional filters)
+    // GET - List all tasks for a project
     // ========================================================================
 
-    public async Task<ApiResponseDto<ListResponseDto<TaskResponseDto>>> GetTasksAsync(Guid projectId, int? status = null, Guid? assignedToUserId = null, bool? isQuickWin = null, string? searchQuery = null)
+    public async Task<ApiResponseDto<ListResponseDto<ProjectTaskResponseDto>>> GetTasksAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<TaskResponseDto>>(projectId);
+        var error = await ValidateProjectAccessAsync<ListResponseDto<ProjectTaskResponseDto>>(projectId);
         if (error != null) return error;
 
-        IQueryable<ProjectTask> query = _db.ProjectTasks
-            .Include(pt => pt.ContentMetaInfo)
-            .Where(pt => pt.ProjectId == projectId);
+        var tasks = await _db.ProjectTasks
+            .Include(t => t.MetaInfo)
+            .Where(t => t.ProjectId == projectId)
+            .OrderBy(t => t.DueDate ?? DateTime.MaxValue)
+            .ToListAsync();
 
-        if (status.HasValue)
-            query = query.Where(pt => pt.Status == status.Value);
-
-        if (assignedToUserId.HasValue)
-            query = query.Where(pt => pt.AssignedToUserId == assignedToUserId.Value || pt.AssignedToUserId == null);
-
-        if (isQuickWin.HasValue)
-            query = query.Where(pt => pt.IsQuickWin == isQuickWin.Value);
-
-        if (!string.IsNullOrWhiteSpace(searchQuery))
-            query = query.Where(pt => pt.TaskTitle.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
-
-        var tasks = await query.OrderBy(pt => pt.Status).ThenByDescending(pt => pt.Priority).ThenBy(pt => pt.DueDate ?? DateTime.MaxValue).ToListAsync();
-        return ApiResponseDto<ListResponseDto<TaskResponseDto>>.Success(CreateListResponseDto(tasks));
+        return ApiResponseDto<ListResponseDto<ProjectTaskResponseDto>>.Success(new ListResponseDto<ProjectTaskResponseDto>
+        {
+            Items = tasks.Select(CreateResponseDto),
+            TotalCount = tasks.Count
+        });
     }
 
     // ========================================================================
     // GET - Single task by ID
     // ========================================================================
 
-    public async Task<ApiResponseDto<TaskResponseDto>> GetTaskAsync(Guid id)
+    public async Task<ApiResponseDto<ProjectTaskResponseDto>> GetTaskAsync(Guid id)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.ContentMetaInfo)
-            .FirstOrDefaultAsync(pt => pt.Id == id);
+            .Include(t => t.MetaInfo)
+            .FirstOrDefaultAsync(t => t.Id == id);
 
-        if (task is null)
-            return ApiResponseDto<TaskResponseDto>.NotFound($"Project task with ID {id} not found.");
+        if (task is null) 
+            return ApiResponseDto<ProjectTaskResponseDto>.NotFound($"Task with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<TaskResponseDto>(task.ProjectId);
+        var error = await ValidateProjectAccessAsync<ProjectTaskResponseDto>(task.ProjectId);
         if (error != null) return error;
 
-        return ApiResponseDto<TaskResponseDto>.Success(CreateResponseDto(task));
+        return ApiResponseDto<ProjectTaskResponseDto>.Success(CreateResponseDto(task));
     }
 
     // ========================================================================
-    // POST - Create a new project task
+    // POST - Create a new task
     // ========================================================================
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateTaskAsync(Guid projectId, ProjectTaskCreateDto createDto)
@@ -100,129 +71,135 @@ public class ProjectTaskService : CoreService
         var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
         if (error != null) return error;
 
-        // Determine MetaInfoId from task title or description keywords
-        Guid? metaInfoId = null;
-        if (!string.IsNullOrWhiteSpace(createDto.TaskTitle))
-            metaInfoId = GetOrCreateMetaInfoForTask(projectId, createDto.TaskTitle);
+        // 1. Create the MetaInfo anchor using the generic helper
+        var meta = CreateMetaInfo<ProjectTaskMetaInfo>(createDto.MetaInfo, m => {
+            m.ProjectId = projectId;
+        });
 
+        // 2. Create the ProjectTask component
         var task = new ProjectTask
         {
-            Id = Guid.NewGuid(),
+            Id = meta.Id,
+            MetaInfoId = meta.Id,
             ProjectId = projectId,
-            MetaInfoId = metaInfoId,
-            TaskTitle = createDto.TaskTitle,
-            Description = createDto.Description,
-            Status = (int)createDto.Status ?? 0,
-            Priority = (int)createDto.Priority ?? 1,
-            Difficulty = (int)createDto.Difficulty ?? 1,
-            EstimatedMinutes = createDto.EstimatedMinutes,
             AssignedToUserId = createDto.AssignedToUserId,
             DueDate = createDto.DueDate,
-            IsQuickWin = createDto.IsQuickWin ?? false,
-            CreatedByUserId = _userContext.CurrentUser!.Id,
+            CreatedByUserId = createDto.CreatedByUserId
         };
 
         _db.ProjectTasks.Add(task);
+        _db.Set<ProjectTaskMetaInfo>().Add(meta);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
-        {
-            EntityId = task.Id,
-            MetaInfoId = metaInfoId ?? Guid.Empty,
-            ProjectId = projectId
+        return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
+        { 
+            EntityId = task.Id, 
+            MetaInfoId = task.MetaInfoId, 
+            ProjectId = projectId 
         });
     }
 
     // ========================================================================
-    // PUT - Partial update of a project task
+    // PUT - Partial update of identity and domain data
     // ========================================================================
 
-    public async Task<ApiResponseDto<TaskResponseDto>> UpdateTaskAsync(Guid id, ProjectTaskUpdateDto updateDto)
+    public async Task<ApiResponseDto<ProjectTaskResponseDto>> UpdateTaskAsync(Guid id, ProjectTaskUpdateDto updateDto)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.ContentMetaInfo)
-            .FirstOrDefaultAsync(pt => pt.Id == id);
+            .Include(t => t.MetaInfo)
+            .FirstOrDefaultAsync(t => t.Id == id);
 
         if (task is null)
-            return ApiResponseDto<TaskResponseDto>.NotFound($"Project task with ID {id} not found.");
+            return ApiResponseDto<ProjectTaskResponseDto>.NotFound($"Task with ID {id} not found.");
 
         var error = await ValidateProjectAccessAsync<ProjectTaskUpdateDto>(task.ProjectId);
-        if (error != null) return error;
+        if (error != null) return ApiResponseDto<ProjectTaskResponseDto>.Unauthorized("not authorized");
 
-        if (!string.IsNullOrWhiteSpace(updateDto.TaskTitle))
-            task.TaskTitle = updateDto.TaskTitle;
+        // 1. Delegate Identity Updates to the Strategy
+        if (updateDto.MetaInfo != null)
+        {
+            await ApplyIdentitySyncAsync(task.MetaInfoId, updateDto.MetaInfo, new ContentIdentityStrategy(_db));
+        }
 
-        if (updateDto.Description != null)
-            task.Description = updateDto.Description;
-
-        if (updateDto.Status.HasValue)
-            task.Status = updateDto.Status.Value;
-
-        if (updateDto.Priority.HasValue)
-            task.Priority = updateDto.Priority.Value;
-
-        if (updateDto.Difficulty.HasValue)
-            task.Difficulty = updateDto.Difficulty.Value;
-
-        if (updateDto.EstimatedMinutes != null)
-            task.EstimatedMinutes = updateDto.EstimatedMinutes.Value;
-
-        if (updateDto.AssignedToUserId.HasValue)
-            task.AssignedToUserId = updateDto.AssignedToUserId.Value;
-
-        if (updateDto.DueDate.HasValue)
-            task.DueDate = updateDto.DueDate.Value;
-
-        if (updateDto.IsQuickWin.HasValue)
-            task.IsQuickWin = updateDto.IsQuickWin.Value;
+        // 2. Update Domain Properties
+        if (updateDto.AssignedToUserId.HasValue) task.AssignedToUserId = updateDto.AssignedToUserId;
+        if (updateDto.DueDate.HasValue) task.DueDate = updateDto.DueDate;
 
         await _db.SaveChangesAsync();
-
-        return ApiResponseDto<TaskResponseDto>.Success(CreateResponseDto(task));
+        return ApiResponseDto<ProjectTaskResponseDto>.Success(CreateResponseDto(task));
     }
 
     // ========================================================================
-    // DELETE - Remove a project task
+    // DELETE - Remove a task
     // ========================================================================
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteTaskAsync(Guid id)
     {
         var task = await _db.ProjectTasks
-            .Include(pt => pt.ContentMetaInfo)
-            .FirstOrDefaultAsync(pt => pt.Id == id);
+            .Include(t => t.MetaInfo)
+            .FirstOrDefaultAsync(t => t.Id == id);
 
         if (task is null)
-            return ApiResponseDto<DeleteResponseDto>.NotFound($"Project task with ID {id} not found.");
+            return ApiResponseDto<DeleteResponseDto>.NotFound($"Task with ID {id} not found.");
 
         var error = await ValidateProjectAccessAsync<DeleteResponseDto>(task.ProjectId);
         if (error != null) return error;
 
-        // Soft delete: set title to empty and mark as done, don't cascade delete ContentMetaInfo
-        task.TaskTitle = "[DELETED]";
-        task.Status = (int)TaskStatusEnum.Done;
+        // Deleting the MetaInfo anchor will cascade to the ProjectTask component
+        _db.Set<ProjectTaskMetaInfo>().Remove(task.MetaInfo);
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
-        {
-            EntityId = id,
-            ProjectId = task.ProjectId
+        return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
+        { 
+            EntityId = id, 
+            ProjectId = task.ProjectId 
         });
     }
 
     // ========================================================================
-    // HELPER: Get or create ContentMetaInfo from task title keywords
+    // ISearchableProvider Implementation
     // ========================================================================
 
-    private Guid? GetOrCreateMetaInfoForTask(Guid projectId, string taskTitle)
+    public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
-        var keywords = new[] { "character", "faction", "location", "scene", "chapter", "plot" };
-        foreach (var keyword in keywords)
-        {
-            if (taskTitle.ToLowerInvariant().Contains(keyword))
-                return null; // Task title suggests it's about an entity, let user create ContentMetaInfo separately
-        }
+        var queryable = _db.ProjectTasks
+            .Include(t => t.MetaInfo)
+            .AsQueryable();
 
-        var ContentMetaInfo = _db.MetaInfos.FirstOrDefault(m => m.ProjectId == projectId && m.Title.ToLowerInvariant() == taskTitle.ToLowerInvariant());
-        return ContentMetaInfo?.Id;
+        if (projectId.HasValue)
+            queryable = queryable.Where(t => t.ProjectId == projectId.Value);
+
+        return await queryable
+            .Where(t => t.MetaInfo.Title.Contains(query) || 
+                        t.MetaInfo.ShortDesc.Contains(query))
+            .Select(t => new SearchHitDto
+            {
+                ResourceId = t.Id,
+                DisplayName = t.MetaInfo.Title,
+                Slug = t.MetaInfo.Slug,
+                ResourceType = "ProjectTask",
+                ScopeId = t.ProjectId,
+                ResourceLink = $"/api/v1/projects/{t.ProjectId}/tasks/{t.Id}"
+            })
+            .ToListAsync();
+    }
+
+    private ProjectTaskResponseDto CreateResponseDto(ProjectTask task)
+    {
+        return new ProjectTaskResponseDto
+        {
+            Id = task.Id,
+            MetaInfoId = task.MetaInfoId,
+            // Denormalized identity properties from the anchor
+            Title = task.MetaInfo.Title,
+            Slug = task.MetaInfo.Slug,
+            IsPublic = task.MetaInfo.IsPublic,
+            CreatedAt = task.MetaInfo.CreatedAt,
+            // Domain properties
+            ProjectId = task.ProjectId,
+            AssignedToUserId = task.AssignedToUserId,
+            DueDate = task.DueDate,
+            CreatedByUserId = task.CreatedByUserId
+        };
     }
 }
