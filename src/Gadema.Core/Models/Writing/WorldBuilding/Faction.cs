@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Core.Models.WorldBuilding;
+namespace Gadema.Core.Models.Writing.WorldBuilding;
 
 /// <summary>
 /// Represents a faction, organization, or group within the game world.

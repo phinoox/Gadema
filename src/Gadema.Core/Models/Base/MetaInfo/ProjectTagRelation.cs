@@ -4,7 +4,7 @@ using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Projects;
 using Gadema.Core.Models.Tags;
 
-namespace Gadema.Core.Models.Projects;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Junction table linking a Project (Root Anchor) to a MetaTag.

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models.Writing;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 [ModelDependency(typeof(StoryOutline))]
 public class OutlineSection

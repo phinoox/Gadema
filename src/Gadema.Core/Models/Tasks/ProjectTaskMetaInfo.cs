@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Tasks;
 
 /// <summary>
 /// Identity anchor for a ProjectTask. 

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Identity;
 
 /// <summary>
 /// Identity assignment for a specific character/content item.

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
 /// Junction table for many-to-many relationship between MediaAttachments and Tags.

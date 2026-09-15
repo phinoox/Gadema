@@ -9,7 +9,7 @@ using Gadema.Core.Models.Base.MetaInfo; // Added for MetaInfo access
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Projects;
+namespace Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a collection of related projects (e.g., a book series or game franchise).

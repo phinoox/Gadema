@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Tags;
 
-namespace Gadema.Core.Models.Base;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Junction table linking a ContentMetaInfo (Content Anchor) to a MetaTag.

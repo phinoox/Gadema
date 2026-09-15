@@ -7,7 +7,7 @@ using Gadema.Core.Models.Projects;
 using Gadema.Core.Models.WorldBuilding;
 using Gadema.Core.Models.Writing;
 
-namespace Gadema.Core.Models.Characters;
+namespace Gadema.Core.Models.Writing.Characters;
 
 /// <summary>
 /// Represents a character's mutable state at a point in the story.

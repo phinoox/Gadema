@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Represents ancillary data attached to a content item.

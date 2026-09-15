@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Tasks;
 
 /// <summary>
 /// Represents a comment on a task.

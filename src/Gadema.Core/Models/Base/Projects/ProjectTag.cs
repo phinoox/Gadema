@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
-namespace Gadema.Core.Models.Projects;
+namespace Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a tag specifically for Projects.

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Templates;
 
 /// <summary>
 /// Template attribute set definition for project templates.

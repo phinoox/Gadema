@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Core.Models.Writing;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 [ModelDependency(typeof(ContentMetaInfo),typeof(Project))]
 public class Story

@@ -1,6 +1,6 @@
 using Gadema.Core.Dtos;
 
-namespace Gadema.Core.Interfaces.Identity;
+namespace Gadema.Core.Interfaces;
 
 public interface IIdentitySyncStrategy
 {

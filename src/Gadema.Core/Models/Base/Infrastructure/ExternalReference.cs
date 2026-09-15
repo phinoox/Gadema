@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
 /// Represents an external reference (Google Docs, Pinterest boards, etc.).

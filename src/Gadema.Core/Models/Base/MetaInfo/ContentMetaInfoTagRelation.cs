@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models.Content;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Junction table linking ContentMetaInfo to MetaInfoTag.

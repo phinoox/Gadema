@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Access;
 
 /// <summary>
 /// Audit trail: which authentication providers are linked to a user account.

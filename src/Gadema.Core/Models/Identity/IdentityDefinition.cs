@@ -7,7 +7,7 @@ using Gadema.Core.Models.Projects;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Identity;
 
 /// <summary>
 /// Definition of identity types (race, faction, alignment, guild) for a project.

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
 /// Represents a business-level audit event within a project.

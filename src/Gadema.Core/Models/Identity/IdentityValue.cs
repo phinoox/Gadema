@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Base.MetaInfo;
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Identity;
 
 /// <summary>
 /// A specific instance of an identity type (e.g., "Human" for the "Race" definition).

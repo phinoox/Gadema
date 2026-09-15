@@ -3,7 +3,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Represents a review status for content items.

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Gadema.Core.Models;
 
-namespace Gadema.Core.Models.Characters;
+namespace Gadema.Core.Models.Writing.Characters;
 
 /// <summary>
 /// Static backstory and personality information for a character.

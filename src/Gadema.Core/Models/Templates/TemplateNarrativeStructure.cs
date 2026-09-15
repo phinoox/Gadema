@@ -6,7 +6,7 @@ using Gadema.Core.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Templates;
 
 /// <summary>
 /// Definition of narrative structures (act sequences, plot points) for project templates.

@@ -5,7 +5,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Templates;
 
 /// <summary>
 /// Definition of attribute sets for project templates.

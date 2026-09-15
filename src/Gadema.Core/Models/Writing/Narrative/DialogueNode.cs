@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Characters;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 /// <summary>
 /// Represents a dialogue node within a branch.

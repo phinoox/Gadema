@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Writing;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 /// <summary>
 /// Represents a Scene - the "Unit of Work" for writing in GaDeMa.

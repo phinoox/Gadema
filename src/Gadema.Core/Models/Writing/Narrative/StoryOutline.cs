@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Writing;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 /// <summary>
 /// Represents a Story Outline - the "Map" of the project's narrative intent.

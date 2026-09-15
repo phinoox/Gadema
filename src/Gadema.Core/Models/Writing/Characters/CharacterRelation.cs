@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Characters;
+namespace Gadema.Core.Models.Writing.Characters;
 
 /// <summary>
 /// Tracks evolving relationships between characters throughout the story.

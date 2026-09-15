@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Access;
 
 /// <summary>
 /// Represents a user account in the GaDeMa system.

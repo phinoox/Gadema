@@ -5,6 +5,8 @@ using Gadema.Core.Models;
 using Gadema.Core.Models.Characters;
 using Gadema.Core.Models.Projects;
 
+namespace Gadema.Core.Models.Writing.WorldBuilding;
+
 [ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class WorldLocation
 {

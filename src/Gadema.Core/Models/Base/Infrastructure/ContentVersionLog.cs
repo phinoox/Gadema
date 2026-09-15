@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
 /// Represents a content version log for rollback support.

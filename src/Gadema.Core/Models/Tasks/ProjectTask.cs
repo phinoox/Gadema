@@ -6,7 +6,7 @@ using Gadema.Core.Models.Projects;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Tasks;
 
 /// <summary>
 /// Represents a task in the project workflow.

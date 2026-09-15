@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 
-namespace Gadema.Core.Models.Content;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Represents a tag specifically for MetaInfos (Characters, World, Mechanics, etc.).

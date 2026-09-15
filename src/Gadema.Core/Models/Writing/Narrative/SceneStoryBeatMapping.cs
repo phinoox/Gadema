@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Narrative;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 /// <summary>
 /// Junction table for Many-to-Many relationship between Scene and StoryBeat.

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models;
 using Gadema.Core.Models.Projects;
 
+namespace Gadema.Core.Models.Access;
 public enum ProjectMemberRoleEnum
 {
     Owner = 0,

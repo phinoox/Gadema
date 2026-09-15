@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Projects;
+namespace Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a project in the game development management system.

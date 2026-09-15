@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Templates;
 
 /// <summary>
 /// Represents a project template for quick project creation.

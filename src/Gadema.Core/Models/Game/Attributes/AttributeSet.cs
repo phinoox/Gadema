@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Game.Attributes;
 
 /// <summary>
 /// Represents an attribute set for character/class templates.

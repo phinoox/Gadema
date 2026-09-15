@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Writing;
 
-namespace Gadema.Core.Models.Game;
+namespace Gadema.Core.Models.Game.EngineIntegration;
 
 [ModelDependency(typeof(ContentMetaInfo), typeof(SceneSegment))]
 public class GameKeyEvent

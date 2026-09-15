@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gadema.Core.Models.Tags;
+namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// A universal tag used for categorization and discovery across the entire system.

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models.Writing;
+namespace Gadema.Core.Models.Writing.Narrative;
 
 /// <summary>
 /// Represents a Story Beat - a "Landmark" or major keypoint within a StoryOutline.

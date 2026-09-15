@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Templates;
 
 /// <summary>
 /// Definition of identity systems (race, faction, guild, etc.) for project templates.
