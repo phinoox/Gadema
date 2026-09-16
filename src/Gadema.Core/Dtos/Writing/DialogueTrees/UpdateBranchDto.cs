@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Base.Projects;
-
 namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 
 /// <summary>

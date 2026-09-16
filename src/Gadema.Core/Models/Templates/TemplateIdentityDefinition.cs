@@ -2,10 +2,7 @@
 // TemplateIdentityDefinition - Entity for identity system definitions in project templates
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Identity;
 
 namespace Gadema.Core.Models.Templates;
 

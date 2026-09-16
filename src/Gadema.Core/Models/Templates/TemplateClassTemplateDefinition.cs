@@ -2,8 +2,7 @@
 // TemplateClassTemplateDefinition - Entity for class template configurations in project templates
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Game.Attributes;
 
 namespace Gadema.Core.Models.Templates;
 

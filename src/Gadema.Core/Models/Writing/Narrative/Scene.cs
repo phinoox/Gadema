@@ -1,11 +1,6 @@
-using Gadema.Core.Models.Base.Enums;
-using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Models.Base.Infrastructure;
 using Gadema.Core.Models.Base.Projects;
-using Gadema.Core.Models.Characters;
-using Gadema.Core.Models.Narrative;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Core.Models.Writing.Narrative;
 
@@ -91,7 +86,7 @@ public class Scene
     /// Collection of character states established or changed in this scene.
     /// Links back to CharacterState.TriggerSceneId for event-driven tracking.
     /// </summary>
-    public virtual ICollection<Models.Characters.CharacterState> CharacterStates { get; set; } = new List<Models.Characters.CharacterState>();
+    public virtual ICollection<Characters.CharacterState> CharacterStates { get; set; } = new List<Characters.CharacterState>();
     
     // ========================================================================
     // Versioning & History

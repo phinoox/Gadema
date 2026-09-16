@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-
-
 namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>

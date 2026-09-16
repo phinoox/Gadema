@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Core.Dtos.Writing.Characters;

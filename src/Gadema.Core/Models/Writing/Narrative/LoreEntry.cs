@@ -1,9 +1,5 @@
-using Gadema.Core.Models.Base.Enums;
-using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Enums;
 using Gadema.Core.Models.Base.Projects;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gadema.Core.Models.Writing.Narrative;
 

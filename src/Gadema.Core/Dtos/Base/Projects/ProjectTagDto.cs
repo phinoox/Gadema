@@ -1,5 +1,3 @@
-using Gadema.Core.Enums;
-
 namespace Gadema.Core.Dtos.Base.Projects;
 
 public class ProjectTagCreateDto

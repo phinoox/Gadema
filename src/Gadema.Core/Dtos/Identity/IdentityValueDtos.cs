@@ -1,5 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
 namespace Gadema.Core.Dtos.Identity;
 

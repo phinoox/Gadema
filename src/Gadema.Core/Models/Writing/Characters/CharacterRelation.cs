@@ -1,8 +1,4 @@
-using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Writing.Narrative;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gadema.Core.Models.Writing.Characters;
 

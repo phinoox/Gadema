@@ -1,9 +1,6 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Enums;
-using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.Projects;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 

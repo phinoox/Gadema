@@ -1,7 +1,5 @@
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Models.Game;
-using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Models.Writing.Narrative;
 
 namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 

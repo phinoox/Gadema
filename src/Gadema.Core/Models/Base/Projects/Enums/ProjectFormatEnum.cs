@@ -1,5 +1,4 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 

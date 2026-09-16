@@ -1,5 +1,5 @@
-using System.ComponentModel.DataAnnotations;
-
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Models.Base.Infrastructure.Enums;
 
 namespace Gadema.Core.Dtos.ExternalReferences;
 

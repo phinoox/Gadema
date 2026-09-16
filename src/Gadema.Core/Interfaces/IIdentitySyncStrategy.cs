@@ -1,4 +1,4 @@
-using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
 namespace Gadema.Core.Interfaces;
 

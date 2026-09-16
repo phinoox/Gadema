@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Base.Enums;
-using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Models.Writing.WorldBuilding;
 
 namespace Gadema.Core.Dtos.Writing.WorldBuilding;
 

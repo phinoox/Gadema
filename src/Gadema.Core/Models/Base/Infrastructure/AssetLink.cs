@@ -1,5 +1,3 @@
-using Gadema.Core.Models.Base.MetaInfo;
-
 namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>

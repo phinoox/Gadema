@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Gadema.Core.Models.Tasks.Enums;
 
 /// <summary>

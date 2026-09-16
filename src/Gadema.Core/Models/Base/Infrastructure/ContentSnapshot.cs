@@ -1,8 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Base.MetaInfo;
-
 namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>

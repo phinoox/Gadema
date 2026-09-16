@@ -2,8 +2,6 @@
 // ReviewStatusResponseDto - Response for review status
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models;
 using Gadema.Core.Enums;
 
 

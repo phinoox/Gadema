@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Core.Dtos.Writing.Characters;

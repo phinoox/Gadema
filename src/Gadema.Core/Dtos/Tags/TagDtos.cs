@@ -1,6 +1,5 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Enums;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
 namespace Gadema.Core.Dtos.Tags;
 

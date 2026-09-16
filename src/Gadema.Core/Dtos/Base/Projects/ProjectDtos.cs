@@ -1,5 +1,5 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Enums;
-using Gadema.Core.Dtos.Response;
 
 namespace Gadema.Core.Dtos.Base.Projects;
 

@@ -1,10 +1,6 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Models.Narrative;
 using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Core.Models.Writing.WorldBuilding;
-using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Writing.Characters;
 

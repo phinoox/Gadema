@@ -2,10 +2,6 @@
 // TemplateNarrativeStructure - Entity for narrative structure definitions in project templates
 // =============================================================================
 
-using Gadema.Core.Enums;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Gadema.Core.Models.Templates;
 
 /// <summary>

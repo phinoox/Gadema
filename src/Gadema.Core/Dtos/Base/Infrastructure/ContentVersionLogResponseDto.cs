@@ -1,6 +1,4 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
-
 namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>

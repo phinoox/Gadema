@@ -1,6 +1,4 @@
 // =============================================================================
-using System.Collections.Generic;
-
 namespace Gadema.Core.Dtos.Response;
 
 /// <summary>

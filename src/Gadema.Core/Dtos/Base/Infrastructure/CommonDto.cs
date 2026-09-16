@@ -1,5 +1,4 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Enums;
 
 namespace Gadema.Core.Dtos.Base.Infrastructure;

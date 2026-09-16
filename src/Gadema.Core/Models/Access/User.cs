@@ -4,13 +4,9 @@
 
 // =============================================================================
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Base.Enums;
 
+using Gadema.Core.Models.Access.Enums;
 
 namespace Gadema.Core.Models.Access;
 

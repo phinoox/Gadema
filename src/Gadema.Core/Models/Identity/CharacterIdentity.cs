@@ -2,10 +2,6 @@
 // CharacterIdentity - Entity for character identity assignments (race, faction, guild)
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Enums;
-
 namespace Gadema.Core.Models.Identity;
 
 /// <summary>

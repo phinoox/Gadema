@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
 namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 

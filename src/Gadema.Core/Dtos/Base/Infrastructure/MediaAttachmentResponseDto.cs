@@ -2,8 +2,6 @@
 // MediaAttachmentResponseDto - Response for media attachment
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-
 namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>

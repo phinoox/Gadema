@@ -1,5 +1,4 @@
-using Gadema.Core.Enums;
-using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Access;
 
 namespace Gadema.Core.Dtos.Base.Projects;
 

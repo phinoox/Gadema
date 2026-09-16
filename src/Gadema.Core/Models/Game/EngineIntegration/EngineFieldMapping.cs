@@ -2,10 +2,7 @@
 // EngineFieldMapping - Entity for engine field name mappings per content type
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Projects;
-
+using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Core.Models.Game.EngineIntegration;
 

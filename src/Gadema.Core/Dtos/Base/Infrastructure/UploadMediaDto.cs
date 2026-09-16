@@ -1,7 +1,4 @@
 // =============================================================================
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
-
 // =============================================================================
 
 namespace Gadema.Core.Dtos.Base.Infrastructure;

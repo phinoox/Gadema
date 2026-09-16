@@ -2,9 +2,6 @@
 // AttributeSetDefinition - Entity for attribute set definitions in project templates
 // =============================================================================
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace Gadema.Core.Models.Templates;
 
 /// <summary>

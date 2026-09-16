@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Dtos;
-using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
 namespace Gadema.Core.Dtos.Writing.Narrative;
 

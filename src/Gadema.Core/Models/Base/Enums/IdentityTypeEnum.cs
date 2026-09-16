@@ -2,9 +2,7 @@
 // Enums/IdentityTypeEnum.cs - Enum for identity types (race, faction, alignment, guild)
 // =============================================================================
 
-using System;
-using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models;
+using Gadema.Core.Models.Identity;
 
 namespace Gadema.Core.Models.Base.Enums;
 
