@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Core.Models;
+namespace Gadema.Core.Models.Game.Inventory;
 
 /// <summary>
 /// Represents an inventory item for game assets (collectibles, keys, achievements).

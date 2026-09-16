@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Writing;
 using Gadema.Core.Dtos; // For MetaInfoCreateData and MetaInfoUpdateData
 
-namespace Gadema.Core.Dtos.DialogueTrees;
+namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 
 /// <summary>
 /// DTO for creating a scene segment.

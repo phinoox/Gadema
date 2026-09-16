@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Dtos;
 
-namespace Gadema.Core.Dtos.DialogueTrees;
+namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 
 public class DialogueBranchCreateDto
 {

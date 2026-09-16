@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Comments;
+namespace Gadema.Core.Dtos.Writing.Social;
 
 public class CreateCommentDto
 {

@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Projects;
+namespace Gadema.Core.Dtos.Base.Projects;
 
 
 /// <summary>

@@ -1,6 +1,6 @@
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.Projects;
+namespace Gadema.Core.Dtos.Base.Projects;
 
 public class ProjectTagCreateDto
 {

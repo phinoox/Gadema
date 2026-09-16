@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Narrative;
+namespace Gadema.Core.Dtos.Writing.Narrative;
 
 /// <summary>
 /// DTO for creating a story beat.

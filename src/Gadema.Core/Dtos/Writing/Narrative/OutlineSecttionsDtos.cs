@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Dtos;
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.Narrative;
+namespace Gadema.Core.Dtos.Writing.Narrative;
 
 public class OutlineSectionCreateDto
 {

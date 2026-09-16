@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.WorldBuilding;
+namespace Gadema.Core.Dtos.Writing.WorldBuilding;
 
 /// <summary>
 /// DTO for creating a world location.

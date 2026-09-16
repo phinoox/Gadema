@@ -1,7 +1,7 @@
 using Gadema.Core.Enums;
 using Gadema.Core.Dtos.Response;
 
-namespace Gadema.Core.Dtos.Projects;
+namespace Gadema.Core.Dtos.Base.Projects;
 
 // 1. Identity Data for creation
 public class ProjectMetaInfoCreateData : BaseMetaInfoCreateData
