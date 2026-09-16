@@ -1,7 +1,7 @@
-// =============================================================================
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Writing;
-using Gadema.Core.Dtos; // For MetaInfoCreateData and MetaInfoUpdateData
+using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Models.Game;
+using Gadema.Core.Dtos;
 
 namespace Gadema.Core.Dtos.Writing.DialogueTrees;
 

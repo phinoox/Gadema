@@ -1,8 +1,7 @@
-// =============================================================================
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.Writing.Characters;
 
-namespace Gadema.Core.Dtos.Characters;
+namespace Gadema.Core.Dtos.Writing.Characters;
 
 
 public class CharacterRelationCreateDto

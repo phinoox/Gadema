@@ -1,8 +1,9 @@
-// src/Gadema.Core/Dtos/Characters/CharacterStateDtos.cs
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.Writing.Characters;
+using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Dtos.Base.Infrastructure;
 
-namespace Gadema.Core.Dtos.Characters;
+namespace Gadema.Core.Dtos.Writing.Characters;
 
 /// <summary>
 /// DTO for creating a character state.

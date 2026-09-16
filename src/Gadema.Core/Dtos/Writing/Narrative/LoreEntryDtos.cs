@@ -1,7 +1,9 @@
-// CreateDto — mirrors SceneCreateDto pattern
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Dtos;
-using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.MetaInfo;
+
+namespace Gadema.Core.Dtos.Writing.Narrative;
 
 public class LoreEntryCreateDto
 {
@@ -11,7 +13,6 @@ public class LoreEntryCreateDto
     public LoreTypeEnum LoreType { get; set; }
 }
 
-// UpdateDto — inherits UpdateRequestDto, nullable fields + nested MetaInfoUpdateData
 public class LoreEntryUpdateDto : UpdateRequestDto
 {
     public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
@@ -20,14 +21,12 @@ public class LoreEntryUpdateDto : UpdateRequestDto
     public bool? IsPublic { get; set; }
 }
 
-// ResponseDto — inherits MetaInfoResponseBaseDto (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt)
 public class LoreEntryResponseDto : MetaInfoResponseBaseDto
 {
     public int LoreType { get; set; }
     public string? RawText { get; set; }
 }
 
-// ListResponseDto — standard wrapper (already correct)
 public class LoreEntryListResponseDto
 {
     public IEnumerable<LoreEntryResponseDto> Items { get; set; } = Enumerable.Empty<LoreEntryResponseDto>();

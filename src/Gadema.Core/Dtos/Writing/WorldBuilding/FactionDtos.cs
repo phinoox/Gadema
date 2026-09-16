@@ -1,5 +1,5 @@
-// src/Gadema.Core/Dtos/WorldBuilding/FactionDtos.cs
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.MetaInfo;
 
 namespace Gadema.Core.Dtos.Writing.WorldBuilding;
 
