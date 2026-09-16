@@ -1,10 +1,9 @@
-// src/Gadema.Core/Models/Characters/CharacterState.cs
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Content;
+using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Narrative;
-using Gadema.Core.Models.Projects;
-using Gadema.Core.Models.WorldBuilding;
+using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Writing.WorldBuilding;
 using Gadema.Core.Models.Writing;
 
 namespace Gadema.Core.Models.Writing.Characters;

@@ -1,5 +1,5 @@
 // =============================================================================
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.Projects;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

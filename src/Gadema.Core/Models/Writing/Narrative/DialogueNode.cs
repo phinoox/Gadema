@@ -1,7 +1,6 @@
-// ... existing code ...
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Core.Models.Writing.Narrative;
 

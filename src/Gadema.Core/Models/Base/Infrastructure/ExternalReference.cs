@@ -1,10 +1,8 @@
-// =============================================================================
+using Gadema.Core.Models.Base.Enums;
 using Gadema.Core.Models.Base.MetaInfo;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
 
 namespace Gadema.Core.Models.Base.Infrastructure;
 

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.Projects;
 using Gadema.Core.Models.Tags;
 
 namespace Gadema.Core.Models.Base.MetaInfo;

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Enums;
 
 namespace Gadema.Core.Models.Access;
 

@@ -1,7 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Core.Models.Access;
+
 public enum ProjectMemberRoleEnum
 {
     Owner = 0,
@@ -20,8 +21,8 @@ public class ProjectMember
     public DateTime JoinedAt { get; set; }
     // Navigation
     [Required]
-    public virtual Project Project { get; set; }
+    public virtual Project Project { get; set; } = null!;
 
     [Required]
-    public virtual User User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

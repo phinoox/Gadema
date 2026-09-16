@@ -1,8 +1,8 @@
-// src/Gadema.Core/Models/WorldBuilding/Faction.cs
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gadema.Core.Models.Characters;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Core.Models.Writing.WorldBuilding;
 

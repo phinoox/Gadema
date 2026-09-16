@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
 using System.ComponentModel.DataAnnotations;
-using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Enums;
 
 
 namespace Gadema.Core.Models.Access;

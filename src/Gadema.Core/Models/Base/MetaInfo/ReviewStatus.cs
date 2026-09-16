@@ -2,6 +2,8 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Access;
 
 namespace Gadema.Core.Models.Base.MetaInfo;
 
