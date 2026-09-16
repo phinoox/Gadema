@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.MetaInfos;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// Response data for content item autosave operations.

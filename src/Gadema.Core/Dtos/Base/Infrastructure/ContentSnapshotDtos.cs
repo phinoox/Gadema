@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Versioning;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// DTO for creating a content snapshot (save ritual).

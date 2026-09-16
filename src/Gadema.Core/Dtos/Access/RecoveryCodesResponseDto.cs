@@ -2,7 +2,7 @@
 // RecoveryCodesResponseDto - Response for recovery codes retrieval
 // =============================================================================
 
-namespace Gadema.Core.Dtos.Authentication;
+namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
 /// Recovery codes response for 2FA.

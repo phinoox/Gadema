@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace Gadema.Core.Dtos.MetaInfos;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// DTO for rolling back a content item to a previous version.

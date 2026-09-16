@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Versioning;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// Response DTO for a content version log entry.

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 // =============================================================================
 
-namespace Gadema.Core.Dtos.Authentication;
+namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
 /// DTO for traditional login (email/password).

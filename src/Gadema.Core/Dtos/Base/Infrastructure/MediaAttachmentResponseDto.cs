@@ -4,7 +4,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.MetaInfos;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// Single media attachment response.

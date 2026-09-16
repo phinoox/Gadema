@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Activities;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// Response DTO for an activity log entry.

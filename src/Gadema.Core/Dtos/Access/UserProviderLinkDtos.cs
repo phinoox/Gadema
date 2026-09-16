@@ -1,7 +1,7 @@
 // =============================================================================
 using Gadema.Core.Enums;
 
-namespace Gadema.Core.Dtos.Authentication;
+namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
 /// Response DTO for a user provider link.

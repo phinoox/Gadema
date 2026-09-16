@@ -1,7 +1,7 @@
 // =============================================================================
 using System.ComponentModel.DataAnnotations;
 
-namespace Gadema.Core.Dtos.Authentication;
+namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
 /// DTO for user registration with email/password authentication.

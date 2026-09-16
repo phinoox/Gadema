@@ -1,6 +1,6 @@
 using System;
 
-namespace Gadema.Core.Dtos.Authentication;
+namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
 /// User response DTO.

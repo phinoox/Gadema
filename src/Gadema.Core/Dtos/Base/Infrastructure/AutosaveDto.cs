@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 // =============================================================================
 
-namespace Gadema.Core.Dtos.MetaInfos;
+namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
 /// DTO for auto-saving a content item snapshot.
