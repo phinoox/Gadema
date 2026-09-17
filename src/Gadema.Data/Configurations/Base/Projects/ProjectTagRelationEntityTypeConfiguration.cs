@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models.Projects;
 
 namespace Gadema.Data.Configurations.Base.Projects;
 

@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models.Base;
-using Gadema.Core.Models.Tags;
 
 namespace Gadema.Data.Configurations.Base.MetaInfo;
 

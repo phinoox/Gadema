@@ -1,5 +1,5 @@
 // src/Gadema.Data/Configurations/Writing/CharacterRelationEntityTypeConfiguration.cs
-using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.Writing.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -7,6 +7,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Game.Inventory;
 
 namespace Gadema.Data.Configurations.Game.Inventory;
 

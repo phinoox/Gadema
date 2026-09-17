@@ -6,7 +6,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
+using Gadema.Core.Models.Base.Infrastructure;
 
 namespace Gadema.Data.Configurations.Base.MetaInfo;
 

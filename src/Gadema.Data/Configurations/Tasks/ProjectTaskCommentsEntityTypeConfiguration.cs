@@ -4,9 +4,9 @@
 
 // =============================================================================
 
+using Gadema.Core.Models.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Tasks;
 

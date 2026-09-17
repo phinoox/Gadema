@@ -1,9 +1,9 @@
 // =============================================================================
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
+using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models.Narrative;
 
 namespace Gadema.Data.Configurations.Narrative;
 

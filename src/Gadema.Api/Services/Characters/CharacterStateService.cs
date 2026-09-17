@@ -3,7 +3,7 @@ using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Characters;
 using Gadema.Core.Enums;
 using Gadema.Core.Models;
-using Gadema.Core.Models.Characters;
+using Gadema.Core.Models.Writing.Characters;
 using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;

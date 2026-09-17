@@ -1,5 +1,6 @@
 // src/Gadema.Data/Configurations/Writing/SceneEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing;
+using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

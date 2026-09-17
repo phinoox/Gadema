@@ -1,4 +1,5 @@
 using Gadema.Core.Models;
+using Gadema.Core.Models.Access;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

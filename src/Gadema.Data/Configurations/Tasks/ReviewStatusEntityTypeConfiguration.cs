@@ -1,6 +1,5 @@
 // ... existing imports ...
 
-using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

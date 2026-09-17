@@ -1,5 +1,5 @@
 // src/Gadema.Data/Configurations/Writing/DialogueBranchEntityTypeConfiguration.cs
-using Gadema.Core.Models;
+using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

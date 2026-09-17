@@ -4,10 +4,9 @@
 
 // =============================================================================
 
+using Gadema.Core.Models.Access;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
-using Gadema.Core.Enums;
 
 namespace Gadema.Data.Configurations.Access;
 

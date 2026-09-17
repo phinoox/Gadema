@@ -1,5 +1,5 @@
 // =============================================================================
-using Gadema.Core.Models;
+using Gadema.Core.Models.Base.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 // Gadema.Core - Shared Domain Models & Interfaces

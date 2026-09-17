@@ -1,4 +1,4 @@
-using Gadema.Core.Models;
+using Gadema.Core.Models.Game.Inventory;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

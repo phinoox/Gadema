@@ -1,5 +1,5 @@
 // src/Gadema.Data/Configurations/Writing/StoryOutlineEntityTypeConfiguration.cs
-using Gadema.Core.Models.Writing;
+using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

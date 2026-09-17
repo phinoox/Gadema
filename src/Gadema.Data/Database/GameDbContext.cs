@@ -2,18 +2,20 @@
 // Gadema.Data - EF Core DbContext and Migrations Configuration
 // =============================================================================
 
-using Gadema.Data.Configurations;
-using Gadema.Core.Models;
-using Gadema.Core.Models.Projects;
 using Microsoft.EntityFrameworkCore;
-using Gadema.Core.Models.Content;
-using Gadema.Core.Models.Narrative;
-using Gadema.Core.Models.Characters;
-using Gadema.Core.Models.WorldBuilding;
+using Gadema.Core.Models.Writing.Characters;
 using Gadema.Core.Models.Game.EngineIntegration;
-using Gadema.Core.Models.Writing;
-using Gadema.Core.Models.Base;
-using Gadema.Core.Models.Tags;
+using Gadema.Core.Models.Access;
+using Gadema.Core.Models.Base.Infrastructure;
+using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Writing.WorldBuilding;
+using Gadema.Core.Models.Writing.Narrative;
+using Gadema.Core.Models.Game.Abilities;
+using Gadema.Core.Models.Game.Attributes;
+using Gadema.Core.Models.Tasks;
+using Gadema.Core.Models.Templates;
+using Gadema.Core.Models.Game.Inventory;
+using Gadema.Core.Models.Identity;
 
 namespace Gadema.Data.Database;
 

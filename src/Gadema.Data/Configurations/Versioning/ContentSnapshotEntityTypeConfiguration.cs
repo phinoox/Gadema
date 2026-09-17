@@ -4,9 +4,9 @@
 
 // =============================================================================
 
+using Gadema.Core.Models.Base.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 
 namespace Gadema.Data.Configurations.Versioning;
 
