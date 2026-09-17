@@ -8,7 +8,7 @@ using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.DialogueTrees;
+namespace Gadema.Api.Services.Writing.Narrative;
 
 public class DialogueBranchService : CoreService
 {

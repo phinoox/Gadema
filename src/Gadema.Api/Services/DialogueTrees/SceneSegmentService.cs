@@ -10,7 +10,7 @@ using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Content;
+namespace Gadema.Api.Services.Writing.Narrative;
 
 /// <summary>
 /// Service for managing SceneSegments - markers within a scene's RawText that indicate
