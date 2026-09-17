@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
-namespace Gadema.Data.Configurations.Inventory;
+namespace Gadema.Data.Configurations.Game.Inventory;
 
 /// <summary>
 /// Configuration for EndingDefinition entity in game development management system.

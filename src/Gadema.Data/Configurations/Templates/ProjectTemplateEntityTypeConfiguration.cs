@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
-namespace Gadema.Data.Configurations.Projects;
+namespace Gadema.Data.Configurations.Templates;
 
 /// <summary>
 /// Configuration for ProjectTemplate entity in game development management system.

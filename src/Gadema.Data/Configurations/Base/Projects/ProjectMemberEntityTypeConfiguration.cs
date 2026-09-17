@@ -2,7 +2,7 @@ using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Authentication;
+namespace Gadema.Data.Configurations.Base.Projects;
 
 public class ProjectMemberEntityTypeConfiguration : IEntityTypeConfiguration<ProjectMember>
 {

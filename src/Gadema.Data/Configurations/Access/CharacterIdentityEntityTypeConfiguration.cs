@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
-namespace Gadema.Data.Configurations.Identity;
+namespace Gadema.Data.Configurations.Access;
 
 /// <summary>
 /// Configuration for CharacterIdentity entity in game development management system.

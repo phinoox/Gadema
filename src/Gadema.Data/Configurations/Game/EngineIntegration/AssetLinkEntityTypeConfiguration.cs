@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
-namespace Gadema.Data.Configurations.EngineIntegration;
+namespace Gadema.Data.Configurations.Game.EngineIntegration;
 
 /// <summary>
 /// Configuration for AssetLink entity in engine integration system.

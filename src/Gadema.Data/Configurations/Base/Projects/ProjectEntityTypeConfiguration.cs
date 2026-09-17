@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models.Projects;
 
-namespace Gadema.Data.Configurations.Projects;
+namespace Gadema.Data.Configurations.Base.Projects;
 
 public class ProjectEntityTypeConfiguration : IEntityTypeConfiguration<Project>
 {

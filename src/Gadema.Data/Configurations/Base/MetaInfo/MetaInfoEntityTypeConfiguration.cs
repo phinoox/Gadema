@@ -5,7 +5,7 @@ using Gadema.Core.Models;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
-namespace Gadema.Data.Configurations.Content;
+namespace Gadema.Data.Configurations.Base.MetaInfo;
 
 /// <summary>
 /// Configuration for ContentMetaInfo entity in game development management system.

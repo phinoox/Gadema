@@ -2,7 +2,7 @@ using Gadema.Core.Models.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Identity;
+namespace Gadema.Data.Configurations.Access;
 
 public class IdentityDefinitionEntityTypeConfiguration : IEntityTypeConfiguration<IdentityDefinition>
 {

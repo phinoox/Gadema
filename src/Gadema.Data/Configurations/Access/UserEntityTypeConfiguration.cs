@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 using Gadema.Core.Enums;
 
-namespace Gadema.Data.Configurations.Authentication;
+namespace Gadema.Data.Configurations.Access;
 
 /// <summary>
 /// Configuration for User entity in game development management system.

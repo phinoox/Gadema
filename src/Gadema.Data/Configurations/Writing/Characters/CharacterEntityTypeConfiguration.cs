@@ -3,7 +3,7 @@ using Gadema.Core.Models.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Characters;
+namespace Gadema.Data.Configurations.Writing.Characters;
 
 public class CharacterEntityTypeConfiguration : IEntityTypeConfiguration<Character>
 {

@@ -2,7 +2,7 @@ using Gadema.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Writing;
+namespace Gadema.Data.Configurations.Narrative;
 
 public class DialogueNodeEntityTypeConfiguration : IEntityTypeConfiguration<DialogueNode>
 {

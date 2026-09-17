@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models.Characters;
 
-namespace Gadema.Data.Configurations.Characters;
+namespace Gadema.Data.Configurations.Writing.Characters;
 
 /// <summary>
 /// Configuration for CharacterRelation entity in game development management system.

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Gadema.Core.Models;
 
-namespace Gadema.Data.Configurations.Content;
+namespace Gadema.Data.Configurations.Base.MetaInfo;
 
 /// <summary>
 /// Configuration for MediaAttachment entity in game development management system.
