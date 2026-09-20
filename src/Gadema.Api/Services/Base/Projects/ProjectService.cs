@@ -1,14 +1,13 @@
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Projects;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Enums;
-using Gadema.Core.Models.Projects;
-using Gadema.Core.Services;
-using Gadema.Core.Interfaces.Identity;
 
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Api.Services.Search;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Dtos.Base.Projects;
+using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Api.Services.Base.Projects;
 

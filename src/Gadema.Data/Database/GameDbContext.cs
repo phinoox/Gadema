@@ -301,6 +301,7 @@ public class GameDbContext : DbContext
     
     public DbSet<ProjectSeries> ProjectSeries { get; set; }
     public DbSet<IdentityDefinition> IdentityDefinitions { get; set; }
+    public DbSet<ProjectMetaInfo> ProjectMetaInfos { get; set; }
 
 
     /// <summary>

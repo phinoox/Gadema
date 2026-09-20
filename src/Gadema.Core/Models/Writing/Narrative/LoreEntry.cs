@@ -1,5 +1,6 @@
 using Gadema.Core.Enums;
 using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Writing.Enums;
 
 namespace Gadema.Core.Models.Writing.Narrative;
 

@@ -1,9 +1,9 @@
 // =============================================================================
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Narrative;
-using Gadema.Core.Models;
-using Gadema.Core.Models.Writing;
-using Gadema.Core.Services;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Dtos.Writing.Narrative;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

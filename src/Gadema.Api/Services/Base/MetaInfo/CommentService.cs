@@ -1,11 +1,9 @@
 // ... imports ...
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Comments;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
 using Gadema.Data.Database;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Dtos.Writing.Social;
 
 namespace Gadema.Api.Services.Base.MetaInfo;
 

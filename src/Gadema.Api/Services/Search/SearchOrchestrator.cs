@@ -1,8 +1,6 @@
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Search;
 
-using Microsoft.Extensions.Logging;
-
 namespace Gadema.Api.Services.Search;
 
 internal class SearchOrchestrator

@@ -1,10 +1,10 @@
 // =============================================================================
 using Gadema.Core.Dtos;
-using Gadema.Core.Enums;
-using Gadema.Core.Interfaces.Identity;
-using Gadema.Core.Models;
-using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Services;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Infrastructure;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

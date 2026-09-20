@@ -1,9 +1,10 @@
 // ... existing imports ...
 
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.DialogueTrees;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Dtos.Writing.DialogueTrees;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,4 @@
-using Gadema.Api.Services.Idendity;
+using Gadema.Api.Services.Access.Identity;
 using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
 

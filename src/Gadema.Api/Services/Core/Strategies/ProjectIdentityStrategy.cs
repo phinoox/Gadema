@@ -1,9 +1,6 @@
-using Gadema.Core.Dtos;
-using Gadema.Core.Enums;
-using Gadema.Core.Interfaces.Identity;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Tags.Strategies;
 
@@ -24,6 +21,6 @@ public class ProjectIdentityStrategy : BaseIdentityStrategy<ProjectMetaInfoUpdat
 
     protected override async Task<ProjectMetaInfo?> FetchMetaInfo(Guid id, ProjectMetaInfoUpdateData updateData)
     {
-        return await _db.Set<ProjectMetaInfo>().FindAsync(id);
+        return await _db.ProjectMetaInfos.FindAsync(id);
     }
 }

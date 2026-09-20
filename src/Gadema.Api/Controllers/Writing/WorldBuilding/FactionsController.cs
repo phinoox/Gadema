@@ -1,7 +1,6 @@
 // src/Gadema.Api/Controllers/WorldBuilding/FactionsController.cs
-using Gadema.Api.Services.WorldBuilding;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.WorldBuilding;
+using Gadema.Api.Services.Writing.WorldBuilding;
+using Gadema.Core.Dtos.Writing.WorldBuilding;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Writing.WorldBuilding;

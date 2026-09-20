@@ -1,8 +1,7 @@
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Projects;
-using Gadema.Core.Enums;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
+using Gadema.Core.Dtos.Base.Projects;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

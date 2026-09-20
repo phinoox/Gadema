@@ -1,5 +1,4 @@
 using Gadema.Api.Services.Search;
-using Gadema.Core.Dtos.Search;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Base.MetaInfo;

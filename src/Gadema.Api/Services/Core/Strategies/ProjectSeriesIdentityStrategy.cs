@@ -1,6 +1,5 @@
-using Gadema.Core.Dtos;
-using Gadema.Core.Interfaces.Identity;
-using Gadema.Core.Models.Projects;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,10 +1,10 @@
 // =============================================================================
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Activities;
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Response;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

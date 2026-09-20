@@ -1,5 +1,4 @@
 using Gadema.Api.Services.Tags;
-using Gadema.Core.Models.Tags;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Base.MetaInfo;

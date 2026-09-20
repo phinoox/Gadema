@@ -1,12 +1,12 @@
 // =============================================================================
 using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Characters;
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Enums;
-using Gadema.Core.Models;
+using Gadema.Core.Dtos.Writing.Characters;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Enums;
 using Gadema.Core.Models.Writing.Characters;
-using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

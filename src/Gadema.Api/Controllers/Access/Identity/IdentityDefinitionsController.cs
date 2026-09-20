@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Gadema.Api.Services.Idendity; // Note: using your current namespace 'Idendity'
 using Gadema.Core.Dtos.Identity;
+using Gadema.Api.Services.Access.Identity;
 
 namespace Gadema.Api.Controllers.Identity;
 

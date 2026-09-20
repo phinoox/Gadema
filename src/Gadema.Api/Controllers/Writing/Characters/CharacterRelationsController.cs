@@ -1,8 +1,6 @@
 // =============================================================================
-using Gadema.Api.Services;
-using Gadema.Api.Services.Characters;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Characters;
+using Gadema.Api.Services.Writing.Characters;
+using Gadema.Core.Dtos.Writing.Characters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Writing.Characters;

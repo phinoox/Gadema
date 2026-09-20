@@ -1,10 +1,11 @@
 // =============================================================================
 using Gadema.Core.Dtos;
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Response;
-using Gadema.Core.Dtos.WorldBuilding;
-using Gadema.Core.Enums;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
+using Gadema.Core.Dtos.Writing.WorldBuilding;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Writing.WorldBuilding;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

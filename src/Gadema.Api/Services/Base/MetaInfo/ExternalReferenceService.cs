@@ -1,14 +1,14 @@
 using Gadema.Api.Services.Search;
 using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Core.Dtos;
-
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.ExternalReferences;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Search;
-using Gadema.Core.Enums;
-using Gadema.Core.Models;
-using Gadema.Core.Models.Base.MetaInfo;
-using Gadema.Core.Services;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Infrastructure;
+using Gadema.Core.Models.Base.Infrastructure.Enums;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 

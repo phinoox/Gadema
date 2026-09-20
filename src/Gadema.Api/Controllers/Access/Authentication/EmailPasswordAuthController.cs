@@ -1,7 +1,6 @@
-using Gadema.Api.Services;
-using Gadema.Api.Services.Authentication;
+using Gadema.Api.Services.Access.Authentication;
 using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Authentication;
+using Gadema.Core.Dtos.Access;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Authentication;

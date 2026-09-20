@@ -1,4 +1,5 @@
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Infrastructure.Enums;
 
 namespace Gadema.Core.Models.Base.Infrastructure;
 

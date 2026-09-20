@@ -1,8 +1,6 @@
-using Gadema.Api.Services.WorldBuilding;
-using Gadema.Core.Dtos.MetaInfos;
-using Gadema.Core.Dtos.WorldBuilding;
+using Gadema.Api.Services.Writing.WorldBuilding;
+using Gadema.Core.Dtos.Writing.WorldBuilding;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Gadema.Api.Controllers.Writing.WorldBuilding;
 

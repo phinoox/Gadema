@@ -1,12 +1,10 @@
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Reviews;
-using Gadema.Core.Enums;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
 using Gadema.Data.Database;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
 
 namespace Gadema.Api.Services.Content;
 

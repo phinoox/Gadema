@@ -1,7 +1,6 @@
+using Gadema.Api.Services.Base.Projects;
+using Gadema.Core.Dtos.Base.Projects;
 using Microsoft.AspNetCore.Mvc;
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Projects;
-using Gadema.Api.Services.Projects;
 
 namespace Gadema.Api.Controllers.Base.Projects;
 

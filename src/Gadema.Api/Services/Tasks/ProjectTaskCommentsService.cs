@@ -1,10 +1,11 @@
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Tasks;
 using Gadema.Core.Dtos.Response;
-using Gadema.Core.Models;
-using Gadema.Core.Services;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
+using Gadema.Core.Dtos.Base.Infrastructure;
+using Gadema.Core.Models.Tasks;
+using Gadema.Core.Interfaces;
 
 namespace Gadema.Api.Services.Tasks;
 

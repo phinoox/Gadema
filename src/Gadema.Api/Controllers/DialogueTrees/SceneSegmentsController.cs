@@ -1,6 +1,6 @@
+using Gadema.Api.Services.Writing.Narrative;
+using Gadema.Core.Dtos.Writing.DialogueTrees;
 using Microsoft.AspNetCore.Mvc;
-using Gadema.Api.Services.Content;
-using Gadema.Core.Dtos.DialogueTrees;
 
 namespace Gadema.Api.Controllers.DialogueTrees;
 

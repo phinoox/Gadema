@@ -1,7 +1,6 @@
 using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos.Reviews; // Ensure this matches your actual DTO namespace
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Gadema.Api.Controllers.Base.MetaInfo;
 

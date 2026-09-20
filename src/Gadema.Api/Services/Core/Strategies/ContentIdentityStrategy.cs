@@ -1,9 +1,5 @@
-using Gadema.Core.Dtos;
-using Gadema.Core.Interfaces.Identity;
-using Gadema.Core.Models;
-using Gadema.Core.Models.Base;
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Data.Database;
-using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Tags.Strategies;
 

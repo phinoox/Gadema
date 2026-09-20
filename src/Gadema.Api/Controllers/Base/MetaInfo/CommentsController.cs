@@ -1,9 +1,9 @@
-namespace Gadema.Api.Controllers.Base.MetaInfo;
 
 using Gadema.Api.Services.Base.MetaInfo;
-using Gadema.Core.Dtos.Comments;
+using Gadema.Core.Dtos.Writing.Social;
 using Microsoft.AspNetCore.Mvc;
 
+namespace Gadema.Api.Controllers.Base.MetaInfo;
 [ApiController]
 [Route("api/v1/projects/{projectId:guid}/content/{targetId:guid}/comments")]
 public class CommentsController : ControllerBase
