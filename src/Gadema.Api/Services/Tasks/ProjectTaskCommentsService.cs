@@ -13,7 +13,7 @@ namespace Gadema.Api.Services.Tasks;
 /// Service for managing comments on tasks.
 /// Comments are treated as leaf entities belonging to a ProjectTask.
 /// </summary>
-public class ProjectTaskCommentService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTaskCommentService : CoreService
 {
     public ProjectTaskCommentService(GameDbContext db, ILogger<ProjectTaskCommentService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

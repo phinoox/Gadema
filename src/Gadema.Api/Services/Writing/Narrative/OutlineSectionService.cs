@@ -13,7 +13,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing OutlineSections within the narrative domain.
 /// Handles CRUD operations including authorization.
 /// </summary>
-public class OutlineSectionService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class OutlineSectionService : CoreService
 {
     public OutlineSectionService(GameDbContext db, ILogger<OutlineSectionService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

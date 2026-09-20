@@ -208,7 +208,7 @@ This works because the Service returns an `ApiResponseDto<T>`, which already enc
 ### Base Class
 All services inherit from `CoreService`:
 ```csharp
-public class EntityService : CoreService {
+[ServiceLifetime(ServiceLifetime.Scoped)] public class EntityService : CoreService {
     public EntityService(GameDbContext db, ILogger<EntityService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }
 }

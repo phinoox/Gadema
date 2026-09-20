@@ -7,7 +7,7 @@ using Gadema.Core.Dtos.Writing.Social;
 
 namespace Gadema.Api.Services.Base.MetaInfo;
 
-public class CommentService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CommentService : CoreService
 {
     public CommentService(GameDbContext db, ILogger<CommentService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

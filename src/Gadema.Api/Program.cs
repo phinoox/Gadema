@@ -15,6 +15,7 @@ using Gadema.Api.Services.Writing.Narrative;
 using Gadema.Api.Services.Base.MetaInfo;
 using Gadema.Api.Services.Writing.Characters;
 using Gadema.Api.Services.Access.Authentication;
+using Gadema.Api.Services.Core;
 
 namespace Gadema.Api;
 
@@ -40,17 +41,9 @@ public partial class Program
         builder.Services.AddScoped<IIdentitySyncStrategy, ProjectIdentityStrategy>();
         builder.Services.AddScoped<IIdentitySyncStrategy, ContentIdentityStrategy>();
 
-        // Register service implementations
-        builder.Services.AddScoped<ProjectService, ProjectService>();
-        builder.Services.AddScoped<DialogueBranchService, DialogueBranchService>();
-        builder.Services.AddScoped<ProjectTaskService, ProjectTaskService>();
-        builder.Services.AddScoped<CommentService, CommentService>();
-        builder.Services.AddScoped<ExternalReferenceService, ExternalReferenceService>();
-        builder.Services.AddScoped<StoryOutlineService, StoryOutlineService>();
-        builder.Services.AddScoped<ReviewStatusService, ReviewStatusService>();
-        builder.Services.AddScoped<IUserContext, IUserContext>();
-        builder.Services.AddScoped<MetaTagService>(); // Previously TagService
-        builder.Services.AddScoped<ProjectService>();
+        // 2. Domain Services (Automatic via Reflection)
+        // This replaces the long list of AddScoped<ProjectService, ProjectService>, etc.
+        builder.Services.AddDomainServices();
 
         //search
         builder.Services.AddScoped<ISearchableProvider, ProjectService>(); // Already implemented

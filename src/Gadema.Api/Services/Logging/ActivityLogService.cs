@@ -10,7 +10,7 @@ namespace Gadema.Api.Services.Content;
 /// <summary>
 /// Service for querying the project's business audit trail.
 /// </summary>
-public class ActivityLogService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ActivityLogService : CoreService
 {
     public ActivityLogService(GameDbContext db, ILogger<ActivityLogService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

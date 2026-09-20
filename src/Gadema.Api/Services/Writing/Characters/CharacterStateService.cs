@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing CharacterStates - tracking a character's state at a specific point in time.
 /// Links characters to scenes via the scene trigger mechanism.
 /// </summary>
-public class CharacterStateService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterStateService : CoreService
 {
     public CharacterStateService(GameDbContext db, ILogger<CharacterStateService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

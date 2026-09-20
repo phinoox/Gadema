@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Api.Services.Core;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
@@ -14,7 +15,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing Stories within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-public class StoryService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryService : CoreService
 {
     public StoryService(GameDbContext db, ILogger<StoryService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

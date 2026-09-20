@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-public class ProjectMemberService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectMemberService : CoreService
 {
     public ProjectMemberService(GameDbContext db, ILogger<ProjectMemberService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

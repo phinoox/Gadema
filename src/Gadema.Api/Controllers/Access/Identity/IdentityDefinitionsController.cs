@@ -32,7 +32,7 @@ public class IdentityDefinitionController : ControllerBase
     /// <summary>
     /// Create a new identity definition within the specified project.
     /// </summary>
-    [HttpPost("{projectId:guid}")]
+    [HttpPost]
     public async Task<IActionResult> Create(Guid projectId, [FromBody] IdentityDefinitionCreateDto dto)
     {
         var result = await _service.CreateDefinitionAsync(projectId, dto);

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-public class DialogueNodeService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class DialogueNodeService : CoreService
 {
     public DialogueNodeService(GameDbContext db, ILogger<DialogueNodeService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

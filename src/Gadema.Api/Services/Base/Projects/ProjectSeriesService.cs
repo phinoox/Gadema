@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-public class ProjectSeriesService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectSeriesService : CoreService, ISearchableProvider
 {
     public ProjectSeriesService(GameDbContext db, ILogger<ProjectSeriesService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

@@ -15,7 +15,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 /// Service for managing WorldLocations within the world-building domain.
 /// Handles hierarchical location tree (Country → Region → City → Village).
 /// </summary>
-public class WorldLocationService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class WorldLocationService : CoreService
 {
     public WorldLocationService(GameDbContext db, ILogger<WorldLocationService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

@@ -13,7 +13,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing CharacterStoryProfile - the static backstory and personality of a character.
 /// Access is validated via the parent Character's ContentMetaInfo.
 /// </summary>
-public class CharacterStoryProfileService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterStoryProfileService : CoreService
 {
     public CharacterStoryProfileService(GameDbContext db, ILogger<CharacterStoryProfileService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

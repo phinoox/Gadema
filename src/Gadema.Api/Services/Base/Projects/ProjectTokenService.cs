@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Base.Projects;
 /// Service for managing Project API Tokens (authentication tokens for external integrations).
 /// Handles token generation, revocation, and usage tracking.
 /// </summary>
-public class ProjectTokenService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTokenService : CoreService
 {
     public ProjectTokenService(GameDbContext db, ILogger<ProjectTokenService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

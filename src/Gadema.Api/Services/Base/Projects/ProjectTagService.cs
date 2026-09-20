@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-public class ProjectTagService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTagService : CoreService
 {
     public ProjectTagService(GameDbContext db, ILogger<ProjectTagService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

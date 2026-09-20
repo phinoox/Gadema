@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.WorldBuilding;
 
-public class FactionService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class FactionService : CoreService
 {
     public FactionService(GameDbContext db, ILogger<FactionService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

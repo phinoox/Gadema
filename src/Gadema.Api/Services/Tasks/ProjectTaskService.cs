@@ -15,7 +15,7 @@ namespace Gadema.Api.Services.Tasks;
 /// <summary>
 /// Service for managing ProjectTasks - actionable items within a project workflow.
 /// </summary>
-public class ProjectTaskService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTaskService : CoreService, ISearchableProvider
 {
     public ProjectTaskService(GameDbContext db, ILogger<ProjectTaskService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

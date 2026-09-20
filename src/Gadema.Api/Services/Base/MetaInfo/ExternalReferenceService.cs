@@ -18,7 +18,7 @@ namespace Gadema.Api.Services.Content;
 /// Service for managing External References (sources, citations, research materials).
 /// Tracks URLs, authors, titles, and notes with optional ContentMetaInfo wrapper.
 /// </summary>
-public class ExternalReferenceService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ExternalReferenceService : CoreService, ISearchableProvider
 {
     public ExternalReferenceService(GameDbContext db, ILogger<ExternalReferenceService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

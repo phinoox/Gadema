@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Tags;
 
-public class MetaTagService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class MetaTagService : CoreService
 {
     public MetaTagService(GameDbContext db, ILogger<MetaTagService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

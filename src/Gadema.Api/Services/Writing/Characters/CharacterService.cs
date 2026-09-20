@@ -16,7 +16,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing Characters - the central glue entity in the character domain.
 /// Supports progressive creation: Identity (ContentMetaInfo + Character) first, then modular components.
 /// </summary>
-public class CharacterService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterService : CoreService, ISearchableProvider
 {
     public CharacterService(GameDbContext db, ILogger<CharacterService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

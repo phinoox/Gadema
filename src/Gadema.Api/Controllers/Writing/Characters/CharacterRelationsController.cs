@@ -27,7 +27,7 @@ public class CharacterRelationsController : ControllerBase
         return Ok(await _characterRelationService.GetRelationsAsync(projectId));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetCharacterRelationAsync(Guid id)
     {
         return Ok(await _characterRelationService.GetRelationByIdAsync(id));
@@ -39,13 +39,13 @@ public class CharacterRelationsController : ControllerBase
         return Ok(await _characterRelationService.CreateCharacterRelationAsync(projectId, createDto));
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateCharacterRelationAsync(Guid id, [FromBody] CharacterRelationUpdateDto updateDto)
     {
         return Ok(await _characterRelationService.UpdateCharacterRelationAsync(id, updateDto));
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteCharacterRelationAsync(Guid id)
     {
         return Ok(await _characterRelationService.DeleteCharacterRelationAsync(id));

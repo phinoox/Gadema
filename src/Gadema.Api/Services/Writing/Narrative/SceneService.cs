@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing Scenes within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-public class SceneService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneService : CoreService
 {
     public SceneService(GameDbContext db, ILogger<SceneService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

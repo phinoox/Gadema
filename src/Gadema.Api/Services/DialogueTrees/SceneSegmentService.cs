@@ -17,7 +17,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing SceneSegments - markers within a scene's RawText that indicate
 /// interactive elements like [dialog:nodeId], [action:], etc.
 /// </summary>
-public class SceneSegmentService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneSegmentService : CoreService, ISearchableProvider
 {
     public SceneSegmentService(GameDbContext db, ILogger<SceneSegmentService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

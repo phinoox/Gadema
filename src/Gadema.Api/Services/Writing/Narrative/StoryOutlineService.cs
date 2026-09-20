@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing StoryOutlines within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-public class StoryOutlineService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryOutlineService : CoreService
 {
     public StoryOutlineService(GameDbContext db, ILogger<StoryOutlineService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

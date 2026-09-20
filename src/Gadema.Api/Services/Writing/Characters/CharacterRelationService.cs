@@ -1,4 +1,5 @@
 // =============================================================================
+
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Characters;
@@ -13,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing Character Relations - connections between characters.
 /// Access is validated via the TriggerScene's project ownership.
 /// </summary>
-public class CharacterRelationService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterRelationService : CoreService
 {
     public CharacterRelationService(GameDbContext db, ILogger<CharacterRelationService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

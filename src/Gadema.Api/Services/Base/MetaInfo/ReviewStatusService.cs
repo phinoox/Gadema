@@ -11,7 +11,7 @@ namespace Gadema.Api.Services.Content;
 /// <summary>
 /// Service for managing content review workflow.
 /// </summary>
-public class ReviewStatusService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ReviewStatusService : CoreService
 {
     public ReviewStatusService(GameDbContext db, ILogger<ReviewStatusService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

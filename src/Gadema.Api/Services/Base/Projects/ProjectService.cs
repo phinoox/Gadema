@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Base.Projects;
 /// <summary>
 /// Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.
 /// </summary>
-public class ProjectService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectService : CoreService, ISearchableProvider
 {
     private readonly IIdentitySyncStrategy _identityStrategy;
 

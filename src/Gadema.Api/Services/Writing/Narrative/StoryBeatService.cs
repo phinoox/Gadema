@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing StoryBeats within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-public class StoryBeatService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryBeatService : CoreService
 {
     public StoryBeatService(GameDbContext db, ILogger<StoryBeatService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

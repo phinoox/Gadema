@@ -14,7 +14,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing LoreEntries within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-public class LoreEntryService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class LoreEntryService : CoreService
 {
     public LoreEntryService(GameDbContext db, ILogger<LoreEntryService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

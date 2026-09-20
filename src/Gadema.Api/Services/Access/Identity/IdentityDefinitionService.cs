@@ -17,7 +17,7 @@ namespace Gadema.Api.Services.Access.Identity;
 /// Service for managing IdentityDefinitions - defines what attributes/properties
 /// a character identity can have (e.g., "Race", "Faction").
 /// </summary>
-public class IdentityDefinitionService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class IdentityDefinitionService : CoreService, ISearchableProvider
 {
     public IdentityDefinitionService(GameDbContext db, ILogger<IdentityDefinitionService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

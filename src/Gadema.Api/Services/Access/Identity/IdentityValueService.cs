@@ -15,7 +15,7 @@ namespace Gadema.Api.Services.Access.Identity;
 /// <summary>
 /// Service for managing IdentityValues - specific options within a definition (e.g., "Human" in Race).
 /// </summary>
-public class IdentityValueService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class IdentityValueService : CoreService, ISearchableProvider
 {
     public IdentityValueService(GameDbContext db, ILogger<IdentityValueService> logger, IUserContext userContext)
         : base(db, logger, userContext) { }

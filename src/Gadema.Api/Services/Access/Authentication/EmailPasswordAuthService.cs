@@ -16,7 +16,7 @@ namespace Gadema.Api.Services.Access.Authentication;
 /// Service for email/password authentication operations.
 /// Handles registration, sign-in, password reset requests, and session management.
 /// </summary>
-public class EmailPasswordAuthService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class EmailPasswordAuthService : CoreService
 {
     private readonly IConfiguration _configuration;
 
