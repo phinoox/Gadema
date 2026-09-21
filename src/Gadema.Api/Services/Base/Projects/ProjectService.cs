@@ -66,12 +66,16 @@ namespace Gadema.Api.Services.Base.Projects;
     // DOMAIN OPERATIONS (The "Write" Side)
     // ========================================================================
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(Guid projectId, ProjectCreateDto createDto)
+       public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(ProjectCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
-        if (error != null) return error;
+        // 1. Validation: Check if user is authenticated and authorized to create projects.
+        // We no longer check 'projectId' access because the project doesn't exist yet.
+        if (_userContext.CurrentUser == null)
+        {
+            return ApiResponseDto<CreateResponseDto>.Unauthorized("User must be authenticated.");
+        }
 
-         var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
+        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
             // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
         });
 
@@ -80,9 +84,9 @@ namespace Gadema.Api.Services.Base.Projects;
         {
             var project = new Project
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid(), // The actual ID of the new project
                 MetaInfoId = meta.Id,
-                UserId = _userContext.CurrentUser!.Id,
+                UserId = _userContext.CurrentUser.Id,
                 Description = createDto.Description,
                 IsActive = true,
                 EnableUserRegistration = createDto.EnableUserRegistration,
@@ -94,18 +98,17 @@ namespace Gadema.Api.Services.Base.Projects;
                 Audience = createDto.Audience
             };
 
-            
-
             _db.Projects.Add(project);
             await _db.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            await LogDbAsync(projectId, "Created", "Project", project.Id, $"Project '{project.MetaInfo.Title}' created.");
+            // 2. Logging: Log with null context since this is a root-level creation.
+            await LogDbAsync(null, "Created", "Project", project.Id, $"Project '{project.MetaInfo.Title}' created.");
 
             return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
             { 
                 EntityId = project.Id, 
-                ProjectId = projectId 
+                ProjectId = project.Id // The new ID is the ProjectId
             });
         }
         catch (Exception ex)

@@ -19,8 +19,8 @@ public class IdentityDefinitionController : ControllerBase
     /// List all identity definitions for a project.
     /// </summary>
     [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] Guid projectId) 
-        => Ok(await _service.GetDefinitionsAsync(projectId));
+        public async Task<IActionResult> Get([FromRoute] Guid projectId) 
+            => Ok(await _service.GetDefinitionsAsync(projectId));
 
     /// <summary>
     /// Get a single identity definition by ID.

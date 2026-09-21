@@ -102,7 +102,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     /// This is for accountability (e.g., "User X updated Character Y").
     /// </summary>
     protected async Task LogDbAsync(
-        Guid projectId, 
+        Guid? projectId, 
         string action, 
         string relatedEntityType, 
         Guid? relatedEntityId = null, 
@@ -110,7 +110,7 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     {
         var log = new ActivityLog
         {
-            ProjectId = projectId,
+            ProjectId = projectId ?? Guid.Empty,
             UserId = _userContext.CurrentUser?.Id ?? Guid.Empty, // Fallback if user is system/anonymous
             Action = action,
             RelatedEntityType = relatedEntityType,

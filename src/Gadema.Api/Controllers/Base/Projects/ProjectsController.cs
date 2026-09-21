@@ -15,9 +15,9 @@ public class ProjectsController : ControllerBase
         _projectService = projectService;
     }
 
-    [HttpPost("{projectId:guid}")]
-    public async Task<IActionResult> Create(Guid projectId, [FromBody] ProjectCreateDto dto) 
-        => Ok(await _projectService.CreateAsync(projectId, dto));
+    [HttpPost]
+    public async Task<IActionResult> Create( [FromBody] ProjectCreateDto dto) 
+        => Ok(await _projectService.CreateAsync( dto));
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get(Guid id, [FromQuery] Guid contextProjectId) 

@@ -30,15 +30,15 @@ public class CharacterStoryProfilesController : ControllerBase
         return Ok(await _storyProfileService.CreateProfileAsync(projectId, characterId, createDto));
     }
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateStoryProfileAsync(Guid characterId, [FromBody] CharacterStoryProfileUpdateDto updateDto)
+[HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateStoryProfileAsync(Guid id, [FromBody] CharacterStoryProfileUpdateDto updateDto)
     {
-        return Ok(await _storyProfileService.UpdateProfileAsync(characterId, updateDto));
+        return Ok(await _storyProfileService.UpdateProfileAsync(id, updateDto));
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> DeleteStoryProfileAsync(Guid characterId)
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> DeleteStoryProfileAsync(Guid id)
     {
-        return Ok(await _storyProfileService.DeleteProfileAsync(characterId));
+        return Ok(await _storyProfileService.DeleteProfileAsync(id));
     }
 }

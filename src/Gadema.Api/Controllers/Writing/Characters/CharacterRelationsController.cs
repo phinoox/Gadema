@@ -9,7 +9,7 @@ namespace Gadema.Api.Controllers.Writing.Characters;
 /// Controller for character relation management endpoints.
 /// </summary>
 [ApiController]
-[Route("api/v1/projects/{projectId}/character-relations")]
+[Route("api/v1/projects/{projectId:guid}/character-relations")]
 public class CharacterRelationsController : ControllerBase
 {
     private readonly CharacterRelationService _characterRelationService;

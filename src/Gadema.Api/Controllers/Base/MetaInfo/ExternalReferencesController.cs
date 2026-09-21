@@ -5,7 +5,7 @@ using Gadema.Core.Dtos.ExternalReferences;
 namespace Gadema.Api.Controllers.Base.MetaInfo;
 
 [ApiController]
-[Route("api/v1/content/external-references")]
+[Route("api/v1/projects/{projectId:guid}/external-references")]
 public class ExternalReferencesController : ControllerBase
 {
     private readonly ExternalReferenceService _service;
@@ -32,8 +32,8 @@ public class ExternalReferencesController : ControllerBase
     /// <summary>
     /// Create a new reference within the specified project.
     /// </summary>
-    [HttpPost("{projectId:guid}")]
-    public async Task<IActionResult> Create(Guid projectId, [FromBody] ExternalReferenceCreateDto dto)
+    [HttpPost]
+    public async Task<IActionResult> Create([FromRoute] Guid projectId, [FromBody] ExternalReferenceCreateDto dto)
     {
         var result = await _service.CreateReferenceAsync(projectId, dto);
         return result.Successful ? CreatedAtAction(nameof(GetById), new { id = result.Data.EntityId }, result) : BadRequest(result);
