@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <!-- Project References -->
-    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
     <ProjectReference Include="../Gadema.Data/Gadema.Data.csproj" />
     <ProjectReference Include="../Gadema.Core/Gadema.Core.csproj" />
     
@@ -20,7 +17,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
     <PackageReference Include="Microsoft.OpenApi" />
-    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Scalar.AspNetCore">
+      <Version>2.17.7</Version>
+    </PackageReference>
     
     <PackageReference Include="Google.Apis.Auth" />
     <PackageReference Include="BCrypt.Net-Next" />
