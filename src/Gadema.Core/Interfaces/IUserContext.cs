@@ -10,10 +10,10 @@ public interface IUserContext : IDisposable
     Guid? UserId { get; set; }
     
     // Project token for API access (if applicable)
-    string? ApiTokenHash { get; }
+    string? ApiTokenHash { get;set; }
     
     // Roles for authorization checks
-    List<string> Roles { get; }
+    List<string> Roles { get; set;}
     
     
 }

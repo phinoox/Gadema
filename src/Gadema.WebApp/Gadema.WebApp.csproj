@@ -1,22 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+    <!-- Unique metadata for this project -->
+    <Description>Blazor Web Application for GaDeMa</Description>
+    <Product>Gadema.WebApp</Product>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- MudBlazor - Material Design UI framework -->
-    <PackageReference Include="MudBlazor" Version="6.19.0" />
-    
-    <!-- Authentication helpers (optional, can be added if needed) -->
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <!-- Project Reference -->
+    <PackageReference Include="MudBlazor" Version="9.10.0" />
     <ProjectReference Include="../Gadema.Core/Gadema.Core.csproj" />
+
+    <!-- UI-specific dependencies (Versions managed by Directory.Build.props) -->
+    
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
   </ItemGroup>
 
 </Project>

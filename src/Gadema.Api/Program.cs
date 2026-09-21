@@ -1,79 +1,59 @@
-// =============================================================================
-using Gadema.Data.Database;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+// ... existing usings ...
 using System.Text;
-using Gadema.Api.Services.Content;
-using Gadema.Api.Services.Tasks;
-using Gadema.Api.Services.Tags.Strategies;
-using Gadema.Api.Services.Tags;
-using Gadema.Api.Services.Search;
-using Gadema.Core.Interfaces;
-using Gadema.Api.Services.Base.Projects;
-using Gadema.Api.Services.Writing.Narrative;
-using Gadema.Api.Services.Base.MetaInfo;
-using Gadema.Api.Services.Writing.Characters;
 using Gadema.Api.Services.Access.Authentication;
-using Gadema.Api.Services.Core;
+using Gadema.Api.Services.Base.Projects;
+using Gadema.Api.Services.Search;
+using Gadema.Api.Services.Tags.Strategies;
+using Gadema.Api.Services.Writing.Characters;
+using Gadema.Core.Interfaces;
+using Gadema.Data.Database;
+using Microsoft.OpenApi; 
 
 namespace Gadema.Api;
-
-// Gadema.Api - ASP.NET Core Web API Entry Point
-// =============================================================================
 
 public partial class Program
 {
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        // Add services to the container.
+
+        // 1. Standard Services
         builder.Services.AddControllers();
+        builder.Services.AddHttpContextAccessor(); // Required for UserContext in the API layer
 
-        // if(builder.Environment.IsProduction() || builder.Environment.IsDevelopment())
-        {
-            builder.Services.AddDbContext<GameDbContext>(options =>
-                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+        // 2. Database Configuration
+        builder.Services.AddDbContext<GameDbContext>(options =>
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-        }
-
-        // --- Register Identity Sync Strategies ---
+        // 3. Identity & Domain Services
         builder.Services.AddScoped<IIdentitySyncStrategy, ProjectIdentityStrategy>();
         builder.Services.AddScoped<IIdentitySyncStrategy, ContentIdentityStrategy>();
+        builder.Services.AddDomainServices(); // This will now pick up the new UserContext in the API layer
 
-        // 2. Domain Services (Automatic via Reflection)
-        // This replaces the long list of AddScoped<ProjectService, ProjectService>, etc.
-        builder.Services.AddDomainServices();
-
-        //search
-        builder.Services.AddScoped<ISearchableProvider, ProjectService>(); // Already implemented
+        // 4. Search Configuration
+        builder.Services.AddScoped<ISearchableProvider, ProjectService>();
         builder.Services.AddScoped<ISearchableProvider, CharacterService>(); 
 
-        // ── Authentication ──────────────────────────────────────────────────
+        // 5. Authentication & Security
         builder.Services.AddSingleton<JwtTokenService>();
         builder.Services.AddScoped<EmailPasswordAuthService>();
-
-        // HttpClient for Google JWKS (or other outbound calls)
         builder.Services.AddHttpClient("GoogleOAuth");
-        builder.Services.AddHttpContextAccessor();
 
         var jwtSecret = builder.Configuration["Jwt:Secret"];
         if (string.IsNullOrWhiteSpace(jwtSecret) || Encoding.UTF8.GetByteCount(jwtSecret) < 32)
             throw new InvalidOperationException("Jwt:Secret must be set and at least 32 bytes long.");
 
-        // JWT Bearer middleware – protects /2fa/* and /google/link endpoints
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]!)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret!)),
                     ValidateIssuer = true,
                     ValidIssuer = builder.Configuration["Jwt:Issuer"] ?? "GaDeMa",
                     ValidateAudience = true,
-                    ValidAudience = builder.Configuration["Jwt:Audience"] ?? "GaDeMaApi",
+                    ValidAudience = builder.Configuration["Jwt:Audience"] ?? "GademaApi",
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.FromSeconds(30),
                 };
@@ -81,22 +61,55 @@ public partial class Program
 
         builder.Services.AddAuthorization();
 
+        // 6. Swagger Configuration (OpenAPI 3.1 compliant)
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "GaDeMa API", Version = "v1" });
+
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'"
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" },
+                        SecuritySchemeType = SecuritySchemeType.ApiKey,
+                        In = ParameterLocation.Header
+                    },
+                    Array.Empty<string>()
+                }
+            });
+        });
+
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment() && !app.Environment.IsEnvironment("Testing"))
+        // 7. Middleware Pipeline
+        if (app.Environment.IsDevelopment())
         {
-            //   app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(); // Enables the interactive UI at /swagger
+        }
+        else
+        {
             app.UseExceptionHandler("/error");
-            app.MapGet("/error", () => Results.Problem(detail: "An unexpected error occurred.", statusCode: StatusCodes.Status500InternalServerError));
             app.UseHsts();
         }
 
+        app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
+
         app.MapControllers();
         app.MapGet("/health", () => Results.Ok(new { Status = "healthy" }));
-        app.Run();
 
+        app.Run();
     }
 }

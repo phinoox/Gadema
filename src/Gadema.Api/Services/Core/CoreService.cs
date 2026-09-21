@@ -1,4 +1,5 @@
 // =============================================================================
+using Gadema.Api.Services.Access;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
@@ -32,6 +33,8 @@ public abstract class CoreService
         _logger = logger;
         _userContext = userContext;
     }
+
+   
 
     // ========================================================================
     // AUTHORIZATION HELPERS

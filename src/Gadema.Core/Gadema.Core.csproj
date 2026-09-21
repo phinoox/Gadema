@@ -1,38 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    
-    <!-- Project metadata -->
+    <!-- Only include what is UNIQUE to this project -->
     <Description>Shared domain models and interfaces for GaDeMa Game Development Management Application</Description>
-    <Authors>GaDeMa Team</Authors>
-    <Company>GaDeMa</Company>
-    <Product>GaDeMa.Core</Product>
-    <Copyright>© 2024 GaDeMa Team. All rights reserved.</Copyright>
-    <Version>0.1.0</Version>
-    
-    <!-- Code analysis -->
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Product>Gadema.Core</Product>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Validation attributes -->
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.12" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-
-    <!-- EF Core packages -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.11" />
-    
-    <!-- FluentValidation for validation (optional) -->
-    <PackageReference Include="FluentValidation" Version="11.9.0" />
-    
-    <!-- Serialization -->
-    <PackageReference Include="System.Text.Json" Version="10.0.11" />
+    <!-- All versions are managed by Directory.Build.props -->
+    <PackageReference Include="System.ComponentModel.Annotations" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="System.Text.Json" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
   </ItemGroup>
 
 </Project>
