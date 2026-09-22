@@ -3,6 +3,7 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// <summary>
 /// Represents ancillary data attached to a content item.
 /// </summary>
+[ModelDependency(typeof(ContentMetaInfo))]
 public class Comment
 {
     public Guid Id { get; set; } = Guid.NewGuid();

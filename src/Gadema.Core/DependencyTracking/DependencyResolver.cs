@@ -132,11 +132,11 @@ public static class DependencyResolver
             if (!sorted.Contains(t))
             {
                 cyclicTypes.Add(t);
-                Console.WriteLine($"[DependencyResolver] ⚠ Cycle detected involving: '{t.Name}'");
+               // Console.WriteLine($"[DependencyResolver] ⚠ Cycle detected involving: '{t.Name}'");
             }
         }
 
-        Console.WriteLine($"[DependencyResolver] Graph built: {sorted.Count} types in topological order, {cyclicTypes.Count} cyclic.");
+        
         return (sorted, cyclicTypes);
     }
 
@@ -158,6 +158,136 @@ public static class DependencyResolver
 
         return typeMap;
     }
+
+    
+     /// <summary>
+    /// Prints a visual tree representation of the dependency hierarchy.
+    /// </summary>
+    public static void PrintHierarchy(Assembly assembly)
+    {
+        var (sorted, cyclic) = ResolveDependencies(assembly);
+        var typeMap = GetGraph(assembly);
+
+        Console.WriteLine("\n" + new string('=', 50));
+        Console.WriteLine("      GADEMA DEPENDENCY HIERARCHY");
+        Console.WriteLine(new string('=', 50));
+        
+        // Add explicit Root anchor
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        
+        Console.ResetColor();
+
+        if (cyclic.Any())
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n⚠ DETECTED CYCLES:");
+            Console.ResetColor();
+            PrintDetailedCycles(assembly);
+        }
+
+        
+        // Calculate depths for indentation
+        var depths = new Dictionary<Type, int>();
+        foreach (var type in sorted)
+        {
+            depths[type] = CalculateDepth(type, typeMap, depths);
+        }
+
+        Console.WriteLine("\nSTRUCTURE:");
+        Console.WriteLine("ROOT");
+        foreach (var type in sorted)
+        {
+            int depth = depths[type];
+            string indent = new string(' ', depth * 4);
+            string prefix = "└── " ; // Indent children relative to root
+            
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write($"{indent}{prefix}");
+            Console.ResetColor();
+            Console.WriteLine(type.Name);
+        }
+
+        Console.WriteLine(new string('=', 50) + "\n");
+    }
+
+    /// <summary>
+    /// Prints the actual paths of detected cycles using a visual arrow.
+    /// </summary>
+    private static void PrintDetailedCycles(Assembly assembly)
+    {
+        var (sorted, cyclic) = ResolveDependencies(assembly);
+        var typeMap = GetGraph(assembly);
+
+        foreach (var startNode in cyclic)
+        {
+            var path = new List<Type> { startNode };
+            if (TryFindCycle(startNode, typeMap, path, new HashSet<Type>()))
+            {
+                // The TryFindCycle method now handles the printing of the path itself
+            }
+        }
+    }
+
+    private static bool TryFindCycle(Type current, Dictionary<Type, List<ModelDependencyAttribute>> typeMap, List<Type> path, HashSet<Type> visited)
+    {
+        if (path.Contains(current))
+        {
+            // Found the loop! Extract the cycle segment from the path.
+            int startIndex = path.IndexOf(current);
+            var cyclePath = path.Skip(startIndex).ToList();
+            cyclePath.Add(current); // Close the loop: A -> B -> A
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"  [Cycle] {string.Join(" ➔ ", cyclePath.Select(t => t.Name))}");
+            Console.ResetColor();
+            return true; 
+        }
+
+        if (visited.Contains(current)) return false;
+        visited.Add(current);
+
+        if (typeMap.TryGetValue(current, out var attrs))
+        {
+            foreach (var attr in attrs)
+            {
+                foreach (var depType in attr.DependentTypes)
+                {
+                    path.Add(depType);
+                    if (TryFindCycle(depType, typeMap, path, visited)) return true;
+                    path.RemoveAt(path.Count - 1);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private static int CalculateDepth(Type type, Dictionary<Type, List<ModelDependencyAttribute>> typeMap, Dictionary<Type, int> computedDepths)
+    {
+        if (computedDepths.TryGetValue(type, out var depth)) return depth;
+
+        int maxParentDepth = -1;
+        if (typeMap.TryGetValue(type, out var attrs))
+        {
+            foreach (var attr in attrs)
+            {
+                foreach (var depType in attr.DependentTypes)
+                {
+                    // We check if the dependency is part of our graph to determine depth
+                    if (typeMap.ContainsKey(depType) || depType == typeof(RootMarker))
+                    {
+                        int d = CalculateDepth(depType, typeMap, computedDepths);
+                        if (d > maxParentDepth) maxParentDepth = d;
+                    }
+                }
+            }
+        }
+
+        int currentDepth = maxParentDepth + 1;
+        computedDepths[type] = currentDepth;
+        return currentDepth;
+    }
+   
 
     private static bool IsNullableReferenceType(this Type t) =>
         typeof(object).IsAssignableFrom(t) && !t.IsValueType;

@@ -11,6 +11,7 @@ public enum ProjectMemberRoleEnum
     Viewer = 4
 }
 
+[ModelDependency(typeof(Project),typeof(User))]
 public class ProjectMember
 {
     public Guid Id { get; set; }

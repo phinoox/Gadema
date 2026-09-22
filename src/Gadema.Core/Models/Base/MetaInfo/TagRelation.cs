@@ -1,8 +1,11 @@
+using Gadema.Core.Models.Base.Projects;
+
 namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// Junction table linking a Project (Root Anchor) to a MetaTag.//ToDo: add dbsets for the different metainfo class
 /// </summary>
+[ModelDependency(typeof(MetaTag))]
 public class TagRelation<T> where T: BaseMetaInfo
 {
     [Required]

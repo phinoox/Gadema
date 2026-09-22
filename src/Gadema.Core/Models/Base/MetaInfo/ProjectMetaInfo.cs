@@ -7,6 +7,7 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// Holds the identity and discovery metadata for a Project.
 /// Acts as the "Identity Card" for the root anchor.
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class ProjectMetaInfo : BaseMetaInfo
 {
     [Required]

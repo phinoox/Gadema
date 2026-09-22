@@ -3,6 +3,7 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// <summary>
 /// Junction table linking a Project (Root Anchor) to a MetaTag.
 /// </summary>
+[ModelDependency(typeof(ProjectMetaInfo),typeof(MetaTag))]
 public class ProjectTagRelation
 {
     [Required]

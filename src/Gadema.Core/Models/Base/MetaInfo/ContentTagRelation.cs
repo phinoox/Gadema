@@ -3,6 +3,7 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// <summary>
 /// Junction table linking a ContentMetaInfo (Content Anchor) to a MetaTag.
 /// </summary>
+[ModelDependency(typeof(ContentMetaInfo),typeof(MetaTag))]
 public class ContentTagRelation
 {
     [Required]

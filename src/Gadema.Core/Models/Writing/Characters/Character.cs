@@ -6,7 +6,7 @@ namespace Gadema.Core.Models.Writing.Characters;
 /// - CharacterState (dynamic story state, one-to-many)
 /// This is the glue between story and game-related character data.
 /// </summary>
-[ModelDependency(typeof(ContentMetaInfo), typeof(CharacterStoryProfile))]
+[ModelDependency(typeof(ContentMetaInfo))]
 public class Character
 {
     public Guid Id { get; set; } = Guid.NewGuid();

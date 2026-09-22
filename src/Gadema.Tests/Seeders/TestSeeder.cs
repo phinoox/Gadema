@@ -89,6 +89,13 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
     }
 
     [Fact]
+    public void Visual_Dependency_Check()
+    {
+        // This won't fail a build, but will print the beautiful tree to your console!
+        DependencyResolver.PrintHierarchy(typeof(User).Assembly);
+    }
+
+    [Fact]
     public void AllModels_ShouldHaveModelDependencyAttribute()
     {
         var assembly = typeof(ModelDependencyAttribute).Assembly;

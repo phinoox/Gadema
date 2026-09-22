@@ -6,6 +6,7 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// Holds the identity and discovery metadata for a Project Series.
 /// Acts as the "Identity Card" for the top-level universe anchor.
 /// </summary>
+[ModelDependency(typeof(RootMarker))]
 public class ProjectSeriesMetaInfo : BaseMetaInfo
 {
     // Note: Title, Slug, IsPublic, CreatedAt, LastModifiedAt are inherited from BaseMetaInfo

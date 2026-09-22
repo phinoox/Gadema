@@ -1,3 +1,4 @@
+using Gadema.Core.Models.Access;
 using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Core.Models.Base.Infrastructure;
@@ -6,6 +7,7 @@ namespace Gadema.Core.Models.Base.Infrastructure;
 /// Represents a business-level audit event within a project.
 /// This is ancillary data used for accountability and history tracking.
 /// </summary>
+[ModelDependency(typeof(Project),typeof(User))]
 public class ActivityLog
 {
     public Guid Id { get; set; } = Guid.NewGuid();
