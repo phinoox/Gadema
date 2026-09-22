@@ -2,6 +2,7 @@ using Gadema.Api.Services.Access.Identity;
 using Gadema.Core.Dtos.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+namespace Gadema.Api.Controllers.Identity;
 [ApiController]
 [Route("api/v1/projects/{projectId:guid}/identity-values")] // Hierarchy in route
 public class IdentityValueController : ControllerBase

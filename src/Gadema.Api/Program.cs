@@ -1,4 +1,5 @@
 using System.Text;
+using Microsoft.AspNetCore.OpenApi;   
 using Gadema.Api.Services.Access.Authentication;
 using Gadema.Api.Services.Base.Projects;
 using Gadema.Api.Services.Search;
@@ -6,6 +7,7 @@ using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Api.Services.Writing.Characters;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
+using Scalar.AspNetCore;
 
 namespace Gadema.Api;
 

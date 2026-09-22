@@ -41,7 +41,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.12" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.3.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-    <PackageReference Include="Microsoft.OpenApi" Version="3.10.2" />
+    <PackageReference Include="Microsoft.OpenApi" Version="2.12.2" />
 
     <!-- Testing -->
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
