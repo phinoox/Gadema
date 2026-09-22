@@ -38,7 +38,7 @@ namespace Gadema.Api.Services.Access.Authentication;
         {
             Id = Guid.NewGuid(),
             Email = registerDto.Email,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
+            PasswordHash = PasswordHasher.Hash(registerDto.Password),
             EmailConfirmed = true, // Setting to true for simplified flow ToDO: change for production
         };
 
@@ -68,15 +68,14 @@ namespace Gadema.Api.Services.Access.Authentication;
 
     public async Task<ApiResponseDto<AuthResponse>> SignInAsync(SignInDto signInDto)
     {
-        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == signInDto.Email);
+       var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == signInDto.Email);
 
         if (user == null)
             return ApiResponseDto<AuthResponse>.Unauthorized("Invalid email or password.");
 
-        var isValidPassword = BCrypt.Net.BCrypt.Verify(signInDto.Password, user.PasswordHash);
+        var isValidPassword = PasswordHasher.Verify(signInDto.Password, user.PasswordHash);
         if (!isValidPassword)
             return ApiResponseDto<AuthResponse>.Unauthorized("Invalid email or password.");
-
         var expiryDate = DateTime.UtcNow.AddHours(24);
         var authResponse = new AuthResponse
         {

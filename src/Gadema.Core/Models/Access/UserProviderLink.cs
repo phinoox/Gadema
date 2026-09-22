@@ -1,4 +1,5 @@
 using Gadema.Core.Enums;
+using Gadema.Core.Models.Access.Enums;
 
 namespace Gadema.Core.Models.Access;
 

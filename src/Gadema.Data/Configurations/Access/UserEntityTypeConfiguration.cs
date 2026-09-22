@@ -5,6 +5,7 @@
 // =============================================================================
 
 using Gadema.Core.Models.Access;
+using Gadema.Core.Models.Access.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
