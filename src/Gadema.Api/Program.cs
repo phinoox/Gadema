@@ -8,6 +8,7 @@ using Gadema.Api.Services.Writing.Characters;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
 using Scalar.AspNetCore;
+using Gadema.Api.Services.Access;
 
 namespace Gadema.Api;
 
@@ -30,6 +31,7 @@ public partial class Program
         builder.Services.AddDomainServices();
 
         // 4. Search Configuration
+        builder.Services.AddScoped<IUserContext, UserContext>();
         builder.Services.AddScoped<ISearchableProvider, ProjectService>();
         builder.Services.AddScoped<ISearchableProvider, CharacterService>(); 
 
