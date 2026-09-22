@@ -1,8 +1,7 @@
-using System;
-using System.Linq;
 using System.Reflection;
-
-using Gadema.Core.Models;
+using Gadema.Core.DependencyTracking;
+using Gadema.Core.Models.Access;
+using Gadema.Tests.Factory;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -93,7 +92,7 @@ public class DependencyGraphTests : IClassFixture<ApiWebApplicationFactory>, IDi
     public void AllModels_ShouldHaveModelDependencyAttribute()
     {
         var assembly = typeof(ModelDependencyAttribute).Assembly;
-        var modelsAssembly = typeof(Gadema.Core.Models.User).Assembly;
+        var modelsAssembly = typeof(User).Assembly;
 
         // Get all classes in Gadema.Core.Models namespace
         var modelTypes = modelsAssembly.GetExportedTypes()

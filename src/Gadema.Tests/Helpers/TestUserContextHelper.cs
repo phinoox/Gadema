@@ -1,12 +1,13 @@
 // src/Gadema.Tests/Helpers/TestUserContextHelper.cs
 
-using Gadema.Core.Models;
+using Gadema.Api.Services.Access.Authentication;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
+using Gadema.Core.Models.Access.Enums;
 using Gadema.Data.Database;
+using Gadema.Tests.Factory;
 using Microsoft.AspNetCore.Http;
-using Gadema.Api.Services.Authentication;
-using Gadema.Api.Services;
-using Microsoft.Extensions.DependencyInjection;
-using Gadema.Core.Services;
+
 
 namespace Gadema.Tests.Helpers;
 
@@ -34,8 +35,8 @@ public static class TestUserContextHelper
                 Email = "test@example.com",
                 UserName = "test@example.com",
                 DisplayName = "Test User",
-                Provider = Core.Enums.UserAuthProviderEnum.Password,
-                PasswordHash = Gadema.Api.Services.Authentication.PasswordHasher.Hash("Password123!"),
+                Provider = UserAuthProviderEnum.Password,
+                PasswordHash = PasswordHasher.Hash("Password123!"),
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };

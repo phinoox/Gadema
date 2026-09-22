@@ -1,3 +1,5 @@
+namespace Gadema.Tests.Seeders;
+
 /// <summary>
 /// Result of seeding a single model instance.
 /// </summary>

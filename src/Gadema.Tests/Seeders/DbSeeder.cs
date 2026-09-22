@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 using Microsoft.Data.Sqlite;
+using Gadema.Core.DependencyTracking;
 
 namespace Gadema.Tests.Seeders;
 /// <summary>

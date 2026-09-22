@@ -1,11 +1,8 @@
 using System.Reflection;
 using System.Security.Principal;
 using Gadema.Api;
-using Gadema.Api.Services;
-
-using Gadema.Core.Models.Projects;
+using Gadema.Api.Services.Access;
 using Gadema.Data.Database;
-using Gadema.Tests.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -16,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
+namespace Gadema.Tests.Factory;
 
 /// <summary>
 /// Test host for Gadema.Api.
@@ -175,13 +174,3 @@ public class ApiWebApplicationFactory : WebApplicationFactory<Program>
     }
 }
 
-public class MockHttpContextAccessor : IHttpContextAccessor
-{
-    public HttpContext HttpContext { get; set; } = new DefaultHttpContext
-    {
-        User = new GenericPrincipal(
-            new GenericIdentity("test-user"), 
-            new[] { "Role1", "Role2" })
-        
-    };
-}

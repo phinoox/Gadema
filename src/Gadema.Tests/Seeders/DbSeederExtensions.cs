@@ -1,5 +1,7 @@
 
+using Gadema.Core.DependencyTracking;
 using Gadema.Core.Models;
+using Gadema.Core.Models.Access;
 using Microsoft.Extensions.DependencyInjection;
 
 
@@ -20,7 +22,7 @@ public static class DbSeederExtensions
 
         var map = new Dictionary<Type, object?>();
         foreach (var t in sorted)
-            if (t != typeof(TeamMember)) // avoid circular Team↔TeamMember for this pass
+            if (t != typeof(ProjectMember)) // avoid circular Team↔TeamMember for this pass
                 map[t] = Activator.CreateInstance(t);
 
         return map.TryGetValue(type, out var v) ? ((Guid?)v as Guid?) : null;
