@@ -16,6 +16,7 @@ using Gadema.Core.Models.Tasks;
 using Gadema.Core.Models.Templates;
 using Gadema.Core.Models.Game.Inventory;
 using Gadema.Core.Models.Identity;
+using Gadema.Core.Utils;
 
 namespace Gadema.Data.Database;
 
@@ -323,8 +324,28 @@ public class GameDbContext : DbContext
     {
         // Apply all configurations from domain folders (auto-discovery)
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
-
+        PopulateTags<BaseTag>(modelBuilder);
+        PopulateTags<WritingTag>(modelBuilder);
+        PopulateTags<GameTag>(modelBuilder);
         base.OnModelCreating(modelBuilder);
+    }
+
+    private void PopulateTags<T>(ModelBuilder modelBuilder) where T : struct,Enum
+    {
+        List<MetaTag> tags = new List<MetaTag>();
+        foreach(var value in Enum.GetValues<T>())
+        {
+            var tagId = value.ToGuid();
+            string tagName = value.ToString();
+            MetaTag tag = new MetaTag()
+            {
+              Id =tagId,
+              Name = tagName  
+            };
+            tags.Add(tag);
+        }
+
+        modelBuilder.Entity<MetaTag>().HasData(tags);
     }
 
     /// <summary>
