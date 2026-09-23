@@ -17,8 +17,8 @@ public class ProjectMetaInfo : BaseMetaInfo
     public ViewModeEnum ViewMode { get; set; } = ViewModeEnum.PrivateWriting;
 
     // Link back to the Project anchor
-    [Required]
-    public Guid ProjectId { get; set; }
+    
+    public Guid? ProjectId { get; set; }
 
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; } = null!;

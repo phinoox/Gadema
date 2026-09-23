@@ -27,6 +27,6 @@ public class UserContext : IUserContext
     
     public void Dispose()
     {
-        throw new NotImplementedException();
+        
     }
 }

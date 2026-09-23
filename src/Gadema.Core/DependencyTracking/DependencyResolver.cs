@@ -26,51 +26,52 @@ public static class DependencyResolver
         return ResolveDependencies(modelsAssembly);
     }
 
-     /// <summary>
+    /// <summary>
     /// Generic overload for scanning any assembly.
     /// Useful if you want to scan a different project later (e.g., Gadema.Api.Models).
     /// Returns a tuple containing the topologically sorted types and any cyclic types.
     /// </summary>
-    public static (List<Type> SortedTypes, List<Type> CyclicTypes) ResolveDependencies(Assembly assembly)
+    public static (List<Type> SortedTypes, List<Type> CyclicTypes) ResolveDependencies(Assembly assembly, string? targetNamespace = null)
     {
-        // ─────────────────────────────────────────────────────────────────────
-        // STEP 1: Discover all types with [ModelDependency] attributes
-        // ─────────────────────────────────────────────────────────────────────
+
+        var allExportedTypes = assembly.GetExportedTypes().Where(t => t.IsClass && !t.IsAbstract).ToList();
+
+        // 1. Define the entry points
+        IEnumerable<Type> initialSet = targetNamespace != null
+            ? allExportedTypes.Where(t => t.Namespace != null && t.Namespace.StartsWith(targetNamespace))
+            : allExportedTypes;
+
         var typeMap = new Dictionary<Type, List<ModelDependencyAttribute>>();
+        var traversalQueue = new Queue<Type>(initialSet);
+        var visited = new HashSet<Type>();
 
-        foreach (var type in assembly.GetExportedTypes().Where(t => t.IsClass && !t.IsAbstract))
+        // 2. Build the graph via traversal (Single Pass)
+        while (traversalQueue.Count > 0)
         {
-            var attrs = type.GetCustomAttributes(typeof(ModelDependencyAttribute), false);
-            if (attrs.Length == 0) continue;
+            var current = traversalQueue.Dequeue();
+            if (!visited.Add(current)) continue;
 
-            var deps = attrs.Cast<ModelDependencyAttribute>()
-                .SelectMany(a => a.DependentTypes)
-                .Distinct()
-                .ToList();
+            var attrs = current.GetCustomAttributes<ModelDependencyAttribute>(false).ToList();
+            if (attrs.Count == 0) continue;
+            // We add the type to the map if it has dependencies OR if it's part of the initial set 
+            // (to ensure we track even 'leaf' nodes in our graph)
+            typeMap[current] = attrs;
 
-            // Skip types where all dependencies are nullable reference types (no FK to persist yet)
-            //var hasNonNullDep = deps.Any(d => !d.IsNullableReferenceType());
-            //if (!hasNonNullDep && attrs.Length == 1) continue;
-
-            typeMap[type] = attrs.Cast<ModelDependencyAttribute>().ToList();
-        }
-
-        if (typeMap.Count == 0) return (new(), new());
-
-        // ─────────────────────────────────────────────────────────────────────
-        // STEP 2: Collect ALL types in the graph (both types with attributes AND their dependencies)
-        // Types without [ModelDependency] but referenced as dependencies become "root" nodes.
-        // ─────────────────────────────────────────────────────────────────────
-        var allTypes = new HashSet<Type>(typeMap.Keys);
-        foreach (var kvp in typeMap)
-        {
-            foreach (var depType in kvp.Value.SelectMany(a => a.DependentTypes))
+            foreach (var attr in attrs)
             {
-                if (depType == typeof(RootMarker)) continue; // skip root marker
-                if (depType == kvp.Key) continue; // skip self-references
-                allTypes.Add(depType);
+                foreach (var depType in attr.DependentTypes)
+                {
+                    if (depType == typeof(RootMarker) || depType == current) continue;
+
+                    if (!visited.Contains(depType))
+                    {
+                        traversalQueue.Enqueue(depType);
+                    }
+                }
             }
         }
+
+        var allTypes = typeMap.Keys;
 
         // ─────────────────────────────────────────────────────────────────────
         // STEP 3: Build directed graph (A depends on B → edge A→B, meaning A seeds AFTER B)
@@ -132,11 +133,11 @@ public static class DependencyResolver
             if (!sorted.Contains(t))
             {
                 cyclicTypes.Add(t);
-               // Console.WriteLine($"[DependencyResolver] ⚠ Cycle detected involving: '{t.Name}'");
+                // Console.WriteLine($"[DependencyResolver] ⚠ Cycle detected involving: '{t.Name}'");
             }
         }
 
-        
+
         return (sorted, cyclicTypes);
     }
 
@@ -159,22 +160,22 @@ public static class DependencyResolver
         return typeMap;
     }
 
-    
-     /// <summary>
+
+    /// <summary>
     /// Prints a visual tree representation of the dependency hierarchy.
     /// </summary>
-    public static void PrintHierarchy(Assembly assembly)
+    public static void PrintHierarchy(Assembly assembly, string? domainNamespace = null)
     {
-        var (sorted, cyclic) = ResolveDependencies(assembly);
+        var (sorted, cyclic) = ResolveDependencies(assembly, domainNamespace);
         var typeMap = GetGraph(assembly);
 
         Console.WriteLine("\n" + new string('=', 50));
         Console.WriteLine("      GADEMA DEPENDENCY HIERARCHY");
         Console.WriteLine(new string('=', 50));
-        
+
         // Add explicit Root anchor
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        
+
         Console.ResetColor();
 
         if (cyclic.Any())
@@ -185,7 +186,7 @@ public static class DependencyResolver
             PrintDetailedCycles(assembly);
         }
 
-        
+
         // Calculate depths for indentation
         var depths = new Dictionary<Type, int>();
         foreach (var type in sorted)
@@ -199,12 +200,12 @@ public static class DependencyResolver
         {
             int depth = depths[type];
             string indent = new string(' ', depth * 4);
-            string prefix = "└── " ; // Indent children relative to root
-            
+            string prefix = "└── "; // Indent children relative to root
+
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write($"{indent}{prefix}");
             Console.ResetColor();
-            Console.WriteLine(type.Name);
+            Console.WriteLine(type.FullName);
         }
 
         Console.WriteLine(new string('=', 50) + "\n");
@@ -240,7 +241,7 @@ public static class DependencyResolver
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"  [Cycle] {string.Join(" ➔ ", cyclePath.Select(t => t.Name))}");
             Console.ResetColor();
-            return true; 
+            return true;
         }
 
         if (visited.Contains(current)) return false;
@@ -260,6 +261,35 @@ public static class DependencyResolver
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Finds only the types required to satisfy the dependencies of the target type.
+    /// </summary>
+    public static List<Type> GetRequiredAncestors(Assembly assembly, Type targetType)
+    {
+        var requiredTypes = new HashSet<Type>();
+        var queue = new Queue<Type>();
+        queue.Enqueue(targetType);
+
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+            if (!requiredTypes.Add(current)) continue;
+
+            // Get the dependencies of the current type from the graph
+            var graph = GetGraph(assembly);
+            if (graph.TryGetValue(current, out var attrs))
+                foreach (var attr in attrs)
+                    foreach (var depType in attr.DependentTypes)
+                        queue.Enqueue(depType);
+        }
+
+        // Now we have all ancestors. We must sort them so parents are seeded before children.
+        // We use the existing topological sort logic on this subset.
+        return ResolveDependencies(assembly).SortedTypes
+            .Where(t => requiredTypes.Contains(t))
+            .ToList();
     }
 
     private static int CalculateDepth(Type type, Dictionary<Type, List<ModelDependencyAttribute>> typeMap, Dictionary<Type, int> computedDepths)
@@ -287,7 +317,7 @@ public static class DependencyResolver
         computedDepths[type] = currentDepth;
         return currentDepth;
     }
-   
+
 
     private static bool IsNullableReferenceType(this Type t) =>
         typeof(object).IsAssignableFrom(t) && !t.IsValueType;

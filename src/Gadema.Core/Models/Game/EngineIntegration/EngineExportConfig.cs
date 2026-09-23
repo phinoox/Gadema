@@ -10,7 +10,7 @@ namespace Gadema.Core.Models.Game.EngineIntegration;
 /// Configuration settings for exporting content items to game engines.
 /// Stores engine type, format, and field mapping settings for each project.
 /// </summary>
-[ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(Project))]
 public class EngineExportConfig
 {
     public Guid Id { get; set; } = Guid.NewGuid();

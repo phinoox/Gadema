@@ -21,7 +21,7 @@ public class ProjectMetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<P
         // Relationship to Project (1:1)
         // This ensures that the MetaInfo is tied to its parent Project via ProjectId
         builder.HasOne(mi => mi.Project)
-            .WithOne(p => p.MetaInfo)
+            .WithOne(p => p.ProjectMetaInfo)
             .HasForeignKey<ProjectMetaInfo>(mi => mi.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 

@@ -85,7 +85,7 @@ namespace Gadema.Api.Services.Base.Projects;
             var project = new Project
             {
                 Id = Guid.NewGuid(), // The actual ID of the new project
-                MetaInfoId = meta.Id,
+                ProjectMetaInfoId = meta.Id,
                 UserId = _userContext.CurrentUser.Id,
                 Description = createDto.Description,
                 IsActive = true,
@@ -103,7 +103,7 @@ namespace Gadema.Api.Services.Base.Projects;
             await transaction.CommitAsync();
 
             // 2. Logging: Log with null context since this is a root-level creation.
-            await LogDbAsync(null, "Created", "Project", project.Id, $"Project '{project.MetaInfo.Title}' created.");
+            //await LogDbAsync(null, "Created", "Project", project.Id, $"Project '{project.ProjectMetaInfo.Title}' created.");
 
             return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
             { 
@@ -125,7 +125,7 @@ namespace Gadema.Api.Services.Base.Projects;
         if (error != null) return error;
 
         var project = await _db.Projects
-            .Include(p => p.MetaInfo)
+            .Include(p => p.ProjectMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == projectId);
 
         if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -142,7 +142,7 @@ namespace Gadema.Api.Services.Base.Projects;
         try
         {
             var project = await _db.Projects
-                .Include(p => p.MetaInfo)
+                .Include(p => p.ProjectMetaInfo)
                 .FirstOrDefaultAsync(p => p.Id == projectId);
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
@@ -201,11 +201,11 @@ namespace Gadema.Api.Services.Base.Projects;
     private ProjectResponseDto MapToResponseDto(Project p) => new()
     {
         Id = p.Id,
-        Title = p.MetaInfo.Title,
-        Slug = p.MetaInfo.Slug,
-        Status = p.MetaInfo.Status,
-        ViewMode = p.MetaInfo.ViewMode,
-        CreatedAt = p.MetaInfo.CreatedAt,
+        Title = p.ProjectMetaInfo.Title,
+        Slug = p.ProjectMetaInfo.Slug,
+        Status = p.ProjectMetaInfo.Status,
+        ViewMode = p.ProjectMetaInfo.ViewMode,
+        CreatedAt = p.ProjectMetaInfo.CreatedAt,
         Description = p.Description,
         IsActive = p.IsActive,
         PrimaryFormat = p.PrimaryFormat,

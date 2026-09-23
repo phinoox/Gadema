@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gadema.Tests.Seeders;
+namespace Gadema.Tests.Extensions;
 
 public static class ScopedServiceProviderExtensions
 {

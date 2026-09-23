@@ -53,10 +53,10 @@ public class ProjectTests
 
         // Act
         project.UserId = userId;
-        project.MetaInfoId = metaInfoId;
+        project.ProjectMetaInfoId = metaInfoId;
 
         // Assert
         project.UserId.Should().Be(userId);
-        project.MetaInfoId.Should().Be(metaInfoId);
+        project.ProjectMetaInfoId.Should().Be(metaInfoId);
     }
 }

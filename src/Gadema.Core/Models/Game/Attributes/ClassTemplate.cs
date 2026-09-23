@@ -8,7 +8,7 @@ namespace Gadema.Core.Models.Game.Attributes;
 /// Class template definition for character scaling systems.
 /// Used in project templates to define base class configurations.
 /// </summary>
-[ModelDependency(typeof(RootMarker))]
+[ModelDependency(typeof(ContentMetaInfo),typeof(AttributeSet))]
 public class ClassTemplate
 {
     /// <summary>

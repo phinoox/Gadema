@@ -46,7 +46,11 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
             Genre = "Fantasy",
             Theme = "Magic",
             Tone = ToneEnum.Dark,
-            Audience = AudienceEnum.Adult
+            Audience = AudienceEnum.Adult,
+            MetaInfo = new ProjectMetaInfoCreateData
+            {
+                Title = "the Punisher",
+            }
         };
 
         // Act
@@ -65,6 +69,7 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         var owner = DbSeeder.Seed<User>(scope);
         var project = DbSeeder.Create<Project>(p => p.User = owner);
         DbSeeder.Seed(scope, project);
+        project = DbSeeder.AutoSeed<Project>(scope);
 
         // Act
         var result = await _projectService.GetAsync(project.Id, project.Id);
@@ -97,7 +102,7 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         
         var db = _factory.GetScopedService<GameDbContext>();
         var updatedProject = await db.Projects
-            .Include(p => p.MetaInfo)
+            .Include(p => p.ProjectMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == project.Id);
 
         updatedProject!.Description.Should().Be("Updated description");

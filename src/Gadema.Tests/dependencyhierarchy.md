@@ -1,0 +1,74 @@
+==================================================
+      GADEMA DEPENDENCY HIERARCHY
+==================================================
+STRUCTURE:
+ROOT
+    └── ProjectTemplate
+    └── TemplateNarrativeStructure
+    └── EngineExportConfig
+    └── ClassTemplate
+    └── ProjectTag
+    └── ContentMetaInfoTag
+    └── MetaTag
+    └── ProjectMetaInfo
+    └── ProjectSeriesMetaInfo
+    └── TokenUsageStats
+    └── User
+        └── AttributeSetDefinition
+        └── EngineFieldMapping
+        └── TagRelation`1
+        └── ProjectTagRelation
+        └── ProjectSeries
+        └── Project
+        └── UserProviderLink
+            └── TemplateAttributeSetDefinition
+            └── StoryChapter
+            └── EndingDefinition
+            └── ContentMetaInfo
+            └── ActivityLog
+            └── ProjectMember
+            └── ProjectToken
+                └── WorldLocation
+                └── DialogueBranch
+                └── LoreEntry
+                └── Story
+                └── Character
+                └── ProjectTask
+                └── CharacterIdentity
+                └── IdentityDefinition
+                └── InventoryItem
+                └── AttributeDefinition
+                └── AttributeSet
+                └── AbilityDefinition
+                └── AbilitySet
+                └── StatusEffectDefinition
+                └── Comment
+                └── ContentMetaInfoTagRelation
+                └── ContentTagRelation
+                └── ReviewStatus
+                └── AssetLink
+                └── ContentSnapshot
+                └── ContentVersionLog
+                └── ExternalReference
+                └── MediaAttachment
+                └── MediaAttachmentTagRelation
+                    └── Faction
+                    └── StoryBeat
+                    └── DialogueNode
+                    └── CharacterStoryProfile
+                    └── ProjectTaskComment
+                    └── ProjectTaskMetaInfo
+                    └── IdentityValue
+                    └── TemplateClassTemplateDefinition
+                    └── CharacterAttributes
+                    └── ClassTemplateAttribute
+                        └── CharacterState
+                        └── StoryOutline
+                        └── TemplateIdentityDefinition
+                            └── OutlineSection
+                            └── Scene
+                                └── SceneSegment
+                                └── SceneStoryBeatMapping
+                                └── CharacterRelation
+                                    └── GameKeyEvent
+==================================================

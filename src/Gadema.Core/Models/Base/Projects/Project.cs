@@ -37,11 +37,11 @@ public class Project
     [ForeignKey("ProjectSeriesId")]
     public virtual ProjectSeries? ProjectSeries { get; set; }
 
-    public Guid MetaInfoId {get;set;}
+    public Guid ProjectMetaInfoId {get;set;}
 
     // New Relationship to the identity anchor
     [ForeignKey("MetaInfoId")]
-    public virtual ProjectMetaInfo MetaInfo { get; set; } = null!;
+    public virtual ProjectMetaInfo ProjectMetaInfo { get; set; } = null!;
 
     // ... remaining relationships (Members, Tokens, Tasks, etc.) remain unchanged ...
 
