@@ -2,6 +2,8 @@
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 
+using Gadema.Core.Utils;
+
 namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
@@ -10,6 +12,8 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 /// </summary>
 public abstract class BaseMetaInfo
 {
+
+    private string _title = "";
     /// <summary>
     /// Unique identifier for the entity.
     /// </summary>
@@ -20,7 +24,14 @@ public abstract class BaseMetaInfo
     /// The primary display name of the entity.
     /// </summary>
     [Required, MaxLength(128)]
-    public string Title { get; set; } = "";
+    public string Title { get => _title;
+    set
+        {
+            _title = value;
+            // Automatically sync the slug whenever the name changes
+            Slug = StringSanitizer.Normalize(_title);
+        }
+     } 
 
     /// <summary>
     /// URL-friendly slug for the entity (unique).
@@ -43,5 +54,5 @@ public abstract class BaseMetaInfo
 
     public bool IsPublic { get; set; } = false;
 
-    public List<Guid>? TagIds { get; set; } 
+    public List<Guid> TagIds { get; set; } = new ();
 }
