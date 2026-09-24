@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Gadema.Tests.Factory;
 using Gadema.Core.Models.Access;
 using Gadema.Data.Database;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.MetaInfo;
 
 namespace Gadema.Tests.Unit.Services;
 
@@ -18,11 +20,14 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly ApiWebApplicationFactory _factory;
     private readonly ProjectService _projectService;
+    private IUserContext _userContext;
 
     public ProjectServiceTests(ApiWebApplicationFactory factory)
     {
         _factory = factory;
         _projectService = factory.GetScopedService<ProjectService>();
+        // Setup UserContext for the service to see a logged-in user
+        _userContext = TestUserContextHelper.CreateTestContext(_factory);
         _factory.ResetDb();
     }
 
@@ -33,9 +38,8 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
         
-        // Setup UserContext for the service to see a logged-in user
-        var userContext = TestUserContextHelper.CreateTestContext(_factory);
-        userContext.CurrentUser = owner;
+        
+        _userContext.CurrentUser = owner;
 
         var createDto = new ProjectCreateDto
         {
@@ -67,9 +71,13 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         // Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.User = owner);
+        _userContext.CurrentUser = owner;
+        var metaInfo = DbSeeder.Seed<ProjectMetaInfo>(scope);
+        var project = DbSeeder.Create<Project>(p => 
+        {p.User = owner;p.ProjectMetaInfo = metaInfo;});
+
         DbSeeder.Seed(scope, project);
-        project = DbSeeder.AutoSeed<Project>(scope);
+        //project = DbSeeder.AutoSeed<Project>(scope);
 
         // Act
         var result = await _projectService.GetAsync(project.Id, project.Id);
@@ -85,7 +93,11 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         // Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.User = owner);
+        _userContext.CurrentUser = owner;
+        var metaInfo = DbSeeder.Seed<ProjectMetaInfo>(scope);
+        var project = DbSeeder.Create<Project>(p => 
+        {p.User = owner;p.ProjectMetaInfo = metaInfo;});
+
         DbSeeder.Seed(scope, project);
 
         var updateDto = new ProjectUpdateDto
@@ -112,11 +124,20 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
     public async Task DeleteAsync_ShouldRemoveProject_WhenAuthorized()
     {
         // Arrange
+        // Arrange
         var scope = _factory.GetScope();
         var owner = DbSeeder.Seed<User>(scope);
-        var project = DbSeeder.Create<Project>(p => p.User = owner);
-        DbSeeder.Seed(scope, project);
+        _userContext.CurrentUser = owner;
+        var metaInfo = DbSeeder.Seed<ProjectMetaInfo>(scope);
+        var project = DbSeeder.Create<Project>(p => 
+        {
+            p.User = owner;
+            p.ProjectMetaInfo = metaInfo;
+        });
 
+        project = DbSeeder.Seed(scope, project);
+
+        project.IsDeleted.Should().BeFalse();
         // Act
         var result = await _projectService.DeleteAsync(project.Id, project.Id);
 
@@ -125,6 +146,6 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         
         var db = _factory.GetScopedService<GameDbContext>();
         var deletedProject = await db.Projects.FindAsync(project.Id);
-        deletedProject.Should().BeNull();
+        deletedProject.IsDeleted.Should().BeTrue();
     }
 }

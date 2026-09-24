@@ -185,9 +185,10 @@ namespace Gadema.Api.Services.Base.Projects;
 
         var project = await _db.Projects.FindAsync(projectId);
         if (project == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Project not found.");
-
-        _db.Projects.Remove(project);
-        await _db.SaveChangesAsync();
+        project.IsDeleted = true;
+        project.DeletedAt = DateTime.UtcNow;
+        
+        _db.Set<Project>().Update(project);
 
         await LogDbAsync(contextProjectId, "Deleted", "Project", projectId, "Project deleted.");
 

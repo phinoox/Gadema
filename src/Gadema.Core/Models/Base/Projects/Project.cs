@@ -1,5 +1,6 @@
 // =============================================================================
 using Gadema.Core.Enums;
+using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
@@ -12,7 +13,7 @@ namespace Gadema.Core.Models.Base.Projects;
 /// </summary>
 // ... existing code ...
 [ModelDependency(typeof(User), typeof(ProjectMetaInfo))] // Added ProjectMetaInfo dependency
-public class Project
+public class Project : ISoftDeletable
 {
     public Guid Id { get; set; } = Guid.NewGuid();
 
@@ -64,4 +65,6 @@ public class Project
     [EnumDataType(typeof(AudienceEnum))]
     public AudienceEnum Audience { get; set; } = AudienceEnum.AllAges;
     public ICollection<ProjectMember> Members { get; set; }
+    public bool IsDeleted { get; set ; } = false;
+    public DateTime? DeletedAt { get ; set ; }
 }

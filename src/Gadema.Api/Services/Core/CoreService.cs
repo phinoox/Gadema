@@ -6,6 +6,7 @@ using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
 using Gadema.Core.Models.Base.Enums;
 using Gadema.Core.Models.Base.Infrastructure;
+using Gadema.Core.Models.Base.Projects;
 using Gadema.Data.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,7 +35,7 @@ public abstract class CoreService
         _userContext = userContext;
     }
 
-   
+
 
     // ========================================================================
     // AUTHORIZATION HELPERS
@@ -51,16 +52,33 @@ public abstract class CoreService
         if (user == null)
             return ApiResponseDto<T>.Unauthorized("Not authenticated.");
 
-        // Owner always has access
-        var isOwner = await _db.Projects
-            .AnyAsync(p => p.Id == projectId && p.UserId == user.Id);
+        // 1. Get the project regardless of deletion status
+        var project = await _db.Projects
+            .IgnoreQueryFilters()
+            .SingleOrDefaultAsync(p => p.Id == projectId);
 
-        if (isOwner)
-            return null;
+        if (project == null)
+            return ApiResponseDto<T>.NotFound("Project not found.");
 
-        // Check membership with minimum role
+        // 2. Determine User's Relationship/Role
+        bool isOwner = project.UserId == user.Id;
+
         var member = await _db.ProjectMembers
             .FirstOrDefaultAsync(pm => pm.ProjectId == projectId && pm.UserId == user.Id);
+
+        // 3. Apply Visibility Rule (The "Who can see a deleted project" rule)
+        if (project.IsDeleted)
+        {
+            // Only Owners or Admins are allowed to 'see' a deleted project
+            bool isAdmin = member != null && member.Role == ProjectMemberRoleEnum.Admin;
+            if (!isOwner && !isAdmin)
+            {
+                return ApiResponseDto<T>.NotFound("Project not found.");
+            }
+        }
+
+        // 4. Apply Permission Rule (The "Can they perform this action" rule)
+        if (isOwner) return null; // Owners always have access (even if deleted, per step 3)
 
         if (member == null || member.Role > minimumRole)
             return ApiResponseDto<T>.Forbidden("You do not have sufficient access to this project.");
@@ -69,9 +87,9 @@ public abstract class CoreService
     }
 
     /// <summary>
-/// Verifies that the target ID provided actually belongs to a MetaInfo entry within the specified project.
-/// </summary>
-protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+    /// Verifies that the target ID provided actually belongs to a MetaInfo entry within the specified project.
+    /// </summary>
+    protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
 {
     // We use OfType<T> because it is compatible with EF Core's SQL translation.
     // This checks if the ID exists in any of our known subtype tables and matches the ProjectId.
@@ -111,10 +129,13 @@ protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
         Guid? relatedEntityId = null, 
         string? description = null)
     {
+        var actualProjectId = projectId ?? throw new ArgumentException("ProjectId is required for activity logging.");
+        var actualUser =  _userContext.CurrentUser?.Id ?? throw new ArgumentException("User is required for activity logging.");
+        
         var log = new ActivityLog
         {
-            ProjectId = projectId ?? Guid.Empty,
-            UserId = _userContext.CurrentUser?.Id ?? Guid.Empty, // Fallback if user is system/anonymous
+            ProjectId = actualProjectId,
+            UserId = actualUser,
             Action = action,
             RelatedEntityType = relatedEntityType,
             RelatedEntityId = relatedEntityId,

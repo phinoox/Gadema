@@ -324,6 +324,11 @@ public class GameDbContext : DbContext
     {
         // Apply all configurations from domain folders (auto-discovery)
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
+
+         // 1. Apply Global Query Filter for Project
+        // This ensures that 'deleted' projects are hidden from the rest of the app automatically
+        modelBuilder.Entity<Project>().HasQueryFilter(p => !p.IsDeleted);
+        
         PopulateTags<BaseTag>(modelBuilder);
         PopulateTags<WritingTag>(modelBuilder);
         PopulateTags<GameTag>(modelBuilder);
