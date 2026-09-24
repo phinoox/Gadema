@@ -36,48 +36,12 @@ public static class DbSeeder
         // Leave collection navigations (ICollection<T> where T is a class) empty:
         // EF would cascade-insert the random unattached instances and hit key conflicts.
         // Scalar FKs are still filled — only dependent-entity collections stay unset.
-        fixture.Customizations.Add(new EntityCollectionOmitter());
+        fixture.Customizations.Add(new DomainPropertyOmitter());
 
         return fixture;
     }
 
-    private sealed class EntityCollectionOmitter : ISpecimenBuilder
-    {
-        public object Create(object request, ISpecimenContext context)
-        {
-            if (request is PropertyInfo prop)
-            {
-                if (prop.PropertyType == typeof(Guid) || prop.PropertyType == typeof(Guid?))
-                    return new OmitSpecimen();
-
-                if (IsEntityCollection(prop.PropertyType))
-                    return new OmitSpecimen();
-
-                var FixtureAttribute = prop.GetCustomAttribute<FixtureAttribute>();
-                var hint = FixtureAttribute == null ? FixtureHintEnum.None : FixtureAttribute.Hint;
-                if (hint == FixtureHintEnum.Omit)
-                    return new OmitSpecimen();
-
-                var dependencyAttribute = prop.PropertyType.GetCustomAttribute<ModelDependencyAttribute>();
-                if(dependencyAttribute != null)
-                    return new OmitSpecimen();
-
-            }
-
-            return new NoSpecimen();
-        }
-
-        private static bool IsEntityCollection(Type type) =>
-            type.IsGenericType &&
-            (
-            type.GetGenericTypeDefinition() == typeof(ICollection<>) ||
-            type.GetGenericTypeDefinition() == typeof(IEnumerable<>)
-
-            ) &&
-            type.GetGenericArguments()[0].IsClass;
-    }
-
-
+   
     // Shared context to track seeded instances by type during a single AutoSeed call
     private static readonly AsyncLocal<Dictionary<Type, Guid?>> _seededCache = new();
     private static readonly AsyncLocal<Dictionary<Type, object?>> _seededObjects = new();
