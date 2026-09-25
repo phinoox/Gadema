@@ -64,13 +64,13 @@ namespace Gadema.Api.Services.Base.Projects;
         foreach (var tagId in dto.TagIds)
         {
             var exists = await _db.ProjectTagRelations
-                .AnyAsync(r => r.ProjectMetaInfoId == projectMetaInfoId && r.ProjectMetaInfoId == tagId);
+                .AnyAsync(r => r.MetaInfoId == projectMetaInfoId && r.MetaInfoId == tagId);
 
             if (!exists)
             {
                 _db.ProjectTagRelations.Add(new ProjectTagRelation
                 {
-                    ProjectMetaInfoId = projectMetaInfoId,
+                    MetaInfoId = projectMetaInfoId,
                     TagId = tagId
                 });
             }

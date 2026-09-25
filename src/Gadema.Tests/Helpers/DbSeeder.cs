@@ -190,11 +190,9 @@ public static class DbSeeder
     private static void SetFKProperties(DbContext db, Type targetType, object instance, IServiceScope scope)
     {
         if (_seededCache.Value == null) return;
-        // Get the graph for this type's assembly
         var graph = DependencyResolver.GetGraph(targetType.Assembly);
         if (graph == null || !graph.ContainsKey(targetType)) return;
 
-        // Get the dependencies of the target type
         var attrs = graph[targetType];
         if (attrs == null || attrs.Count == 0) return;
 
@@ -202,25 +200,41 @@ public static class DbSeeder
         {
             foreach (var dependencyType in dependencyTypeAttribute.DependentTypes)
             {
-                // Check if the dependency has been seeded
+                // 1. Get the ID of the already-seeded parent
                 if (!_seededCache.Value.TryGetValue(dependencyType, out var depId) || depId == null)
                     continue;
 
-                // Set the FK property: "{DependencyTypeName}Id" → {dependencyId}
-                var fkPropertyName = $"{dependencyType.Name}Id";
-                var propInfo = targetType.GetProperty(fkPropertyName, BindingFlags.Public | BindingFlags.Instance);
+                // 2. Attempt to set both the Navigation Property AND the Foreign Key property
+                // We iterate through all properties on the target type to find matches
+                var props = targetType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-                if (propInfo != null && propInfo.CanWrite)
-                    propInfo.SetValue(instance, depId.Value);
+                foreach (var prop in props)
+                {
+                    // Case A: The property is a Navigation Property (e.g., 'MetaInfo')
+                    // We check if the type matches or if it's a generic collection of the dependency type
+                    bool isNavProp = prop.PropertyType == dependencyType || 
+                                     (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericArguments()[0] == dependencyType);
 
-                if (!_seededObjects.Value.TryGetValue(dependencyType, out var depObject) || depObject == null)
-                    continue;
+                    if (isNavProp)
+                    {
+                        // Set the navigation object if available in cache
+                        if (_seededObjects.Value.TryGetValue(dependencyType, out var depObject) && depObject != null)
+                        {
+                            prop.SetValue(instance, depObject);
+                        }
 
-                 var navPropertyName = $"{dependencyType.Name}";
-                var navPropInfo = targetType.GetProperty(navPropertyName, BindingFlags.Public | BindingFlags.Instance);
+                        // Case B: The property is a Foreign Key (e.g., 'MetaInfoId')
+                        // We look for the convention: [NavigationName] + "Id"
+                        var fkPropertyName = prop.Name + "Id";
+                        var fkProp = targetType.GetProperty(fkPropertyName, BindingFlags.Public | BindingFlags.Instance);
 
-                if (navPropInfo != null && navPropInfo.CanWrite)
-                    navPropInfo.SetValue(instance, depObject);
+                        if (fkProp != null && fkProp.PropertyType == typeof(Guid) && fkProp.CanWrite)
+                        {
+                            // CRITICAL: Set the Guid property! This satisfies Composite Key requirements.
+                            fkProp.SetValue(instance, depId.Value);
+                        }
+                    }
+                }
             }
         }
     }

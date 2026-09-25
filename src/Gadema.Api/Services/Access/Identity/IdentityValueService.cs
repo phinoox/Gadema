@@ -55,7 +55,7 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null) 
             return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<IdentityValueResponseDto>.Success(CreateResponseDto(value));
@@ -115,7 +115,7 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null)
             return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueUpdateDto>(value.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<IdentityValueUpdateDto>(value.ContentMetaInfo.ProjectId.Value);
         if ( error != null) return ApiResponseDto<IdentityValueResponseDto>.Unauthorized("not authorized");
 
         // 1. Delegate Identity Updates to the Strategy
@@ -147,7 +147,7 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(value.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(value.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Deleting the MetaInfo anchor will cascade to the IdentityValue component
@@ -157,7 +157,7 @@ namespace Gadema.Api.Services.Access.Identity;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = value.ContentMetaInfo.ProjectId 
+            ProjectId = value.ContentMetaInfo.ProjectId.Value 
         });
     }
 

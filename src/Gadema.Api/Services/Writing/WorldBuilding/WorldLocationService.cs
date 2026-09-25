@@ -76,7 +76,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
@@ -129,7 +129,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         ApplyMetaInfoUpdates(location.ContentMetaInfo, updateDto.ContentMetaInfo);
@@ -161,7 +161,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.MetaInfos.Remove(location.ContentMetaInfo);
@@ -171,7 +171,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = location.ContentMetaInfo.ProjectId
+            ProjectId = location.ContentMetaInfo.ProjectId.Value
         });
     }
 }

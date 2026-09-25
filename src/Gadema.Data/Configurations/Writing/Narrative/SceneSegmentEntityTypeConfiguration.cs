@@ -2,7 +2,7 @@ using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class SceneSegmentEntityTypeConfiguration : IEntityTypeConfiguration<SceneSegment>
 {
@@ -16,12 +16,12 @@ public class SceneSegmentEntityTypeConfiguration : IEntityTypeConfiguration<Scen
 
         // Relationships
         builder.HasOne(e => e.ContentMetaInfo)
-               .WithMany() // Assuming one MetaInfo per segment, but many segments can share a type? 
+               .WithMany() 
                .HasForeignKey(e => e.MetaInfoId)
                .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(e => e.Scene)
-               .WithMany() // You may want to add ICollection<SceneSegment> to the Scene model later
+               .WithMany() 
                .HasForeignKey(e => e.SceneId)
                .OnDelete(DeleteBehavior.Cascade);
     }

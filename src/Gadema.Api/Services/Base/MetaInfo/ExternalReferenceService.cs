@@ -68,7 +68,7 @@ namespace Gadema.Api.Services.Content;
         if (reference is null) 
             return ApiResponseDto<ExternalReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ExternalReferenceResponseDto>(reference.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<ExternalReferenceResponseDto>(reference.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<ExternalReferenceResponseDto>.Success(CreateResponseDto(reference));
@@ -129,7 +129,7 @@ namespace Gadema.Api.Services.Content;
         if (reference is null)
             return ApiResponseDto<ExternalReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ExternalReferenceUpdateDto>(reference.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<ExternalReferenceUpdateDto>(reference.ContentMetaInfo.ProjectId.Value);
         if (error != null) return ApiResponseDto<ExternalReferenceResponseDto>.Unauthorized("not authorized");
 
         // 1. Delegate Identity Updates to the Strategy
@@ -163,7 +163,7 @@ namespace Gadema.Api.Services.Content;
         if (reference is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(reference.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(reference.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Deleting the MetaInfo anchor will cascade to the ExternalReference
@@ -173,7 +173,7 @@ namespace Gadema.Api.Services.Content;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = reference.ContentMetaInfo.ProjectId 
+            ProjectId = reference.ContentMetaInfo.ProjectId.Value 
         });
     }
 

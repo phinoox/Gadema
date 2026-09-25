@@ -93,7 +93,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterResponseDto>.Success(CreateResponseDto(character));
@@ -149,7 +149,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // 1. Update ContentMetaInfo (Name/Title/Status lives here per convention)
@@ -196,7 +196,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Deleting ContentMetaInfo will cascade to the Character record via DeleteBehavior.Cascade/Restrict 
@@ -207,7 +207,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = character.ContentMetaInfo.ProjectId
+            ProjectId = character.ContentMetaInfo.ProjectId.Value
         });
     }
 

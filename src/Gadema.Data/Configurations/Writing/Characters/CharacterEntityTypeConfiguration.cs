@@ -1,4 +1,3 @@
-// src/Gadema.Data/Configurations/Characters/CharacterEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -26,7 +25,7 @@ public class CharacterEntityTypeConfiguration : IEntityTypeConfiguration<Charact
         // Optional: StoryProfile — SetNull if profile is deleted but character remains
         builder.HasOne(e => e.StoryProfile)
             .WithOne(sp => sp.Character)
-            .HasForeignKey<CharacterStoryProfile>(e => e.Id)
+            .HasForeignKey<CharacterStoryProfile>(sp => sp.CharacterId)
             .OnDelete(DeleteBehavior.SetNull);
 
         // SetNull: CurrentState is optional — if the current state is deleted, just clear the reference

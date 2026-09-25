@@ -1,4 +1,3 @@
-// src/Gadema.Data/Configurations/Characters/CharacterStoryProfileEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

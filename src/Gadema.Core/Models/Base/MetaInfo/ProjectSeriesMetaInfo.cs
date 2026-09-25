@@ -17,10 +17,5 @@ public class ProjectSeriesMetaInfo : BaseMetaInfo
     [MaxLength(4096)]
     public string? Description { get; set; }
 
-    // Link back to the ProjectSeries anchor
-    [Required]
-    public Guid ProjectSeriesId { get; set; }
-
-    [ForeignKey("ProjectSeriesId")]
     public virtual ProjectSeries ProjectSeries { get; set; } = null!;
 }

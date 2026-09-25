@@ -1,23 +1,14 @@
-// =============================================================================
-
-// Gadema.Core - Shared Domain Models & Interfaces
-
-// =============================================================================
-
 using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 /// <summary>
 /// Configuration for LoreEntry entity in game development management system.
 /// </summary>
 public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEntry>
 {
-    /// <summary>
-    /// Configure LoreEntry entity properties and relationships.
-    /// </summary>
     public void Configure(EntityTypeBuilder<LoreEntry> builder)
     {
         // Primary key
@@ -35,6 +26,5 @@ public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEnt
 
         builder.Property(e => e.RawText).HasMaxLength(4096);
         builder.Property(e => e.LoreType).IsRequired();
-
     }
 }

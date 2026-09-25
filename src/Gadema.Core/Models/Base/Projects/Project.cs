@@ -41,7 +41,7 @@ public class Project : ISoftDeletable
     public Guid ProjectMetaInfoId {get;set;}
 
     // New Relationship to the identity anchor
-    [ForeignKey("MetaInfoId")]
+    [ForeignKey("ProjectMetaInfoId")]
     public virtual ProjectMetaInfo ProjectMetaInfo { get; set; } = null!;
 
     // ... remaining relationships (Members, Tokens, Tasks, etc.) remain unchanged ...

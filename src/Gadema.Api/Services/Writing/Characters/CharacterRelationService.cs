@@ -64,7 +64,7 @@ namespace Gadema.Api.Services.Writing.Characters;
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
         // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterRelationResponseDto>.Success(CreateResponseDto(relation));
@@ -136,7 +136,7 @@ namespace Gadema.Api.Services.Writing.Characters;
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
         // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return ApiResponseDto<CharacterRelationResponseDto>.Unauthorized(error.Message ?? " not authorized");
 
         // Update properties if provided in DTO
@@ -164,7 +164,7 @@ namespace Gadema.Api.Services.Writing.Characters;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
         // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.CharacterRelations.Remove(relation);
@@ -173,7 +173,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = relation.TriggerScene.ContentMetaInfo.ProjectId
+            ProjectId = relation.TriggerScene.ContentMetaInfo.ProjectId.Value
         });
     }
 }

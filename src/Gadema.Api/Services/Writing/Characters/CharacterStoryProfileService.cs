@@ -73,7 +73,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(CreateResponseDto(profile));
@@ -137,7 +137,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return ApiResponseDto<CharacterStoryProfileResponseDto>.Unauthorized(error.Message ?? "not authorized");
 
         // Update fields if provided in DTO
@@ -174,7 +174,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.CharacterStoryProfiles.Remove(profile);
@@ -183,7 +183,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = profile.Character.ContentMetaInfo.ProjectId
+            ProjectId = profile.Character.ContentMetaInfo.ProjectId.Value
         });
     }
 }

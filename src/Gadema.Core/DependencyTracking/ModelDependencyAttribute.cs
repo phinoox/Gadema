@@ -22,3 +22,9 @@ public sealed class ModelDependencyAttribute : Attribute
         DependentTypes = dependentTypes ?? Array.Empty<Type>();
 }
 
+[AttributeUsage(AttributeTargets.Class)]
+public sealed class DependencyIgnoreAttribute : Attribute
+{
+    
+}
+

@@ -63,7 +63,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<LoreEntryResponseDto>.Success(new LoreEntryResponseDto
@@ -131,7 +131,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Apply ContentMetaInfo updates via helper (replaces manual if-blocks)
@@ -172,7 +172,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(loreEntry.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then LoreEntry
@@ -183,7 +183,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = loreEntry.ContentMetaInfo.ProjectId
+            ProjectId = loreEntry.ContentMetaInfo.ProjectId.Value
         });
     }
 }

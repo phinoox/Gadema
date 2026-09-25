@@ -8,7 +8,7 @@ namespace Gadema.Core.Models.Base.Projects;
 /// <summary>
 /// Represents a collection of related projects (e.g., a book series or game franchise).
 /// </summary>
-[ModelDependency(typeof(RootMarker), typeof(ProjectSeriesMetaInfo))] // Added MetaInfo dependency
+[ModelDependency(typeof(ProjectSeriesMetaInfo))] // Added MetaInfo dependency
 public class ProjectSeries
 {
     /// <summary>
@@ -16,14 +16,14 @@ public class ProjectSeries
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    // --- Identity (Moved to ProjectSeriesMetaInfo) ---
-    // Title, Slug, Description removed
-
     /// <summary>
     /// Collection of projects belonging to this series.
     /// </summary>
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 
+    public Guid ProjectSeriesMetaInfoId {get;set;}
+    
     // New Relationship to the identity anchor
-    public virtual ProjectSeriesMetaInfo MetaInfo { get; set; } = null!;
+    [ForeignKey("ProjectSeriesMetaInfoId")]
+    public virtual ProjectSeriesMetaInfo ProjectSeriesMetaInfo { get; set; } = null!;
 }

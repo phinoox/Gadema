@@ -1,11 +1,8 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
 using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 /// <summary>
 /// Configuration for SceneStoryBeatMapping junction entity in game development management system.

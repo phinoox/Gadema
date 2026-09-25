@@ -63,7 +63,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
@@ -134,7 +134,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
 
@@ -181,7 +181,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then Scene
@@ -192,7 +192,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = scene.ContentMetaInfo.ProjectId
+            ProjectId = scene.ContentMetaInfo.ProjectId.Value
         });
     }
 }

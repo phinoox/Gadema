@@ -62,7 +62,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<OutlineSectionResponseDto>.Success(new OutlineSectionResponseDto
@@ -142,7 +142,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         if (updateDto.Title != null)
@@ -194,7 +194,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.OutlineSections.Remove(section);
@@ -203,7 +203,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = section.StoryOutline.ContentMetaInfo.ProjectId
+            ProjectId = section.StoryOutline.ContentMetaInfo.ProjectId.Value
         });
     }
 }

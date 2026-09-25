@@ -75,7 +75,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
@@ -146,7 +146,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == id);
         if (node is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.DialogueNodes.Remove(node);
@@ -155,7 +155,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = node.DialogueBranch.ContentMetaInfo.ProjectId 
+            ProjectId = node.DialogueBranch.ContentMetaInfo.ProjectId.Value 
         });
     }
 }

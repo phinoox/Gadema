@@ -14,7 +14,7 @@ public class ProjectSeriesIdentityStrategy : IIdentitySyncStrategy
     public async Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData)
     {
         var meta = await _db.Set<ProjectSeriesMetaInfo>()
-            .FirstOrDefaultAsync(m => m.ProjectSeriesId == identityId);
+            .FirstOrDefaultAsync(m => m.Id == identityId);
 
         if (meta == null) throw new Exception("ProjectSeriesMetaInfo not found.");
 

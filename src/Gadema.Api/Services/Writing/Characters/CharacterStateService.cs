@@ -66,7 +66,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (state is null)
             return ApiResponseDto<CharacterStateResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStateResponseDto>(state.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStateResponseDto>(state.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterStateResponseDto>.Success(CreateResponseDto(state));
@@ -136,7 +136,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (state is null)
             return ApiResponseDto<CharacterStateResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStateUpdateDto>(state.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<CharacterStateUpdateDto>(state.ContentMetaInfo.ProjectId.Value);
         if (error != null) return ApiResponseDto<CharacterStateResponseDto>.Unauthorized(error.Message ?? "not authorized");
 
         // Update ContentMetaInfo via helper
@@ -175,7 +175,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (state is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character state with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(state.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(state.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Remove ContentMetaInfo and the associated State
@@ -186,7 +186,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = state.ContentMetaInfo.ProjectId
+            ProjectId = state.ContentMetaInfo.ProjectId.Value
         });
     }
    

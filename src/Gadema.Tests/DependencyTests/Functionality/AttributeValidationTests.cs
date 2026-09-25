@@ -22,15 +22,24 @@ public class AttributeValidationTests : IClassFixture<ApiWebApplicationFactory>
 
         // Get all types with ModelDependency attribute
         var attributedTypes = new HashSet<Type>();
+        var ignoredTypes = new HashSet<Type>();
         foreach (var type in assembly.GetExportedTypes())
         {
             var attrs = type.GetCustomAttributes(typeof(ModelDependencyAttribute), false);
             if (attrs.Length > 0)
                 attributedTypes.Add(type);
+
+            var ignore = type.GetCustomAttribute<DependencyIgnoreAttribute>();
+            if(ignore != null)
+                ignoredTypes.Add(type);
+              
         }
 
         // Every model should have the attribute (except RootMarker itself)
-        var missing = modelTypes.Where(t => !attributedTypes.Contains(t) && t.Name != "RootMarker").ToList();
+        var missing = modelTypes.Where(
+            t => !attributedTypes.Contains(t) && 
+            !ignoredTypes.Contains(t) && 
+            t.Name != "RootMarker").ToList();
 
         Assert.True(missing.Count == 0, $"Missing [ModelDependency] attribute on: {string.Join(", ", missing.Select(t => t.Name))}");
     }

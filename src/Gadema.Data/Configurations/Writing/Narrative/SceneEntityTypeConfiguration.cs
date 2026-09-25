@@ -1,10 +1,8 @@
-// src/Gadema.Data/Configurations/Writing/SceneEntityTypeConfiguration.cs
-using Gadema.Core.Models.Writing;
 using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
 {
@@ -21,12 +19,12 @@ public class SceneEntityTypeConfiguration : IEntityTypeConfiguration<Scene>
 
         // Owned Collections
         builder.HasMany(e => e.CharacterRelations)
-               .WithOne(e => e.TriggerScene) // Assuming FK is SceneId
+               .WithOne(e => e.TriggerScene) 
                .HasForeignKey(e => e.TriggerSceneId)
                .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(e => e.CharacterStates)
-               .WithOne(e => e.TriggerScene) // Assuming FK is SceneId
+               .WithOne(e => e.TriggerScene) 
                .HasForeignKey(e => e.TriggerSceneId)
                .OnDelete(DeleteBehavior.Cascade);
 

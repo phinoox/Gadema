@@ -62,7 +62,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<FactionResponseDto>.Success(new FactionResponseDto
@@ -128,7 +128,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         ApplyMetaInfoUpdates(faction.ContentMetaInfo, updateDto.ContentMetaInfo);
@@ -173,7 +173,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.MetaInfos.Remove(faction.ContentMetaInfo);
@@ -183,7 +183,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = faction.ContentMetaInfo.ProjectId
+            ProjectId = faction.ContentMetaInfo.ProjectId.Value
         });
     }
 }

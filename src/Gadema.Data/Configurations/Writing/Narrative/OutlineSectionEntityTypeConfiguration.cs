@@ -1,9 +1,8 @@
-// src/Gadema.Data/Configurations/Writing/OutlineSectionEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class OutlineSectionEntityTypeConfiguration : IEntityTypeConfiguration<OutlineSection>
 {

@@ -64,7 +64,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<StoryBeatResponseDto>.Success(new StoryBeatResponseDto
@@ -133,7 +133,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Apply ContentMetaInfo updates via helper
@@ -176,7 +176,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(beat.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then StoryBeat
@@ -187,7 +187,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = beat.ContentMetaInfo.ProjectId
+            ProjectId = beat.ContentMetaInfo.ProjectId.Value
         });
     }
 }

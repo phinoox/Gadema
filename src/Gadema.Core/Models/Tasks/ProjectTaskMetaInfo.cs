@@ -7,7 +7,7 @@ namespace Gadema.Core.Models.Tasks;
 /// Identity anchor for a ProjectTask. 
 /// Holds the core identity properties of the task.
 /// </summary>
-[ModelDependency(typeof(ProjectTask), typeof(ContentMetaInfo))]
+[ModelDependency(typeof(RootMarker))]
 public class ProjectTaskMetaInfo : BaseMetaInfo
 {
     [Required, Display(Name = "Project ID")]

@@ -62,7 +62,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<StoryResponseDto>.Success(new StoryResponseDto
@@ -124,7 +124,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         ApplyMetaInfoUpdates(story.ContentMetaInfo, updateDto.ContentMetaInfo);
@@ -160,7 +160,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.MetaInfos.Remove(story.ContentMetaInfo);
@@ -170,7 +170,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = story.ContentMetaInfo.ProjectId
+            ProjectId = story.ContentMetaInfo.ProjectId.Value
         });
     }
 }

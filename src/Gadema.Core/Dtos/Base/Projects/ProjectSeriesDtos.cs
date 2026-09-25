@@ -13,7 +13,7 @@ public class ProjectSeriesCreateDto
     /// The identity data for the series.
     /// </summary>
     [Required] 
-    public ProjectSeriesMetaInfoCreateData ContentMetaInfo { get; set; } = new();
+    public ProjectSeriesMetaInfoCreateData MetaInfo { get; set; } = new();
 
     [MaxLength(4096)]
     public string? Description { get; set; }
@@ -27,7 +27,7 @@ public class ProjectSeriesUpdateDto
     /// <summary>
     /// The identity data payload used by the Identity Sync Strategy.
     /// </summary>
-    public ProjectSeriesMetaInfoUpdateData? ContentMetaInfo { get; set; }
+    public ProjectSeriesMetaInfoUpdateData? MetaInfo { get; set; }
 
     [MaxLength(4096)]
     public string? Description { get; set; }

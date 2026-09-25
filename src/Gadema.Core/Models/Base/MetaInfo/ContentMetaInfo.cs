@@ -13,8 +13,8 @@ public class ContentMetaInfo : BaseMetaInfo
     // Id, Title, Slug, CreatedAt, LastModifiedAt removed
 
     // --- Relationships & Domain Data ---
-    [Required, Display(Name = "Project ID")]
-    public Guid ProjectId { get; set; }
+    
+    public Guid? ProjectId { get; set; }
 
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }
@@ -41,5 +41,5 @@ public class ContentMetaInfo : BaseMetaInfo
     public virtual ICollection<AssetLink> AssetLinks { get; set; } = new List<AssetLink>();
     public virtual ICollection<MediaAttachment> MediaAttachments { get; set; } = new List<MediaAttachment>();
     public virtual ReviewStatus ReviewStatus { get; set; }
-    public virtual ICollection<ContentMetaInfoTagRelation> MetaInfoTagRelations { get; set; } = new List<ContentMetaInfoTagRelation>();
+    public virtual ICollection<ContentTagRelation> MetaInfoTagRelations { get; set; } = new List<ContentTagRelation>();
 }

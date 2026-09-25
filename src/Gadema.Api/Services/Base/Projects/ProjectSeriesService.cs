@@ -7,6 +7,7 @@ using Gadema.Core.Dtos.Search;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Projects;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Game;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
@@ -23,9 +24,9 @@ namespace Gadema.Api.Services.Base.Projects;
         var projected = series.Select(s => new ProjectSeriesResponseDto
         {
             Id = s.Id,
-            Title = s.MetaInfo.Title,
-            Slug = s.MetaInfo.Slug,
-            Description = s.MetaInfo.Description
+            Title = s.ProjectSeriesMetaInfo.Title,
+            Slug = s.ProjectSeriesMetaInfo.Slug,
+            Description = s.ProjectSeriesMetaInfo.Description
         }).ToList();
 
         return ApiResponseDto<IEnumerable<ProjectSeriesResponseDto>>.Success(projected);
@@ -41,30 +42,37 @@ namespace Gadema.Api.Services.Base.Projects;
         return ApiResponseDto<ProjectSeriesResponseDto>.Success(new ProjectSeriesResponseDto
         {
             Id = series.Id,
-            Title = series.MetaInfo.Title,
-            Slug = series.MetaInfo.Slug,
-            Description = series.MetaInfo.Description
+            Title = series.ProjectSeriesMetaInfo.Title,
+            Slug = series.ProjectSeriesMetaInfo.Slug,
+            Description = series.ProjectSeriesMetaInfo.Description
         });
     }
 
    public async Task<ApiResponseDto<CreateResponseDto>> CreateSeriesAsync(ProjectSeriesCreateDto createDto)
     {
-        // 1. Create the MetaInfo anchor using the generic helper
-        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.ContentMetaInfo, m => {
+       // 1. Create the MetaInfo anchor (Soul) first, but WITHOUT the ProjectSeriesId yet.
+        // This avoids the circular dependency during the first SaveChanges.
+        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
             // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
         });
-
-        // 2. Create the ProjectSeries entity with only its own domain properties
+        _db.Set<ProjectSeriesMetaInfo>().Add(meta);
+        await _db.SaveChangesAsync();
+        // 2. Create the ProjectSeries entity (Body)
         var series = new ProjectSeries
         {
-            Id = meta.Id, // The anchor's ID becomes the primary key for the series
-            // Title and Slug are NOT here; they live in the MetaInfo anchor
+          Id = Guid.NewGuid(),
+          ProjectSeriesMetaInfoId = meta.Id
         };
 
+        // We add both to the context. 
+        // Because meta.ProjectSeriesId is null, the FK constraint for MetaInfo is satisfied.
         _db.ProjectSeries.Add(series);
-        _db.Set<ProjectSeriesMetaInfo>().Add(meta);
-        
+                
         await _db.SaveChangesAsync();
+
+        // 3. Now that both exist in the DB, we can link them back together (The "Identity Sync")
+        //meta.ProjectSeriesId = series.Id;
+        
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
@@ -79,7 +87,7 @@ namespace Gadema.Api.Services.Base.Projects;
         if (series == null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Series with ID {id} not found.");
 
-        var meta = await _db.Set<ProjectSeriesMetaInfo>().FirstOrDefaultAsync(m => m.ProjectSeriesId == id);
+        var meta = await _db.Set<ProjectSeriesMetaInfo>().FirstOrDefaultAsync(m => m.Id == series.ProjectSeriesMetaInfoId);
         
         _db.ProjectSeries.Remove(series);
         if (meta != null) _db.Set<ProjectSeriesMetaInfo>().Remove(meta);
@@ -96,12 +104,12 @@ namespace Gadema.Api.Services.Base.Projects;
             return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Series with ID {id} not found.");
 
         // 1. Update Domain properties
-        if (updateDto.Description != null) series.MetaInfo.Description = updateDto.Description;
+        if (updateDto.Description != null) series.ProjectSeriesMetaInfo.Description = updateDto.Description;
 
         // 2. Update Identity via Strategy
-        if (updateDto.ContentMetaInfo != null)
+        if (updateDto.MetaInfo != null)
         {
-            await ApplyIdentitySyncAsync(series.Id, updateDto.ContentMetaInfo, new ProjectSeriesIdentityStrategy(_db));
+            await ApplyIdentitySyncAsync(series.ProjectSeriesMetaInfoId, updateDto.MetaInfo, new ProjectSeriesIdentityStrategy(_db));
         }
 
         await _db.SaveChangesAsync();
@@ -109,21 +117,21 @@ namespace Gadema.Api.Services.Base.Projects;
         return ApiResponseDto<ProjectSeriesResponseDto>.Success(new ProjectSeriesResponseDto
         {
             Id = series.Id,
-            Title = series.MetaInfo.Title,
-            Slug = series.MetaInfo.Slug,
-            Description = series.MetaInfo.Description
+            Title = series.ProjectSeriesMetaInfo.Title,
+            Slug = series.ProjectSeriesMetaInfo.Slug,
+            Description = series.ProjectSeriesMetaInfo.Description
         });
     }
 
     public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
         return await _db.ProjectSeries
-            .Where(s => s.MetaInfo.Title.Contains(query) || s.MetaInfo.Slug.Contains(query))
+            .Where(s => s.ProjectSeriesMetaInfo.Title.Contains(query) || s.ProjectSeriesMetaInfo.Slug.Contains(query))
             .Select(s => new SearchHitDto
             {
                 ResourceId = s.Id,
-                DisplayName = s.MetaInfo.Title,
-                Slug = s.MetaInfo.Slug,
+                DisplayName = s.ProjectSeriesMetaInfo.Title,
+                Slug = s.ProjectSeriesMetaInfo.Slug,
                 ResourceType = "ProjectSeries",
                 ScopeId = s.Id,
                 ResourceLink = $"/api/v1/project-series/{s.Id}"

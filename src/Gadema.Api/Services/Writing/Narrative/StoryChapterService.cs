@@ -63,7 +63,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (chapter is null)
             return ApiResponseDto<StoryChapterResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<StoryChapterResponseDto>.Success(new StoryChapterResponseDto
@@ -128,7 +128,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (chapter is null)
             return ApiResponseDto<StoryChapterResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         ApplyMetaInfoUpdates(chapter.ContentMetaInfo, updateDto.ContentMetaInfo);
@@ -172,7 +172,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (chapter is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story chapter with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(chapter.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(chapter.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.MetaInfos.Remove(chapter.ContentMetaInfo);
@@ -182,7 +182,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = chapter.ContentMetaInfo.ProjectId
+            ProjectId = chapter.ContentMetaInfo.ProjectId.Value
         });
     }
 }

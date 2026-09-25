@@ -1,9 +1,8 @@
-// src/Gadema.Data/Configurations/Writing/WorldLocationEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.WorldBuilding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class WorldLocationEntityTypeConfiguration : IEntityTypeConfiguration<WorldLocation>
 {

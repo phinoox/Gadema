@@ -53,7 +53,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null) 
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<SceneSegmentResponseDto>.Success(CreateResponseDto(segment));
@@ -111,7 +111,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null)
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.ContentMetaInfo.ProjectId.Value);
         if (error != null) return ApiResponseDto<SceneSegmentResponseDto>.Unauthorized("not authorized");
 
         // 1. Delegate Identity Updates to the Strategy
@@ -139,7 +139,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         // Removing the MetaInfo anchor will cascade to the Segment via the relationship
@@ -149,7 +149,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = segment.ContentMetaInfo.ProjectId 
+            ProjectId = segment.ContentMetaInfo.ProjectId.Value 
         });
     }
 

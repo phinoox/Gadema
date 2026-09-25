@@ -1,9 +1,8 @@
-// src/Gadema.Data/Configurations/Writing/StoryOutlineEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class StoryOutlineEntityTypeConfiguration : IEntityTypeConfiguration<StoryOutline>
 {
@@ -20,7 +19,7 @@ public class StoryOutlineEntityTypeConfiguration : IEntityTypeConfiguration<Stor
 
         // 1:Many with OutlineSection
         builder.HasMany(e => e.Sections)
-               .WithOne(e => e.StoryOutline) // Parent is Outline
+               .WithOne(e => e.StoryOutline)
                .HasForeignKey(e => e.StoryOutlineId)
                .OnDelete(DeleteBehavior.Cascade);
 

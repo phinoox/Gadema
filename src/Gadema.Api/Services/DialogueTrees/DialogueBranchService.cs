@@ -49,7 +49,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueBranchResponseDto>.Success(new DialogueBranchResponseDto
@@ -99,7 +99,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         ApplyMetaInfoUpdates(branch.ContentMetaInfo, updateDto.ContentMetaInfo);
@@ -126,7 +126,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(branch.ContentMetaInfo.ProjectId);
+        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
         if (error != null) return error;
 
         _db.MetaInfos.Remove(branch.ContentMetaInfo);
@@ -136,7 +136,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto
         {
             EntityId = id,
-            ProjectId = branch.ContentMetaInfo.ProjectId
+            ProjectId = branch.ContentMetaInfo.ProjectId.Value
         });
     }
 }

@@ -1,9 +1,8 @@
-// src/Gadema.Data/Configurations/Writing/FactionEntityTypeConfiguration.cs
 using Gadema.Core.Models.Writing.WorldBuilding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
 public class FactionEntityTypeConfiguration : IEntityTypeConfiguration<Faction>
 {

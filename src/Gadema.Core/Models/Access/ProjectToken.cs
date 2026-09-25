@@ -77,7 +77,7 @@ public class ProjectToken
 
 }
 
-[ModelDependency(typeof(RootMarker))]
+[DependencyIgnore]
 public class TokenUsageStats
 {
     public int TotalUsage { get;  set; }

@@ -1,21 +1,12 @@
 namespace Gadema.Core.Models.Base.MetaInfo;
 
+
 /// <summary>
-/// Junction table linking a Project (Root Anchor) to a MetaTag.
+/// Concrete implementation for Project $\rightarrow$ Tag relationships.
 /// </summary>
-[ModelDependency(typeof(ProjectMetaInfo),typeof(MetaTag))]
-public class ProjectTagRelation
+[ModelDependency(typeof(ProjectMetaInfo),typeof(MetaTag))] // Tells seeder: "Seed the MetaInfo first"
+public class ProjectTagRelation : TagRelation<ProjectMetaInfo>
 {
-    [Required]
-    public Guid ProjectMetaInfoId { get; set; }
-
-    [Required]
-    public Guid TagId { get; set; }
-
-    // Navigation properties
-    [ForeignKey("ProjectMetaInfoId")]
-    public virtual ProjectMetaInfo ProjectMetaInfo { get; set; } = null!;
-
-    [ForeignKey("TagId")]
-    public virtual MetaTag Tag { get; set; } = null!;
+    // This class is now empty of logic, but it provides a concrete 
+    // type for the DbContext and Seeder to target.
 }
