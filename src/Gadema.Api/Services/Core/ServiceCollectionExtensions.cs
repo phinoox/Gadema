@@ -14,10 +14,10 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
         // Scan the assembly containing CoreService
-        var serviceAssembly = typeof(CoreService).Assembly;
+        var serviceAssembly = typeof(DomainService).Assembly;
 
         var serviceTypes = serviceAssembly.GetTypes()
-            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(CoreService)));
+            .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(DomainService)));
 
         foreach (var implementationType in serviceTypes)
         {
@@ -27,7 +27,7 @@ public static class ServiceCollectionExtensions
 
             // 2. Find all interfaces (e.g., IProjectService) that follow the "I" naming convention
             var serviceInterfaces = implementationType.GetInterfaces()
-                .Where(i => i.Name != nameof(CoreService) && i.Name.StartsWith("I"));
+                .Where(i => i.Name != nameof(DomainService) && i.Name.StartsWith("I"));
 
             // 3. Register each interface mapping: services.AddScoped<IInterface, Implementation>()
             foreach (var interfaceType in serviceInterfaces)

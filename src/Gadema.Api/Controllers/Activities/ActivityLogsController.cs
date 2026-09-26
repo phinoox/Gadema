@@ -1,4 +1,4 @@
-using Gadema.Api.Services.Content;
+using Gadema.Api.Services.Logging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gadema.Api.Controllers.Activities;

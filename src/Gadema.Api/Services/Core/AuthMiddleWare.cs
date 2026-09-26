@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Gadema.Core.Interfaces;
-using Gadema.Data.Database; // Assuming GameDbContext lives here
+using Gadema.Data.Database;
+using Gadema.Data.Database.Core; // Assuming GameDbContext lives here
 
 namespace Gadema.Api.Middleware;
 
@@ -15,7 +16,7 @@ public class AuthMiddleware
         _logger = logger;
     }
 
-    public async Task InvokeAsync(HttpContext context, IUserContext userContext, GameDbContext dbContext)
+    public async Task InvokeAsync(HttpContext context, IUserContext userContext, CoreDbContext dbContext)
     {
         var claimsPrincipal = context.User;
 

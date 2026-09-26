@@ -1,47 +1,50 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
-using Gadema.Data.Database;
+using Gadema.Core.Models.Base.Permissions;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-/// <summary>
-/// Service for managing Project API Tokens (authentication tokens for external integrations).
-/// Handles token generation, revocation, and usage tracking.
-/// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTokenService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class ProjectTokenService : DomainService
 {
-    public ProjectTokenService(GameDbContext db, ILogger<ProjectTokenService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
 
-    /// <summary>Creates a response DTO from a ProjectToken entity.</summary>
+    public ProjectTokenService(CoreDbContext db,
+        ILogger<ProjectTokenService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
+    {
+         _db = db;
+    }
+
     private ProjectTokenResponseDto CreateResponseDto(ProjectToken token)
         => new()
         {
             Id = token.Id,
             TokenName = token.TokenName, 
-            TokenType = 1, // Defaulting to ReadWrite (1)
-            Token = null,  // Never return raw token in list view for security
+            TokenType = 1, 
+            Token = null,  
             IsRevoked = !token.IsActive, 
             ExpirationDate = token.ExpiresAt,
             CreatedAt = token.CreatedAt,
         };
 
-    /// <summary>Creates a list response DTO from collection.</summary>
     private ListResponseDto<ProjectTokenResponseDto> CreateListResponseDto(IEnumerable<ProjectToken> tokens)
         => new() { Items = tokens.Select(CreateResponseDto).ToList(), TotalCount = tokens.Count() };
 
-    // ========================================================================
-    // POST /api/v1/projects/{projectId}/tokens — Create a new API token
-    // ========================================================================
-
     public async Task<ApiResponseDto<ProjectTokenResponseDto>> CreateTokenAsync(Guid projectId, ProjectTokenCreateDto createDto)
     {
+        // Check if user has permission to edit the project before creating a token
+        var error = await CheckAccessAsync<ProjectTokenResponseDto>(projectId, Permission.CanEdit);
+        if (error != null) return error;
+
         var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
         if (!projectExists) return ApiResponseDto<ProjectTokenResponseDto>.NotFound($"Project with ID {projectId} not found.");
 
@@ -52,9 +55,9 @@ namespace Gadema.Api.Services.Base.Projects;
             Id = Guid.NewGuid(),
             ProjectId = projectId,
             TokenName = createDto.TokenName ?? "New API Token", 
-            TokenHash = rawTokenValue, // In production: Hash this!
-            MaxRequests = createDto.MaxRequests, // Using the new property
-            CurrentUsage = 0,                  // Starts at zero
+            TokenHash = rawTokenValue, 
+            MaxRequests = createDto.MaxRequests, 
+            CurrentUsage = 0,                  
             IsActive = true,
             ExpiresAt = createDto.ExpirationDate,
             CreatedAt = DateTime.UtcNow
@@ -77,14 +80,11 @@ namespace Gadema.Api.Services.Base.Projects;
         });
     }
 
-    // ========================================================================
-    // GET /api/v1/projects/{projectId}/tokens — List all tokens for a project
-    // ========================================================================
-
     public async Task<ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>> GetTokensAsync(Guid projectId)
     {
-        var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
-        if (!projectExists) return ApiResponseDto<ListResponseDto<ProjectTokenResponseDto>>.NotFound($"Project not found.");
+        // Check if user has permission to view the project
+        var error = await CheckAccessAsync<ListResponseDto<ProjectTokenResponseDto>>(projectId, Permission.CanView);
+        if (error != null) return error;
 
         var tokens = await _db.ProjectTokens
             .Where(t => t.ProjectId == projectId)
@@ -99,37 +99,33 @@ namespace Gadema.Api.Services.Base.Projects;
         var token = await _db.ProjectTokens.FirstOrDefaultAsync(t => t.Id == id);
         if (token is null) return ApiResponseDto<string>.NotFound($"API Token with ID {id} not found.");
 
-        var user = _userContext.CurrentUser;
-        if (user is null )
-            return ApiResponseDto<string>.Forbidden("Only administrators can permanently delete API tokens.");
-        
+        // Check if user has permission to edit the project that owns this token
+        var error = await CheckAccessAsync<string>(token.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
+
+        // Additionally check for Admin role as per original logic requirement for permanent deletion
         if (!await IsAdminAsync(token.ProjectId))
             return ApiResponseDto<string>.Forbidden("Only administrators can permanently delete API tokens.");
 
-        // Capture info before deletion to log it
         var projectId = token.ProjectId;
         var tokenName = token.TokenName;
 
         _db.ProjectTokens.Remove(token);
         await _db.SaveChangesAsync();
 
-        // --- NEW: LOG THE DELETION ---
         await LogDbAsync(projectId, "Deleted", nameof(ProjectToken), id, $"Permanently deleted API token: {tokenName}");
 
         return ApiResponseDto<string>.Success($"API token has been permanently deleted.");
     }
-
-    // ========================================================================
-    // DELETE /api/v1/projects/{projectId}/tokens/{tokenId} — Revoke a token
-    // ========================================================================
 
     public async Task<ApiResponseDto<string>> RevokeTokenAsync(Guid tokenId)
     {
         var token = await _db.ProjectTokens.FindAsync(tokenId);
         if (token is null) return ApiResponseDto<string>.NotFound($"API Token with ID {tokenId} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(token.ProjectId);
-        if (error != null) return ApiResponseDto<string>.Unauthorized(error.Message);
+        // Check if user has permission to edit the project
+        var error = await CheckAccessAsync<string>(token.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
 
         token.IsActive = false;
         await _db.SaveChangesAsync();
@@ -139,16 +135,13 @@ namespace Gadema.Api.Services.Base.Projects;
         return ApiResponseDto<string>.Success($"API Token {tokenId} has been revoked.");
     }
 
-    // ========================================================================
-    // GET /api/v1/projects/{projectId}/tokens/stats — Get usage statistics
-    // ========================================================================
-
+    
     public async Task<ApiResponseDto<TokenUsageStats>> GetUsageStatsAsync(Guid projectId)
     {
-        var projectExists = await _db.Projects.AnyAsync(p => p.Id == projectId);
-        if (!projectExists) return ApiResponseDto<TokenUsageStats>.NotFound($"Project not found.");
+        // Check if user has permission to view the project
+        var error = await CheckAccessAsync<TokenUsageStats>(projectId, Permission.CanView);
+        if (error != null) return error;
 
-        // Find the most recent active token to report its usage/quota status
         var token = await _db.ProjectTokens
             .Where(t => t.ProjectId == projectId && t.IsActive)
             .OrderByDescending(t => t.CreatedAt)
@@ -177,4 +170,3 @@ namespace Gadema.Api.Services.Base.Projects;
         });
     }
 }
-

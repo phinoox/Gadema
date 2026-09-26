@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Gadema.Api.Services.Content;
 using Gadema.Core.Dtos.ExternalReferences;
+using Gadema.Api.Services.Base.MetaInfo;
 
 namespace Gadema.Api.Controllers.Base.MetaInfo;
 

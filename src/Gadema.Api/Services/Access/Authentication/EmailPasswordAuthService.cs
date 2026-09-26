@@ -2,11 +2,13 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Access;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
@@ -16,12 +18,17 @@ namespace Gadema.Api.Services.Access.Authentication;
 /// Service for email/password authentication operations.
 /// Handles registration, sign-in, password reset requests, and session management.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class EmailPasswordAuthService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class EmailPasswordAuthService : DomainService
 {
+    private readonly CoreDbContext _db;
     private readonly IConfiguration _configuration;
 
-    public EmailPasswordAuthService(GameDbContext db, ILogger<EmailPasswordAuthService> logger, IUserContext userContext, IConfiguration configuration)
-        : base(db, logger, userContext) => _configuration = configuration;
+    public EmailPasswordAuthService( CoreDbContext db,
+        IConfiguration configuration,
+        ILogger<EmailPasswordAuthService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db;_configuration = configuration;} 
 
 
     // ========================================================================

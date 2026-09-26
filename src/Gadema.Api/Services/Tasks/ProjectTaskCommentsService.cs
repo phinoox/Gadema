@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Models.Tasks;
 using Gadema.Core.Interfaces;
+using Gadema.Data.Database.Tasks;
+using Gadema.Api.CoreServices;
+using Gadema.Core.Models.Base.Permissions;
 
 namespace Gadema.Api.Services.Tasks;
 
@@ -13,10 +16,14 @@ namespace Gadema.Api.Services.Tasks;
 /// Service for managing comments on tasks.
 /// Comments are treated as leaf entities belonging to a ProjectTask.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTaskCommentService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTaskCommentService : DomainService
 {
-    public ProjectTaskCommentService(GameDbContext db, ILogger<ProjectTaskCommentService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private TaskDbContext _db;
+
+    public ProjectTaskCommentService( TaskDbContext db,
+        ILogger<ProjectTaskCommentService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List comments for a specific task
@@ -48,7 +55,7 @@ namespace Gadema.Api.Services.Tasks;
             return ApiResponseDto<CreateResponseDto>.NotFound($"Task with ID {taskId} not found.");
 
         // Validate access to the project via the task
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(task.ProjectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(task.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         // 2. Create the comment
@@ -82,8 +89,8 @@ namespace Gadema.Api.Services.Tasks;
             return ApiResponseDto<ProjectTaskCommentResponseDto>.NotFound($"Comment with ID {id} not found.");
 
         // Validate access via the task hierarchy
-        var error = await ValidateProjectAccessAsync<ProjectTaskUpdateDto>(comment.ProjectTask.ProjectId);
-        if (error != null) return ApiResponseDto<ProjectTaskCommentResponseDto>.Unauthorized("not authorized");
+        var error = await CheckAccessAsync<ProjectTaskCommentResponseDto>(comment.ProjectTask.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
 
         // Update content
         comment.CommentText = updateDto.CommentText;
@@ -103,7 +110,7 @@ namespace Gadema.Api.Services.Tasks;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Comment with ID {id} not found.");
 
         // Validate access via the task hierarchy
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(comment.ProjectTask.ProjectId);
+        var error = await CheckAccessAsync<DeleteResponseDto>(comment.ProjectTask.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         _db.ProjectTaskComments.Remove(comment);

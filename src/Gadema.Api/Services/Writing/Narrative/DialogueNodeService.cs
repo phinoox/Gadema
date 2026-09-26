@@ -1,19 +1,25 @@
-// ... existing imports ...
-
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.DialogueTrees;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class DialogueNodeService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class DialogueNodeService : DomainService
 {
-    public DialogueNodeService(GameDbContext db, ILogger<DialogueNodeService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public DialogueNodeService( WritingDbContext db,
+        ILogger<DialogueNodeService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) {_db = db; }
 
     #region Mapping Helpers
 
@@ -51,7 +57,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<DialogueNodeResponseDto>>> GetNodesAsync(Guid projectId, Guid? branchId = null)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<DialogueNodeResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<DialogueNodeResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var query = _db.DialogueNodes
@@ -66,7 +72,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<IEnumerable<DialogueNodeResponseDto>>.Success(nodes.Select(MapToResponseDto));
     }
 
-    public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeByIdAsync(Guid id)
+    public async Task<ApiResponseDto<DialogueNodeResponseDto>> GetNodeAsync(Guid id)
     {
         var node = await _db.DialogueNodes
             .Include(n => n.DialogueBranch).ThenInclude(b => b.ContentMetaInfo)
@@ -75,7 +81,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DialogueNodeResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
@@ -83,13 +89,11 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateNodeAsync(Guid projectId, Guid branchId, DialogueNodeCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // Use the helper to validate and fetch the branch in one go
         var branchResult = await GetBranchAndValidateAsync(projectId, branchId);
         if (!branchResult.Successful) return ApiResponseDto<CreateResponseDto>.BadRequest(branchResult.Message);
-        var branch = branchResult;
 
         var node = new DialogueNode
         {
@@ -114,39 +118,35 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<DialogueNodeResponseDto>> UpdateNodeAsync(Guid projectId, Guid branchId, Guid nodeId, DialogueNodeUpdateDto updateDto)
     {
-        // 1. Fetch the node
         var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == nodeId);
         if (node is null) return ApiResponseDto<DialogueNodeResponseDto>.NotFound($"Node {nodeId} not found.");
 
-        // 2. Verify Contextual Integrity: Does this node actually belong to the branch in the URL?
         if (node.DialogueBranchId != branchId)
             return ApiResponseDto<DialogueNodeResponseDto>.BadRequest("The node does not belong to the specified branch.");
 
-        // 3. Validate Project Access via the branch's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<DialogueNodeResponseDto>(projectId);
+        var error = await CheckAccessAsync<DialogueNodeResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // 4. Apply updates to content
-        ApplyUpdateToModel(node, updateDto);
+        if (updateDto.NodeText != null) node.NodeText = updateDto.NodeText;
+        if (updateDto.SpeakerId.HasValue) node.SpeakerId = updateDto.SpeakerId;
+        if (updateDto.ParentNodeId.HasValue) node.ParentNodeId = updateDto.ParentNodeId;
+        if (updateDto.ChoiceOptions != null) node.ChoiceOptions = updateDto.ChoiceOptions;
+        if (updateDto.Conditions != null) node.Conditions = updateDto.Conditions;
 
         await _db.SaveChangesAsync();
         return ApiResponseDto<DialogueNodeResponseDto>.Success(MapToResponseDto(node));
     }
-    private void ApplyUpdateToModel(DialogueNode node, DialogueNodeUpdateDto dto)
-    {
-        if (!string.IsNullOrWhiteSpace(dto.NodeText)) node.NodeText = dto.NodeText;
-        if (dto.SpeakerId.HasValue) node.SpeakerId = dto.SpeakerId;
-        if (dto.ParentNodeId.HasValue) node.ParentNodeId = dto.ParentNodeId;
-        if (dto.ChoiceOptions != null) node.ChoiceOptions = dto.ChoiceOptions;
-        if (dto.Conditions != null) node.Conditions = dto.Conditions;
-    }
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteNodeAsync(Guid id)
     {
-        var node = await _db.DialogueNodes.FirstOrDefaultAsync(n => n.Id == id);
+        var node = await _db.DialogueNodes
+            .Include(n => n.DialogueBranch)
+                .ThenInclude(b => b.ContentMetaInfo)
+            .FirstOrDefaultAsync(n => n.Id == id);
+
         if (node is null) return ApiResponseDto<DeleteResponseDto>.NotFound($"Node {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(node.DialogueBranch.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         _db.DialogueNodes.Remove(node);

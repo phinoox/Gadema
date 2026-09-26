@@ -1,15 +1,16 @@
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Projects;
+namespace Gadema.Api.CoreServices.Strategies;
 
 public class ProjectSeriesIdentityStrategy : IIdentitySyncStrategy
 {
-    private readonly GameDbContext _db;
+    private readonly CoreDbContext _db;
 
-    public ProjectSeriesIdentityStrategy(GameDbContext db) => _db = db;
+    public ProjectSeriesIdentityStrategy(CoreDbContext db) => _db = db;
 
     public async Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData)
     {

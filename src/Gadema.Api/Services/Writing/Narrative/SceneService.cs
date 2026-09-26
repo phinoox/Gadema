@@ -1,11 +1,14 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -14,10 +17,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing Scenes within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneService : DomainService
 {
-    public SceneService(GameDbContext db, ILogger<SceneService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public SceneService( WritingDbContext db,
+        ILogger<SceneService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all scenes for a project
@@ -25,7 +32,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<SceneResponseDto>>> GetScenesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<SceneResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<SceneResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var scenes = await _db.Scenes
@@ -62,8 +69,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
@@ -86,21 +92,20 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateSceneAsync(Guid projectId, SceneCreateDto createDto)
     {
-        // Validate project access (projectId from route matches CreateData.ProjectId)
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        var user = _userContext.CurrentUser!;
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.Scene;
+        });
 
         // Create the Scene entity
         var scene = new Scene
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             RawText = string.Empty,
             StoryChapterId = createDto.StoryChapterId,
             OrderIndex = createDto.OrderIndex ?? 0,
@@ -111,12 +116,9 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
-            
-            
-                EntityId = scene.Id,
-                MetaInfoId = ContentMetaInfo.Id,
-                ProjectId = projectId
-            
+            EntityId = scene.Id,
+            MetaInfoId = contentMetaInfo.Id,
+            ProjectId = projectId
         });
     }
 
@@ -133,24 +135,24 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (scene is null)
             return ApiResponseDto<SceneResponseDto>.NotFound($"Scene with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<SceneResponseDto>(scene.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
 
         if (updateDto.RawText != null)
             scene.RawText = updateDto.RawText;
 
-            scene.StoryChapterId = updateDto.StoryChapterId;
+        scene.StoryChapterId = updateDto.StoryChapterId;
 
         if (updateDto.OrderIndex.HasValue)
             scene.OrderIndex = updateDto.OrderIndex.Value;
 
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(scene.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<SceneResponseDto>.ServerError("Sync failed.");
+        }
 
-        ApplyMetaInfoUpdates(scene.ContentMetaInfo, updateDto.ContentMetaInfo);
-        
-
-        scene.ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<SceneResponseDto>.Success(new SceneResponseDto
@@ -180,12 +182,11 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (scene is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(scene.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(scene.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then Scene
-        _db.MetaInfos.Remove(scene.ContentMetaInfo);
+        _db.Set<ContentMetaInfo>().Remove(scene.ContentMetaInfo);
         _db.Scenes.Remove(scene);
         await _db.SaveChangesAsync();
 

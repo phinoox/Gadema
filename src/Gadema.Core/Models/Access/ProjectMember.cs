@@ -8,7 +8,8 @@ public enum ProjectMemberRoleEnum
     Admin = 1,
     Editor = 2,
     Reviewer = 3,
-    Viewer = 4
+    Viewer = 4,
+    Default = 99
 }
 
 [ModelDependency(typeof(Project),typeof(User))]

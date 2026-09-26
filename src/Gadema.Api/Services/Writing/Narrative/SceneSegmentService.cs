@@ -1,5 +1,6 @@
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
-using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Response;
@@ -7,20 +8,22 @@ using Gadema.Core.Dtos.Search;
 using Gadema.Core.Dtos.Writing.DialogueTrees;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-/// <summary>
-/// Service for managing SceneSegments - markers within a scene's RawText that indicate
-/// interactive elements like [dialog:nodeId], [action:], etc.
-/// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneSegmentService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class SceneSegmentService : DomainService, ISearchableProvider
 {
-    public SceneSegmentService(GameDbContext db, ILogger<SceneSegmentService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public SceneSegmentService( WritingDbContext db,
+        ILogger<SceneSegmentService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
    
     private ListResponseDto<SceneSegmentResponseDto> CreateListResponseDto(IEnumerable<SceneSegment> segments)
@@ -28,7 +31,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<ListResponseDto<SceneSegmentResponseDto>>> GetSegmentsAsync(Guid projectId, Guid? sceneId = null)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<SceneSegmentResponseDto>>(projectId);
+        var error = await CheckAccessAsync<ListResponseDto<SceneSegmentResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var query = _db.SceneSegments
@@ -53,7 +56,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null) 
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<SceneSegmentResponseDto>.Success(CreateResponseDto(segment));
@@ -61,10 +64,9 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateSegmentAsync(Guid projectId, SceneSegmentCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // 1. Find the parent scene to ensure it belongs to this project
         var scene = await _db.Scenes
             .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == createDto.SceneId && s.ContentMetaInfo.ProjectId == projectId);
@@ -72,17 +74,16 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (scene == null) 
             return ApiResponseDto<CreateResponseDto>.BadRequest("Target scene not found or access denied.");
 
-        // 2. Create the MetaInfo anchor using the generic helper
-        var meta = CreateMetaInfo<ContentMetaInfo>(createDto.CreateData, m => {
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
             m.ProjectId = projectId;
-            m.ContentType = ContentTypeEnum.SceneSegment; // Assuming this exists in your enum
+            m.ContentType = ContentTypeEnum.SceneSegment;
         });
 
-        // 3. Create the SceneSegment component
         var segment = new SceneSegment
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = meta.Id,
+            MetaInfoId = contentMetaInfo.Id,
             SceneId = scene.Id,
             Type = createDto.Type,
             Position = createDto.Position,
@@ -91,13 +92,12 @@ namespace Gadema.Api.Services.Writing.Narrative;
         };
 
         _db.SceneSegments.Add(segment);
-        _db.Set<ContentMetaInfo>().Add(meta);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
         { 
             EntityId = segment.Id, 
-            MetaInfoId = meta.Id, 
+            MetaInfoId = contentMetaInfo.Id, // Error here: meta should be contentMetaInfo
             ProjectId = projectId 
         });
     }
@@ -111,16 +111,15 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null)
             return ApiResponseDto<SceneSegmentResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<SceneSegmentUpdateDto>(segment.ContentMetaInfo.ProjectId.Value);
-        if (error != null) return ApiResponseDto<SceneSegmentResponseDto>.Unauthorized("not authorized");
+        var error = await CheckAccessAsync<SceneSegmentResponseDto>(segment.ContentMetaInfo.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
 
-        // 1. Delegate Identity Updates to the Strategy
         if (updateDto.ContentMetaInfo != null)
         {
-            await ApplyIdentitySyncAsync(segment.MetaInfoId, updateDto.ContentMetaInfo, new ContentIdentityStrategy(_db));
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(segment.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<SceneSegmentResponseDto>.ServerError("Sync failed.");
         }
 
-        // 2. Update Domain Properties
         if (updateDto.Position.HasValue) segment.Position = updateDto.Position.Value;
         if (updateDto.Type.HasValue) segment.Type = updateDto.Type.Value;
         if (updateDto.Value != null) segment.Value = updateDto.Value;
@@ -139,11 +138,11 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (segment is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Scene segment with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(segment.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        // Removing the MetaInfo anchor will cascade to the Segment via the relationship
         _db.Set<ContentMetaInfo>().Remove(segment.ContentMetaInfo);
+        _db.SceneSegments.Remove(segment);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 

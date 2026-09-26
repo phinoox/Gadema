@@ -7,6 +7,8 @@ using Gadema.Data.Database.Core;
 using Gadema.Data.Database.Writing;
 using Gadema.Data.Database.Identity;
 using Gadema.Data.Database.Tasks;
+using Gadema.Core.Interfaces;
+
 
 namespace Gadema.Data.Database;
 
@@ -26,6 +28,8 @@ public static class DbInjection
         services.AddDbContext<TaskDbContext>(options =>
             options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
 
+
+       
         return services;
     }
 }

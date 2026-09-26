@@ -1,5 +1,6 @@
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
-using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.ExternalReferences;
@@ -9,30 +10,30 @@ using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
 using Gadema.Core.Models.Base.Infrastructure;
 using Gadema.Core.Models.Base.Infrastructure.Enums;
-using Gadema.Data.Database;
+using Gadema.Core.Models.Base.Permissions;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Content;
+namespace Gadema.Api.Services.Base.MetaInfo;
 
-/// <summary>
-/// Service for managing External References (sources, citations, research materials).
-/// Tracks URLs, authors, titles, and notes with optional ContentMetaInfo wrapper.
-/// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ExternalReferenceService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ExternalReferenceService : DomainService, ISearchableProvider
 {
-    public ExternalReferenceService(GameDbContext db, ILogger<ExternalReferenceService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
 
-    // ========================================================================
-    // GET - List all references for a project
-    // ========================================================================
+    public ExternalReferenceService( CoreDbContext db,
+        ILogger<ExternalReferenceService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
+    {
+        _db = db;
+    }
 
     public async Task<ApiResponseDto<ListResponseDto<ExternalReferenceResponseDto>>> GetReferencesAsync(
         Guid projectId,
         int? referenceType = null,
         string? authorKeyword = null)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<ExternalReferenceResponseDto>>(projectId);
+        var error = await CheckAccessAsync<ListResponseDto<ExternalReferenceResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var query = _db.ExternalReferences
@@ -55,10 +56,6 @@ namespace Gadema.Api.Services.Content;
         });
     }
 
-    // ========================================================================
-    // GET - Single reference by ID
-    // ========================================================================
-
     public async Task<ApiResponseDto<ExternalReferenceResponseDto>> GetReferenceByIdAsync(Guid id)
     {
         var reference = await _db.ExternalReferences
@@ -68,33 +65,28 @@ namespace Gadema.Api.Services.Content;
         if (reference is null) 
             return ApiResponseDto<ExternalReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ExternalReferenceResponseDto>(reference.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<ExternalReferenceResponseDto>(reference.ContentMetaInfo.ProjectId.Value, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<ExternalReferenceResponseDto>.Success(CreateResponseDto(reference));
     }
 
-    // ========================================================================
-    // POST - Create a new reference
-    // ========================================================================
-
     public async Task<ApiResponseDto<CreateResponseDto>> CreateReferenceAsync(
         Guid projectId,
         ExternalReferenceCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // 1. Create the MetaInfo anchor using the generic helper
-        var meta = CreateMetaInfo<ContentMetaInfo>(createDto.ContentMetaInfo, m => {
+        var meta = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.ContentMetaInfo, m =>
+        {
             m.ProjectId = projectId;
             m.ContentType = ContentTypeEnum.ExternalReference;
         });
 
-        // 2. Create the ExternalReference component
         var reference = new ExternalReference
         {
-            Id = meta.Id, // Link identity to the anchor
+            Id = meta.Id, 
             MetaInfoId = meta.Id,
             ReferenceType = createDto.ReferenceType,
             Url = createDto.Url,
@@ -105,7 +97,6 @@ namespace Gadema.Api.Services.Content;
         };
 
         _db.ExternalReferences.Add(reference);
-        _db.Set<ContentMetaInfo>().Add(meta);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
@@ -116,10 +107,6 @@ namespace Gadema.Api.Services.Content;
         });
     }
 
-    // ========================================================================
-    // PUT - Partial update of identity and domain data
-    // ========================================================================
-
     public async Task<ApiResponseDto<ExternalReferenceResponseDto>> UpdateReferenceAsync(Guid id, ExternalReferenceUpdateDto updateDto)
     {
         var reference = await _db.ExternalReferences
@@ -129,16 +116,15 @@ namespace Gadema.Api.Services.Content;
         if (reference is null)
             return ApiResponseDto<ExternalReferenceResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<ExternalReferenceUpdateDto>(reference.ContentMetaInfo.ProjectId.Value);
-        if (error != null) return ApiResponseDto<ExternalReferenceResponseDto>.Unauthorized("not authorized");
+        var error = await CheckAccessAsync<ExternalReferenceResponseDto>(reference.ContentMetaInfo.ProjectId.Value, Permission.CanEdit);
+        if (error != null) return error;
 
-        // 1. Delegate Identity Updates to the Strategy
         if (updateDto.ContentMetaInfo != null)
         {
-            await ApplyIdentitySyncAsync(reference.MetaInfoId, updateDto.ContentMetaInfo, new ContentIdentityStrategy(_db));
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(reference.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<ExternalReferenceResponseDto>.ServerError("Sync failed.");
         }
 
-        // 2. Update Domain Properties
         if (updateDto.ReferenceType.HasValue) reference.ReferenceType = updateDto.ReferenceType.Value;
         if (!string.IsNullOrWhiteSpace(updateDto.Url)) reference.Url = updateDto.Url;
         if (!string.IsNullOrWhiteSpace(updateDto.Author)) reference.Author = updateDto.Author;
@@ -150,10 +136,6 @@ namespace Gadema.Api.Services.Content;
         return ApiResponseDto<ExternalReferenceResponseDto>.Success(CreateResponseDto(reference));
     }
 
-    // ========================================================================
-    // DELETE - Remove a reference
-    // ========================================================================
-
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteReferenceAsync(Guid id)
     {
         var reference = await _db.ExternalReferences
@@ -163,23 +145,18 @@ namespace Gadema.Api.Services.Content;
         if (reference is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"External reference with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(reference.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(reference.ContentMetaInfo.ProjectId.Value, Permission.CanDelete);
         if (error != null) return error;
 
-        // Deleting the MetaInfo anchor will cascade to the ExternalReference
         _db.Set<ContentMetaInfo>().Remove(reference.ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
             EntityId = id, 
-            ProjectId = reference.ContentMetaInfo.ProjectId.Value 
+            ProjectId = reference.ContentMetaInfo.ProjectId.Value
         });
     }
-
-    // ========================================================================
-    // ISearchableProvider Implementation
-    // ========================================================================
 
     public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
@@ -218,8 +195,7 @@ namespace Gadema.Api.Services.Content;
             Title = reference.Title,
             Notes = reference.Notes,
             IsActive = reference.IsActive,
-            CreatedAt = reference.ContentMetaInfo.CreatedAt // Pulling from anchor
+            CreatedAt = reference.ContentMetaInfo.CreatedAt 
         };
     }
-    
 }

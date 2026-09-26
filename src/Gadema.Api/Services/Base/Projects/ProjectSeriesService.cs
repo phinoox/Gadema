@@ -1,22 +1,30 @@
-using Gadema.Api.Services.Projects;
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Search;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Base.Projects;
-using Gadema.Data.Database;
-using Gadema.Data.Database.Game;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectSeriesService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class ProjectSeriesService : DomainService, ISearchableProvider
 {
-    public ProjectSeriesService(GameDbContext db, ILogger<ProjectSeriesService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
 
+    public ProjectSeriesService(CoreDbContext db,
+        ILogger<ProjectSeriesService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
+    {
+         _db = db;
+    }
     public async Task<ApiResponseDto<IEnumerable<ProjectSeriesResponseDto>>> GetSeriesAsync()
     {
         var series = await _db.ProjectSeries.ToListAsync();
@@ -34,6 +42,9 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<ProjectSeriesResponseDto>> GetSeriesAsync(Guid id)
     {
+        var error = await CheckAccessAsync<ProjectSeriesResponseDto>(id, Permission.CanView);
+        if (error != null) return error;
+
         var series = await _db.ProjectSeries.FindAsync(id);
 
         if (series == null)
@@ -50,13 +61,11 @@ namespace Gadema.Api.Services.Base.Projects;
 
    public async Task<ApiResponseDto<CreateResponseDto>> CreateSeriesAsync(ProjectSeriesCreateDto createDto)
     {
-       // 1. Create the MetaInfo anchor (Soul) first, but WITHOUT the ProjectSeriesId yet.
-        // This avoids the circular dependency during the first SaveChanges.
-        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
-            // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
-        });
+        // 1. Create the MetaInfo anchor (Soul) first, but WITHOUT the ProjectSeriesId yet.
+        var meta = await _core.MetadataService.CreateAsync<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => { });
         _db.Set<ProjectSeriesMetaInfo>().Add(meta);
         await _db.SaveChangesAsync();
+
         // 2. Create the ProjectSeries entity (Body)
         var series = new ProjectSeries
         {
@@ -64,15 +73,8 @@ namespace Gadema.Api.Services.Base.Projects;
           ProjectSeriesMetaInfoId = meta.Id
         };
 
-        // We add both to the context. 
-        // Because meta.ProjectSeriesId is null, the FK constraint for MetaInfo is satisfied.
         _db.ProjectSeries.Add(series);
-                
         await _db.SaveChangesAsync();
-
-        // 3. Now that both exist in the DB, we can link them back together (The "Identity Sync")
-        //meta.ProjectSeriesId = series.Id;
-        
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
@@ -83,6 +85,9 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteSeriesAsync(Guid id)
     {
+        var error = await CheckAccessAsync<DeleteResponseDto>(id, Permission.CanDelete);
+        if (error != null) return error;
+
         var series = await _db.ProjectSeries.FindAsync(id);
         if (series == null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Series with ID {id} not found.");
@@ -99,6 +104,9 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<ProjectSeriesResponseDto>> UpdateSeriesAsync(Guid id, ProjectSeriesUpdateDto updateDto)
     {
+        var error = await CheckAccessAsync<ProjectSeriesResponseDto>(id, Permission.CanEdit);
+        if (error != null) return error;
+
         var series = await _db.ProjectSeries.FindAsync(id);
         if (series == null)
             return ApiResponseDto<ProjectSeriesResponseDto>.NotFound($"Series with ID {id} not found.");
@@ -106,10 +114,11 @@ namespace Gadema.Api.Services.Base.Projects;
         // 1. Update Domain properties
         if (updateDto.Description != null) series.ProjectSeriesMetaInfo.Description = updateDto.Description;
 
-        // 2. Update Identity via Strategy
+        // 2. Sync Identity via Strategy using the new DomainService method
         if (updateDto.MetaInfo != null)
         {
-            await ApplyIdentitySyncAsync(series.ProjectSeriesMetaInfoId, updateDto.MetaInfo, new ProjectSeriesIdentityStrategy(_db));
+            var success = await SyncIdentityAsync<ProjectSeriesIdentityStrategy>(series.ProjectSeriesMetaInfoId, updateDto.MetaInfo);
+            if (!success) return ApiResponseDto<ProjectSeriesResponseDto>.ServerError("Sync failed.");
         }
 
         await _db.SaveChangesAsync();

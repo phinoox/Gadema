@@ -1,9 +1,10 @@
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Tags.Strategies;
+namespace Gadema.Api.CoreServices.Strategies;
 
 /// <summary>
 /// The universal engine for identity synchronization.
@@ -14,9 +15,9 @@ public abstract class BaseIdentityStrategy<TUpdate, TMetaInfo> : IIdentitySyncSt
     where TUpdate : BaseMetaInfoUpdateData
     where TMetaInfo : BaseMetaInfo
 {
-    protected readonly GameDbContext _db;
+    protected readonly CoreDbContext _db;
 
-    protected BaseIdentityStrategy(GameDbContext db) => _db = db;
+    protected BaseIdentityStrategy(CoreDbContext db) => _db = db;
 
     // The shared anchor instance for the current operation
     protected TMetaInfo? MetaInfo;

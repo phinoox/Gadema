@@ -1,23 +1,31 @@
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Infrastructure;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Game;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Content;
+namespace Gadema.Api.Services.Logging;
 
 /// <summary>
 /// Service for querying the project's business audit trail.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ActivityLogService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ActivityLogService : DomainService
 {
-    public ActivityLogService(GameDbContext db, ILogger<ActivityLogService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
+
+    public ActivityLogService( CoreDbContext db,
+        ILogger<ActivityLogService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     public async Task<ApiResponseDto<IEnumerable<ActivityLogResponseDto>>> GetLogsAsync(Guid projectId, int page = 1, int pageSize = 20)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<ActivityLogResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<ActivityLogResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var logs = await _db.ActivityLogs

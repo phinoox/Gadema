@@ -1,11 +1,15 @@
 // =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -14,10 +18,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing StoryOutlines within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryOutlineService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryOutlineService : DomainService
 {
-    public StoryOutlineService(GameDbContext db, ILogger<StoryOutlineService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public StoryOutlineService( WritingDbContext db,
+        ILogger<StoryOutlineService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all story outlines for a project
@@ -25,7 +33,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<StoryOutlineResponseDto>>> GetStoryOutlinesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<StoryOutlineResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<StoryOutlineResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var outlines = await _db.StoryOutlines
@@ -62,7 +70,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<StoryOutlineResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<StoryOutlineResponseDto>.Success(new StoryOutlineResponseDto
@@ -85,20 +93,21 @@ namespace Gadema.Api.Services.Writing.Narrative;
     public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryOutlineAsync(Guid projectId, StoryOutlineCreateDto createDto)
     {
         // Validate project access
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         // Create ContentMetaInfo using helper
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.StoryOutline;
+        });
 
         // Create the StoryOutline entity
         var outline = new StoryOutline
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             Summary = createDto.Summary,
         };
 
@@ -108,7 +117,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = outline.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -127,11 +136,15 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<StoryOutlineResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryOutlineResponseDto>(outline.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         // Apply ContentMetaInfo updates via helper (replaces manual if-blocks)
-        ApplyMetaInfoUpdates(outline.ContentMetaInfo, updateDto.ContentMetaInfo);
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(outline.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<StoryOutlineResponseDto>.ServerError("Sync failed.");
+        }
 
 
         if (updateDto.Summary != null)
@@ -165,11 +178,11 @@ namespace Gadema.Api.Services.Writing.Narrative;
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story outline with ID {id} not found.");
 
         // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(outline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(outline.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then StoryOutline
-        _db.MetaInfos.Remove(outline.ContentMetaInfo);
+        
         _db.StoryOutlines.Remove(outline);
         await _db.SaveChangesAsync();
 

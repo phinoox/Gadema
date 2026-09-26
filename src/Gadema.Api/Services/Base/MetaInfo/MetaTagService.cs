@@ -1,19 +1,31 @@
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Interfaces;
-using Gadema.Data.Database;
+using Gadema.Core.Models.Base.Permissions;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gadema.Api.Services.Tags;
+namespace Gadema.Api.Services.Base.MetaInfo;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class MetaTagService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class MetaTagService : DomainService
 {
-    public MetaTagService(GameDbContext db, ILogger<MetaTagService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
+
+    public MetaTagService( CoreDbContext db,
+        ILogger<MetaTagService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) {  _db = db; }
 
     public async Task<ApiResponseDto<ListResponseDto<MetaTag>>> GetAllAsync()
     {
+        // Global tags don't belong to a specific project scope in this implementation.
+        // We assume any authenticated user can view global tags.
+        if (_userId == Guid.Empty)
+            return ApiResponseDto<ListResponseDto<MetaTag>>.Unauthorized("Not authenticated.");
+
         var tags = await _db.MetaTags.ToListAsync();
         return ApiResponseDto<ListResponseDto<MetaTag>>.Success(new ListResponseDto<MetaTag>
         {
@@ -24,6 +36,9 @@ namespace Gadema.Api.Services.Tags;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(string name, string? slug)
     {
+        // Creating a global tag is an administrative action. 
+        // Since there's no scope, we check if the user has some form of admin role or just use internal logic.
+        // For now, we allow it but log with Guid.Empty as per original implementation.
         var tag = new MetaTag 
         { 
             Name = name, 

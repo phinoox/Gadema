@@ -18,6 +18,8 @@ public class WritingDbContext : GademaBaseContext
     // Narrative/Worldbuilding
     public DbSet<Story> Stories { get; set; }
     public DbSet<StoryChapter> StoryChapters { get; set; }
+
+    
     public DbSet<StoryOutline> StoryOutlines { get; set; }
     public DbSet<StoryBeat> StoryBeats { get; set; }
     public DbSet<Scene> Scenes { get; set; }

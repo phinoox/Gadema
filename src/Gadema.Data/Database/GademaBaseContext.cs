@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Core.Models.Base;
 
@@ -16,18 +17,24 @@ public abstract class GademaBaseContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         // ENFORCEMENT: Apply Global Query Filters for all entities implementing ISoftDelete.
-        // This is a "Law" that cannot be easily bypassed by individual modules.
+        ApplySoftDeleteFilters(modelBuilder);
+    }
+
+    private void ApplySoftDeleteFilters(ModelBuilder modelBuilder)
+    {
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
             if (typeof(ISoftDelete).IsAssignableFrom(entityType.ClrType))
             {
-                // Note: In a real implementation, we would use an expression tree 
-                // to create the HasQueryFilter lambda dynamically.
-                // For now, this serves as the architectural placeholder for that logic.
+                // Build expression: e => e.IsDeleted == false
+                var parameter = Expression.Parameter(entityType.ClrType, "e");
+                var property = Expression.Property(parameter, nameof(ISoftDelete.IsDeleted));
+                var falseConstant = Expression.Constant(false);
+                var equality = Expression.Equal(property, falseConstant);
+                var lambda = Expression.Lambda(equality, parameter);
+
+                modelBuilder.Entity(entityType.ClrType).HasQueryFilter(lambda);
             }
         }
     }
-
-
-
 }

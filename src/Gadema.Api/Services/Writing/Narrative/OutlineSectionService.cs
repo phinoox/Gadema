@@ -1,10 +1,13 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -13,10 +16,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing OutlineSections within the narrative domain.
 /// Handles CRUD operations including authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class OutlineSectionService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class OutlineSectionService : DomainService
 {
-    public OutlineSectionService(GameDbContext db, ILogger<OutlineSectionService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public OutlineSectionService( WritingDbContext db,
+        ILogger<OutlineSectionService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all outline sections for a project
@@ -24,7 +31,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<OutlineSectionResponseDto>>> GetOutlineSectionsAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<OutlineSectionResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<OutlineSectionResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var sections = await _db.OutlineSections
@@ -62,7 +69,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<OutlineSectionResponseDto>.Success(new OutlineSectionResponseDto
@@ -82,7 +89,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateOutlineSectionAsync(Guid projectId, OutlineSectionCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         // Validate that the StoryOutline belongs to the project
@@ -142,7 +149,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<OutlineSectionResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<OutlineSectionResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         if (updateDto.Title != null)
@@ -194,7 +201,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (section is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Outline section with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(section.StoryOutline.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         _db.OutlineSections.Remove(section);

@@ -1,12 +1,14 @@
-// =============================================================================
-using Gadema.Api.Services.Core;
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -15,10 +17,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing Stories within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryService : DomainService
 {
-    public StoryService(GameDbContext db, ILogger<StoryService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public StoryService( WritingDbContext db,
+        ILogger<StoryService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all stories for a project
@@ -26,7 +32,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<StoryResponseDto>>> GetStoriesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<StoryResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<StoryResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var stories = await _db.Stories
@@ -62,7 +68,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<StoryResponseDto>.Success(new StoryResponseDto
@@ -84,18 +90,19 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryAsync(Guid projectId, StoryCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryOutline, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.StoryOutline;
+        });
 
         var story = new Story
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             Name = createDto.CreateData.Title,
             Description = createDto.Description,
         };
@@ -106,7 +113,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = story.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -124,10 +131,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<StoryResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryResponseDto>(story.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(story.ContentMetaInfo, updateDto.ContentMetaInfo);
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(story.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<StoryResponseDto>.ServerError("Sync failed.");
+        }
 
         if (updateDto.Description != null)
             story.Description = updateDto.Description;
@@ -160,10 +171,10 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (story is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(story.ContentMetaInfo);
+        
         _db.Stories.Remove(story);
         await _db.SaveChangesAsync();
 

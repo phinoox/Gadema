@@ -29,7 +29,7 @@ public class DialogueNodesController : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetNodeAsync(Guid projectId, Guid branchId, Guid id)
     {
-        return Ok(await _service.GetNodeByIdAsync(id));
+        return Ok(await _service.GetNodeAsync(id));
     }
 
     [HttpPost]

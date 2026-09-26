@@ -1,19 +1,26 @@
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.WorldBuilding;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.WorldBuilding;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace Gadema.Api.Services.Writing.WorldBuilding;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class FactionService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class FactionService : DomainService
 {
-    public FactionService(GameDbContext db, ILogger<FactionService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public FactionService( WritingDbContext db,
+        ILogger<FactionService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all factions for a project
@@ -21,7 +28,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public async Task<ApiResponseDto<IEnumerable<FactionResponseDto>>> GetFactionsAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<FactionResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<FactionResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var factions = await _db.Factions
@@ -62,7 +69,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<FactionResponseDto>.Success(new FactionResponseDto
@@ -87,18 +94,19 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateFactionAsync(Guid projectId, FactionCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
-
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Faction, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.Faction;
+        });
 
         var faction = new Faction
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             Ideology = createDto.Ideology,
             Goals = createDto.Goals,
             LocationId = createDto.LocationId,
@@ -110,7 +118,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = faction.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -128,10 +136,14 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<FactionResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<FactionResponseDto>(faction.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(faction.ContentMetaInfo, updateDto.ContentMetaInfo);
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(faction.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<FactionResponseDto>.ServerError("Sync failed.");
+        }
 
         if (updateDto.Ideology != null)
             faction.Ideology = updateDto.Ideology;
@@ -173,10 +185,10 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (faction is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Faction with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(faction.ContentMetaInfo);
+        
         _db.Factions.Remove(faction);
         await _db.SaveChangesAsync();
 

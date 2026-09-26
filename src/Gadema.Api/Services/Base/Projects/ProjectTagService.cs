@@ -1,22 +1,31 @@
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Base.Projects;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTagService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTagService : DomainService
 {
-    public ProjectTagService(GameDbContext db, ILogger<ProjectTagService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
+
+    public ProjectTagService( CoreDbContext db,
+        ILogger<ProjectService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
+    {
+         _db = db;
+    }
 
     public async Task<ApiResponseDto<ListResponseDto<ProjectTagResponseDto>>> GetTagsAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<ProjectTagResponseDto>>(projectId);
+        var error = await CheckAccessAsync<ListResponseDto<ProjectTagResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var tags = await _db.ProjectTags
@@ -38,7 +47,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateTagAsync(Guid projectId, ProjectTagCreateDto dto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         var tag = new ProjectTag
@@ -58,13 +67,21 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<string>> AddTagsToProjectAsync(Guid projectMetaInfoId, AddTagsToProjectDto dto)
     {
-        var error = await ValidateProjectAccessAsync<string>(projectMetaInfoId);
+        // Note: ProjectMetaInfo is part of the Project scope. 
+        // We use the MetaInfo ID to check access against its parent project.
+        // For now, we assume checking permission on the meta info directly via the engine if possible, 
+        // or we need to resolve the project from the meta info first.
+        
+        var meta = await _db.Set<BaseMetaInfo>().OfType<ProjectMetaInfo>().FirstOrDefaultAsync(m => m.Id == projectMetaInfoId);
+        if (meta == null) return ApiResponseDto<string>.NotFound("Project metadata not found.");
+
+        var error = await CheckAccessAsync<string>(meta.ProjectId.Value, Permission.CanEdit);
         if (error != null) return error;
 
         foreach (var tagId in dto.TagIds)
         {
             var exists = await _db.ProjectTagRelations
-                .AnyAsync(r => r.MetaInfoId == projectMetaInfoId && r.MetaInfoId == tagId);
+                .AnyAsync(r => r.MetaInfoId == projectMetaInfoId && r.TagId == tagId);
 
             if (!exists)
             {
@@ -77,7 +94,7 @@ namespace Gadema.Api.Services.Base.Projects;
         }
 
         await _db.SaveChangesAsync();
-        await LogDbAsync(projectMetaInfoId, "Updated", "Project", projectMetaInfoId, "Tags added to project.");
+        await LogDbAsync(meta.ProjectId.Value, "Updated", "Project", projectMetaInfoId, "Tags added to project.");
 
         return ApiResponseDto<string>.Success("Tags linked successfully.");
     }

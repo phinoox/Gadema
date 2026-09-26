@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Base.MetaInfo;
+namespace Gadema.Data.Configurations.Core;
 
 public class MetaTagEntityTypeConfiguration : IEntityTypeConfiguration<MetaTag>
 {

@@ -1,11 +1,14 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -14,10 +17,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing LoreEntries within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class LoreEntryService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class LoreEntryService : DomainService
 {
-    public LoreEntryService(GameDbContext db, ILogger<LoreEntryService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public LoreEntryService( WritingDbContext db,
+        ILogger<LoreEntryService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all lore entries for a project
@@ -25,7 +32,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<IEnumerable<LoreEntryResponseDto>>> GetLoreEntriesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<LoreEntryResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<LoreEntryResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var loreEntries = await _db.LoreEntries
@@ -62,8 +69,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (loreEntry is null)
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<LoreEntryResponseDto>.Success(new LoreEntryResponseDto
@@ -86,22 +92,21 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateLoreEntryAsync(Guid projectId, LoreEntryCreateDto createDto)
     {
-        // Validate project access
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        
         // Create ContentMetaInfo using helper
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.LoreEntry, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.LoreEntry;
+        });
 
         // Create the LoreEntry entity
         var loreEntry = new LoreEntry
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             RawText = string.Empty,
             LoreType = createDto.LoreType,
         };
@@ -112,7 +117,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = loreEntry.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -130,18 +135,19 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (loreEntry is null)
             return ApiResponseDto<LoreEntryResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<LoreEntryResponseDto>(loreEntry.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // Apply ContentMetaInfo updates via helper (replaces manual if-blocks)
-        ApplyMetaInfoUpdates(loreEntry.ContentMetaInfo, updateDto.ContentMetaInfo);
+        // Apply ContentMetaInfo updates via helper
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(loreEntry.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<LoreEntryResponseDto>.ServerError("Sync failed.");
+        }
 
         if (updateDto.RawText != null)
             loreEntry.RawText = updateDto.RawText;
 
-
-        loreEntry.ContentMetaInfo.LastModifiedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<LoreEntryResponseDto>.Success(new LoreEntryResponseDto
@@ -171,12 +177,11 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (loreEntry is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Lore entry with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(loreEntry.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(loreEntry.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then LoreEntry
-        _db.MetaInfos.Remove(loreEntry.ContentMetaInfo);
+        await _core.MetadataService.DeleteAsync<ContentMetaInfo>(loreEntry.ContentMetaInfo.Id);
         _db.LoreEntries.Remove(loreEntry);
         await _db.SaveChangesAsync();
 

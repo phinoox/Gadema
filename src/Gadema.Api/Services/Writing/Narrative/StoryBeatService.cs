@@ -1,11 +1,14 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Narrative;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
@@ -14,18 +17,22 @@ namespace Gadema.Api.Services.Writing.Narrative;
 /// Service for managing StoryBeats within the narrative domain.
 /// Handles CRUD operations including ContentMetaInfo creation and authorization.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryBeatService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class StoryBeatService : DomainService
 {
-    public StoryBeatService(GameDbContext db, ILogger<StoryBeatService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public StoryBeatService( WritingDbContext db,
+        ILogger<StoryBeatService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
-    // GET - List all story beats for a project (via ContentMetaInfo.ProjectId)
+    // GET - List all story beats for a project
     // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<StoryBeatResponseDto>>> GetStoryBeatsAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<StoryBeatResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<StoryBeatResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var beats = await _db.StoryBeats
@@ -63,8 +70,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (beat is null)
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<StoryBeatResponseDto>.Success(new StoryBeatResponseDto
@@ -88,21 +94,21 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryBeatAsync(Guid projectId, StoryBeatCreateDto createDto)
     {
-        // Validate project access
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
-        
-        // Create ContentMetaInfo using helper
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.StoryBeat, createDto.CreateData);
 
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        // Create ContentMetaInfo using helper
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.StoryBeat;
+        });
 
         // Create the StoryBeat entity
         var beat = new StoryBeat
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             StoryId = createDto.StoryId,
             Description = createDto.Description,
             OrderIndex = createDto.OrderIndex ?? 0,
@@ -114,7 +120,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = beat.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -132,12 +138,15 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (beat is null)
             return ApiResponseDto<StoryBeatResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<StoryBeatResponseDto>(beat.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         // Apply ContentMetaInfo updates via helper
-        ApplyMetaInfoUpdates(beat.ContentMetaInfo, updateDto.ContentMetaInfo);
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(beat.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<StoryBeatResponseDto>.ServerError("Sync failed.");
+        }
 
         if (updateDto.Description != null)
             beat.Description = updateDto.Description;
@@ -175,12 +184,10 @@ namespace Gadema.Api.Services.Writing.Narrative;
         if (beat is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story beat with ID {id} not found.");
 
-        // Authorization: verify user has access to the project
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(beat.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(beat.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Delete ContentMetaInfo first (FK dependency), then StoryBeat
-        _db.MetaInfos.Remove(beat.ContentMetaInfo);
         _db.StoryBeats.Remove(beat);
         await _db.SaveChangesAsync();
 

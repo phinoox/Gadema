@@ -1,13 +1,15 @@
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Game;
 
-namespace Gadema.Api.Services.Tags.Strategies;
+namespace Gadema.Api.CoreServices.Strategies;
 
 public class ProjectIdentityStrategy : BaseIdentityStrategy<ProjectMetaInfoUpdateData,ProjectMetaInfo>,IIdentitySyncStrategy
 {
     
-    public ProjectIdentityStrategy(GameDbContext db) :base(db) {}
+    public ProjectIdentityStrategy(CoreDbContext db) :base(db) {}
 
     
     protected override async Task ApplyDomainPropertiesAsync(Guid id, ProjectMetaInfoUpdateData updateData)

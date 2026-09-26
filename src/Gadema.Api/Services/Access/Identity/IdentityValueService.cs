@@ -1,13 +1,16 @@
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
-using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Identity;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Search;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Identity;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Access.Identity;
@@ -15,10 +18,14 @@ namespace Gadema.Api.Services.Access.Identity;
 /// <summary>
 /// Service for managing IdentityValues - specific options within a definition (e.g., "Human" in Race).
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class IdentityValueService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class IdentityValueService : DomainService, ISearchableProvider
 {
-    public IdentityValueService(GameDbContext db, ILogger<IdentityValueService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
+
+    public IdentityValueService( CoreDbContext db,
+        ILogger<IdentityValueService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     // ========================================================================
     // GET - List all values for a definition
@@ -26,7 +33,7 @@ namespace Gadema.Api.Services.Access.Identity;
 
     public async Task<ApiResponseDto<ListResponseDto<IdentityValueResponseDto>>> GetValuesAsync(Guid definitionId)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<IdentityValueResponseDto>>(await GetProjectIdForDefinition(definitionId));
+        var error = await CheckAccessAsync<ListResponseDto<IdentityValueResponseDto>>(await GetProjectIdForDefinition(definitionId), Permission.CanView);
         if (error != null) return error;
 
         var values = await _db.IdentityValues
@@ -55,7 +62,7 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null) 
             return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<IdentityValueResponseDto>.Success(CreateResponseDto(value));
@@ -70,12 +77,13 @@ namespace Gadema.Api.Services.Access.Identity;
         var def = await _db.IdentityDefinitions.FindAsync(definitionId);
         if (def == null) return ApiResponseDto<CreateResponseDto>.NotFound($"Definition with ID {definitionId} not found.");
 
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(def.ProjectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(def.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         // 1. Create the MetaInfo anchor using the generic helper
-        var meta = CreateMetaInfo<ContentMetaInfo>(createDto.ContentMetaInfo, m => {
-            m.ProjectId = def.ProjectId; // Link to project via parent definition
+        var meta = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.ContentMetaInfo, m =>
+        {
+            m.ProjectId = def.ProjectId;
         });
 
         // 2. Create the IdentityValue component
@@ -91,7 +99,7 @@ namespace Gadema.Api.Services.Access.Identity;
         };
 
         _db.IdentityValues.Add(identityValue);
-        _db.Set<ContentMetaInfo>().Add(meta);
+        
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
@@ -115,13 +123,14 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null)
             return ApiResponseDto<IdentityValueResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<IdentityValueUpdateDto>(value.ContentMetaInfo.ProjectId.Value);
-        if ( error != null) return ApiResponseDto<IdentityValueResponseDto>.Unauthorized("not authorized");
+        var error = await CheckAccessAsync<IdentityValueResponseDto>(value.ContentMetaInfo.ProjectId, Permission.CanEdit);
+            if (error != null) return error;
 
         // 1. Delegate Identity Updates to the Strategy
         if (updateDto.ContentMetaInfo != null)
         {
-            await ApplyIdentitySyncAsync(value.MetaInfoId, updateDto.ContentMetaInfo, new ContentIdentityStrategy(_db));
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(value.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<IdentityValueResponseDto>.ServerError("Sync failed.");
         }
 
         // 2. Update Domain Properties
@@ -147,7 +156,7 @@ namespace Gadema.Api.Services.Access.Identity;
         if (value is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Identity value with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(value.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(value.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Deleting the MetaInfo anchor will cascade to the IdentityValue component

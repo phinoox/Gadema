@@ -1,31 +1,34 @@
-using Gadema.Core.Dtos;
-using Gadema.Core.Dtos.Search;
-
-using Gadema.Data.Database;
-using Microsoft.EntityFrameworkCore;
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
-using Gadema.Core.Interfaces;
+using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Base.Projects;
+using Gadema.Core.Dtos.Search;
+using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Base.Projects;
+using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
 /// <summary>
 /// Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class ProjectService : DomainService, ISearchableProvider
 {
-    private readonly IIdentitySyncStrategy _identityStrategy;
+    private CoreDbContext _db;
 
     public ProjectService(
-        GameDbContext db, 
-        ILogger<ProjectService> logger, 
-        IUserContext userContext,
-        IIdentitySyncStrategy projectIdentityStrategy) 
-        : base(db, logger, userContext)
+        CoreDbContext _db,
+        ILogger<ProjectService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
     {
-        _identityStrategy = projectIdentityStrategy;
     }
 
     // ========================================================================
@@ -35,28 +38,24 @@ namespace Gadema.Api.Services.Base.Projects;
     /// <summary>
     /// Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
     /// </summary>
-   public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
-        // We query the MetaInfos table because that is where the searchable 
-        // identity data (Title, Slug) actually resides.
         var metaQuery = _db.MetaInfos.AsQueryable();
 
-        // If a scope is provided, filter by ProjectId
         if (projectId.HasValue)
         {
             metaQuery = metaQuery.Where(m => m.ProjectId == projectId.Value);
         }
 
-        // Perform text-based discovery on the Identity properties
         return await metaQuery
             .Where(m => m.Title.Contains(query) || m.Slug.Contains(query))
             .Select(m => new SearchHitDto
             {
-                ResourceId = m.Id, // The anchor ID
+                ResourceId = m.Id, 
                 DisplayName = m.Title,
                 Slug = m.Slug,
                 ResourceType = "Project",
-                ScopeId = null, // Projects are the root level
+                ScopeId = null, 
                 ResourceLink = $"/api/v1/projects/{m.Id}"
             })
             .ToListAsync();
@@ -66,27 +65,22 @@ namespace Gadema.Api.Services.Base.Projects;
     // DOMAIN OPERATIONS (The "Write" Side)
     // ========================================================================
 
-       public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(ProjectCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(ProjectCreateDto createDto)
     {
-        // 1. Validation: Check if user is authenticated and authorized to create projects.
-        // We no longer check 'projectId' access because the project doesn't exist yet.
-        if (_userContext.CurrentUser == null)
-        {
-            return ApiResponseDto<CreateResponseDto>.Unauthorized("User must be authenticated.");
-        }
-
-        var meta = CreateMetaInfo<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
-            // Title and Slug are handled by the base class logic inside CreateMetaInfo<T>
-        });
+        //not using the access check function here as project creation is a special case.
+        var loggedIn = await CheckIsLoggedIn();
+        if(!loggedIn)
+            return ApiResponseDto<CreateResponseDto>.Unauthorized("you need to be logged in");
+        var meta = await _core.MetadataService.CreateAsync<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => { });
 
         using var transaction = await _db.Database.BeginTransactionAsync();
         try
         {
             var project = new Project
             {
-                Id = Guid.NewGuid(), // The actual ID of the new project
+                Id = Guid.NewGuid(),
                 ProjectMetaInfoId = meta.Id,
-                UserId = _userContext.CurrentUser.Id,
+                UserId = _userId,
                 Description = createDto.Description,
                 IsActive = true,
                 EnableUserRegistration = createDto.EnableUserRegistration,
@@ -102,13 +96,10 @@ namespace Gadema.Api.Services.Base.Projects;
             await _db.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            // 2. Logging: Log with null context since this is a root-level creation.
-            //await LogDbAsync(null, "Created", "Project", project.Id, $"Project '{project.ProjectMetaInfo.Title}' created.");
-
             return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto 
             { 
                 EntityId = project.Id, 
-                ProjectId = project.Id // The new ID is the ProjectId
+                ProjectId = project.Id 
             });
         }
         catch (Exception ex)
@@ -121,8 +112,10 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<ProjectResponseDto>> GetAsync(Guid projectId, Guid contextProjectId)
     {
-        var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
-        if (error != null) return error;
+        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
+        var authorizationError = await CheckAccessAsync<ProjectResponseDto>(contextProjectId, Permission.CanView);
+        if (authorizationError != null) 
+            return authorizationError;
 
         var project = await _db.Projects
             .Include(p => p.ProjectMetaInfo)
@@ -135,8 +128,10 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<ProjectResponseDto>> UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)
     {
-        var error = await ValidateProjectAccessAsync<ProjectResponseDto>(contextProjectId);
-        if (error != null) return error;
+        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
+         var authorizationError = await CheckAccessAsync<ProjectResponseDto>(contextProjectId, Permission.CanView);
+        if (authorizationError != null) 
+            return authorizationError;
 
         using var transaction = await _db.Database.BeginTransactionAsync();
         try
@@ -147,7 +142,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
 
-            // 1. Update Domain Data
+            // Update Domain Data
             if (dto.Description != null) project.Description = dto.Description;
             if (dto.EnableUserRegistration.HasValue) project.EnableUserRegistration = dto.EnableUserRegistration.Value;
             if (dto.AllowManualInvites.HasValue) project.AllowManualInvites = dto.AllowManualInvites.Value;
@@ -157,16 +152,18 @@ namespace Gadema.Api.Services.Base.Projects;
             if (dto.Tone.HasValue) project.Tone = dto.Tone.Value;
             if (dto.Audience.HasValue) project.Audience = dto.Audience.Value;
 
-            // 2. Sync Identity via Strategy (Handles ProjectMetaInfo and Tags)
+            // Sync Identity via Strategy
             if (dto.ContentMetaInfo != null)
             {
-                await _identityStrategy.SyncAsync(projectId, dto.ContentMetaInfo);
+                var success = await SyncIdentityAsync<ProjectIdentityStrategy>(projectId, dto.ContentMetaInfo);
+                if(!success)
+                     return ApiResponseDto<ProjectResponseDto>.ServerError("Update failed.");
             }
 
             await _db.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            await LogDbAsync(contextProjectId, "Updated", "Project", project.Id, "Project and identity updated.");
+            await _core.AuditService.LogDbAsync(contextProjectId, "Updated", "Project", project.Id, "Project and identity updated.");
 
             return ApiResponseDto<ProjectResponseDto>.Success(MapToResponseDto(project));
         }
@@ -180,17 +177,19 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteAsync(Guid projectId, Guid contextProjectId)
     {
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(contextProjectId);
-        if (error != null) return error;
+        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
+         var authorizationError = await CheckAccessAsync<DeleteResponseDto>(contextProjectId, Permission.CanDelete);
+        if (authorizationError != null) 
+            return authorizationError;
 
         var project = await _db.Projects.FindAsync(projectId);
         if (project == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Project not found.");
+
         project.IsDeleted = true;
         project.DeletedAt = DateTime.UtcNow;
-        
         _db.Set<Project>().Update(project);
 
-        await LogDbAsync(contextProjectId, "Deleted", "Project", projectId, "Project deleted.");
+        await _core.AuditService.LogDbAsync(contextProjectId, "Deleted", "Project", projectId, "Project deleted.");
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto 
         { 
@@ -215,4 +214,6 @@ namespace Gadema.Api.Services.Base.Projects;
         Tone = p.Tone,
         Audience = p.Audience
     };
+
+ 
 }

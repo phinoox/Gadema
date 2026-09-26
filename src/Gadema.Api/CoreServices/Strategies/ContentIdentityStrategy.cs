@@ -1,11 +1,12 @@
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 
-namespace Gadema.Api.Services.Tags.Strategies;
+namespace Gadema.Api.CoreServices.Strategies;
 
 public class ContentIdentityStrategy : BaseIdentityStrategy<ContentMetaInfoUpdateData,ContentMetaInfo>
 {
-    public ContentIdentityStrategy(GameDbContext db) : base(db) { }
+    public ContentIdentityStrategy(CoreDbContext db) : base(db) { }
 
     protected override async Task ApplyDomainPropertiesAsync(Guid id, ContentMetaInfoUpdateData updateData)
     {

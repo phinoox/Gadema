@@ -1,20 +1,29 @@
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
-using Gadema.Data.Database;
+using Gadema.Core.Models.Base.Permissions;
+using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectMemberService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectMemberService : DomainService
 {
-    public ProjectMemberService(GameDbContext db, ILogger<ProjectMemberService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private CoreDbContext _db;
+
+    public ProjectMemberService( CoreDbContext db,
+        ILogger<ProjectMemberService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger)
+    {
+        _db = db;
+    }
 
     public async Task<ApiResponseDto<List<ProjectMemberResponseDto>>> GetMembersAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<List<ProjectMemberResponseDto>>(projectId);
+        var error = await CheckAccessAsync<List<ProjectMemberResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var members = await _db.ProjectMembers
@@ -36,7 +45,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<ProjectMemberResponseDto>> AddMemberAsync(Guid projectId, AddProjectMemberDto dto)
     {
-        var error = await ValidateProjectAccessAsync<ProjectMemberResponseDto>(projectId);
+        var error = await CheckAccessAsync<ProjectMemberResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
@@ -71,7 +80,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<string>> UpdateRoleAsync(Guid projectId, Guid memberId, UpdateProjectMemberRoleDto dto)
     {
-        var error = await ValidateProjectAccessAsync<string>(projectId);
+        var error = await CheckAccessAsync<string>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         var member = await _db.ProjectMembers
@@ -92,7 +101,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<string>> RemoveMemberAsync(Guid projectId, Guid memberId)
     {
-        var error = await ValidateProjectAccessAsync<string>(projectId);
+        var error = await CheckAccessAsync<string>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         var member = await _db.ProjectMembers

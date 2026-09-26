@@ -1,4 +1,5 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Api.Services.Search;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
@@ -6,8 +7,10 @@ using Gadema.Core.Dtos.Search;
 using Gadema.Core.Dtos.Writing.Characters;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Characters;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Characters;
@@ -16,10 +19,14 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing Characters - the central glue entity in the character domain.
 /// Supports progressive creation: Identity (ContentMetaInfo + Character) first, then modular components.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterService : CoreService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterService : DomainService, ISearchableProvider
 {
-    public CharacterService(GameDbContext db, ILogger<CharacterService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public CharacterService( WritingDbContext db,
+        ILogger<CharacterService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
 
     /// <summary>
@@ -63,7 +70,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public async Task<ApiResponseDto<IEnumerable<CharacterResponseDto>>> GetCharactersAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<CharacterResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<CharacterResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var characters = await _db.Characters
@@ -93,7 +100,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterResponseDto>.Success(CreateResponseDto(character));
@@ -105,19 +112,22 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateCharacterAsync(Guid projectId, CharacterCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
         // 1. Create ContentMetaInfo for the character's identity (Title/Name lives here)
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Character, createDto.CreateData);
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.Character;
+        });
 
+        
         // 2. Create the Character glue entity
         var character = new Character
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             Name = createDto.Name, // Fallback for non-meta identity fields
             NickName = createDto.NickName,
             CurrentStateId = null
@@ -129,7 +139,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = character.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
@@ -149,13 +159,14 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<CharacterResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<CharacterResponseDto>(character.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
         // 1. Update ContentMetaInfo (Name/Title/Status lives here per convention)
         if (updateDto.ContentMetaInfo != null)
         {
-            ApplyMetaInfoUpdates(character.ContentMetaInfo, updateDto.ContentMetaInfo);
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(character.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<CharacterResponseDto>.ServerError("Sync failed.");
         }
 
         // 2. Update Character Glue properties
@@ -196,12 +207,12 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(character.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(character.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         // Deleting ContentMetaInfo will cascade to the Character record via DeleteBehavior.Cascade/Restrict 
         // and remove the character record itself.
-        _db.MetaInfos.Remove(character.ContentMetaInfo);
+        _db.Set<ContentMetaInfo>().Remove(character.ContentMetaInfo);
         await _db.SaveChangesAsync();
 
         return ApiResponseDto<DeleteResponseDto>.Success(new DeleteResponseDto

@@ -1,10 +1,12 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Characters;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Characters;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Characters;
@@ -13,10 +15,14 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing CharacterStoryProfile - the static backstory and personality of a character.
 /// Access is validated via the parent Character's ContentMetaInfo.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterStoryProfileService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterStoryProfileService : DomainService
 {
-    public CharacterStoryProfileService(GameDbContext db, ILogger<CharacterStoryProfileService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public CharacterStoryProfileService( WritingDbContext db,
+        ILogger<CharacterStoryProfileService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     /// <summary>Creates a response DTO from a CharacterStoryProfile entity.</summary>
     private CharacterStoryProfileResponseDto CreateResponseDto(CharacterStoryProfile profile)
@@ -45,7 +51,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public async Task<ApiResponseDto<IEnumerable<CharacterStoryProfileResponseDto>>> GetProfilesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<IEnumerable<CharacterStoryProfileResponseDto>>(projectId);
+        var error = await CheckAccessAsync<IEnumerable<CharacterStoryProfileResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var profiles = await _db.CharacterStoryProfiles
@@ -73,7 +79,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterStoryProfileResponseDto>.Success(CreateResponseDto(profile));
@@ -83,9 +89,13 @@ namespace Gadema.Api.Services.Writing.Characters;
     // POST - Create a profile for an existing character
     // ========================================================================
 
-    public async Task<ApiResponseDto<CreateResponseDto>> CreateProfileAsync(Guid projectId,Guid characterId, CharacterStoryProfileCreateDto createDto)
+    public async Task<ApiResponseDto<CreateResponseDto>> CreateProfileAsync(Guid projectId, Guid characterId, CharacterStoryProfileCreateDto createDto)
     {
-        // 1. Validate character exists and belongs to project
+        // 1. Validate project access first
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
+        if (error != null) return error;
+
+        // 2. Ensure the character belongs to this project and exists
         var character = await _db.Characters
             .Include(c => c.ContentMetaInfo)
             .FirstOrDefaultAsync(c => c.Id == characterId && c.ContentMetaInfo.ProjectId == projectId);
@@ -93,7 +103,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (character is null)
             return ApiResponseDto<CreateResponseDto>.NotFound("The specified character does not exist in this project.");
 
-        // 2. Create the profile
+        // 3. Create the profile
         var profile = new CharacterStoryProfile
         {
             Id = Guid.NewGuid(),
@@ -137,8 +147,8 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<CharacterStoryProfileResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<CharacterStoryProfileUpdateDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
-        if (error != null) return ApiResponseDto<CharacterStoryProfileResponseDto>.Unauthorized(error.Message ?? "not authorized");
+        var error = await CheckAccessAsync<CharacterStoryProfileResponseDto>(profile.Character.ContentMetaInfo.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
 
         // Update fields if provided in DTO
         if (updateDto.OriginStory != null) profile.OriginStory = updateDto.OriginStory;
@@ -174,7 +184,7 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (profile is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Story profile with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(profile.Character.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(profile.Character.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         _db.CharacterStoryProfiles.Remove(profile);

@@ -1,23 +1,35 @@
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Writing.DialogueTrees;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Narrative;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class DialogueBranchService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class DialogueBranchService : DomainService
 {
-    public DialogueBranchService(GameDbContext db, ILogger<DialogueBranchService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public DialogueBranchService( WritingDbContext db,
+        ILogger<DialogueBranchService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) {_db = db; }
+
+    // ========================================================================
+    // GET - List all branches for a project
+    // ========================================================================
 
     public async Task<ApiResponseDto<ListResponseDto<DialogueBranchResponseDto>>> GetBranchesAsync(Guid projectId)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<DialogueBranchResponseDto>>(projectId);
+        var error = await CheckAccessAsync<ListResponseDto<DialogueBranchResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var branches = await _db.DialogueBranches
@@ -49,7 +61,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<DialogueBranchResponseDto>.Success(new DialogueBranchResponseDto
@@ -63,21 +75,25 @@ namespace Gadema.Api.Services.Writing.Narrative;
         });
     }
 
+    // ========================================================================
+    // POST - Create a new branch
+    // ========================================================================
+
     public async Task<ApiResponseDto<CreateResponseDto>> CreateBranchAsync(Guid projectId, DialogueBranchCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.Scene, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.Scene;
+        });
 
         var branch = new DialogueBranch
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
-            // Add branch-specific fields here if needed
+            MetaInfoId = contentMetaInfo.Id,
         };
 
         _db.DialogueBranches.Add(branch);
@@ -86,10 +102,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = branch.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
+
+    // ========================================================================
+    // PUT - Partial update of a branch
+    // ========================================================================
 
     public async Task<ApiResponseDto<DialogueBranchResponseDto>> UpdateBranchAsync(Guid id, DialogueBranchUpdateDto updateDto)
     {
@@ -99,11 +119,14 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DialogueBranchResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DialogueBranchResponseDto>(branch.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(branch.ContentMetaInfo, updateDto.ContentMetaInfo);
-        // Update branch-specific fields here if needed
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(branch.MetaInfoId.Value, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<DialogueBranchResponseDto>.ServerError("Sync failed.");
+        }
 
         await _db.SaveChangesAsync();
 
@@ -118,6 +141,10 @@ namespace Gadema.Api.Services.Writing.Narrative;
         });
     }
 
+    // ========================================================================
+    // DELETE - Remove a branch
+    // ========================================================================
+
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteBranchAsync(Guid id)
     {
         var branch = await _db.DialogueBranches
@@ -126,10 +153,10 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         if (branch == null) return ApiResponseDto<DeleteResponseDto>.NotFound("Dialogue branch not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(branch.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(branch.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(branch.ContentMetaInfo);
+        
         _db.DialogueBranches.Remove(branch);
         await _db.SaveChangesAsync();
 

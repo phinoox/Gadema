@@ -1,26 +1,28 @@
-// =============================================================================
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Strategies;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Response;
 using Gadema.Core.Dtos.Writing.WorldBuilding;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.Enums;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.WorldBuilding;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.WorldBuilding;
 
-/// <summary>
-/// Service for managing WorldLocations within the world-building domain.
-/// Handles hierarchical location tree (Country → Region → City → Village).
-/// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class WorldLocationService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class WorldLocationService : DomainService
 {
-    public WorldLocationService(GameDbContext db, ILogger<WorldLocationService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
 
-    /// <summary>Creates a response DTO from a WorldLocation entity.</summary>
+    public WorldLocationService( WritingDbContext db,
+        ILogger<WorldLocationService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
+
     private WorldLocationResponseDto CreateResponseDto(WorldLocation location)
         => new()
         {
@@ -36,17 +38,12 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
             LastModifiedAt = location.ContentMetaInfo.LastModifiedAt,
         };
 
-    /// <summary>Creates a list response DTO from collection.</summary>
     private ListResponseDto<WorldLocationResponseDto> CreateListResponseDto(IEnumerable<WorldLocation> locations)
         => new() { Items = locations.Select(CreateResponseDto).ToList(), TotalCount = locations.Count() };
 
-    // ========================================================================
-    // GET - List all world locations for a project (with optional filter)
-    // ========================================================================
-
     public async Task<ApiResponseDto<ListResponseDto<WorldLocationResponseDto>>> GetLocationsAsync(Guid projectId, int? locationType = null, Guid? parentId = null)
     {
-        var error = await ValidateProjectAccessAsync<ListResponseDto<WorldLocationResponseDto>>(projectId);
+        var error = await CheckAccessAsync<ListResponseDto<WorldLocationResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         IQueryable<WorldLocation> query = _db.WorldLocations
@@ -63,10 +60,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<ListResponseDto<WorldLocationResponseDto>>.Success(CreateListResponseDto(locations));
     }
 
-    // ========================================================================
-    // GET - Single world location by ID
-    // ========================================================================
-
     public async Task<ApiResponseDto<WorldLocationResponseDto>> GetLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
@@ -76,30 +69,27 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
     }
 
-    // ========================================================================
-    // POST - Create a new world location
-    // ========================================================================
-
     public async Task<ApiResponseDto<CreateResponseDto>> CreateLocationAsync(Guid projectId, WorldLocationCreateDto createDto)
     {
-        var error = await ValidateProjectAccessAsync<CreateResponseDto>(projectId);
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        var ContentMetaInfo = CreateMetaInfo(projectId, ContentTypeEnum.WorldLocation, createDto.CreateData);
-
-        _db.MetaInfos.Add(ContentMetaInfo);
-        await _db.SaveChangesAsync();
+        var contentMetaInfo = await _core.MetadataService.CreateAsync<ContentMetaInfo>(createDto.CreateData, m =>
+        {
+            m.ProjectId = projectId;
+            m.ContentType = ContentTypeEnum.WorldLocation;
+        });
 
         var location = new WorldLocation
         {
             Id = Guid.NewGuid(),
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             LocationType = (LocationType)createDto.LocationType,
             ParentId = createDto.ParentId,
             Description = createDto.Description,
@@ -111,14 +101,10 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<CreateResponseDto>.Success(new CreateResponseDto
         {
             EntityId = location.Id,
-            MetaInfoId = ContentMetaInfo.Id,
+            MetaInfoId = contentMetaInfo.Id,
             ProjectId = projectId
         });
     }
-
-    // ========================================================================
-    // PUT - Partial update of a world location
-    // ========================================================================
 
     public async Task<ApiResponseDto<WorldLocationResponseDto>> UpdateLocationAsync(Guid id, WorldLocationUpdateDto updateDto)
     {
@@ -129,10 +115,14 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<WorldLocationResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<WorldLocationResponseDto>(location.ContentMetaInfo.ProjectId, Permission.CanEdit);
         if (error != null) return error;
 
-        ApplyMetaInfoUpdates(location.ContentMetaInfo, updateDto.ContentMetaInfo);
+        if (updateDto.ContentMetaInfo != null)
+        {
+            var success = await SyncIdentityAsync<ContentIdentityStrategy>(location.MetaInfoId, updateDto.ContentMetaInfo);
+            if (!success) return ApiResponseDto<WorldLocationResponseDto>.ServerError("Sync failed.");
+        }
 
         if (updateDto.LocationType.HasValue)
             location.LocationType = (LocationType)updateDto.LocationType.Value;
@@ -148,10 +138,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<WorldLocationResponseDto>.Success(CreateResponseDto(location));
     }
 
-    // ========================================================================
-    // DELETE - Remove a world location
-    // ========================================================================
-
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteLocationAsync(Guid id)
     {
         var location = await _db.WorldLocations
@@ -161,10 +147,10 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         if (location is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"World location with ID {id} not found.");
 
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId.Value);
+        var error = await CheckAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        _db.MetaInfos.Remove(location.ContentMetaInfo);
+        
         _db.WorldLocations.Remove(location);
         await _db.SaveChangesAsync();
 

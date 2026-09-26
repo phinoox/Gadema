@@ -1,11 +1,12 @@
-// =============================================================================
-
+using Gadema.Api.CoreServices;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Characters;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Permissions;
 using Gadema.Core.Models.Writing.Characters;
-using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
+using Gadema.Data.Database.Writing;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Characters;
@@ -14,10 +15,14 @@ namespace Gadema.Api.Services.Writing.Characters;
 /// Service for managing Character Relations - connections between characters.
 /// Access is validated via the TriggerScene's project ownership.
 /// </summary>
-[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterRelationService : CoreService
+[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterRelationService : DomainService
 {
-    public CharacterRelationService(GameDbContext db, ILogger<CharacterRelationService> logger, IUserContext userContext)
-        : base(db, logger, userContext) { }
+    private WritingDbContext _db;
+
+    public CharacterRelationService( WritingDbContext db,
+        ILogger<CharacterRelationService> logger,  
+        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        : base(coreServices,logger) { _db = db; }
 
     /// <summary>Creates a response DTO from a CharacterRelation entity.</summary>
     private CharacterRelationResponseDto CreateResponseDto(CharacterRelation relation)
@@ -38,8 +43,8 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public async Task<ApiResponseDto<IEnumerable<CharacterRelationResponseDto>>> GetRelationsAsync(Guid projectId)
     {
-        // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<IEnumerable<CharacterRelationResponseDto>>(projectId);
+        // 1. Check permission to view the project scope
+        var error = await CheckAccessAsync<IEnumerable<CharacterRelationResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
         var relations = await _db.CharacterRelations
@@ -63,8 +68,8 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
+        // 2. Validate access via the Scene's ContentMetaInfo scope
+        var error = await CheckAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
         return ApiResponseDto<CharacterRelationResponseDto>.Success(CreateResponseDto(relation));
@@ -76,7 +81,11 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateCharacterRelationAsync(Guid projectId, CharacterRelationCreateDto createDto)
     {
-        // 1. Validate project access via the scene provided in DTO
+        // 1. Check permission to edit the project scope
+        var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
+        if (error != null) return error;
+
+        // 2. Validate scene existence and ownership
         var scene = await _db.Scenes
             .Include(s => s.ContentMetaInfo)
             .FirstOrDefaultAsync(s => s.Id == createDto.TriggerSceneId && s.ContentMetaInfo.ProjectId == projectId);
@@ -84,14 +93,14 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (scene == null)
             return ApiResponseDto<CreateResponseDto>.NotFound("The specified scene does not exist in this project.");
 
-        // 2. Verify characters belong to the same project (optional but recommended for data integrity)
+        // 3. Verify characters belong to the same project
         var charAExists = await _db.Characters.AnyAsync(c => c.Id == createDto.SourceCharacterId && c.ContentMetaInfo.ProjectId == projectId);
         var charBExists = await _db.Characters.AnyAsync(c => c.Id == createDto.TargetCharacterId && c.ContentMetaInfo.ProjectId == projectId);
 
         if (!charAExists || !charBExists)
             return ApiResponseDto<CreateResponseDto>.BadRequest("One or both characters do not belong to this project.");
 
-        // 3. Check for existing relation (to prevent duplicates)
+        // 4. Check for existing relation (to prevent duplicates)
         var exists = await _db.CharacterRelations.AnyAsync(cr => 
             cr.SourceCharacterId == createDto.SourceCharacterId && 
             cr.TargetCharacterId == createDto.TargetCharacterId &&
@@ -99,7 +108,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
         if (exists) return ApiResponseDto<CreateResponseDto>.Conflict("This specific relation already exists in this scene.");
 
-        // 4. Create the entity
+        // 5. Create the entity
         var relation = new CharacterRelation
         {
             Id = Guid.NewGuid(),
@@ -135,11 +144,11 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (relation is null)
             return ApiResponseDto<CharacterRelationResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<CharacterRelationUpdateDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
-        if (error != null) return ApiResponseDto<CharacterRelationResponseDto>.Unauthorized(error.Message ?? " not authorized");
+        // 1. Validate access via the Scene's ContentMetaInfo scope
+        var error = await CheckAccessAsync<CharacterRelationResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId, Permission.CanEdit);
+        if (error != null) return error;
 
-        // Update properties if provided in DTO
+        // 2. Update properties if provided in DTO
         relation.RelationType = updateDto.RelationType;
         if (updateDto.Description != null) relation.Description = updateDto.Description;
         relation.TriggerSceneId = updateDto.TriggerSceneId;
@@ -163,8 +172,8 @@ namespace Gadema.Api.Services.Writing.Characters;
         if (relation is null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Character relation with ID {id} not found.");
 
-        // Validate access via the Scene's ContentMetaInfo
-        var error = await ValidateProjectAccessAsync<DeleteResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId.Value);
+        // 1. Validate access via the Scene's ContentMetaInfo scope
+        var error = await CheckAccessAsync<DeleteResponseDto>(relation.TriggerScene.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
         _db.CharacterRelations.Remove(relation);

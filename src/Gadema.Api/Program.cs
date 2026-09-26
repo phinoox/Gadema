@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.OpenApi;
 using Gadema.Api.Services.Access.Authentication;
 using Gadema.Api.Services.Base.Projects;
 using Gadema.Api.Services.Search;
-using Gadema.Api.Services.Tags.Strategies;
 using Gadema.Api.Services.Writing.Characters;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database;
 using Scalar.AspNetCore;
 using Gadema.Api.Services.Access;
+using Gadema.Api.Services.Authorization;
+using Gadema.Api.Services.Authorization.Strategies;
+using Gadema.Api.CoreServices.Interfaces;
+using Gadema.Api.CoreServices.Strategies;
 
 namespace Gadema.Api;
 
@@ -24,11 +27,21 @@ public partial class Program
 
         // 2. Database Configuration
         builder.Services.AddGademaData(builder.Configuration);
+
         
         // 3. Identity & Domain Services
         builder.Services.AddScoped<IIdentitySyncStrategy, ProjectIdentityStrategy>();
         builder.Services.AddScoped<IIdentitySyncStrategy, ContentIdentityStrategy>();
         builder.Services.AddDomainServices();
+
+          // 2. Register the Permission Engine (The "Brain")
+        builder.Services.AddScoped<IPermissionEngine, PermissionEngine>();
+
+        // 3. Register all Permission Strategies
+        // This allows the PermissionEngine to inject IEnumerable<IPermissionStrategy>
+        builder.Services.AddScoped<IPermissionStrategy, ProjectRoleStrategy>();
+        // (As you add more strategies like ContentAccessStrategy, etc., they go here)
+
 
         // 4. Search Configuration
         builder.Services.AddScoped<IUserContext, UserContext>();
