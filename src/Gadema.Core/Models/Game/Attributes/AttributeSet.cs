@@ -7,8 +7,8 @@ using Gadema.Core.Models.Base.Projects;
 namespace Gadema.Core.Models.Game.Attributes;
 
 /// <summary>
-/// Represents an attribute set for character/class templates.
-/// Used for defining ability systems and character stats.
+/// Represents a collection of attributes grouped together for a specific entity or template (e.g., "Core Stats", "Magic Attributes").
+/// This allows for defining complete attribute systems tailored to different archetypes.
 /// </summary>
 [ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class AttributeSet
@@ -18,37 +18,41 @@ public class AttributeSet
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? MetaInfoId { get; set; }  
-    
-    [ForeignKey("MetaInfoId")]
-    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
-
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+    /// </summary>
+    [Required]
+    public Guid? MetaInfoId { get; set; }
     
     /// <summary>
-    /// ID of the project this attribute set belongs to.
+    /// Navigation property for the attribute set's identity anchor.
+    /// </summary>
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    /// <summary>
+    /// The ID of the project this attribute set belongs to.
     /// </summary>
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
     
     /// <summary>
-    /// Name of the attribute set.
+    /// The human-readable name of the attribute set (e.g., "Core Stats").
     /// </summary>
     [MaxLength(128), Required]
     public string Name { get; set; } = "";
     
     /// <summary>
-    /// Display order for sorting.
+    /// The sort order for displaying the attribute set in UI lists.
     /// </summary>
     public int DisplayOrder { get; set; } = 0;
     
     /// <summary>
-    /// Indicates if the attribute set is active.
+    /// Indicates whether this attribute set is currently active and available for use.
     /// </summary>
     public bool IsActive { get; set; } = true;
 
     /// <summary>
-    /// Navigation property: Project (Cascade delete)
-    /// Foreign key: ProjectId (matches FK in configuration)
+    /// Navigation property for the parent project.
     /// </summary>
     public virtual Project Project { get; set; }
 }

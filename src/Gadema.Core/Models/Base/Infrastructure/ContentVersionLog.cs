@@ -1,46 +1,53 @@
 namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
-/// Represents a content version log for rollback support.
+/// Represents a record of a specific version change for a content item, used to support rollback capabilities.
 /// </summary>
 [ModelDependency(typeof(ContentMetaInfo))]
 public class ContentVersionLog
 {
     /// <summary>
-    /// Unique identifier for the version log entry.
+    /// Gets or sets the unique identifier for this version log entry.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// ID of the content item this version log belongs to.
+    /// Gets or sets the identifier of the associated content item.
     /// </summary>
     [Required]
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property: ContentMetaInfo (Many-to-One)
+    /// <summary>
+    /// Gets or sets the associated content meta information entity.
+    /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo ContentMetaInfo { get; set; }
-    
     /// <summary>
-    /// ID of the user who made the change.
+    /// Gets or sets the identifier of the user who performed this versioned change.
     /// </summary>
     [Required]
     public Guid ChangedByUserId { get; set; }
     
     /// <summary>
-    /// Description of the change.
+    ///
+    /// Gets or sets an optional description explaining what was changed in this version.
     /// </summary>
     [MaxLength(2048)]
     public string? ChangeDescription { get; set; }
     
     /// <summary>
-    /// Version number.
+    /// Gets or sets the sequential version number of the content item.
     /// </summary>
     public int VersionNumber { get; set; }
     
     /// <summary>
-    /// Timestamp when the version was created.
+    /// Gets or sets the timestamp when this version was recorded.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// Gets or sets the identifier of the user who created this log entry.
+    /// </summary>
     public Guid CreatedByUserId { get; set; }
 }
+

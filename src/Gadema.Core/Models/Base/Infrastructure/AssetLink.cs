@@ -1,45 +1,42 @@
 namespace Gadema.Core.Models.Base.Infrastructure;
 
 /// <summary>
-/// Links content items to engine asset systems.
-/// Used for tracking exported assets and cross-referencing with game engines.
+/// Links content items to game engine asset systems, facilitating tracking of exported assets.
 /// </summary>
 [ModelDependency(typeof(ContentMetaInfo))]
 public class AssetLink
 {
     /// <summary>
-    /// Unique identifier for the asset link.
+    /// Gets or sets the unique identifier for this asset link.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
-    /// FK to the content item this asset belongs to (Primary Key).
+    /// Gets or sets the unique identifier of the associated content item.
     /// </summary>
     [Required, Display(Name = "Content Item")]
     public Guid MetaInfoId { get; set; }
 
-    // Navigation property for ContentMetaInfo (Many-to-One)
+    /// <summary>
+    /// Gets or sets the associated content meta information entity.
+    /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo ContentMetaInfo { get; set; }
-
     /// <summary>
-    /// Path in the game engine's asset directory.
+    /// Gets or sets the path within the game engine's asset directory.
     /// </summary>
     [MaxLength(2048)]
     public string EnginePath { get; set; } = "";
 
     /// <summary>
-    /// Optional asset ID from the target game engine (cross-reference).
-    /// Used for tracking changes when importing/exporting between systems.
+    /// Gets or sets the optional unique identifier provided by the target game engine for cross-referencing.
     /// </summary>
     [MaxLength(128)]
     public string? EngineAssetId { get; set; }
 
     /// <summary>
-    /// File type in the engine (e.g., "fbx", "uasset", "unitypackage").
+    /// Gets or sets the file type used in the engine (e.g., "fbx", "uasset", "unitypackage").
     /// </summary>
     [MaxLength(64)]
     public string EngineFileType { get; set; } = "fbx";
-
-
 }

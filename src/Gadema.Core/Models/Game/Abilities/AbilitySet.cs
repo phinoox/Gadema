@@ -7,8 +7,8 @@ using Gadema.Core.Models.Base.Projects;
 namespace Gadema.Core.Models.Game.Abilities;
 
 /// <summary>
-/// Represents an ability set for character/class templates.
-/// Used for defining ability systems and character skills (GAS-like architecture).
+/// Represents a collection of abilities grouped together (e.g., a "Mage Ability Set").
+/// This allows for defining complete skill sets for character classes or templates.
 /// </summary>
 [ModelDependency(typeof(Project), typeof(ContentMetaInfo))]
 public class AbilitySet
@@ -18,47 +18,53 @@ public class AbilitySet
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? MetaInfoId { get; set; }  
-    
-    [ForeignKey("MetaInfoId")]
-    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
-
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+    /// </summary>
+    [Required]
+    public Guid? MetaInfoId { get; set; }
     
     /// <summary>
-    /// Name of the ability set.
+    /// Navigation property for the ability set's identity anchor.
+    /// </summary>
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    /// <summary>
+    /// The human-readable name of the ability set (e.g., "Warrior Skills").
     /// </summary>
     [Required]
     public string Name { get; set; } = "";
     
     /// <summary>
-    /// URL-friendly slug for the ability set (unique).
+    /// A unique, URL-friendly slug for the ability set.
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
-    
     /// <summary>
-    /// Description of the ability set.
+    /// A detailed description of what this set contains and its intended use.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
     
     /// <summary>
-    /// ID of the project this ability set belongs to.
+    /// The ID of the project this ability set belongs to.
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
 
-    // Navigation property for Project (Many-to-One)
+    /// <summary>
+    /// Navigation property for the parent project.
+    /// </summary>
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }
     
     /// <summary>
-    /// Type: 0=Combat, 1=Non-Combat, 2=Hybrid.
+    /// The functional category of the ability set (e.g., Combat, Non-Combat, Hybrid).
     /// </summary>
     public int Type { get; set; }  // Enum: Combat, Non-Combat, Hybrid
     
     /// <summary>
-    /// Indicates if the ability set is active.
+    /// Indicates whether this ability set is currently active and available for use.
     /// </summary>
     public bool IsActive { get; set; } = true;
 }

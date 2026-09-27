@@ -3,32 +3,52 @@ using Gadema.Core.Dtos.Base.Infrastructure;
 namespace Gadema.Core.Dtos.Writing.Narrative;
 
 /// <summary>
-/// DTO for creating a story beat.
+/// Data transfer object for creating a new story beat within a story.
 /// </summary>
-// StoryBeatCreateDto — change StoryOutlineId to StoryId
 public class StoryBeatCreateDto
 {
+/// <summary>
+    /// The metadata required to establish the beat's identity.
+/// </summary>
     [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
-
-    [Required] public Guid StoryId { get; set; }   // ← CHANGED from StoryOutlineId
-
+    /// <summary>
+    /// The unique identifier of the story this beat belongs to.
+    /// </summary>
+    [Required] public Guid StoryId { get; set; }
+    /// <summary>
+    /// A description of the narrative intent or action for this beat.
+    /// </summary>
     [MaxLength(4096)] public string? Description { get; set; }
+
+    /// <summary>
+    /// The sort order index for this beat within its story context.
+    /// </summary>
     public int? OrderIndex { get; set; }
 }
 
-// ... StoryBeatUpdateDto stays the same ...
-
-// StoryBeatResponseDto — change StoryOutlineId to StoryId
+/// <summary>
+/// Represents a single beat in the narrative structure, including its identity and position.
+/// </summary>
 public class StoryBeatResponseDto : MetaInfoResponseBaseDto
 {
-    public Guid StoryId { get; set; }   // ← CHANGED from StoryOutlineId
+    /// <summary>
+    /// The unique identifier of the story this beat belongs to.
+    /// </summary>
+    public Guid StoryId { get; set; }
 
+    /// <summary>
+    /// A description of the beat's narrative intent.
+    /// </summary>
     public string? Description { get; set; }
+
+    /// <summary>
+    /// The sort order index for this beat.
+    /// </summary>
     public int OrderIndex { get; set; }
 }
 
 /// <summary>
-/// DTO for updating a story beat.
+/// Data transfer object for updating an existing story beat.
 /// </summary>
 public class StoryBeatUpdateDto : UpdateRequestDto
 {
@@ -47,7 +67,6 @@ public class StoryBeatUpdateDto : UpdateRequestDto
     /// </summary>
     public int? OrderIndex { get; set; }
 }
-
 
 /// <summary>
 /// List response for story beats.

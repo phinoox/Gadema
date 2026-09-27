@@ -5,10 +5,11 @@
 namespace Gadema.Core.Models.Game.Attributes;
 
 /// <summary>
-/// Class template definition for character scaling systems.
-/// Used in project templates to define base class configurations.
+/// Defines a template for a character class (e.g., "Warrior", "Mage") within the game's scaling system.
+/// This links a class name and description to a specific <see cref="AttributeSet"/>,
+/// establishing the baseline stats and level progression for that archetype.
 /// </summary>
-[ModelDependency(typeof(ContentMetaInfo),typeof(AttributeSet))]
+[ModelDependency(typeof(ContentMetaInfo), typeof(AttributeSet))]
 public class ClassTemplate
 {
     /// <summary>
@@ -16,42 +17,47 @@ public class ClassTemplate
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? MetaInfoId { get; set; }  
-    
-    [ForeignKey("MetaInfoId")]
-    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
-
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+    /// </summary>
+    [Required]
+    public Guid? MetaInfoId { get; set; }
     
     /// <summary>
-    /// Name of the class (e.g., "Warrior", "Mage").
+    /// Navigation property for the class template's identity anchor.
+    /// </summary>
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    /// <summary>
+    /// The human-readable name of the class (e.g., "Warrior", "Mage").
     /// </summary>
     [Required]
     public string Name { get; set; } = "";
-    
     /// <summary>
-    /// Description of the class and its role.
+    /// A detailed description of the class's role, abilities, and flavor.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
     
     /// <summary>
-    /// FK to the attribute set this template belongs to.
+    /// The ID of the attribute set that defines this class's base stats.
     /// </summary>
     [Required, Display(Name = "Attribute Set")]
     public Guid AttributeSetId { get; set; }
 
-    // Navigation property for AttributeSet (Many-to-One)
+    /// <summary>
+    /// Navigation property for the associated attribute set.
+    /// </summary>
     [ForeignKey("AttributeSetId")]
     public virtual AttributeSet AttributeSet { get; set; }
     
     /// <summary>
-    /// Base level for all attributes in this class.
+    /// The starting level applied to all attributes within this class template.
     /// </summary>
     public int BaseLevel { get; set; } = 1;
     
     /// <summary>
-    /// Maximum level this class can reach (nullable).
+    /// The maximum possible level for characters of this class.
     /// </summary>
     public int? MaxLevel { get; set; }
-
 }

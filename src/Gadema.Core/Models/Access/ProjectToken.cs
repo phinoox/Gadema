@@ -13,75 +13,90 @@ namespace Gadema.Core.Models.Access;
 public class ProjectToken
 {
     /// <summary>
-    /// Unique identifier for the project token.
+    /// Gets or sets the unique identifier for the project token.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// ID of the project this token belongs to.
+    /// Gets or sets the unique identifier of the associated project.
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
 
     /// <summary>
-    /// Navigation property: Project that owns this token.
-    /// Foreign key: ProjectId (matches FK in ProjectToken)
+    /// Gets or sets the associated project entity.
     /// </summary>
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; }
     
     /// <summary>
-    /// Name of the token (e.g., "CI/CD Pipeline").
+    /// Gets or sets a descriptive name for the token (e.g., "CI/CD Pipeline").
     /// </summary>
     [MaxLength(128), Required, Display(Name = "Token Name")]
     public string TokenName { get; set; } = "";
     
     /// <summary>
-    /// Hashed token value (SHA256 + salt).
+    /// Gets or sets the hashed token value (e.g., SHA256 + salt).
     /// </summary>
     [MaxLength(512)]
     public string TokenHash { get; set; } = "";
 
-    // <summary>
-    /// The maximum number of requests allowed with this token.
-    /// 0 indicates an unlimited quota.
+    /// <summary>
+    /// Gets or sets the maximum number of requests allowed with this token.
+    /// A value of 0 indicates an unlimited quota.
     /// </summary>
     public int MaxRequests { get; set; } = 0;
 
     /// <summary>
-    /// The number of requests already consumed by this token.
+    /// Gets or sets the number of requests already consumed by this token.
     /// </summary>
     public int CurrentUsage { get; set; } = 0;
     
     /// <summary>
-    /// Indicates if the token is active.
+    /// Gets or sets a value indicating whether the token is active.
     /// </summary>
     public bool IsActive { get; set; } = true;
     
     /// <summary>
-    /// Expiration timestamp (optional).
+    /// Gets or sets the expiration timestamp (optional).
     /// </summary>
     public DateTime? ExpiresAt { get; set; }
     
     /// <summary>
-    /// Permissions JSON array.
+    /// Gets or sets a JSON string representing the permissions granted to this token.
     /// </summary>
     [MaxLength(2048)]
     public string PermissionsJson { get; set; }  // JSON array of permissions
     
     /// <summary>
-    /// Timestamp when the token was created.
+    /// Gets or sets the timestamp when the token was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    
-
 }
 
+/// <summary>
+/// Provides statistics regarding the usage and remaining quota of a project token.
+/// </summary>
 [DependencyIgnore]
 public class TokenUsageStats
 {
+    /// <summary>
+        /// Gets or sets the total number of requests allowed by the token.
+    /// </summary>
     public int TotalUsage { get;  set; }
+
+    /// <summary>
+    /// Gets or sets the remaining number of requests available for this token.
+    /// </summary>
     public int RemainingUsage { get;  set; }
+
+    /// <summary>
+    /// Gets or sets the expiration timestamp as an object.
+    /// </summary>
     public object ExpiresAt { get;  set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the token has expired.
+    /// </summary>
     public bool IsExpired { get;  set; }
 }

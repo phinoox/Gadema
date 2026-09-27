@@ -8,20 +8,21 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
 /// The universal identity anchor for all entities in the GaDeMa universe.
-/// Provides the core "DNA" (Identity) that remains consistent across any scope.
+/// Provides the core "DNA" (Identity) that remains consistent across any scope and serves as a base for specialized meta-information models.
 /// </summary>
 public abstract class BaseMetaInfo
 {
-
     private string _title = "";
+
     /// <summary>
-    /// Unique identifier for the entity.
+    /// Gets or sets the unique identifier for the entity.
     /// </summary>
     [Key]
     public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
-    /// The primary display name of the entity.
+    /// Gets or sets the primary display name of the entity.
+    /// Updating this property automatically regenerates the associated slug.
     /// </summary>
     [Required, MaxLength(128)]
     public string Title { get => _title;
@@ -34,13 +35,13 @@ public abstract class BaseMetaInfo
      } 
 
     /// <summary>
-    /// URL-friendly slug for the entity (unique).
+    /// Gets or sets a unique, URL-friendly slug for the entity.
     /// </summary>
     [Required, MaxLength(128), Column("slug")]
     public string Slug { get; set; } = "";
 
     /// <summary>
-    /// Creation timestamp.
+    /// Gets or sets the timestamp when the entity was first created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
@@ -49,10 +50,24 @@ public abstract class BaseMetaInfo
     /// </summary>
     public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
 
+    /// <summary>
+    /// Gets or sets the timestamp of the last modification to the entity.
+    /// </summary>    public DateTime LastModifiedAt { get; set; } = DateTime.UtcNow;
+
+    /// <summary>
+    /// Gets or sets a brief description of the entity.
+    /// </summary>
     [MaxLength(4096)]
     public string? ShortDesc { get; set; }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the entity is publicly visible.
+    /// </summary>
     public bool IsPublic { get; set; } = false;
 
+    /// <summary>
+    /// Gets or sets a collection of unique identifiers for tags associated with this entity.
+    /// </summary>
     public List<Guid> TagIds { get; set; } = new ();
 }
+

@@ -5,44 +5,50 @@
 namespace Gadema.Core.Models.Game.Attributes;
 
 /// <summary>
-/// Character attributes stored as a child entity.
-/// Uses MetaInfoId and AttributeDefinitionId as composite primary key.
-/// Stores calculated or manually set attribute values per character.
+/// Represents the current concrete values for a specific attribute on a character.
+/// This entity tracks how an <see cref="AttributeDefinition"/> is manifested in a specific
+/// individual, including whether the value is derived from template scaling or manually overridden.
 /// </summary>
 [ModelDependency(typeof(ContentMetaInfo), typeof(AttributeDefinition))]
 public class CharacterAttributes
 {
     /// <summary>
-    /// FK to the content item this belongs to (used as Primary Key).
+    /// The ID of the associated ContentMetaInfo entity (the character's identity anchor).
+    /// Used as part of the composite primary key.
     /// </summary>
     public Guid MetaInfoId { get; set; }
 
+    /// <summary>
+    /// Navigation property for the character's identity anchor.
+    /// </summary>
     // Navigation property for ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo ContentMetaInfo { get; set; }
     
     /// <summary>
-    /// FK to the attribute definition being stored.
+    /// The ID of the attribute definition this value pertains to.
     /// </summary>
     [Required, Display(Name = "Attribute Definition")]
     public Guid AttributeDefinitionId { get; set; }
 
+    /// <summary>
+    /// Navigation property for the attribute definition.
+    /// </summary>
     // Navigation property for AttributeDefinition (Many-to-One)
     [ForeignKey("AttributeDefinitionId")]
     public virtual AttributeDefinition AttributeDefinition { get; set; }
-    
     /// <summary>
-    /// Current value of this attribute (can be null).
+    /// The current numeric value of this specific attribute for the character.
     /// </summary>
     public decimal? CurrentValue { get; set; }
     
     /// <summary>
-    /// Indicates if the value was calculated from the template.
+    /// Indicates if this value was automatically derived from the template's scaling formula.
     /// </summary>
     public bool CalculatedFromTemplate { get; set; } = true;
     
     /// <summary>
-    /// Indicates if a custom formula overrides the default scaling.
+    /// Indicates if a custom manual override has been applied, bypassing the default scaling logic.
     /// </summary>
     public bool OverridesFormula { get; set; } = false;
 }

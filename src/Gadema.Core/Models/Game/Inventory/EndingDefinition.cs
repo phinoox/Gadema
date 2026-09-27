@@ -7,7 +7,8 @@ using Gadema.Core.Models.Base.Projects;
 namespace Gadema.Core.Models.Game.Inventory;
 
 /// <summary>
-/// Represents an ending definition for branching narratives.
+/// Represents a predefined narrative ending within a project.
+/// Defines the criteria (via conditions) and description for how a player/character reaches this outcome.
 /// </summary>
 [ModelDependency(typeof(Project))]
 public class EndingDefinition
@@ -18,40 +19,43 @@ public class EndingDefinition
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// ID of the project this ending belongs to.
+    /// The ID of the project this ending belongs to.
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
     
     /// <summary>
-    /// Title of the ending (e.g., "True Ending", "Bad Ending").
+    /// Navigation property for the parent project.
+    /// </summary>
+    [ForeignKey("ProjectId")]
+    public virtual Project Project { get; set; }
+
+    /// <summary>
+    /// The human-readable title of the ending (e.g., "The Hero's Triumph", "Dark Descent").
     /// </summary>
     [MaxLength(128), Required]
     public string Title { get; set; } = "";
     
     /// <summary>
-    /// URL-friendly slug for the ending (unique).
+    /// A unique, URL-friendly slug for the ending.
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
     
     /// <summary>
-    /// Description of the ending.
+    /// A detailed description of what happens in this ending.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
     
     /// <summary>
-    /// Conditions JSON for triggering this ending.
+    /// JSON representation of the requirements or logic (e.g., flag checks, stats) needed to trigger this ending.
     /// </summary>
     [MaxLength(1024)]
     public string? ConditionsJson { get; set; }  // JSON conditions for triggering ending
     
     /// <summary>
-    /// Indicates if the ending is published.
+    /// Indicates if the ending is officially published and available in the game world.
     /// </summary>
     public bool Published { get; set; } = false;
-
-    [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
 }

@@ -5,7 +5,7 @@
 namespace Gadema.Core.Models.Tasks;
 
 /// <summary>
-/// Represents a comment on a task.
+/// Represents a user-generated comment attached to a <see cref="ProjectTask"/>.
 /// </summary>
 [ModelDependency(typeof(ProjectTask))]
 public class ProjectTaskComment
@@ -16,34 +16,35 @@ public class ProjectTaskComment
     public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
-    /// ID of the task this comment belongs to.
+    /// The ID of the associated project task.
     /// </summary>
     [Required, Display(Name = "Project Task ID")]
     public Guid ProjectTaskId { get; set; }
 
-    // Navigation property: ProjectTask (Many-to-One)
+    /// <summary>
+    /// Navigation property for the parent project task.
+    /// </summary>
     [ForeignKey("ProjectTaskId")]
     public virtual ProjectTask ProjectTask { get; set; }
-
     /// <summary>
-    /// ID of the user who commented.
+    /// The ID of the user who authored this comment.
     /// </summary>
     [Required]
     public Guid CommentedByUserId { get; set; }
 
     /// <summary>
-    /// Comment text (Markdown/HTML).
+    /// The content of the comment, supporting Markdown or HTML formatting.
     /// </summary>
     [MaxLength(4096)]
     public string CommentText { get; set; } = "";
 
     /// <summary>
-    /// Timestamp when the comment was created.
+    /// The timestamp indicating when the comment was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     /// <summary>
-    /// FK to ProjectTask.Id (for junction table FK-as-PK pattern).
+    /// A secondary identifier used for internal linking or junction patterns.
     /// </summary>
     public Guid TaskId { get; set; } = Guid.NewGuid();  // Initialize with Id after object creation
 

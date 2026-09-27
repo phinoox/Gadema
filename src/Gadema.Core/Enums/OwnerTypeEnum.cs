@@ -3,19 +3,20 @@ using System.ComponentModel.DataAnnotations;
 namespace Gadema.Core.Enums;
 
 /// <summary>
-/// Project owner types for polymorphic ownership pattern.
+/// Specifies the type of entity that owns a project in the polymorphic ownership model.
 /// </summary>
 public enum OwnerTypeEnum
 {
     /// <summary>
-    /// Individual user owns the project.
+    /// The project is owned by an individual user.
     /// </summary>
     [Display(Name = "User")]
     User = 0,
 
     /// <summary>
-    /// Team owns the project (shared collaboration).
+    /// The project is owned by a team for collaborative purposes.
     /// </summary>
     [Display(Name = "Team")]
     Team = 1,
 }
+

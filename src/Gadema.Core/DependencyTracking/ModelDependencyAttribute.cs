@@ -16,12 +16,18 @@ public static class RootMarker { }
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public sealed class ModelDependencyAttribute : Attribute
 {
+    /// <summary>
+    /// Gets the list of types that this model depends on.
+    /// </summary>
     public Type[] DependentTypes { get; }
 
     public ModelDependencyAttribute(params Type[] dependentTypes) =>
         DependentTypes = dependentTypes ?? Array.Empty<Type>();
 }
 
+/// <summary>
+/// Indicates that a dependency should be ignored during the resolution process.
+/// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 public sealed class DependencyIgnoreAttribute : Attribute
 {

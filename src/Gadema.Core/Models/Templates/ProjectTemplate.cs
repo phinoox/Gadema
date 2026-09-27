@@ -6,7 +6,7 @@
 namespace Gadema.Core.Models.Templates;
 
 /// <summary>
-/// Represents a project template for quick project creation.
+/// Represents a blueprint for creating new projects, defining preset structures and content requirements.
 /// </summary>
 [ModelDependency(typeof(RootMarker))]
 public class ProjectTemplate
@@ -17,30 +17,30 @@ public class ProjectTemplate
     public Guid Id { get; set; } = Guid.NewGuid();
     
     /// <summary>
-    /// Name of the template (e.g., "Fantasy Book", "Action RPG").
+    /// The human-readable name of the template (e.g., "Fantasy Novel", "RPG Campaign").
     /// </summary>
     [Required]
     public string Name { get; set; } = "";
     
     /// <summary>
-    /// URL-friendly slug for the template (unique).
+    /// A unique, URL-friendly slug for the template.
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
     
     /// <summary>
-    /// Description of the template.
+    /// A detailed description of what this template is designed for and its primary use cases.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
     
     /// <summary>
-    /// Template type: 0=FantasyBook, 1=ActionRPG, 2=SciFi.
+    /// The category of the template, represented as an integer mapping to a template type enum (e.g., FantasyBook, ActionRPG).
     /// </summary>
     public int TemplateType { get; set; }  // Enum: FantasyBook, ActionRPG, SciFi
     
     /// <summary>
-    /// Indicates if the template is active.
+    /// Indicates whether this template is currently available for selection during project creation.
     /// </summary>
     public bool IsActive { get; set; } = true;
 }

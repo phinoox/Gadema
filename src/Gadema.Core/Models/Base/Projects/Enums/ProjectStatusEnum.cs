@@ -5,20 +5,22 @@
 namespace Gadema.Core.Models.Base.Projects.Enums;
 
 /// <summary>
-/// Project status for lifecycle management.
+/// Defines the lifecycle stages of a project.
 /// </summary>
 public enum ProjectStatusEnum
 {
-    /// <summary>Draft</summary>
+    /// <summary>Initial stage; content is being conceptualized or drafted.</summary>
     Draft = 0,
     
-    /// <summary>In Progress</summary>
+    /// <summary>Active development phase; work is ongoing.</summary>
     InProgress = 1,
     
-    /// <summary>Published</summary>
+    /// <summary>The project is complete and available for public viewing/use.</summary>
     Published = 2,
     
-    /// <summary>Archived</summary>
+    /// <summary>The project has been moved to long-term storage or is no longer active.</summary>
     Archived = 3,
+
+    /// <summary>The project has been marked as deleted (soft delete).</summary>
     Deleted = 4
 }

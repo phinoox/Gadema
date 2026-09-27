@@ -1,51 +1,45 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
-namespace Gadema.Core.Dtos.Response;
-
 /// <summary>
-/// Base class for simple API responses with success status and message.
+/// Base class for simple API responses containing a success flag and an optional message.
 /// </summary>
 public class SimpleResponseDto
 {
     /// <summary>
-    /// Whether the operation was successful.
+    /// Indicates whether the operation was successful.
     /// </summary>
     [Display(Name = "Success")]
     public bool Success { get; set; } = true;
 
     /// <summary>
-    /// Message describing the result.
+    /// A message describing the outcome of the operation.
     /// </summary>
     [MaxLength(1024)]
     public string? Message { get; set; }
 }
 
 /// <summary>
-/// Simple success response (no message).
+/// Represents a successful operation with no additional descriptive message required.
 /// </summary>
 public class SuccessResponseDto : SimpleResponseDto
 {
     /// <summary>
-    /// Indicates successful operation.
+    /// Indicates that the operation was successful.
     /// </summary>
-    public bool Success => true;
+    public new bool Success => true;
 }
 
 /// <summary>
-/// Simple error response.
+/// Represents an error response containing a descriptive message and an HTTP status code.
 /// </summary>
 public class ErrorResponseDto : SimpleResponseDto
 {
     /// <summary>
-    /// Error message.
+    /// The specific error message describing what went wrong.
     /// </summary>
     [Display(Name = "Message")]
     public new string? Message { get; set; }
 
     /// <summary>
-    /// HTTP status code.
+    /// The HTTP status code associated with the error.
     /// </summary>
     public int StatusCode { get; set; }
 }

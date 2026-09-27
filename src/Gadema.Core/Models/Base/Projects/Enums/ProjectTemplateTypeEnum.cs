@@ -1,49 +1,50 @@
 namespace Gadema.Core.Models.Base.Projects.Enums;
 
 /// <summary>
-/// Project template types for standardized project structures.
+/// Defines the available archetypes for project templates to provide standardized starting structures.
 /// </summary>
 public enum ProjectTemplateTypeEnum
 {
     /// <summary>
-    /// Fantasy book-style narrative (traditional prose format).
+    /// A template optimized for traditional fantasy prose and storytelling.
     /// </summary>
     [Display(Name = "Fantasy Book")]
     FantasyBook = 0,
 
     /// <summary>
-    /// Action-oriented RPG project template.
+    /// A template focused on game mechanics, combat, and RPG-style progression.
     /// </summary>
     [Display(Name = "Action RPG")]
     ActionRPG = 1,
 
     /// <summary>
-    /// Science fiction themed project template.
+    /// A template centered around science fiction themes and technology.
     /// </summary>
     [Display(Name = "Sci-Fi")]
     SciFi = 2,
 
     /// <summary>
-    /// Horror/thriller narrative template.
+    /// A template designed for suspenseful or frightening narratives.
     /// </summary>
     [Display(Name = "Horror/Thriller")]
     HorrorThriller = 3,
 
     /// <summary>
-    /// Romance-focused project template.
+    /// A template focused on interpersonal relationships and emotional arcs.
     /// </summary>
     [Display(Name = "Romance")]
     Romance = 4,
 
     /// <summary>
-    /// Mystery/investigation narrative template.
+    /// A template centered around investigation and suspenseful discovery.
     /// </summary>
     [Display(Name = "Mystery")]
     Mystery = 5,
 
     /// <summary>
-    /// Horror-focused project template.
+    /// A dedicated horror-focused narrative structure.
     /// </summary>
     [Display(Name = "Horror")]
     Horror = 6,
 }
+

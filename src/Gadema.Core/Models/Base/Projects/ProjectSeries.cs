@@ -7,8 +7,9 @@ namespace Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a collection of related projects (e.g., a book series or game franchise).
+/// A series acts as the highest-level container in the hierarchy, anchoring multiple projects.
 /// </summary>
-[ModelDependency(typeof(ProjectSeriesMetaInfo))] // Added MetaInfo dependency
+[ModelDependency(typeof(ProjectSeriesMetaInfo))]
 public class ProjectSeries
 {
     /// <summary>
@@ -17,13 +18,18 @@ public class ProjectSeries
     public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
-    /// Collection of projects belonging to this series.
+    /// The ID of the associated identity anchor for the series.
     /// </summary>
-    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
-
-    public Guid ProjectSeriesMetaInfoId {get;set;}
+    public Guid ProjectSeriesMetaInfoId { get; set; }
     
-    // New Relationship to the identity anchor
+    /// <summary>
+    /// Navigation property for the series' identity anchor.
+    /// </summary>
     [ForeignKey("ProjectSeriesMetaInfoId")]
     public virtual ProjectSeriesMetaInfo ProjectSeriesMetaInfo { get; set; } = null!;
+
+    /// <summary>
+    /// Collection of projects that belong to this series.
+    /// </summary>
+    public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 }

@@ -5,75 +5,76 @@
 namespace Gadema.Core.Models.Base.Projects.Enums;
 
 /// <summary>
-/// Enum for primary project format. Determines default UI emphasis and workspace layout.
+/// Defines the primary format of a project, which dictates default UI layouts and workspace focus.
 /// </summary>
 public enum PrimaryFormatEnum
 {
-    /// <summary>Book or novel format</summary>
+    /// <summary>Standard text-based book or novel layout.</summary>
     [Display(Name = "Book")]
     Book = 0,
     
-    /// <summary>Manga or comic format</summary>
+    /// <summary>Panel-based layout optimized for manga or comic formats.</summary>
     [Display(Name = "Manga")]
     Manga = 1,
     
-    /// <summary>Interactive game format</summary>
+    /// <summary>Interactive environment layout focused on game mechanics and playability.</summary>
     [Display(Name = "Game")]
     Game = 2,
     
-    /// <summary>Hybrid format (e.g., visual novel, interactive fiction)</summary>
+    /// <summary>Blended layouts for visual novels or interactive fiction.</summary>
     [Display(Name = "Hybrid")]
     Hybrid = 3
 }
 
 /// <summary>
-/// Enum for project tone. Influences pacing and emotional beat suggestions.
+/// Defines the overarching tone of a project, influencing pacing and narrative beat suggestions.
 /// </summary>
 public enum ToneEnum
 {
-    /// <summary>Neutral or undefined tone</summary>
+    /// <summary>A neutral or baseline tone.</summary>
     [Display(Name = "Neutral")]
     Neutral = 0,
     
-    /// <summary>Dark, serious, or grim tone</summary>
+    /// <summary>Serious, grim, or dark narrative atmosphere.</summary>
     [Display(Name = "Dark")]
     Dark = 1,
     
-    /// <summary>Light, uplifting, or positive tone</summary>
+    /// <summary>Positive, uplifting, or bright tone.</summary>
     [Display(Name = "Light")]
     Light = 2,
     
-    /// <summary>Humorous or comedic tone</summary>
+    /// <summary>Comedic or lighthearted atmosphere.</summary>
     [Display(Name = "Humorous")]
     Humorous = 3,
     
-    /// <summary>Tense or suspenseful tone</summary>
+    /// <summary>Suspenseful, high-stakes, or anxiety-inducing tone.</summary>
     [Display(Name = "Tense")]
     Tense = 4,
     
-    /// <summary>Romantic or emotional tone</summary>
+    /// <summary>Emotional or romantic narrative atmosphere.</summary>
     [Display(Name = "Romantic")]
     Romantic = 5
 }
 
 /// <summary>
-/// Enum for target audience. Influences content warnings and complexity suggestions.
+/// Defines the target demographic for a project, influencing content warnings and complexity levels.
 /// </summary>
 public enum AudienceEnum
 {
-    /// <summary>All ages</summary>
+    /// <summary>General audience, suitable for all ages.</summary>
     [Display(Name = "All Ages")]
     AllAges = 0,
     
-    /// <summary>Children (under 12)</summary>
+    /// <summary>Content tailored for children (typically under 12).</summary>
     [Display(Name = "Children")]
     Children = 1,
     
-    /// <summary>Teenagers (12-17)</summary>
+    /// <summary>Content tailored for teenagers (12-17).</summary>
     [Display(Name = "Teen")]
     Teen = 2,
     
-    /// <summary>Adults (18+)</summary>
+    /// <summary>Mature content intended for adults (18+).</summary>
     [Display(Name = "Adult")]
     Adult = 3
 }
+

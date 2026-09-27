@@ -1,50 +1,65 @@
 namespace Gadema.Core.Models.Writing.Characters;
 
 /// <summary>
-/// Entry point for all character information. Links ContentMetaInfo (identity/searching) with:
-/// - CharacterStoryProfile (static backstory/traits, one-to-one)
-/// - CharacterState (dynamic story state, one-to-many)
-/// This is the glue between story and game-related character data.
+/// Represents the primary entity for a character within the narrative structure.
+/// Acts as an aggregator that links identity (via <see cref="ContentMetaInfo"/>),
+/// static backstory (via <see cref="CharacterStoryProfile"/>), and dynamic story progression (via <see cref="CharacterState"/>).
 /// </summary>
 [ModelDependency(typeof(ContentMetaInfo))]
 public class Character
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-    
     /// <summary>
-    /// Links to ContentMetaInfo for the character's identity (title = character name, slug, description).
-    /// Enables searching and filtering by character name.
+    /// Unique identifier for the character.
+    /// </summary>
+    public Guid Id { get; set; } = Guid.NewGuid();
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
     /// </summary>
     [Required] public Guid MetaInfoId { get; set; }
     
+    /// <summary>
+    /// Navigation property for the character's identity anchor.
+    /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
+    /// <summary>
+    /// The full legal or formal name of the character.
+    /// </summary>
     [Required, MaxLength(128)]
     public string Name { get; set; } = "";
     
-    [MaxLength(256)]
-    public string? NickName { get; set; }    
-    
     /// <summary>
-    /// Static backstory and personality information (one-to-one).
+    /// An optional alias, moniker, or commonly used name for the character.
+    /// </summary>
+    [MaxLength(256)]
+    public string? NickName { get; set; }
+
+    /// <summary>
+    /// The ID of the character's static story profile (backstory, traits).
     /// </summary>
     public Guid? StoryProfileId { get; set; }
     
+    /// <summary>
+    /// Navigation property for the character's permanent backstory and personality details.
+    /// </summary>
     [ForeignKey("StoryProfileId")]
     public virtual CharacterStoryProfile? StoryProfile { get; set; }
     
     /// <summary>
-    /// The character's current (latest) state. Can be null if no states have been created yet.
+    /// The ID of the character's most recent dynamic state in the narrative.
     /// </summary>
     public Guid? CurrentStateId { get; set; }
     
+    /// <summary>
+    /// Navigation property for the character's current status and attributes within the story.
+    /// </summary>
     [ForeignKey("CurrentStateId")]
     public virtual CharacterState? CurrentState { get; set; }
     
     /// <summary>
-    /// Collection of all character states over time.
-    /// Each state represents the character at a different point in the story (chapter/arc).
+    /// A collection of all historical states representing the character's evolution throughout the narrative.
     /// </summary>
     public virtual ICollection<CharacterState> States { get; set; } = new List<CharacterState>();
 }
+

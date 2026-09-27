@@ -5,19 +5,19 @@
 namespace Gadema.Core.Enums;
 
 /// <summary>
-/// Outline status for story outlines.
+/// Defines the various stages of a story outline in its lifecycle.
 /// </summary>
 public enum OutlineStatusEnum
 {
-    /// <summary>Draft Outline</summary>
+    /// <summary>The outline is currently being drafted and is not yet complete.</summary>
     DraftOutline = 0,
     
-    /// <summary>Finalized</summary>
+    /// <summary>The outline has been reviewed and finalized.</summary>
     Finalized = 1,
     
-    /// <summary>Published</summary>
+    /// <summary>The outline has been published for public or wider viewing.</summary>
     Published = 2,
     
-    /// <summary>Archived</summary>
+    /// <summary>The outline has been moved to an archive state.</summary>
     Archived = 3
 }

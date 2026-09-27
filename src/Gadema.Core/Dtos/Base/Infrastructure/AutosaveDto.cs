@@ -4,7 +4,7 @@
 namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
-/// DTO for auto-saving a content item snapshot.
+/// Data transfer object used to trigger an automatic save of a content item's current state.
 /// </summary>
 public class AutosaveDto
 {

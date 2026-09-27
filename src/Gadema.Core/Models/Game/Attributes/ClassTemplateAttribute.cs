@@ -5,56 +5,66 @@
 namespace Gadema.Core.Models.Game.Attributes;
 
 /// <summary>
-/// Attribute definition for a specific class template.
-/// Allows per-class overrides of base attribute formulas.
+/// Represents a specific attribute configuration for a <see cref="ClassTemplate"/>.
+/// This allows individual classes to have unique scaling formulas or value constraints
+/// for attributes defined in their parent <see cref="AttributeSet"/>.
 /// </summary>
-[ModelDependency(typeof(ClassTemplate),typeof(AttributeDefinition))]
+[ModelDependency(typeof(ClassTemplate), typeof(AttributeDefinition))]
 public class ClassTemplateAttribute
 {
     /// <summary>
-    /// Unique identifier for the template attribute definition.
+    /// Unique identifier for the template attribute configuration.
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? MetaInfoId { get; set; }  
-    
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+    /// </summary>
+    [Required]
+    public Guid? MetaInfoId { get; set; }
+
+    /// <summary>
+    /// Navigation property for the template attribute's identity anchor.
+    /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
-
-    
     /// <summary>
-    /// FK to the parent class template (composite key with AttributeSetId).
+    /// The ID of the parent class template this configuration applies to.
     /// </summary>
     [Required, Display(Name = "Class Template")]
     public Guid ClassTemplateId { get; set; }
-
-    // Navigation property for ClassTemplate (Many-to-One)
+    /// <summary>
+    /// Navigation property for the parent class template.
+    /// </summary>
     [ForeignKey("ClassTemplateId")]
     public virtual ClassTemplate ClassTemplate { get; set; }
     
     /// <summary>
-    /// FK to the attribute definition this applies to.
+    /// The ID of the attribute definition this override pertains to.
     /// </summary>
     [Required, Display(Name = "Attribute Definition")]
     public Guid AttributeDefinitionId { get; set; }
 
-    // Navigation property for AttributeDefinition (Many-to-One)
+    /// <summary>
+    /// Navigation property for the associated attribute definition.
+    /// </summary>
     [ForeignKey("AttributeDefinitionId")]
     public virtual AttributeDefinition AttributeDefinition { get; set; }
     
     /// <summary>
-    /// Optional formula override for this specific attribute in this class.
+    /// An optional mathematical formula that overrides the default scaling logic
+    /// specifically for this class and attribute combination.
     /// </summary>
     [MaxLength(4096)]
     public string? OverrideFormulaExpression { get; set; }
     
     /// <summary>
-    /// Default minimum value for the attribute (for template defaults).
+    /// The minimum possible value for this attribute when used within this specific class template.
     /// </summary>
     public decimal? DefaultMinValue { get; set; }
     
     /// <summary>
-    /// Default maximum value for the attribute (for template defaults).
+    /// The maximum possible value for this attribute when used within this specific class template.
     /// </summary>
     public decimal? DefaultMaxValue { get; set; }
 

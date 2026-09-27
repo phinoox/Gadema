@@ -4,13 +4,10 @@
 namespace Gadema.Core.Dtos.Base.Infrastructure;
 
 /// <summary>
-/// DTO for uploading media file to content item.
+/// Data transfer object used to upload a media file to a content item.
 /// </summary>
 public class UploadMediaDto
 {
-    /// <summary>
-    /// Media file to upload (max 100MB).
-    /// </summary>
-    //[Required]
-   // public IFormFile File { get; set; } = null!;
+    // Note: The actual file stream is typically handled via multipart/form-data in the controller,
+    // not directly as a property of this DTO in many API implementations.
 }

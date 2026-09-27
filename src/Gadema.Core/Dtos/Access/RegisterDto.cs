@@ -2,12 +2,12 @@
 namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
-/// DTO for user registration with email/password authentication.
+/// Data transfer object for registering a new user with email and password authentication.
 /// </summary>
 public class RegisterDto
 {
     /// <summary>
-    /// Email address (must be valid format, unique in system).
+    /// The unique email address to be used for the account.
     /// </summary>
     [Required(ErrorMessage = "Email is required")]
     [EmailAddress(ErrorMessage = "Invalid email address")]
@@ -15,7 +15,7 @@ public class RegisterDto
     public string Email { get; set; } = "";
 
     /// <summary>
-    /// Password (min 8 chars, must contain uppercase, lowercase, number, special char).
+    /// The password for the new account, requiring complexity (uppercase, lowercase, number, and special character).
     /// </summary>
     [Required(ErrorMessage = "Password is required")]
     [StringLength(128, MinimumLength = 8, ErrorMessage = "Password must be at least 8 characters long.")]
@@ -24,14 +24,14 @@ public class RegisterDto
     public string Password { get; set; } = "";
 
     /// <summary>
-    /// Confirm password (must match Password).
+    /// Confirmation of the password to ensure accuracy.
     /// </summary>
     [Required(ErrorMessage = "Confirm password is required")]
     [Compare("Password", ErrorMessage = "Passwords do not match")]
     public string? PasswordConfirmation { get; set; } = null!;
 
     /// <summary>
-    /// Full name of the user.
+    /// The full name of the user for their profile.
     /// </summary>
     [Required(ErrorMessage = "Name is required")]
     [MaxLength(128)]

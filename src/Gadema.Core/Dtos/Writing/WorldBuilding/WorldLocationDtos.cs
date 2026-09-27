@@ -4,69 +4,89 @@ using Gadema.Core.Models.Writing.WorldBuilding;
 namespace Gadema.Core.Dtos.Writing.WorldBuilding;
 
 /// <summary>
-/// DTO for creating a world location.
+/// Data transfer object for creating a new world location (e.g., Country, City).
 /// </summary>
 public class WorldLocationCreateDto
 {
+    /// <summary>
+    /// The metadata required to establish the location's identity.
+    /// </summary>
     [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
     
     /// <summary>
-    /// Type of the location (Country, Region, City, etc.).
+    /// The type of the location (e.g., Country, Region, City).
     /// </summary>
     [Required] public LocationType LocationType { get; set; }
-
     /// <summary>
-    /// ID of the parent location. Null for top-level locations (e.g., countries).
+    /// The unique identifier of the parent location. Null for top-level locations.
     /// </summary>
     public Guid? ParentId { get; set; }
 
     /// <summary>
-    /// Description of the location's significance.
+    /// A description of the location's significance or features.
     /// </summary>
     [MaxLength(4096)] public string? Description { get; set; }
 }
 
 /// <summary>
-/// DTO for updating a world location.
+/// Data transfer object for updating an existing world location.
 /// </summary>
 public class WorldLocationUpdateDto : UpdateRequestDto
 {
-    /// <summary>
-    /// ContentMetaInfo fields (nullable — omit to keep current).
-    /// </summary>
+/// <summary>
+    /// The identity payload used by the sync strategy to update meta-information.
+/// </summary>
     public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
     /// <summary>
-    /// Type of the location.
+    /// The updated type of the location.
     /// </summary>
     public LocationType? LocationType { get; set; }
 
     /// <summary>
-    /// ID of the parent location. Null for top-level locations.
+    /// The updated parent location identifier.
     /// </summary>
     public Guid? ParentId { get; set; }
 
     /// <summary>
-    /// Description of the location's significance.
+    /// The updated description of the location.
     /// </summary>
     [MaxLength(4096)] public string? Description { get; set; }
 }
 
 /// <summary>
-/// Response DTO for a world location. Inherits ContentMetaInfo state (Id, MetaInfoId, MetaInfoTitle, Status, IsPublic, CreatedAt, LastModifiedAt).
+/// Represents a world location, including its type and hierarchical position.
 /// </summary>
 public class WorldLocationResponseDto : MetaInfoResponseBaseDto
 {
+    /// <summary>
+    /// The type of the location.
+    /// </summary>
     public LocationType LocationType { get; set; }
+
+    /// <summary>
+    /// The unique identifier of the parent location.
+    /// </summary>
     public Guid? ParentId { get; set; }
+
+    /// <summary>
+    /// A description of the location's significance.
+    /// </summary>
     public string? Description { get; set; }
 }
 
 /// <summary>
-/// List response for world locations.
+/// A collection of world locations, typically used for paginated lists.
 /// </summary>
 public class WorldLocationListResponseDto
 {
+    /// <summary>
+    /// The list of retrieved world locations.
+    /// </summary>
     public IEnumerable<WorldLocationResponseDto> Items { get; set; } = Enumerable.Empty<WorldLocationResponseDto>();
+
+    /// <summary>
+    /// Total number of locations found across all pages.
+    /// </summary>
     public int TotalCount { get; set; }
 }

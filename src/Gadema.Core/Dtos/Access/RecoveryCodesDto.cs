@@ -4,14 +4,18 @@
 namespace Gadema.Core.Dtos.Access;
 
 /// <summary>
-/// DTO for viewing recovery codes.
+/// Data transfer object for requesting and viewing user recovery codes.
 /// </summary>
 public class RecoveryCodesDto
 {
     /// <summary>
-    /// Format of recovery codes: "csv" (default) or "text".
+    /// The preferred format of the recovery codes (e.g., "csv" or "text").
     /// </summary>
     [MaxLength(16)]
     public string? Format { get; set; } = "csv";
+
+    /// <summary>
+    /// The unique identifier of the user these codes belong to.
+    /// </summary>
     public Guid? UserId { get; set; }
 }

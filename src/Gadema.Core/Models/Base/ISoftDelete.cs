@@ -1,12 +1,14 @@
 namespace Gadema.Core.Models.Base;
 
 /// <summary>
-/// Interface to mark an entity as supporting soft deletion.
+/// Defines a contract for entities that support soft deletion, allowing them to be
+/// marked as deleted without being physically removed from the database.
 /// </summary>
 public interface ISoftDelete
 {
     /// <summary>
-    /// Indicates whether the entity has been deleted.
+    /// Gets or sets a value indicating whether the entity has been logically deleted.
     /// </summary>
     bool IsDeleted { get; set; }
 }
+

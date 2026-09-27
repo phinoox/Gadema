@@ -5,28 +5,20 @@
 namespace Gadema.Core.Enums;
 
 /// <summary>
-/// Export formats available for exporting content items to game engines.
-/// Supports JSON, CSV, XML GDD, and PDF output formats.
+/// Defines the supported output formats for exporting content from GaDeMa to external game engines or tools.
 /// </summary>
 public enum ExportFormatEnum
 {
-    /// <summary>
-    /// JSON format for structured data export (Unity/Unreal)
-    /// </summary>
+    /// <summary>Structured JSON format, ideal for importing into Unity or Unreal Engine databases.</summary>
     Json,
     
-    /// <summary>
-    /// CSV format for spreadsheet/data analysis export
-    /// </summary>
+    /// <summary>Comma-Separated Values (CSV) format, suitable for spreadsheet-based data analysis and balancing.</summary>
     Csv,
     
-    /// <summary>
-    /// XML format for Game Design Document structure (GDD standard)
-    /// </summary>
+    /// <summary>XML format following Game Design Document (GDD) standards for structured documentation.</summary>
     XmlGdd,
     
-    /// <summary>
-    /// PDF format for documentation and presentation export
-    /// </summary>
+    /// <summary>PDF format for high-quality document presentation and offline reading.</summary>
     Pdf
 }
+

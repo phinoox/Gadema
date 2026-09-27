@@ -1,42 +1,40 @@
-namespace Gadema.Core.Dtos.Writing.DialogueTrees;
-
 /// <summary>
-/// DTO for updating a dialogue branch.
+/// Data transfer object used to update an existing dialogue branch's properties and metadata.
 /// </summary>
 public class UpdateBranchDto
 {
     /// <summary>
-    /// ID of the project this branch belongs to.
+    /// The unique identifier of the project this branch belongs to.
     /// </summary>
     [Required]
     public Guid ProjectId { get; set; }
 
     /// <summary>
-    /// Title of the dialogue branch.
+    /// The updated title of the dialogue branch.
     /// </summary>
     [MaxLength(128)]
     public string? Title { get; set; }
 
     /// <summary>
-    /// URL-friendly slug for the branch.
+    /// The updated URL-friendly slug for the branch.
     /// </summary>
     [MaxLength(128)]
     public string? Slug { get; set; }
 
     /// <summary>
-    /// Image URI for visual node representation.
+    /// The updated image URI for visual node representation.
     /// </summary>
     [MaxLength(1024)]
     public string? VisualNodeImageUri { get; set; }
 
     /// <summary>
-    /// Character icon URI for this branch.
+    /// The updated character icon URI for this branch.
     /// </summary>
     [MaxLength(512)]
     public string? CharacterIconUri { get; set; }
 
     /// <summary>
-    /// Order index for sorting branches.
+    /// The updated sort order index for the branch.
     /// </summary>
     public int? OrderIndex { get; set; }
 }

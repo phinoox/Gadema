@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Gadema.Core.Enums;
 
 /// <summary>
-/// Project template types for standardized project structures.
+/// Specifies the type of template used to initialize a new project.
 /// </summary>
 public enum ProjectTemplateTypeEnum
 {
@@ -49,3 +49,4 @@ public enum ProjectTemplateTypeEnum
     [Display(Name = "Horror")]
     Horror = 6,
 }
+

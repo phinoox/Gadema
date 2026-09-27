@@ -3,17 +3,24 @@ using Gadema.Core.Utils;
 namespace Gadema.Core.Models.Base.MetaInfo;
 
 /// <summary>
-/// A universal tag used for categorization and discovery across the entire system.
+/// Represents a universal tag used for categorization and discovery across the entire system.
+/// Tags can be applied to various content types via relationship entities.
 /// </summary>
 [ModelDependency(typeof(RootMarker))]
 public class MetaTag
 {
+    /// <summary>
+    /// Unique identifier for this tag.
+    /// </summary>
     [Key]
     public Guid Id { get; set; } = Guid.NewGuid();
 
-
     private string _name = "";
 
+    /// <summary>
+    /// The human-readable name of the tag (e.g., "Fantasy", "High Stakes").
+    /// Changing the name automatically updates the slug.
+    /// </summary>
     [Required, MaxLength(128)]
     public string Name
     {
@@ -26,8 +33,9 @@ public class MetaTag
         }
     }
 
-
+    /// <summary>
+    /// A unique, URL-friendly slug derived from the tag's name.
+    /// </summary>
         [Required, MaxLength(128), Column("slug")]
         public string Slug { get; set; } = "";
-
 }

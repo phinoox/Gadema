@@ -2,6 +2,7 @@
 using Gadema.Core.Enums;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
+using Gadema.Core.Utils;
 // Gadema.Core - Shared Domain Models & Interfaces
 // =============================================================================
 

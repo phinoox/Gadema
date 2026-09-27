@@ -5,13 +5,13 @@
 namespace Gadema.Core.Models.Base.Enums;
 
 /// <summary>
-/// View mode for content items (PrivateWriting vs Presentation).
+/// Defines the viewing mode for content items, distinguishing between administrative and public views.
 /// </summary>
 public enum ViewModeEnum
 {
-    /// <summary>Private Writing (Admin interface)</summary>
+    /// <summary>The private writing/editing view, intended for administrators and creators.</summary>
     PrivateWriting = 0,
     
-    /// <summary>Presentation (Public view)</summary>
+    /// <summary>The presentation view, intended for public viewing or sharing.</summary>
     Presentation = 1
 }

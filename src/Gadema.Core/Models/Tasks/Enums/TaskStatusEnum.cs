@@ -5,19 +5,19 @@
 namespace Gadema.Core.Models.Tasks.Enums;
 
 /// <summary>
-/// Task status for workflow management.
+/// Defines the lifecycle stages of a task within a project workflow.
 /// </summary>
 public enum TaskStatusEnum
 {
-    /// <summary>Backlog</summary>
+    /// <summary>The task is identified but not yet scheduled or started.</summary>
     Backlog = 0,
     
-    /// <summary>In Progress</summary>
+    /// <summary>The task is currently being actively worked on.</summary>
     InProgress = 1,
     
-    /// <summary>Review</summary>
+    /// <summary>The work is completed and awaiting verification or feedback.</summary>
     Review = 2,
     
-    /// <summary>Done</summary>
+    /// <summary>The task has been successfully completed and verified.</summary>
     Done = 3
 }

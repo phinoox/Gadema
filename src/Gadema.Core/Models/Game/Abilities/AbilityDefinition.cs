@@ -5,8 +5,8 @@
 namespace Gadema.Core.Models.Game.Abilities;
 
 /// <summary>
-/// Represents an ability definition for character/class templates.
-/// Used for defining individual abilities with scaling formulas (GAS-like architecture).
+/// Represents a blueprint for an individual ability (e.g., "Fireball", "Shield Bash").
+/// Defines the core mechanics, including type, resource cost, cooldowns, and scaling logic.
 /// </summary>
 [ModelDependency(typeof(ContentMetaInfo))]
 public class AbilityDefinition
@@ -16,58 +16,60 @@ public class AbilityDefinition
     /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
-    public Guid? MetaInfoId { get; set; }  
-    
-    [ForeignKey("MetaInfoId")]
-    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
-
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+    /// </summary>
+    [Required]
+    public Guid? MetaInfoId { get; set; }
     
     /// <summary>
-    /// Name of the ability (e.g., "Fireball", "Heal").
+    /// Navigation property for the ability's identity anchor.
+    /// </summary>
+    [ForeignKey("MetaInfoId")]
+    public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    /// <summary>
+    /// The human-readable name of the ability.
     /// </summary>
     [Required]
     public string Name { get; set; } = "";
     
     /// <summary>
-    /// URL-friendly slug for the ability (unique).
+    /// A unique, URL-friendly slug for the ability.
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
-    
     /// <summary>
-    /// Description of the ability.
+    /// A detailed description of what the ability does and its narrative flavor.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
     
     /// <summary>
-    /// Type: 0=Attack, 1=Defense, 2=Buff, 3=Debuff.
+    /// The functional type of the ability (e.g., Attack, Defense, Buff, Debuff).
     /// </summary>
     public int AbilityType { get; set; }  // Enum: Attack, Defense, Buff, Debuff
-    
     /// <summary>
-    /// Cooldown in seconds.
+    /// The cooldown duration in seconds before the ability can be used again.
     /// </summary>
     public decimal? CooldownSeconds { get; set; }
     
     /// <summary>
-    /// Resource cost (e.g., mana, energy).
+    /// The resource cost (e.g., mana, stamina) required to activate the ability.
     /// </summary>
     public decimal? ResourceCost { get; set; }
-    
     /// <summary>
-    /// Maximum level for the ability.
+    /// The maximum level this ability can reach through progression.
     /// </summary>
     public int? MaxLevel { get; set; }
     
     /// <summary>
-    /// Scaling formula JSON per level.
+    /// A JSON representation of the scaling formulas used to determine power/effect per level.
     /// </summary>
     [MaxLength(1024)]
     public string? ScalingFormulaJson { get; set; }  // JSON for scaling per level
     
     /// <summary>
-    /// Required flag condition.
+    /// An optional flag-based condition that must be met to use this ability (e.g., "HasMagic").
     /// </summary>
     [MaxLength(512)]
     public string? RequiresFlagCondition { get; set; }

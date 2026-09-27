@@ -4,26 +4,38 @@
 namespace Gadema.Core.Models.Identity;
 
 /// <summary>
-/// A specific instance of an identity type (e.g., "Human" for the "Race" definition).
-/// This is a component that belongs to an IdentityDefinition anchor.
+/// Represents a specific option within an identity category (e.g., "Human" within the "Race" definition).
+/// This entity serves as a selectable value for assigning traits to characters or other content items.
 /// </summary>
 [ModelDependency(typeof(IdentityDefinition), typeof(ContentMetaInfo))]
 public class IdentityValue
 {
+    /// <summary>
+    /// Unique identifier for the identity value.
+    /// </summary>
     public Guid Id { get; set; } = Guid.NewGuid();
 
     // --- Identity Anchor (The "Soul") ---
+    /// <summary>
+    /// The ID of the associated ContentMetaInfo entity acting as the anchor.
+    /// </summary>
     [Required]
     public Guid MetaInfoId { get; set; }
-
+    /// <summary>
+    /// Navigation property for the content meta information anchor.
+    /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
 
     // --- Domain Properties (The "Body") ---
-
+    /// <summary>
+    /// The ID of the identity definition this value belongs to.
+    /// </summary>
     [Required]
     public Guid IdentityDefinitionId { get; set; }
-
+    /// <summary>
+    /// Navigation property for the parent identity definition.
+    /// </summary>
     [ForeignKey("IdentityDefinitionId")]
     public virtual IdentityDefinition IdentityDefinition { get; set; }
 
@@ -34,24 +46,24 @@ public class IdentityValue
     public string Name { get; set; } = "";
 
     /// <summary>
-    /// URL-friendly slug for the value.
+    /// A URL-friendly slug for the value, used in routing and lookups.
     /// </summary>
     [MaxLength(128), Column("slug")]
     public string Slug { get; set; } = "";
 
     /// <summary>
-    /// Optional description of this specific value.
+    /// An optional detailed description of this specific identity value.
     /// </summary>
     [MaxLength(4096)]
     public string? Description { get; set; }
 
     /// <summary>
-    /// The order in which this value appears in lists.
+    /// The sort order for this value within its parent definition's list.
     /// </summary>
     public int OrderIndex { get; set; } = 0;
 
     /// <summary>
-    /// Indicates if this is the default selection for this identity type.
+    /// Indicates if this is the default selection when no other value is specified.
     /// </summary>
     public bool IsDefault { get; set; } = false;
 }

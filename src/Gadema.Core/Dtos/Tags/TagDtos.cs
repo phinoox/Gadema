@@ -1,149 +1,154 @@
-// =============================================================================
-using Gadema.Core.Dtos.Base.Infrastructure;
-
-namespace Gadema.Core.Dtos.Tags;
-
 /// <summary>
-/// DTO for creating a tag on a content item.
+/// Data transfer object for creating a new tag on a specific content item.
 /// </summary>
 public class TagCreateDto
 {
     /// <summary>
-    /// ContentMetaInfo data for the tag's identity (used as the tag's own identity).
+    /// The metadata required to establish the tag's identity (e.g., title, slug).
     /// </summary>
     [Required] public ContentMetaInfoCreateData CreateData { get; set; } = new();
 
     /// <summary>
-    /// ID of the content item this tag is being attached to.
+    /// The unique identifier of the content item this tag is being attached to.
     /// </summary>
     [Required] public Guid ContentItemId { get; set; }
 
     /// <summary>
-    /// The tag name (e.g., "Dragon", "Hero", "SideQuest").
+    /// The display name for the tag (e.g., "Dragon", "Hero"). 
     /// Must be unique within the project for a given content item.
     /// </summary>
     [Required, MaxLength(128)] public string TagName { get; set; } = "";
 
     /// <summary>
-    /// URL-friendly slug for the tag (auto-generated from Name if null).
+    /// A URL-friendly slug for the tag (auto-generated from Name if null).
     /// </summary>
     [MaxLength(128)] public string? Slug { get; set; }
 
     /// <summary>
-    /// Hex color code for visual representation.
-    /// E.g., "#FF5733" or null for default color.
+    /// Hexadecimal color code for visual representation (e.g., "#FF5733").
     /// </summary>
     [MaxLength(8)] public string? ColorHex { get; set; }
 }
 
 /// <summary>
-/// DTO for removing a tag from a content item (partial update).
+/// Data transfer object used to remove or update a tag on a content item.
 /// </summary>
 public class TagUpdateDto : UpdateRequestDto
 {
     /// <summary>
-    /// Remove this specific tag by setting it to null.
+    /// The name of the tag to be removed (set this value to trigger removal).
     /// </summary>
     public string? TagNameToRemove { get; set; }
 
     /// <summary>
-    /// ContentMetaInfo fields (nullable — omit to keep current values).
+    /// Metadata fields for updating the tag's identity (e.g., Name, Slug).
     /// </summary>
     public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
 
+    /// <summary>
+    /// The updated hex color code for visual representation.
+    /// </summary>
     [MaxLength(128)] public string? ColorHex { get; set; }
 }
 
 /// <summary>
-/// Response DTO for a single tag on a content item. Inherits ContentMetaInfo state.
+/// Represents a single tag attached to a content item, including its metadata.
+/// Inherits standard meta-information state.
 /// </summary>
 public class TagResponseDto : MetaInfoResponseBaseDto
 {
     /// <summary>
-    /// The human-readable name of the tag.
+    /// The human-readable display name of the tag.
     /// </summary>
     [Required, MaxLength(128)] public string Name { get; set; } = "";
 
     /// <summary>
-    /// URL-friendly slug (used for UI routing).
+    /// The URL-friendly slug used for UI routing and identification.
     /// </summary>
     [MaxLength(128)] public string Slug { get; set; } = "";
 
     /// <summary>
-    /// Hex color code for visual representation.
+    /// Hexadecimal color code for the tag's visual representation.
     /// </summary>
     [MaxLength(8)] public string? ColorHex { get; set; }
 
     /// <summary>
-    /// The content item this tag is attached to.
+    /// The unique identifier of the content item this tag is attached to.
     /// </summary>
     public Guid ContentItemId { get; set; }
 
     /// <summary>
-    /// Title of the content item (denormalized for convenience).
+    /// Denormalized title of the parent content item for UI convenience.
     /// </summary>
     [MaxLength(256)] public string? ContentTypeTitle { get; set; }
 }
 
 /// <summary>
-/// List response for tags on a single content item.
+/// A collection of tags associated with a specific content item.
 /// </summary>
 public class TagListResponseDto
 {
     /// <summary>
-    /// The parent content item ID (for context).
+    /// The ID of the parent content item.
     /// </summary>
     public Guid ContentItemId { get; set; }
 
+    /// <summary>
+    /// The list of tags found on this content item.
+    /// </summary>
     public IEnumerable<TagResponseDto> Tags { get; set; } = Enumerable.Empty<TagResponseDto>();
 
+    /// <summary>
+    /// Total number of tags on this item.
+    /// </summary>
     public int TotalCount { get; set; }
 }
 
 /// <summary>
-/// Request DTO for adding multiple tags at once.
+/// Request DTO for adding multiple new or existing tags to a content item at once.
 /// </summary>
 public class AddTagsDto
 {
     /// <summary>
-    /// The content item ID to attach these tags to.
+    /// The unique identifier of the content item receiving these tags.
     /// </summary>
     [Required] public Guid ContentItemId { get; set; }
 
     /// <summary>
-    /// List of tag names to add. Each must exist in the system.
+    /// A list of tag names to be added/linked.
     /// </summary>
     [Required] public IEnumerable<string> TagNames { get; set; } = Enumerable.Empty<string>();
 
     /// <summary>
-    /// Optional: hex color codes corresponding to each tag name (by order).
-    /// If omitted, tags keep their existing colors or use defaults.
+    /// Optional: corresponding hex color codes for the tags provided in [TagNames].
+    /// If omitted, existing colors or defaults will be used.
     /// </summary>
     [MaxLength(128)] public IEnumerable<string>? ColorHexes { get; set; }
 }
 
 /// <summary>
-/// List response for all known tags in a project (for autocomplete/filters).
+/// Represents a tag's metadata used for filtering and autocomplete in the UI.
 /// </summary>
 public class TagFilterResponseDto
 {
     /// <summary>
-    /// The tag's name.
+    /// The display name of the tag.
     /// </summary>
     [Required, MaxLength(128)] public string Name { get; set; } = "";
 
     /// <summary>
-    /// URL-friendly slug.
+    /// The URL-friendly slug for the tag.
     /// </summary>
     [MaxLength(128)] public string Slug { get; set; } = "";
 
     /// <summary>
-    /// Hex color code. Null means "no color assigned" (use default).
+    /// Hexadecimal color code for visual representation.
     /// </summary>
     [MaxLength(8)] public string? ColorHex { get; set; }
 
     /// <summary>
-    /// Number of content items tagged with this tag in the project.
+    /// The number of content items in the current project that are tagged with this tag.
+    /// Useful for ranking popularity in autocomplete.
     /// </summary>
     public int UsageCount { get; set; }
 }

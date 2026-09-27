@@ -1,7 +1,5 @@
-// =============================================================================
 using System.Net;
 
-namespace Gadema.Core.Dtos;
 
 /// <summary>
 /// Base API response wrapper for all endpoints.
@@ -10,33 +8,35 @@ namespace Gadema.Core.Dtos;
 public class ApiResponseDto<T> where T : class
 {
     /// <summary>
-    /// Whether the request was successful.
+    /// Indicates whether the request was successful.
     /// </summary>
     public bool Successful { get; set; } = true;
 
     /// <summary>
-    /// HTTP status code.
+    /// The HTTP status code associated with this response.
     /// </summary>
     public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.OK;
 
     /// <summary>
-    /// Error message (if failed).
+    /// A descriptive message about the outcome (usually for errors).
     /// </summary>
     public string? Message { get; set; }
 
     /// <summary>
-    /// List of error messages.
+    /// A list of error messages if the operation failed.
     /// </summary>
     public List<string>? Errors { get; set; } = null!;
 
     /// <summary>
-    /// Data payload (if successful).
+    /// The primary data payload returned upon a successful request.
     /// </summary>
     public T? Data { get; set; }
 
     /// <summary>
-    /// Create a success response.
+    /// Factory method to create a successful response containing the provided data.
     /// </summary>
+    /// <param name="data">The data to be returned in the payload.</param>
+    /// <returns>An ApiResponseDto representing success.</returns>
     public static ApiResponseDto<T> Success(T data) => new()
     {
         Successful = true,
@@ -47,8 +47,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a not found response.
+    /// Factory method to create a 404 Not Found response.
     /// </summary>
+    /// <param name="message">The error message describing why the resource was not found.</param>
+    /// <returns>An ApiResponseDto representing a NotFound result.</returns>
     public static ApiResponseDto<T> NotFound(string message) => new()
     {
         Successful = false,
@@ -59,8 +61,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a bad request response.
+    /// Factory method to create a 400 Bad Request response.
     /// </summary>
+    /// <param name="message">The error message describing the invalid request.</param>
+    /// <returns>An ApiResponseDto representing a BadRequest result.</returns>
     public static ApiResponseDto<T> BadRequest(string message) => new()
     {
         Successful = false,
@@ -71,8 +75,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create an unauthorized response.
+    /// Factory method to create a 401 Unauthorized response.
     /// </summary>
+    /// <param name="message">The error message describing the authentication failure.</param>
+    /// <returns>An ApiResponseDto representing an Unauthorized result.</returns>
     public static ApiResponseDto<T> Unauthorized(string message) => new()
     {
         Successful = false,
@@ -83,8 +89,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a conflict (duplicate resource) response.
+    /// Factory method to create a 409 Conflict response (e.g., duplicate resource).
     /// </summary>
+    /// <param name="message">The error message describing the conflict.</param>
+    /// <returns>An ApiResponseDto representing a Conflict result.</returns>
     public static ApiResponseDto<T> Conflict(string message) => new()
     {
         Successful = false,
@@ -95,8 +103,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a forbidden response.
+    /// Factory method to create a 403 Forbidden response.
     /// </summary>
+    /// <param name="message">The error message describing the permission failure.</summary>
+    /// <returns>An ApiResponseDto representing a Forbidden result.</returns>
     public static ApiResponseDto<T> Forbidden(string message) => new()
     {
         Successful = false,
@@ -107,8 +117,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a server error response.
+    /// Factory method to create a 500 Internal Server Error response.
     /// </summary>
+    /// <param name="message">The error message describing the server-side failure.</param>
+    /// <returns>An ApiResponseDto representing a ServerError result.</returns>
     public static ApiResponseDto<T> ServerError(string message) => new()
     {
         Successful = false,
@@ -119,8 +131,10 @@ public class ApiResponseDto<T> where T : class
     };
 
     /// <summary>
-    /// Create a response with multiple errors.
+    /// Factory method to create a 400 Bad Request response containing multiple validation errors.
     /// </summary>
+    /// <param name="messages">The list of error messages.</param>
+    /// <returns>An ApiResponseDto representing a BadRequest result with an error list.</returns>
     public static ApiResponseDto<T> WithErrors(List<string> messages) => new()
     {
         Successful = false,

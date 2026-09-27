@@ -3,8 +3,9 @@ using Gadema.Core.Models.Writing.Narrative;
 namespace Gadema.Core.Models.Writing.Characters;
 
 /// <summary>
-/// Tracks evolving relationships between characters throughout the story.
-/// This is an event-driven junction table that allows relationships to change over time.
+/// Represents an evolving relationship between two characters within the narrative.
+/// This is an event-driven junction entity that tracks how character connections change over time,
+/// often triggered by specific narrative events in a scene.
 /// </summary>
 [ModelDependency(typeof(Character), typeof(Scene))]
 public class CharacterRelation
@@ -15,83 +16,89 @@ public class CharacterRelation
     public Guid Id { get; set; } = Guid.NewGuid();
 
     /// <summary>
-    /// ID of the source character (the one initiating or having the relationship).
+    /// The ID of the source character (the primary subject of the relationship).
     /// </summary>
     [Required]
     public Guid SourceCharacterId { get; set; }
 
+    /// <summary>
+    /// Navigation property for the source character.
+    /// </summary>
     // Navigation property: Source Character
     [ForeignKey("SourceCharacterId")]
     public virtual Character SourceCharacter { get; set; } = null!;
 
     /// <summary>
-    /// ID of the target character (the one being related to).
+    /// The ID of the target character (the subject being related to).
     /// </summary>
     [Required]
     public Guid TargetCharacterId { get; set; }
-
+    /// <summary>
+    /// Navigation property for the target character.
+    /// </summary>
     // Navigation property: Target Character
     [ForeignKey("TargetCharacterId")]
     public virtual Character TargetCharacter { get; set; } = null!;
 
     /// <summary>
-    /// Type of relationship (Ally, Enemy, Family, Romantic, etc.).
+    /// The nature of the relationship (e.g., Ally, Enemy, Family).
     /// </summary>
     [Required]
     public RelationTypeEnum RelationType { get; set; } = RelationTypeEnum.Alien;
-
     /// <summary>
-    /// The scene where this relationship evolved or was first established.
-    /// Allows the UI to show "They became allies in Scene 4."
+    /// The ID of the scene where this relationship was established or underwent a significant change.
     /// </summary>
     [Required]
     public Guid TriggerSceneId { get; set; }
-
+/// <summary>
+    /// Navigation property for the trigger scene.
+/// </summary>
     // Navigation property: Trigger Scene
     [ForeignKey("TriggerSceneId")]
     public virtual Scene TriggerScene { get; set; } = null!;
 
     /// <summary>
-    /// Optional description of the relationship at this point in the story.
+    /// An optional description or context for this specific relationship state.
     /// </summary>
     [MaxLength(1024)]
     public string? Description { get; set; }
 
     /// <summary>
-    /// Timestamp when this relationship record was created.
+    /// The timestamp when this relationship record was created.
     /// </summary>
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
 /// <summary>
-/// Enum for character relationship types.
+/// Defines the types of relationships that can exist between characters.
 /// </summary>
 public enum RelationTypeEnum
 {
-    /// <summary>No established relationship</summary>
+    /// <summary>No established relationship or connection.</summary>
     Alien = 0,
     
-    /// <summary>Acquaintance or neutral contact</summary>
+    /// <summary>A neutral contact or acquaintance without a formal bond.</summary>
     Acquaintance = 1,
     
-    /// <summary>Allied or cooperative</summary>
+    /// <summary>Characters who are cooperative or on the same side.</summary>
     Ally = 2,
     
-    /// <summary>Hostile or opposing</summary>
+    /// <summary>Characters with opposing interests or active hostility.</summary>
     Enemy = 3,
     
-    /// <summary>Blood relation or familial bond</summary>
+    /// <summary>A familial bond through blood, marriage, or adoption.</summary>
     Family = 4,
     
-    /// <summary>Romantic involvement</summary>
+    /// <summary>A romantic or intimate relationship.</summary>
     Romantic = 5,
     
-    /// <summary>Mentor-student or teacher-pupil</summary>
+    /// <summary>A hierarchical relationship based on teaching or guidance.</summary>
     Mentor = 6,
     
-    /// <summary>Professional or work-related</summary>
+    /// <summary>A connection based on work, trade, or professional roles.</summary>
     Professional = 7,
     
-    /// <summary>Custom relationship type</summary>
+    /// <summary>A user-defined or non-standard relationship type.</summary>
     Custom = 8
 }
+

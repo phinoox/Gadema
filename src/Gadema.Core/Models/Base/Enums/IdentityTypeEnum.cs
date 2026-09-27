@@ -7,7 +7,7 @@ using Gadema.Core.Models.Identity;
 namespace Gadema.Core.Models.Base.Enums;
 
 /// <summary>
-/// Types of character identities that can be configured per project.
+/// Defines the various types of character identities that can be configured within a project, using bitwise flags.
 /// </summary>
 [Flags]
 public enum IdentityTypeEnum : int
@@ -29,16 +29,23 @@ public enum IdentityTypeEnum : int
     Alignment = 4,
     
     /// <summary>
-    /// Character guild or organization.
+    /// Character guild or organization membership.
     /// </summary>
     Guild = 8
 }
 
+/// <summary>
+/// Specifies the type of identity definition being created.
+/// </summary>
 [Flags]
 public enum IdentityDefinitionType : int
 {
+    /// <summary>Race-related identity definition.</summary>
     Race = 1,
+    /// <summary>Faction-related identity definition.</summary>
     Faction = 2,
+    /// <summary>Alignment-related identity definition.</summary>
     Alignment = 4,
+    /// <summary>Guild-related identity definition.</summary>
     Guild = 8
 }

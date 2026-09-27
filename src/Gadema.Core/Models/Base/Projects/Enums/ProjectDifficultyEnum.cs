@@ -1,25 +1,20 @@
 namespace Gadema.Core.Models.Base.Projects.Enums;
 
 /// <summary>
-/// Project difficulty levels for task estimation and workload management.
+/// Defines the perceived complexity level of a project to assist in workload and resource management.
 /// </summary>
 public enum ProjectDifficultyEnum
 {
-    /// <summary>
-    /// Simple tasks, straightforward implementation, minimal complexity.
-    /// </summary>
+    /// <summary>Low complexity; tasks are straightforward and require minimal coordination.</summary>
     [Display(Name = "Easy")]
     Easy = 0,
 
-    /// <summary>
-    /// Moderate difficulty, requires some planning and coordination.
-    /// </summary>
+    /// <summary>Moderate complexity; requires planning, some research, or moderate coordination.</summary>
     [Display(Name = "Medium")]
     Medium = 1,
 
-    /// <summary>
-    /// Complex tasks, extensive research or implementation required.
-    /// </summary>
+    /// <summary>High complexity; involves significant research, intricate design, or extensive implementation.</summary>
     [Display(Name = "Hard")]
     Hard = 2,
 }
+

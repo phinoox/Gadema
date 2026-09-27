@@ -1,25 +1,26 @@
 namespace Gadema.Core.Models.Tasks.Enums;
 
 /// <summary>
-/// Task priority levels for workflow management.
+/// Defines the priority level for tasks within a project workflow.
 /// </summary>
 public enum TaskPriorityEnum
 {
     /// <summary>
-    /// High priority tasks requiring immediate attention.
+    /// High importance; requires immediate attention or takes precedence over other work.
     /// </summary>
     [Display(Name = "High")]
     High = 0,
 
     /// <summary>
-    /// Medium priority tasks with standard timeline.
+    /// Standard priority; should be completed within the normal workflow timeline.
     /// </summary>
     [Display(Name = "Medium")]
     Medium = 1,
 
     /// <summary>
-    /// Low priority tasks that can be deferred.
+    /// Low importance; tasks that can be deferred or addressed when time permits.
     /// </summary>
     [Display(Name = "Low")]
     Low = 2,
 }
+

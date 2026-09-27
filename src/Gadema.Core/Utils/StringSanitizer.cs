@@ -2,11 +2,16 @@ using System.Text.RegularExpressions;
 
 namespace Gadema.Core.Utils;
 
+/// <summary>
+/// Provides utility methods for sanitizing and normalizing strings.
+/// </summary>
 public static class StringSanitizer
 {
     /// <summary>
-    /// Converts a human-readable string into a web-friendly slug (e.s. "Dark Tone" -> "dark_tone").
+    /// Converts a human-readable string into a web-friendly slug (e.g., "Dark Tone" -> "dark_tone").
     /// </summary>
+    /// <param name="input">The input string to normalize.</param>
+    /// <returns>A normalized, lowercase, underscore-separated string, or an empty string if the input is null or whitespace.</returns>
     public static string Normalize(string input)
     {
         if (string.IsNullOrWhiteSpace(input)) return string.Empty;
