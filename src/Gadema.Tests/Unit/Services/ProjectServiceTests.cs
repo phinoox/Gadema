@@ -13,6 +13,7 @@ using Gadema.Core.Models.Access;
 using Gadema.Data.Database;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Data.Database.Core;
 
 namespace Gadema.Tests.Unit.Services;
 
@@ -112,7 +113,7 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         // Assert
         result.Successful.Should().BeTrue();
         
-        var db = _factory.GetScopedService<GameDbContext>();
+        var db = _factory.GetScopedService<CoreDbContext>();
         var updatedProject = await db.Projects
             .Include(p => p.ProjectMetaInfo)
             .FirstOrDefaultAsync(p => p.Id == project.Id);
@@ -144,7 +145,7 @@ public class ProjectServiceTests : IClassFixture<ApiWebApplicationFactory>
         // Assert
         result.Successful.Should().BeTrue();
         
-        var db = _factory.GetScopedService<GameDbContext>();
+        var db = _factory.GetScopedService<CoreDbContext>();
         var deletedProject = await db.Projects.FindAsync(project.Id);
         deletedProject.IsDeleted.Should().BeTrue();
     }

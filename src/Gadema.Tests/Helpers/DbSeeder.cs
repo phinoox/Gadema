@@ -12,6 +12,7 @@ using Microsoft.Data.Sqlite;
 using Gadema.Core.DependencyTracking;
 using Gadema.Core.Utils;
 using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Data.Database.Game;
 
 namespace Gadema.Tests.Seeders;
 /// <summary>

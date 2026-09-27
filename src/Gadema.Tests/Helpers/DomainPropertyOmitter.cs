@@ -1,6 +1,7 @@
 using System.Reflection;
 using AutoFixture.Kernel;
 using Gadema.Core.DependencyTracking;
+using Gadema.Core.Utils;
 
 public sealed class DomainPropertyOmitter : ISpecimenBuilder
 {

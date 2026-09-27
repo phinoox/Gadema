@@ -104,6 +104,8 @@ public class IdentityValueResponseDto : MetaInfoResponseBaseDto
     /// Indicates if this is the default value for its definition.
     /// </summary>
     public bool IsDefault { get; set; }
+    public string Slug { get; set; }
+    public string Title { get; set; }
 }
 
 /// <summary>

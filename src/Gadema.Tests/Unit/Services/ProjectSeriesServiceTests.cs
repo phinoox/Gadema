@@ -12,6 +12,8 @@ using Gadema.Tests.Factory;
 using Gadema.Tests.Helpers;
 using Gadema.Tests.Seeders;
 using Gadema.Core.Interfaces;
+using Gadema.Data.Database.Game;
+using Gadema.Data.Database.Core;
 
 namespace Gadema.Tests.Unit.Services;
 
@@ -114,7 +116,7 @@ public class ProjectSeriesServiceTests : IClassFixture<ApiWebApplicationFactory>
         result.Successful.Should().BeTrue();
         result.Data!.EntityId.Should().NotBeEmpty();
 
-        var db = _factory.GetScopedService<GameDbContext>();
+        var db = _factory.GetScopedService<CoreDbContext>();
         var series = await db.ProjectSeries.Include(s => s.ProjectSeriesMetaInfo).FirstOrDefaultAsync();
         series.Should().NotBeNull();
         series!.ProjectSeriesMetaInfo.Title.Should().Be("New Series");
@@ -145,7 +147,7 @@ public class ProjectSeriesServiceTests : IClassFixture<ApiWebApplicationFactory>
 
         // Assert
         result.Successful.Should().BeTrue();
-        var db = _factory.GetScopedService<GameDbContext>();
+        var db = _factory.GetScopedService<CoreDbContext>();
         var updated = await db.ProjectSeries.Include(s => s.ProjectSeriesMetaInfo).FirstOrDefaultAsync(s => s.Id == id);
         updated!.ProjectSeriesMetaInfo.Description.Should().Be("New Description");
     }
@@ -169,7 +171,7 @@ public class ProjectSeriesServiceTests : IClassFixture<ApiWebApplicationFactory>
 
         // Assert
         result.Successful.Should().BeTrue();
-        var db = _factory.GetScopedService<GameDbContext>();
+        var db = _factory.GetScopedService<CoreDbContext>();
         var deleted = await db.ProjectSeries.FindAsync(id);
         deleted.Should().BeNull();
 

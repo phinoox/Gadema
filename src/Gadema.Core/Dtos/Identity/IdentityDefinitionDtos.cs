@@ -108,6 +108,8 @@ public class IdentityDefinitionResponseDto : MetaInfoResponseBaseDto
     /// The unique identifier of the project this definition belongs to.
     /// </summary>
     public Guid ProjectId { get; set; }
+    public string Title { get; set; }
+    public string Slug { get; set; }
 }
 
 /// <summary>

@@ -3,6 +3,7 @@ using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Core.Models.Game.Attributes;
 using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Gadema.Tests.Factory;
 using Gadema.Tests.Helpers;
 using Gadema.Tests.Seeders;
@@ -30,7 +31,7 @@ public class SystemSetupTests : IClassFixture<ApiWebApplicationFactory>, IDispos
         DbSeeder.SeedEnumTags<GameTag>(_scope);
 
         // 2. Verify that they actually exist in the DB
-        var db = _scope.ServiceProvider.GetRequiredService<GameDbContext>();
+        var db = _scope.ServiceProvider.GetRequiredService<CoreDbContext>();
         
         // Check a few samples from different modules
         db.Set<MetaTag>().Any(t => t.Name == "Fantasy").Should().BeTrue();

@@ -3,6 +3,7 @@ using System.Security.Principal;
 using Gadema.Api;
 using Gadema.Api.Services.Access;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Game;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;

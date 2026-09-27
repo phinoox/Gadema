@@ -5,6 +5,7 @@ using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
 using Gadema.Core.Models.Access.Enums;
 using Gadema.Data.Database;
+using Gadema.Data.Database.Core;
 using Gadema.Tests.Factory;
 using Microsoft.AspNetCore.Http;
 
@@ -20,7 +21,7 @@ public static class TestUserContextHelper
     {
         var jwtService = factory.GetScopedService<JwtTokenService>();
         var httpContextAccessor = factory.GetScopedService<IHttpContextAccessor>();
-        var db = factory.GetScopedService<GameDbContext>();
+        var db = factory.GetScopedService<CoreDbContext>();
         var userContext = factory.GetScopedService<IUserContext>();
         //var userContext = factory.Services.GetService<IUserContext>();
         //var userContext = new UserContext(httpContextAccessor, jwtService, db);
