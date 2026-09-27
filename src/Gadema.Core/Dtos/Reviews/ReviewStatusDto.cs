@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Reviews;
+
 /// <summary>
 /// Data transfer object for creating a new review status entry.
 /// </summary>

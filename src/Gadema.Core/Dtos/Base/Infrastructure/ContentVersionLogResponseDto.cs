@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Infrastructure;
+
 /// <summary>
 /// Represents an entry in the version history of a content item.
 /// </summary>

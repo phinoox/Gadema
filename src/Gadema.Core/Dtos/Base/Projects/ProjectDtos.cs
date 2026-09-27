@@ -1,3 +1,7 @@
+namespace Gadema.Core.Dtos.Base.Projects;
+
+using Gadema.Core.Dtos.Base.Infrastructure;
+
 // 1. Identity Data for creation
 using Gadema.Core.Enums;
 

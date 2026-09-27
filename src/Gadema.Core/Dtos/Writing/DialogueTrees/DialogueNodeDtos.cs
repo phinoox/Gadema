@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Writing.DialogueTrees;
+
 /// <summary>
 /// Data transfer object for creating a new dialogue node within a branch.
 /// </summary>

@@ -1,3 +1,6 @@
+namespace Gadema.Core.Dtos.Writing.Characters;
+
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Models.Writing.Characters;
 
 

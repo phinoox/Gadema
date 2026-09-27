@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Writing.DialogueTrees;
+
 /// <summary>
 /// Data transfer object used to update an existing dialogue branch's properties and metadata.
 /// </summary>

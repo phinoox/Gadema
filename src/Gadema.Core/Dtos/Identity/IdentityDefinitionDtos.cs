@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Identity;
+
 /// <summary>
 /// Data transfer object for creating a new identity definition (e.g., "Species", "Eye Color").
 /// </summary>

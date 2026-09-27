@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Infrastructure;
+
 /// <summary>
 /// Represents a single entry in the system's audit log.
 /// </summary>

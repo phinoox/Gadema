@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Projects;
+
 /// <summary>
 /// Data transfer object for creating a new tag within a project context.
 /// </summary>

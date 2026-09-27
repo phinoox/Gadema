@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Access;
+
 using Gadema.Core.Models.Access.Enums;
 
 

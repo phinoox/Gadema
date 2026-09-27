@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Tags;
+
 /// <summary>
 /// Data transfer object for creating a new tag on a specific content item.
 /// </summary>

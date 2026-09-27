@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Writing.Social;
+
 /// <summary>
 /// Data transfer object for creating a new social comment.
 /// </summary>

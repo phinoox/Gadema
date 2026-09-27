@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Identity;
+
 /// <summary>
 /// Data transfer object for creating a new identity value (e.g., "Human", "Blue").
 /// </summary>

@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Tasks;
+
 /// <summary>
 /// Data transfer object for creating a new comment on a project task.
 /// </summary>

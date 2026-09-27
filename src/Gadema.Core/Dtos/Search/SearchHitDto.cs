@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Search;
+
 /// <summary>
 /// Represents a single search result hit containing enough context for client-side navigation.
 /// </summary>

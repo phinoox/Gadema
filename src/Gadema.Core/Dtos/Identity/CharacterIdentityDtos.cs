@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Identity;
+
 /// <summary>
 /// Represents a character's specific identity attribute (e.g., "Eye Color: Blue" or "Species: Human").
 /// </summary>

@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Projects;
+
 using Gadema.Core.Models.Access;
 
 

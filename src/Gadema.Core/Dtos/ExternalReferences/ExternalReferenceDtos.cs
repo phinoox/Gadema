@@ -1,3 +1,6 @@
+namespace Gadema.Core.Dtos.ExternalReferences;
+
+using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Models.Base.Infrastructure.Enums;
 
 

@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Infrastructure;
+
 /// <summary>
 /// Represents a media file attached to a content item.
 /// </summary>

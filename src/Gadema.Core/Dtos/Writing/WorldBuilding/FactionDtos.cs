@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Writing.WorldBuilding;
+
 /// <summary>
 /// Data transfer object for creating a new faction within the world.
 /// </summary>

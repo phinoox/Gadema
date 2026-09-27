@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Writing.Narrative;
+
 /// <summary>
 /// Data transfer object for creating a new section within a story outline.
 /// </summary>

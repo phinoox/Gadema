@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Infrastructure;
+
 /// <summary>
 /// Response data containing the updated state after a content item has been automatically saved.
 /// </summary>

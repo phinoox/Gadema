@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Base.Projects;
+
 /// <summary>
 /// Data transfer object for creating a new project series.
 /// </summary>

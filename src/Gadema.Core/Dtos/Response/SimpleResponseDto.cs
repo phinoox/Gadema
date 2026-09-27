@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Response;
+
 /// <summary>
 /// Base class for simple API responses containing a success flag and an optional message.
 /// </summary>

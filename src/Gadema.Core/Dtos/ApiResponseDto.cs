@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos;
+
 using System.Net;
 
 

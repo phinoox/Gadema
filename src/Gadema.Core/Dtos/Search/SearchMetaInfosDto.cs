@@ -1,3 +1,7 @@
+using Gadema.Core.Dtos.Base.Infrastructure;
+
+namespace Gadema.Core.Dtos.Search;
+
 /// <summary>
 /// Data transfer object used to define search criteria for content items (ContentMetaInfo).
 /// </summary>

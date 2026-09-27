@@ -1,3 +1,5 @@
+namespace Gadema.Core.Dtos.Base.Infrastructure;
+
 /// <summary>
 /// Data transfer object for creating a new content snapshot (part of the Save Ritual).
 /// </summary>
