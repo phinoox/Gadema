@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class CharacterRelation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class CharacterRelation ">
+    
+    <meta name="description" content="Represents an evolving relationship between two characters within the narrative. This is an event-driven junction entity that tracks how character connections change over time, often triggered by specific narrative events in a scene.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation">
+
+
+
+  <h1 id="Gadema_Core_Models_Writing_Characters_CharacterRelation" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation" class="text-break">Class CharacterRelation</h1>
+  <div class="markdown level0 summary"><p>Represents an evolving relationship between two characters within the narrative.
+This is an event-driven junction entity that tracks how character connections change over time,
+often triggered by specific narrative events in a scene.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">CharacterRelation</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<span class="xref">Writing</span>.<a class="xref" href="Gadema.Core.Models.Writing.Characters.html">Characters</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(Character), typeof(Scene) })]
+public class CharacterRelation</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_CreatedAt.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.CreatedAt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L69">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_CreatedAt_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.CreatedAt*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_CreatedAt" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.CreatedAt">CreatedAt</h4>
+  <div class="markdown level1 summary"><p>The timestamp when this relationship record was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_Description.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.Description%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L63">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_Description_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.Description*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_Description" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.Description">Description</h4>
+  <div class="markdown level1 summary"><p>An optional description or context for this specific relationship state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(1024)]
+public string? Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L16">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_Id_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.Id*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_Id" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for this relationship record.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_RelationType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.RelationType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L46">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_RelationType_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.RelationType*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_RelationType" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.RelationType">RelationType</h4>
+  <div class="markdown level1 summary"><p>The nature of the relationship (e.g., Ally, Enemy, Family).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public RelationTypeEnum RelationType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html">RelationTypeEnum</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacter.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L28">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacter_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacter*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacter" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacter">SourceCharacter</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the source character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;SourceCharacterId&quot;)]
+public virtual Character SourceCharacter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Characters.Character.html">Character</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacterId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacterId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L21">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacterId_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacterId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_SourceCharacterId" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.SourceCharacterId">SourceCharacterId</h4>
+  <div class="markdown level1 summary"><p>The ID of the source character (the primary subject of the relationship).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid SourceCharacterId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacter.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L40">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacter_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacter*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacter" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacter">TargetCharacter</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the target character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;TargetCharacterId&quot;)]
+public virtual Character TargetCharacter { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Characters.Character.html">Character</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacterId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacterId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L34">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacterId_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacterId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TargetCharacterId" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TargetCharacterId">TargetCharacterId</h4>
+  <div class="markdown level1 summary"><p>The ID of the target character (the subject being related to).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid TargetCharacterId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerScene.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerScene%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L57">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerScene_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerScene*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerScene" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerScene">TriggerScene</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the trigger scene.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;TriggerSceneId&quot;)]
+public virtual Scene TriggerScene { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Narrative.Scene.html">Scene</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerSceneId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerSceneId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L51">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerSceneId_" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerSceneId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Characters_CharacterRelation_TriggerSceneId" data-uid="Gadema.Core.Models.Writing.Characters.CharacterRelation.TriggerSceneId">TriggerSceneId</h4>
+  <div class="markdown level1 summary"><p>The ID of the scene where this relationship was established or underwent a significant change.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid TriggerSceneId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Characters_CharacterRelation.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Characters.CharacterRelation%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

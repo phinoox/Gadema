@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class SceneSegment </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class SceneSegment ">
+    
+    <meta name="description" content="Represents a specific structural marker or &amp;quot;token&amp;quot; within a . Segments allow for indexing interactive elements (like dialogue, actions, or monologue) without relying on fragile text position indices.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment">
+
+
+
+  <h1 id="Gadema_Core_Models_Writing_Narrative_SceneSegment" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment" class="text-break">Class SceneSegment</h1>
+  <div class="markdown level0 summary"><p>Represents a specific structural marker or &quot;token&quot; within a <a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneSegment.html#Gadema_Core_Models_Writing_Narrative_SceneSegment_Scene">Scene</a>.
+Segments allow for indexing interactive elements (like dialogue, actions, or monologue)
+without relying on fragile text position indices.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">SceneSegment</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<span class="xref">Writing</span>.<a class="xref" href="Gadema.Core.Models.Writing.Narrative.html">Narrative</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(ContentMetaInfo), typeof(Scene) })]
+public class SceneSegment</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_ContentMetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.ContentMetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L22">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_ContentMetaInfo_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.ContentMetaInfo*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_ContentMetaInfo" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.ContentMetaInfo">ContentMetaInfo</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;MetaInfoId&quot;)]
+public virtual ContentMetaInfo ContentMetaInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html">ContentMetaInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_GameEvents.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.GameEvents%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L55">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_GameEvents_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.GameEvents*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_GameEvents" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.GameEvents">GameEvents</h4>
+  <div class="markdown level1 summary"><p>Collection of game-related events triggered by this segment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;GameKeyEvent&gt; GameEvents { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent.html">GameKeyEvent</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L16">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Id_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Id*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Id" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for the scene segment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L21">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_MetaInfoId_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.MetaInfoId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_MetaInfoId" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.MetaInfoId">MetaInfoId</h4>
+  <div class="markdown level1 summary"><p>The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid MetaInfoId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_OrderIndex.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.OrderIndex%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L38">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_OrderIndex_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.OrderIndex*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_OrderIndex" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.OrderIndex">OrderIndex</h4>
+  <div class="markdown level1 summary"><p>The sort order for segments within a scene.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OrderIndex { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_Position.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.Position%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L43">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Position_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Position*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Position" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Position">Position</h4>
+  <div class="markdown level1 summary"><p>The relative position of the segment within its parent text block or area.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Position { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_Scene.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.Scene%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L28">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Scene_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Scene*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Scene" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Scene">Scene</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;SceneId&quot;)]
+public virtual Scene Scene { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Narrative.Scene.html">Scene</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_SceneId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.SceneId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L27">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_SceneId_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.SceneId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_SceneId" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.SceneId">SceneId</h4>
+  <div class="markdown level1 summary"><p>The ID of the parent scene this segment belongs to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid SceneId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_Type.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.Type%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L33">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Type_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Type*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Type" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Type">Type</h4>
+  <div class="markdown level1 summary"><p>The functional type of the segment (e.g., Dialogue, Action).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SegmentType Type { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.Narrative.SegmentType.html">SegmentType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment_Value.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment.Value%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L48">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Value_" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Value*"></a>
+  <h4 id="Gadema_Core_Models_Writing_Narrative_SceneSegment_Value" data-uid="Gadema.Core.Models.Writing.Narrative.SceneSegment.Value">Value</h4>
+  <div class="markdown level1 summary"><p>The actual content or value associated with this segment (e.g., a line of dialogue).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Value { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_Narrative_SceneSegment.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.Narrative.SceneSegment%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/Narrative/SceneSegment.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

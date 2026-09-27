@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class MediaAttachment </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class MediaAttachment ">
+    
+    <meta name="description" content="Represents a media file attached to a content item (e.g., images, PDFs, etc.). Supports tracking of uploaded files and their storage locations.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment">
+
+
+
+  <h1 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment" class="text-break">Class MediaAttachment</h1>
+  <div class="markdown level0 summary"><p>Represents a media file attached to a content item (e.g., images, PDFs, etc.).
+Supports tracking of uploaded files and their storage locations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">MediaAttachment</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<a class="xref" href="Gadema.Core.Models.Base.html">Base</a>.<a class="xref" href="Gadema.Core.Models.Base.Infrastructure.html">Infrastructure</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+public class MediaAttachment</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentMetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L23">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentMetaInfo_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentMetaInfo" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo">ContentMetaInfo</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the associated content meta information entity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;MetaInfoId&quot;)]
+public virtual ContentMetaInfo ContentMetaInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html">ContentMetaInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L34">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentType_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentType" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType">ContentType</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the MIME type of the file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Display(Name = &quot;Content Type&quot;)]
+public string ContentType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ExternalReferences.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L60">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ExternalReferences_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ExternalReferences" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences">ExternalReferences</h4>
+  <div class="markdown level1 summary"><p>Gets or sets a collection of external references associated with this media attachment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ExternalReference&gt; ExternalReferences { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Gadema.Core.Models.Base.Infrastructure.ExternalReference.html">ExternalReference</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileName.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L28">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileName_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileName" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName">FileName</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the original name of the uploaded file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+[Display(Name = &quot;File Name&quot;)]
+public string FileName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileSize.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L44">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileSize_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileSize" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize">FileSize</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the size of the file in bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Display(Name = &quot;File Size&quot;)]
+public long FileSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L13">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_Id_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_Id" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the unique identifier for this media attachment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L18">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_MetaInfoId_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_MetaInfoId" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId">MetaInfoId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the unique identifier of the associated content item.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+[Display(Name = &quot;Content Item ID&quot;)]
+public Guid MetaInfoId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_StoragePath.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L39">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_StoragePath_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_StoragePath" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath">StoragePath</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the storage path for the uploaded file in the system.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Column(&quot;storage_path&quot;)]
+[MaxLength(2048)]
+public string StoragePath { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedAt.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L55">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedAt_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedAt" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt">UploadedAt</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the timestamp when the file was uploaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime UploadedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedByUserId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L50">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedByUserId_" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId*"></a>
+  <h4 id="Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedByUserId" data-uid="Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId">UploadedByUserId</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the identifier of the user who uploaded this media.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid UploadedByUserId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Base_Infrastructure_MediaAttachment.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Base.Infrastructure.MediaAttachment%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs/#L7" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

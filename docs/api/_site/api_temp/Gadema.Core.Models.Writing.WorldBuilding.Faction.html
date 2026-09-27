@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Faction </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Faction ">
+    
+    <meta name="description" content="Represents a faction, organization, or group within the game world. Factions have defined ideologies and goals, and may be anchored to specific locations.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction">
+
+
+
+  <h1 id="Gadema_Core_Models_Writing_WorldBuilding_Faction" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction" class="text-break">Class Faction</h1>
+  <div class="markdown level0 summary"><p>Represents a faction, organization, or group within the game world.
+Factions have defined ideologies and goals, and may be anchored to specific locations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">Faction</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<span class="xref">Writing</span>.<a class="xref" href="Gadema.Core.Models.Writing.WorldBuilding.html">WorldBuilding</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo), typeof(WorldLocation) })]
+public class Faction</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_CharacterStates.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.CharacterStates%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L51">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_CharacterStates_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.CharacterStates*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_CharacterStates" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.CharacterStates">CharacterStates</h4>
+  <div class="markdown level1 summary"><p>Collection of character states that track current or historical affiliations with this faction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;CharacterState&gt; CharacterStates { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Characters.CharacterState.html">CharacterState</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_ContentMetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.ContentMetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L24">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_ContentMetaInfo_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.ContentMetaInfo*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_ContentMetaInfo" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.ContentMetaInfo">ContentMetaInfo</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the faction's identity anchor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;MetaInfoId&quot;)]
+public virtual ContentMetaInfo ContentMetaInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html">ContentMetaInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_CreatedAt.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.CreatedAt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L56">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_CreatedAt_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.CreatedAt*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_CreatedAt" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.CreatedAt">CreatedAt</h4>
+  <div class="markdown level1 summary"><p>The timestamp when the faction was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_Goals.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.Goals%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L35">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Goals_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Goals*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Goals" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Goals">Goals</h4>
+  <div class="markdown level1 summary"><p>The primary objectives or long-term goals of the faction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(4096)]
+public string? Goals { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L16">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Id_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Id*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Id" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for the faction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_Ideology.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.Ideology%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L30">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Ideology_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Ideology*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Ideology" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Ideology">Ideology</h4>
+  <div class="markdown level1 summary"><p>The core ideology, mission statement, or driving philosophy of the faction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(4096)]
+public string? Ideology { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_LastModifiedAt.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.LastModifiedAt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L61">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_LastModifiedAt_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.LastModifiedAt*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_LastModifiedAt" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.LastModifiedAt">LastModifiedAt</h4>
+  <div class="markdown level1 summary"><p>The timestamp of the last modification to this faction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime LastModifiedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_Location.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.Location%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L45">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Location_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Location*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_Location" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.Location">Location</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the faction's primary geographic headquarters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;LocationId&quot;)]
+public virtual WorldLocation? Location { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html">WorldLocation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_LocationId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.LocationId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L40">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_LocationId_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.LocationId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_LocationId" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.LocationId">LocationId</h4>
+  <div class="markdown level1 summary"><p>The ID of the world location where the faction is primarily based or headquartered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid? LocationId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L20">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Writing_WorldBuilding_Faction_MetaInfoId_" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.MetaInfoId*"></a>
+  <h4 id="Gadema_Core_Models_Writing_WorldBuilding_Faction_MetaInfoId" data-uid="Gadema.Core.Models.Writing.WorldBuilding.Faction.MetaInfoId">MetaInfoId</h4>
+  <div class="markdown level1 summary"><p>The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid MetaInfoId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Writing_WorldBuilding_Faction.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Writing.WorldBuilding.Faction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Writing/WorldBuilding/Faction.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

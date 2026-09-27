@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class WritingDbContext </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class WritingDbContext ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Data.Database.Writing.WritingDbContext">
+
+
+
+  <h1 id="Gadema_Data_Database_Writing_WritingDbContext" data-uid="Gadema.Data.Database.Writing.WritingDbContext" class="text-break">Class WritingDbContext</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext">DbContext</a></div>
+    <div class="level2"><a class="xref" href="Gadema.Data.Database.GademaBaseContext.html">GademaBaseContext</a></div>
+    <div class="level3"><span class="xref">WritingDbContext</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1">IInfrastructure</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iserviceprovider">IServiceProvider</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies">IDbContextDependencies</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache">IDbSetCache</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable">IDbContextPoolable</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice">IResettableService</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1">DbContext.Set&lt;TEntity&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1(system-string)">DbContext.Set&lt;TEntity&gt;(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring">DbContext.OnConfiguring(DbContextOptionsBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.configureconventions">DbContext.ConfigureConventions(ModelConfigurationBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges">DbContext.SaveChanges()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges(system-boolean)">DbContext.SaveChanges(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-threading-cancellationtoken)">DbContext.SaveChangesAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-boolean-system-threading-cancellationtoken)">DbContext.SaveChangesAsync(bool, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.dispose">DbContext.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.disposeasync">DbContext.DisposeAsync()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)">DbContext.Entry&lt;TEntity&gt;(TEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry(system-object)">DbContext.Entry(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)">DbContext.Add&lt;TEntity&gt;(TEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)">DbContext.AddAsync&lt;TEntity&gt;(TEntity, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)">DbContext.Attach&lt;TEntity&gt;(TEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)">DbContext.Update&lt;TEntity&gt;(TEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)">DbContext.Remove&lt;TEntity&gt;(TEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add(system-object)">DbContext.Add(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync(system-object-system-threading-cancellationtoken)">DbContext.AddAsync(object, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach(system-object)">DbContext.Attach(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update(system-object)">DbContext.Update(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove(system-object)">DbContext.Remove(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-object())">DbContext.AddRange(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-object())">DbContext.AddRangeAsync(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-object())">DbContext.AttachRange(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-object())">DbContext.UpdateRange(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-object())">DbContext.RemoveRange(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-collections-generic-ienumerable((system-object)))">DbContext.AddRange(IEnumerable&lt;object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-collections-generic-ienumerable((system-object))-system-threading-cancellationtoken)">DbContext.AddRangeAsync(IEnumerable&lt;object&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-collections-generic-ienumerable((system-object)))">DbContext.AttachRange(IEnumerable&lt;object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-collections-generic-ienumerable((system-object)))">DbContext.UpdateRange(IEnumerable&lt;object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-collections-generic-ienumerable((system-object)))">DbContext.RemoveRange(IEnumerable&lt;object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find(system-type-system-object())">DbContext.Find(Type, params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object())">DbContext.FindAsync(Type, params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object()-system-threading-cancellationtoken)">DbContext.FindAsync(Type, object[], CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find-1(system-object())">DbContext.Find&lt;TEntity&gt;(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object())">DbContext.FindAsync&lt;TEntity&gt;(params object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object()-system-threading-cancellationtoken)">DbContext.FindAsync&lt;TEntity&gt;(object[], CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression">DbContext.FromExpression&lt;TResult&gt;(Expression&lt;Func&lt;IQueryable&lt;TResult&gt;&gt;&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.database">DbContext.Database</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.changetracker">DbContext.ChangeTracker</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.model">DbContext.Model</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.contextid">DbContext.ContextId</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savingchanges">DbContext.SavingChanges</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savedchanges">DbContext.SavedChanges</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesfailed">DbContext.SaveChangesFailed</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Data</span>.<a class="xref" href="Gadema.Data.Database.html">Database</a>.<a class="xref" href="Gadema.Data.Database.Writing.html">Writing</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Data.dll</h6>
+  <h5 id="Gadema_Data_Database_Writing_WritingDbContext_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WritingDbContext : GademaBaseContext, IInfrastructure&lt;IServiceProvider&gt;, IDbContextDependencies, IDbSetCache, IDbContextPoolable, IResettableService, IDisposable, IAsyncDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_Gadema_Data_Database_Writing_WritingDbContext__.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.%23ctor(Microsoft.EntityFrameworkCore.DbContextOptions%7BGadema.Data.Database.Writing.WritingDbContext%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L10">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext__ctor_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.#ctor*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_Gadema_Data_Database_Writing_WritingDbContext__" data-uid="Gadema.Data.Database.Writing.WritingDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Writing.WritingDbContext})">WritingDbContext(DbContextOptions&lt;WritingDbContext&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WritingDbContext(DbContextOptions&lt;WritingDbContext&gt; options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1">DbContextOptions</a>&lt;<a class="xref" href="Gadema.Data.Database.Writing.WritingDbContext.html">WritingDbContext</a>&gt;</td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_CharacterRelations.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.CharacterRelations%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L14">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_CharacterRelations_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterRelations*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_CharacterRelations" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterRelations">CharacterRelations</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;CharacterRelation&gt; CharacterRelations { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Characters.CharacterRelation.html">CharacterRelation</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_CharacterStates.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.CharacterStates%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L15">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_CharacterStates_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterStates*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_CharacterStates" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterStates">CharacterStates</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;CharacterState&gt; CharacterStates { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Characters.CharacterState.html">CharacterState</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_CharacterStoryProfiles.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.CharacterStoryProfiles%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L16">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_CharacterStoryProfiles_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterStoryProfiles*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_CharacterStoryProfiles" data-uid="Gadema.Data.Database.Writing.WritingDbContext.CharacterStoryProfiles">CharacterStoryProfiles</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;CharacterStoryProfile&gt; CharacterStoryProfiles { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html">CharacterStoryProfile</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_Characters.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.Characters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L13">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_Characters_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Characters*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_Characters" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Characters">Characters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;Character&gt; Characters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Characters.Character.html">Character</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_DialogueBranches.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.DialogueBranches%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L29">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_DialogueBranches_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.DialogueBranches*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_DialogueBranches" data-uid="Gadema.Data.Database.Writing.WritingDbContext.DialogueBranches">DialogueBranches</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;DialogueBranch&gt; DialogueBranches { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.DialogueBranch.html">DialogueBranch</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_DialogueNodes.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.DialogueNodes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L28">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_DialogueNodes_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.DialogueNodes*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_DialogueNodes" data-uid="Gadema.Data.Database.Writing.WritingDbContext.DialogueNodes">DialogueNodes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;DialogueNode&gt; DialogueNodes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.DialogueNode.html">DialogueNode</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_Factions.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.Factions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L34">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_Factions_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Factions*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_Factions" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Factions">Factions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;Faction&gt; Factions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.WorldBuilding.Faction.html">Faction</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_LoreEntries.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.LoreEntries%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L30">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_LoreEntries_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.LoreEntries*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_LoreEntries" data-uid="Gadema.Data.Database.Writing.WritingDbContext.LoreEntries">LoreEntries</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;LoreEntry&gt; LoreEntries { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.LoreEntry.html">LoreEntry</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_OutlineSections.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.OutlineSections%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L31">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_OutlineSections_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.OutlineSections*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_OutlineSections" data-uid="Gadema.Data.Database.Writing.WritingDbContext.OutlineSections">OutlineSections</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;OutlineSection&gt; OutlineSections { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.OutlineSection.html">OutlineSection</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_SceneSegments.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.SceneSegments%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L26">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_SceneSegments_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.SceneSegments*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_SceneSegments" data-uid="Gadema.Data.Database.Writing.WritingDbContext.SceneSegments">SceneSegments</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;SceneSegment&gt; SceneSegments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneSegment.html">SceneSegment</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_SceneStoryBeatMappings.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.SceneStoryBeatMappings%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L27">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_SceneStoryBeatMappings_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.SceneStoryBeatMappings*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_SceneStoryBeatMappings" data-uid="Gadema.Data.Database.Writing.WritingDbContext.SceneStoryBeatMappings">SceneStoryBeatMappings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;SceneStoryBeatMapping&gt; SceneStoryBeatMappings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html">SceneStoryBeatMapping</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_Scenes.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.Scenes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L25">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_Scenes_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Scenes*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_Scenes" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Scenes">Scenes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;Scene&gt; Scenes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.Scene.html">Scene</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_Stories.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.Stories%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L19">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_Stories_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Stories*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_Stories" data-uid="Gadema.Data.Database.Writing.WritingDbContext.Stories">Stories</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;Story&gt; Stories { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.Story.html">Story</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_StoryBeats.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.StoryBeats%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L24">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_StoryBeats_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryBeats*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_StoryBeats" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryBeats">StoryBeats</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;StoryBeat&gt; StoryBeats { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryBeat.html">StoryBeat</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_StoryChapters.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.StoryChapters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L20">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_StoryChapters_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryChapters*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_StoryChapters" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryChapters">StoryChapters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;StoryChapter&gt; StoryChapters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryChapter.html">StoryChapter</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_StoryOutlines.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.StoryOutlines%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L23">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_StoryOutlines_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryOutlines*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_StoryOutlines" data-uid="Gadema.Data.Database.Writing.WritingDbContext.StoryOutlines">StoryOutlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;StoryOutline&gt; StoryOutlines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryOutline.html">StoryOutline</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_WorldLocations.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.WorldLocations%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L35">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_WorldLocations_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.WorldLocations*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_WorldLocations" data-uid="Gadema.Data.Database.Writing.WritingDbContext.WorldLocations">WorldLocations</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DbSet&lt;WorldLocation&gt; WorldLocations { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet</a>&lt;<a class="xref" href="Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html">WorldLocation</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L37">View Source</a>
+  </span>
+  <a id="Gadema_Data_Database_Writing_WritingDbContext_OnModelCreating_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.OnModelCreating*"></a>
+  <h4 id="Gadema_Data_Database_Writing_WritingDbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_" data-uid="Gadema.Data.Database.Writing.WritingDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">OnModelCreating(ModelBuilder)</h4>
+  <div class="markdown level1 summary"><p>Override this method to further configure the model that was discovered by convention from the entity types
+exposed in <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1">DbSet&lt;TEntity&gt;</a> properties on your derived context. The resulting model may be cached
+and re-used for subsequent instances of your derived context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void OnModelCreating(ModelBuilder modelBuilder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelbuilder">ModelBuilder</a></td>
+        <td><span class="parametername">modelBuilder</span></td>
+        <td><p>The builder being used to construct the model for this context. Databases (and other extensions) typically
+define extension methods on this object that allow you to configure aspects of the model that are specific
+to a given database.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Gadema.Data.Database.GademaBaseContext.html#Gadema_Data_Database_GademaBaseContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_">GademaBaseContext.OnModelCreating(ModelBuilder)</a></div>
+  <h5 id="Gadema_Data_Database_Writing_WritingDbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    If a model is explicitly set on the options for this context (via <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder.usemodel">UseModel(IModel)</a>)
+    then this method will not be run. However, it will still run when creating a compiled model.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-modeling">Modeling entity types and relationships</a> for more information and
+    examples.
+</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1">IInfrastructure&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies">IDbContextDependencies</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache">IDbSetCache</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable">IDbContextPoolable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice">IResettableService</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a>
+  </div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Data_Database_Writing_WritingDbContext.md&amp;value=---%0Auid%3A%20Gadema.Data.Database.Writing.WritingDbContext%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Data/Database/Writing/WritingDbContext.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

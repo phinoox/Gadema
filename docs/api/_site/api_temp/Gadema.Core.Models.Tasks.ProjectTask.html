@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ProjectTask </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ProjectTask ">
+    
+    <meta name="description" content="Represents a discrete unit of work within a project&#39;s workflow. A task is anchored by its  and is associated with a specific .">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Tasks.ProjectTask">
+
+
+
+  <h1 id="Gadema_Core_Models_Tasks_ProjectTask" data-uid="Gadema.Core.Models.Tasks.ProjectTask" class="text-break">Class ProjectTask</h1>
+  <div class="markdown level0 summary"><p>Represents a discrete unit of work within a project's workflow.
+A task is anchored by its <a class="xref" href="Gadema.Core.Models.Tasks.ProjectTaskMetaInfo.html">ProjectTaskMetaInfo</a> and is associated with a specific <a class="xref" href="Gadema.Core.Models.Tasks.ProjectTask.html#Gadema_Core_Models_Tasks_ProjectTask_Project">Project</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">ProjectTask</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<a class="xref" href="Gadema.Core.Models.Tasks.html">Tasks</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Tasks_ProjectTask_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo) })]
+public class ProjectTask</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_AssignedToUserId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.AssignedToUserId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L50">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_AssignedToUserId_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.AssignedToUserId*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_AssignedToUserId" data-uid="Gadema.Core.Models.Tasks.ProjectTask.AssignedToUserId">AssignedToUserId</h4>
+  <div class="markdown level1 summary"><p>The ID of the user currently assigned to this task.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid? AssignedToUserId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_Comments.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.Comments%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L65">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_Comments_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Comments*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_Comments" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Comments">Comments</h4>
+  <div class="markdown level1 summary"><p>Collection of comments associated with this task.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;ProjectTaskComment&gt; Comments { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="Gadema.Core.Models.Tasks.ProjectTaskComment.html">ProjectTaskComment</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_CreatedByUserId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.CreatedByUserId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L60">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_CreatedByUserId_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.CreatedByUserId*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_CreatedByUserId" data-uid="Gadema.Core.Models.Tasks.ProjectTask.CreatedByUserId">CreatedByUserId</h4>
+  <div class="markdown level1 summary"><p>The ID of the user who created this task.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid CreatedByUserId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_DueDate.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.DueDate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L55">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_DueDate_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.DueDate*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_DueDate" data-uid="Gadema.Core.Models.Tasks.ProjectTask.DueDate">DueDate</h4>
+  <div class="markdown level1 summary"><p>The target deadline for completing the task.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime? DueDate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L19">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_Id_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Id*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_Id" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for the task.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_MetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.MetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L31">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_MetaInfo_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.MetaInfo*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_MetaInfo" data-uid="Gadema.Core.Models.Tasks.ProjectTask.MetaInfo">MetaInfo</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the task's identity anchor containing status and priority metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;MetaInfoId&quot;)]
+public virtual ProjectTaskMetaInfo MetaInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Tasks.ProjectTaskMetaInfo.html">ProjectTaskMetaInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L25">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_MetaInfoId_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.MetaInfoId*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_MetaInfoId" data-uid="Gadema.Core.Models.Tasks.ProjectTask.MetaInfoId">MetaInfoId</h4>
+  <div class="markdown level1 summary"><p>The ID of the associated identity anchor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid MetaInfoId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_Project.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.Project%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L44">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_Project_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Project*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_Project" data-uid="Gadema.Core.Models.Tasks.ProjectTask.Project">Project</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the parent project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;ProjectId&quot;)]
+public virtual Project Project { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.Projects.Project.html">Project</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask_ProjectId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask.ProjectId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L38">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Tasks_ProjectTask_ProjectId_" data-uid="Gadema.Core.Models.Tasks.ProjectTask.ProjectId*"></a>
+  <h4 id="Gadema_Core_Models_Tasks_ProjectTask_ProjectId" data-uid="Gadema.Core.Models.Tasks.ProjectTask.ProjectId">ProjectId</h4>
+  <div class="markdown level1 summary"><p>The ID of the project this task is associated with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid ProjectId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Tasks_ProjectTask.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Tasks.ProjectTask%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Tasks/ProjectTask.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

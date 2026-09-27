@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Namespace Gadema.Core.Models.Writing.Narrative </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Namespace Gadema.Core.Models.Writing.Narrative ">
+    
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Writing.Narrative">
+
+  <h1 id="Gadema_Core_Models_Writing_Narrative" data-uid="Gadema.Core.Models.Writing.Narrative" class="text-break">Namespace Gadema.Core.Models.Writing.Narrative</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">
+Classes
+</h3>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.DialogueBranch.html">DialogueBranch</a></h4>
+      <section><p>Represents a distinct path or tree within a branching dialogue system.
+Used for interactive storytelling, visual novels, and RPG-style conversation trees.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.DialogueNode.html">DialogueNode</a></h4>
+      <section><p>Represents a single point in a dialogue tree.
+Contains the spoken text, the speaker, and potential branches for player/character choices.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.LoreEntry.html">LoreEntry</a></h4>
+      <section><p>Represents a piece of world-building information (lore) within a project.
+Used to document setting details, history, geography, and mythology.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.OutlineSection.html">OutlineSection</a></h4>
+      <section><p>Represents a structured section within a <a class="xref" href="Gadema.Core.Models.Writing.Narrative.OutlineSection.html#Gadema_Core_Models_Writing_Narrative_OutlineSection_StoryOutline">StoryOutline</a>.
+Sections allow for organizing high-level ideas and beats into coherent groups.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.Scene.html">Scene</a></h4>
+      <section><p>Represents a Scene - the fundamental &quot;unit of work&quot; for narrative writing.
+A scene contains raw markdown text and links to structural elements like
+story chapters, beats, segments, and evolving character states.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneSegment.html">SceneSegment</a></h4>
+      <section><p>Represents a specific structural marker or &quot;token&quot; within a <a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneSegment.html#Gadema_Core_Models_Writing_Narrative_SceneSegment_Scene">Scene</a>.
+Segments allow for indexing interactive elements (like dialogue, actions, or monologue)
+without relying on fragile text position indices.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html">SceneStoryBeatMapping</a></h4>
+      <section><p>Junction table representing the many-to-many relationship between a <a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html#Gadema_Core_Models_Writing_Narrative_SceneStoryBeatMapping_Scene">Scene</a> and its associated <a class="xref" href="Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html#Gadema_Core_Models_Writing_Narrative_SceneStoryBeatMapping_StoryBeat">StoryBeat</a>s.
+This allows a single scene to fulfill multiple narrative beats, and a beat to be satisfied across different scenes.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.Story.html">Story</a></h4>
+      <section><p>Represents the overarching narrative work (e.g., a novel, screenplay, or campaign).
+A story is anchored by its identity and contains a hierarchical structure of
+outlines, beats, and chapters.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryBeat.html">StoryBeat</a></h4>
+      <section><p>Represents a Story Beat - a &quot;Landmark&quot; or major keypoint within a story's structure.
+Beats serve as structural anchors that can be fulfilled by one or many scenes,
+acting as draggable cards in the planning interface.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryChapter.html">StoryChapter</a></h4>
+      <section><p>Represents a major narrative segment (e.g., a chapter or act) within a story.
+Chapters provide structural organization for scenes and beats.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.StoryOutline.html">StoryOutline</a></h4>
+      <section><p>Represents a Story Outline - the high-level &quot;Map&quot; of a project's narrative intent.
+It serves as a container for planning, defining key story beats and organizing
+structural sections before full scenes are developed.
+Hierarchy: Project → StoryOutline → StoryBeat → Scene</p>
+</section>
+    <h3 id="enums">
+Enums
+</h3>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.SegmentType.html">SegmentType</a></h4>
+      <section><p>Defines the functional types of segments available for scene structure.</p>
+</section>
+      <h4><a class="xref" href="Gadema.Core.Models.Writing.Narrative.WritingTag.html">WritingTag</a></h4>
+      <section><p>Defines tags used for categorizing and filtering writing content (e.g., genres or themes).</p>
+</section>
+
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

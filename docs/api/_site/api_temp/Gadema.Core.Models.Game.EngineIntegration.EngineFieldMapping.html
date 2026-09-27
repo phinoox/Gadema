@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class EngineFieldMapping </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class EngineFieldMapping ">
+    
+    <meta name="description" content="Maps internal content fields to their corresponding property names in a game engine. This facilitates the automated export of narrative data (e.g., Character Names, Item Stats) into engines like Unity or Unreal.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping">
+
+
+
+  <h1 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping" class="text-break">Class EngineFieldMapping</h1>
+  <div class="markdown level0 summary"><p>Maps internal content fields to their corresponding property names in a game engine.
+This facilitates the automated export of narrative data (e.g., Character Names, Item Stats)
+into engines like Unity or Unreal.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">EngineFieldMapping</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<span class="xref">Game</span>.<a class="xref" href="Gadema.Core.Models.Game.EngineIntegration.html">EngineIntegration</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(EngineExportConfig) })]
+public class EngineFieldMapping</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentFieldName.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentFieldName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L42">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentFieldName_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentFieldName*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentFieldName" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentFieldName">ContentFieldName</h4>
+  <div class="markdown level1 summary"><p>The name of the field within Gadema's internal models (e.g., &quot;Name&quot;, &quot;Health&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(128)]
+[Required]
+[Display(Name = &quot;Content Field Name&quot;)]
+public string ContentFieldName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L36">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentType_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentType*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ContentType" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ContentType">ContentType</h4>
+  <div class="markdown level1 summary"><p>The type of content being mapped (e.g., Character, Item, Location).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[EnumDataType(typeof(ContentTypeEnum))]
+public ContentTypeEnum ContentType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.Enums.ContentTypeEnum.html">ContentTypeEnum</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_DataType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.DataType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L59">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_DataType_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.DataType*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_DataType" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.DataType">DataType</h4>
+  <div class="markdown level1 summary"><p>The underlying data type of the value being mapped (e.g., Int, Float, String).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DataType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Description.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Description%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L64">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Description_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Description*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Description" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Description">Description</h4>
+  <div class="markdown level1 summary"><p>A description of the mapping's purpose or specific logic applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(1024)]
+public string? Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfig.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfig%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L88">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfig_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfig*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfig" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfig">EngineExportConfig</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the engine export configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;EngineExportConfigId&quot;)]
+public virtual EngineExportConfig EngineExportConfig { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig.html">EngineExportConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfigId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfigId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L70">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfigId_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfigId*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineExportConfigId" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineExportConfigId">EngineExportConfigId</h4>
+  <div class="markdown level1 summary"><p>The ID of the associated engine export configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+[Display(Name = &quot;Engine Export Config ID&quot;)]
+public Guid EngineExportConfigId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineFieldName.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineFieldName%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L48">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineFieldName_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineFieldName*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_EngineFieldName" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.EngineFieldName">EngineFieldName</h4>
+  <div class="markdown level1 summary"><p>The corresponding property name within the target game engine (e.g., &quot;Player.Health&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(256)]
+public string? EngineFieldName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L20">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Id_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Id*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Id" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for this mapping entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_IsRequired.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.IsRequired%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L54">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_IsRequired_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.IsRequired*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_IsRequired" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.IsRequired">IsRequired</h4>
+  <div class="markdown level1 summary"><p>Indicates if this field is mandatory for a successful export.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRequired { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Project.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Project%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L30">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Project_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Project*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_Project" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.Project">Project</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the parent project.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;ProjectId&quot;)]
+public virtual Project Project { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.Projects.Project.html">Project</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ProjectId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ProjectId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L24">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ProjectId_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ProjectId*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_ProjectId" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.ProjectId">ProjectId</h4>
+  <div class="markdown level1 summary"><p>The ID of the project this mapping applies to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+[Display(Name = &quot;Project ID&quot;)]
+public Guid ProjectId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_SourceColumn.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.SourceColumn%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L76">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_SourceColumn_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.SourceColumn*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_SourceColumn" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.SourceColumn">SourceColumn</h4>
+  <div class="markdown level1 summary"><p>The source column name used in the game engine's data schema.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(256)]
+public string? SourceColumn { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_TargetColumn.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.TargetColumn%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L82">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_TargetColumn_" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.TargetColumn*"></a>
+  <h4 id="Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping_TargetColumn" data-uid="Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.TargetColumn">TargetColumn</h4>
+  <div class="markdown level1 summary"><p>The target column name for the exported dataset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(256)]
+public string? TargetColumn { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_EngineIntegration_EngineFieldMapping.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/EngineIntegration/EngineFieldMapping.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

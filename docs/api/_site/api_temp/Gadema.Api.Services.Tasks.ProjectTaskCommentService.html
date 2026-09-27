@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ProjectTaskCommentService </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ProjectTaskCommentService ">
+    
+    <meta name="description" content="Service for managing comments on tasks. Comments are treated as leaf entities belonging to a ProjectTask.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService">
+
+
+
+  <h1 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService" class="text-break">Class ProjectTaskCommentService</h1>
+  <div class="markdown level0 summary"><p>Service for managing comments on tasks.
+Comments are treated as leaf entities belonging to a ProjectTask.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Gadema.Api.Services.Core.DomainService.html">DomainService</a></div>
+    <div class="level2"><span class="xref">ProjectTaskCommentService</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__core">DomainService._core</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__logger">DomainService._logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__userId">DomainService._userId</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_LogDbAsync_System_Guid_System_String_System_String_System_Guid_System_String_">DomainService.LogDbAsync(Guid, string, string, Guid, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckIsLoggedIn">DomainService.CheckIsLoggedIn()</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsTargetInProjectAsync_System_Guid_System_Guid_">DomainService.IsTargetInProjectAsync(Guid, Guid)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Nullable_System_Guid__Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_">DomainService.CheckAccessAsync&lt;T&gt;(Guid?, Permission, ProjectMemberRoleEnum)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_">DomainService.CheckAccessAsync&lt;T&gt;(Guid, Permission, ProjectMemberRoleEnum)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsAdminAsync_System_Guid_">DomainService.IsAdminAsync(Guid)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_SyncIdentityAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_">DomainService.SyncIdentityAsync&lt;T&gt;(Guid, BaseMetaInfoUpdateData)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<a class="xref" href="Gadema.Api.html">Api</a>.<a class="xref" href="Gadema.Api.Services.html">Services</a>.<a class="xref" href="Gadema.Api.Services.Tasks.html">Tasks</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Api.dll</h6>
+  <h5 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ServiceLifetime(ServiceLifetime.Scoped)]
+public class ProjectTaskCommentService : DomainService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService__ctor_Gadema_Data_Database_Tasks_TaskDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Tasks_ProjectTaskCommentService__Gadema_Api_CoreServices_CoreServicesProvider_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService.%23ctor(Gadema.Data.Database.Tasks.TaskDbContext%2CMicrosoft.Extensions.Logging.ILogger%7BGadema.Api.Services.Tasks.ProjectTaskCommentService%7D%2CGadema.Api.CoreServices.CoreServicesProvider)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L23">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Tasks_ProjectTaskCommentService__ctor_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.#ctor*"></a>
+  <h4 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService__ctor_Gadema_Data_Database_Tasks_TaskDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Tasks_ProjectTaskCommentService__Gadema_Api_CoreServices_CoreServicesProvider_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.#ctor(Gadema.Data.Database.Tasks.TaskDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Tasks.ProjectTaskCommentService},Gadema.Api.CoreServices.CoreServicesProvider)">ProjectTaskCommentService(TaskDbContext, ILogger&lt;ProjectTaskCommentService&gt;, CoreServicesProvider)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectTaskCommentService(TaskDbContext db, ILogger&lt;ProjectTaskCommentService&gt; logger, CoreServicesProvider coreServices)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Data.Database.Tasks.TaskDbContext.html">TaskDbContext</a></td>
+        <td><span class="parametername">db</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Gadema.Api.Services.Tasks.ProjectTaskCommentService.html">ProjectTaskCommentService</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Gadema.Api.CoreServices.CoreServicesProvider.html">CoreServicesProvider</a></td>
+        <td><span class="parametername">coreServices</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService_AddCommentAsync_System_Guid_Gadema_Core_Dtos_Tasks_ProjectTaskCommentCreateDto_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService.AddCommentAsync(System.Guid%2CGadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L50">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_AddCommentAsync_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.AddCommentAsync*"></a>
+  <h4 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_AddCommentAsync_System_Guid_Gadema_Core_Dtos_Tasks_ProjectTaskCommentCreateDto_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.AddCommentAsync(System.Guid,Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto)">AddCommentAsync(Guid, ProjectTaskCommentCreateDto)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;CreateResponseDto&gt;&gt; AddCommentAsync(Guid taskId, ProjectTaskCommentCreateDto createDto)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">taskId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto.html">ProjectTaskCommentCreateDto</a></td>
+        <td><span class="parametername">createDto</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto.html">CreateResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService_DeleteCommentAsync_System_Guid_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService.DeleteCommentAsync(System.Guid)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L106">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_DeleteCommentAsync_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.DeleteCommentAsync*"></a>
+  <h4 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_DeleteCommentAsync_System_Guid_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.DeleteCommentAsync(System.Guid)">DeleteCommentAsync(Guid)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;DeleteResponseDto&gt;&gt; DeleteCommentAsync(Guid id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto.html">DeleteResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService_GetCommentsAsync_System_Guid_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService.GetCommentsAsync(System.Guid)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L32">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_GetCommentsAsync_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.GetCommentsAsync*"></a>
+  <h4 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_GetCommentsAsync_System_Guid_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.GetCommentsAsync(System.Guid)">GetCommentsAsync(Guid)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;ListResponseDto&lt;ProjectTaskCommentResponseDto&gt;&gt;&gt; GetCommentsAsync(Guid taskId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">taskId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Response.ListResponseDto-1.html">ListResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto.html">ProjectTaskCommentResponseDto</a>&gt;&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService_UpdateCommentAsync_System_Guid_Gadema_Core_Dtos_Tasks_ProjectTaskCommentUpdateDto_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService.UpdateCommentAsync(System.Guid%2CGadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L85">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_UpdateCommentAsync_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.UpdateCommentAsync*"></a>
+  <h4 id="Gadema_Api_Services_Tasks_ProjectTaskCommentService_UpdateCommentAsync_System_Guid_Gadema_Core_Dtos_Tasks_ProjectTaskCommentUpdateDto_" data-uid="Gadema.Api.Services.Tasks.ProjectTaskCommentService.UpdateCommentAsync(System.Guid,Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto)">UpdateCommentAsync(Guid, ProjectTaskCommentUpdateDto)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;ProjectTaskCommentResponseDto&gt;&gt; UpdateCommentAsync(Guid id, ProjectTaskCommentUpdateDto updateDto)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">id</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto.html">ProjectTaskCommentUpdateDto</a></td>
+        <td><span class="parametername">updateDto</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto.html">ProjectTaskCommentResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Tasks_ProjectTaskCommentService.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Tasks.ProjectTaskCommentService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs/#L19" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

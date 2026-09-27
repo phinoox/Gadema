@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class AttributeDefinition </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class AttributeDefinition ">
+    
+    <meta name="description" content="Represents a blueprint for a character attribute (e.g., &amp;quot;Strength&amp;quot;, &amp;quot;Health&amp;quot;, &amp;quot;Mana&amp;quot;). Defines the core mechanics, including data type, scaling formulas, and value constraints.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition">
+
+
+
+  <h1 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition" class="text-break">Class AttributeDefinition</h1>
+  <div class="markdown level0 summary"><p>Represents a blueprint for a character attribute (e.g., &quot;Strength&quot;, &quot;Health&quot;, &quot;Mana&quot;).
+Defines the core mechanics, including data type, scaling formulas, and value constraints.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">AttributeDefinition</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<span class="xref">Core</span>.<span class="xref">Models</span>.<span class="xref">Game</span>.<a class="xref" href="Gadema.Core.Models.Game.Attributes.html">Attributes</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
+  <h5 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+public class AttributeDefinition</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_ContentMetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.ContentMetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L28">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_ContentMetaInfo_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.ContentMetaInfo*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_ContentMetaInfo" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.ContentMetaInfo">ContentMetaInfo</h4>
+  <div class="markdown level1 summary"><p>Navigation property for the attribute's identity anchor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ForeignKey(&quot;MetaInfoId&quot;)]
+public virtual ContentMetaInfo? ContentMetaInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html">ContentMetaInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMax.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMax%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L70">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMax_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMax*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMax" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMax">DefaultMax</h4>
+  <div class="markdown level1 summary"><p>The default maximum possible value for this attribute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public decimal? DefaultMax { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMin.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMin%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L65">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMin_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMin*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DefaultMin" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DefaultMin">DefaultMin</h4>
+  <div class="markdown level1 summary"><p>The default minimum possible value for this attribute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public decimal? DefaultMin { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_Description.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.Description%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L44">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Description_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Description*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Description" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Description">Description</h4>
+  <div class="markdown level1 summary"><p>A detailed description of what this attribute represents and how it functions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(4096)]
+public string? Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_DisplayOrder.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.DisplayOrder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L75">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DisplayOrder_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DisplayOrder*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_DisplayOrder" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.DisplayOrder">DisplayOrder</h4>
+  <div class="markdown level1 summary"><p>The sort order used for displaying attributes in UI lists or character sheets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DisplayOrder { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_FormulaExpression.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.FormulaExpression%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L54">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_FormulaExpression_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.FormulaExpression*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_FormulaExpression" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.FormulaExpression">FormulaExpression</h4>
+  <div class="markdown level1 summary"><p>A mathematical expression used for calculating attribute values dynamically.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(4096)]
+public string? FormulaExpression { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L17">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Id_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Id*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Id" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Id">Id</h4>
+  <div class="markdown level1 summary"><p>Unique identifier for the attribute definition.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_LevelMappingJson.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.LevelMappingJson%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L60">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_LevelMappingJson_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.LevelMappingJson*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_LevelMappingJson" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.LevelMappingJson">LevelMappingJson</h4>
+  <div class="markdown level1 summary"><p>A JSON representation of how the attribute scales across different levels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[MaxLength(1024)]
+public string? LevelMappingJson { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L22">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_MetaInfoId_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.MetaInfoId*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_MetaInfoId" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.MetaInfoId">MetaInfoId</h4>
+  <div class="markdown level1 summary"><p>The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public Guid? MetaInfoId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_Name.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.Name%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L33">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Name_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Name*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Name" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Name">Name</h4>
+  <div class="markdown level1 summary"><p>The human-readable name of the attribute (e.g., &quot;Strength&quot;, &quot;Agility&quot;).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required]
+public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_Slug.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.Slug%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L39">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Slug_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Slug*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_Slug" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.Slug">Slug</h4>
+  <div class="markdown level1 summary"><p>A unique, URL-friendly slug for the attribute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Column(&quot;slug&quot;)]
+[MaxLength(128)]
+public string Slug { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition_ValueType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition.ValueType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L50">View Source</a>
+  </span>
+  <a id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_ValueType_" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.ValueType*"></a>
+  <h4 id="Gadema_Core_Models_Game_Attributes_AttributeDefinition_ValueType" data-uid="Gadema.Core.Models.Game.Attributes.AttributeDefinition.ValueType">ValueType</h4>
+  <div class="markdown level1 summary"><p>The underlying numeric data type (e.g., Integer, Float, Decimal).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ValueType { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Game_Attributes_AttributeDefinition.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Game.Attributes.AttributeDefinition%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Game/Attributes/AttributeDefinition.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ProjectService </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ProjectService ">
+    
+    <meta name="description" content="Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Gadema.Api.Services.Base.Projects.ProjectService">
+
+
+
+  <h1 id="Gadema_Api_Services_Base_Projects_ProjectService" data-uid="Gadema.Api.Services.Base.Projects.ProjectService" class="text-break">Class ProjectService</h1>
+  <div class="markdown level0 summary"><p>Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="Gadema.Api.Services.Core.DomainService.html">DomainService</a></div>
+    <div class="level2"><span class="xref">ProjectService</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__core">DomainService._core</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__logger">DomainService._logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__userId">DomainService._userId</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_LogDbAsync_System_Guid_System_String_System_String_System_Guid_System_String_">DomainService.LogDbAsync(Guid, string, string, Guid, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckIsLoggedIn">DomainService.CheckIsLoggedIn()</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsTargetInProjectAsync_System_Guid_System_Guid_">DomainService.IsTargetInProjectAsync(Guid, Guid)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Nullable_System_Guid__Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_">DomainService.CheckAccessAsync&lt;T&gt;(Guid?, Permission, ProjectMemberRoleEnum)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_">DomainService.CheckAccessAsync&lt;T&gt;(Guid, Permission, ProjectMemberRoleEnum)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsAdminAsync_System_Guid_">DomainService.IsAdminAsync(Guid)</a>
+    </div>
+    <div>
+      <a class="xref" href="Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_SyncIdentityAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_">DomainService.SyncIdentityAsync&lt;T&gt;(Guid, BaseMetaInfoUpdateData)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <span class="xref">Gadema</span>.<a class="xref" href="Gadema.Api.html">Api</a>.<a class="xref" href="Gadema.Api.Services.html">Services</a>.<span class="xref">Base</span>.<a class="xref" href="Gadema.Api.Services.Base.Projects.html">Projects</a></h6>
+  <h6><strong>Assembly</strong>: Gadema.Api.dll</h6>
+  <h5 id="Gadema_Api_Services_Base_Projects_ProjectService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ServiceLifetime(ServiceLifetime.Scoped)]
+public class ProjectService : DomainService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.%23ctor(Gadema.Data.Database.Core.CoreDbContext%2CMicrosoft.Extensions.Logging.ILogger%7BGadema.Api.Services.Base.Projects.ProjectService%7D%2CGadema.Api.CoreServices.CoreServicesProvider)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L26">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService__ctor_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.#ctor*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)">ProjectService(CoreDbContext, ILogger&lt;ProjectService&gt;, CoreServicesProvider)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectService(CoreDbContext _db, ILogger&lt;ProjectService&gt; logger, CoreServicesProvider coreServices)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Data.Database.Core.CoreDbContext.html">CoreDbContext</a></td>
+        <td><span class="parametername">_db</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="Gadema.Api.Services.Base.Projects.ProjectService.html">ProjectService</a>&gt;</td>
+        <td><span class="parametername">logger</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Gadema.Api.CoreServices.CoreServicesProvider.html">CoreServicesProvider</a></td>
+        <td><span class="parametername">coreServices</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService_CreateAsync_Gadema_Core_Dtos_Base_Projects_ProjectCreateDto_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.CreateAsync(Gadema.Core.Dtos.Base.Projects.ProjectCreateDto)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L68">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService_CreateAsync_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.CreateAsync*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService_CreateAsync_Gadema_Core_Dtos_Base_Projects_ProjectCreateDto_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.CreateAsync(Gadema.Core.Dtos.Base.Projects.ProjectCreateDto)">CreateAsync(ProjectCreateDto)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;CreateResponseDto&gt;&gt; CreateAsync(ProjectCreateDto createDto)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Dtos.Base.Projects.ProjectCreateDto.html">ProjectCreateDto</a></td>
+        <td><span class="parametername">createDto</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto.html">CreateResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService_DeleteAsync_System_Guid_System_Guid_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.DeleteAsync(System.Guid%2CSystem.Guid)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L178">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService_DeleteAsync_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.DeleteAsync*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService_DeleteAsync_System_Guid_System_Guid_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.DeleteAsync(System.Guid,System.Guid)">DeleteAsync(Guid, Guid)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;DeleteResponseDto&gt;&gt; DeleteAsync(Guid projectId, Guid contextProjectId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">projectId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">contextProjectId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto.html">DeleteResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService_GetAsync_System_Guid_System_Guid_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.GetAsync(System.Guid%2CSystem.Guid)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L113">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService_GetAsync_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.GetAsync*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService_GetAsync_System_Guid_System_Guid_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.GetAsync(System.Guid,System.Guid)">GetAsync(Guid, Guid)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;ProjectResponseDto&gt;&gt; GetAsync(Guid projectId, Guid contextProjectId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">projectId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">contextProjectId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Projects.ProjectResponseDto.html">ProjectResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService_GetMatchesAsync_System_String_System_Nullable_System_Guid__.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.GetMatchesAsync(System.String%2CSystem.Nullable%7BSystem.Guid%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L41">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService_GetMatchesAsync_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.GetMatchesAsync*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService_GetMatchesAsync_System_String_System_Nullable_System_Guid__" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.GetMatchesAsync(System.String,System.Nullable{System.Guid})">GetMatchesAsync(string, Guid?)</h4>
+  <div class="markdown level1 summary"><p>Implements ISearchableProvider. Provides matches for the SearchOrchestrator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IEnumerable&lt;SearchHitDto&gt;&gt; GetMatchesAsync(string query, Guid? projectId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">query</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a>?</td>
+        <td><span class="parametername">projectId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Search.SearchHitDto.html">SearchHitDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService_UpdateAsync_System_Guid_System_Guid_Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService.UpdateAsync(System.Guid%2CSystem.Guid%2CGadema.Core.Dtos.Base.Projects.ProjectUpdateDto)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L129">View Source</a>
+  </span>
+  <a id="Gadema_Api_Services_Base_Projects_ProjectService_UpdateAsync_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.UpdateAsync*"></a>
+  <h4 id="Gadema_Api_Services_Base_Projects_ProjectService_UpdateAsync_System_Guid_System_Guid_Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_" data-uid="Gadema.Api.Services.Base.Projects.ProjectService.UpdateAsync(System.Guid,System.Guid,Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto)">UpdateAsync(Guid, Guid, ProjectUpdateDto)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ApiResponseDto&lt;ProjectResponseDto&gt;&gt; UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">projectId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.guid">Guid</a></td>
+        <td><span class="parametername">contextProjectId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html">ProjectUpdateDto</a></td>
+        <td><span class="parametername">dto</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Gadema.Core.Dtos.ApiResponseDto-1.html">ApiResponseDto</a>&lt;<a class="xref" href="Gadema.Core.Dtos.Base.Projects.ProjectResponseDto.html">ProjectResponseDto</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Api_Services_Base_Projects_ProjectService.md&amp;value=---%0Auid%3A%20Gadema.Api.Services.Base.Projects.ProjectService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Api/Services/Base/Projects/ProjectService.cs/#L21" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
