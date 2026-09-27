@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Infrastructure.Enums
+  commentId: N:Gadema.Core.Models.Base.Infrastructure.Enums
+  id: Gadema.Core.Models.Base.Infrastructure.Enums
+  children:
+  - Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Infrastructure.Enums
+  nameWithType: Gadema.Core.Models.Base.Infrastructure.Enums
+  fullName: Gadema.Core.Models.Base.Infrastructure.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum
+  parent: Gadema.Core.Models.Base.Infrastructure.Enums
+  href: Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum.html
+  name: ExternalReferenceTypeEnum
+  nameWithType: ExternalReferenceTypeEnum
+  fullName: Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum
+- uid: Gadema.Core.Models.Base.Infrastructure.Enums
+  commentId: N:Gadema.Core.Models.Base.Infrastructure.Enums
+  name: Gadema.Core.Models.Base.Infrastructure.Enums
+  nameWithType: Gadema.Core.Models.Base.Infrastructure.Enums
+  fullName: Gadema.Core.Models.Base.Infrastructure.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure.Enums
+    name: Enums

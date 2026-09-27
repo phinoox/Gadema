@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Base.MetaInfo
+  commentId: N:Gadema.Api.Services.Base.MetaInfo
+  id: Gadema.Api.Services.Base.MetaInfo
+  children:
+  - Gadema.Api.Services.Base.MetaInfo.CommentService
+  - Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService
+  - Gadema.Api.Services.Base.MetaInfo.MetaTagService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Base.MetaInfo
+  nameWithType: Gadema.Api.Services.Base.MetaInfo
+  fullName: Gadema.Api.Services.Base.MetaInfo
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Base.MetaInfo.CommentService
+  commentId: T:Gadema.Api.Services.Base.MetaInfo.CommentService
+  parent: Gadema.Api.Services.Base.MetaInfo
+  href: Gadema.Api.Services.Base.MetaInfo.CommentService.html
+  name: CommentService
+  nameWithType: CommentService
+  fullName: Gadema.Api.Services.Base.MetaInfo.CommentService
+- uid: Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService
+  commentId: T:Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService
+  parent: Gadema.Api.Services.Base.MetaInfo
+  href: Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService.html
+  name: ExternalReferenceService
+  nameWithType: ExternalReferenceService
+  fullName: Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService
+- uid: Gadema.Api.Services.Base.MetaInfo.MetaTagService
+  commentId: T:Gadema.Api.Services.Base.MetaInfo.MetaTagService
+  parent: Gadema.Api.Services.Base.MetaInfo
+  href: Gadema.Api.Services.Base.MetaInfo.MetaTagService.html
+  name: MetaTagService
+  nameWithType: MetaTagService
+  fullName: Gadema.Api.Services.Base.MetaInfo.MetaTagService
+- uid: Gadema.Api.Services.Base.MetaInfo
+  commentId: N:Gadema.Api.Services.Base.MetaInfo
+  name: Gadema.Api.Services.Base.MetaInfo
+  nameWithType: Gadema.Api.Services.Base.MetaInfo
+  fullName: Gadema.Api.Services.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Api.Services.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Api.Services.Base.MetaInfo
+    name: MetaInfo

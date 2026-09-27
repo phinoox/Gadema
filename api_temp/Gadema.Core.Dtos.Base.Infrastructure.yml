@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  id: Gadema.Core.Dtos.Base.Infrastructure
+  children:
+  - Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto
+  - Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  - Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  - Gadema.Core.Dtos.Base.Infrastructure.RollbackDto
+  - Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  - Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto
+  - Gadema.Core.Dtos.Base.Infrastructure.VersionInfo
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto.html
+  name: ActivityLogResponseDto
+  nameWithType: ActivityLogResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto.html
+  name: ActivityLogListResponseDto
+  nameWithType: ActivityLogListResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto.html
+  name: AutosaveDto
+  nameWithType: AutosaveDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto.html
+  name: MetaInfoAutosaveResponseDto
+  nameWithType: MetaInfoAutosaveResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.VersionInfo
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.VersionInfo
+  href: Gadema.Core.Dtos.Base.Infrastructure.VersionInfo.html
+  name: VersionInfo
+  nameWithType: VersionInfo
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.VersionInfo
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData.html
+  name: BaseMetaInfoCreateData
+  nameWithType: BaseMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData.html
+  name: ContentMetaInfoCreateData
+  nameWithType: ContentMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto.html
+  name: CreateResponseDto
+  nameWithType: CreateResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData.html
+  name: ContentMetaInfoUpdateData
+  nameWithType: ContentMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.html
+  name: ProjectMetaInfoUpdateData
+  nameWithType: ProjectMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto.html
+  name: DeleteResponseDto
+  nameWithType: DeleteResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.html
+  name: UpdateRequestDto
+  nameWithType: UpdateRequestDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html
+  name: MetaInfoResponseBaseDto
+  nameWithType: MetaInfoResponseBaseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto.html
+  name: AutosaveResponseDto
+  nameWithType: AutosaveResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto.html
+  name: ContentSnapshotUpdateDto
+  nameWithType: ContentSnapshotUpdateDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto.html
+  name: ContentSnapshotResponseDto
+  nameWithType: ContentSnapshotResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto.html
+  name: ContentSnapshotListResponseDto
+  nameWithType: ContentSnapshotListResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto.html
+  name: ContentVersionLogResponseDto
+  nameWithType: ContentVersionLogResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto.html
+  name: ContentVersionLogListResponseDto
+  nameWithType: ContentVersionLogListResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto.html
+  name: MediaAttachmentResponseDto
+  nameWithType: MediaAttachmentResponseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.RollbackDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.RollbackDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.RollbackDto.html
+  name: RollbackDto
+  nameWithType: RollbackDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.RollbackDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto.html
+  name: UploadMediaDto
+  nameWithType: UploadMediaDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure

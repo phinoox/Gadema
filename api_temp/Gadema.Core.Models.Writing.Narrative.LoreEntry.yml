@@ -1,0 +1,668 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  commentId: T:Gadema.Core.Models.Writing.Narrative.LoreEntry
+  id: LoreEntry
+  parent: Gadema.Core.Models.Writing.Narrative
+  children:
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+  langs:
+  - csharp
+  - vb
+  name: LoreEntry
+  nameWithType: LoreEntry
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LoreEntry
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: >-
+    Represents a piece of world-building information (lore) within a project.
+
+    Used to document setting details, history, geography, and mythology.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo) })]
+
+      public class LoreEntry
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project), GetType(ContentMetaInfo) })>
+
+      Public Class LoreEntry
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+  commentId: P:Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+  id: Id
+  parent: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: LoreEntry.Id
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Unique identifier for the lore entry.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Writing.Narrative.LoreEntry.Id*
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+  commentId: P:Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: LoreEntry.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid
+  overload: Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: LoreEntry.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Navigation property for the lore entry's identity anchor.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+  commentId: P:Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+  id: LoreType
+  parent: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  langs:
+  - csharp
+  - vb
+  name: LoreType
+  nameWithType: LoreEntry.LoreType
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LoreType
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The category of this lore entry (e.g., History, Mythology, Geography).
+  example: []
+  syntax:
+    content: >-
+      [EnumDataType(typeof(LoreTypeEnum))]
+
+      [Required]
+
+      public LoreTypeEnum LoreType { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    content.vb: >-
+      <EnumDataType(GetType(LoreTypeEnum))>
+
+      <Required>
+
+      Public Property LoreType As LoreTypeEnum
+  overload: Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.EnumDataTypeAttribute
+    ctor: System.ComponentModel.DataAnnotations.EnumDataTypeAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+  commentId: P:Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+  id: RawText
+  parent: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  langs:
+  - csharp
+  - vb
+  name: RawText
+  nameWithType: LoreEntry.RawText
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RawText
+    path: src/Gadema.Core/Models/Writing/Narrative/LoreEntry.cs
+    startLine: 39
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The detailed narrative content or description of the lore entry.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? RawText { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property RawText As String
+  overload: Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+references:
+- uid: Gadema.Core.Models.Writing.Narrative
+  commentId: N:Gadema.Core.Models.Writing.Narrative
+  name: Gadema.Core.Models.Writing.Narrative
+  nameWithType: Gadema.Core.Models.Writing.Narrative
+  fullName: Gadema.Core.Models.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.Id*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html#Gadema_Core_Models_Writing_Narrative_LoreEntry_Id
+  name: Id
+  nameWithType: LoreEntry.Id
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html#Gadema_Core_Models_Writing_Narrative_LoreEntry_MetaInfoId
+  name: MetaInfoId
+  nameWithType: LoreEntry.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.MetaInfoId
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html#Gadema_Core_Models_Writing_Narrative_LoreEntry_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: LoreEntry.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html#Gadema_Core_Models_Writing_Narrative_LoreEntry_LoreType
+  name: LoreType
+  nameWithType: LoreEntry.LoreType
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.LoreType
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  parent: Gadema.Core.Models.Writing.Enums
+  href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  name: LoreTypeEnum
+  nameWithType: LoreTypeEnum
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums
+  commentId: N:Gadema.Core.Models.Writing.Enums
+  name: Gadema.Core.Models.Writing.Enums
+  nameWithType: Gadema.Core.Models.Writing.Enums
+  fullName: Gadema.Core.Models.Writing.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html#Gadema_Core_Models_Writing_Narrative_LoreEntry_RawText
+  name: RawText
+  nameWithType: LoreEntry.RawText
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry.RawText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

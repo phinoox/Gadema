@@ -1,0 +1,705 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  commentId: T:Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  id: TemplateNarrativeStructure
+  parent: Gadema.Core.Models.Templates
+  children:
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+  langs:
+  - csharp
+  - vb
+  name: TemplateNarrativeStructure
+  nameWithType: TemplateNarrativeStructure
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TemplateNarrativeStructure
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: >-
+    Defines a pre-configured narrative structure (e.g., Act Sequences, Plot Points) for a project template.
+
+    This allows templates to provide ready-made story arcs and sequence arrangements for new projects.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(RootMarker) })]
+
+      public class TemplateNarrativeStructure
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(RootMarker) })>
+
+      Public Class TemplateNarrativeStructure
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+  id: Id
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: TemplateNarrativeStructure.Id
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: Unique identifier for the template narrative structure.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id*
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+  id: ProjectTemplateId
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: ProjectTemplateId
+  nameWithType: TemplateNarrativeStructure.ProjectTemplateId
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTemplateId
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: The ID of the project template this structure belongs to.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [Display(Name = "Project Template ID")]
+
+      public Guid ProjectTemplateId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      <Display(Name:="Project Template ID")>
+
+      Public Property ProjectTemplateId As Guid
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Project Template ID
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+  id: ProjectTemplate
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: ProjectTemplate
+  nameWithType: TemplateNarrativeStructure.ProjectTemplate
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTemplate
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 28
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: Navigation property for the parent project template.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("ProjectTemplateId")]
+
+      public virtual ProjectTemplate ProjectTemplate { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Templates.ProjectTemplate
+    content.vb: >-
+      <ForeignKey("ProjectTemplateId")>
+
+      Public Overridable Property ProjectTemplate As ProjectTemplate
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ProjectTemplateId
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+  id: SequenceName
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: SequenceName
+  nameWithType: TemplateNarrativeStructure.SequenceName
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SequenceName
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: 'The human-readable name of the sequence (e.g., "Act 1: Introduction", "The Rising Action").'
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [MaxLength(128)]
+
+      [Display(Name = "Sequence Name")]
+
+      public string SequenceName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <MaxLength(128)>
+
+      <Display(Name:="Sequence Name")>
+
+      Public Property SequenceName As String
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Sequence Name
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+  id: OrderIndex
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: OrderIndex
+  nameWithType: TemplateNarrativeStructure.OrderIndex
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OrderIndex
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: The sort order for this sequence within the narrative structure.
+  example: []
+  syntax:
+    content: public int OrderIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OrderIndex As Integer
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex*
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+  id: IsDefaultStructure
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: IsDefaultStructure
+  nameWithType: TemplateNarrativeStructure.IsDefaultStructure
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsDefaultStructure
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 45
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: Indicates if this is the primary or default structure for the template.
+  example: []
+  syntax:
+    content: public bool IsDefaultStructure { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsDefaultStructure As Boolean
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure*
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description
+  commentId: P:Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description
+  id: Description
+  parent: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: TemplateNarrativeStructure.Description
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Models/Templates/TemplateNarrativeStructure.cs
+    startLine: 50
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Templates
+  summary: A detailed description of what this narrative sequence represents.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(2048)]
+
+      public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(2048)>
+
+      Public Property Description As String
+  overload: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2048
+references:
+- uid: Gadema.Core.Models.Templates
+  commentId: N:Gadema.Core.Models.Templates
+  name: Gadema.Core.Models.Templates
+  nameWithType: Gadema.Core.Models.Templates
+  fullName: Gadema.Core.Models.Templates
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Templates
+    name: Templates
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Templates
+    name: Templates
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_Id
+  name: Id
+  nameWithType: TemplateNarrativeStructure.Id
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_ProjectTemplateId
+  name: ProjectTemplateId
+  nameWithType: TemplateNarrativeStructure.ProjectTemplateId
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplateId
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_ProjectTemplate
+  name: ProjectTemplate
+  nameWithType: TemplateNarrativeStructure.ProjectTemplate
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.ProjectTemplate
+- uid: Gadema.Core.Models.Templates.ProjectTemplate
+  commentId: T:Gadema.Core.Models.Templates.ProjectTemplate
+  parent: Gadema.Core.Models.Templates
+  href: Gadema.Core.Models.Templates.ProjectTemplate.html
+  name: ProjectTemplate
+  nameWithType: ProjectTemplate
+  fullName: Gadema.Core.Models.Templates.ProjectTemplate
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_SequenceName
+  name: SequenceName
+  nameWithType: TemplateNarrativeStructure.SequenceName
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.SequenceName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_OrderIndex
+  name: OrderIndex
+  nameWithType: TemplateNarrativeStructure.OrderIndex
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.OrderIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_IsDefaultStructure
+  name: IsDefaultStructure
+  nameWithType: TemplateNarrativeStructure.IsDefaultStructure
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.IsDefaultStructure
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description*
+  commentId: Overload:Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html#Gadema_Core_Models_Templates_TemplateNarrativeStructure_Description
+  name: Description
+  nameWithType: TemplateNarrativeStructure.Description
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure.Description

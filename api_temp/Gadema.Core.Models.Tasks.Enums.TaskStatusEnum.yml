@@ -1,0 +1,293 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  commentId: T:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  id: TaskStatusEnum
+  parent: Gadema.Core.Models.Tasks.Enums
+  children:
+  - Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Backlog
+  - Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Done
+  - Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.InProgress
+  - Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Review
+  langs:
+  - csharp
+  - vb
+  name: TaskStatusEnum
+  nameWithType: TaskStatusEnum
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TaskStatusEnum
+    path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Tasks.Enums
+  summary: Defines the lifecycle stages of a task within a project workflow.
+  example: []
+  syntax:
+    content: public enum TaskStatusEnum
+    content.vb: Public Enum TaskStatusEnum
+  extensionMethods:
+  - Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Backlog
+  commentId: F:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Backlog
+  id: Backlog
+  parent: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Backlog
+  nameWithType: TaskStatusEnum.Backlog
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Backlog
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Backlog
+    path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Tasks.Enums
+  summary: The task is identified but not yet scheduled or started.
+  example: []
+  syntax:
+    content: Backlog = 0
+    return:
+      type: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.InProgress
+  commentId: F:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.InProgress
+  id: InProgress
+  parent: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: InProgress
+  nameWithType: TaskStatusEnum.InProgress
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.InProgress
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: InProgress
+    path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Tasks.Enums
+  summary: The task is currently being actively worked on.
+  example: []
+  syntax:
+    content: InProgress = 1
+    return:
+      type: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Review
+  commentId: F:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Review
+  id: Review
+  parent: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Review
+  nameWithType: TaskStatusEnum.Review
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Review
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Review
+    path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Tasks.Enums
+  summary: The work is completed and awaiting verification or feedback.
+  example: []
+  syntax:
+    content: Review = 2
+    return:
+      type: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Done
+  commentId: F:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Done
+  id: Done
+  parent: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Done
+  nameWithType: TaskStatusEnum.Done
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Done
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Done
+    path: src/Gadema.Core/Models/Tasks/Enums/TaskStatusEnum.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Tasks.Enums
+  summary: The task has been successfully completed and verified.
+  example: []
+  syntax:
+    content: Done = 3
+    return:
+      type: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+references:
+- uid: Gadema.Core.Models.Tasks.Enums
+  commentId: N:Gadema.Core.Models.Tasks.Enums
+  name: Gadema.Core.Models.Tasks.Enums
+  nameWithType: Gadema.Core.Models.Tasks.Enums
+  fullName: Gadema.Core.Models.Tasks.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Tasks
+    name: Tasks
+  - name: .
+  - uid: Gadema.Core.Models.Tasks.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Tasks
+    name: Tasks
+  - name: .
+  - uid: Gadema.Core.Models.Tasks.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<TaskStatusEnum>(TaskStatusEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<TaskStatusEnum>(TaskStatusEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Tasks.Enums.TaskStatusEnum>(Gadema.Core.Models.Tasks.Enums.TaskStatusEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of TaskStatusEnum)(TaskStatusEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Tasks.Enums.TaskStatusEnum)(Gadema.Core.Models.Tasks.Enums.TaskStatusEnum)
+  name.vb: ToGuid(Of TaskStatusEnum)(TaskStatusEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Tasks.Enums.TaskStatusEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    href: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    href: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Tasks.Enums.TaskStatusEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    href: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    href: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  commentId: T:Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+  parent: Gadema.Core.Models.Tasks.Enums
+  href: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum.html
+  name: TaskStatusEnum
+  nameWithType: TaskStatusEnum
+  fullName: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum

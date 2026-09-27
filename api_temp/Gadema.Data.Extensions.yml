@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Extensions
+  commentId: N:Gadema.Data.Extensions
+  id: Gadema.Data.Extensions
+  children:
+  - Gadema.Data.Extensions.ModelBuilderExtensions
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Extensions
+  nameWithType: Gadema.Data.Extensions
+  fullName: Gadema.Data.Extensions
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Extensions.ModelBuilderExtensions
+  commentId: T:Gadema.Data.Extensions.ModelBuilderExtensions
+  href: Gadema.Data.Extensions.ModelBuilderExtensions.html
+  name: ModelBuilderExtensions
+  nameWithType: ModelBuilderExtensions
+  fullName: Gadema.Data.Extensions.ModelBuilderExtensions

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Authentication
+  commentId: N:Gadema.Api.Controllers.Authentication
+  id: Gadema.Api.Controllers.Authentication
+  children:
+  - Gadema.Api.Controllers.Authentication.AuthController
+  - Gadema.Api.Controllers.Authentication.EmailPasswordAuthController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Authentication
+  nameWithType: Gadema.Api.Controllers.Authentication
+  fullName: Gadema.Api.Controllers.Authentication
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Authentication.AuthController
+  commentId: T:Gadema.Api.Controllers.Authentication.AuthController
+  href: Gadema.Api.Controllers.Authentication.AuthController.html
+  name: AuthController
+  nameWithType: AuthController
+  fullName: Gadema.Api.Controllers.Authentication.AuthController
+- uid: Gadema.Api.Controllers.Authentication.EmailPasswordAuthController
+  commentId: T:Gadema.Api.Controllers.Authentication.EmailPasswordAuthController
+  href: Gadema.Api.Controllers.Authentication.EmailPasswordAuthController.html
+  name: EmailPasswordAuthController
+  nameWithType: EmailPasswordAuthController
+  fullName: Gadema.Api.Controllers.Authentication.EmailPasswordAuthController

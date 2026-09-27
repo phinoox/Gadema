@@ -1,0 +1,986 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  id: MediaAttachment
+  parent: Gadema.Core.Models.Base.Infrastructure
+  children:
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+  langs:
+  - csharp
+  - vb
+  name: MediaAttachment
+  nameWithType: MediaAttachment
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MediaAttachment
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: >-
+    Represents a media file attached to a content item (e.g., images, PDFs, etc.).
+
+    Supports tracking of uploaded files and their storage locations.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+
+      public class MediaAttachment
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(ContentMetaInfo) })>
+
+      Public Class MediaAttachment
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: MediaAttachment.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the unique identifier for this media attachment.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id*
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: MediaAttachment.MetaInfoId
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the unique identifier of the associated content item.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [Display(Name = "Content Item ID")]
+
+      public Guid MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      <Display(Name:="Content Item ID")>
+
+      Public Property MetaInfoId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Content Item ID
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: MediaAttachment.ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the associated content meta information entity.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+  id: FileName
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: FileName
+  nameWithType: MediaAttachment.FileName
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FileName
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the original name of the uploaded file.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [Display(Name = "File Name")]
+
+      public string FileName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <Display(Name:="File Name")>
+
+      Public Property FileName As String
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: File Name
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+  id: ContentType
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: ContentType
+  nameWithType: MediaAttachment.ContentType
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentType
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the MIME type of the file.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Content Type")]
+
+      public string ContentType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Display(Name:="Content Type")>
+
+      Public Property ContentType As String
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Content Type
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+  id: StoragePath
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: StoragePath
+  nameWithType: MediaAttachment.StoragePath
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StoragePath
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 38
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the storage path for the uploaded file in the system.
+  example: []
+  syntax:
+    content: >-
+      [Column("storage_path")]
+
+      [MaxLength(2048)]
+
+      public string StoragePath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Column("storage_path")>
+
+      <MaxLength(2048)>
+
+      Public Property StoragePath As String
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: storage_path
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2048
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+  id: FileSize
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: FileSize
+  nameWithType: MediaAttachment.FileSize
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FileSize
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 43
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the size of the file in bytes.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "File Size")]
+
+      public long FileSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: >-
+      <Display(Name:="File Size")>
+
+      Public Property FileSize As Long
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: File Size
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+  id: UploadedByUserId
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: UploadedByUserId
+  nameWithType: MediaAttachment.UploadedByUserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UploadedByUserId
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 49
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the user who uploaded this media.
+  example: []
+  syntax:
+    content: public Guid UploadedByUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property UploadedByUserId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId*
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+  id: UploadedAt
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: UploadedAt
+  nameWithType: MediaAttachment.UploadedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UploadedAt
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 54
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the timestamp when the file was uploaded.
+  example: []
+  syntax:
+    content: public DateTime UploadedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property UploadedAt As Date
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt*
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+  id: ExternalReferences
+  parent: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: ExternalReferences
+  nameWithType: MediaAttachment.ExternalReferences
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ExternalReferences
+    path: src/Gadema.Core/Models/Base/Infrastructure/MediaAttachment.cs
+    startLine: 59
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets a collection of external references associated with this media attachment.
+  example: []
+  syntax:
+    content: public ICollection<ExternalReference> ExternalReferences { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+    content.vb: Public Property ExternalReferences As ICollection(Of ExternalReference)
+  overload: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences*
+references:
+- uid: Gadema.Core.Models.Base.Infrastructure
+  commentId: N:Gadema.Core.Models.Base.Infrastructure
+  name: Gadema.Core.Models.Base.Infrastructure
+  nameWithType: Gadema.Core.Models.Base.Infrastructure
+  fullName: Gadema.Core.Models.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_Id
+  name: Id
+  nameWithType: MediaAttachment.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_MetaInfoId
+  name: MetaInfoId
+  nameWithType: MediaAttachment.MetaInfoId
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.MetaInfoId
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: MediaAttachment.ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileName
+  name: FileName
+  nameWithType: MediaAttachment.FileName
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ContentType
+  name: ContentType
+  nameWithType: MediaAttachment.ContentType
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ContentType
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_StoragePath
+  name: StoragePath
+  nameWithType: MediaAttachment.StoragePath
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.StoragePath
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_FileSize
+  name: FileSize
+  nameWithType: MediaAttachment.FileSize
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.FileSize
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedByUserId
+  name: UploadedByUserId
+  nameWithType: MediaAttachment.UploadedByUserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedByUserId
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_UploadedAt
+  name: UploadedAt
+  nameWithType: MediaAttachment.UploadedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.UploadedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html#Gadema_Core_Models_Base_Infrastructure_MediaAttachment_ExternalReferences
+  name: ExternalReferences
+  nameWithType: MediaAttachment.ExternalReferences
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.ExternalReferences
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<ExternalReference>
+  nameWithType: ICollection<ExternalReference>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.Infrastructure.ExternalReference>
+  nameWithType.vb: ICollection(Of ExternalReference)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.Infrastructure.ExternalReference)
+  name.vb: ICollection(Of ExternalReference)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+    name: ExternalReference
+    href: Gadema.Core.Models.Base.Infrastructure.ExternalReference.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+    name: ExternalReference
+    href: Gadema.Core.Models.Base.Infrastructure.ExternalReference.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

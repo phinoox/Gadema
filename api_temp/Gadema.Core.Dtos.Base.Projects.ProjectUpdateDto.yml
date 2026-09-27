@@ -1,0 +1,813 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  id: ProjectUpdateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  children:
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+  langs:
+  - csharp
+  - vb
+  name: ProjectUpdateDto
+  nameWithType: ProjectUpdateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectUpdateDto
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 86
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: Data transfer object for updating an existing project's settings and metadata.
+  example: []
+  syntax:
+    content: public class ProjectUpdateDto
+    content.vb: Public Class ProjectUpdateDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+  id: Description
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ProjectUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 91
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated description of the project.
+  example: []
+  syntax:
+    content: public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+  id: EnableUserRegistration
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: EnableUserRegistration
+  nameWithType: ProjectUpdateDto.EnableUserRegistration
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: EnableUserRegistration
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 96
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: Whether to enable or disable user registration.
+  example: []
+  syntax:
+    content: public bool? EnableUserRegistration { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property EnableUserRegistration As Boolean?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+  id: AllowManualInvites
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: AllowManualInvites
+  nameWithType: ProjectUpdateDto.AllowManualInvites
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AllowManualInvites
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 101
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: Whether to enable or disable manual invites.
+  example: []
+  syntax:
+    content: public bool? AllowManualInvites { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property AllowManualInvites As Boolean?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+  id: PrimaryFormat
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: PrimaryFormat
+  nameWithType: ProjectUpdateDto.PrimaryFormat
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PrimaryFormat
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 106
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated primary format.
+  example: []
+  syntax:
+    content: public PrimaryFormatEnum? PrimaryFormat { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Enums.PrimaryFormatEnum}
+    content.vb: Public Property PrimaryFormat As PrimaryFormatEnum?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+  id: Genre
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Genre
+  nameWithType: ProjectUpdateDto.Genre
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Genre
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 111
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated genre.
+  example: []
+  syntax:
+    content: public string? Genre { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Genre As String
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+  id: Theme
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Theme
+  nameWithType: ProjectUpdateDto.Theme
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Theme
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 116
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated theme.
+  example: []
+  syntax:
+    content: public string? Theme { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Theme As String
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+  id: Tone
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Tone
+  nameWithType: ProjectUpdateDto.Tone
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Tone
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 121
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated narrative tone.
+  example: []
+  syntax:
+    content: public ToneEnum? Tone { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Enums.ToneEnum}
+    content.vb: Public Property Tone As ToneEnum?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+  id: Audience
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Audience
+  nameWithType: ProjectUpdateDto.Audience
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Audience
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 126
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The updated target audience.
+  example: []
+  syntax:
+    content: public AudienceEnum? Audience { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Enums.AudienceEnum}
+    content.vb: Public Property Audience As AudienceEnum?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience*
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: ProjectUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectDtos.cs
+    startLine: 131
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The identity payload that includes the tags to sync.
+  example: []
+  syntax:
+    content: public ProjectMetaInfoUpdateData? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+    content.vb: Public Property ContentMetaInfo As ProjectMetaInfoUpdateData
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo*
+references:
+- uid: Gadema.Core.Dtos.Base.Projects
+  commentId: N:Gadema.Core.Dtos.Base.Projects
+  name: Gadema.Core.Dtos.Base.Projects
+  nameWithType: Gadema.Core.Dtos.Base.Projects
+  fullName: Gadema.Core.Dtos.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_Description
+  name: Description
+  nameWithType: ProjectUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_EnableUserRegistration
+  name: EnableUserRegistration
+  nameWithType: ProjectUpdateDto.EnableUserRegistration
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.EnableUserRegistration
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_AllowManualInvites
+  name: AllowManualInvites
+  nameWithType: ProjectUpdateDto.AllowManualInvites
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.AllowManualInvites
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_PrimaryFormat
+  name: PrimaryFormat
+  nameWithType: ProjectUpdateDto.PrimaryFormat
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.PrimaryFormat
+- uid: System.Nullable{Gadema.Core.Enums.PrimaryFormatEnum}
+  commentId: T:System.Nullable{Gadema.Core.Enums.PrimaryFormatEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Enums.PrimaryFormatEnum.html
+  name: PrimaryFormatEnum?
+  nameWithType: PrimaryFormatEnum?
+  fullName: Gadema.Core.Enums.PrimaryFormatEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Enums.PrimaryFormatEnum
+    name: PrimaryFormatEnum
+    href: Gadema.Core.Enums.PrimaryFormatEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Enums.PrimaryFormatEnum
+    name: PrimaryFormatEnum
+    href: Gadema.Core.Enums.PrimaryFormatEnum.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_Genre
+  name: Genre
+  nameWithType: ProjectUpdateDto.Genre
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Genre
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_Theme
+  name: Theme
+  nameWithType: ProjectUpdateDto.Theme
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Theme
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_Tone
+  name: Tone
+  nameWithType: ProjectUpdateDto.Tone
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Tone
+- uid: System.Nullable{Gadema.Core.Enums.ToneEnum}
+  commentId: T:System.Nullable{Gadema.Core.Enums.ToneEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Enums.ToneEnum.html
+  name: ToneEnum?
+  nameWithType: ToneEnum?
+  fullName: Gadema.Core.Enums.ToneEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Enums.ToneEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Enums.ToneEnum.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_Audience
+  name: Audience
+  nameWithType: ProjectUpdateDto.Audience
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.Audience
+- uid: System.Nullable{Gadema.Core.Enums.AudienceEnum}
+  commentId: T:System.Nullable{Gadema.Core.Enums.AudienceEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Enums.AudienceEnum.html
+  name: AudienceEnum?
+  nameWithType: AudienceEnum?
+  fullName: Gadema.Core.Enums.AudienceEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Enums.AudienceEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Enums.AudienceEnum.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectUpdateDto_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: ProjectUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.ContentMetaInfo
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.html
+  name: ProjectMetaInfoUpdateData
+  nameWithType: ProjectMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure

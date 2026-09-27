@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Access.Identity
+  commentId: N:Gadema.Api.Services.Access.Identity
+  id: Gadema.Api.Services.Access.Identity
+  children:
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  - Gadema.Api.Services.Access.Identity.IdentityValueService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Access.Identity
+  nameWithType: Gadema.Api.Services.Access.Identity
+  fullName: Gadema.Api.Services.Access.Identity
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  commentId: T:Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  parent: Gadema.Api.Services.Access.Identity
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html
+  name: IdentityDefinitionService
+  nameWithType: IdentityDefinitionService
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+- uid: Gadema.Api.Services.Access.Identity.IdentityValueService
+  commentId: T:Gadema.Api.Services.Access.Identity.IdentityValueService
+  parent: Gadema.Api.Services.Access.Identity
+  href: Gadema.Api.Services.Access.Identity.IdentityValueService.html
+  name: IdentityValueService
+  nameWithType: IdentityValueService
+  fullName: Gadema.Api.Services.Access.Identity.IdentityValueService
+- uid: Gadema.Api.Services.Access.Identity
+  commentId: N:Gadema.Api.Services.Access.Identity
+  name: Gadema.Api.Services.Access.Identity
+  nameWithType: Gadema.Api.Services.Access.Identity
+  fullName: Gadema.Api.Services.Access.Identity
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Identity
+    name: Identity
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Identity
+    name: Identity

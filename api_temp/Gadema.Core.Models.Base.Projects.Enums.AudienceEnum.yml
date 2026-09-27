@@ -1,0 +1,359 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  id: AudienceEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  children:
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Adult
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.AllAges
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Children
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Teen
+  langs:
+  - csharp
+  - vb
+  name: AudienceEnum
+  nameWithType: AudienceEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AudienceEnum
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 61
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Defines the target demographic for a project, influencing content warnings and complexity levels.
+  example: []
+  syntax:
+    content: public enum AudienceEnum
+    content.vb: Public Enum AudienceEnum
+  extensionMethods:
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.AllAges
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.AllAges
+  id: AllAges
+  parent: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  langs:
+  - csharp
+  - vb
+  name: AllAges
+  nameWithType: AudienceEnum.AllAges
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.AllAges
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AllAges
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 64
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: General audience, suitable for all ages.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "All Ages")]
+
+      AllAges = 0
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    content.vb: >-
+      <Display(Name:="All Ages")>
+
+      AllAges = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: All Ages
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Children
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Children
+  id: Children
+  parent: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  langs:
+  - csharp
+  - vb
+  name: Children
+  nameWithType: AudienceEnum.Children
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Children
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Children
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 68
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Content tailored for children (typically under 12).
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Children")]
+
+      Children = 1
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    content.vb: >-
+      <Display(Name:="Children")>
+
+      Children = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Children
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Teen
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Teen
+  id: Teen
+  parent: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  langs:
+  - csharp
+  - vb
+  name: Teen
+  nameWithType: AudienceEnum.Teen
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Teen
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Teen
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 72
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Content tailored for teenagers (12-17).
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Teen")]
+
+      Teen = 2
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    content.vb: >-
+      <Display(Name:="Teen")>
+
+      Teen = 2
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Teen
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Adult
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Adult
+  id: Adult
+  parent: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  langs:
+  - csharp
+  - vb
+  name: Adult
+  nameWithType: AudienceEnum.Adult
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Adult
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Adult
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 76
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Mature content intended for adults (18+).
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Adult")]
+
+      Adult = 3
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    content.vb: >-
+      <Display(Name:="Adult")>
+
+      Adult = 3
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Adult
+references:
+- uid: Gadema.Core.Models.Base.Projects.Enums
+  commentId: N:Gadema.Core.Models.Base.Projects.Enums
+  name: Gadema.Core.Models.Base.Projects.Enums
+  nameWithType: Gadema.Core.Models.Base.Projects.Enums
+  fullName: Gadema.Core.Models.Base.Projects.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<AudienceEnum>(AudienceEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<AudienceEnum>(AudienceEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Base.Projects.Enums.AudienceEnum>(Gadema.Core.Models.Base.Projects.Enums.AudienceEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of AudienceEnum)(AudienceEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Base.Projects.Enums.AudienceEnum)(Gadema.Core.Models.Base.Projects.Enums.AudienceEnum)
+  name.vb: ToGuid(Of AudienceEnum)(AudienceEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Projects.Enums.AudienceEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Projects.Enums.AudienceEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    name: AudienceEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  name: AudienceEnum
+  nameWithType: AudienceEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum

@@ -1,0 +1,89 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Base.Projects
+  commentId: N:Gadema.Api.Services.Base.Projects
+  id: Gadema.Api.Services.Base.Projects
+  children:
+  - Gadema.Api.Services.Base.Projects.ProjectMemberService
+  - Gadema.Api.Services.Base.Projects.ProjectSeriesService
+  - Gadema.Api.Services.Base.Projects.ProjectService
+  - Gadema.Api.Services.Base.Projects.ProjectTagService
+  - Gadema.Api.Services.Base.Projects.ProjectTokenService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Base.Projects
+  nameWithType: Gadema.Api.Services.Base.Projects
+  fullName: Gadema.Api.Services.Base.Projects
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Base.Projects.ProjectMemberService
+  commentId: T:Gadema.Api.Services.Base.Projects.ProjectMemberService
+  parent: Gadema.Api.Services.Base.Projects
+  href: Gadema.Api.Services.Base.Projects.ProjectMemberService.html
+  name: ProjectMemberService
+  nameWithType: ProjectMemberService
+  fullName: Gadema.Api.Services.Base.Projects.ProjectMemberService
+- uid: Gadema.Api.Services.Base.Projects.ProjectSeriesService
+  commentId: T:Gadema.Api.Services.Base.Projects.ProjectSeriesService
+  parent: Gadema.Api.Services.Base.Projects
+  href: Gadema.Api.Services.Base.Projects.ProjectSeriesService.html
+  name: ProjectSeriesService
+  nameWithType: ProjectSeriesService
+  fullName: Gadema.Api.Services.Base.Projects.ProjectSeriesService
+- uid: Gadema.Api.Services.Base.Projects.ProjectService
+  commentId: T:Gadema.Api.Services.Base.Projects.ProjectService
+  parent: Gadema.Api.Services.Base.Projects
+  href: Gadema.Api.Services.Base.Projects.ProjectService.html
+  name: ProjectService
+  nameWithType: ProjectService
+  fullName: Gadema.Api.Services.Base.Projects.ProjectService
+- uid: Gadema.Api.Services.Base.Projects.ProjectTagService
+  commentId: T:Gadema.Api.Services.Base.Projects.ProjectTagService
+  href: Gadema.Api.Services.Base.Projects.ProjectTagService.html
+  name: ProjectTagService
+  nameWithType: ProjectTagService
+  fullName: Gadema.Api.Services.Base.Projects.ProjectTagService
+- uid: Gadema.Api.Services.Base.Projects.ProjectTokenService
+  commentId: T:Gadema.Api.Services.Base.Projects.ProjectTokenService
+  href: Gadema.Api.Services.Base.Projects.ProjectTokenService.html
+  name: ProjectTokenService
+  nameWithType: ProjectTokenService
+  fullName: Gadema.Api.Services.Base.Projects.ProjectTokenService
+- uid: Gadema.Api.Services.Base.Projects
+  commentId: N:Gadema.Api.Services.Base.Projects
+  name: Gadema.Api.Services.Base.Projects
+  nameWithType: Gadema.Api.Services.Base.Projects
+  fullName: Gadema.Api.Services.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Api.Services.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Api.Services.Base.Projects
+    name: Projects

@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.DependencyTracking
+  commentId: N:Gadema.Core.DependencyTracking
+  id: Gadema.Core.DependencyTracking
+  children:
+  - Gadema.Core.DependencyTracking.DependencyIgnoreAttribute
+  - Gadema.Core.DependencyTracking.DependencyResolver
+  - Gadema.Core.DependencyTracking.ModelDependencyAttribute
+  - Gadema.Core.DependencyTracking.RootMarker
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.DependencyTracking
+  nameWithType: Gadema.Core.DependencyTracking
+  fullName: Gadema.Core.DependencyTracking
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.DependencyTracking.DependencyResolver
+  commentId: T:Gadema.Core.DependencyTracking.DependencyResolver
+  href: Gadema.Core.DependencyTracking.DependencyResolver.html
+  name: DependencyResolver
+  nameWithType: DependencyResolver
+  fullName: Gadema.Core.DependencyTracking.DependencyResolver
+- uid: Gadema.Core.DependencyTracking.RootMarker
+  commentId: T:Gadema.Core.DependencyTracking.RootMarker
+  href: Gadema.Core.DependencyTracking.RootMarker.html
+  name: RootMarker
+  nameWithType: RootMarker
+  fullName: Gadema.Core.DependencyTracking.RootMarker
+- uid: Gadema.Core.DependencyTracking.ModelDependencyAttribute
+  commentId: T:Gadema.Core.DependencyTracking.ModelDependencyAttribute
+  parent: Gadema.Core.DependencyTracking
+  href: Gadema.Core.DependencyTracking.ModelDependencyAttribute.html
+  name: ModelDependencyAttribute
+  nameWithType: ModelDependencyAttribute
+  fullName: Gadema.Core.DependencyTracking.ModelDependencyAttribute
+- uid: Gadema.Core.DependencyTracking.DependencyIgnoreAttribute
+  commentId: T:Gadema.Core.DependencyTracking.DependencyIgnoreAttribute
+  href: Gadema.Core.DependencyTracking.DependencyIgnoreAttribute.html
+  name: DependencyIgnoreAttribute
+  nameWithType: DependencyIgnoreAttribute
+  fullName: Gadema.Core.DependencyTracking.DependencyIgnoreAttribute
+- uid: Gadema.Core.DependencyTracking
+  commentId: N:Gadema.Core.DependencyTracking
+  name: Gadema.Core.DependencyTracking
+  nameWithType: Gadema.Core.DependencyTracking
+  fullName: Gadema.Core.DependencyTracking
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.DependencyTracking
+    name: DependencyTracking
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.DependencyTracking
+    name: DependencyTracking

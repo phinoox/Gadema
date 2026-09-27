@@ -1,0 +1,658 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Authorization.PermissionEngine
+  commentId: T:Gadema.Api.Services.Authorization.PermissionEngine
+  id: PermissionEngine
+  parent: Gadema.Api.Services.Authorization
+  children:
+  - Gadema.Api.Services.Authorization.PermissionEngine.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  - Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  langs:
+  - csharp
+  - vb
+  name: PermissionEngine
+  nameWithType: PermissionEngine
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PermissionEngine
+    path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization
+  summary: The central authority for evaluating authorization requests across the system.
+  example: []
+  syntax:
+    content: 'public class PermissionEngine : IPermissionEngine'
+    content.vb: Public Class PermissionEngine Implements IPermissionEngine
+  inheritance:
+  - System.Object
+  implements:
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  commentId: M:Gadema.Api.Services.Authorization.PermissionEngine.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext)'
+  parent: Gadema.Api.Services.Authorization.PermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: PermissionEngine(CoreDbContext)
+  nameWithType: PermissionEngine.PermissionEngine(CoreDbContext)
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.PermissionEngine(Gadema.Data.Database.Core.CoreDbContext)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization
+  syntax:
+    content: public PermissionEngine(CoreDbContext db)
+    parameters:
+    - id: db
+      type: Gadema.Data.Database.Core.CoreDbContext
+    content.vb: Public Sub New(db As CoreDbContext)
+  overload: Gadema.Api.Services.Authorization.PermissionEngine.#ctor*
+  nameWithType.vb: PermissionEngine.New(CoreDbContext)
+  fullName.vb: Gadema.Api.Services.Authorization.PermissionEngine.New(Gadema.Data.Database.Core.CoreDbContext)
+  name.vb: New(CoreDbContext)
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  commentId: M:Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  id: CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  parent: Gadema.Api.Services.Authorization.PermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  nameWithType: PermissionEngine.CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync(System.Guid, System.Guid, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CheckAccessAsync
+    path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization
+  example: []
+  syntax:
+    content: public Task<AccessResult> CheckAccessAsync(Guid userId, Guid projectId, ProjectMemberRoleEnum minRole)
+    parameters:
+    - id: userId
+      type: System.Guid
+    - id: projectId
+      type: System.Guid
+    - id: minRole
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+    content.vb: Public Function CheckAccessAsync(userId As Guid, projectId As Guid, minRole As ProjectMemberRoleEnum) As Task(Of AccessResult)
+  overload: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync*
+  implements:
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+references:
+- uid: Gadema.Api.Services.Authorization
+  commentId: N:Gadema.Api.Services.Authorization
+  name: Gadema.Api.Services.Authorization
+  nameWithType: Gadema.Api.Services.Authorization
+  fullName: Gadema.Api.Services.Authorization
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html
+  name: IPermissionEngine
+  nameWithType: IPermissionEngine
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.#ctor*
+  commentId: Overload:Gadema.Api.Services.Authorization.PermissionEngine.#ctor
+  href: Gadema.Api.Services.Authorization.PermissionEngine.html#Gadema_Api_Services_Authorization_PermissionEngine__ctor_Gadema_Data_Database_Core_CoreDbContext_
+  name: PermissionEngine
+  nameWithType: PermissionEngine.PermissionEngine
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.PermissionEngine
+  nameWithType.vb: PermissionEngine.New
+  fullName.vb: Gadema.Api.Services.Authorization.PermissionEngine.New
+  name.vb: New
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  parent: Gadema.Data.Database.Core
+  href: Gadema.Data.Database.Core.CoreDbContext.html
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync*
+  commentId: Overload:Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync
+  href: Gadema.Api.Services.Authorization.PermissionEngine.html#Gadema_Api_Services_Authorization_PermissionEngine_CheckAccessAsync_System_Guid_System_Guid_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  name: CheckAccessAsync
+  nameWithType: PermissionEngine.CheckAccessAsync
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  parent: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  isExternal: true
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_CheckAccessAsync_System_Guid_System_Guid_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  name: CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  nameWithType: IPermissionEngine.CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid, System.Guid, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  spec.csharp:
+  - uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_CheckAccessAsync_System_Guid_System_Guid_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_CheckAccessAsync_System_Guid_System_Guid_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  commentId: T:Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  parent: Gadema.Core.Models.Access
+  href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  name: ProjectMemberRoleEnum
+  nameWithType: ProjectMemberRoleEnum
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<AccessResult>
+  nameWithType: Task<AccessResult>
+  fullName: System.Threading.Tasks.Task<Gadema.Api.CoreServices.Interfaces.AccessResult>
+  nameWithType.vb: Task(Of AccessResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Api.CoreServices.Interfaces.AccessResult)
+  name.vb: Task(Of AccessResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+    name: AccessResult
+    href: Gadema.Api.CoreServices.Interfaces.AccessResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+    name: AccessResult
+    href: Gadema.Api.CoreServices.Interfaces.AccessResult.html
+  - name: )
+- uid: Gadema.Core.Models.Access
+  commentId: N:Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  nameWithType: Gadema.Core.Models.Access
+  fullName: Gadema.Core.Models.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

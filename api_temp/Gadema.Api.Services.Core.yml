@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Core
+  commentId: N:Gadema.Api.Services.Core
+  id: Gadema.Api.Services.Core
+  children:
+  - Gadema.Api.Services.Core.DomainService
+  - Gadema.Api.Services.Core.ServiceCollectionExtensions
+  - Gadema.Api.Services.Core.ServiceLifetimeAttribute
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Core
+  nameWithType: Gadema.Api.Services.Core
+  fullName: Gadema.Api.Services.Core
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Core.DomainService
+  commentId: T:Gadema.Api.Services.Core.DomainService
+  parent: Gadema.Api.Services.Core
+  href: Gadema.Api.Services.Core.DomainService.html
+  name: DomainService
+  nameWithType: DomainService
+  fullName: Gadema.Api.Services.Core.DomainService
+- uid: Gadema.Api.Services.Core.ServiceCollectionExtensions
+  commentId: T:Gadema.Api.Services.Core.ServiceCollectionExtensions
+  href: Gadema.Api.Services.Core.ServiceCollectionExtensions.html
+  name: ServiceCollectionExtensions
+  nameWithType: ServiceCollectionExtensions
+  fullName: Gadema.Api.Services.Core.ServiceCollectionExtensions
+- uid: Gadema.Api.Services.Core.ServiceLifetimeAttribute
+  commentId: T:Gadema.Api.Services.Core.ServiceLifetimeAttribute
+  parent: Gadema.Api.Services.Core
+  href: Gadema.Api.Services.Core.ServiceLifetimeAttribute.html
+  name: ServiceLifetimeAttribute
+  nameWithType: ServiceLifetimeAttribute
+  fullName: Gadema.Api.Services.Core.ServiceLifetimeAttribute
+- uid: Gadema.Api.Services.Core
+  commentId: N:Gadema.Api.Services.Core
+  name: Gadema.Api.Services.Core
+  nameWithType: Gadema.Api.Services.Core
+  fullName: Gadema.Api.Services.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Core
+    name: Core

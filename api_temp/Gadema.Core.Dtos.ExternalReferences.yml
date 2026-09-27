@@ -1,0 +1,75 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.ExternalReferences
+  commentId: N:Gadema.Core.Dtos.ExternalReferences
+  id: Gadema.Core.Dtos.ExternalReferences
+  children:
+  - Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto
+  - Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto
+  - Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto
+  - Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.ExternalReferences
+  nameWithType: Gadema.Core.Dtos.ExternalReferences
+  fullName: Gadema.Core.Dtos.ExternalReferences
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto
+  commentId: T:Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto
+  parent: Gadema.Core.Dtos.ExternalReferences
+  href: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto.html
+  name: ExternalReferenceCreateDto
+  nameWithType: ExternalReferenceCreateDto
+  fullName: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto
+- uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto
+  commentId: T:Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto
+  parent: Gadema.Core.Dtos.ExternalReferences
+  href: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto.html
+  name: ExternalReferenceUpdateDto
+  nameWithType: ExternalReferenceUpdateDto
+  fullName: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto
+- uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto
+  commentId: T:Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto
+  href: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto.html
+  name: ExternalReferenceResponseDto
+  nameWithType: ExternalReferenceResponseDto
+  fullName: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto
+- uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto
+  commentId: T:Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto
+  href: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto.html
+  name: ExternalReferenceListResponseDto
+  nameWithType: ExternalReferenceListResponseDto
+  fullName: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto
+- uid: Gadema.Core.Dtos.ExternalReferences
+  commentId: N:Gadema.Core.Dtos.ExternalReferences
+  name: Gadema.Core.Dtos.ExternalReferences
+  nameWithType: Gadema.Core.Dtos.ExternalReferences
+  fullName: Gadema.Core.Dtos.ExternalReferences
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.ExternalReferences
+    name: ExternalReferences
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.ExternalReferences
+    name: ExternalReferences

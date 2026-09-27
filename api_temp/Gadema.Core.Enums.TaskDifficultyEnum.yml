@@ -1,0 +1,252 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.TaskDifficultyEnum
+  commentId: T:Gadema.Core.Enums.TaskDifficultyEnum
+  id: TaskDifficultyEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.TaskDifficultyEnum.Easy
+  - Gadema.Core.Enums.TaskDifficultyEnum.Hard
+  - Gadema.Core.Enums.TaskDifficultyEnum.Medium
+  langs:
+  - csharp
+  - vb
+  name: TaskDifficultyEnum
+  nameWithType: TaskDifficultyEnum
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TaskDifficultyEnum
+    path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Represents the estimated difficulty level of a task, designed to be ADHD-friendly for better estimation and management.
+  example: []
+  syntax:
+    content: public enum TaskDifficultyEnum
+    content.vb: Public Enum TaskDifficultyEnum
+  extensionMethods:
+  - Gadema.Core.Enums.TaskDifficultyEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.TaskDifficultyEnum.Easy
+  commentId: F:Gadema.Core.Enums.TaskDifficultyEnum.Easy
+  id: Easy
+  parent: Gadema.Core.Enums.TaskDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Easy
+  nameWithType: TaskDifficultyEnum.Easy
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum.Easy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Easy
+    path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: A simple task that can be completed quickly with minimal effort.
+  example: []
+  syntax:
+    content: Easy = 0
+    return:
+      type: Gadema.Core.Enums.TaskDifficultyEnum
+- uid: Gadema.Core.Enums.TaskDifficultyEnum.Medium
+  commentId: F:Gadema.Core.Enums.TaskDifficultyEnum.Medium
+  id: Medium
+  parent: Gadema.Core.Enums.TaskDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Medium
+  nameWithType: TaskDifficultyEnum.Medium
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum.Medium
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Medium
+    path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: A moderate task requiring some sustained attention and planning.
+  example: []
+  syntax:
+    content: Medium = 1
+    return:
+      type: Gadema.Core.Enums.TaskDifficultyEnum
+- uid: Gadema.Core.Enums.TaskDifficultyEnum.Hard
+  commentId: F:Gadema.Core.Enums.TaskDifficultyEnum.Hard
+  id: Hard
+  parent: Gadema.Core.Enums.TaskDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Hard
+  nameWithType: TaskDifficultyEnum.Hard
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum.Hard
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Hard
+    path: src/Gadema.Core/Enums/TaskDifficultyEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: A complex task that may require significant mental energy and focus.
+  example: []
+  syntax:
+    content: Hard = 2
+    return:
+      type: Gadema.Core.Enums.TaskDifficultyEnum
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.TaskDifficultyEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<TaskDifficultyEnum>(TaskDifficultyEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<TaskDifficultyEnum>(TaskDifficultyEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.TaskDifficultyEnum>(Gadema.Core.Enums.TaskDifficultyEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of TaskDifficultyEnum)(TaskDifficultyEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.TaskDifficultyEnum)(Gadema.Core.Enums.TaskDifficultyEnum)
+  name.vb: ToGuid(Of TaskDifficultyEnum)(TaskDifficultyEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.TaskDifficultyEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.TaskDifficultyEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.TaskDifficultyEnum
+  commentId: T:Gadema.Core.Enums.TaskDifficultyEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  name: TaskDifficultyEnum
+  nameWithType: TaskDifficultyEnum
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum

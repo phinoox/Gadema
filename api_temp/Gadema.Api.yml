@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api
+  commentId: N:Gadema.Api
+  id: Gadema.Api
+  children:
+  - Gadema.Api.AuthExtensions
+  - Gadema.Api.Program
+  - Gadema.Api.ProjectInfo
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api
+  nameWithType: Gadema.Api
+  fullName: Gadema.Api
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.AuthExtensions
+  commentId: T:Gadema.Api.AuthExtensions
+  href: Gadema.Api.AuthExtensions.html
+  name: AuthExtensions
+  nameWithType: AuthExtensions
+  fullName: Gadema.Api.AuthExtensions
+- uid: Gadema.Api.Program
+  commentId: T:Gadema.Api.Program
+  href: Gadema.Api.Program.html
+  name: Program
+  nameWithType: Program
+  fullName: Gadema.Api.Program
+- uid: Gadema.Api.ProjectInfo
+  commentId: T:Gadema.Api.ProjectInfo
+  href: Gadema.Api.ProjectInfo.html
+  name: ProjectInfo
+  nameWithType: ProjectInfo
+  fullName: Gadema.Api.ProjectInfo

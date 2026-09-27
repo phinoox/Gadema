@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ViewModeEnum
+  id: ViewModeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  children:
+  - Gadema.Core.Models.Base.Enums.ViewModeEnum.Presentation
+  - Gadema.Core.Models.Base.Enums.ViewModeEnum.PrivateWriting
+  langs:
+  - csharp
+  - vb
+  name: ViewModeEnum
+  nameWithType: ViewModeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ViewModeEnum
+    path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: Defines the viewing mode for content items, distinguishing between administrative and public views.
+  example: []
+  syntax:
+    content: public enum ViewModeEnum
+    content.vb: Public Enum ViewModeEnum
+  extensionMethods:
+  - Gadema.Core.Models.Base.Enums.ViewModeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum.PrivateWriting
+  commentId: F:Gadema.Core.Models.Base.Enums.ViewModeEnum.PrivateWriting
+  id: PrivateWriting
+  parent: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  langs:
+  - csharp
+  - vb
+  name: PrivateWriting
+  nameWithType: ViewModeEnum.PrivateWriting
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum.PrivateWriting
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PrivateWriting
+    path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: The private writing/editing view, intended for administrators and creators.
+  example: []
+  syntax:
+    content: PrivateWriting = 0
+    return:
+      type: Gadema.Core.Models.Base.Enums.ViewModeEnum
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum.Presentation
+  commentId: F:Gadema.Core.Models.Base.Enums.ViewModeEnum.Presentation
+  id: Presentation
+  parent: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  langs:
+  - csharp
+  - vb
+  name: Presentation
+  nameWithType: ViewModeEnum.Presentation
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum.Presentation
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Presentation
+    path: src/Gadema.Core/Models/Base/Enums/ViewModeEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: The presentation view, intended for public viewing or sharing.
+  example: []
+  syntax:
+    content: Presentation = 1
+    return:
+      type: Gadema.Core.Models.Base.Enums.ViewModeEnum
+references:
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ViewModeEnum>(ViewModeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ViewModeEnum>(ViewModeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Base.Enums.ViewModeEnum>(Gadema.Core.Models.Base.Enums.ViewModeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ViewModeEnum)(ViewModeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Base.Enums.ViewModeEnum)(Gadema.Core.Models.Base.Enums.ViewModeEnum)
+  name.vb: ToGuid(Of ViewModeEnum)(ViewModeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Enums.ViewModeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Enums.ViewModeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ViewModeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  name: ViewModeEnum
+  nameWithType: ViewModeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Writing.WorldBuilding
+  commentId: N:Gadema.Api.Controllers.Writing.WorldBuilding
+  id: Gadema.Api.Controllers.Writing.WorldBuilding
+  children:
+  - Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController
+  - Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Writing.WorldBuilding
+  nameWithType: Gadema.Api.Controllers.Writing.WorldBuilding
+  fullName: Gadema.Api.Controllers.Writing.WorldBuilding
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController
+  commentId: T:Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController
+  href: Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController.html
+  name: FactionsController
+  nameWithType: FactionsController
+  fullName: Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController
+- uid: Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController
+  commentId: T:Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController
+  href: Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController.html
+  name: WorldLocationsController
+  nameWithType: WorldLocationsController
+  fullName: Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController

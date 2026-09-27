@@ -1,0 +1,70 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services
+  commentId: N:Gadema.Api.Services
+  id: Gadema.Api.Services
+  children:
+  - Gadema.Api.Services.FeatureFlagsConfiguration
+  - Gadema.Api.Services.GlobalConfigurationConstants
+  - Gadema.Api.Services.NotFoundException
+  - Gadema.Api.Services.PaginationResponse`1
+  - Gadema.Api.Services.ValidationException
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services
+  nameWithType: Gadema.Api.Services
+  fullName: Gadema.Api.Services
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Api.Services.PaginationResponse`1
+  commentId: T:Gadema.Api.Services.PaginationResponse`1
+  href: Gadema.Api.Services.PaginationResponse-1.html
+  name: PaginationResponse<T>
+  nameWithType: PaginationResponse<T>
+  fullName: Gadema.Api.Services.PaginationResponse<T>
+  nameWithType.vb: PaginationResponse(Of T)
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T)
+  name.vb: PaginationResponse(Of T)
+  spec.csharp:
+  - uid: Gadema.Api.Services.PaginationResponse`1
+    name: PaginationResponse
+    href: Gadema.Api.Services.PaginationResponse-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Api.Services.PaginationResponse`1
+    name: PaginationResponse
+    href: Gadema.Api.Services.PaginationResponse-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Api.Services.ValidationException
+  commentId: T:Gadema.Api.Services.ValidationException
+  href: Gadema.Api.Services.ValidationException.html
+  name: ValidationException
+  nameWithType: ValidationException
+  fullName: Gadema.Api.Services.ValidationException
+- uid: Gadema.Api.Services.NotFoundException
+  commentId: T:Gadema.Api.Services.NotFoundException
+  href: Gadema.Api.Services.NotFoundException.html
+  name: NotFoundException
+  nameWithType: NotFoundException
+  fullName: Gadema.Api.Services.NotFoundException
+- uid: Gadema.Api.Services.FeatureFlagsConfiguration
+  commentId: T:Gadema.Api.Services.FeatureFlagsConfiguration
+  href: Gadema.Api.Services.FeatureFlagsConfiguration.html
+  name: FeatureFlagsConfiguration
+  nameWithType: FeatureFlagsConfiguration
+  fullName: Gadema.Api.Services.FeatureFlagsConfiguration
+- uid: Gadema.Api.Services.GlobalConfigurationConstants
+  commentId: T:Gadema.Api.Services.GlobalConfigurationConstants
+  href: Gadema.Api.Services.GlobalConfigurationConstants.html
+  name: GlobalConfigurationConstants
+  nameWithType: GlobalConfigurationConstants
+  fullName: Gadema.Api.Services.GlobalConfigurationConstants

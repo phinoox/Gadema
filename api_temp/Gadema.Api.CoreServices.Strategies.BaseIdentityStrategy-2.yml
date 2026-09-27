@@ -1,0 +1,985 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  commentId: T:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  id: BaseIdentityStrategy`2
+  parent: Gadema.Api.CoreServices.Strategies
+  children:
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync(System.Guid,`0)
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo(System.Guid,`0)
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.MetaInfo
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync``1(System.Guid,System.Collections.Generic.List{System.Guid})
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2._db
+  langs:
+  - csharp
+  - vb
+  name: BaseIdentityStrategy<TUpdate, TMetaInfo>
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: BaseIdentityStrategy
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  summary: >-
+    The universal engine for identity synchronization.
+
+    Handles universal properties (Title, Slug, etc.) and delegates 
+
+    domain-specific updates and tag syncing to subclasses.
+  example: []
+  syntax:
+    content: 'public abstract class BaseIdentityStrategy<TUpdate, TMetaInfo> : IIdentitySyncStrategy where TUpdate : BaseMetaInfoUpdateData where TMetaInfo : BaseMetaInfo'
+    typeParameters:
+    - id: TUpdate
+    - id: TMetaInfo
+    content.vb: Public MustInherit Class BaseIdentityStrategy(Of TUpdate As BaseMetaInfoUpdateData, TMetaInfo As BaseMetaInfo) Implements IIdentitySyncStrategy
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+  implements:
+  - Gadema.Core.Interfaces.IIdentitySyncStrategy
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+  name.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2._db
+  commentId: F:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2._db
+  id: _db
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: _db
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>._db
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>._db
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: _db
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: protected readonly CoreDbContext _db
+    return:
+      type: Gadema.Data.Database.Core.CoreDbContext
+    content.vb: Protected ReadOnly _db As CoreDbContext
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo)._db
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo)._db
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  commentId: M:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext)'
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: BaseIdentityStrategy(CoreDbContext)
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.BaseIdentityStrategy(CoreDbContext)
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.BaseIdentityStrategy(Gadema.Data.Database.Core.CoreDbContext)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: protected BaseIdentityStrategy(CoreDbContext db)
+    parameters:
+    - id: db
+      type: Gadema.Data.Database.Core.CoreDbContext
+    content.vb: Protected Sub New(db As CoreDbContext)
+  overload: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor*
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).New(CoreDbContext)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).New(Gadema.Data.Database.Core.CoreDbContext)
+  name.vb: New(CoreDbContext)
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.MetaInfo
+  commentId: F:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.MetaInfo
+  id: MetaInfo
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: MetaInfo
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.MetaInfo
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.MetaInfo
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfo
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: protected TMetaInfo? MetaInfo
+    return:
+      type: '{TMetaInfo}'
+    content.vb: Protected MetaInfo As TMetaInfo
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).MetaInfo
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).MetaInfo
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  id: SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: SyncAsync(Guid, BaseMetaInfoUpdateData)
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncAsync(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncAsync(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SyncAsync
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  summary: Asynchronously synchronizes the identity with the provided update data.
+  example: []
+  syntax:
+    content: public Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData)
+    parameters:
+    - id: identityId
+      type: System.Guid
+      description: The unique identifier of the identity to sync.
+    - id: updateData
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+      description: The data used for updating the identity.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous sync operation.
+    content.vb: Public Function SyncAsync(identityId As Guid, updateData As BaseMetaInfoUpdateData) As Task
+  overload: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync*
+  implements:
+  - Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncAsync(Guid, BaseMetaInfoUpdateData)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncAsync(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync``1(System.Guid,System.Collections.Generic.List{System.Guid})
+  commentId: M:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync``1(System.Guid,System.Collections.Generic.List{System.Guid})
+  id: SyncTagsInternalAsync``1(System.Guid,System.Collections.Generic.List{System.Guid})
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: SyncTagsInternalAsync<T>(Guid, List<Guid>)
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncTagsInternalAsync<T>(Guid, List<Guid>)
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncTagsInternalAsync<T>(System.Guid, System.Collections.Generic.List<System.Guid>)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SyncTagsInternalAsync
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 49
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: 'protected Task SyncTagsInternalAsync<T>(Guid id, List<Guid> tagIds) where T : BaseMetaInfo'
+    parameters:
+    - id: id
+      type: System.Guid
+    - id: tagIds
+      type: System.Collections.Generic.List{System.Guid}
+    typeParameters:
+    - id: T
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected Function SyncTagsInternalAsync(Of T As BaseMetaInfo)(id As Guid, tagIds As List(Of Guid)) As Task
+  overload: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync*
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncTagsInternalAsync(Of T)(Guid, List(Of Guid))
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncTagsInternalAsync(Of T)(System.Guid, System.Collections.Generic.List(Of System.Guid))
+  name.vb: SyncTagsInternalAsync(Of T)(Guid, List(Of Guid))
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo(System.Guid,`0)
+  commentId: M:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo(System.Guid,`0)
+  id: FetchMetaInfo(System.Guid,`0)
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: FetchMetaInfo(Guid, TUpdate)
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.FetchMetaInfo(Guid, TUpdate)
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.FetchMetaInfo(System.Guid, TUpdate)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FetchMetaInfo
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 82
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: protected abstract Task<TMetaInfo?> FetchMetaInfo(Guid id, TUpdate updateData)
+    parameters:
+    - id: id
+      type: System.Guid
+    - id: updateData
+      type: '{TUpdate}'
+    return:
+      type: System.Threading.Tasks.Task{{TMetaInfo}}
+    content.vb: Protected MustOverride Function FetchMetaInfo(id As Guid, updateData As TUpdate) As Task(Of TMetaInfo)
+  overload: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo*
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).FetchMetaInfo(Guid, TUpdate)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).FetchMetaInfo(System.Guid, TUpdate)
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync(System.Guid,`0)
+  commentId: M:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync(System.Guid,`0)
+  id: ApplyDomainPropertiesAsync(System.Guid,`0)
+  parent: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  langs:
+  - csharp
+  - vb
+  name: ApplyDomainPropertiesAsync(Guid, TUpdate)
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.ApplyDomainPropertiesAsync(Guid, TUpdate)
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.ApplyDomainPropertiesAsync(System.Guid, TUpdate)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ApplyDomainPropertiesAsync
+    path: src/Gadema.Api/CoreServices/Strategies/BaseIdentityStrategy.cs
+    startLine: 83
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Strategies
+  syntax:
+    content: protected abstract Task ApplyDomainPropertiesAsync(Guid id, TUpdate updateData)
+    parameters:
+    - id: id
+      type: System.Guid
+    - id: updateData
+      type: '{TUpdate}'
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Protected MustOverride Function ApplyDomainPropertiesAsync(id As Guid, updateData As TUpdate) As Task
+  overload: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync*
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).ApplyDomainPropertiesAsync(Guid, TUpdate)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).ApplyDomainPropertiesAsync(System.Guid, TUpdate)
+references:
+- uid: Gadema.Api.CoreServices.Strategies
+  commentId: N:Gadema.Api.CoreServices.Strategies
+  name: Gadema.Api.CoreServices.Strategies
+  nameWithType: Gadema.Api.CoreServices.Strategies
+  fullName: Gadema.Api.CoreServices.Strategies
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Strategies
+    name: Strategies
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Strategies
+    name: Strategies
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  commentId: T:Gadema.Core.Interfaces.IIdentitySyncStrategy
+  parent: Gadema.Core.Interfaces
+  href: Gadema.Core.Interfaces.IIdentitySyncStrategy.html
+  name: IIdentitySyncStrategy
+  nameWithType: IIdentitySyncStrategy
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  parent: Gadema.Data.Database.Core
+  href: Gadema.Data.Database.Core.CoreDbContext.html
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor*
+  commentId: Overload:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.#ctor
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html#Gadema_Api_CoreServices_Strategies_BaseIdentityStrategy_2__ctor_Gadema_Data_Database_Core_CoreDbContext_
+  name: BaseIdentityStrategy
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.BaseIdentityStrategy
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.BaseIdentityStrategy
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).New
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).New
+  name.vb: New
+- uid: '{TMetaInfo}'
+  commentId: '!:TMetaInfo'
+  definition: TMetaInfo
+  name: TMetaInfo
+  nameWithType: TMetaInfo
+  fullName: TMetaInfo
+- uid: TMetaInfo
+  commentId: '!:TMetaInfo'
+  name: TMetaInfo
+  nameWithType: TMetaInfo
+  fullName: TMetaInfo
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncAsync
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html#Gadema_Api_CoreServices_Strategies_BaseIdentityStrategy_2_SyncAsync_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  name: SyncAsync
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncAsync
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncAsync
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncAsync
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncAsync
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: SyncAsync(Guid, BaseMetaInfoUpdateData)
+  nameWithType: IIdentitySyncStrategy.SyncAsync(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  spec.csharp:
+  - uid: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+    name: SyncAsync
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    name: BaseMetaInfoUpdateData
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+    name: SyncAsync
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    name: BaseMetaInfoUpdateData
+  - name: )
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.SyncTagsInternalAsync
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html#Gadema_Api_CoreServices_Strategies_BaseIdentityStrategy_2_SyncTagsInternalAsync__1_System_Guid_System_Collections_Generic_List_System_Guid__
+  name: SyncTagsInternalAsync
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncTagsInternalAsync
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.SyncTagsInternalAsync
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncTagsInternalAsync
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).SyncTagsInternalAsync
+- uid: System.Collections.Generic.List{System.Guid}
+  commentId: T:System.Collections.Generic.List{System.Guid}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Guid>
+  nameWithType: List<Guid>
+  fullName: System.Collections.Generic.List<System.Guid>
+  nameWithType.vb: List(Of Guid)
+  fullName.vb: System.Collections.Generic.List(Of System.Guid)
+  name.vb: List(Of Guid)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo*
+  commentId: Overload:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.FetchMetaInfo
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html#Gadema_Api_CoreServices_Strategies_BaseIdentityStrategy_2_FetchMetaInfo_System_Guid__0_
+  name: FetchMetaInfo
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.FetchMetaInfo
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.FetchMetaInfo
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).FetchMetaInfo
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).FetchMetaInfo
+- uid: '{TUpdate}'
+  commentId: '!:TUpdate'
+  definition: TUpdate
+  name: TUpdate
+  nameWithType: TUpdate
+  fullName: TUpdate
+- uid: System.Threading.Tasks.Task{{TMetaInfo}}
+  commentId: T:System.Threading.Tasks.Task{`1}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TMetaInfo>
+  nameWithType: Task<TMetaInfo>
+  fullName: System.Threading.Tasks.Task<TMetaInfo>
+  nameWithType.vb: Task(Of TMetaInfo)
+  fullName.vb: System.Threading.Tasks.Task(Of TMetaInfo)
+  name.vb: Task(Of TMetaInfo)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TMetaInfo
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TMetaInfo
+  - name: )
+- uid: TUpdate
+  name: TUpdate
+  nameWithType: TUpdate
+  fullName: TUpdate
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2.ApplyDomainPropertiesAsync
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html#Gadema_Api_CoreServices_Strategies_BaseIdentityStrategy_2_ApplyDomainPropertiesAsync_System_Guid__0_
+  name: ApplyDomainPropertiesAsync
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>.ApplyDomainPropertiesAsync
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>.ApplyDomainPropertiesAsync
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo).ApplyDomainPropertiesAsync
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo).ApplyDomainPropertiesAsync

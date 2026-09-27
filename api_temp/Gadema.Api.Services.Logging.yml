@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Logging
+  commentId: N:Gadema.Api.Services.Logging
+  id: Gadema.Api.Services.Logging
+  children:
+  - Gadema.Api.Services.Logging.ActivityLogService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Logging
+  nameWithType: Gadema.Api.Services.Logging
+  fullName: Gadema.Api.Services.Logging
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Logging.ActivityLogService
+  commentId: T:Gadema.Api.Services.Logging.ActivityLogService
+  parent: Gadema.Api.Services.Logging
+  href: Gadema.Api.Services.Logging.ActivityLogService.html
+  name: ActivityLogService
+  nameWithType: ActivityLogService
+  fullName: Gadema.Api.Services.Logging.ActivityLogService
+- uid: Gadema.Api.Services.Logging
+  commentId: N:Gadema.Api.Services.Logging
+  name: Gadema.Api.Services.Logging
+  nameWithType: Gadema.Api.Services.Logging
+  fullName: Gadema.Api.Services.Logging
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Logging
+    name: Logging
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Logging
+    name: Logging

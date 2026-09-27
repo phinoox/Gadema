@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Versioning
+  commentId: N:Gadema.Data.Configurations.Versioning
+  id: Gadema.Data.Configurations.Versioning
+  children:
+  - Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration
+  - Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Versioning
+  nameWithType: Gadema.Data.Configurations.Versioning
+  fullName: Gadema.Data.Configurations.Versioning
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration.html
+  name: ContentSnapshotEntityTypeConfiguration
+  nameWithType: ContentSnapshotEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration.html
+  name: ContentVersionLogEntityTypeConfiguration
+  nameWithType: ContentVersionLogEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration

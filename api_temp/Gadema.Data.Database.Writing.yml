@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Writing
+  commentId: N:Gadema.Data.Database.Writing
+  id: Gadema.Data.Database.Writing
+  children:
+  - Gadema.Data.Database.Writing.WritingDbContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database.Writing
+  nameWithType: Gadema.Data.Database.Writing
+  fullName: Gadema.Data.Database.Writing
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.Writing.WritingDbContext
+  commentId: T:Gadema.Data.Database.Writing.WritingDbContext
+  parent: Gadema.Data.Database.Writing
+  href: Gadema.Data.Database.Writing.WritingDbContext.html
+  name: WritingDbContext
+  nameWithType: WritingDbContext
+  fullName: Gadema.Data.Database.Writing.WritingDbContext
+- uid: Gadema.Data.Database.Writing
+  commentId: N:Gadema.Data.Database.Writing
+  name: Gadema.Data.Database.Writing
+  nameWithType: Gadema.Data.Database.Writing
+  fullName: Gadema.Data.Database.Writing
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Writing
+    name: Writing
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Writing
+    name: Writing

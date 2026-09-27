@@ -1,0 +1,105 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Tasks
+  commentId: N:Gadema.Core.Dtos.Tasks
+  id: Gadema.Core.Dtos.Tasks
+  children:
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto
+  - Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Tasks
+  nameWithType: Gadema.Core.Dtos.Tasks
+  fullName: Gadema.Core.Dtos.Tasks
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto
+  parent: Gadema.Core.Dtos.Tasks
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto.html
+  name: ProjectTaskCommentCreateDto
+  nameWithType: ProjectTaskCommentCreateDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto
+  parent: Gadema.Core.Dtos.Tasks
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto.html
+  name: ProjectTaskCommentUpdateDto
+  nameWithType: ProjectTaskCommentUpdateDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto.html
+  name: ProjectTaskCommentResponseDto
+  nameWithType: ProjectTaskCommentResponseDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto.html
+  name: ProjectTaskCommentListResponseDto
+  nameWithType: ProjectTaskCommentListResponseDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  parent: Gadema.Core.Dtos.Tasks
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html
+  name: ProjectTaskCreateDto
+  nameWithType: ProjectTaskCreateDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto
+  parent: Gadema.Core.Dtos.Tasks
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto.html
+  name: ProjectTaskUpdateDto
+  nameWithType: ProjectTaskUpdateDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto.html
+  name: ProjectTaskResponseDto
+  nameWithType: ProjectTaskResponseDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto.html
+  name: ProjectTaskListResponseDto
+  nameWithType: ProjectTaskListResponseDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto
+- uid: Gadema.Core.Dtos.Tasks
+  commentId: N:Gadema.Core.Dtos.Tasks
+  name: Gadema.Core.Dtos.Tasks
+  nameWithType: Gadema.Core.Dtos.Tasks
+  fullName: Gadema.Core.Dtos.Tasks
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Tasks
+    name: Tasks
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Tasks
+    name: Tasks

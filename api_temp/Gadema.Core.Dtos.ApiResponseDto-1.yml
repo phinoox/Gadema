@@ -1,0 +1,1083 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.ApiResponseDto`1
+  commentId: T:Gadema.Core.Dtos.ApiResponseDto`1
+  id: ApiResponseDto`1
+  parent: Gadema.Core.Dtos
+  children:
+  - Gadema.Core.Dtos.ApiResponseDto`1.BadRequest(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.Conflict(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.Data
+  - Gadema.Core.Dtos.ApiResponseDto`1.Errors
+  - Gadema.Core.Dtos.ApiResponseDto`1.Forbidden(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.Message
+  - Gadema.Core.Dtos.ApiResponseDto`1.NotFound(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.ServerError(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.StatusCode
+  - Gadema.Core.Dtos.ApiResponseDto`1.Success(`0)
+  - Gadema.Core.Dtos.ApiResponseDto`1.Successful
+  - Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized(System.String)
+  - Gadema.Core.Dtos.ApiResponseDto`1.WithErrors(System.Collections.Generic.List{System.String})
+  langs:
+  - csharp
+  - vb
+  name: ApiResponseDto<T>
+  nameWithType: ApiResponseDto<T>
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ApiResponseDto
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: >-
+    Base API response wrapper for all endpoints.
+
+    Provides type-safe, consistent responses across the application.
+  example: []
+  syntax:
+    content: 'public class ApiResponseDto<T> where T : class'
+    typeParameters:
+    - id: T
+    content.vb: Public Class ApiResponseDto(Of T As Class)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: ApiResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T)
+  name.vb: ApiResponseDto(Of T)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Successful
+  commentId: P:Gadema.Core.Dtos.ApiResponseDto`1.Successful
+  id: Successful
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Successful
+  nameWithType: ApiResponseDto<T>.Successful
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Successful
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Successful
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Indicates whether the request was successful.
+  example: []
+  syntax:
+    content: public bool Successful { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Successful As Boolean
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Successful*
+  nameWithType.vb: ApiResponseDto(Of T).Successful
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Successful
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.StatusCode
+  commentId: P:Gadema.Core.Dtos.ApiResponseDto`1.StatusCode
+  id: StatusCode
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: StatusCode
+  nameWithType: ApiResponseDto<T>.StatusCode
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.StatusCode
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StatusCode
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: The HTTP status code associated with this response.
+  example: []
+  syntax:
+    content: public HttpStatusCode StatusCode { get; set; }
+    parameters: []
+    return:
+      type: System.Net.HttpStatusCode
+    content.vb: Public Property StatusCode As HttpStatusCode
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.StatusCode*
+  nameWithType.vb: ApiResponseDto(Of T).StatusCode
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).StatusCode
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Message
+  commentId: P:Gadema.Core.Dtos.ApiResponseDto`1.Message
+  id: Message
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: ApiResponseDto<T>.Message
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Message
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Message
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: A descriptive message about the outcome (usually for errors).
+  example: []
+  syntax:
+    content: public string? Message { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Message As String
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Message*
+  nameWithType.vb: ApiResponseDto(Of T).Message
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Message
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Errors
+  commentId: P:Gadema.Core.Dtos.ApiResponseDto`1.Errors
+  id: Errors
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Errors
+  nameWithType: ApiResponseDto<T>.Errors
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Errors
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Errors
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: A list of error messages if the operation failed.
+  example: []
+  syntax:
+    content: public List<string>? Errors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property Errors As List(Of String)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Errors*
+  nameWithType.vb: ApiResponseDto(Of T).Errors
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Errors
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Data
+  commentId: P:Gadema.Core.Dtos.ApiResponseDto`1.Data
+  id: Data
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: ApiResponseDto<T>.Data
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Data
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Data
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: The primary data payload returned upon a successful request.
+  example: []
+  syntax:
+    content: public T? Data { get; set; }
+    parameters: []
+    return:
+      type: '{T}'
+    content.vb: Public Property Data As T
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Data*
+  nameWithType.vb: ApiResponseDto(Of T).Data
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Data
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Success(`0)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.Success(`0)
+  id: Success(`0)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Success(T)
+  nameWithType: ApiResponseDto<T>.Success(T)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Success(T)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Success
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 41
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a successful response containing the provided data.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> Success(T data)
+    parameters:
+    - id: data
+      type: '{T}'
+      description: The data to be returned in the payload.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing success.
+    content.vb: Public Shared Function Success(data As T) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Success*
+  nameWithType.vb: ApiResponseDto(Of T).Success(T)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Success(T)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.NotFound(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.NotFound(System.String)
+  id: NotFound(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: NotFound(string)
+  nameWithType: ApiResponseDto<T>.NotFound(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.NotFound(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: NotFound
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 55
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 404 Not Found response.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> NotFound(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message describing why the resource was not found.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing a NotFound result.
+    content.vb: Public Shared Function NotFound(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.NotFound*
+  nameWithType.vb: ApiResponseDto(Of T).NotFound(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).NotFound(String)
+  name.vb: NotFound(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.BadRequest(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.BadRequest(System.String)
+  id: BadRequest(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: BadRequest(string)
+  nameWithType: ApiResponseDto<T>.BadRequest(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.BadRequest(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: BadRequest
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 69
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 400 Bad Request response.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> BadRequest(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message describing the invalid request.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing a BadRequest result.
+    content.vb: Public Shared Function BadRequest(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.BadRequest*
+  nameWithType.vb: ApiResponseDto(Of T).BadRequest(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).BadRequest(String)
+  name.vb: BadRequest(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized(System.String)
+  id: Unauthorized(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Unauthorized(string)
+  nameWithType: ApiResponseDto<T>.Unauthorized(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Unauthorized(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Unauthorized
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 83
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 401 Unauthorized response.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> Unauthorized(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message describing the authentication failure.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing an Unauthorized result.
+    content.vb: Public Shared Function Unauthorized(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized*
+  nameWithType.vb: ApiResponseDto(Of T).Unauthorized(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Unauthorized(String)
+  name.vb: Unauthorized(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Conflict(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.Conflict(System.String)
+  id: Conflict(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Conflict(string)
+  nameWithType: ApiResponseDto<T>.Conflict(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Conflict(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Conflict
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 97
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 409 Conflict response (e.g., duplicate resource).
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> Conflict(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message describing the conflict.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing a Conflict result.
+    content.vb: Public Shared Function Conflict(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Conflict*
+  nameWithType.vb: ApiResponseDto(Of T).Conflict(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Conflict(String)
+  name.vb: Conflict(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Forbidden(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.Forbidden(System.String)
+  id: Forbidden(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Forbidden(string)
+  nameWithType: ApiResponseDto<T>.Forbidden(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Forbidden(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Forbidden
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 111
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  syntax:
+    content: public static ApiResponseDto<T> Forbidden(string message)
+    parameters:
+    - id: message
+      type: System.String
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+    content.vb: Public Shared Function Forbidden(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.Forbidden*
+  nameWithType.vb: ApiResponseDto(Of T).Forbidden(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Forbidden(String)
+  name.vb: Forbidden(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.ServerError(System.String)
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.ServerError(System.String)
+  id: ServerError(System.String)
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: ServerError(string)
+  nameWithType: ApiResponseDto<T>.ServerError(string)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.ServerError(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ServerError
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 125
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 500 Internal Server Error response.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> ServerError(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: The error message describing the server-side failure.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing a ServerError result.
+    content.vb: Public Shared Function ServerError(message As String) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.ServerError*
+  nameWithType.vb: ApiResponseDto(Of T).ServerError(String)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).ServerError(String)
+  name.vb: ServerError(String)
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.WithErrors(System.Collections.Generic.List{System.String})
+  commentId: M:Gadema.Core.Dtos.ApiResponseDto`1.WithErrors(System.Collections.Generic.List{System.String})
+  id: WithErrors(System.Collections.Generic.List{System.String})
+  parent: Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: WithErrors(List<string>)
+  nameWithType: ApiResponseDto<T>.WithErrors(List<string>)
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.WithErrors(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: WithErrors
+    path: src/Gadema.Core/Dtos/ApiResponseDto.cs
+    startLine: 139
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos
+  summary: Factory method to create a 400 Bad Request response containing multiple validation errors.
+  example: []
+  syntax:
+    content: public static ApiResponseDto<T> WithErrors(List<string> messages)
+    parameters:
+    - id: messages
+      type: System.Collections.Generic.List{System.String}
+      description: The list of error messages.
+    return:
+      type: Gadema.Core.Dtos.ApiResponseDto`1
+      description: An ApiResponseDto representing a BadRequest result with an error list.
+    content.vb: Public Shared Function WithErrors(messages As List(Of String)) As ApiResponseDto(Of T)
+  overload: Gadema.Core.Dtos.ApiResponseDto`1.WithErrors*
+  nameWithType.vb: ApiResponseDto(Of T).WithErrors(List(Of String))
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).WithErrors(System.Collections.Generic.List(Of String))
+  name.vb: WithErrors(List(Of String))
+references:
+- uid: Gadema.Core.Dtos
+  commentId: N:Gadema.Core.Dtos
+  name: Gadema.Core.Dtos
+  nameWithType: Gadema.Core.Dtos
+  fullName: Gadema.Core.Dtos
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Successful*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Successful
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Successful
+  name: Successful
+  nameWithType: ApiResponseDto<T>.Successful
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Successful
+  nameWithType.vb: ApiResponseDto(Of T).Successful
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Successful
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.StatusCode*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.StatusCode
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_StatusCode
+  name: StatusCode
+  nameWithType: ApiResponseDto<T>.StatusCode
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.StatusCode
+  nameWithType.vb: ApiResponseDto(Of T).StatusCode
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).StatusCode
+- uid: System.Net.HttpStatusCode
+  commentId: T:System.Net.HttpStatusCode
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.httpstatuscode
+  name: HttpStatusCode
+  nameWithType: HttpStatusCode
+  fullName: System.Net.HttpStatusCode
+- uid: System.Net
+  commentId: N:System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Message*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Message
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Message
+  name: Message
+  nameWithType: ApiResponseDto<T>.Message
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Message
+  nameWithType.vb: ApiResponseDto(Of T).Message
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Message
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Errors*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Errors
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Errors
+  name: Errors
+  nameWithType: ApiResponseDto<T>.Errors
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Errors
+  nameWithType.vb: ApiResponseDto(Of T).Errors
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Errors
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Data*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Data
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Data
+  name: Data
+  nameWithType: ApiResponseDto<T>.Data
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Data
+  nameWithType.vb: ApiResponseDto(Of T).Data
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Data
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Success*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Success
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Success__0_
+  name: Success
+  nameWithType: ApiResponseDto<T>.Success
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Success
+  nameWithType.vb: ApiResponseDto(Of T).Success
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Success
+- uid: Gadema.Core.Dtos.ApiResponseDto`1
+  commentId: T:Gadema.Core.Dtos.ApiResponseDto`1
+  parent: Gadema.Core.Dtos
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  name: ApiResponseDto<T>
+  nameWithType: ApiResponseDto<T>
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>
+  nameWithType.vb: ApiResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T)
+  name.vb: ApiResponseDto(Of T)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+    href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+    href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.NotFound*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.NotFound
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_NotFound_System_String_
+  name: NotFound
+  nameWithType: ApiResponseDto<T>.NotFound
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.NotFound
+  nameWithType.vb: ApiResponseDto(Of T).NotFound
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).NotFound
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.BadRequest*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.BadRequest
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_BadRequest_System_String_
+  name: BadRequest
+  nameWithType: ApiResponseDto<T>.BadRequest
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.BadRequest
+  nameWithType.vb: ApiResponseDto(Of T).BadRequest
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).BadRequest
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Unauthorized
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Unauthorized_System_String_
+  name: Unauthorized
+  nameWithType: ApiResponseDto<T>.Unauthorized
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Unauthorized
+  nameWithType.vb: ApiResponseDto(Of T).Unauthorized
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Unauthorized
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Conflict*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Conflict
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Conflict_System_String_
+  name: Conflict
+  nameWithType: ApiResponseDto<T>.Conflict
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Conflict
+  nameWithType.vb: ApiResponseDto(Of T).Conflict
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Conflict
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.Forbidden*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.Forbidden
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_Forbidden_System_String_
+  name: Forbidden
+  nameWithType: ApiResponseDto<T>.Forbidden
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.Forbidden
+  nameWithType.vb: ApiResponseDto(Of T).Forbidden
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).Forbidden
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.ServerError*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.ServerError
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_ServerError_System_String_
+  name: ServerError
+  nameWithType: ApiResponseDto<T>.ServerError
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.ServerError
+  nameWithType.vb: ApiResponseDto(Of T).ServerError
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).ServerError
+- uid: Gadema.Core.Dtos.ApiResponseDto`1.WithErrors*
+  commentId: Overload:Gadema.Core.Dtos.ApiResponseDto`1.WithErrors
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html#Gadema_Core_Dtos_ApiResponseDto_1_WithErrors_System_Collections_Generic_List_System_String__
+  name: WithErrors
+  nameWithType: ApiResponseDto<T>.WithErrors
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>.WithErrors
+  nameWithType.vb: ApiResponseDto(Of T).WithErrors
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T).WithErrors

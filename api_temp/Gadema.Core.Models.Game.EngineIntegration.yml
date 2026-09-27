@@ -1,0 +1,81 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.EngineIntegration
+  commentId: N:Gadema.Core.Models.Game.EngineIntegration
+  id: Gadema.Core.Models.Game.EngineIntegration
+  children:
+  - Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig
+  - Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping
+  - Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Game.EngineIntegration
+  nameWithType: Gadema.Core.Models.Game.EngineIntegration
+  fullName: Gadema.Core.Models.Game.EngineIntegration
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig
+  parent: Gadema.Core.Models.Game.EngineIntegration
+  href: Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig.html
+  name: EngineExportConfig
+  nameWithType: EngineExportConfig
+  fullName: Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig
+- uid: Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping
+  href: Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping.html
+  name: EngineFieldMapping
+  nameWithType: EngineFieldMapping
+  fullName: Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent
+  href: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent.html
+  name: GameKeyEvent
+  nameWithType: GameKeyEvent
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  parent: Gadema.Core.Models.Game.EngineIntegration
+  href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  name: GameTriggerType
+  nameWithType: GameTriggerType
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration
+  commentId: N:Gadema.Core.Models.Game.EngineIntegration
+  name: Gadema.Core.Models.Game.EngineIntegration
+  nameWithType: Gadema.Core.Models.Game.EngineIntegration
+  fullName: Gadema.Core.Models.Game.EngineIntegration
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.EngineIntegration
+    name: EngineIntegration
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.EngineIntegration
+    name: EngineIntegration

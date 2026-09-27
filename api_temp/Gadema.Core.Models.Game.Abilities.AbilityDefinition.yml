@@ -1,0 +1,1033 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  commentId: T:Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  id: AbilityDefinition
+  parent: Gadema.Core.Models.Game.Abilities
+  children:
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+  langs:
+  - csharp
+  - vb
+  name: AbilityDefinition
+  nameWithType: AbilityDefinition
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AbilityDefinition
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: >-
+    Represents a blueprint for an individual ability (e.g., "Fireball", "Shield Bash").
+
+    Defines the core mechanics, including type, resource cost, cooldowns, and scaling logic.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+
+      public class AbilityDefinition
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(ContentMetaInfo) })>
+
+      Public Class AbilityDefinition
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+  id: Id
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: AbilityDefinition.Id
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: Unique identifier for the ability definition.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id*
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: AbilityDefinition.MetaInfoId
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid? MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid?
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: AbilityDefinition.ContentMetaInfo
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: Navigation property for the ability's identity anchor.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+  id: Name
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: AbilityDefinition.Name
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Name
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 32
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The human-readable name of the ability.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      Public Property Name As String
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+  id: Slug
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: Slug
+  nameWithType: AbilityDefinition.Slug
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Slug
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 38
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: A unique, URL-friendly slug for the ability.
+  example: []
+  syntax:
+    content: >-
+      [Column("slug")]
+
+      [MaxLength(128)]
+
+      public string Slug { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Column("slug")>
+
+      <MaxLength(128)>
+
+      Public Property Slug As String
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: slug
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+  id: Description
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: AbilityDefinition.Description
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 43
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: A detailed description of what the ability does and its narrative flavor.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property Description As String
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+  id: AbilityType
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: AbilityType
+  nameWithType: AbilityDefinition.AbilityType
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AbilityType
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 49
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The functional type of the ability (e.g., Attack, Defense, Buff, Debuff).
+  example: []
+  syntax:
+    content: public int AbilityType { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property AbilityType As Integer
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType*
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+  id: CooldownSeconds
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: CooldownSeconds
+  nameWithType: AbilityDefinition.CooldownSeconds
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CooldownSeconds
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 53
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The cooldown duration in seconds before the ability can be used again.
+  example: []
+  syntax:
+    content: public decimal? CooldownSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Decimal}
+    content.vb: Public Property CooldownSeconds As Decimal?
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds*
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+  id: ResourceCost
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: ResourceCost
+  nameWithType: AbilityDefinition.ResourceCost
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ResourceCost
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 58
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The resource cost (e.g., mana, stamina) required to activate the ability.
+  example: []
+  syntax:
+    content: public decimal? ResourceCost { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Decimal}
+    content.vb: Public Property ResourceCost As Decimal?
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost*
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+  id: MaxLevel
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: MaxLevel
+  nameWithType: AbilityDefinition.MaxLevel
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MaxLevel
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 62
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: The maximum level this ability can reach through progression.
+  example: []
+  syntax:
+    content: public int? MaxLevel { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property MaxLevel As Integer?
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel*
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+  id: ScalingFormulaJson
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: ScalingFormulaJson
+  nameWithType: AbilityDefinition.ScalingFormulaJson
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ScalingFormulaJson
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 67
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: A JSON representation of the scaling formulas used to determine power/effect per level.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? ScalingFormulaJson { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property ScalingFormulaJson As String
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition
+  commentId: P:Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition
+  id: RequiresFlagCondition
+  parent: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  langs:
+  - csharp
+  - vb
+  name: RequiresFlagCondition
+  nameWithType: AbilityDefinition.RequiresFlagCondition
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RequiresFlagCondition
+    path: src/Gadema.Core/Models/Game/Abilities/AbilityDefinition.cs
+    startLine: 73
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Abilities
+  summary: An optional flag-based condition that must be met to use this ability (e.g., "HasMagic").
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(512)]
+
+      public string? RequiresFlagCondition { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(512)>
+
+      Public Property RequiresFlagCondition As String
+  overload: Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 512
+references:
+- uid: Gadema.Core.Models.Game.Abilities
+  commentId: N:Gadema.Core.Models.Game.Abilities
+  name: Gadema.Core.Models.Game.Abilities
+  nameWithType: Gadema.Core.Models.Game.Abilities
+  fullName: Gadema.Core.Models.Game.Abilities
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Abilities
+    name: Abilities
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Abilities
+    name: Abilities
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_Id
+  name: Id
+  nameWithType: AbilityDefinition.Id
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_MetaInfoId
+  name: MetaInfoId
+  nameWithType: AbilityDefinition.MetaInfoId
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MetaInfoId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: AbilityDefinition.ContentMetaInfo
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_Name
+  name: Name
+  nameWithType: AbilityDefinition.Name
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_Slug
+  name: Slug
+  nameWithType: AbilityDefinition.Slug
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Slug
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_Description
+  name: Description
+  nameWithType: AbilityDefinition.Description
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.Description
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_AbilityType
+  name: AbilityType
+  nameWithType: AbilityDefinition.AbilityType
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.AbilityType
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_CooldownSeconds
+  name: CooldownSeconds
+  nameWithType: AbilityDefinition.CooldownSeconds
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.CooldownSeconds
+- uid: System.Nullable{System.Decimal}
+  commentId: T:System.Nullable{System.Decimal}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal?
+  nameWithType: decimal?
+  fullName: decimal?
+  nameWithType.vb: Decimal?
+  fullName.vb: Decimal?
+  name.vb: Decimal?
+  spec.csharp:
+  - uid: System.Decimal
+    name: decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: '?'
+  spec.vb:
+  - uid: System.Decimal
+    name: Decimal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.decimal
+  - name: '?'
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_ResourceCost
+  name: ResourceCost
+  nameWithType: AbilityDefinition.ResourceCost
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ResourceCost
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_MaxLevel
+  name: MaxLevel
+  nameWithType: AbilityDefinition.MaxLevel
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.MaxLevel
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_ScalingFormulaJson
+  name: ScalingFormulaJson
+  nameWithType: AbilityDefinition.ScalingFormulaJson
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.ScalingFormulaJson
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition*
+  commentId: Overload:Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html#Gadema_Core_Models_Game_Abilities_AbilityDefinition_RequiresFlagCondition
+  name: RequiresFlagCondition
+  nameWithType: AbilityDefinition.RequiresFlagCondition
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition.RequiresFlagCondition

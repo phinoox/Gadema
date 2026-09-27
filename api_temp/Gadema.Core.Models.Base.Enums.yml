@@ -1,0 +1,139 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  id: Gadema.Core.Models.Base.Enums
+  children:
+  - Gadema.Core.Models.Base.Enums.ActivityTypeEnum
+  - Gadema.Core.Models.Base.Enums.ContentStatusEnum
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  - Gadema.Core.Models.Base.Enums.ExportFormatEnum
+  - Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+  - Gadema.Core.Models.Base.Enums.IdentityDefinitionType
+  - Gadema.Core.Models.Base.Enums.IdentityTypeEnum
+  - Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum
+  - Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+  - Gadema.Core.Models.Base.Enums.SnapshotTypeEnum
+  - Gadema.Core.Models.Base.Enums.ViewModeEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Enums.ActivityTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ActivityTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ActivityTypeEnum.html
+  name: ActivityTypeEnum
+  nameWithType: ActivityTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentStatusEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ContentStatusEnum.html
+  name: ContentStatusEnum
+  nameWithType: ContentStatusEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  name: ContentTypeEnum
+  nameWithType: ContentTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ExportFormatEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ExportFormatEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ExportFormatEnum.html
+  name: ExportFormatEnum
+  nameWithType: ExportFormatEnum
+  fullName: Gadema.Core.Models.Base.Enums.ExportFormatEnum
+- uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
+  name: IdentityDataTypeEnum
+  nameWithType: IdentityDataTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.IdentityTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.IdentityTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.IdentityTypeEnum.html
+  name: IdentityTypeEnum
+  nameWithType: IdentityTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.IdentityTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.IdentityDefinitionType
+  commentId: T:Gadema.Core.Models.Base.Enums.IdentityDefinitionType
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.IdentityDefinitionType.html
+  name: IdentityDefinitionType
+  nameWithType: IdentityDefinitionType
+  fullName: Gadema.Core.Models.Base.Enums.IdentityDefinitionType
+- uid: Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum.html
+  name: RelatedEntityTypeEnum
+  nameWithType: RelatedEntityTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ReviewStatusEnum.html
+  name: ReviewStatusEnum
+  nameWithType: ReviewStatusEnum
+  fullName: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+- uid: Gadema.Core.Models.Base.Enums.SnapshotTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.SnapshotTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.SnapshotTypeEnum.html
+  name: SnapshotTypeEnum
+  nameWithType: SnapshotTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.SnapshotTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ViewModeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  name: ViewModeEnum
+  nameWithType: ViewModeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums

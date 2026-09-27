@@ -1,0 +1,429 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  id: ProjectSeriesCreateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  children:
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+  langs:
+  - csharp
+  - vb
+  name: ProjectSeriesCreateDto
+  nameWithType: ProjectSeriesCreateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectSeriesCreateDto
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: Data transfer object for creating a new project series.
+  example: []
+  syntax:
+    content: public class ProjectSeriesCreateDto
+    content.vb: Public Class ProjectSeriesCreateDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+  id: MetaInfo
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  langs:
+  - csharp
+  - vb
+  name: MetaInfo
+  nameWithType: ProjectSeriesCreateDto.MetaInfo
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfo
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: The identity and metadata for the new series.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public ProjectSeriesMetaInfoCreateData MetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfo As ProjectSeriesMetaInfoCreateData
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+  id: Description
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ProjectSeriesCreateDto.Description
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectSeriesDtos.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: A high-level description of the series.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property Description As String
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+references:
+- uid: Gadema.Core.Dtos.Base.Projects
+  commentId: N:Gadema.Core.Dtos.Base.Projects
+  name: Gadema.Core.Dtos.Base.Projects
+  nameWithType: Gadema.Core.Dtos.Base.Projects
+  fullName: Gadema.Core.Dtos.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectSeriesCreateDto_MetaInfo
+  name: MetaInfo
+  nameWithType: ProjectSeriesCreateDto.MetaInfo
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.MetaInfo
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData.html
+  name: ProjectSeriesMetaInfoCreateData
+  nameWithType: ProjectSeriesMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectSeriesCreateDto_Description
+  name: Description
+  nameWithType: ProjectSeriesCreateDto.Description
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

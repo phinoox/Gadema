@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Search
+  commentId: N:Gadema.Core.Dtos.Search
+  id: Gadema.Core.Dtos.Search
+  children:
+  - Gadema.Core.Dtos.Search.SearchHitDto
+  - Gadema.Core.Dtos.Search.SearchMetaInfosDto
+  - Gadema.Core.Dtos.Search.SearchResultDto
+  - Gadema.Core.Dtos.Search.SearchResultsResponseDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Search
+  nameWithType: Gadema.Core.Dtos.Search
+  fullName: Gadema.Core.Dtos.Search
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Search.SearchHitDto
+  commentId: T:Gadema.Core.Dtos.Search.SearchHitDto
+  href: Gadema.Core.Dtos.Search.SearchHitDto.html
+  name: SearchHitDto
+  nameWithType: SearchHitDto
+  fullName: Gadema.Core.Dtos.Search.SearchHitDto
+- uid: Gadema.Core.Dtos.Search.SearchMetaInfosDto
+  commentId: T:Gadema.Core.Dtos.Search.SearchMetaInfosDto
+  href: Gadema.Core.Dtos.Search.SearchMetaInfosDto.html
+  name: SearchMetaInfosDto
+  nameWithType: SearchMetaInfosDto
+  fullName: Gadema.Core.Dtos.Search.SearchMetaInfosDto
+- uid: Gadema.Core.Dtos.Search.SearchResultDto
+  commentId: T:Gadema.Core.Dtos.Search.SearchResultDto
+  href: Gadema.Core.Dtos.Search.SearchResultDto.html
+  name: SearchResultDto
+  nameWithType: SearchResultDto
+  fullName: Gadema.Core.Dtos.Search.SearchResultDto
+- uid: Gadema.Core.Dtos.Search.SearchResultsResponseDto
+  commentId: T:Gadema.Core.Dtos.Search.SearchResultsResponseDto
+  href: Gadema.Core.Dtos.Search.SearchResultsResponseDto.html
+  name: SearchResultsResponseDto
+  nameWithType: SearchResultsResponseDto
+  fullName: Gadema.Core.Dtos.Search.SearchResultsResponseDto

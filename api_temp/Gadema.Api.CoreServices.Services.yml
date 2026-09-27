@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Services
+  commentId: N:Gadema.Api.CoreServices.Services
+  id: Gadema.Api.CoreServices.Services
+  children:
+  - Gadema.Api.CoreServices.Services.AuditService
+  - Gadema.Api.CoreServices.Services.MetadataService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.CoreServices.Services
+  nameWithType: Gadema.Api.CoreServices.Services
+  fullName: Gadema.Api.CoreServices.Services
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.CoreServices.Services.AuditService
+  commentId: T:Gadema.Api.CoreServices.Services.AuditService
+  href: Gadema.Api.CoreServices.Services.AuditService.html
+  name: AuditService
+  nameWithType: AuditService
+  fullName: Gadema.Api.CoreServices.Services.AuditService
+- uid: Gadema.Api.CoreServices.Services.MetadataService
+  commentId: T:Gadema.Api.CoreServices.Services.MetadataService
+  href: Gadema.Api.CoreServices.Services.MetadataService.html
+  name: MetadataService
+  nameWithType: MetadataService
+  fullName: Gadema.Api.CoreServices.Services.MetadataService

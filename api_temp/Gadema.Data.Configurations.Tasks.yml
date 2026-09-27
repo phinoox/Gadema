@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Tasks
+  commentId: N:Gadema.Data.Configurations.Tasks
+  id: Gadema.Data.Configurations.Tasks
+  children:
+  - Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration
+  - Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration
+  - Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration
+  - Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration
+  - Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Tasks
+  nameWithType: Gadema.Data.Configurations.Tasks
+  fullName: Gadema.Data.Configurations.Tasks
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration.html
+  name: CommentEntityTypeConfiguration
+  nameWithType: CommentEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration.html
+  name: ProjectTaskCommentsEntityTypeConfiguration
+  nameWithType: ProjectTaskCommentsEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.html
+  name: ProjectTaskEntityTypeConfiguration
+  nameWithType: ProjectTaskEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration.html
+  name: ProjectTaskMetaInfoEntityTypeConfiguration
+  nameWithType: ProjectTaskMetaInfoEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration.html
+  name: ReviewStatusEntityTypeConfiguration
+  nameWithType: ReviewStatusEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration

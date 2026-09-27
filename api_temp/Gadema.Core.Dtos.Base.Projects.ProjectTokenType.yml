@@ -1,0 +1,394 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  id: ProjectTokenType
+  parent: Gadema.Core.Dtos.Base.Projects
+  children:
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Admin
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadOnly
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadWrite
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.WriteOnly
+  langs:
+  - csharp
+  - vb
+  name: ProjectTokenType
+  nameWithType: ProjectTokenType
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTokenType
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  summary: Enumeration of API token types.
+  example: []
+  syntax:
+    content: public enum ProjectTokenType
+    content.vb: Public Enum ProjectTokenType
+  extensionMethods:
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadOnly
+  commentId: F:Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadOnly
+  id: ReadOnly
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  langs:
+  - csharp
+  - vb
+  name: ReadOnly
+  nameWithType: ProjectTokenType.ReadOnly
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadOnly
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReadOnly
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  syntax:
+    content: ReadOnly = 0
+    return:
+      type: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadWrite
+  commentId: F:Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadWrite
+  id: ReadWrite
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  langs:
+  - csharp
+  - vb
+  name: ReadWrite
+  nameWithType: ProjectTokenType.ReadWrite
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.ReadWrite
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReadWrite
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  syntax:
+    content: ReadWrite = 1
+    return:
+      type: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Admin
+  commentId: F:Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Admin
+  id: Admin
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  langs:
+  - csharp
+  - vb
+  name: Admin
+  nameWithType: ProjectTokenType.Admin
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Admin
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Admin
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  syntax:
+    content: Admin = 2
+    return:
+      type: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.WriteOnly
+  commentId: F:Gadema.Core.Dtos.Base.Projects.ProjectTokenType.WriteOnly
+  id: WriteOnly
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  langs:
+  - csharp
+  - vb
+  name: WriteOnly
+  nameWithType: ProjectTokenType.WriteOnly
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.WriteOnly
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: WriteOnly
+    path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Projects
+  syntax:
+    content: WriteOnly = 3
+    return:
+      type: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+references:
+- uid: Gadema.Core.Dtos.Base.Projects
+  commentId: N:Gadema.Core.Dtos.Base.Projects
+  name: Gadema.Core.Dtos.Base.Projects
+  nameWithType: Gadema.Core.Dtos.Base.Projects
+  fullName: Gadema.Core.Dtos.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription
+  commentId: M:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  definition: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  name: ToDescription(ProjectTokenType)
+  nameWithType: ProjectTokenTypeExtensions.ToDescription(ProjectTokenType)
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDescription
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDescription
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName
+  commentId: M:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  definition: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  name: ToDisplayName(ProjectTokenType)
+  nameWithType: ProjectTokenTypeExtensions.ToDisplayName(ProjectTokenType)
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDisplayName
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDisplayName
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ProjectTokenType>(ProjectTokenType)
+  nameWithType: EnumGuidExtensions.ToGuid<ProjectTokenType>(ProjectTokenType)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Dtos.Base.Projects.ProjectTokenType>(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ProjectTokenType)(ProjectTokenType)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Dtos.Base.Projects.ProjectTokenType)(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  name.vb: ToGuid(Of ProjectTokenType)(ProjectTokenType)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  commentId: M:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  name: ToDescription(ProjectTokenType)
+  nameWithType: ProjectTokenTypeExtensions.ToDescription(ProjectTokenType)
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDescription
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDescription(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDescription
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDescription_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html
+  name: ProjectTokenTypeExtensions
+  nameWithType: ProjectTokenTypeExtensions
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  commentId: M:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  name: ToDisplayName(ProjectTokenType)
+  nameWithType: ProjectTokenTypeExtensions.ToDisplayName(ProjectTokenType)
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDisplayName
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.ToDisplayName(Gadema.Core.Dtos.Base.Projects.ProjectTokenType)
+    name: ToDisplayName
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenTypeExtensions_ToDisplayName_Gadema_Core_Dtos_Base_Projects_ProjectTokenType_
+  - name: (
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  name: ProjectTokenType
+  nameWithType: ProjectTokenType
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType

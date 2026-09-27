@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Tags
+  commentId: N:Gadema.Core.Dtos.Tags
+  id: Gadema.Core.Dtos.Tags
+  children:
+  - Gadema.Core.Dtos.Tags.AddTagsDto
+  - Gadema.Core.Dtos.Tags.TagCreateDto
+  - Gadema.Core.Dtos.Tags.TagFilterResponseDto
+  - Gadema.Core.Dtos.Tags.TagListResponseDto
+  - Gadema.Core.Dtos.Tags.TagResponseDto
+  - Gadema.Core.Dtos.Tags.TagUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Tags
+  nameWithType: Gadema.Core.Dtos.Tags
+  fullName: Gadema.Core.Dtos.Tags
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Tags.TagCreateDto
+  commentId: T:Gadema.Core.Dtos.Tags.TagCreateDto
+  href: Gadema.Core.Dtos.Tags.TagCreateDto.html
+  name: TagCreateDto
+  nameWithType: TagCreateDto
+  fullName: Gadema.Core.Dtos.Tags.TagCreateDto
+- uid: Gadema.Core.Dtos.Tags.TagUpdateDto
+  commentId: T:Gadema.Core.Dtos.Tags.TagUpdateDto
+  href: Gadema.Core.Dtos.Tags.TagUpdateDto.html
+  name: TagUpdateDto
+  nameWithType: TagUpdateDto
+  fullName: Gadema.Core.Dtos.Tags.TagUpdateDto
+- uid: Gadema.Core.Dtos.Tags.TagResponseDto
+  commentId: T:Gadema.Core.Dtos.Tags.TagResponseDto
+  href: Gadema.Core.Dtos.Tags.TagResponseDto.html
+  name: TagResponseDto
+  nameWithType: TagResponseDto
+  fullName: Gadema.Core.Dtos.Tags.TagResponseDto
+- uid: Gadema.Core.Dtos.Tags.TagListResponseDto
+  commentId: T:Gadema.Core.Dtos.Tags.TagListResponseDto
+  href: Gadema.Core.Dtos.Tags.TagListResponseDto.html
+  name: TagListResponseDto
+  nameWithType: TagListResponseDto
+  fullName: Gadema.Core.Dtos.Tags.TagListResponseDto
+- uid: Gadema.Core.Dtos.Tags.AddTagsDto
+  commentId: T:Gadema.Core.Dtos.Tags.AddTagsDto
+  href: Gadema.Core.Dtos.Tags.AddTagsDto.html
+  name: AddTagsDto
+  nameWithType: AddTagsDto
+  fullName: Gadema.Core.Dtos.Tags.AddTagsDto
+- uid: Gadema.Core.Dtos.Tags.TagFilterResponseDto
+  commentId: T:Gadema.Core.Dtos.Tags.TagFilterResponseDto
+  href: Gadema.Core.Dtos.Tags.TagFilterResponseDto.html
+  name: TagFilterResponseDto
+  nameWithType: TagFilterResponseDto
+  fullName: Gadema.Core.Dtos.Tags.TagFilterResponseDto

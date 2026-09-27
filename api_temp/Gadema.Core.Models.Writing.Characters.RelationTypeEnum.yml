@@ -1,0 +1,438 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  id: RelationTypeEnum
+  parent: Gadema.Core.Models.Writing.Characters
+  children:
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Acquaintance
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Alien
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Ally
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Custom
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Enemy
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Family
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Mentor
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Professional
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Romantic
+  langs:
+  - csharp
+  - vb
+  name: RelationTypeEnum
+  nameWithType: RelationTypeEnum
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RelationTypeEnum
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 74
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Defines the types of relationships that can exist between characters.
+  example: []
+  syntax:
+    content: public enum RelationTypeEnum
+    content.vb: Public Enum RelationTypeEnum
+  extensionMethods:
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Alien
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Alien
+  id: Alien
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Alien
+  nameWithType: RelationTypeEnum.Alien
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Alien
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Alien
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 77
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: No established relationship or connection.
+  example: []
+  syntax:
+    content: Alien = 0
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Acquaintance
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Acquaintance
+  id: Acquaintance
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Acquaintance
+  nameWithType: RelationTypeEnum.Acquaintance
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Acquaintance
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Acquaintance
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 80
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A neutral contact or acquaintance without a formal bond.
+  example: []
+  syntax:
+    content: Acquaintance = 1
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Ally
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Ally
+  id: Ally
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Ally
+  nameWithType: RelationTypeEnum.Ally
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Ally
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Ally
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 83
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Characters who are cooperative or on the same side.
+  example: []
+  syntax:
+    content: Ally = 2
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Enemy
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Enemy
+  id: Enemy
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Enemy
+  nameWithType: RelationTypeEnum.Enemy
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Enemy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Enemy
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 86
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Characters with opposing interests or active hostility.
+  example: []
+  syntax:
+    content: Enemy = 3
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Family
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Family
+  id: Family
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Family
+  nameWithType: RelationTypeEnum.Family
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Family
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Family
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 89
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A familial bond through blood, marriage, or adoption.
+  example: []
+  syntax:
+    content: Family = 4
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Romantic
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Romantic
+  id: Romantic
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Romantic
+  nameWithType: RelationTypeEnum.Romantic
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Romantic
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Romantic
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 92
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A romantic or intimate relationship.
+  example: []
+  syntax:
+    content: Romantic = 5
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Mentor
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Mentor
+  id: Mentor
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Mentor
+  nameWithType: RelationTypeEnum.Mentor
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Mentor
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Mentor
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 95
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A hierarchical relationship based on teaching or guidance.
+  example: []
+  syntax:
+    content: Mentor = 6
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Professional
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Professional
+  id: Professional
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Professional
+  nameWithType: RelationTypeEnum.Professional
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Professional
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Professional
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 98
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A connection based on work, trade, or professional roles.
+  example: []
+  syntax:
+    content: Professional = 7
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Custom
+  commentId: F:Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Custom
+  id: Custom
+  parent: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: RelationTypeEnum.Custom
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Custom
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterRelation.cs
+    startLine: 101
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A user-defined or non-standard relationship type.
+  example: []
+  syntax:
+    content: Custom = 8
+    return:
+      type: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+references:
+- uid: Gadema.Core.Models.Writing.Characters
+  commentId: N:Gadema.Core.Models.Writing.Characters
+  name: Gadema.Core.Models.Writing.Characters
+  nameWithType: Gadema.Core.Models.Writing.Characters
+  fullName: Gadema.Core.Models.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<RelationTypeEnum>(RelationTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<RelationTypeEnum>(RelationTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Writing.Characters.RelationTypeEnum>(Gadema.Core.Models.Writing.Characters.RelationTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of RelationTypeEnum)(RelationTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Writing.Characters.RelationTypeEnum)(Gadema.Core.Models.Writing.Characters.RelationTypeEnum)
+  name.vb: ToGuid(Of RelationTypeEnum)(RelationTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Characters.RelationTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+    name: RelationTypeEnum
+    href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+    name: RelationTypeEnum
+    href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Characters.RelationTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+    name: RelationTypeEnum
+    href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+    name: RelationTypeEnum
+    href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  name: RelationTypeEnum
+  nameWithType: RelationTypeEnum
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum

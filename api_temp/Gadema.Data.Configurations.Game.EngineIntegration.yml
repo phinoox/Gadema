@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Game.EngineIntegration
+  commentId: N:Gadema.Data.Configurations.Game.EngineIntegration
+  id: Gadema.Data.Configurations.Game.EngineIntegration
+  children:
+  - Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Game.EngineIntegration
+  nameWithType: Gadema.Data.Configurations.Game.EngineIntegration
+  fullName: Gadema.Data.Configurations.Game.EngineIntegration
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration.html
+  name: AssetLinkEntityTypeConfiguration
+  nameWithType: AssetLinkEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration

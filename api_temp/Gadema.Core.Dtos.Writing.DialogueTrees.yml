@@ -1,0 +1,148 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees
+  commentId: N:Gadema.Core.Dtos.Writing.DialogueTrees
+  id: Gadema.Core.Dtos.Writing.DialogueTrees
+  children:
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto
+  - Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Writing.DialogueTrees
+  nameWithType: Gadema.Core.Dtos.Writing.DialogueTrees
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto.html
+  name: DialogueBranchCreateDto
+  nameWithType: DialogueBranchCreateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto.html
+  name: DialogueBranchUpdateDto
+  nameWithType: DialogueBranchUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto.html
+  name: DialogueBranchResponseDto
+  nameWithType: DialogueBranchResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto.html
+  name: DialogueBranchListResponseDto
+  nameWithType: DialogueBranchListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto.html
+  name: DialogueNodeCreateDto
+  nameWithType: DialogueNodeCreateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto.html
+  name: DialogueNodeUpdateDto
+  nameWithType: DialogueNodeUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto.html
+  name: DialogueNodeResponseDto
+  nameWithType: DialogueNodeResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto.html
+  name: DialogueNodeListResponseDto
+  nameWithType: DialogueNodeListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto.html
+  name: SceneSegmentCreateDto
+  nameWithType: SceneSegmentCreateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto
+  parent: Gadema.Core.Dtos.Writing.DialogueTrees
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto.html
+  name: SceneSegmentUpdateDto
+  nameWithType: SceneSegmentUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto.html
+  name: SceneSegmentResponseDto
+  nameWithType: SceneSegmentResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto.html
+  name: SceneSegmentListResponseDto
+  nameWithType: SceneSegmentListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto
+  commentId: T:Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto
+  href: Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto.html
+  name: UpdateBranchDto
+  nameWithType: UpdateBranchDto
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees
+  commentId: N:Gadema.Core.Dtos.Writing.DialogueTrees
+  name: Gadema.Core.Dtos.Writing.DialogueTrees
+  nameWithType: Gadema.Core.Dtos.Writing.DialogueTrees
+  fullName: Gadema.Core.Dtos.Writing.DialogueTrees
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees
+    name: DialogueTrees
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees
+    name: DialogueTrees

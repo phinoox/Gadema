@@ -1,0 +1,436 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  id: GameTriggerType
+  parent: Gadema.Core.Models.Game.EngineIntegration
+  children:
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ChangeLocation
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ClearFlag
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Custom
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.GiveItem
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.None
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.PlayAudio
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.RemoveItem
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.SetFlag
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.TriggerCombat
+  langs:
+  - csharp
+  - vb
+  name: GameTriggerType
+  nameWithType: GameTriggerType
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: GameTriggerType
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 59
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  syntax:
+    content: public enum GameTriggerType
+    content.vb: Public Enum GameTriggerType
+  extensionMethods:
+  - Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.None
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.None
+  id: None
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: GameTriggerType.None
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.None
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: None
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 65
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: No trigger defined.
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.GiveItem
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.GiveItem
+  id: GiveItem
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: GiveItem
+  nameWithType: GameTriggerType.GiveItem
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.GiveItem
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: GiveItem
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 67
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Adds an item to a character's inventory.
+  example: []
+  syntax:
+    content: GiveItem = 1
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.RemoveItem
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.RemoveItem
+  id: RemoveItem
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: RemoveItem
+  nameWithType: GameTriggerType.RemoveItem
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.RemoveItem
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RemoveItem
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 69
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Removes an item from a character's inventory.
+  example: []
+  syntax:
+    content: RemoveItem = 2
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.SetFlag
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.SetFlag
+  id: SetFlag
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: SetFlag
+  nameWithType: GameTriggerType.SetFlag
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.SetFlag
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SetFlag
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 71
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Sets a boolean flag in the project state.
+  example: []
+  syntax:
+    content: SetFlag = 3
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ClearFlag
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ClearFlag
+  id: ClearFlag
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: ClearFlag
+  nameWithType: GameTriggerType.ClearFlag
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ClearFlag
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ClearFlag
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 73
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Clears/resets a previously set flag.
+  example: []
+  syntax:
+    content: ClearFlag = 4
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.TriggerCombat
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.TriggerCombat
+  id: TriggerCombat
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: TriggerCombat
+  nameWithType: GameTriggerType.TriggerCombat
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.TriggerCombat
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TriggerCombat
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 75
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Initiates a combat encounter.
+  example: []
+  syntax:
+    content: TriggerCombat = 5
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ChangeLocation
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ChangeLocation
+  id: ChangeLocation
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: ChangeLocation
+  nameWithType: GameTriggerType.ChangeLocation
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.ChangeLocation
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ChangeLocation
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 77
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Moves a character or entity to a new location.
+  example: []
+  syntax:
+    content: ChangeLocation = 6
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.PlayAudio
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.PlayAudio
+  id: PlayAudio
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: PlayAudio
+  nameWithType: GameTriggerType.PlayAudio
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.PlayAudio
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PlayAudio
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 79
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Plays a specific audio track or sound effect.
+  example: []
+  syntax:
+    content: PlayAudio = 7
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Custom
+  commentId: F:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Custom
+  id: Custom
+  parent: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: GameTriggerType.Custom
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Custom
+    path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
+    startLine: 81
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: A user-defined custom trigger type.
+  example: []
+  syntax:
+    content: Custom = 8
+    return:
+      type: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+references:
+- uid: Gadema.Core.Models.Game.EngineIntegration
+  commentId: N:Gadema.Core.Models.Game.EngineIntegration
+  name: Gadema.Core.Models.Game.EngineIntegration
+  nameWithType: Gadema.Core.Models.Game.EngineIntegration
+  fullName: Gadema.Core.Models.Game.EngineIntegration
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.EngineIntegration
+    name: EngineIntegration
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.EngineIntegration
+    name: EngineIntegration
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<GameTriggerType>(GameTriggerType)
+  nameWithType: EnumGuidExtensions.ToGuid<GameTriggerType>(GameTriggerType)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Game.EngineIntegration.GameTriggerType>(Gadema.Core.Models.Game.EngineIntegration.GameTriggerType)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of GameTriggerType)(GameTriggerType)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Game.EngineIntegration.GameTriggerType)(Gadema.Core.Models.Game.EngineIntegration.GameTriggerType)
+  name.vb: ToGuid(Of GameTriggerType)(GameTriggerType)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Game.EngineIntegration.GameTriggerType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+    name: GameTriggerType
+    href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+    name: GameTriggerType
+    href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Game.EngineIntegration.GameTriggerType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+    name: GameTriggerType
+    href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+    name: GameTriggerType
+    href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  commentId: T:Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+  parent: Gadema.Core.Models.Game.EngineIntegration
+  href: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.html
+  name: GameTriggerType
+  nameWithType: GameTriggerType
+  fullName: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType

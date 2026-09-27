@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Core
+  commentId: N:Gadema.Data.Configurations.Core
+  id: Gadema.Data.Configurations.Core
+  children:
+  - Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration
+  - Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Core
+  nameWithType: Gadema.Data.Configurations.Core
+  fullName: Gadema.Data.Configurations.Core
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration.html
+  name: ActivityLogEntityTypeConfiguration
+  nameWithType: ActivityLogEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration.html
+  name: ExternalReferenceEntityTypeConfiguration
+  nameWithType: ExternalReferenceEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration.html
+  name: MediaAttachmentEntityTypeConfiguration
+  nameWithType: MediaAttachmentEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration.html
+  name: MetaInfoEntityTypeConfiguration
+  nameWithType: MetaInfoEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration.html
+  name: MetaTagEntityTypeConfiguration
+  nameWithType: MetaTagEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration.html
+  name: ProjectEntityTypeConfiguration
+  nameWithType: ProjectEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration.html
+  name: ProjectMemberEntityTypeConfiguration
+  nameWithType: ProjectMemberEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration.html
+  name: ProjectMetaInfoEntityTypeConfiguration
+  nameWithType: ProjectMetaInfoEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration.html
+  name: ProjectSeriesEntityTypeConfiguration
+  nameWithType: ProjectSeriesEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration.html
+  name: ProjectSeriesMetaInfoEntityTypeConfiguration
+  nameWithType: ProjectSeriesMetaInfoEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration.html
+  name: ProjectTagEntityTypeConfiguration
+  nameWithType: ProjectTagEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration.html
+  name: ProjectTagRelationEntityTypeConfiguration
+  nameWithType: ProjectTagRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  commentId: T:Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  name: TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  nameWithType: TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  fullName: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  nameWithType.vb: TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  fullName.vb: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  name.vb: TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  spec.csharp:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: )

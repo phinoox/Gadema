@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Identity
+  commentId: N:Gadema.Data.Database.Identity
+  id: Gadema.Data.Database.Identity
+  children:
+  - Gadema.Data.Database.Identity.IdentityDbContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database.Identity
+  nameWithType: Gadema.Data.Database.Identity
+  fullName: Gadema.Data.Database.Identity
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.Identity.IdentityDbContext
+  commentId: T:Gadema.Data.Database.Identity.IdentityDbContext
+  href: Gadema.Data.Database.Identity.IdentityDbContext.html
+  name: IdentityDbContext
+  nameWithType: IdentityDbContext
+  fullName: Gadema.Data.Database.Identity.IdentityDbContext

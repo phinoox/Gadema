@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.Abilities
+  commentId: N:Gadema.Core.Models.Game.Abilities
+  id: Gadema.Core.Models.Game.Abilities
+  children:
+  - Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  - Gadema.Core.Models.Game.Abilities.AbilitySet
+  - Gadema.Core.Models.Game.Abilities.StatusEffectDefinition
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Game.Abilities
+  nameWithType: Gadema.Core.Models.Game.Abilities
+  fullName: Gadema.Core.Models.Game.Abilities
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  commentId: T:Gadema.Core.Models.Game.Abilities.AbilityDefinition
+  href: Gadema.Core.Models.Game.Abilities.AbilityDefinition.html
+  name: AbilityDefinition
+  nameWithType: AbilityDefinition
+  fullName: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+- uid: Gadema.Core.Models.Game.Abilities.AbilitySet
+  commentId: T:Gadema.Core.Models.Game.Abilities.AbilitySet
+  href: Gadema.Core.Models.Game.Abilities.AbilitySet.html
+  name: AbilitySet
+  nameWithType: AbilitySet
+  fullName: Gadema.Core.Models.Game.Abilities.AbilitySet
+- uid: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition
+  commentId: T:Gadema.Core.Models.Game.Abilities.StatusEffectDefinition
+  href: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition.html
+  name: StatusEffectDefinition
+  nameWithType: StatusEffectDefinition
+  fullName: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition

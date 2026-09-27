@@ -1,0 +1,447 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  id: ToneEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  children:
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Dark
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Humorous
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Light
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Neutral
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Romantic
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Tense
+  langs:
+  - csharp
+  - vb
+  name: ToneEnum
+  nameWithType: ToneEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ToneEnum
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 31
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Defines the overarching tone of a project, influencing pacing and narrative beat suggestions.
+  example: []
+  syntax:
+    content: public enum ToneEnum
+    content.vb: Public Enum ToneEnum
+  extensionMethods:
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Neutral
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Neutral
+  id: Neutral
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Neutral
+  nameWithType: ToneEnum.Neutral
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Neutral
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Neutral
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: A neutral or baseline tone.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Neutral")]
+
+      Neutral = 0
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Neutral")>
+
+      Neutral = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Neutral
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Dark
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Dark
+  id: Dark
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Dark
+  nameWithType: ToneEnum.Dark
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Dark
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Dark
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 38
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Serious, grim, or dark narrative atmosphere.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Dark")]
+
+      Dark = 1
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Dark")>
+
+      Dark = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Dark
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Light
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Light
+  id: Light
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Light
+  nameWithType: ToneEnum.Light
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Light
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Light
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 42
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Positive, uplifting, or bright tone.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Light")]
+
+      Light = 2
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Light")>
+
+      Light = 2
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Light
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Humorous
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Humorous
+  id: Humorous
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Humorous
+  nameWithType: ToneEnum.Humorous
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Humorous
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Humorous
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 46
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Comedic or lighthearted atmosphere.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Humorous")]
+
+      Humorous = 3
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Humorous")>
+
+      Humorous = 3
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Humorous
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Tense
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Tense
+  id: Tense
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Tense
+  nameWithType: ToneEnum.Tense
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Tense
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Tense
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 50
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Suspenseful, high-stakes, or anxiety-inducing tone.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Tense")]
+
+      Tense = 4
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Tense")>
+
+      Tense = 4
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Tense
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Romantic
+  commentId: F:Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Romantic
+  id: Romantic
+  parent: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Romantic
+  nameWithType: ToneEnum.Romantic
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Romantic
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Romantic
+    path: src/Gadema.Core/Models/Base/Projects/Enums/ProjectFormatEnum.cs
+    startLine: 54
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects.Enums
+  summary: Emotional or romantic narrative atmosphere.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Romantic")]
+
+      Romantic = 5
+    return:
+      type: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    content.vb: >-
+      <Display(Name:="Romantic")>
+
+      Romantic = 5
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Romantic
+references:
+- uid: Gadema.Core.Models.Base.Projects.Enums
+  commentId: N:Gadema.Core.Models.Base.Projects.Enums
+  name: Gadema.Core.Models.Base.Projects.Enums
+  nameWithType: Gadema.Core.Models.Base.Projects.Enums
+  fullName: Gadema.Core.Models.Base.Projects.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ToneEnum>(ToneEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ToneEnum>(ToneEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Base.Projects.Enums.ToneEnum>(Gadema.Core.Models.Base.Projects.Enums.ToneEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ToneEnum)(ToneEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Base.Projects.Enums.ToneEnum)(Gadema.Core.Models.Base.Projects.Enums.ToneEnum)
+  name.vb: ToGuid(Of ToneEnum)(ToneEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Projects.Enums.ToneEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Projects.Enums.ToneEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    name: ToneEnum
+    href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  name: ToneEnum
+  nameWithType: ToneEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum

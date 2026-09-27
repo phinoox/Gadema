@@ -1,0 +1,734 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  id: SceneResponseDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  children:
+  - Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+  - Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+  - Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+  - Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+  langs:
+  - csharp
+  - vb
+  name: SceneResponseDto
+  nameWithType: SceneResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SceneResponseDto
+    path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+    startLine: 69
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Narrative
+  summary: Represents a scene, denormalizing properties from its MetaInfo anchor and narrative component.
+  example: []
+  syntax:
+    content: 'public class SceneResponseDto : MetaInfoResponseBaseDto'
+    content.vb: Public Class SceneResponseDto Inherits MetaInfoResponseBaseDto
+  inheritance:
+  - System.Object
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  inheritedMembers:
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Id
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoId
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoTitle
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.IsPublic
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.CreatedAt
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.LastModifiedAt
+  - Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Status
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+  commentId: P:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+  id: StoryChapterId
+  parent: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  langs:
+  - csharp
+  - vb
+  name: StoryChapterId
+  nameWithType: SceneResponseDto.StoryChapterId
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StoryChapterId
+    path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+    startLine: 74
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Narrative
+  summary: The unique identifier of the parent story chapter.
+  example: []
+  syntax:
+    content: public Guid StoryChapterId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property StoryChapterId As Guid
+  overload: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId*
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+  commentId: P:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+  id: RawText
+  parent: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  langs:
+  - csharp
+  - vb
+  name: RawText
+  nameWithType: SceneResponseDto.RawText
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RawText
+    path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+    startLine: 79
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Narrative
+  summary: The raw text content of the scene.
+  example: []
+  syntax:
+    content: public string RawText { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property RawText As String
+  overload: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText*
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+  commentId: P:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+  id: LinkedBeatIds
+  parent: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  langs:
+  - csharp
+  - vb
+  name: LinkedBeatIds
+  nameWithType: SceneResponseDto.LinkedBeatIds
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LinkedBeatIds
+    path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+    startLine: 84
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Narrative
+  summary: The list of beat IDs linked to this scene.
+  example: []
+  syntax:
+    content: public List<Guid> LinkedBeatIds { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Guid}
+    content.vb: Public Property LinkedBeatIds As List(Of Guid)
+  overload: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds*
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+  commentId: P:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+  id: OrderIndex
+  parent: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  langs:
+  - csharp
+  - vb
+  name: OrderIndex
+  nameWithType: SceneResponseDto.OrderIndex
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OrderIndex
+    path: src/Gadema.Core/Dtos/Writing/Narrative/SceneDtos.cs
+    startLine: 89
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Narrative
+  summary: The sort order index for this scene within the chapter.
+  example: []
+  syntax:
+    content: public int? OrderIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public Property OrderIndex As Integer?
+  overload: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex*
+references:
+- uid: Gadema.Core.Dtos.Writing.Narrative
+  commentId: N:Gadema.Core.Dtos.Writing.Narrative
+  name: Gadema.Core.Dtos.Writing.Narrative
+  nameWithType: Gadema.Core.Dtos.Writing.Narrative
+  fullName: Gadema.Core.Dtos.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Narrative
+    name: Narrative
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html
+  name: MetaInfoResponseBaseDto
+  nameWithType: MetaInfoResponseBaseDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Id
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Id
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_Id
+  name: Id
+  nameWithType: MetaInfoResponseBaseDto.Id
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Id
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoId
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoId
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_MetaInfoId
+  name: MetaInfoId
+  nameWithType: MetaInfoResponseBaseDto.MetaInfoId
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoId
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoTitle
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoTitle
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_MetaInfoTitle
+  name: MetaInfoTitle
+  nameWithType: MetaInfoResponseBaseDto.MetaInfoTitle
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.MetaInfoTitle
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.IsPublic
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.IsPublic
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_IsPublic
+  name: IsPublic
+  nameWithType: MetaInfoResponseBaseDto.IsPublic
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.IsPublic
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.CreatedAt
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.CreatedAt
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_CreatedAt
+  name: CreatedAt
+  nameWithType: MetaInfoResponseBaseDto.CreatedAt
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.CreatedAt
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.LastModifiedAt
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.LastModifiedAt
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_LastModifiedAt
+  name: LastModifiedAt
+  nameWithType: MetaInfoResponseBaseDto.LastModifiedAt
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.LastModifiedAt
+- uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Status
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Status
+  parent: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.html#Gadema_Core_Dtos_Base_Infrastructure_MetaInfoResponseBaseDto_Status
+  name: Status
+  nameWithType: MetaInfoResponseBaseDto.Status
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto.Status
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.html#Gadema_Core_Dtos_Writing_Narrative_SceneResponseDto_StoryChapterId
+  name: StoryChapterId
+  nameWithType: SceneResponseDto.StoryChapterId
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.StoryChapterId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.html#Gadema_Core_Dtos_Writing_Narrative_SceneResponseDto_RawText
+  name: RawText
+  nameWithType: SceneResponseDto.RawText
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.RawText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.html#Gadema_Core_Dtos_Writing_Narrative_SceneResponseDto_LinkedBeatIds
+  name: LinkedBeatIds
+  nameWithType: SceneResponseDto.LinkedBeatIds
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.LinkedBeatIds
+- uid: System.Collections.Generic.List{System.Guid}
+  commentId: T:System.Collections.Generic.List{System.Guid}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Guid>
+  nameWithType: List<Guid>
+  fullName: System.Collections.Generic.List<System.Guid>
+  nameWithType.vb: List(Of Guid)
+  fullName.vb: System.Collections.Generic.List(Of System.Guid)
+  name.vb: List(Of Guid)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.html#Gadema_Core_Dtos_Writing_Narrative_SceneResponseDto_OrderIndex
+  name: OrderIndex
+  nameWithType: SceneResponseDto.OrderIndex
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.OrderIndex
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IMetadataService
+  id: IMetadataService
+  parent: Gadema.Api.CoreServices.Interfaces
+  children:
+  - Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  - Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync``1(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData,System.Action{``0})
+  - Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync``1(System.Guid)
+  - Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  langs:
+  - csharp
+  - vb
+  name: IMetadataService
+  nameWithType: IMetadataService
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IMetadataService
+    path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  summary: Service for managing the creation and updates of MetaInfo anchors (the "Soul" of entities).
+  example: []
+  syntax:
+    content: public interface IMetadataService
+    content.vb: Public Interface IMetadataService
+  derivedClasses:
+  - Gadema.Api.CoreServices.Services.MetadataService
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync``1(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData,System.Action{``0})
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync``1(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData,System.Action{``0})
+  id: CreateAsync``1(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData,System.Action{``0})
+  parent: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  langs:
+  - csharp
+  - vb
+  name: CreateAsync<T>(BaseMetaInfoCreateData, Action<T>)
+  nameWithType: IMetadataService.CreateAsync<T>(BaseMetaInfoCreateData, Action<T>)
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync<T>(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData, System.Action<T>)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreateAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  summary: Creates a new MetaInfo anchor of type T.
+  example: []
+  syntax:
+    content: 'Task<T> CreateAsync<T>(BaseMetaInfoCreateData createData, Action<T> initialize) where T : BaseMetaInfo'
+    parameters:
+    - id: createData
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+      description: Initial data from the request body.
+    - id: initialize
+      type: System.Action{{T}}
+      description: A delegate to handle domain-specific initialization (e.g., setting ProjectId).
+    typeParameters:
+    - id: T
+      description: The specific MetaInfo implementation.
+    return:
+      type: System.Threading.Tasks.Task{{T}}
+    content.vb: Function CreateAsync(Of T As BaseMetaInfo)(createData As BaseMetaInfoCreateData, initialize As Action(Of T)) As Task(Of T)
+  overload: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync*
+  nameWithType.vb: IMetadataService.CreateAsync(Of T)(BaseMetaInfoCreateData, Action(Of T))
+  fullName.vb: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync(Of T)(Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData, System.Action(Of T))
+  name.vb: CreateAsync(Of T)(BaseMetaInfoCreateData, Action(Of T))
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  id: ApplyUpdatesAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  langs:
+  - csharp
+  - vb
+  name: ApplyUpdatesAsync(Guid, BaseMetaInfoUpdateData)
+  nameWithType: IMetadataService.ApplyUpdatesAsync(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ApplyUpdatesAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  summary: Applies updates from a DTO to an existing MetaInfo anchor.
+  example: []
+  syntax:
+    content: Task ApplyUpdatesAsync(Guid metaInfoId, BaseMetaInfoUpdateData updateData)
+    parameters:
+    - id: metaInfoId
+      type: System.Guid
+      description: The unique identifier of the metadata.
+    - id: updateData
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+      description: The update data containing new values.
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function ApplyUpdatesAsync(metaInfoId As Guid, updateData As BaseMetaInfoUpdateData) As Task
+  overload: Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync*
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  id: SyncAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  langs:
+  - csharp
+  - vb
+  name: SyncAsync<T>(Guid, BaseMetaInfoUpdateData)
+  nameWithType: IMetadataService.SyncAsync<T>(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync<T>(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SyncAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: 'Task<bool> SyncAsync<T>(Guid identityId, BaseMetaInfoUpdateData updateData) where T : IIdentitySyncStrategy'
+    parameters:
+    - id: identityId
+      type: System.Guid
+    - id: updateData
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    typeParameters:
+    - id: T
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function SyncAsync(Of T As IIdentitySyncStrategy)(identityId As Guid, updateData As BaseMetaInfoUpdateData) As Task(Of Boolean)
+  overload: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync*
+  nameWithType.vb: IMetadataService.SyncAsync(Of T)(Guid, BaseMetaInfoUpdateData)
+  fullName.vb: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync(Of T)(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  name.vb: SyncAsync(Of T)(Guid, BaseMetaInfoUpdateData)
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync``1(System.Guid)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync``1(System.Guid)
+  id: DeleteAsync``1(System.Guid)
+  parent: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  langs:
+  - csharp
+  - vb
+  name: DeleteAsync<T>(Guid)
+  nameWithType: IMetadataService.DeleteAsync<T>(Guid)
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync<T>(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DeleteAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IMetadataService.cs
+    startLine: 31
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: 'Task<bool> DeleteAsync<T>(Guid identityId) where T : BaseMetaInfo'
+    parameters:
+    - id: identityId
+      type: System.Guid
+    typeParameters:
+    - id: T
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function DeleteAsync(Of T As BaseMetaInfo)(identityId As Guid) As Task(Of Boolean)
+  overload: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync*
+  nameWithType.vb: IMetadataService.DeleteAsync(Of T)(Guid)
+  fullName.vb: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync(Of T)(System.Guid)
+  name.vb: DeleteAsync(Of T)(Guid)
+references:
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync
+  href: Gadema.Api.CoreServices.Interfaces.IMetadataService.html#Gadema_Api_CoreServices_Interfaces_IMetadataService_CreateAsync__1_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoCreateData_System_Action___0__
+  name: CreateAsync
+  nameWithType: IMetadataService.CreateAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.CreateAsync
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData.html
+  name: BaseMetaInfoCreateData
+  nameWithType: BaseMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+- uid: System.Action{{T}}
+  commentId: T:System.Action{``0}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading.Tasks.Task{{T}}
+  commentId: T:System.Threading.Tasks.Task{``0}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<T>
+  nameWithType: Task<T>
+  fullName: System.Threading.Tasks.Task<T>
+  nameWithType.vb: Task(Of T)
+  fullName.vb: System.Threading.Tasks.Task(Of T)
+  name.vb: Task(Of T)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync
+  href: Gadema.Api.CoreServices.Interfaces.IMetadataService.html#Gadema_Api_CoreServices_Interfaces_IMetadataService_ApplyUpdatesAsync_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  name: ApplyUpdatesAsync
+  nameWithType: IMetadataService.ApplyUpdatesAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.ApplyUpdatesAsync
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync
+  href: Gadema.Api.CoreServices.Interfaces.IMetadataService.html#Gadema_Api_CoreServices_Interfaces_IMetadataService_SyncAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  name: SyncAsync
+  nameWithType: IMetadataService.SyncAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.SyncAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync
+  href: Gadema.Api.CoreServices.Interfaces.IMetadataService.html#Gadema_Api_CoreServices_Interfaces_IMetadataService_DeleteAsync__1_System_Guid_
+  name: DeleteAsync
+  nameWithType: IMetadataService.DeleteAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService.DeleteAsync

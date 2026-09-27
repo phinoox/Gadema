@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  id: Gadema.Data.Database.Core
+  children:
+  - Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  parent: Gadema.Data.Database.Core
+  href: Gadema.Data.Database.Core.CoreDbContext.html
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core

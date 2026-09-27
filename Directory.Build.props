@@ -15,6 +15,9 @@
     <Company>GaDeMa</Company>
     <Copyright>© 2024 GaDeMa Team. All rights reserved.</Copyright>
     <Product>$(MSBuildProjectName)</Product>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  <!-- Optional: Suppress warnings about missing <summary> tags if you haven't finished them -->
+  <NoWarn>$(NoWarn);1591</NoWarn> 
   </PropertyGroup>
 
   <!-- Central Package References -->

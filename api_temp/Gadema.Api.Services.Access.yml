@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Access
+  commentId: N:Gadema.Api.Services.Access
+  id: Gadema.Api.Services.Access
+  children:
+  - Gadema.Api.Services.Access.UserContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Access
+  nameWithType: Gadema.Api.Services.Access
+  fullName: Gadema.Api.Services.Access
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Access.UserContext
+  commentId: T:Gadema.Api.Services.Access.UserContext
+  href: Gadema.Api.Services.Access.UserContext.html
+  name: UserContext
+  nameWithType: UserContext
+  fullName: Gadema.Api.Services.Access.UserContext

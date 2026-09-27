@@ -1,0 +1,310 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.ProjectStatusEnum
+  commentId: T:Gadema.Core.Enums.ProjectStatusEnum
+  id: ProjectStatusEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.ProjectStatusEnum.Archived
+  - Gadema.Core.Enums.ProjectStatusEnum.Deleted
+  - Gadema.Core.Enums.ProjectStatusEnum.Draft
+  - Gadema.Core.Enums.ProjectStatusEnum.InProgress
+  - Gadema.Core.Enums.ProjectStatusEnum.Published
+  langs:
+  - csharp
+  - vb
+  name: ProjectStatusEnum
+  nameWithType: ProjectStatusEnum
+  fullName: Gadema.Core.Enums.ProjectStatusEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectStatusEnum
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Represents the current lifecycle stage of a project.
+  example: []
+  syntax:
+    content: public enum ProjectStatusEnum
+    content.vb: Public Enum ProjectStatusEnum
+  extensionMethods:
+  - Gadema.Core.Enums.ProjectStatusEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.ProjectStatusEnum.Draft
+  commentId: F:Gadema.Core.Enums.ProjectStatusEnum.Draft
+  id: Draft
+  parent: Gadema.Core.Enums.ProjectStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Draft
+  nameWithType: ProjectStatusEnum.Draft
+  fullName: Gadema.Core.Enums.ProjectStatusEnum.Draft
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Draft
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project is in initial draft stage.
+  example: []
+  syntax:
+    content: Draft = 0
+    return:
+      type: Gadema.Core.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Enums.ProjectStatusEnum.InProgress
+  commentId: F:Gadema.Core.Enums.ProjectStatusEnum.InProgress
+  id: InProgress
+  parent: Gadema.Core.Enums.ProjectStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: InProgress
+  nameWithType: ProjectStatusEnum.InProgress
+  fullName: Gadema.Core.Enums.ProjectStatusEnum.InProgress
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: InProgress
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project is currently being actively developed.
+  example: []
+  syntax:
+    content: InProgress = 1
+    return:
+      type: Gadema.Core.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Enums.ProjectStatusEnum.Published
+  commentId: F:Gadema.Core.Enums.ProjectStatusEnum.Published
+  id: Published
+  parent: Gadema.Core.Enums.ProjectStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Published
+  nameWithType: ProjectStatusEnum.Published
+  fullName: Gadema.Core.Enums.ProjectStatusEnum.Published
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Published
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project has been completed and published.
+  example: []
+  syntax:
+    content: Published = 2
+    return:
+      type: Gadema.Core.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Enums.ProjectStatusEnum.Archived
+  commentId: F:Gadema.Core.Enums.ProjectStatusEnum.Archived
+  id: Archived
+  parent: Gadema.Core.Enums.ProjectStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Archived
+  nameWithType: ProjectStatusEnum.Archived
+  fullName: Gadema.Core.Enums.ProjectStatusEnum.Archived
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Archived
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project has been moved to an archive state.
+  example: []
+  syntax:
+    content: Archived = 3
+    return:
+      type: Gadema.Core.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Enums.ProjectStatusEnum.Deleted
+  commentId: F:Gadema.Core.Enums.ProjectStatusEnum.Deleted
+  id: Deleted
+  parent: Gadema.Core.Enums.ProjectStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Deleted
+  nameWithType: ProjectStatusEnum.Deleted
+  fullName: Gadema.Core.Enums.ProjectStatusEnum.Deleted
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Deleted
+    path: src/Gadema.Core/Enums/ProjectStatusEnum.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project has been marked for deletion.
+  example: []
+  syntax:
+    content: Deleted = 4
+    return:
+      type: Gadema.Core.Enums.ProjectStatusEnum
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.ProjectStatusEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ProjectStatusEnum>(ProjectStatusEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ProjectStatusEnum>(ProjectStatusEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.ProjectStatusEnum>(Gadema.Core.Enums.ProjectStatusEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ProjectStatusEnum)(ProjectStatusEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.ProjectStatusEnum)(Gadema.Core.Enums.ProjectStatusEnum)
+  name.vb: ToGuid(Of ProjectStatusEnum)(ProjectStatusEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectStatusEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectStatusEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.ProjectStatusEnum
+  commentId: T:Gadema.Core.Enums.ProjectStatusEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectStatusEnum.html
+  name: ProjectStatusEnum
+  nameWithType: ProjectStatusEnum
+  fullName: Gadema.Core.Enums.ProjectStatusEnum

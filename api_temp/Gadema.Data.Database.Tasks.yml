@@ -1,0 +1,53 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Tasks
+  commentId: N:Gadema.Data.Database.Tasks
+  id: Gadema.Data.Database.Tasks
+  children:
+  - Gadema.Data.Database.Tasks.TaskDbContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database.Tasks
+  nameWithType: Gadema.Data.Database.Tasks
+  fullName: Gadema.Data.Database.Tasks
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.Tasks.TaskDbContext
+  commentId: T:Gadema.Data.Database.Tasks.TaskDbContext
+  parent: Gadema.Data.Database.Tasks
+  href: Gadema.Data.Database.Tasks.TaskDbContext.html
+  name: TaskDbContext
+  nameWithType: TaskDbContext
+  fullName: Gadema.Data.Database.Tasks.TaskDbContext
+- uid: Gadema.Data.Database.Tasks
+  commentId: N:Gadema.Data.Database.Tasks
+  name: Gadema.Data.Database.Tasks
+  nameWithType: Gadema.Data.Database.Tasks
+  fullName: Gadema.Data.Database.Tasks
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Tasks
+    name: Tasks
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Tasks
+    name: Tasks

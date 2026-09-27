@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Authorization
+  commentId: N:Gadema.Api.Services.Authorization
+  id: Gadema.Api.Services.Authorization
+  children:
+  - Gadema.Api.Services.Authorization.IPermissionStrategy
+  - Gadema.Api.Services.Authorization.PermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Authorization
+  nameWithType: Gadema.Api.Services.Authorization
+  fullName: Gadema.Api.Services.Authorization
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Authorization.PermissionEngine
+  commentId: T:Gadema.Api.Services.Authorization.PermissionEngine
+  href: Gadema.Api.Services.Authorization.PermissionEngine.html
+  name: PermissionEngine
+  nameWithType: PermissionEngine
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine
+- uid: Gadema.Api.Services.Authorization.IPermissionStrategy
+  commentId: T:Gadema.Api.Services.Authorization.IPermissionStrategy
+  parent: Gadema.Api.Services.Authorization
+  href: Gadema.Api.Services.Authorization.IPermissionStrategy.html
+  name: IPermissionStrategy
+  nameWithType: IPermissionStrategy
+  fullName: Gadema.Api.Services.Authorization.IPermissionStrategy
+- uid: Gadema.Api.Services.Authorization
+  commentId: N:Gadema.Api.Services.Authorization
+  name: Gadema.Api.Services.Authorization
+  nameWithType: Gadema.Api.Services.Authorization
+  fullName: Gadema.Api.Services.Authorization
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization

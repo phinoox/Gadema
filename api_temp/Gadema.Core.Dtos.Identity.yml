@@ -1,0 +1,119 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Identity
+  commentId: N:Gadema.Core.Dtos.Identity
+  id: Gadema.Core.Dtos.Identity
+  children:
+  - Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto
+  - Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  - Gadema.Core.Dtos.Identity.IdentityValueCreateDto
+  - Gadema.Core.Dtos.Identity.IdentityValueListResponseDto
+  - Gadema.Core.Dtos.Identity.IdentityValueResponseDto
+  - Gadema.Core.Dtos.Identity.IdentityValueUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Identity
+  nameWithType: Gadema.Core.Dtos.Identity
+  fullName: Gadema.Core.Dtos.Identity
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto
+  href: Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto.html
+  name: CharacterIdentityResponseDto
+  nameWithType: CharacterIdentityResponseDto
+  fullName: Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto
+- uid: Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto
+  href: Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto.html
+  name: CharacterIdentityListResponseDto
+  nameWithType: CharacterIdentityListResponseDto
+  fullName: Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto.html
+  name: IdentityDefinitionCreateDto
+  nameWithType: IdentityDefinitionCreateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html
+  name: IdentityDefinitionUpdateDto
+  nameWithType: IdentityDefinitionUpdateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto.html
+  name: IdentityDefinitionResponseDto
+  nameWithType: IdentityDefinitionResponseDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto.html
+  name: IdentityDefinitionListResponseDto
+  nameWithType: IdentityDefinitionListResponseDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto
+- uid: Gadema.Core.Dtos.Identity.IdentityValueCreateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityValueCreateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityValueCreateDto.html
+  name: IdentityValueCreateDto
+  nameWithType: IdentityValueCreateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityValueCreateDto
+- uid: Gadema.Core.Dtos.Identity.IdentityValueUpdateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityValueUpdateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityValueUpdateDto.html
+  name: IdentityValueUpdateDto
+  nameWithType: IdentityValueUpdateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityValueUpdateDto
+- uid: Gadema.Core.Dtos.Identity.IdentityValueResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityValueResponseDto
+  href: Gadema.Core.Dtos.Identity.IdentityValueResponseDto.html
+  name: IdentityValueResponseDto
+  nameWithType: IdentityValueResponseDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityValueResponseDto
+- uid: Gadema.Core.Dtos.Identity.IdentityValueListResponseDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityValueListResponseDto
+  href: Gadema.Core.Dtos.Identity.IdentityValueListResponseDto.html
+  name: IdentityValueListResponseDto
+  nameWithType: IdentityValueListResponseDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityValueListResponseDto
+- uid: Gadema.Core.Dtos.Identity
+  commentId: N:Gadema.Core.Dtos.Identity
+  name: Gadema.Core.Dtos.Identity
+  nameWithType: Gadema.Core.Dtos.Identity
+  fullName: Gadema.Core.Dtos.Identity
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity

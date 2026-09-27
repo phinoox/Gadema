@@ -1,0 +1,504 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+  commentId: T:Gadema.Core.Dtos.Response.ListResponseDto`1
+  id: ListResponseDto`1
+  parent: Gadema.Core.Dtos.Response
+  children:
+  - Gadema.Core.Dtos.Response.ListResponseDto`1.Items
+  - Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount
+  langs:
+  - csharp
+  - vb
+  name: ListResponseDto<T>
+  nameWithType: ListResponseDto<T>
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ListResponseDto
+    path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Response
+  summary: Generic list response wrapper used for paginated list endpoints.
+  example: []
+  syntax:
+    content: public class ListResponseDto<T>
+    typeParameters:
+    - id: T
+    content.vb: Public Class ListResponseDto(Of T)
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+  - Gadema.Core.Dtos.Response.PagedResponseDto`1
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: ListResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T)
+  name.vb: ListResponseDto(Of T)
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1.Items
+  commentId: P:Gadema.Core.Dtos.Response.ListResponseDto`1.Items
+  id: Items
+  parent: Gadema.Core.Dtos.Response.ListResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: ListResponseDto<T>.Items
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>.Items
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Items
+    path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Response
+  summary: The collection of items in the current page or full list.
+  example: []
+  syntax:
+    content: public IEnumerable<T> Items { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Public Property Items As IEnumerable(Of T)
+  overload: Gadema.Core.Dtos.Response.ListResponseDto`1.Items*
+  nameWithType.vb: ListResponseDto(Of T).Items
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T).Items
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount
+  commentId: P:Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount
+  id: TotalCount
+  parent: Gadema.Core.Dtos.Response.ListResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: TotalCount
+  nameWithType: ListResponseDto<T>.TotalCount
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>.TotalCount
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TotalCount
+    path: src/Gadema.Core/Dtos/Response/ListResponseDto.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Response
+  summary: Total number of records available across all pages.
+  example: []
+  syntax:
+    content: public int TotalCount { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalCount As Integer
+  overload: Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount*
+  nameWithType.vb: ListResponseDto(Of T).TotalCount
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T).TotalCount
+references:
+- uid: Gadema.Core.Dtos.Response
+  commentId: N:Gadema.Core.Dtos.Response
+  name: Gadema.Core.Dtos.Response
+  nameWithType: Gadema.Core.Dtos.Response
+  fullName: Gadema.Core.Dtos.Response
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Response
+    name: Response
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Response
+    name: Response
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1.Items*
+  commentId: Overload:Gadema.Core.Dtos.Response.ListResponseDto`1.Items
+  href: Gadema.Core.Dtos.Response.ListResponseDto-1.html#Gadema_Core_Dtos_Response_ListResponseDto_1_Items
+  name: Items
+  nameWithType: ListResponseDto<T>.Items
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>.Items
+  nameWithType.vb: ListResponseDto(Of T).Items
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T).Items
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount*
+  commentId: Overload:Gadema.Core.Dtos.Response.ListResponseDto`1.TotalCount
+  href: Gadema.Core.Dtos.Response.ListResponseDto-1.html#Gadema_Core_Dtos_Response_ListResponseDto_1_TotalCount
+  name: TotalCount
+  nameWithType: ListResponseDto<T>.TotalCount
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>.TotalCount
+  nameWithType.vb: ListResponseDto(Of T).TotalCount
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T).TotalCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

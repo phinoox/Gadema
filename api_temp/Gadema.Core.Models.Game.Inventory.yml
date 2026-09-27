@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.Inventory
+  commentId: N:Gadema.Core.Models.Game.Inventory
+  id: Gadema.Core.Models.Game.Inventory
+  children:
+  - Gadema.Core.Models.Game.Inventory.EndingDefinition
+  - Gadema.Core.Models.Game.Inventory.InventoryItem
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Game.Inventory
+  nameWithType: Gadema.Core.Models.Game.Inventory
+  fullName: Gadema.Core.Models.Game.Inventory
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Game.Inventory.EndingDefinition
+  commentId: T:Gadema.Core.Models.Game.Inventory.EndingDefinition
+  href: Gadema.Core.Models.Game.Inventory.EndingDefinition.html
+  name: EndingDefinition
+  nameWithType: EndingDefinition
+  fullName: Gadema.Core.Models.Game.Inventory.EndingDefinition
+- uid: Gadema.Core.Models.Game.Inventory.InventoryItem
+  commentId: T:Gadema.Core.Models.Game.Inventory.InventoryItem
+  href: Gadema.Core.Models.Game.Inventory.InventoryItem.html
+  name: InventoryItem
+  nameWithType: InventoryItem
+  fullName: Gadema.Core.Models.Game.Inventory.InventoryItem

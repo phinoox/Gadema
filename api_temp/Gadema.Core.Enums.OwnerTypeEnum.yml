@@ -1,0 +1,253 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.OwnerTypeEnum
+  commentId: T:Gadema.Core.Enums.OwnerTypeEnum
+  id: OwnerTypeEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.OwnerTypeEnum.Team
+  - Gadema.Core.Enums.OwnerTypeEnum.User
+  langs:
+  - csharp
+  - vb
+  name: OwnerTypeEnum
+  nameWithType: OwnerTypeEnum
+  fullName: Gadema.Core.Enums.OwnerTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OwnerTypeEnum
+    path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Specifies the type of entity that owns a project in the polymorphic ownership model.
+  example: []
+  syntax:
+    content: public enum OwnerTypeEnum
+    content.vb: Public Enum OwnerTypeEnum
+  extensionMethods:
+  - Gadema.Core.Enums.OwnerTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.OwnerTypeEnum.User
+  commentId: F:Gadema.Core.Enums.OwnerTypeEnum.User
+  id: User
+  parent: Gadema.Core.Enums.OwnerTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: OwnerTypeEnum.User
+  fullName: Gadema.Core.Enums.OwnerTypeEnum.User
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: User
+    path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project is owned by an individual user.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "User")]
+
+      User = 0
+    return:
+      type: Gadema.Core.Enums.OwnerTypeEnum
+    content.vb: >-
+      <Display(Name:="User")>
+
+      User = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: User
+- uid: Gadema.Core.Enums.OwnerTypeEnum.Team
+  commentId: F:Gadema.Core.Enums.OwnerTypeEnum.Team
+  id: Team
+  parent: Gadema.Core.Enums.OwnerTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Team
+  nameWithType: OwnerTypeEnum.Team
+  fullName: Gadema.Core.Enums.OwnerTypeEnum.Team
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Team
+    path: src/Gadema.Core/Enums/OwnerTypeEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: The project is owned by a team for collaborative purposes.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Team")]
+
+      Team = 1
+    return:
+      type: Gadema.Core.Enums.OwnerTypeEnum
+    content.vb: >-
+      <Display(Name:="Team")>
+
+      Team = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Team
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.OwnerTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<OwnerTypeEnum>(OwnerTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<OwnerTypeEnum>(OwnerTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.OwnerTypeEnum>(Gadema.Core.Enums.OwnerTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of OwnerTypeEnum)(OwnerTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.OwnerTypeEnum)(Gadema.Core.Enums.OwnerTypeEnum)
+  name.vb: ToGuid(Of OwnerTypeEnum)(OwnerTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.OwnerTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    href: Gadema.Core.Enums.OwnerTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    href: Gadema.Core.Enums.OwnerTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.OwnerTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    href: Gadema.Core.Enums.OwnerTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    href: Gadema.Core.Enums.OwnerTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.OwnerTypeEnum
+  commentId: T:Gadema.Core.Enums.OwnerTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.OwnerTypeEnum.html
+  name: OwnerTypeEnum
+  nameWithType: OwnerTypeEnum
+  fullName: Gadema.Core.Enums.OwnerTypeEnum

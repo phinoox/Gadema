@@ -1,0 +1,863 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  id: ActivityLog
+  parent: Gadema.Core.Models.Base.Infrastructure
+  children:
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+  langs:
+  - csharp
+  - vb
+  name: ActivityLog
+  nameWithType: ActivityLog
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ActivityLog
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 8
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Represents a business-level audit event within a project, used for accountability and history tracking.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project), typeof(User) })]
+
+      public class ActivityLog
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project), GetType(User) })>
+
+      Public Class ActivityLog
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ActivityLog.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the unique identifier for this activity log entry.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id*
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+  id: ProjectId
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: ProjectId
+  nameWithType: ActivityLog.ProjectId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectId
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the project associated with this activity.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid ProjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property ProjectId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+  id: Project
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: ActivityLog.Project
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Project
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 26
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the associated project entity.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("ProjectId")]
+
+      public virtual Project Project { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Projects.Project
+    content.vb: >-
+      <ForeignKey("ProjectId")>
+
+      Public Overridable Property Project As Project
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ProjectId
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+  id: UserId
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: ActivityLog.UserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UserId
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the user who performed this action.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid UserId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property UserId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+  id: Action
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: Action
+  nameWithType: ActivityLog.Action
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Action
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the action performed (e.g., "Created", "Updated", "Deleted", "Revoked").
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [MaxLength(64)]
+
+      public string Action { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <MaxLength(64)>
+
+      Public Property Action As String
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 64
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+  id: RelatedEntityType
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: RelatedEntityType
+  nameWithType: ActivityLog.RelatedEntityType
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RelatedEntityType
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 47
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the type of entity involved in this activity (e.g., "Character", "DialogueBranch", "Token").
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [MaxLength(64)]
+
+      public string RelatedEntityType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <MaxLength(64)>
+
+      Public Property RelatedEntityType As String
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 64
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+  id: RelatedEntityId
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: RelatedEntityId
+  nameWithType: ActivityLog.RelatedEntityId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: RelatedEntityId
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 54
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the specific object being acted upon.
+  example: []
+  syntax:
+    content: public Guid? RelatedEntityId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property RelatedEntityId As Guid?
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId*
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+  id: Description
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ActivityLog.Description
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 59
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets a detailed description of the the activity.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property Description As String
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+  id: CreatedAt
+  parent: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: ActivityLog.CreatedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedAt
+    path: src/Gadema.Core/Models/Base/Infrastructure/ActivityLog.cs
+    startLine: 65
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the timestamp when this activity occurred.
+  example: []
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt*
+references:
+- uid: Gadema.Core.Models.Base.Infrastructure
+  commentId: N:Gadema.Core.Models.Base.Infrastructure
+  name: Gadema.Core.Models.Base.Infrastructure
+  nameWithType: Gadema.Core.Models.Base.Infrastructure
+  fullName: Gadema.Core.Models.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_Id
+  name: Id
+  nameWithType: ActivityLog.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_ProjectId
+  name: ProjectId
+  nameWithType: ActivityLog.ProjectId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.ProjectId
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_Project
+  name: Project
+  nameWithType: ActivityLog.Project
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Project
+- uid: Gadema.Core.Models.Base.Projects.Project
+  commentId: T:Gadema.Core.Models.Base.Projects.Project
+  parent: Gadema.Core.Models.Base.Projects
+  href: Gadema.Core.Models.Base.Projects.Project.html
+  name: Project
+  nameWithType: Project
+  fullName: Gadema.Core.Models.Base.Projects.Project
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_UserId
+  name: UserId
+  nameWithType: ActivityLog.UserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.UserId
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_Action
+  name: Action
+  nameWithType: ActivityLog.Action
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Action
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_RelatedEntityType
+  name: RelatedEntityType
+  nameWithType: ActivityLog.RelatedEntityType
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityType
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_RelatedEntityId
+  name: RelatedEntityId
+  nameWithType: ActivityLog.RelatedEntityId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.RelatedEntityId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_Description
+  name: Description
+  nameWithType: ActivityLog.Description
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.Description
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html#Gadema_Core_Models_Base_Infrastructure_ActivityLog_CreatedAt
+  name: CreatedAt
+  nameWithType: ActivityLog.CreatedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date

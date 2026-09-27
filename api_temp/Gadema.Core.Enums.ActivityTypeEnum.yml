@@ -1,0 +1,329 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.ActivityTypeEnum
+  commentId: T:Gadema.Core.Enums.ActivityTypeEnum
+  id: ActivityTypeEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.ActivityTypeEnum.Create
+  - Gadema.Core.Enums.ActivityTypeEnum.Delete
+  - Gadema.Core.Enums.ActivityTypeEnum.Login
+  - Gadema.Core.Enums.ActivityTypeEnum.Logout
+  - Gadema.Core.Enums.ActivityTypeEnum.TokenUsage
+  - Gadema.Core.Enums.ActivityTypeEnum.Update
+  langs:
+  - csharp
+  - vb
+  name: ActivityTypeEnum
+  nameWithType: ActivityTypeEnum
+  fullName: Gadema.Core.Enums.ActivityTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ActivityTypeEnum
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 5
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Represents the type of activity performed within the system.
+  example: []
+  syntax:
+    content: public enum ActivityTypeEnum
+    content.vb: Public Enum ActivityTypeEnum
+  extensionMethods:
+  - Gadema.Core.Enums.ActivityTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Create
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.Create
+  id: Create
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Create
+  nameWithType: ActivityTypeEnum.Create
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.Create
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Create
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Indicates a creation activity.
+  example: []
+  syntax:
+    content: Create = 0
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Update
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.Update
+  id: Update
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Update
+  nameWithType: ActivityTypeEnum.Update
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.Update
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Update
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  syntax:
+    content: Update = 1
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Delete
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.Delete
+  id: Delete
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Delete
+  nameWithType: ActivityTypeEnum.Delete
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.Delete
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Delete
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  syntax:
+    content: Delete = 2
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Login
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.Login
+  id: Login
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Login
+  nameWithType: ActivityTypeEnum.Login
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.Login
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Login
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  syntax:
+    content: Login = 3
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Logout
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.Logout
+  id: Logout
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Logout
+  nameWithType: ActivityTypeEnum.Logout
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.Logout
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Logout
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  syntax:
+    content: Logout = 4
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ActivityTypeEnum.TokenUsage
+  commentId: F:Gadema.Core.Enums.ActivityTypeEnum.TokenUsage
+  id: TokenUsage
+  parent: Gadema.Core.Enums.ActivityTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: TokenUsage
+  nameWithType: ActivityTypeEnum.TokenUsage
+  fullName: Gadema.Core.Enums.ActivityTypeEnum.TokenUsage
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TokenUsage
+    path: src/Gadema.Core/Enums/ActivityTypeEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  syntax:
+    content: TokenUsage = 5
+    return:
+      type: Gadema.Core.Enums.ActivityTypeEnum
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.ActivityTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ActivityTypeEnum>(ActivityTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ActivityTypeEnum>(ActivityTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.ActivityTypeEnum>(Gadema.Core.Enums.ActivityTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ActivityTypeEnum)(ActivityTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.ActivityTypeEnum)(Gadema.Core.Enums.ActivityTypeEnum)
+  name.vb: ToGuid(Of ActivityTypeEnum)(ActivityTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ActivityTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    href: Gadema.Core.Enums.ActivityTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    href: Gadema.Core.Enums.ActivityTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ActivityTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    href: Gadema.Core.Enums.ActivityTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    href: Gadema.Core.Enums.ActivityTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.ActivityTypeEnum
+  commentId: T:Gadema.Core.Enums.ActivityTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ActivityTypeEnum.html
+  name: ActivityTypeEnum
+  nameWithType: ActivityTypeEnum
+  fullName: Gadema.Core.Enums.ActivityTypeEnum

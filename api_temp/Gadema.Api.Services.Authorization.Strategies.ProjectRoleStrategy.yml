@@ -1,0 +1,673 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  commentId: T:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  id: ProjectRoleStrategy
+  parent: Gadema.Api.Services.Authorization.Strategies
+  children:
+  - Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  - Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  langs:
+  - csharp
+  - vb
+  name: ProjectRoleStrategy
+  nameWithType: ProjectRoleStrategy
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectRoleStrategy
+    path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization.Strategies
+  summary: Strategy that evaluates permissions based on the user's role within a specific project scope.
+  example: []
+  syntax:
+    content: 'public class ProjectRoleStrategy : IPermissionStrategy'
+    content.vb: Public Class ProjectRoleStrategy Implements IPermissionStrategy
+  inheritance:
+  - System.Object
+  implements:
+  - Gadema.Api.Services.Authorization.IPermissionStrategy
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  commentId: M:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor(Gadema.Data.Database.Core.CoreDbContext)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext)'
+  parent: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  langs:
+  - csharp
+  - vb
+  name: ProjectRoleStrategy(CoreDbContext)
+  nameWithType: ProjectRoleStrategy.ProjectRoleStrategy(CoreDbContext)
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.ProjectRoleStrategy(Gadema.Data.Database.Core.CoreDbContext)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization.Strategies
+  syntax:
+    content: public ProjectRoleStrategy(CoreDbContext db)
+    parameters:
+    - id: db
+      type: Gadema.Data.Database.Core.CoreDbContext
+    content.vb: Public Sub New(db As CoreDbContext)
+  overload: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor*
+  nameWithType.vb: ProjectRoleStrategy.New(CoreDbContext)
+  fullName.vb: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.New(Gadema.Data.Database.Core.CoreDbContext)
+  name.vb: New(CoreDbContext)
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  commentId: M:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  id: EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  parent: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  langs:
+  - csharp
+  - vb
+  name: EvaluateAsync(Guid, Guid, Permission)
+  nameWithType: ProjectRoleStrategy.EvaluateAsync(Guid, Guid, Permission)
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync(System.Guid, System.Guid, Gadema.Core.Models.Base.Permissions.Permission)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: EvaluateAsync
+    path: src/Gadema.Api/Services/Authorization/Strategies/ProjectRoleStrategy.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization.Strategies
+  summary: Evaluates if the user has a specific permission within a given scope.
+  example: []
+  syntax:
+    content: public Task<bool> EvaluateAsync(Guid userId, Guid scopeId, Permission permission)
+    parameters:
+    - id: userId
+      type: System.Guid
+    - id: scopeId
+      type: System.Guid
+    - id: permission
+      type: Gadema.Core.Models.Base.Permissions.Permission
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function EvaluateAsync(userId As Guid, scopeId As Guid, permission As Permission) As Task(Of Boolean)
+  overload: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync*
+  implements:
+  - Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+references:
+- uid: Gadema.Api.Services.Authorization.Strategies
+  commentId: N:Gadema.Api.Services.Authorization.Strategies
+  name: Gadema.Api.Services.Authorization.Strategies
+  nameWithType: Gadema.Api.Services.Authorization.Strategies
+  fullName: Gadema.Api.Services.Authorization.Strategies
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+  - name: .
+  - uid: Gadema.Api.Services.Authorization.Strategies
+    name: Strategies
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+  - name: .
+  - uid: Gadema.Api.Services.Authorization.Strategies
+    name: Strategies
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Api.Services.Authorization.IPermissionStrategy
+  commentId: T:Gadema.Api.Services.Authorization.IPermissionStrategy
+  parent: Gadema.Api.Services.Authorization
+  href: Gadema.Api.Services.Authorization.IPermissionStrategy.html
+  name: IPermissionStrategy
+  nameWithType: IPermissionStrategy
+  fullName: Gadema.Api.Services.Authorization.IPermissionStrategy
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Api.Services.Authorization
+  commentId: N:Gadema.Api.Services.Authorization
+  name: Gadema.Api.Services.Authorization
+  nameWithType: Gadema.Api.Services.Authorization
+  fullName: Gadema.Api.Services.Authorization
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Authorization
+    name: Authorization
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor*
+  commentId: Overload:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.#ctor
+  href: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.html#Gadema_Api_Services_Authorization_Strategies_ProjectRoleStrategy__ctor_Gadema_Data_Database_Core_CoreDbContext_
+  name: ProjectRoleStrategy
+  nameWithType: ProjectRoleStrategy.ProjectRoleStrategy
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.ProjectRoleStrategy
+  nameWithType.vb: ProjectRoleStrategy.New
+  fullName.vb: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.New
+  name.vb: New
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  parent: Gadema.Data.Database.Core
+  href: Gadema.Data.Database.Core.CoreDbContext.html
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync*
+  commentId: Overload:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync
+  href: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.html#Gadema_Api_Services_Authorization_Strategies_ProjectRoleStrategy_EvaluateAsync_System_Guid_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_
+  name: EvaluateAsync
+  nameWithType: ProjectRoleStrategy.EvaluateAsync
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.EvaluateAsync
+- uid: Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  commentId: M:Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+  parent: Gadema.Api.Services.Authorization.IPermissionStrategy
+  isExternal: true
+  href: Gadema.Api.Services.Authorization.IPermissionStrategy.html#Gadema_Api_Services_Authorization_IPermissionStrategy_EvaluateAsync_System_Guid_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_
+  name: EvaluateAsync(Guid, Guid, Permission)
+  nameWithType: IPermissionStrategy.EvaluateAsync(Guid, Guid, Permission)
+  fullName: Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid, System.Guid, Gadema.Core.Models.Base.Permissions.Permission)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+    name: EvaluateAsync
+    href: Gadema.Api.Services.Authorization.IPermissionStrategy.html#Gadema_Api_Services_Authorization_IPermissionStrategy_EvaluateAsync_System_Guid_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Authorization.IPermissionStrategy.EvaluateAsync(System.Guid,System.Guid,Gadema.Core.Models.Base.Permissions.Permission)
+    name: EvaluateAsync
+    href: Gadema.Api.Services.Authorization.IPermissionStrategy.html#Gadema_Api_Services_Authorization_IPermissionStrategy_EvaluateAsync_System_Guid_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: )
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.Permissions.Permission
+  commentId: T:Gadema.Core.Models.Base.Permissions.Permission
+  parent: Gadema.Core.Models.Base.Permissions
+  href: Gadema.Core.Models.Base.Permissions.Permission.html
+  name: Permission
+  nameWithType: Permission
+  fullName: Gadema.Core.Models.Base.Permissions.Permission
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Gadema.Core.Models.Base.Permissions
+  commentId: N:Gadema.Core.Models.Base.Permissions
+  name: Gadema.Core.Models.Base.Permissions
+  nameWithType: Gadema.Core.Models.Base.Permissions
+  fullName: Gadema.Core.Models.Base.Permissions
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

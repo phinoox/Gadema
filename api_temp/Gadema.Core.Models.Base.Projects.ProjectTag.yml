@@ -1,0 +1,669 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag
+  commentId: T:Gadema.Core.Models.Base.Projects.ProjectTag
+  id: ProjectTag
+  parent: Gadema.Core.Models.Base.Projects
+  children:
+  - Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+  - Gadema.Core.Models.Base.Projects.ProjectTag.Id
+  - Gadema.Core.Models.Base.Projects.ProjectTag.Name
+  - Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+  - Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+  langs:
+  - csharp
+  - vb
+  name: ProjectTag
+  nameWithType: ProjectTag
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTag
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 5
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: Represents a tag specifically for organizing and categorizing projects.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(RootMarker) })]
+
+      public class ProjectTag
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(RootMarker) })>
+
+      Public Class ProjectTag
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Id
+  commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ProjectTag.Id
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: Unique identifier for the project tag.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.Projects.ProjectTag.Id*
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Name
+  commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.Name
+  id: Name
+  parent: Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ProjectTag.Name
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Name
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Name
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: The human-readable name of the tag (e.g., "High Fantasy", "Completed").
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [MaxLength(128)]
+
+      public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Required>
+
+      <MaxLength(128)>
+
+      Public Property Name As String
+  overload: Gadema.Core.Models.Base.Projects.ProjectTag.Name*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+  commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+  id: Slug
+  parent: Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: Slug
+  nameWithType: ProjectTag.Slug
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Slug
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: A unique, URL-friendly slug for the tag.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(128)]
+
+      public string Slug { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(128)>
+
+      Public Property Slug As String
+  overload: Gadema.Core.Models.Base.Projects.ProjectTag.Slug*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+  commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+  id: ColorHex
+  parent: Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: ColorHex
+  nameWithType: ProjectTag.ColorHex
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ColorHex
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 28
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: An optional hex color code used for visual representation in UI.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(36)]
+
+      public string? ColorHex { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(36)>
+
+      Public Property ColorHex As String
+  overload: Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 36
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+  commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+  id: ProjectTags
+  parent: Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: ProjectTags
+  nameWithType: ProjectTag.ProjectTags
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTags
+    path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Projects
+  summary: Collection of relations linking this tag to various projects.
+  example: []
+  syntax:
+    content: public virtual ICollection<ProjectTagRelation> ProjectTags { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+    content.vb: Public Overridable Property ProjectTags As ICollection(Of ProjectTagRelation)
+  overload: Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags*
+references:
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Id*
+  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectTag.Id
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html#Gadema_Core_Models_Base_Projects_ProjectTag_Id
+  name: Id
+  nameWithType: ProjectTag.Id
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Name*
+  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectTag.Name
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html#Gadema_Core_Models_Base_Projects_ProjectTag_Name
+  name: Name
+  nameWithType: ProjectTag.Name
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.Slug*
+  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html#Gadema_Core_Models_Base_Projects_ProjectTag_Slug
+  name: Slug
+  nameWithType: ProjectTag.Slug
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.Slug
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex*
+  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html#Gadema_Core_Models_Base_Projects_ProjectTag_ColorHex
+  name: ColorHex
+  nameWithType: ProjectTag.ColorHex
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.ColorHex
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags*
+  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html#Gadema_Core_Models_Base_Projects_ProjectTag_ProjectTags
+  name: ProjectTags
+  nameWithType: ProjectTag.ProjectTags
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag.ProjectTags
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<ProjectTagRelation>
+  nameWithType: ICollection<ProjectTagRelation>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation>
+  nameWithType.vb: ICollection(Of ProjectTagRelation)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation)
+  name.vb: ICollection(Of ProjectTagRelation)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation
+    name: ProjectTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation
+    name: ProjectTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

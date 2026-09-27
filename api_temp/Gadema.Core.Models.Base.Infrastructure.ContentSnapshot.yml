@@ -1,0 +1,791 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  id: ContentSnapshot
+  parent: Gadema.Core.Models.Base.Infrastructure
+  children:
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+  langs:
+  - csharp
+  - vb
+  name: ContentSnapshot
+  nameWithType: ContentSnapshot
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentSnapshot
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: >-
+    Represents a content snapshot for the "Save Ritual", allowing users to create intentional milestones.
+
+    These snapshots provide version control and are used to populate the timeline view in the UI.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+
+      public class ContentSnapshot
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(ContentMetaInfo) })>
+
+      Public Class ContentSnapshot
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ContentSnapshot.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the unique identifier for this content snapshot.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id*
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: ContentSnapshot.MetaInfoId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the associated content item.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: ContentSnapshot.ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the associated content meta information entity.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+  id: Comment
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: Comment
+  nameWithType: ContentSnapshot.Comment
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Comment
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 28
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets an optional user-provided comment explaining the reason for this snapshot (e.g., "End of chapter 1").
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(512)]
+
+      public string? Comment { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(512)>
+
+      Public Property Comment As String
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 512
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+  id: VersionNumber
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: VersionNumber
+  nameWithType: ContentSnapshot.VersionNumber
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: VersionNumber
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the sequential version number for the content item, used for timeline display.
+  example: []
+  syntax:
+    content: public int VersionNumber { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property VersionNumber As Integer
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber*
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+  id: SnapshotType
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SnapshotType
+  nameWithType: ContentSnapshot.SnapshotType
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SnapshotType
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 38
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the type of snapshot (e.g., Auto-Generated, Manual Save, or Rollback Point).
+  example: []
+  syntax:
+    content: public int SnapshotType { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property SnapshotType As Integer
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType*
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+  id: CreatedByUserId
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CreatedByUserId
+  nameWithType: ContentSnapshot.CreatedByUserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedByUserId
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 42
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the identifier of the user who created this snapshot.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid CreatedByUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property CreatedByUserId As Guid
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+  id: CreatedAt
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: ContentSnapshot.CreatedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedAt
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 48
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the timestamp when the snapshot was captured.
+  example: []
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt*
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson
+  commentId: P:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson
+  id: SnapshotDataJson
+  parent: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  langs:
+  - csharp
+  - vb
+  name: SnapshotDataJson
+  nameWithType: ContentSnapshot.SnapshotDataJson
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SnapshotDataJson
+    path: src/Gadema.Core/Models/Base/Infrastructure/ContentSnapshot.cs
+    startLine: 53
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Infrastructure
+  summary: Gets or sets the serialized JSON data representing the state of the content at the time of the snapshot.
+  example: []
+  syntax:
+    content: public string SnapshotDataJson { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SnapshotDataJson As String
+  overload: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson*
+references:
+- uid: Gadema.Core.Models.Base.Infrastructure
+  commentId: N:Gadema.Core.Models.Base.Infrastructure
+  name: Gadema.Core.Models.Base.Infrastructure
+  nameWithType: Gadema.Core.Models.Base.Infrastructure
+  fullName: Gadema.Core.Models.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_Id
+  name: Id
+  nameWithType: ContentSnapshot.Id
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_MetaInfoId
+  name: MetaInfoId
+  nameWithType: ContentSnapshot.MetaInfoId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.MetaInfoId
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: ContentSnapshot.ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_Comment
+  name: Comment
+  nameWithType: ContentSnapshot.Comment
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.Comment
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_VersionNumber
+  name: VersionNumber
+  nameWithType: ContentSnapshot.VersionNumber
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.VersionNumber
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_SnapshotType
+  name: SnapshotType
+  nameWithType: ContentSnapshot.SnapshotType
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotType
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_CreatedByUserId
+  name: CreatedByUserId
+  nameWithType: ContentSnapshot.CreatedByUserId
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedByUserId
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_CreatedAt
+  name: CreatedAt
+  nameWithType: ContentSnapshot.CreatedAt
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson*
+  commentId: Overload:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html#Gadema_Core_Models_Base_Infrastructure_ContentSnapshot_SnapshotDataJson
+  name: SnapshotDataJson
+  nameWithType: ContentSnapshot.SnapshotDataJson
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.SnapshotDataJson

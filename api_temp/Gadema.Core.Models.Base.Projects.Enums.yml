@@ -1,0 +1,113 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Projects.Enums
+  commentId: N:Gadema.Core.Models.Base.Projects.Enums
+  id: Gadema.Core.Models.Base.Projects.Enums
+  children:
+  - Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  - Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum
+  - Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum
+  - Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum
+  - Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum
+  - Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum
+  - Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Projects.Enums
+  nameWithType: Gadema.Core.Models.Base.Projects.Enums
+  fullName: Gadema.Core.Models.Base.Projects.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum.html
+  name: ProjectDifficultyEnum
+  nameWithType: ProjectDifficultyEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum.html
+  name: PrimaryFormatEnum
+  nameWithType: PrimaryFormatEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ToneEnum.html
+  name: ToneEnum
+  nameWithType: ToneEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum.html
+  name: AudienceEnum
+  nameWithType: AudienceEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum.html
+  name: ProjectStatusEnum
+  nameWithType: ProjectStatusEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum.html
+  name: ProjectTemplateTypeEnum
+  nameWithType: ProjectTemplateTypeEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum
+  commentId: T:Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum
+  parent: Gadema.Core.Models.Base.Projects.Enums
+  href: Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum.html
+  name: ProjectVisibilityEnum
+  nameWithType: ProjectVisibilityEnum
+  fullName: Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum
+- uid: Gadema.Core.Models.Base.Projects.Enums
+  commentId: N:Gadema.Core.Models.Base.Projects.Enums
+  name: Gadema.Core.Models.Base.Projects.Enums
+  nameWithType: Gadema.Core.Models.Base.Projects.Enums
+  fullName: Gadema.Core.Models.Base.Projects.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects.Enums
+    name: Enums

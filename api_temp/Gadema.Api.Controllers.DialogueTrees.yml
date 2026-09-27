@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.DialogueTrees
+  commentId: N:Gadema.Api.Controllers.DialogueTrees
+  id: Gadema.Api.Controllers.DialogueTrees
+  children:
+  - Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController
+  - Gadema.Api.Controllers.DialogueTrees.DialogueNodesController
+  - Gadema.Api.Controllers.DialogueTrees.SceneSegmentController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.DialogueTrees
+  nameWithType: Gadema.Api.Controllers.DialogueTrees
+  fullName: Gadema.Api.Controllers.DialogueTrees
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController
+  commentId: T:Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController
+  href: Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController.html
+  name: DialogueBranchesController
+  nameWithType: DialogueBranchesController
+  fullName: Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController
+- uid: Gadema.Api.Controllers.DialogueTrees.DialogueNodesController
+  commentId: T:Gadema.Api.Controllers.DialogueTrees.DialogueNodesController
+  href: Gadema.Api.Controllers.DialogueTrees.DialogueNodesController.html
+  name: DialogueNodesController
+  nameWithType: DialogueNodesController
+  fullName: Gadema.Api.Controllers.DialogueTrees.DialogueNodesController
+- uid: Gadema.Api.Controllers.DialogueTrees.SceneSegmentController
+  commentId: T:Gadema.Api.Controllers.DialogueTrees.SceneSegmentController
+  href: Gadema.Api.Controllers.DialogueTrees.SceneSegmentController.html
+  name: SceneSegmentController
+  nameWithType: SceneSegmentController
+  fullName: Gadema.Api.Controllers.DialogueTrees.SceneSegmentController

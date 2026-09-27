@@ -1,0 +1,73 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Access.Authentication
+  commentId: N:Gadema.Api.Services.Access.Authentication
+  id: Gadema.Api.Services.Access.Authentication
+  children:
+  - Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService
+  - Gadema.Api.Services.Access.Authentication.JwtTokenService
+  - Gadema.Api.Services.Access.Authentication.PasswordHasher
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Access.Authentication
+  nameWithType: Gadema.Api.Services.Access.Authentication
+  fullName: Gadema.Api.Services.Access.Authentication
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService
+  commentId: T:Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService
+  parent: Gadema.Api.Services.Access.Authentication
+  href: Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService.html
+  name: EmailPasswordAuthService
+  nameWithType: EmailPasswordAuthService
+  fullName: Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  commentId: T:Gadema.Api.Services.Access.Authentication.JwtTokenService
+  href: Gadema.Api.Services.Access.Authentication.JwtTokenService.html
+  name: JwtTokenService
+  nameWithType: JwtTokenService
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService
+- uid: Gadema.Api.Services.Access.Authentication.PasswordHasher
+  commentId: T:Gadema.Api.Services.Access.Authentication.PasswordHasher
+  href: Gadema.Api.Services.Access.Authentication.PasswordHasher.html
+  name: PasswordHasher
+  nameWithType: PasswordHasher
+  fullName: Gadema.Api.Services.Access.Authentication.PasswordHasher
+- uid: Gadema.Api.Services.Access.Authentication
+  commentId: N:Gadema.Api.Services.Access.Authentication
+  name: Gadema.Api.Services.Access.Authentication
+  nameWithType: Gadema.Api.Services.Access.Authentication
+  fullName: Gadema.Api.Services.Access.Authentication
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Authentication
+    name: Authentication
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Authentication
+    name: Authentication

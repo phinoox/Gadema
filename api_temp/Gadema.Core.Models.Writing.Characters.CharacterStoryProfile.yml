@@ -1,0 +1,1131 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  id: CharacterStoryProfile
+  parent: Gadema.Core.Models.Writing.Characters
+  children:
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+  langs:
+  - csharp
+  - vb
+  name: CharacterStoryProfile
+  nameWithType: CharacterStoryProfile
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterStoryProfile
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: >-
+    Represents the permanent, static backstory and personality profile of a character.
+
+    This entity holds immutable traits that define who the character is fundamentally,
+
+    as opposed to their dynamic state which changes throughout the narrative.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Character) })]
+
+      public class CharacterStoryProfile
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Character) })>
+
+      Public Class CharacterStoryProfile
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+  id: Id
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: CharacterStoryProfile.Id
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Unique identifier for the character profile (matches the associated Character's Id).
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id*
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+  id: CharacterId
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: CharacterId
+  nameWithType: CharacterStoryProfile.CharacterId
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterId
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The ID of the character this profile belongs to.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid CharacterId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property CharacterId As Guid
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+  id: Character
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Character
+  nameWithType: CharacterStoryProfile.Character
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Character
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Navigation property for the associated character.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("CharacterId")]
+
+      public virtual Character Character { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Writing.Characters.Character
+    content.vb: >-
+      <ForeignKey("CharacterId")>
+
+      Public Overridable Property Character As Character
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: CharacterId
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+  id: OriginStory
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: OriginStory
+  nameWithType: CharacterStoryProfile.OriginStory
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OriginStory
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Details regarding the character's birth, upbringing, and early life.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? OriginStory { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property OriginStory As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+  id: FamilyBackground
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: FamilyBackground
+  nameWithType: CharacterStoryProfile.FamilyBackground
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FamilyBackground
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Information about the character's family, social class, and heritage.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? FamilyBackground { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property FamilyBackground As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+  id: Backstory
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Backstory
+  nameWithType: CharacterStoryProfile.Backstory
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Backstory
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Significant life events that occurred before the main narrative began.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(8192)]
+
+      public string? Backstory { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(8192)>
+
+      Public Property Backstory As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8192
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+  id: PersonalityTraits
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: PersonalityTraits
+  nameWithType: CharacterStoryProfile.PersonalityTraits
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PersonalityTraits
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 47
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The core personality descriptors (e.g., brave, cynical, loyal).
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(2048)]
+
+      public string? PersonalityTraits { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(2048)>
+
+      Public Property PersonalityTraits As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2048
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+  id: Motivation
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Motivation
+  nameWithType: CharacterStoryProfile.Motivation
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Motivation
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 52
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The character's primary driving force or ultimate goal.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? Motivation { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property Motivation As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+  id: Fear
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Fear
+  nameWithType: CharacterStoryProfile.Fear
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Fear
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 57
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The character's deepest fears or anxieties.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? Fear { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property Fear As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+  id: Beliefs
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Beliefs
+  nameWithType: CharacterStoryProfile.Beliefs
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Beliefs
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 62
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The fundamental values, moral code, or philosophies the character follows.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(2048)]
+
+      public string? Beliefs { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(2048)>
+
+      Public Property Beliefs As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2048
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+  id: SpeechPattern
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: SpeechPattern
+  nameWithType: CharacterStoryProfile.SpeechPattern
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SpeechPattern
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 67
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Details on how the character speaks (accent, tone, common phrases).
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? SpeechPattern { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property SpeechPattern As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+  id: Quirks
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: Quirks
+  nameWithType: CharacterStoryProfile.Quirks
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Quirks
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 72
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Distinctive habits, mannerisms, or physical quirks.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(2048)]
+
+      public string? Quirks { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(2048)>
+
+      Public Property Quirks As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2048
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+  id: StoryRole
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: StoryRole
+  nameWithType: CharacterStoryProfile.StoryRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StoryRole
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 79
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The character's intended structural role in the overarching story (e.g., Protagonist, Antagonist).
+  example: []
+  syntax:
+    content: public CharacterRole StoryRole { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+    content.vb: Public Property StoryRole As CharacterRole
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole*
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+  id: ArcType
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: ArcType
+  nameWithType: CharacterStoryProfile.ArcType
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ArcType
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 83
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The type of narrative journey the character is destined to undergo (e.g., Hero's Journey, Redemption).
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(256)]
+
+      public string? ArcType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(256)>
+
+      Public Property ArcType As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 256
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+  id: ArcSummary
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: ArcSummary
+  nameWithType: CharacterStoryProfile.ArcSummary
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ArcSummary
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 88
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A summary of how the character is expected to evolve throughout the story arc.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? ArcSummary { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property ArcSummary As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships
+  commentId: P:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships
+  id: KeyRelationships
+  parent: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  langs:
+  - csharp
+  - vb
+  name: KeyRelationships
+  nameWithType: CharacterStoryProfile.KeyRelationships
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: KeyRelationships
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterStoryProfile.cs
+    startLine: 93
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: General descriptions of key relationships that define the character's social landscape.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(8192)]
+
+      public string? KeyRelationships { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(8192)>
+
+      Public Property KeyRelationships As String
+  overload: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8192
+references:
+- uid: Gadema.Core.Models.Writing.Characters
+  commentId: N:Gadema.Core.Models.Writing.Characters
+  name: Gadema.Core.Models.Writing.Characters
+  nameWithType: Gadema.Core.Models.Writing.Characters
+  fullName: Gadema.Core.Models.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Id
+  name: Id
+  nameWithType: CharacterStoryProfile.Id
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_CharacterId
+  name: CharacterId
+  nameWithType: CharacterStoryProfile.CharacterId
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.CharacterId
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Character
+  name: Character
+  nameWithType: CharacterStoryProfile.Character
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Character
+- uid: Gadema.Core.Models.Writing.Characters.Character
+  commentId: T:Gadema.Core.Models.Writing.Characters.Character
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.Character.html
+  name: Character
+  nameWithType: Character
+  fullName: Gadema.Core.Models.Writing.Characters.Character
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_OriginStory
+  name: OriginStory
+  nameWithType: CharacterStoryProfile.OriginStory
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.OriginStory
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_FamilyBackground
+  name: FamilyBackground
+  nameWithType: CharacterStoryProfile.FamilyBackground
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.FamilyBackground
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Backstory
+  name: Backstory
+  nameWithType: CharacterStoryProfile.Backstory
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Backstory
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_PersonalityTraits
+  name: PersonalityTraits
+  nameWithType: CharacterStoryProfile.PersonalityTraits
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.PersonalityTraits
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Motivation
+  name: Motivation
+  nameWithType: CharacterStoryProfile.Motivation
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Motivation
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Fear
+  name: Fear
+  nameWithType: CharacterStoryProfile.Fear
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Fear
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Beliefs
+  name: Beliefs
+  nameWithType: CharacterStoryProfile.Beliefs
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Beliefs
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_SpeechPattern
+  name: SpeechPattern
+  nameWithType: CharacterStoryProfile.SpeechPattern
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.SpeechPattern
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_Quirks
+  name: Quirks
+  nameWithType: CharacterStoryProfile.Quirks
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.Quirks
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_StoryRole
+  name: StoryRole
+  nameWithType: CharacterStoryProfile.StoryRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.StoryRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterRole
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  name: CharacterRole
+  nameWithType: CharacterRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_ArcType
+  name: ArcType
+  nameWithType: CharacterStoryProfile.ArcType
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcType
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_ArcSummary
+  name: ArcSummary
+  nameWithType: CharacterStoryProfile.ArcSummary
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.ArcSummary
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships*
+  commentId: Overload:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html#Gadema_Core_Models_Writing_Characters_CharacterStoryProfile_KeyRelationships
+  name: KeyRelationships
+  nameWithType: CharacterStoryProfile.KeyRelationships
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.KeyRelationships

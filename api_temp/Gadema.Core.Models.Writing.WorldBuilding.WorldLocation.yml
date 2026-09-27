@@ -1,0 +1,974 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  id: WorldLocation
+  parent: Gadema.Core.Models.Writing.WorldBuilding
+  children:
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+  - Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+  langs:
+  - csharp
+  - vb
+  name: WorldLocation
+  nameWithType: WorldLocation
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: WorldLocation
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: >-
+    Represents a geographic location within the game world.
+
+    Locations can be organized hierarchically (e.g., Country → Region → City) and track character presence.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo) })]
+
+      public class WorldLocation
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project), GetType(ContentMetaInfo) })>
+
+      Public Class WorldLocation
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+  id: Id
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: WorldLocation.Id
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Unique identifier for the world location.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id*
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: WorldLocation.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: WorldLocation.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 25
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Navigation property for the location's identity anchor.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+  id: LocationType
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: LocationType
+  nameWithType: WorldLocation.LocationType
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LocationType
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 31
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: The classification of this location (e.g., Country, City, Landmark).
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public LocationType LocationType { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    content.vb: >-
+      <Required>
+
+      Public Property LocationType As LocationType
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+  id: ParentId
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: ParentId
+  nameWithType: WorldLocation.ParentId
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ParentId
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 36
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: The ID of the parent location in the hierarchy.
+  example: []
+  syntax:
+    content: public Guid? ParentId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property ParentId As Guid?
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId*
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+  id: Parent
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: Parent
+  nameWithType: WorldLocation.Parent
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Parent
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 41
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Navigation property for the parent location.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("ParentId")]
+
+      public virtual WorldLocation? Parent { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+    content.vb: >-
+      <ForeignKey("ParentId")>
+
+      Public Overridable Property Parent As WorldLocation
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ParentId
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+  id: Children
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: Children
+  nameWithType: WorldLocation.Children
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Children
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 47
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Collection of child locations contained within this one.
+  example: []
+  syntax:
+    content: public virtual ICollection<WorldLocation> Children { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.WorldBuilding.WorldLocation}
+    content.vb: Public Overridable Property Children As ICollection(Of WorldLocation)
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children*
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+  id: Description
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: WorldLocation.Description
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 52
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A description of the location's geography, climate, or significance.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property Description As String
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+  commentId: P:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+  id: CharacterStates
+  parent: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: CharacterStates
+  nameWithType: WorldLocation.CharacterStates
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterStates
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 57
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Collection of character states that reference this location (current or historical presence).
+  example: []
+  syntax:
+    content: public virtual ICollection<CharacterState> CharacterStates { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Characters.CharacterState}
+    content.vb: Public Overridable Property CharacterStates As ICollection(Of CharacterState)
+  overload: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates*
+references:
+- uid: Gadema.Core.Models.Writing.WorldBuilding
+  commentId: N:Gadema.Core.Models.Writing.WorldBuilding
+  name: Gadema.Core.Models.Writing.WorldBuilding
+  nameWithType: Gadema.Core.Models.Writing.WorldBuilding
+  fullName: Gadema.Core.Models.Writing.WorldBuilding
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.WorldBuilding
+    name: WorldBuilding
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.WorldBuilding
+    name: WorldBuilding
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_Id
+  name: Id
+  nameWithType: WorldLocation.Id
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_MetaInfoId
+  name: MetaInfoId
+  nameWithType: WorldLocation.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.MetaInfoId
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: WorldLocation.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_LocationType
+  name: LocationType
+  nameWithType: WorldLocation.LocationType
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  parent: Gadema.Core.Models.Writing.WorldBuilding
+  href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  name: LocationType
+  nameWithType: LocationType
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_ParentId
+  name: ParentId
+  nameWithType: WorldLocation.ParentId
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.ParentId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_Parent
+  name: Parent
+  nameWithType: WorldLocation.Parent
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Parent
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+  parent: Gadema.Core.Models.Writing.WorldBuilding
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html
+  name: WorldLocation
+  nameWithType: WorldLocation
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_Children
+  name: Children
+  nameWithType: WorldLocation.Children
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Children
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.WorldBuilding.WorldLocation}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.WorldBuilding.WorldLocation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<WorldLocation>
+  nameWithType: ICollection<WorldLocation>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Writing.WorldBuilding.WorldLocation>
+  nameWithType.vb: ICollection(Of WorldLocation)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Writing.WorldBuilding.WorldLocation)
+  name.vb: ICollection(Of WorldLocation)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+    name: WorldLocation
+    href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+    name: WorldLocation
+    href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_Description
+  name: Description
+  nameWithType: WorldLocation.Description
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates*
+  commentId: Overload:Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+  href: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.html#Gadema_Core_Models_Writing_WorldBuilding_WorldLocation_CharacterStates
+  name: CharacterStates
+  nameWithType: WorldLocation.CharacterStates
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation.CharacterStates
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Characters.CharacterState}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Characters.CharacterState}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<CharacterState>
+  nameWithType: ICollection<CharacterState>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Writing.Characters.CharacterState>
+  nameWithType.vb: ICollection(Of CharacterState)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Writing.Characters.CharacterState)
+  name.vb: ICollection(Of CharacterState)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterState
+    name: CharacterState
+    href: Gadema.Core.Models.Writing.Characters.CharacterState.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterState
+    name: CharacterState
+    href: Gadema.Core.Models.Writing.Characters.CharacterState.html
+  - name: )

@@ -1,0 +1,648 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  commentId: T:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  id: ProjectTaskCreateDto
+  parent: Gadema.Core.Dtos.Tasks
+  children:
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+  - Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+  langs:
+  - csharp
+  - vb
+  name: ProjectTaskCreateDto
+  nameWithType: ProjectTaskCreateDto
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTaskCreateDto
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: Data transfer object for creating a new project task.
+  example: []
+  syntax:
+    content: public class ProjectTaskCreateDto
+    content.vb: Public Class ProjectTaskCreateDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+  commentId: P:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+  id: MetaInfo
+  parent: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  langs:
+  - csharp
+  - vb
+  name: MetaInfo
+  nameWithType: ProjectTaskCreateDto.MetaInfo
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfo
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: The nested identity payload (e.g., Title, Slug, ShortDesc) used to anchor the task.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public BaseMetaInfoCreateData MetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfo As BaseMetaInfoCreateData
+  overload: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+  commentId: P:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+  id: ProjectId
+  parent: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  langs:
+  - csharp
+  - vb
+  name: ProjectId
+  nameWithType: ProjectTaskCreateDto.ProjectId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectId
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: The unique identifier of the project this task belongs to.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid ProjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property ProjectId As Guid
+  overload: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+  commentId: P:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+  id: AssignedToUserId
+  parent: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  langs:
+  - csharp
+  - vb
+  name: AssignedToUserId
+  nameWithType: ProjectTaskCreateDto.AssignedToUserId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AssignedToUserId
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: The user assigned to work on this task.
+  example: []
+  syntax:
+    content: public Guid? AssignedToUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property AssignedToUserId As Guid?
+  overload: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId*
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+  commentId: P:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+  id: DueDate
+  parent: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  langs:
+  - csharp
+  - vb
+  name: DueDate
+  nameWithType: ProjectTaskCreateDto.DueDate
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DueDate
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: The deadline by which the task should be completed.
+  example: []
+  syntax:
+    content: public DateTime? DueDate { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Public Property DueDate As Date?
+  overload: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate*
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId
+  commentId: P:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId
+  id: CreatedByUserId
+  parent: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+  langs:
+  - csharp
+  - vb
+  name: CreatedByUserId
+  nameWithType: ProjectTaskCreateDto.CreatedByUserId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedByUserId
+    path: src/Gadema.Core/Dtos/Tasks/ProjectTaskDtos.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Tasks
+  summary: The unique identifier of the user who created this task.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid CreatedByUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property CreatedByUserId As Guid
+  overload: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+references:
+- uid: Gadema.Core.Dtos.Tasks
+  commentId: N:Gadema.Core.Dtos.Tasks
+  name: Gadema.Core.Dtos.Tasks
+  nameWithType: Gadema.Core.Dtos.Tasks
+  fullName: Gadema.Core.Dtos.Tasks
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Tasks
+    name: Tasks
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Tasks
+    name: Tasks
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo*
+  commentId: Overload:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html#Gadema_Core_Dtos_Tasks_ProjectTaskCreateDto_MetaInfo
+  name: MetaInfo
+  nameWithType: ProjectTaskCreateDto.MetaInfo
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.MetaInfo
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData.html
+  name: BaseMetaInfoCreateData
+  nameWithType: BaseMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId*
+  commentId: Overload:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html#Gadema_Core_Dtos_Tasks_ProjectTaskCreateDto_ProjectId
+  name: ProjectId
+  nameWithType: ProjectTaskCreateDto.ProjectId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.ProjectId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId*
+  commentId: Overload:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html#Gadema_Core_Dtos_Tasks_ProjectTaskCreateDto_AssignedToUserId
+  name: AssignedToUserId
+  nameWithType: ProjectTaskCreateDto.AssignedToUserId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.AssignedToUserId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate*
+  commentId: Overload:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html#Gadema_Core_Dtos_Tasks_ProjectTaskCreateDto_DueDate
+  name: DueDate
+  nameWithType: ProjectTaskCreateDto.DueDate
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.DueDate
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId*
+  commentId: Overload:Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId
+  href: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.html#Gadema_Core_Dtos_Tasks_ProjectTaskCreateDto_CreatedByUserId
+  name: CreatedByUserId
+  nameWithType: ProjectTaskCreateDto.CreatedByUserId
+  fullName: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto.CreatedByUserId

@@ -1,0 +1,297 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.TaskPriorityEnum
+  commentId: T:Gadema.Core.Enums.TaskPriorityEnum
+  id: TaskPriorityEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.TaskPriorityEnum.High
+  - Gadema.Core.Enums.TaskPriorityEnum.Low
+  - Gadema.Core.Enums.TaskPriorityEnum.Medium
+  langs:
+  - csharp
+  - vb
+  name: TaskPriorityEnum
+  nameWithType: TaskPriorityEnum
+  fullName: Gadema.Core.Enums.TaskPriorityEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TaskPriorityEnum
+    path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Represents the importance or urgency level of a task within a workflow.
+  example: []
+  syntax:
+    content: public enum TaskPriorityEnum
+    content.vb: Public Enum TaskPriorityEnum
+  extensionMethods:
+  - Gadema.Core.Enums.TaskPriorityEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.TaskPriorityEnum.High
+  commentId: F:Gadema.Core.Enums.TaskPriorityEnum.High
+  id: High
+  parent: Gadema.Core.Enums.TaskPriorityEnum
+  langs:
+  - csharp
+  - vb
+  name: High
+  nameWithType: TaskPriorityEnum.High
+  fullName: Gadema.Core.Enums.TaskPriorityEnum.High
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: High
+    path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: High priority tasks that require immediate attention or have tight deadlines.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "High")]
+
+      High = 0
+    return:
+      type: Gadema.Core.Enums.TaskPriorityEnum
+    content.vb: >-
+      <Display(Name:="High")>
+
+      High = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: High
+- uid: Gadema.Core.Enums.TaskPriorityEnum.Medium
+  commentId: F:Gadema.Core.Enums.TaskPriorityEnum.Medium
+  id: Medium
+  parent: Gadema.Core.Enums.TaskPriorityEnum
+  langs:
+  - csharp
+  - vb
+  name: Medium
+  nameWithType: TaskPriorityEnum.Medium
+  fullName: Gadema.Core.Enums.TaskPriorityEnum.Medium
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Medium
+    path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Medium priority tasks with a standard timeline and moderate urgency.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Medium")]
+
+      Medium = 1
+    return:
+      type: Gadema.Core.Enums.TaskPriorityEnum
+    content.vb: >-
+      <Display(Name:="Medium")>
+
+      Medium = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Medium
+- uid: Gadema.Core.Enums.TaskPriorityEnum.Low
+  commentId: F:Gadema.Core.Enums.TaskPriorityEnum.Low
+  id: Low
+  parent: Gadema.Core.Enums.TaskPriorityEnum
+  langs:
+  - csharp
+  - vb
+  name: Low
+  nameWithType: TaskPriorityEnum.Low
+  fullName: Gadema.Core.Enums.TaskPriorityEnum.Low
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Low
+    path: src/Gadema.Core/Enums/TaskPriorityEnum.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Low priority tasks that can be deferred or addressed as time permits.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Low")]
+
+      Low = 2
+    return:
+      type: Gadema.Core.Enums.TaskPriorityEnum
+    content.vb: >-
+      <Display(Name:="Low")>
+
+      Low = 2
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Low
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.TaskPriorityEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<TaskPriorityEnum>(TaskPriorityEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<TaskPriorityEnum>(TaskPriorityEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.TaskPriorityEnum>(Gadema.Core.Enums.TaskPriorityEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of TaskPriorityEnum)(TaskPriorityEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.TaskPriorityEnum)(Gadema.Core.Enums.TaskPriorityEnum)
+  name.vb: ToGuid(Of TaskPriorityEnum)(TaskPriorityEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.TaskPriorityEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    href: Gadema.Core.Enums.TaskPriorityEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    href: Gadema.Core.Enums.TaskPriorityEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.TaskPriorityEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    href: Gadema.Core.Enums.TaskPriorityEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    href: Gadema.Core.Enums.TaskPriorityEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.TaskPriorityEnum
+  commentId: T:Gadema.Core.Enums.TaskPriorityEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TaskPriorityEnum.html
+  name: TaskPriorityEnum
+  nameWithType: TaskPriorityEnum
+  fullName: Gadema.Core.Enums.TaskPriorityEnum

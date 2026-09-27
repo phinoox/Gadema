@@ -1,0 +1,219 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Projects
+  commentId: N:Gadema.Core.Dtos.Base.Projects
+  id: Gadema.Core.Dtos.Base.Projects
+  children:
+  - Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto
+  - Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectCreateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData
+  - Gadema.Core.Dtos.Base.Projects.ProjectResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
+  - Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  - Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Base.Projects
+  nameWithType: Gadema.Core.Dtos.Base.Projects
+  fullName: Gadema.Core.Dtos.Base.Projects
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData.html
+  name: ProjectMetaInfoCreateData
+  nameWithType: ProjectMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectCreateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectCreateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectCreateDto.html
+  name: ProjectCreateDto
+  nameWithType: ProjectCreateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectCreateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto.html
+  name: ProjectUpdateDto
+  nameWithType: ProjectUpdateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectResponseDto.html
+  name: ProjectResponseDto
+  nameWithType: ProjectResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto.html
+  name: AddProjectMemberDto
+  nameWithType: AddProjectMemberDto
+  fullName: Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto
+- uid: Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto.html
+  name: UpdateProjectMemberRoleDto
+  nameWithType: UpdateProjectMemberRoleDto
+  fullName: Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto.html
+  name: ProjectMemberResponseDto
+  nameWithType: ProjectMemberResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto.html
+  name: ProjectSeriesCreateDto
+  nameWithType: ProjectSeriesCreateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto.html
+  name: ProjectSeriesUpdateDto
+  nameWithType: ProjectSeriesUpdateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData.html
+  name: ProjectSeriesMetaInfoCreateData
+  nameWithType: ProjectSeriesMetaInfoCreateData
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData.html
+  name: ProjectSeriesMetaInfoUpdateData
+  nameWithType: ProjectSeriesMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto.html
+  name: ProjectSeriesResponseDto
+  nameWithType: ProjectSeriesResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto.html
+  name: ProjectSeriesListResponseDto
+  nameWithType: ProjectSeriesListResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto.html
+  name: ProjectTagCreateDto
+  nameWithType: ProjectTagCreateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto.html
+  name: ProjectTagResponseDto
+  nameWithType: ProjectTagResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto.html
+  name: AddTagsToProjectDto
+  nameWithType: AddTagsToProjectDto
+  fullName: Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenType.html
+  name: ProjectTokenType
+  nameWithType: ProjectTokenType
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html
+  name: ProjectTokenCreateDto
+  nameWithType: ProjectTokenCreateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html
+  name: ProjectTokenUpdateDto
+  nameWithType: ProjectTokenUpdateDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html
+  name: ProjectTokenResponseDto
+  nameWithType: ProjectTokenResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto.html
+  name: ProjectTokenListResponseDto
+  nameWithType: ProjectTokenListResponseDto
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+  parent: Gadema.Core.Dtos.Base.Projects
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions.html
+  name: ProjectTokenTypeExtensions
+  nameWithType: ProjectTokenTypeExtensions
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+- uid: Gadema.Core.Dtos.Base.Projects
+  commentId: N:Gadema.Core.Dtos.Base.Projects
+  name: Gadema.Core.Dtos.Base.Projects
+  nameWithType: Gadema.Core.Dtos.Base.Projects
+  fullName: Gadema.Core.Dtos.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Projects
+    name: Projects

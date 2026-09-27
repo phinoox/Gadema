@@ -1,0 +1,74 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  id: Gadema.Core.Models.Base.Projects
+  children:
+  - Gadema.Core.Models.Base.Projects.Project
+  - Gadema.Core.Models.Base.Projects.ProjectSeries
+  - Gadema.Core.Models.Base.Projects.ProjectTag
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Projects.Project
+  commentId: T:Gadema.Core.Models.Base.Projects.Project
+  parent: Gadema.Core.Models.Base.Projects
+  href: Gadema.Core.Models.Base.Projects.Project.html
+  name: Project
+  nameWithType: Project
+  fullName: Gadema.Core.Models.Base.Projects.Project
+- uid: Gadema.Core.Models.Base.Projects.ProjectSeries
+  commentId: T:Gadema.Core.Models.Base.Projects.ProjectSeries
+  parent: Gadema.Core.Models.Base.Projects
+  href: Gadema.Core.Models.Base.Projects.ProjectSeries.html
+  name: ProjectSeries
+  nameWithType: ProjectSeries
+  fullName: Gadema.Core.Models.Base.Projects.ProjectSeries
+- uid: Gadema.Core.Models.Base.Projects.ProjectTag
+  commentId: T:Gadema.Core.Models.Base.Projects.ProjectTag
+  href: Gadema.Core.Models.Base.Projects.ProjectTag.html
+  name: ProjectTag
+  nameWithType: ProjectTag
+  fullName: Gadema.Core.Models.Base.Projects.ProjectTag
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects

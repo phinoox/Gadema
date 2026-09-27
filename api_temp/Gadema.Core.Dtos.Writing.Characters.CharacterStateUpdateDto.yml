@@ -1,0 +1,881 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  id: CharacterStateUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  children:
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId
+  langs:
+  - csharp
+  - vb
+  name: CharacterStateUpdateDto
+  nameWithType: CharacterStateUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterStateUpdateDto
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 66
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: Data transfer object for updating an existing character state.
+  example: []
+  syntax:
+    content: 'public class CharacterStateUpdateDto : UpdateRequestDto'
+    content.vb: Public Class CharacterStateUpdateDto Inherits UpdateRequestDto
+  inheritance:
+  - System.Object
+  - Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  inheritedMembers:
+  - Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.EntityId
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: CharacterStateUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 71
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The metadata payload for the sync strategy.
+  example: []
+  syntax:
+    content: public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    content.vb: Public Property ContentMetaInfo As BaseMetaInfoUpdateData
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+  id: StateName
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: StateName
+  nameWithType: CharacterStateUpdateDto.StateName
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StateName
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 76
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated name of the state.
+  example: []
+  syntax:
+    content: public string? StateName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property StateName As String
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+  id: Description
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: CharacterStateUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 81
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated description of the state.
+  example: []
+  syntax:
+    content: public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+  id: CurrentValue
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: CurrentValue
+  nameWithType: CharacterStateUpdateDto.CurrentValue
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CurrentValue
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 86
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated numeric value for this state.
+  example: []
+  syntax:
+    content: public double? CurrentValue { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Double}
+    content.vb: Public Property CurrentValue As Double?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+  id: Role
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: CharacterStateUpdateDto.Role
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Role
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 91
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated role of the character.
+  example: []
+  syntax:
+    content: public CharacterRole? Role { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterRole}
+    content.vb: Public Property Role As CharacterRole?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+  id: FactionId
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: FactionId
+  nameWithType: CharacterStateUpdateDto.FactionId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FactionId
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 96
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated faction identifier.
+  example: []
+  syntax:
+    content: public Guid? FactionId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property FactionId As Guid?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+  id: LocationId
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: LocationId
+  nameWithType: CharacterStateUpdateDto.LocationId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LocationId
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 101
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated location identifier.
+  example: []
+  syntax:
+    content: public Guid? LocationId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property LocationId As Guid?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+  id: LifeStatus
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: LifeStatus
+  nameWithType: CharacterStateUpdateDto.LifeStatus
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LifeStatus
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 106
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated life status.
+  example: []
+  syntax:
+    content: public CharacterStatus? LifeStatus { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterStatus}
+    content.vb: Public Property LifeStatus As CharacterStatus?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus*
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+  id: Note
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Note
+  nameWithType: CharacterStateUpdateDto.Note
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Note
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 111
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: An updated note for the state.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? Note { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property Note As String
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId
+  commentId: P:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId
+  id: TriggerSceneId
+  parent: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: TriggerSceneId
+  nameWithType: CharacterStateUpdateDto.TriggerSceneId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TriggerSceneId
+    path: src/Gadema.Core/Dtos/Writing/Characters/CharacterStateDtos.cs
+    startLine: 116
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Writing.Characters
+  summary: The updated scene identifier that triggered this update.
+  example: []
+  syntax:
+    content: public Guid? TriggerSceneId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property TriggerSceneId As Guid?
+  overload: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId*
+references:
+- uid: Gadema.Core.Dtos.Writing.Characters
+  commentId: N:Gadema.Core.Dtos.Writing.Characters
+  name: Gadema.Core.Dtos.Writing.Characters
+  nameWithType: Gadema.Core.Dtos.Writing.Characters
+  fullName: Gadema.Core.Dtos.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Characters
+    name: Characters
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.html
+  name: UpdateRequestDto
+  nameWithType: UpdateRequestDto
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+- uid: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.EntityId
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.EntityId
+  parent: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+  href: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.html#Gadema_Core_Dtos_Base_Infrastructure_UpdateRequestDto_EntityId
+  name: EntityId
+  nameWithType: UpdateRequestDto.EntityId
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto.EntityId
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: CharacterStateUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.ContentMetaInfo
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_StateName
+  name: StateName
+  nameWithType: CharacterStateUpdateDto.StateName
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.StateName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_Description
+  name: Description
+  nameWithType: CharacterStateUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Description
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_CurrentValue
+  name: CurrentValue
+  nameWithType: CharacterStateUpdateDto.CurrentValue
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.CurrentValue
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_Role
+  name: Role
+  nameWithType: CharacterStateUpdateDto.Role
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Role
+- uid: System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterRole}
+  commentId: T:System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterRole}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  name: CharacterRole?
+  nameWithType: CharacterRole?
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole?
+  spec.csharp:
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_FactionId
+  name: FactionId
+  nameWithType: CharacterStateUpdateDto.FactionId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.FactionId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_LocationId
+  name: LocationId
+  nameWithType: CharacterStateUpdateDto.LocationId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LocationId
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_LifeStatus
+  name: LifeStatus
+  nameWithType: CharacterStateUpdateDto.LifeStatus
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.LifeStatus
+- uid: System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterStatus}
+  commentId: T:System.Nullable{Gadema.Core.Models.Writing.Characters.CharacterStatus}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Models.Writing.Characters.CharacterStatus.html
+  name: CharacterStatus?
+  nameWithType: CharacterStatus?
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStatus?
+  spec.csharp:
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterStatus
+    name: CharacterStatus
+    href: Gadema.Core.Models.Writing.Characters.CharacterStatus.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterStatus
+    name: CharacterStatus
+    href: Gadema.Core.Models.Writing.Characters.CharacterStatus.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_Note
+  name: Note
+  nameWithType: CharacterStateUpdateDto.Note
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.Note
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId*
+  commentId: Overload:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html#Gadema_Core_Dtos_Writing_Characters_CharacterStateUpdateDto_TriggerSceneId
+  name: TriggerSceneId
+  nameWithType: CharacterStateUpdateDto.TriggerSceneId
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.TriggerSceneId

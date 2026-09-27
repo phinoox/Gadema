@@ -1,0 +1,305 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+  commentId: T:Gadema.Core.Models.Writing.Narrative.WritingTag
+  id: WritingTag
+  parent: Gadema.Core.Models.Writing.Narrative
+  children:
+  - Gadema.Core.Models.Writing.Narrative.WritingTag.Dark
+  - Gadema.Core.Models.Writing.Narrative.WritingTag.Fantasy
+  - Gadema.Core.Models.Writing.Narrative.WritingTag.Horror
+  - Gadema.Core.Models.Writing.Narrative.WritingTag.SciFi
+  langs:
+  - csharp
+  - vb
+  name: WritingTag
+  nameWithType: WritingTag
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: WritingTag
+    path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Defines tags used for categorizing and filtering writing content (e.g., genres or themes).
+  example: []
+  syntax:
+    content: >-
+      [ModuleIndex(1)]
+
+      public enum WritingTag
+    content.vb: >-
+      <ModuleIndex(1)>
+
+      Public Enum WritingTag
+  extensionMethods:
+  - Gadema.Core.Models.Writing.Narrative.WritingTag.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  attributes:
+  - type: Gadema.Core.Utils.ModuleIndexAttribute
+    ctor: Gadema.Core.Utils.ModuleIndexAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag.Fantasy
+  commentId: F:Gadema.Core.Models.Writing.Narrative.WritingTag.Fantasy
+  id: Fantasy
+  parent: Gadema.Core.Models.Writing.Narrative.WritingTag
+  langs:
+  - csharp
+  - vb
+  name: Fantasy
+  nameWithType: WritingTag.Fantasy
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag.Fantasy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Fantasy
+    path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: High fantasy or magical settings.
+  example: []
+  syntax:
+    content: Fantasy = 0
+    return:
+      type: Gadema.Core.Models.Writing.Narrative.WritingTag
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag.SciFi
+  commentId: F:Gadema.Core.Models.Writing.Narrative.WritingTag.SciFi
+  id: SciFi
+  parent: Gadema.Core.Models.Writing.Narrative.WritingTag
+  langs:
+  - csharp
+  - vb
+  name: SciFi
+  nameWithType: WritingTag.SciFi
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag.SciFi
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SciFi
+    path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Science fiction or futuristic settings.
+  example: []
+  syntax:
+    content: SciFi = 1
+    return:
+      type: Gadema.Core.Models.Writing.Narrative.WritingTag
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag.Horror
+  commentId: F:Gadema.Core.Models.Writing.Narrative.WritingTag.Horror
+  id: Horror
+  parent: Gadema.Core.Models.Writing.Narrative.WritingTag
+  langs:
+  - csharp
+  - vb
+  name: Horror
+  nameWithType: WritingTag.Horror
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag.Horror
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Horror
+    path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Horror and suspenseful elements.
+  example: []
+  syntax:
+    content: Horror = 2
+    return:
+      type: Gadema.Core.Models.Writing.Narrative.WritingTag
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag.Dark
+  commentId: F:Gadema.Core.Models.Writing.Narrative.WritingTag.Dark
+  id: Dark
+  parent: Gadema.Core.Models.Writing.Narrative.WritingTag
+  langs:
+  - csharp
+  - vb
+  name: Dark
+  nameWithType: WritingTag.Dark
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag.Dark
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Dark
+    path: src/Gadema.Core/Models/Writing/Narrative/WritingMetaTags.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Dark fantasy or grimdark themes.
+  example: []
+  syntax:
+    content: Dark = 3
+    return:
+      type: Gadema.Core.Models.Writing.Narrative.WritingTag
+references:
+- uid: Gadema.Core.Models.Writing.Narrative
+  commentId: N:Gadema.Core.Models.Writing.Narrative
+  name: Gadema.Core.Models.Writing.Narrative
+  nameWithType: Gadema.Core.Models.Writing.Narrative
+  fullName: Gadema.Core.Models.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<WritingTag>(WritingTag)
+  nameWithType: EnumGuidExtensions.ToGuid<WritingTag>(WritingTag)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Writing.Narrative.WritingTag>(Gadema.Core.Models.Writing.Narrative.WritingTag)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of WritingTag)(WritingTag)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Writing.Narrative.WritingTag)(Gadema.Core.Models.Writing.Narrative.WritingTag)
+  name.vb: ToGuid(Of WritingTag)(WritingTag)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Narrative.WritingTag)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+    name: WritingTag
+    href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+    name: WritingTag
+    href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Narrative.WritingTag)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+    name: WritingTag
+    href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+    name: WritingTag
+    href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+  commentId: T:Gadema.Core.Models.Writing.Narrative.WritingTag
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  name: WritingTag
+  nameWithType: WritingTag
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag

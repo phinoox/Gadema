@@ -1,0 +1,104 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Access
+  commentId: N:Gadema.Core.Dtos.Access
+  id: Gadema.Core.Dtos.Access
+  children:
+  - Gadema.Core.Dtos.Access.AuthResponse
+  - Gadema.Core.Dtos.Access.RecoveryCodesDto
+  - Gadema.Core.Dtos.Access.RecoveryCodesResponseDto
+  - Gadema.Core.Dtos.Access.RegisterDto
+  - Gadema.Core.Dtos.Access.SignInDto
+  - Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto
+  - Gadema.Core.Dtos.Access.UserProviderLinkResponseDto
+  - Gadema.Core.Dtos.Access.UserResponse
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Access
+  nameWithType: Gadema.Core.Dtos.Access
+  fullName: Gadema.Core.Dtos.Access
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Access.UserResponse
+  commentId: T:Gadema.Core.Dtos.Access.UserResponse
+  parent: Gadema.Core.Dtos.Access
+  href: Gadema.Core.Dtos.Access.UserResponse.html
+  name: UserResponse
+  nameWithType: UserResponse
+  fullName: Gadema.Core.Dtos.Access.UserResponse
+- uid: Gadema.Core.Dtos.Access.AuthResponse
+  commentId: T:Gadema.Core.Dtos.Access.AuthResponse
+  href: Gadema.Core.Dtos.Access.AuthResponse.html
+  name: AuthResponse
+  nameWithType: AuthResponse
+  fullName: Gadema.Core.Dtos.Access.AuthResponse
+- uid: Gadema.Core.Dtos.Access.RecoveryCodesDto
+  commentId: T:Gadema.Core.Dtos.Access.RecoveryCodesDto
+  href: Gadema.Core.Dtos.Access.RecoveryCodesDto.html
+  name: RecoveryCodesDto
+  nameWithType: RecoveryCodesDto
+  fullName: Gadema.Core.Dtos.Access.RecoveryCodesDto
+- uid: Gadema.Core.Dtos.Access.RecoveryCodesResponseDto
+  commentId: T:Gadema.Core.Dtos.Access.RecoveryCodesResponseDto
+  href: Gadema.Core.Dtos.Access.RecoveryCodesResponseDto.html
+  name: RecoveryCodesResponseDto
+  nameWithType: RecoveryCodesResponseDto
+  fullName: Gadema.Core.Dtos.Access.RecoveryCodesResponseDto
+- uid: Gadema.Core.Dtos.Access.RegisterDto
+  commentId: T:Gadema.Core.Dtos.Access.RegisterDto
+  parent: Gadema.Core.Dtos.Access
+  href: Gadema.Core.Dtos.Access.RegisterDto.html
+  name: RegisterDto
+  nameWithType: RegisterDto
+  fullName: Gadema.Core.Dtos.Access.RegisterDto
+- uid: Gadema.Core.Dtos.Access.SignInDto
+  commentId: T:Gadema.Core.Dtos.Access.SignInDto
+  parent: Gadema.Core.Dtos.Access
+  href: Gadema.Core.Dtos.Access.SignInDto.html
+  name: SignInDto
+  nameWithType: SignInDto
+  fullName: Gadema.Core.Dtos.Access.SignInDto
+- uid: Gadema.Core.Dtos.Access.UserProviderLinkResponseDto
+  commentId: T:Gadema.Core.Dtos.Access.UserProviderLinkResponseDto
+  href: Gadema.Core.Dtos.Access.UserProviderLinkResponseDto.html
+  name: UserProviderLinkResponseDto
+  nameWithType: UserProviderLinkResponseDto
+  fullName: Gadema.Core.Dtos.Access.UserProviderLinkResponseDto
+- uid: Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto
+  commentId: T:Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto
+  href: Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto.html
+  name: UserProviderLinkListResponseDto
+  nameWithType: UserProviderLinkListResponseDto
+  fullName: Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto
+- uid: Gadema.Core.Dtos.Access
+  commentId: N:Gadema.Core.Dtos.Access
+  name: Gadema.Core.Dtos.Access
+  nameWithType: Gadema.Core.Dtos.Access
+  fullName: Gadema.Core.Dtos.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Access
+    name: Access

@@ -1,0 +1,557 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  id: ProjectMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  children:
+  - Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+  - Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+  - Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+  langs:
+  - csharp
+  - vb
+  name: ProjectMetaInfoUpdateData
+  nameWithType: ProjectMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectMetaInfoUpdateData
+    path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+    startLine: 122
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Infrastructure
+  summary: Data required for updating project-specific meta-information.
+  example: []
+  syntax:
+    content: 'public class ProjectMetaInfoUpdateData : BaseMetaInfoUpdateData'
+    content.vb: Public Class ProjectMetaInfoUpdateData Inherits BaseMetaInfoUpdateData
+  inheritance:
+  - System.Object
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  inheritedMembers:
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Title
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Slug
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.ShortDesc
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.IsPublic
+  - Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.TagIds
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+  id: ProjectStatus
+  parent: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  langs:
+  - csharp
+  - vb
+  name: ProjectStatus
+  nameWithType: ProjectMetaInfoUpdateData.ProjectStatus
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectStatus
+    path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+    startLine: 127
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Infrastructure
+  summary: The updated status of the project.
+  example: []
+  syntax:
+    content: public ProjectStatusEnum? ProjectStatus { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Enums.ProjectStatusEnum}
+    content.vb: Public Property ProjectStatus As ProjectStatusEnum?
+  overload: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus*
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+  id: Visibility
+  parent: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  langs:
+  - csharp
+  - vb
+  name: Visibility
+  nameWithType: ProjectMetaInfoUpdateData.Visibility
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Visibility
+    path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+    startLine: 132
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Infrastructure
+  summary: The updated visibility level for the project.
+  example: []
+  syntax:
+    content: public ProjectVisibilityEnum? Visibility { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Enums.ProjectVisibilityEnum}
+    content.vb: Public Property Visibility As ProjectVisibilityEnum?
+  overload: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility*
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+  id: ViewMode
+  parent: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+  langs:
+  - csharp
+  - vb
+  name: ViewMode
+  nameWithType: ProjectMetaInfoUpdateData.ViewMode
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ViewMode
+    path: src/Gadema.Core/Dtos/Base/Infrastructure/CommonDto.cs
+    startLine: 137
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Base.Infrastructure
+  summary: The updated view mode setting for the project.
+  example: []
+  syntax:
+    content: public ViewModeEnum? ViewMode { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Models.Base.Enums.ViewModeEnum}
+    content.vb: Public Property ViewMode As ViewModeEnum?
+  overload: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode*
+references:
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Title
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Title
+  parent: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_Title
+  name: Title
+  nameWithType: BaseMetaInfoUpdateData.Title
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Title
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Slug
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Slug
+  parent: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_Slug
+  name: Slug
+  nameWithType: BaseMetaInfoUpdateData.Slug
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.Slug
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.ShortDesc
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.ShortDesc
+  parent: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_ShortDesc
+  name: ShortDesc
+  nameWithType: BaseMetaInfoUpdateData.ShortDesc
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.ShortDesc
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.IsPublic
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.IsPublic
+  parent: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_IsPublic
+  name: IsPublic
+  nameWithType: BaseMetaInfoUpdateData.IsPublic
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.IsPublic
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.TagIds
+  commentId: P:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.TagIds
+  parent: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_TagIds
+  name: TagIds
+  nameWithType: BaseMetaInfoUpdateData.TagIds
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.TagIds
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus*
+  commentId: Overload:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+  href: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_ProjectMetaInfoUpdateData_ProjectStatus
+  name: ProjectStatus
+  nameWithType: ProjectMetaInfoUpdateData.ProjectStatus
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ProjectStatus
+- uid: System.Nullable{Gadema.Core.Enums.ProjectStatusEnum}
+  commentId: T:System.Nullable{Gadema.Core.Enums.ProjectStatusEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Enums.ProjectStatusEnum.html
+  name: ProjectStatusEnum?
+  nameWithType: ProjectStatusEnum?
+  fullName: Gadema.Core.Enums.ProjectStatusEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    href: Gadema.Core.Enums.ProjectStatusEnum.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility*
+  commentId: Overload:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+  href: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_ProjectMetaInfoUpdateData_Visibility
+  name: Visibility
+  nameWithType: ProjectMetaInfoUpdateData.Visibility
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.Visibility
+- uid: System.Nullable{Gadema.Core.Enums.ProjectVisibilityEnum}
+  commentId: T:System.Nullable{Gadema.Core.Enums.ProjectVisibilityEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Enums.ProjectVisibilityEnum.html
+  name: ProjectVisibilityEnum?
+  nameWithType: ProjectVisibilityEnum?
+  fullName: Gadema.Core.Enums.ProjectVisibilityEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Enums.ProjectVisibilityEnum
+    name: ProjectVisibilityEnum
+    href: Gadema.Core.Enums.ProjectVisibilityEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Enums.ProjectVisibilityEnum
+    name: ProjectVisibilityEnum
+    href: Gadema.Core.Enums.ProjectVisibilityEnum.html
+  - name: '?'
+- uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode*
+  commentId: Overload:Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+  href: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.html#Gadema_Core_Dtos_Base_Infrastructure_ProjectMetaInfoUpdateData_ViewMode
+  name: ViewMode
+  nameWithType: ProjectMetaInfoUpdateData.ViewMode
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData.ViewMode
+- uid: System.Nullable{Gadema.Core.Models.Base.Enums.ViewModeEnum}
+  commentId: T:System.Nullable{Gadema.Core.Models.Base.Enums.ViewModeEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  name: ViewModeEnum?
+  nameWithType: ViewModeEnum?
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  - name: '?'

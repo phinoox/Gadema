@@ -1,0 +1,351 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  id: LocationType
+  parent: Gadema.Core.Models.Writing.WorldBuilding
+  children:
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.City
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Country
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Custom
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Landmark
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Region
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Village
+  langs:
+  - csharp
+  - vb
+  name: LocationType
+  nameWithType: LocationType
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LocationType
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 63
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: Defines the hierarchical classification levels for world locations.
+  example: []
+  syntax:
+    content: public enum LocationType
+    content.vb: Public Enum LocationType
+  extensionMethods:
+  - Gadema.Core.Models.Writing.WorldBuilding.LocationType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Country
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.Country
+  id: Country
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: Country
+  nameWithType: LocationType.Country
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Country
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Country
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 66
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A large-scale political or geographic entity.
+  example: []
+  syntax:
+    content: Country = 0
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Region
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.Region
+  id: Region
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: Region
+  nameWithType: LocationType.Region
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Region
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Region
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 68
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A sub-division of a country.
+  example: []
+  syntax:
+    content: Region = 1
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.City
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.City
+  id: City
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: City
+  nameWithType: LocationType.City
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.City
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: City
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 70
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A populated urban center.
+  example: []
+  syntax:
+    content: City = 2
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Village
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.Village
+  id: Village
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: Village
+  nameWithType: LocationType.Village
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Village
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Village
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 72
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A small settlement or community.
+  example: []
+  syntax:
+    content: Village = 3
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Landmark
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.Landmark
+  id: Landmark
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: Landmark
+  nameWithType: LocationType.Landmark
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Landmark
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Landmark
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 74
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A landmark site or point of interest.
+  example: []
+  syntax:
+    content: Landmark = 4
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Custom
+  commentId: F:Gadema.Core.Models.Writing.WorldBuilding.LocationType.Custom
+  id: Custom
+  parent: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: LocationType.Custom
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Custom
+    path: src/Gadema.Core/Models/Writing/WorldBuilding/WorldLocation.cs
+    startLine: 76
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.WorldBuilding
+  summary: A user-defined location type.
+  example: []
+  syntax:
+    content: Custom = 5
+    return:
+      type: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+references:
+- uid: Gadema.Core.Models.Writing.WorldBuilding
+  commentId: N:Gadema.Core.Models.Writing.WorldBuilding
+  name: Gadema.Core.Models.Writing.WorldBuilding
+  nameWithType: Gadema.Core.Models.Writing.WorldBuilding
+  fullName: Gadema.Core.Models.Writing.WorldBuilding
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.WorldBuilding
+    name: WorldBuilding
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.WorldBuilding
+    name: WorldBuilding
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<LocationType>(LocationType)
+  nameWithType: EnumGuidExtensions.ToGuid<LocationType>(LocationType)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Writing.WorldBuilding.LocationType>(Gadema.Core.Models.Writing.WorldBuilding.LocationType)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of LocationType)(LocationType)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Writing.WorldBuilding.LocationType)(Gadema.Core.Models.Writing.WorldBuilding.LocationType)
+  name.vb: ToGuid(Of LocationType)(LocationType)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.WorldBuilding.LocationType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    name: LocationType
+    href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    name: LocationType
+    href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.WorldBuilding.LocationType)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    name: LocationType
+    href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    name: LocationType
+    href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.LocationType
+  parent: Gadema.Core.Models.Writing.WorldBuilding
+  href: Gadema.Core.Models.Writing.WorldBuilding.LocationType.html
+  name: LocationType
+  nameWithType: LocationType
+  fullName: Gadema.Core.Models.Writing.WorldBuilding.LocationType

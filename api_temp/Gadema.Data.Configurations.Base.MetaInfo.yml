@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Base.MetaInfo
+  commentId: N:Gadema.Data.Configurations.Base.MetaInfo
+  id: Gadema.Data.Configurations.Base.MetaInfo
+  children:
+  - Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Base.MetaInfo
+  nameWithType: Gadema.Data.Configurations.Base.MetaInfo
+  fullName: Gadema.Data.Configurations.Base.MetaInfo
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration.html
+  name: ContentTagRelationEntityTypeConfiguration
+  nameWithType: ContentTagRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration

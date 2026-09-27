@@ -1,0 +1,657 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  id: IdentityDefinitionUpdateDto
+  parent: Gadema.Core.Dtos.Identity
+  children:
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+  - Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+  langs:
+  - csharp
+  - vb
+  name: IdentityDefinitionUpdateDto
+  nameWithType: IdentityDefinitionUpdateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IdentityDefinitionUpdateDto
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 48
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: Data transfer object for updating an existing identity definition.
+  example: []
+  syntax:
+    content: public class IdentityDefinitionUpdateDto
+    content.vb: Public Class IdentityDefinitionUpdateDto
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: IdentityDefinitionUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 53
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: The identity payload used by the sync strategy to update meta-information (e.g., Title, Slug).
+  example: []
+  syntax:
+    content: public BaseMetaInfoUpdateData? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    content.vb: Public Property ContentMetaInfo As BaseMetaInfoUpdateData
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo*
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+  id: DataType
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: DataType
+  nameWithType: IdentityDefinitionUpdateDto.DataType
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DataType
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 58
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: The updated data type for this definition.
+  example: []
+  syntax:
+    content: public IdentityDataTypeEnum? DataType { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum}
+    content.vb: Public Property DataType As IdentityDataTypeEnum?
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType*
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+  id: Name
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IdentityDefinitionUpdateDto.Name
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Name
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 63
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: The updated display name of the definition.
+  example: []
+  syntax:
+    content: public string? Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name*
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+  id: Description
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: IdentityDefinitionUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Description
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 68
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: The updated description of the definition.
+  example: []
+  syntax:
+    content: public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description*
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+  id: IsRequired
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: IsRequired
+  nameWithType: IdentityDefinitionUpdateDto.IsRequired
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsRequired
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 73
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: Whether to update the requirement status.
+  example: []
+  syntax:
+    content: public bool? IsRequired { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property IsRequired As Boolean?
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired*
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive
+  commentId: P:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive
+  id: IsActive
+  parent: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: IsActive
+  nameWithType: IdentityDefinitionUpdateDto.IsActive
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsActive
+    path: src/Gadema.Core/Dtos/Identity/IdentityDefinitionDtos.cs
+    startLine: 78
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Identity
+  summary: Whether to update the active status of this definition.
+  example: []
+  syntax:
+    content: public bool? IsActive { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}
+    content.vb: Public Property IsActive As Boolean?
+  overload: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive*
+references:
+- uid: Gadema.Core.Dtos.Identity
+  commentId: N:Gadema.Core.Dtos.Identity
+  name: Gadema.Core.Dtos.Identity
+  nameWithType: Gadema.Core.Dtos.Identity
+  fullName: Gadema.Core.Dtos.Identity
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: IdentityDefinitionUpdateDto.ContentMetaInfo
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.ContentMetaInfo
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_DataType
+  name: DataType
+  nameWithType: IdentityDefinitionUpdateDto.DataType
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.DataType
+- uid: System.Nullable{Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum}
+  commentId: T:System.Nullable{Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum}
+  parent: System
+  definition: System.Nullable`1
+  href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
+  name: IdentityDataTypeEnum?
+  nameWithType: IdentityDataTypeEnum?
+  fullName: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum?
+  spec.csharp:
+  - uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+    name: IdentityDataTypeEnum
+    href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
+  - name: '?'
+  spec.vb:
+  - uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+    name: IdentityDataTypeEnum
+    href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_Name
+  name: Name
+  nameWithType: IdentityDefinitionUpdateDto.Name
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_Description
+  name: Description
+  nameWithType: IdentityDefinitionUpdateDto.Description
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.Description
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_IsRequired
+  name: IsRequired
+  nameWithType: IdentityDefinitionUpdateDto.IsRequired
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsRequired
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive*
+  commentId: Overload:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html#Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_IsActive
+  name: IsActive
+  nameWithType: IdentityDefinitionUpdateDto.IsActive
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.IsActive

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Middleware
+  commentId: N:Gadema.Api.Middleware
+  id: Gadema.Api.Middleware
+  children:
+  - Gadema.Api.Middleware.AuthMiddleware
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Middleware
+  nameWithType: Gadema.Api.Middleware
+  fullName: Gadema.Api.Middleware
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Middleware.AuthMiddleware
+  commentId: T:Gadema.Api.Middleware.AuthMiddleware
+  href: Gadema.Api.Middleware.AuthMiddleware.html
+  name: AuthMiddleware
+  nameWithType: AuthMiddleware
+  fullName: Gadema.Api.Middleware.AuthMiddleware

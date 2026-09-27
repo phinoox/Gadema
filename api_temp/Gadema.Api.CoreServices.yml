@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices
+  commentId: N:Gadema.Api.CoreServices
+  id: Gadema.Api.CoreServices
+  children:
+  - Gadema.Api.CoreServices.CoreServicesProvider
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.CoreServices
+  nameWithType: Gadema.Api.CoreServices
+  fullName: Gadema.Api.CoreServices
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.CoreServices.CoreServicesProvider
+  commentId: T:Gadema.Api.CoreServices.CoreServicesProvider
+  parent: Gadema.Api.CoreServices
+  href: Gadema.Api.CoreServices.CoreServicesProvider.html
+  name: CoreServicesProvider
+  nameWithType: CoreServicesProvider
+  fullName: Gadema.Api.CoreServices.CoreServicesProvider
+- uid: Gadema.Api.CoreServices
+  commentId: N:Gadema.Api.CoreServices
+  name: Gadema.Api.CoreServices
+  nameWithType: Gadema.Api.CoreServices
+  fullName: Gadema.Api.CoreServices
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices

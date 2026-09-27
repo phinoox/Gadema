@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Base.MetaInfo
+  commentId: N:Gadema.Api.Controllers.Base.MetaInfo
+  id: Gadema.Api.Controllers.Base.MetaInfo
+  children:
+  - Gadema.Api.Controllers.Base.MetaInfo.CommentsController
+  - Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController
+  - Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController
+  - Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Base.MetaInfo
+  nameWithType: Gadema.Api.Controllers.Base.MetaInfo
+  fullName: Gadema.Api.Controllers.Base.MetaInfo
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Base.MetaInfo.CommentsController
+  commentId: T:Gadema.Api.Controllers.Base.MetaInfo.CommentsController
+  href: Gadema.Api.Controllers.Base.MetaInfo.CommentsController.html
+  name: CommentsController
+  nameWithType: CommentsController
+  fullName: Gadema.Api.Controllers.Base.MetaInfo.CommentsController
+- uid: Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController
+  commentId: T:Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController
+  href: Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController.html
+  name: ExternalReferencesController
+  nameWithType: ExternalReferencesController
+  fullName: Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController
+- uid: Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController
+  commentId: T:Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController
+  href: Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController.html
+  name: MetaTagsController
+  nameWithType: MetaTagsController
+  fullName: Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController
+- uid: Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController
+  commentId: T:Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController
+  href: Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController.html
+  name: ReviewStatusController
+  nameWithType: ReviewStatusController
+  fullName: Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController

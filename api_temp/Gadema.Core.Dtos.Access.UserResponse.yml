@@ -1,0 +1,432 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Access.UserResponse
+  commentId: T:Gadema.Core.Dtos.Access.UserResponse
+  id: UserResponse
+  parent: Gadema.Core.Dtos.Access
+  children:
+  - Gadema.Core.Dtos.Access.UserResponse.Email
+  - Gadema.Core.Dtos.Access.UserResponse.Id
+  - Gadema.Core.Dtos.Access.UserResponse.Name
+  langs:
+  - csharp
+  - vb
+  name: UserResponse
+  nameWithType: UserResponse
+  fullName: Gadema.Core.Dtos.Access.UserResponse
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UserResponse
+    path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+    startLine: 5
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Access
+  summary: Represents the identity information of a user returned after successful authentication.
+  example: []
+  syntax:
+    content: public class UserResponse
+    content.vb: Public Class UserResponse
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Dtos.Access.UserResponse.Id
+  commentId: P:Gadema.Core.Dtos.Access.UserResponse.Id
+  id: Id
+  parent: Gadema.Core.Dtos.Access.UserResponse
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserResponse.Id
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Access
+  summary: The unique identifier for the user.
+  example: []
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Gadema.Core.Dtos.Access.UserResponse.Id*
+- uid: Gadema.Core.Dtos.Access.UserResponse.Name
+  commentId: P:Gadema.Core.Dtos.Access.UserResponse.Name
+  id: Name
+  parent: Gadema.Core.Dtos.Access.UserResponse
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: UserResponse.Name
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Name
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Name
+    path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Access
+  summary: The full name of the user.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Gadema.Core.Dtos.Access.UserResponse.Name*
+- uid: Gadema.Core.Dtos.Access.UserResponse.Email
+  commentId: P:Gadema.Core.Dtos.Access.UserResponse.Email
+  id: Email
+  parent: Gadema.Core.Dtos.Access.UserResponse
+  langs:
+  - csharp
+  - vb
+  name: Email
+  nameWithType: UserResponse.Email
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Email
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Email
+    path: src/Gadema.Core/Dtos/Access/AuthResponse.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Dtos.Access
+  summary: The primary email address associated with the account.
+  example: []
+  syntax:
+    content: public string Email { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Email As String
+  overload: Gadema.Core.Dtos.Access.UserResponse.Email*
+references:
+- uid: Gadema.Core.Dtos.Access
+  commentId: N:Gadema.Core.Dtos.Access
+  name: Gadema.Core.Dtos.Access
+  nameWithType: Gadema.Core.Dtos.Access
+  fullName: Gadema.Core.Dtos.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Access
+    name: Access
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Access.UserResponse.Id*
+  commentId: Overload:Gadema.Core.Dtos.Access.UserResponse.Id
+  href: Gadema.Core.Dtos.Access.UserResponse.html#Gadema_Core_Dtos_Access_UserResponse_Id
+  name: Id
+  nameWithType: UserResponse.Id
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Dtos.Access.UserResponse.Name*
+  commentId: Overload:Gadema.Core.Dtos.Access.UserResponse.Name
+  href: Gadema.Core.Dtos.Access.UserResponse.html#Gadema_Core_Dtos_Access_UserResponse_Name
+  name: Name
+  nameWithType: UserResponse.Name
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Name
+- uid: Gadema.Core.Dtos.Access.UserResponse.Email*
+  commentId: Overload:Gadema.Core.Dtos.Access.UserResponse.Email
+  href: Gadema.Core.Dtos.Access.UserResponse.html#Gadema_Core_Dtos_Access_UserResponse_Email
+  name: Email
+  nameWithType: UserResponse.Email
+  fullName: Gadema.Core.Dtos.Access.UserResponse.Email

@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Writing.Narrative
+  commentId: N:Gadema.Api.Controllers.Writing.Narrative
+  id: Gadema.Api.Controllers.Writing.Narrative
+  children:
+  - Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController
+  - Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController
+  - Gadema.Api.Controllers.Writing.Narrative.ScenesController
+  - Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController
+  - Gadema.Api.Controllers.Writing.Narrative.StoryChapterController
+  - Gadema.Api.Controllers.Writing.Narrative.StoryController
+  - Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Writing.Narrative
+  nameWithType: Gadema.Api.Controllers.Writing.Narrative
+  fullName: Gadema.Api.Controllers.Writing.Narrative
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController
+  href: Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController.html
+  name: LoreEntriesController
+  nameWithType: LoreEntriesController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController
+- uid: Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController
+  href: Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController.html
+  name: OutlineSectionController
+  nameWithType: OutlineSectionController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController
+- uid: Gadema.Api.Controllers.Writing.Narrative.ScenesController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.ScenesController
+  href: Gadema.Api.Controllers.Writing.Narrative.ScenesController.html
+  name: ScenesController
+  nameWithType: ScenesController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.ScenesController
+- uid: Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController
+  href: Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController.html
+  name: StoryBeatsController
+  nameWithType: StoryBeatsController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController
+- uid: Gadema.Api.Controllers.Writing.Narrative.StoryChapterController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.StoryChapterController
+  href: Gadema.Api.Controllers.Writing.Narrative.StoryChapterController.html
+  name: StoryChapterController
+  nameWithType: StoryChapterController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.StoryChapterController
+- uid: Gadema.Api.Controllers.Writing.Narrative.StoryController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.StoryController
+  href: Gadema.Api.Controllers.Writing.Narrative.StoryController.html
+  name: StoryController
+  nameWithType: StoryController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.StoryController
+- uid: Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController
+  commentId: T:Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController
+  href: Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController.html
+  name: StoryOutlinesController
+  nameWithType: StoryOutlinesController
+  fullName: Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController

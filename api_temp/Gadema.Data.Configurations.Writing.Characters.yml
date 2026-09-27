@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Writing.Characters
+  commentId: N:Gadema.Data.Configurations.Writing.Characters
+  id: Gadema.Data.Configurations.Writing.Characters
+  children:
+  - Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration
+  - Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration
+  - Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration
+  - Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Writing.Characters
+  nameWithType: Gadema.Data.Configurations.Writing.Characters
+  fullName: Gadema.Data.Configurations.Writing.Characters
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration.html
+  name: CharacterEntityTypeConfiguration
+  nameWithType: CharacterEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration.html
+  name: CharacterRelationEntityTypeConfiguration
+  nameWithType: CharacterRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.html
+  name: CharacterStateEntityTypeConfiguration
+  nameWithType: CharacterStateEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration.html
+  name: CharacterStoryProfileEntityTypeConfiguration
+  nameWithType: CharacterStoryProfileEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration

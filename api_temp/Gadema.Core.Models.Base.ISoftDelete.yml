@@ -1,0 +1,119 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.ISoftDelete
+  commentId: T:Gadema.Core.Models.Base.ISoftDelete
+  id: ISoftDelete
+  parent: Gadema.Core.Models.Base
+  children:
+  - Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+  langs:
+  - csharp
+  - vb
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Gadema.Core.Models.Base.ISoftDelete
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/ISoftDelete.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ISoftDelete
+    path: src/Gadema.Core/Models/Base/ISoftDelete.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base
+  summary: >-
+    Defines a contract for entities that support soft deletion, allowing them to be
+
+    marked as deleted without being physically removed from the database.
+  example: []
+  syntax:
+    content: public interface ISoftDelete
+    content.vb: Public Interface ISoftDelete
+- uid: Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+  commentId: P:Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+  id: IsDeleted
+  parent: Gadema.Core.Models.Base.ISoftDelete
+  langs:
+  - csharp
+  - vb
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/ISoftDelete.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsDeleted
+    path: src/Gadema.Core/Models/Base/ISoftDelete.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base
+  summary: Gets or sets a value indicating whether the entity has been logically deleted.
+  example: []
+  syntax:
+    content: bool IsDeleted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsDeleted As Boolean
+  overload: Gadema.Core.Models.Base.ISoftDelete.IsDeleted*
+references:
+- uid: Gadema.Core.Models.Base
+  commentId: N:Gadema.Core.Models.Base
+  name: Gadema.Core.Models.Base
+  nameWithType: Gadema.Core.Models.Base
+  fullName: Gadema.Core.Models.Base
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+- uid: Gadema.Core.Models.Base.ISoftDelete.IsDeleted*
+  commentId: Overload:Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+  href: Gadema.Core.Models.Base.ISoftDelete.html#Gadema_Core_Models_Base_ISoftDelete_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDelete.IsDeleted
+  fullName: Gadema.Core.Models.Base.ISoftDelete.IsDeleted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,0 +1,251 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  id: IPermissionEngine
+  parent: Gadema.Api.CoreServices.Interfaces
+  children:
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  langs:
+  - csharp
+  - vb
+  name: IPermissionEngine
+  nameWithType: IPermissionEngine
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IPermissionEngine
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: public interface IPermissionEngine
+    content.vb: Public Interface IPermissionEngine
+  derivedClasses:
+  - Gadema.Api.Services.Authorization.PermissionEngine
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  id: CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  parent: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  nameWithType: IPermissionEngine.CheckAccessAsync(Guid, Guid, ProjectMemberRoleEnum)
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid, System.Guid, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CheckAccessAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: Task<AccessResult> CheckAccessAsync(Guid userId, Guid projectId, ProjectMemberRoleEnum minRole)
+    parameters:
+    - id: userId
+      type: System.Guid
+    - id: projectId
+      type: System.Guid
+    - id: minRole
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+    content.vb: Function CheckAccessAsync(userId As Guid, projectId As Guid, minRole As ProjectMemberRoleEnum) As Task(Of AccessResult)
+  overload: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync*
+references:
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_CheckAccessAsync_System_Guid_System_Guid_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  name: CheckAccessAsync
+  nameWithType: IPermissionEngine.CheckAccessAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  commentId: T:Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  parent: Gadema.Core.Models.Access
+  href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  name: ProjectMemberRoleEnum
+  nameWithType: ProjectMemberRoleEnum
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<AccessResult>
+  nameWithType: Task<AccessResult>
+  fullName: System.Threading.Tasks.Task<Gadema.Api.CoreServices.Interfaces.AccessResult>
+  nameWithType.vb: Task(Of AccessResult)
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Api.CoreServices.Interfaces.AccessResult)
+  name.vb: Task(Of AccessResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+    name: AccessResult
+    href: Gadema.Api.CoreServices.Interfaces.AccessResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+    name: AccessResult
+    href: Gadema.Api.CoreServices.Interfaces.AccessResult.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Access
+  commentId: N:Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  nameWithType: Gadema.Core.Models.Access
+  fullName: Gadema.Core.Models.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

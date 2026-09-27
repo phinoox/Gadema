@@ -1,0 +1,69 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Tasks
+  commentId: N:Gadema.Api.Services.Tasks
+  id: Gadema.Api.Services.Tasks
+  children:
+  - Gadema.Api.Services.Tasks.ProjectTaskCommentService
+  - Gadema.Api.Services.Tasks.ProjectTaskService
+  - Gadema.Api.Services.Tasks.ReviewStatusService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Tasks
+  nameWithType: Gadema.Api.Services.Tasks
+  fullName: Gadema.Api.Services.Tasks
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Tasks.ProjectTaskCommentService
+  commentId: T:Gadema.Api.Services.Tasks.ProjectTaskCommentService
+  parent: Gadema.Api.Services.Tasks
+  href: Gadema.Api.Services.Tasks.ProjectTaskCommentService.html
+  name: ProjectTaskCommentService
+  nameWithType: ProjectTaskCommentService
+  fullName: Gadema.Api.Services.Tasks.ProjectTaskCommentService
+- uid: Gadema.Api.Services.Tasks.ProjectTaskService
+  commentId: T:Gadema.Api.Services.Tasks.ProjectTaskService
+  parent: Gadema.Api.Services.Tasks
+  href: Gadema.Api.Services.Tasks.ProjectTaskService.html
+  name: ProjectTaskService
+  nameWithType: ProjectTaskService
+  fullName: Gadema.Api.Services.Tasks.ProjectTaskService
+- uid: Gadema.Api.Services.Tasks.ReviewStatusService
+  commentId: T:Gadema.Api.Services.Tasks.ReviewStatusService
+  parent: Gadema.Api.Services.Tasks
+  href: Gadema.Api.Services.Tasks.ReviewStatusService.html
+  name: ReviewStatusService
+  nameWithType: ReviewStatusService
+  fullName: Gadema.Api.Services.Tasks.ReviewStatusService
+- uid: Gadema.Api.Services.Tasks
+  commentId: N:Gadema.Api.Services.Tasks
+  name: Gadema.Api.Services.Tasks
+  nameWithType: Gadema.Api.Services.Tasks
+  fullName: Gadema.Api.Services.Tasks
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Tasks
+    name: Tasks
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Tasks
+    name: Tasks

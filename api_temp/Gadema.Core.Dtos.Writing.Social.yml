@@ -1,0 +1,74 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.Social
+  commentId: N:Gadema.Core.Dtos.Writing.Social
+  id: Gadema.Core.Dtos.Writing.Social
+  children:
+  - Gadema.Core.Dtos.Writing.Social.CommentResponseDto
+  - Gadema.Core.Dtos.Writing.Social.CreateCommentDto
+  - Gadema.Core.Dtos.Writing.Social.UpdateCommentDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Writing.Social
+  nameWithType: Gadema.Core.Dtos.Writing.Social
+  fullName: Gadema.Core.Dtos.Writing.Social
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Writing.Social.CreateCommentDto
+  commentId: T:Gadema.Core.Dtos.Writing.Social.CreateCommentDto
+  parent: Gadema.Core.Dtos.Writing.Social
+  href: Gadema.Core.Dtos.Writing.Social.CreateCommentDto.html
+  name: CreateCommentDto
+  nameWithType: CreateCommentDto
+  fullName: Gadema.Core.Dtos.Writing.Social.CreateCommentDto
+- uid: Gadema.Core.Dtos.Writing.Social.UpdateCommentDto
+  commentId: T:Gadema.Core.Dtos.Writing.Social.UpdateCommentDto
+  parent: Gadema.Core.Dtos.Writing.Social
+  href: Gadema.Core.Dtos.Writing.Social.UpdateCommentDto.html
+  name: UpdateCommentDto
+  nameWithType: UpdateCommentDto
+  fullName: Gadema.Core.Dtos.Writing.Social.UpdateCommentDto
+- uid: Gadema.Core.Dtos.Writing.Social.CommentResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Social.CommentResponseDto
+  href: Gadema.Core.Dtos.Writing.Social.CommentResponseDto.html
+  name: CommentResponseDto
+  nameWithType: CommentResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Social.CommentResponseDto
+- uid: Gadema.Core.Dtos.Writing.Social
+  commentId: N:Gadema.Core.Dtos.Writing.Social
+  name: Gadema.Core.Dtos.Writing.Social
+  nameWithType: Gadema.Core.Dtos.Writing.Social
+  fullName: Gadema.Core.Dtos.Writing.Social
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Social
+    name: Social
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Social
+    name: Social

@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Strategies
+  commentId: N:Gadema.Api.CoreServices.Strategies
+  id: Gadema.Api.CoreServices.Strategies
+  children:
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  - Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.CoreServices.Strategies
+  nameWithType: Gadema.Api.CoreServices.Strategies
+  fullName: Gadema.Api.CoreServices.Strategies
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  commentId: T:Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html
+  name: BaseIdentityStrategy<TUpdate, TMetaInfo>
+  nameWithType: BaseIdentityStrategy<TUpdate, TMetaInfo>
+  fullName: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy<TUpdate, TMetaInfo>
+  nameWithType.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+  fullName.vb: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+  name.vb: BaseIdentityStrategy(Of TUpdate, TMetaInfo)
+  spec.csharp:
+  - uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+    name: BaseIdentityStrategy
+    href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html
+  - name: <
+  - name: TUpdate
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+    name: BaseIdentityStrategy
+    href: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TUpdate
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: )
+- uid: Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+  commentId: T:Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+  href: Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy.html
+  name: ContentIdentityStrategy
+  nameWithType: ContentIdentityStrategy
+  fullName: Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+- uid: Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+  commentId: T:Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+  href: Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy.html
+  name: ProjectIdentityStrategy
+  nameWithType: ProjectIdentityStrategy
+  fullName: Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+- uid: Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+  commentId: T:Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+  href: Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy.html
+  name: ProjectSeriesIdentityStrategy
+  nameWithType: ProjectSeriesIdentityStrategy
+  fullName: Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+- uid: Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+  commentId: T:Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+  href: Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy.html
+  name: ProjectTaskIdentityStrategy
+  nameWithType: ProjectTaskIdentityStrategy
+  fullName: Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy

@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Identity
+  commentId: N:Gadema.Data.Configurations.Identity
+  id: Gadema.Data.Configurations.Identity
+  children:
+  - Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration
+  - Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration
+  - Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration
+  - Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration
+  - Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Identity
+  nameWithType: Gadema.Data.Configurations.Identity
+  fullName: Gadema.Data.Configurations.Identity
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration.html
+  name: CharacterIdentityEntityTypeConfiguration
+  nameWithType: CharacterIdentityEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.html
+  name: IdentityDefinitionEntityTypeConfiguration
+  nameWithType: IdentityDefinitionEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration.html
+  name: IdentityValueEntityTypeConfiguration
+  nameWithType: IdentityValueEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration.html
+  name: UserEntityTypeConfiguration
+  nameWithType: UserEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.html
+  name: UserProviderLinkEntityTypeConfiguration
+  nameWithType: UserProviderLinkEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration

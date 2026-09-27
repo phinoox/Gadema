@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Authorization.Strategies
+  commentId: N:Gadema.Api.Services.Authorization.Strategies
+  id: Gadema.Api.Services.Authorization.Strategies
+  children:
+  - Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Authorization.Strategies
+  nameWithType: Gadema.Api.Services.Authorization.Strategies
+  fullName: Gadema.Api.Services.Authorization.Strategies
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  commentId: T:Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+  href: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy.html
+  name: ProjectRoleStrategy
+  nameWithType: ProjectRoleStrategy
+  fullName: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy

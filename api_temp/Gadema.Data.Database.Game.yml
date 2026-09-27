@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Game
+  commentId: N:Gadema.Data.Database.Game
+  id: Gadema.Data.Database.Game
+  children:
+  - Gadema.Data.Database.Game.GameDbContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database.Game
+  nameWithType: Gadema.Data.Database.Game
+  fullName: Gadema.Data.Database.Game
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.Game.GameDbContext
+  commentId: T:Gadema.Data.Database.Game.GameDbContext
+  href: Gadema.Data.Database.Game.GameDbContext.html
+  name: GameDbContext
+  nameWithType: GameDbContext
+  fullName: Gadema.Data.Database.Game.GameDbContext

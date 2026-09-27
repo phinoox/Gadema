@@ -1,0 +1,97 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.Attributes
+  commentId: N:Gadema.Core.Models.Game.Attributes
+  id: Gadema.Core.Models.Game.Attributes
+  children:
+  - Gadema.Core.Models.Game.Attributes.AttributeDefinition
+  - Gadema.Core.Models.Game.Attributes.AttributeSet
+  - Gadema.Core.Models.Game.Attributes.CharacterAttributes
+  - Gadema.Core.Models.Game.Attributes.ClassTemplate
+  - Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute
+  - Gadema.Core.Models.Game.Attributes.GameTag
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Game.Attributes
+  nameWithType: Gadema.Core.Models.Game.Attributes
+  fullName: Gadema.Core.Models.Game.Attributes
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Game.Attributes.AttributeDefinition
+  commentId: T:Gadema.Core.Models.Game.Attributes.AttributeDefinition
+  parent: Gadema.Core.Models.Game.Attributes
+  href: Gadema.Core.Models.Game.Attributes.AttributeDefinition.html
+  name: AttributeDefinition
+  nameWithType: AttributeDefinition
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeDefinition
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet
+  commentId: T:Gadema.Core.Models.Game.Attributes.AttributeSet
+  parent: Gadema.Core.Models.Game.Attributes
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html
+  name: AttributeSet
+  nameWithType: AttributeSet
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet
+- uid: Gadema.Core.Models.Game.Attributes.CharacterAttributes
+  commentId: T:Gadema.Core.Models.Game.Attributes.CharacterAttributes
+  href: Gadema.Core.Models.Game.Attributes.CharacterAttributes.html
+  name: CharacterAttributes
+  nameWithType: CharacterAttributes
+  fullName: Gadema.Core.Models.Game.Attributes.CharacterAttributes
+- uid: Gadema.Core.Models.Game.Attributes.ClassTemplate
+  commentId: T:Gadema.Core.Models.Game.Attributes.ClassTemplate
+  parent: Gadema.Core.Models.Game.Attributes
+  href: Gadema.Core.Models.Game.Attributes.ClassTemplate.html
+  name: ClassTemplate
+  nameWithType: ClassTemplate
+  fullName: Gadema.Core.Models.Game.Attributes.ClassTemplate
+- uid: Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute
+  commentId: T:Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute
+  href: Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute.html
+  name: ClassTemplateAttribute
+  nameWithType: ClassTemplateAttribute
+  fullName: Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute
+- uid: Gadema.Core.Models.Game.Attributes.GameTag
+  commentId: T:Gadema.Core.Models.Game.Attributes.GameTag
+  parent: Gadema.Core.Models.Game.Attributes
+  href: Gadema.Core.Models.Game.Attributes.GameTag.html
+  name: GameTag
+  nameWithType: GameTag
+  fullName: Gadema.Core.Models.Game.Attributes.GameTag
+- uid: Gadema.Core.Models.Game.Attributes
+  commentId: N:Gadema.Core.Models.Game.Attributes
+  name: Gadema.Core.Models.Game.Attributes
+  nameWithType: Gadema.Core.Models.Game.Attributes
+  fullName: Gadema.Core.Models.Game.Attributes
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Attributes
+    name: Attributes

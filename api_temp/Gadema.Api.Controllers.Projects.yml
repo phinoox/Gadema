@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Projects
+  commentId: N:Gadema.Api.Controllers.Projects
+  id: Gadema.Api.Controllers.Projects
+  children:
+  - Gadema.Api.Controllers.Projects.ProjectController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Projects
+  nameWithType: Gadema.Api.Controllers.Projects
+  fullName: Gadema.Api.Controllers.Projects
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Projects.ProjectController
+  commentId: T:Gadema.Api.Controllers.Projects.ProjectController
+  href: Gadema.Api.Controllers.Projects.ProjectController.html
+  name: ProjectController
+  nameWithType: ProjectController
+  fullName: Gadema.Api.Controllers.Projects.ProjectController

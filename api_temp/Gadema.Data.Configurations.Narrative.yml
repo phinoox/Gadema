@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Narrative
+  commentId: N:Gadema.Data.Configurations.Narrative
+  id: Gadema.Data.Configurations.Narrative
+  children:
+  - Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
+  - Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Narrative
+  nameWithType: Gadema.Data.Configurations.Narrative
+  fullName: Gadema.Data.Configurations.Narrative
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration.html
+  name: CharacterRelationEntityTypeConfiguration
+  nameWithType: CharacterRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration.html
+  name: CharacterStateEntityTypeConfiguration
+  nameWithType: CharacterStateEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration

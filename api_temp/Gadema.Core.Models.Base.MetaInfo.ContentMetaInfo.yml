@@ -1,0 +1,1349 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  children:
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+  - Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 8
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: Represents a content item (character, world, mechanic, etc.) in the game development system.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project) })]
+
+      public class ContentMetaInfo : BaseMetaInfo
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project) })>
+
+      Public Class ContentMetaInfo Inherits BaseMetaInfo
+  inheritance:
+  - System.Object
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  inheritedMembers:
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Id
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Title
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Slug
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.CreatedAt
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.LastModifiedAt
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.ShortDesc
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.IsPublic
+  - Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.TagIds
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+  id: ProjectId
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: ProjectId
+  nameWithType: ContentMetaInfo.ProjectId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectId
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public Guid? ProjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property ProjectId As Guid?
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+  id: Project
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: ContentMetaInfo.Project
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Project
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: >-
+      [ForeignKey("ProjectId")]
+
+      public virtual Project Project { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Projects.Project
+    content.vb: >-
+      <ForeignKey("ProjectId")>
+
+      Public Overridable Property Project As Project
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ProjectId
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+  id: ContentType
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: ContentType
+  nameWithType: ContentMetaInfo.ContentType
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentType
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: >-
+      [EnumDataType(typeof(ContentTypeEnum))]
+
+      [Required]
+
+      [Display(Name = "Content Type")]
+
+      public ContentTypeEnum ContentType { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    content.vb: >-
+      <EnumDataType(GetType(ContentTypeEnum))>
+
+      <Required>
+
+      <Display(Name:="Content Type")>
+
+      Public Property ContentType As ContentTypeEnum
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.EnumDataTypeAttribute
+    ctor: System.ComponentModel.DataAnnotations.EnumDataTypeAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Content Type
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+  id: Status
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: ContentMetaInfo.Status
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Status
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: >-
+      [Required]
+
+      public ContentStatusEnum Status { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+    content.vb: >-
+      <Required>
+
+      Public Property Status As ContentStatusEnum
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+  id: ViewMode
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: ViewMode
+  nameWithType: ContentMetaInfo.ViewMode
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ViewMode
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: >-
+      [Required]
+
+      public ViewModeEnum ViewMode { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    content.vb: >-
+      <Required>
+
+      Public Property ViewMode As ViewModeEnum
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+  id: Version
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: ContentMetaInfo.Version
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Version
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public int Version { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Version As Integer
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+  id: OrderIndex
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: OrderIndex
+  nameWithType: ContentMetaInfo.OrderIndex
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OrderIndex
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 31
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public int OrderIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OrderIndex As Integer
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+  id: References
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: References
+  nameWithType: ContentMetaInfo.References
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: References
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? References { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property References As String
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+  id: CreatedByUserId
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: CreatedByUserId
+  nameWithType: ContentMetaInfo.CreatedByUserId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedByUserId
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 36
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public Guid CreatedByUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property CreatedByUserId As Guid
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+  id: VersionLogs
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: VersionLogs
+  nameWithType: ContentMetaInfo.VersionLogs
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: VersionLogs
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 39
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public virtual ICollection<ContentVersionLog> VersionLogs { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ContentVersionLog}
+    content.vb: Public Overridable Property VersionLogs As ICollection(Of ContentVersionLog)
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+  id: AssetLinks
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: AssetLinks
+  nameWithType: ContentMetaInfo.AssetLinks
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AssetLinks
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public virtual ICollection<AssetLink> AssetLinks { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.AssetLink}
+    content.vb: Public Overridable Property AssetLinks As ICollection(Of AssetLink)
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+  id: MediaAttachments
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: MediaAttachments
+  nameWithType: ContentMetaInfo.MediaAttachments
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MediaAttachments
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 41
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public virtual ICollection<MediaAttachment> MediaAttachments { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+    content.vb: Public Overridable Property MediaAttachments As ICollection(Of MediaAttachment)
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+  id: ReviewStatus
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: ReviewStatus
+  nameWithType: ContentMetaInfo.ReviewStatus
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReviewStatus
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 42
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public virtual ReviewStatus ReviewStatus { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+    content.vb: Public Overridable Property ReviewStatus As ReviewStatus
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus*
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+  id: MetaInfoTagRelations
+  parent: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoTagRelations
+  nameWithType: ContentMetaInfo.MetaInfoTagRelations
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoTagRelations
+    path: src/Gadema.Core/Models/Base/MetaInfo/ContentMetaInfo.cs
+    startLine: 43
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  syntax:
+    content: public virtual ICollection<ContentTagRelation> MetaInfoTagRelations { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+    content.vb: Public Overridable Property MetaInfoTagRelations As ICollection(Of ContentTagRelation)
+  overload: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations*
+references:
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html
+  name: BaseMetaInfo
+  nameWithType: BaseMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Id
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Id
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_Id
+  name: Id
+  nameWithType: BaseMetaInfo.Id
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Id
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Title
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Title
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_Title
+  name: Title
+  nameWithType: BaseMetaInfo.Title
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Title
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Slug
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Slug
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_Slug
+  name: Slug
+  nameWithType: BaseMetaInfo.Slug
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.Slug
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.CreatedAt
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.CreatedAt
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_CreatedAt
+  name: CreatedAt
+  nameWithType: BaseMetaInfo.CreatedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.CreatedAt
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.LastModifiedAt
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.LastModifiedAt
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_LastModifiedAt
+  name: LastModifiedAt
+  nameWithType: BaseMetaInfo.LastModifiedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.LastModifiedAt
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.ShortDesc
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.ShortDesc
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_ShortDesc
+  name: ShortDesc
+  nameWithType: BaseMetaInfo.ShortDesc
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.ShortDesc
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.IsPublic
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.IsPublic
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_IsPublic
+  name: IsPublic
+  nameWithType: BaseMetaInfo.IsPublic
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.IsPublic
+- uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.TagIds
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.TagIds
+  parent: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_BaseMetaInfo_TagIds
+  name: TagIds
+  nameWithType: BaseMetaInfo.TagIds
+  fullName: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo.TagIds
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_ProjectId
+  name: ProjectId
+  nameWithType: ContentMetaInfo.ProjectId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ProjectId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_Project
+  name: Project
+  nameWithType: ContentMetaInfo.Project
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Project
+- uid: Gadema.Core.Models.Base.Projects.Project
+  commentId: T:Gadema.Core.Models.Base.Projects.Project
+  parent: Gadema.Core.Models.Base.Projects
+  href: Gadema.Core.Models.Base.Projects.Project.html
+  name: Project
+  nameWithType: Project
+  fullName: Gadema.Core.Models.Base.Projects.Project
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_ContentType
+  name: ContentType
+  nameWithType: ContentMetaInfo.ContentType
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ContentType
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  name: ContentTypeEnum
+  nameWithType: ContentTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_Status
+  name: Status
+  nameWithType: ContentMetaInfo.Status
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Status
+- uid: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentStatusEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ContentStatusEnum.html
+  name: ContentStatusEnum
+  nameWithType: ContentStatusEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_ViewMode
+  name: ViewMode
+  nameWithType: ContentMetaInfo.ViewMode
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ViewMode
+- uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ViewModeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ViewModeEnum.html
+  name: ViewModeEnum
+  nameWithType: ViewModeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ViewModeEnum
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_Version
+  name: Version
+  nameWithType: ContentMetaInfo.Version
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.Version
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_OrderIndex
+  name: OrderIndex
+  nameWithType: ContentMetaInfo.OrderIndex
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.OrderIndex
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_References
+  name: References
+  nameWithType: ContentMetaInfo.References
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.References
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_CreatedByUserId
+  name: CreatedByUserId
+  nameWithType: ContentMetaInfo.CreatedByUserId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.CreatedByUserId
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_VersionLogs
+  name: VersionLogs
+  nameWithType: ContentMetaInfo.VersionLogs
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.VersionLogs
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ContentVersionLog}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.ContentVersionLog}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<ContentVersionLog>
+  nameWithType: ICollection<ContentVersionLog>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.Infrastructure.ContentVersionLog>
+  nameWithType.vb: ICollection(Of ContentVersionLog)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.Infrastructure.ContentVersionLog)
+  name.vb: ICollection(Of ContentVersionLog)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+    name: ContentVersionLog
+    href: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+    name: ContentVersionLog
+    href: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_AssetLinks
+  name: AssetLinks
+  nameWithType: ContentMetaInfo.AssetLinks
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.AssetLinks
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.AssetLink}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.AssetLink}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<AssetLink>
+  nameWithType: ICollection<AssetLink>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.Infrastructure.AssetLink>
+  nameWithType.vb: ICollection(Of AssetLink)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.Infrastructure.AssetLink)
+  name.vb: ICollection(Of AssetLink)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.AssetLink
+    name: AssetLink
+    href: Gadema.Core.Models.Base.Infrastructure.AssetLink.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.AssetLink
+    name: AssetLink
+    href: Gadema.Core.Models.Base.Infrastructure.AssetLink.html
+  - name: )
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_MediaAttachments
+  name: MediaAttachments
+  nameWithType: ContentMetaInfo.MediaAttachments
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MediaAttachments
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<MediaAttachment>
+  nameWithType: ICollection<MediaAttachment>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.Infrastructure.MediaAttachment>
+  nameWithType.vb: ICollection(Of MediaAttachment)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.Infrastructure.MediaAttachment)
+  name.vb: ICollection(Of MediaAttachment)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+    name: MediaAttachment
+    href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+    name: MediaAttachment
+    href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html
+  - name: )
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_ReviewStatus
+  name: ReviewStatus
+  nameWithType: ContentMetaInfo.ReviewStatus
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.ReviewStatus
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html
+  name: ReviewStatus
+  nameWithType: ReviewStatus
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html#Gadema_Core_Models_Base_MetaInfo_ContentMetaInfo_MetaInfoTagRelations
+  name: MetaInfoTagRelations
+  nameWithType: ContentMetaInfo.MetaInfoTagRelations
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.MetaInfoTagRelations
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<ContentTagRelation>
+  nameWithType: ICollection<ContentTagRelation>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Base.MetaInfo.ContentTagRelation>
+  nameWithType.vb: ICollection(Of ContentTagRelation)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Base.MetaInfo.ContentTagRelation)
+  name.vb: ICollection(Of ContentTagRelation)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: )

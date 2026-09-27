@@ -1,0 +1,473 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  commentId: T:Gadema.Core.Enums.ProjectTemplateTypeEnum
+  id: ProjectTemplateTypeEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.ActionRPG
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.FantasyBook
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.Horror
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.HorrorThriller
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.Mystery
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.Romance
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.SciFi
+  langs:
+  - csharp
+  - vb
+  name: ProjectTemplateTypeEnum
+  nameWithType: ProjectTemplateTypeEnum
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTemplateTypeEnum
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Specifies the type of template used to initialize a new project.
+  example: []
+  syntax:
+    content: public enum ProjectTemplateTypeEnum
+    content.vb: Public Enum ProjectTemplateTypeEnum
+  extensionMethods:
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.FantasyBook
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.FantasyBook
+  id: FantasyBook
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: FantasyBook
+  nameWithType: ProjectTemplateTypeEnum.FantasyBook
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.FantasyBook
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: FantasyBook
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Fantasy book-style narrative (traditional prose format).
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Fantasy Book")]
+
+      FantasyBook = 0
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Fantasy Book")>
+
+      FantasyBook = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Fantasy Book
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.ActionRPG
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.ActionRPG
+  id: ActionRPG
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: ActionRPG
+  nameWithType: ProjectTemplateTypeEnum.ActionRPG
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.ActionRPG
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ActionRPG
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Action-oriented RPG project template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Action RPG")]
+
+      ActionRPG = 1
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Action RPG")>
+
+      ActionRPG = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Action RPG
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.SciFi
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.SciFi
+  id: SciFi
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: SciFi
+  nameWithType: ProjectTemplateTypeEnum.SciFi
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.SciFi
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SciFi
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Science fiction themed project template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Sci-Fi")]
+
+      SciFi = 2
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Sci-Fi")>
+
+      SciFi = 2
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Sci-Fi
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.HorrorThriller
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.HorrorThriller
+  id: HorrorThriller
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: HorrorThriller
+  nameWithType: ProjectTemplateTypeEnum.HorrorThriller
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.HorrorThriller
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: HorrorThriller
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Horror/thriller narrative template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Horror/Thriller")]
+
+      HorrorThriller = 3
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Horror/Thriller")>
+
+      HorrorThriller = 3
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Horror/Thriller
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.Romance
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.Romance
+  id: Romance
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Romance
+  nameWithType: ProjectTemplateTypeEnum.Romance
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.Romance
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Romance
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 36
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Romance-focused project template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Romance")]
+
+      Romance = 4
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Romance")>
+
+      Romance = 4
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Romance
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.Mystery
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.Mystery
+  id: Mystery
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Mystery
+  nameWithType: ProjectTemplateTypeEnum.Mystery
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.Mystery
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Mystery
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 42
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Mystery/investigation narrative template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Mystery")]
+
+      Mystery = 5
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Mystery")>
+
+      Mystery = 5
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Mystery
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.Horror
+  commentId: F:Gadema.Core.Enums.ProjectTemplateTypeEnum.Horror
+  id: Horror
+  parent: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Horror
+  nameWithType: ProjectTemplateTypeEnum.Horror
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum.Horror
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Horror
+    path: src/Gadema.Core/Enums/ProjectTemplateTypeEnum.cs
+    startLine: 48
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Horror-focused project template.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Horror")]
+
+      Horror = 6
+    return:
+      type: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    content.vb: >-
+      <Display(Name:="Horror")>
+
+      Horror = 6
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Horror
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ProjectTemplateTypeEnum>(ProjectTemplateTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ProjectTemplateTypeEnum>(ProjectTemplateTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.ProjectTemplateTypeEnum>(Gadema.Core.Enums.ProjectTemplateTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ProjectTemplateTypeEnum)(ProjectTemplateTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.ProjectTemplateTypeEnum)(Gadema.Core.Enums.ProjectTemplateTypeEnum)
+  name.vb: ToGuid(Of ProjectTemplateTypeEnum)(ProjectTemplateTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectTemplateTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectTemplateTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  commentId: T:Gadema.Core.Enums.ProjectTemplateTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  name: ProjectTemplateTypeEnum
+  nameWithType: ProjectTemplateTypeEnum
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum

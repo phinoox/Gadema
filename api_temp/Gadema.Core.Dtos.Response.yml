@@ -1,0 +1,145 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Response
+  commentId: N:Gadema.Core.Dtos.Response
+  id: Gadema.Core.Dtos.Response
+  children:
+  - Gadema.Core.Dtos.Response.ErrorResponseDto
+  - Gadema.Core.Dtos.Response.ListResponseDto`1
+  - Gadema.Core.Dtos.Response.PagedResponseDto`1
+  - Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+  - Gadema.Core.Dtos.Response.SimpleResponseDto
+  - Gadema.Core.Dtos.Response.SuccessResponseDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Response
+  nameWithType: Gadema.Core.Dtos.Response
+  fullName: Gadema.Core.Dtos.Response
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+  commentId: T:Gadema.Core.Dtos.Response.ListResponseDto`1
+  href: Gadema.Core.Dtos.Response.ListResponseDto-1.html
+  name: ListResponseDto<T>
+  nameWithType: ListResponseDto<T>
+  fullName: Gadema.Core.Dtos.Response.ListResponseDto<T>
+  nameWithType.vb: ListResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.Response.ListResponseDto(Of T)
+  name.vb: ListResponseDto(Of T)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+    name: ListResponseDto
+    href: Gadema.Core.Dtos.Response.ListResponseDto-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+    name: ListResponseDto
+    href: Gadema.Core.Dtos.Response.ListResponseDto-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Response.PagedResponseDto`1
+  commentId: T:Gadema.Core.Dtos.Response.PagedResponseDto`1
+  href: Gadema.Core.Dtos.Response.PagedResponseDto-1.html
+  name: PagedResponseDto<T>
+  nameWithType: PagedResponseDto<T>
+  fullName: Gadema.Core.Dtos.Response.PagedResponseDto<T>
+  nameWithType.vb: PagedResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.Response.PagedResponseDto(Of T)
+  name.vb: PagedResponseDto(Of T)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Response.PagedResponseDto`1
+    name: PagedResponseDto
+    href: Gadema.Core.Dtos.Response.PagedResponseDto-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Response.PagedResponseDto`1
+    name: PagedResponseDto
+    href: Gadema.Core.Dtos.Response.PagedResponseDto-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+  commentId: T:Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+  href: Gadema.Core.Dtos.Response.PaginatedListResponseDto-1.html
+  name: PaginatedListResponseDto<T>
+  nameWithType: PaginatedListResponseDto<T>
+  fullName: Gadema.Core.Dtos.Response.PaginatedListResponseDto<T>
+  nameWithType.vb: PaginatedListResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.Response.PaginatedListResponseDto(Of T)
+  name.vb: PaginatedListResponseDto(Of T)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+    name: PaginatedListResponseDto
+    href: Gadema.Core.Dtos.Response.PaginatedListResponseDto-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+    name: PaginatedListResponseDto
+    href: Gadema.Core.Dtos.Response.PaginatedListResponseDto-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos.Response.SimpleResponseDto
+  commentId: T:Gadema.Core.Dtos.Response.SimpleResponseDto
+  parent: Gadema.Core.Dtos.Response
+  href: Gadema.Core.Dtos.Response.SimpleResponseDto.html
+  name: SimpleResponseDto
+  nameWithType: SimpleResponseDto
+  fullName: Gadema.Core.Dtos.Response.SimpleResponseDto
+- uid: Gadema.Core.Dtos.Response.SuccessResponseDto
+  commentId: T:Gadema.Core.Dtos.Response.SuccessResponseDto
+  href: Gadema.Core.Dtos.Response.SuccessResponseDto.html
+  name: SuccessResponseDto
+  nameWithType: SuccessResponseDto
+  fullName: Gadema.Core.Dtos.Response.SuccessResponseDto
+- uid: Gadema.Core.Dtos.Response.ErrorResponseDto
+  commentId: T:Gadema.Core.Dtos.Response.ErrorResponseDto
+  href: Gadema.Core.Dtos.Response.ErrorResponseDto.html
+  name: ErrorResponseDto
+  nameWithType: ErrorResponseDto
+  fullName: Gadema.Core.Dtos.Response.ErrorResponseDto
+- uid: Gadema.Core.Dtos.Response
+  commentId: N:Gadema.Core.Dtos.Response
+  name: Gadema.Core.Dtos.Response
+  nameWithType: Gadema.Core.Dtos.Response
+  fullName: Gadema.Core.Dtos.Response
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Response
+    name: Response
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Response
+    name: Response

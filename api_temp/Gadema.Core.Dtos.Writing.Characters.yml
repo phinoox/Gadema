@@ -1,0 +1,171 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.Characters
+  commentId: N:Gadema.Core.Dtos.Writing.Characters
+  id: Gadema.Core.Dtos.Writing.Characters
+  children:
+  - Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto
+  - Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Writing.Characters
+  nameWithType: Gadema.Core.Dtos.Writing.Characters
+  fullName: Gadema.Core.Dtos.Writing.Characters
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto.html
+  name: CharacterCreateDto
+  nameWithType: CharacterCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto.html
+  name: CharacterUpdateDto
+  nameWithType: CharacterUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto.html
+  name: CharacterResponseDto
+  nameWithType: CharacterResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto.html
+  name: CharacterListResponseDto
+  nameWithType: CharacterListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto.html
+  name: CharacterRelationCreateDto
+  nameWithType: CharacterRelationCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto.html
+  name: CharacterRelationUpdateDto
+  nameWithType: CharacterRelationUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto.html
+  name: CharacterRelationResponseDto
+  nameWithType: CharacterRelationResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto.html
+  name: CharacterRelationListResponseDto
+  nameWithType: CharacterRelationListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto.html
+  name: CharacterStateCreateDto
+  nameWithType: CharacterStateCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto.html
+  name: CharacterStateUpdateDto
+  nameWithType: CharacterStateUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto.html
+  name: CharacterStateResponseDto
+  nameWithType: CharacterStateResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto.html
+  name: CharacterStateListResponseDto
+  nameWithType: CharacterStateListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto.html
+  name: CharacterStoryProfileCreateDto
+  nameWithType: CharacterStoryProfileCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Characters
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto.html
+  name: CharacterStoryProfileUpdateDto
+  nameWithType: CharacterStoryProfileUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto.html
+  name: CharacterStoryProfileResponseDto
+  nameWithType: CharacterStoryProfileResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto
+  href: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto.html
+  name: CharacterStoryProfileListResponseDto
+  nameWithType: CharacterStoryProfileListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Characters
+  commentId: N:Gadema.Core.Dtos.Writing.Characters
+  name: Gadema.Core.Dtos.Writing.Characters
+  nameWithType: Gadema.Core.Dtos.Writing.Characters
+  fullName: Gadema.Core.Dtos.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Characters
+    name: Characters

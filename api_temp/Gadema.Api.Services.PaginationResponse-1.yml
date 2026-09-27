@@ -1,0 +1,621 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.PaginationResponse`1
+  commentId: T:Gadema.Api.Services.PaginationResponse`1
+  id: PaginationResponse`1
+  parent: Gadema.Api.Services
+  children:
+  - Gadema.Api.Services.PaginationResponse`1.CurrentPage
+  - Gadema.Api.Services.PaginationResponse`1.Items
+  - Gadema.Api.Services.PaginationResponse`1.PageSize
+  - Gadema.Api.Services.PaginationResponse`1.TotalItems
+  - Gadema.Api.Services.PaginationResponse`1.TotalPages
+  langs:
+  - csharp
+  - vb
+  name: PaginationResponse<T>
+  nameWithType: PaginationResponse<T>
+  fullName: Gadema.Api.Services.PaginationResponse<T>
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PaginationResponse
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: Pagination response wrapper.
+  example: []
+  syntax:
+    content: 'public class PaginationResponse<T> where T : class'
+    typeParameters:
+    - id: T
+    content.vb: Public Class PaginationResponse(Of T As Class)
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: PaginationResponse(Of T)
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T)
+  name.vb: PaginationResponse(Of T)
+- uid: Gadema.Api.Services.PaginationResponse`1.CurrentPage
+  commentId: P:Gadema.Api.Services.PaginationResponse`1.CurrentPage
+  id: CurrentPage
+  parent: Gadema.Api.Services.PaginationResponse`1
+  langs:
+  - csharp
+  - vb
+  name: CurrentPage
+  nameWithType: PaginationResponse<T>.CurrentPage
+  fullName: Gadema.Api.Services.PaginationResponse<T>.CurrentPage
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CurrentPage
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: Current page number.
+  example: []
+  syntax:
+    content: public int CurrentPage { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CurrentPage As Integer
+  overload: Gadema.Api.Services.PaginationResponse`1.CurrentPage*
+  nameWithType.vb: PaginationResponse(Of T).CurrentPage
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).CurrentPage
+- uid: Gadema.Api.Services.PaginationResponse`1.PageSize
+  commentId: P:Gadema.Api.Services.PaginationResponse`1.PageSize
+  id: PageSize
+  parent: Gadema.Api.Services.PaginationResponse`1
+  langs:
+  - csharp
+  - vb
+  name: PageSize
+  nameWithType: PaginationResponse<T>.PageSize
+  fullName: Gadema.Api.Services.PaginationResponse<T>.PageSize
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PageSize
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: Number of items per page.
+  example: []
+  syntax:
+    content: public int PageSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property PageSize As Integer
+  overload: Gadema.Api.Services.PaginationResponse`1.PageSize*
+  nameWithType.vb: PaginationResponse(Of T).PageSize
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).PageSize
+- uid: Gadema.Api.Services.PaginationResponse`1.TotalItems
+  commentId: P:Gadema.Api.Services.PaginationResponse`1.TotalItems
+  id: TotalItems
+  parent: Gadema.Api.Services.PaginationResponse`1
+  langs:
+  - csharp
+  - vb
+  name: TotalItems
+  nameWithType: PaginationResponse<T>.TotalItems
+  fullName: Gadema.Api.Services.PaginationResponse<T>.TotalItems
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TotalItems
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: Total number of items.
+  example: []
+  syntax:
+    content: public int TotalItems { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TotalItems As Integer
+  overload: Gadema.Api.Services.PaginationResponse`1.TotalItems*
+  nameWithType.vb: PaginationResponse(Of T).TotalItems
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).TotalItems
+- uid: Gadema.Api.Services.PaginationResponse`1.TotalPages
+  commentId: P:Gadema.Api.Services.PaginationResponse`1.TotalPages
+  id: TotalPages
+  parent: Gadema.Api.Services.PaginationResponse`1
+  langs:
+  - csharp
+  - vb
+  name: TotalPages
+  nameWithType: PaginationResponse<T>.TotalPages
+  fullName: Gadema.Api.Services.PaginationResponse<T>.TotalPages
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TotalPages
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: Total number of pages.
+  example: []
+  syntax:
+    content: public int TotalPages { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property TotalPages As Integer
+  overload: Gadema.Api.Services.PaginationResponse`1.TotalPages*
+  nameWithType.vb: PaginationResponse(Of T).TotalPages
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).TotalPages
+- uid: Gadema.Api.Services.PaginationResponse`1.Items
+  commentId: P:Gadema.Api.Services.PaginationResponse`1.Items
+  id: Items
+  parent: Gadema.Api.Services.PaginationResponse`1
+  langs:
+  - csharp
+  - vb
+  name: Items
+  nameWithType: PaginationResponse<T>.Items
+  fullName: Gadema.Api.Services.PaginationResponse<T>.Items
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Items
+    path: src/Gadema.Core/Dtos/GlobalConfiguration.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Api.Services
+  summary: List of items.
+  example: []
+  syntax:
+    content: public List<T> Items { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{{T}}
+    content.vb: Public Property Items As List(Of T)
+  overload: Gadema.Api.Services.PaginationResponse`1.Items*
+  nameWithType.vb: PaginationResponse(Of T).Items
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).Items
+references:
+- uid: Gadema.Api.Services
+  commentId: N:Gadema.Api.Services
+  name: Gadema.Api.Services
+  nameWithType: Gadema.Api.Services
+  fullName: Gadema.Api.Services
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Api.Services.PaginationResponse`1.CurrentPage*
+  commentId: Overload:Gadema.Api.Services.PaginationResponse`1.CurrentPage
+  href: Gadema.Api.Services.PaginationResponse-1.html#Gadema_Api_Services_PaginationResponse_1_CurrentPage
+  name: CurrentPage
+  nameWithType: PaginationResponse<T>.CurrentPage
+  fullName: Gadema.Api.Services.PaginationResponse<T>.CurrentPage
+  nameWithType.vb: PaginationResponse(Of T).CurrentPage
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).CurrentPage
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Api.Services.PaginationResponse`1.PageSize*
+  commentId: Overload:Gadema.Api.Services.PaginationResponse`1.PageSize
+  href: Gadema.Api.Services.PaginationResponse-1.html#Gadema_Api_Services_PaginationResponse_1_PageSize
+  name: PageSize
+  nameWithType: PaginationResponse<T>.PageSize
+  fullName: Gadema.Api.Services.PaginationResponse<T>.PageSize
+  nameWithType.vb: PaginationResponse(Of T).PageSize
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).PageSize
+- uid: Gadema.Api.Services.PaginationResponse`1.TotalItems*
+  commentId: Overload:Gadema.Api.Services.PaginationResponse`1.TotalItems
+  href: Gadema.Api.Services.PaginationResponse-1.html#Gadema_Api_Services_PaginationResponse_1_TotalItems
+  name: TotalItems
+  nameWithType: PaginationResponse<T>.TotalItems
+  fullName: Gadema.Api.Services.PaginationResponse<T>.TotalItems
+  nameWithType.vb: PaginationResponse(Of T).TotalItems
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).TotalItems
+- uid: Gadema.Api.Services.PaginationResponse`1.TotalPages*
+  commentId: Overload:Gadema.Api.Services.PaginationResponse`1.TotalPages
+  href: Gadema.Api.Services.PaginationResponse-1.html#Gadema_Api_Services_PaginationResponse_1_TotalPages
+  name: TotalPages
+  nameWithType: PaginationResponse<T>.TotalPages
+  fullName: Gadema.Api.Services.PaginationResponse<T>.TotalPages
+  nameWithType.vb: PaginationResponse(Of T).TotalPages
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).TotalPages
+- uid: Gadema.Api.Services.PaginationResponse`1.Items*
+  commentId: Overload:Gadema.Api.Services.PaginationResponse`1.Items
+  href: Gadema.Api.Services.PaginationResponse-1.html#Gadema_Api_Services_PaginationResponse_1_Items
+  name: Items
+  nameWithType: PaginationResponse<T>.Items
+  fullName: Gadema.Api.Services.PaginationResponse<T>.Items
+  nameWithType.vb: PaginationResponse(Of T).Items
+  fullName.vb: Gadema.Api.Services.PaginationResponse(Of T).Items
+- uid: System.Collections.Generic.List{{T}}
+  commentId: T:System.Collections.Generic.List{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

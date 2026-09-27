@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Writing.Characters
+  commentId: N:Gadema.Api.Services.Writing.Characters
+  id: Gadema.Api.Services.Writing.Characters
+  children:
+  - Gadema.Api.Services.Writing.Characters.CharacterRelationService
+  - Gadema.Api.Services.Writing.Characters.CharacterService
+  - Gadema.Api.Services.Writing.Characters.CharacterStateService
+  - Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Writing.Characters
+  nameWithType: Gadema.Api.Services.Writing.Characters
+  fullName: Gadema.Api.Services.Writing.Characters
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Writing.Characters.CharacterRelationService
+  commentId: T:Gadema.Api.Services.Writing.Characters.CharacterRelationService
+  parent: Gadema.Api.Services.Writing.Characters
+  href: Gadema.Api.Services.Writing.Characters.CharacterRelationService.html
+  name: CharacterRelationService
+  nameWithType: CharacterRelationService
+  fullName: Gadema.Api.Services.Writing.Characters.CharacterRelationService
+- uid: Gadema.Api.Services.Writing.Characters.CharacterService
+  commentId: T:Gadema.Api.Services.Writing.Characters.CharacterService
+  parent: Gadema.Api.Services.Writing.Characters
+  href: Gadema.Api.Services.Writing.Characters.CharacterService.html
+  name: CharacterService
+  nameWithType: CharacterService
+  fullName: Gadema.Api.Services.Writing.Characters.CharacterService
+- uid: Gadema.Api.Services.Writing.Characters.CharacterStateService
+  commentId: T:Gadema.Api.Services.Writing.Characters.CharacterStateService
+  parent: Gadema.Api.Services.Writing.Characters
+  href: Gadema.Api.Services.Writing.Characters.CharacterStateService.html
+  name: CharacterStateService
+  nameWithType: CharacterStateService
+  fullName: Gadema.Api.Services.Writing.Characters.CharacterStateService
+- uid: Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService
+  commentId: T:Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService
+  parent: Gadema.Api.Services.Writing.Characters
+  href: Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService.html
+  name: CharacterStoryProfileService
+  nameWithType: CharacterStoryProfileService
+  fullName: Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService
+- uid: Gadema.Api.Services.Writing.Characters
+  commentId: N:Gadema.Api.Services.Writing.Characters
+  name: Gadema.Api.Services.Writing.Characters
+  nameWithType: Gadema.Api.Services.Writing.Characters
+  fullName: Gadema.Api.Services.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.Characters
+    name: Characters

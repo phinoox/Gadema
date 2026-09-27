@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  id: Gadema.Api.CoreServices.Interfaces
+  children:
+  - Gadema.Api.CoreServices.Interfaces.AccessResult
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  - Gadema.Api.CoreServices.Interfaces.IAuditService
+  - Gadema.Api.CoreServices.Interfaces.IMetadataService
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.CoreServices.Interfaces.IAuditService
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IAuditService
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.IAuditService.html
+  name: IAuditService
+  nameWithType: IAuditService
+  fullName: Gadema.Api.CoreServices.Interfaces.IAuditService
+- uid: Gadema.Api.CoreServices.Interfaces.IMetadataService
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IMetadataService
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.IMetadataService.html
+  name: IMetadataService
+  nameWithType: IMetadataService
+  fullName: Gadema.Api.CoreServices.Interfaces.IMetadataService
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  commentId: T:Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  name: AccessResultStatus
+  nameWithType: AccessResultStatus
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+  commentId: T:Gadema.Api.CoreServices.Interfaces.AccessResult
+  href: Gadema.Api.CoreServices.Interfaces.AccessResult.html
+  name: AccessResult
+  nameWithType: AccessResult
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResult
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  commentId: T:Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html
+  name: IPermissionEngine
+  nameWithType: IPermissionEngine
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base
+  commentId: N:Gadema.Core.Models.Base
+  id: Gadema.Core.Models.Base
+  children:
+  - Gadema.Core.Models.Base.ISoftDelete
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base
+  nameWithType: Gadema.Core.Models.Base
+  fullName: Gadema.Core.Models.Base
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.ISoftDelete
+  commentId: T:Gadema.Core.Models.Base.ISoftDelete
+  href: Gadema.Core.Models.Base.ISoftDelete.html
+  name: ISoftDelete
+  nameWithType: ISoftDelete
+  fullName: Gadema.Core.Models.Base.ISoftDelete

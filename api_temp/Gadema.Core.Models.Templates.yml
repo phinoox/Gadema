@@ -1,0 +1,89 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Templates
+  commentId: N:Gadema.Core.Models.Templates
+  id: Gadema.Core.Models.Templates
+  children:
+  - Gadema.Core.Models.Templates.AttributeSetDefinition
+  - Gadema.Core.Models.Templates.ProjectTemplate
+  - Gadema.Core.Models.Templates.TemplateAttributeSetDefinition
+  - Gadema.Core.Models.Templates.TemplateClassTemplateDefinition
+  - Gadema.Core.Models.Templates.TemplateIdentityDefinition
+  - Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Templates
+  nameWithType: Gadema.Core.Models.Templates
+  fullName: Gadema.Core.Models.Templates
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Templates.AttributeSetDefinition
+  commentId: T:Gadema.Core.Models.Templates.AttributeSetDefinition
+  parent: Gadema.Core.Models.Templates
+  href: Gadema.Core.Models.Templates.AttributeSetDefinition.html
+  name: AttributeSetDefinition
+  nameWithType: AttributeSetDefinition
+  fullName: Gadema.Core.Models.Templates.AttributeSetDefinition
+- uid: Gadema.Core.Models.Templates.ProjectTemplate
+  commentId: T:Gadema.Core.Models.Templates.ProjectTemplate
+  parent: Gadema.Core.Models.Templates
+  href: Gadema.Core.Models.Templates.ProjectTemplate.html
+  name: ProjectTemplate
+  nameWithType: ProjectTemplate
+  fullName: Gadema.Core.Models.Templates.ProjectTemplate
+- uid: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition
+  commentId: T:Gadema.Core.Models.Templates.TemplateAttributeSetDefinition
+  href: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition.html
+  name: TemplateAttributeSetDefinition
+  nameWithType: TemplateAttributeSetDefinition
+  fullName: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition
+- uid: Gadema.Core.Models.Templates.TemplateClassTemplateDefinition
+  commentId: T:Gadema.Core.Models.Templates.TemplateClassTemplateDefinition
+  href: Gadema.Core.Models.Templates.TemplateClassTemplateDefinition.html
+  name: TemplateClassTemplateDefinition
+  nameWithType: TemplateClassTemplateDefinition
+  fullName: Gadema.Core.Models.Templates.TemplateClassTemplateDefinition
+- uid: Gadema.Core.Models.Templates.TemplateIdentityDefinition
+  commentId: T:Gadema.Core.Models.Templates.TemplateIdentityDefinition
+  href: Gadema.Core.Models.Templates.TemplateIdentityDefinition.html
+  name: TemplateIdentityDefinition
+  nameWithType: TemplateIdentityDefinition
+  fullName: Gadema.Core.Models.Templates.TemplateIdentityDefinition
+- uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  commentId: T:Gadema.Core.Models.Templates.TemplateNarrativeStructure
+  href: Gadema.Core.Models.Templates.TemplateNarrativeStructure.html
+  name: TemplateNarrativeStructure
+  nameWithType: TemplateNarrativeStructure
+  fullName: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+- uid: Gadema.Core.Models.Templates
+  commentId: N:Gadema.Core.Models.Templates
+  name: Gadema.Core.Models.Templates
+  nameWithType: Gadema.Core.Models.Templates
+  fullName: Gadema.Core.Models.Templates
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Templates
+    name: Templates
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Templates
+    name: Templates

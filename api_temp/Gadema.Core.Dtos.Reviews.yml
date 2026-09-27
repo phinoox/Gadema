@@ -1,0 +1,109 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Reviews
+  commentId: N:Gadema.Core.Dtos.Reviews
+  id: Gadema.Core.Dtos.Reviews
+  children:
+  - Gadema.Core.Dtos.Reviews.ApproveContentDto
+  - Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto
+  - Gadema.Core.Dtos.Reviews.ReviewCreateDto
+  - Gadema.Core.Dtos.Reviews.ReviewListResponseDto
+  - Gadema.Core.Dtos.Reviews.ReviewResponseDto
+  - Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto
+  - Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto
+  - Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto
+  - Gadema.Core.Dtos.Reviews.ReviewUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Reviews
+  nameWithType: Gadema.Core.Dtos.Reviews
+  fullName: Gadema.Core.Dtos.Reviews
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Reviews.ReviewCreateDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewCreateDto
+  href: Gadema.Core.Dtos.Reviews.ReviewCreateDto.html
+  name: ReviewCreateDto
+  nameWithType: ReviewCreateDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewCreateDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewUpdateDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewUpdateDto
+  href: Gadema.Core.Dtos.Reviews.ReviewUpdateDto.html
+  name: ReviewUpdateDto
+  nameWithType: ReviewUpdateDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewUpdateDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewResponseDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewResponseDto
+  href: Gadema.Core.Dtos.Reviews.ReviewResponseDto.html
+  name: ReviewResponseDto
+  nameWithType: ReviewResponseDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewResponseDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewListResponseDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewListResponseDto
+  href: Gadema.Core.Dtos.Reviews.ReviewListResponseDto.html
+  name: ReviewListResponseDto
+  nameWithType: ReviewListResponseDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewListResponseDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto
+  href: Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto.html
+  name: ReviewAssignmentCreateDto
+  nameWithType: ReviewAssignmentCreateDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto
+- uid: Gadema.Core.Dtos.Reviews.ApproveContentDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ApproveContentDto
+  parent: Gadema.Core.Dtos.Reviews
+  href: Gadema.Core.Dtos.Reviews.ApproveContentDto.html
+  name: ApproveContentDto
+  nameWithType: ApproveContentDto
+  fullName: Gadema.Core.Dtos.Reviews.ApproveContentDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto
+  href: Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto.html
+  name: ReviewStatusCreateDto
+  nameWithType: ReviewStatusCreateDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto
+  href: Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto.html
+  name: ReviewStatusResponseDto
+  nameWithType: ReviewStatusResponseDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto
+- uid: Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto
+  commentId: T:Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto
+  href: Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto.html
+  name: ReviewStatusListResponseDto
+  nameWithType: ReviewStatusListResponseDto
+  fullName: Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto
+- uid: Gadema.Core.Dtos.Reviews
+  commentId: N:Gadema.Core.Dtos.Reviews
+  name: Gadema.Core.Dtos.Reviews
+  nameWithType: Gadema.Core.Dtos.Reviews
+  fullName: Gadema.Core.Dtos.Reviews
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Reviews
+    name: Reviews
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Reviews
+    name: Reviews

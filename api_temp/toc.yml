@@ -1,0 +1,1742 @@
+### YamlMime:TableOfContent
+items:
+- uid: Gadema.Api
+  name: Gadema.Api
+  type: Namespace
+  items:
+  - uid: Gadema.Api.AuthExtensions
+    name: AuthExtensions
+    type: Class
+  - uid: Gadema.Api.Program
+    name: Program
+    type: Class
+  - uid: Gadema.Api.ProjectInfo
+    name: ProjectInfo
+    type: Class
+- uid: Gadema.Api.Controllers.Activities
+  name: Gadema.Api.Controllers.Activities
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Activities.ActivityLogsController
+    name: ActivityLogsController
+    type: Class
+- uid: Gadema.Api.Controllers.Authentication
+  name: Gadema.Api.Controllers.Authentication
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Authentication.AuthController
+    name: AuthController
+    type: Class
+  - uid: Gadema.Api.Controllers.Authentication.EmailPasswordAuthController
+    name: EmailPasswordAuthController
+    type: Class
+- uid: Gadema.Api.Controllers.Base.MetaInfo
+  name: Gadema.Api.Controllers.Base.MetaInfo
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Base.MetaInfo.CommentsController
+    name: CommentsController
+    type: Class
+  - uid: Gadema.Api.Controllers.Base.MetaInfo.ExternalReferencesController
+    name: ExternalReferencesController
+    type: Class
+  - uid: Gadema.Api.Controllers.Base.MetaInfo.MetaTagsController
+    name: MetaTagsController
+    type: Class
+  - uid: Gadema.Api.Controllers.Base.MetaInfo.ReviewStatusController
+    name: ReviewStatusController
+    type: Class
+- uid: Gadema.Api.Controllers.Base.Projects
+  name: Gadema.Api.Controllers.Base.Projects
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Base.Projects.ProjectMembersController
+    name: ProjectMembersController
+    type: Class
+  - uid: Gadema.Api.Controllers.Base.Projects.ProjectSeriesController
+    name: ProjectSeriesController
+    type: Class
+- uid: Gadema.Api.Controllers.DialogueTrees
+  name: Gadema.Api.Controllers.DialogueTrees
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.DialogueTrees.DialogueBranchesController
+    name: DialogueBranchesController
+    type: Class
+  - uid: Gadema.Api.Controllers.DialogueTrees.DialogueNodesController
+    name: DialogueNodesController
+    type: Class
+  - uid: Gadema.Api.Controllers.DialogueTrees.SceneSegmentController
+    name: SceneSegmentController
+    type: Class
+- uid: Gadema.Api.Controllers.Identity
+  name: Gadema.Api.Controllers.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Identity.IdentityDefinitionController
+    name: IdentityDefinitionController
+    type: Class
+  - uid: Gadema.Api.Controllers.Identity.IdentityValueController
+    name: IdentityValueController
+    type: Class
+- uid: Gadema.Api.Controllers.Projects
+  name: Gadema.Api.Controllers.Projects
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Projects.ProjectController
+    name: ProjectController
+    type: Class
+- uid: Gadema.Api.Controllers.Tasks
+  name: Gadema.Api.Controllers.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Tasks.ProjectTaskCommentController
+    name: ProjectTaskCommentController
+    type: Class
+  - uid: Gadema.Api.Controllers.Tasks.ProjectTaskController
+    name: ProjectTaskController
+    type: Class
+- uid: Gadema.Api.Controllers.Writing.Characters
+  name: Gadema.Api.Controllers.Writing.Characters
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController
+    name: CharacterRelationsController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Characters.CharacterStatesController
+    name: CharacterStatesController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController
+    name: CharacterStoryProfilesController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Characters.CharactersController
+    name: CharactersController
+    type: Class
+- uid: Gadema.Api.Controllers.Writing.Narrative
+  name: Gadema.Api.Controllers.Writing.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Writing.Narrative.LoreEntriesController
+    name: LoreEntriesController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.OutlineSectionController
+    name: OutlineSectionController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.ScenesController
+    name: ScenesController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.StoryBeatsController
+    name: StoryBeatsController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.StoryChapterController
+    name: StoryChapterController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.StoryController
+    name: StoryController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.Narrative.StoryOutlinesController
+    name: StoryOutlinesController
+    type: Class
+- uid: Gadema.Api.Controllers.Writing.WorldBuilding
+  name: Gadema.Api.Controllers.Writing.WorldBuilding
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Controllers.Writing.WorldBuilding.FactionsController
+    name: FactionsController
+    type: Class
+  - uid: Gadema.Api.Controllers.Writing.WorldBuilding.WorldLocationsController
+    name: WorldLocationsController
+    type: Class
+- uid: Gadema.Api.CoreServices
+  name: Gadema.Api.CoreServices
+  type: Namespace
+  items:
+  - uid: Gadema.Api.CoreServices.CoreServicesProvider
+    name: CoreServicesProvider
+    type: Class
+- uid: Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  type: Namespace
+  items:
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResult
+    name: AccessResult
+    type: Class
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+    name: AccessResultStatus
+    type: Enum
+  - uid: Gadema.Api.CoreServices.Interfaces.IAuditService
+    name: IAuditService
+    type: Interface
+  - uid: Gadema.Api.CoreServices.Interfaces.IMetadataService
+    name: IMetadataService
+    type: Interface
+  - uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+    name: IPermissionEngine
+    type: Interface
+- uid: Gadema.Api.CoreServices.Services
+  name: Gadema.Api.CoreServices.Services
+  type: Namespace
+  items:
+  - uid: Gadema.Api.CoreServices.Services.AuditService
+    name: AuditService
+    type: Class
+  - uid: Gadema.Api.CoreServices.Services.MetadataService
+    name: MetadataService
+    type: Class
+- uid: Gadema.Api.CoreServices.Strategies
+  name: Gadema.Api.CoreServices.Strategies
+  type: Namespace
+  items:
+  - uid: Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+    name: BaseIdentityStrategy<TUpdate, TMetaInfo>
+    type: Class
+  - uid: Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+    name: ContentIdentityStrategy
+    type: Class
+  - uid: Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+    name: ProjectIdentityStrategy
+    type: Class
+  - uid: Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+    name: ProjectSeriesIdentityStrategy
+    type: Class
+  - uid: Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+    name: ProjectTaskIdentityStrategy
+    type: Class
+- uid: Gadema.Api.Middleware
+  name: Gadema.Api.Middleware
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Middleware.AuthMiddleware
+    name: AuthMiddleware
+    type: Class
+- uid: Gadema.Api.Services
+  name: Gadema.Api.Services
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.FeatureFlagsConfiguration
+    name: FeatureFlagsConfiguration
+    type: Class
+  - uid: Gadema.Api.Services.GlobalConfigurationConstants
+    name: GlobalConfigurationConstants
+    type: Class
+  - uid: Gadema.Api.Services.NotFoundException
+    name: NotFoundException
+    type: Class
+  - uid: Gadema.Api.Services.PaginationResponse`1
+    name: PaginationResponse<T>
+    type: Class
+  - uid: Gadema.Api.Services.ValidationException
+    name: ValidationException
+    type: Class
+- uid: Gadema.Api.Services.Access
+  name: Gadema.Api.Services.Access
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Access.UserContext
+    name: UserContext
+    type: Class
+- uid: Gadema.Api.Services.Access.Authentication
+  name: Gadema.Api.Services.Access.Authentication
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Access.Authentication.EmailPasswordAuthService
+    name: EmailPasswordAuthService
+    type: Class
+  - uid: Gadema.Api.Services.Access.Authentication.JwtTokenService
+    name: JwtTokenService
+    type: Class
+  - uid: Gadema.Api.Services.Access.Authentication.PasswordHasher
+    name: PasswordHasher
+    type: Class
+- uid: Gadema.Api.Services.Access.Identity
+  name: Gadema.Api.Services.Access.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+    name: IdentityDefinitionService
+    type: Class
+  - uid: Gadema.Api.Services.Access.Identity.IdentityValueService
+    name: IdentityValueService
+    type: Class
+- uid: Gadema.Api.Services.Authorization
+  name: Gadema.Api.Services.Authorization
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Authorization.IPermissionStrategy
+    name: IPermissionStrategy
+    type: Interface
+  - uid: Gadema.Api.Services.Authorization.PermissionEngine
+    name: PermissionEngine
+    type: Class
+- uid: Gadema.Api.Services.Authorization.Strategies
+  name: Gadema.Api.Services.Authorization.Strategies
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Authorization.Strategies.ProjectRoleStrategy
+    name: ProjectRoleStrategy
+    type: Class
+- uid: Gadema.Api.Services.Base.MetaInfo
+  name: Gadema.Api.Services.Base.MetaInfo
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Base.MetaInfo.CommentService
+    name: CommentService
+    type: Class
+  - uid: Gadema.Api.Services.Base.MetaInfo.ExternalReferenceService
+    name: ExternalReferenceService
+    type: Class
+  - uid: Gadema.Api.Services.Base.MetaInfo.MetaTagService
+    name: MetaTagService
+    type: Class
+- uid: Gadema.Api.Services.Base.Projects
+  name: Gadema.Api.Services.Base.Projects
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Base.Projects.ProjectMemberService
+    name: ProjectMemberService
+    type: Class
+  - uid: Gadema.Api.Services.Base.Projects.ProjectSeriesService
+    name: ProjectSeriesService
+    type: Class
+  - uid: Gadema.Api.Services.Base.Projects.ProjectService
+    name: ProjectService
+    type: Class
+  - uid: Gadema.Api.Services.Base.Projects.ProjectTagService
+    name: ProjectTagService
+    type: Class
+  - uid: Gadema.Api.Services.Base.Projects.ProjectTokenService
+    name: ProjectTokenService
+    type: Class
+- uid: Gadema.Api.Services.Core
+  name: Gadema.Api.Services.Core
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Core.DomainService
+    name: DomainService
+    type: Class
+  - uid: Gadema.Api.Services.Core.ServiceCollectionExtensions
+    name: ServiceCollectionExtensions
+    type: Class
+  - uid: Gadema.Api.Services.Core.ServiceLifetimeAttribute
+    name: ServiceLifetimeAttribute
+    type: Class
+- uid: Gadema.Api.Services.Logging
+  name: Gadema.Api.Services.Logging
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Logging.ActivityLogService
+    name: ActivityLogService
+    type: Class
+- uid: Gadema.Api.Services.Tasks
+  name: Gadema.Api.Services.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Tasks.ProjectTaskCommentService
+    name: ProjectTaskCommentService
+    type: Class
+  - uid: Gadema.Api.Services.Tasks.ProjectTaskService
+    name: ProjectTaskService
+    type: Class
+  - uid: Gadema.Api.Services.Tasks.ReviewStatusService
+    name: ReviewStatusService
+    type: Class
+- uid: Gadema.Api.Services.Writing.Characters
+  name: Gadema.Api.Services.Writing.Characters
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Writing.Characters.CharacterRelationService
+    name: CharacterRelationService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Characters.CharacterService
+    name: CharacterService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Characters.CharacterStateService
+    name: CharacterStateService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService
+    name: CharacterStoryProfileService
+    type: Class
+- uid: Gadema.Api.Services.Writing.Narrative
+  name: Gadema.Api.Services.Writing.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Writing.Narrative.DialogueBranchService
+    name: DialogueBranchService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.DialogueNodeService
+    name: DialogueNodeService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.LoreEntryService
+    name: LoreEntryService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.OutlineSectionService
+    name: OutlineSectionService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.SceneSegmentService
+    name: SceneSegmentService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.SceneService
+    name: SceneService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.StoryBeatService
+    name: StoryBeatService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.StoryChapterService
+    name: StoryChapterService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.StoryOutlineService
+    name: StoryOutlineService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.Narrative.StoryService
+    name: StoryService
+    type: Class
+- uid: Gadema.Api.Services.Writing.WorldBuilding
+  name: Gadema.Api.Services.Writing.WorldBuilding
+  type: Namespace
+  items:
+  - uid: Gadema.Api.Services.Writing.WorldBuilding.FactionService
+    name: FactionService
+    type: Class
+  - uid: Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService
+    name: WorldLocationService
+    type: Class
+- uid: Gadema.Core.DependencyTracking
+  name: Gadema.Core.DependencyTracking
+  type: Namespace
+  items:
+  - uid: Gadema.Core.DependencyTracking.DependencyIgnoreAttribute
+    name: DependencyIgnoreAttribute
+    type: Class
+  - uid: Gadema.Core.DependencyTracking.DependencyResolver
+    name: DependencyResolver
+    type: Class
+  - uid: Gadema.Core.DependencyTracking.ModelDependencyAttribute
+    name: ModelDependencyAttribute
+    type: Class
+  - uid: Gadema.Core.DependencyTracking.RootMarker
+    name: RootMarker
+    type: Class
+- uid: Gadema.Core.Dtos
+  name: Gadema.Core.Dtos
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto<T>
+    type: Class
+- uid: Gadema.Core.Dtos.Access
+  name: Gadema.Core.Dtos.Access
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Access.AuthResponse
+    name: AuthResponse
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.RecoveryCodesDto
+    name: RecoveryCodesDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.RecoveryCodesResponseDto
+    name: RecoveryCodesResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.RegisterDto
+    name: RegisterDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.SignInDto
+    name: SignInDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.UserProviderLinkListResponseDto
+    name: UserProviderLinkListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.UserProviderLinkResponseDto
+    name: UserProviderLinkResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Access.UserResponse
+    name: UserResponse
+    type: Class
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogListResponseDto
+    name: ActivityLogListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ActivityLogResponseDto
+    name: ActivityLogResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.AutosaveDto
+    name: AutosaveDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.AutosaveResponseDto
+    name: AutosaveResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoCreateData
+    name: BaseMetaInfoCreateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    name: BaseMetaInfoUpdateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoCreateData
+    name: ContentMetaInfoCreateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentMetaInfoUpdateData
+    name: ContentMetaInfoUpdateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotListResponseDto
+    name: ContentSnapshotListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotResponseDto
+    name: ContentSnapshotResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentSnapshotUpdateDto
+    name: ContentSnapshotUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogListResponseDto
+    name: ContentVersionLogListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ContentVersionLogResponseDto
+    name: ContentVersionLogResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+    name: CreateResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+    name: DeleteResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.MediaAttachmentResponseDto
+    name: MediaAttachmentResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoAutosaveResponseDto
+    name: MetaInfoAutosaveResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.MetaInfoResponseBaseDto
+    name: MetaInfoResponseBaseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.ProjectMetaInfoUpdateData
+    name: ProjectMetaInfoUpdateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.RollbackDto
+    name: RollbackDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.UpdateRequestDto
+    name: UpdateRequestDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.UploadMediaDto
+    name: UploadMediaDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.VersionInfo
+    name: VersionInfo
+    type: Class
+- uid: Gadema.Core.Dtos.Base.Projects
+  name: Gadema.Core.Dtos.Base.Projects
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Base.Projects.AddProjectMemberDto
+    name: AddProjectMemberDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto
+    name: AddTagsToProjectDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectCreateDto
+    name: ProjectCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectMemberResponseDto
+    name: ProjectMemberResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectMetaInfoCreateData
+    name: ProjectMetaInfoCreateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectResponseDto
+    name: ProjectResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesCreateDto
+    name: ProjectSeriesCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesListResponseDto
+    name: ProjectSeriesListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoCreateData
+    name: ProjectSeriesMetaInfoCreateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesMetaInfoUpdateData
+    name: ProjectSeriesMetaInfoUpdateData
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesResponseDto
+    name: ProjectSeriesResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectSeriesUpdateDto
+    name: ProjectSeriesUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto
+    name: ProjectTagCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTagResponseDto
+    name: ProjectTagResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
+    name: ProjectTokenCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenListResponseDto
+    name: ProjectTokenListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
+    name: ProjectTokenResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenType
+    name: ProjectTokenType
+    type: Enum
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenTypeExtensions
+    name: ProjectTokenTypeExtensions
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
+    name: ProjectTokenUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.ProjectUpdateDto
+    name: ProjectUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Base.Projects.UpdateProjectMemberRoleDto
+    name: UpdateProjectMemberRoleDto
+    type: Class
+- uid: Gadema.Core.Dtos.ExternalReferences
+  name: Gadema.Core.Dtos.ExternalReferences
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceCreateDto
+    name: ExternalReferenceCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceListResponseDto
+    name: ExternalReferenceListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceResponseDto
+    name: ExternalReferenceResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.ExternalReferences.ExternalReferenceUpdateDto
+    name: ExternalReferenceUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Identity
+  name: Gadema.Core.Dtos.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Identity.CharacterIdentityListResponseDto
+    name: CharacterIdentityListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.CharacterIdentityResponseDto
+    name: CharacterIdentityResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+    name: IdentityDefinitionCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionListResponseDto
+    name: IdentityDefinitionListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+    name: IdentityDefinitionResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+    name: IdentityDefinitionUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityValueCreateDto
+    name: IdentityValueCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityValueListResponseDto
+    name: IdentityValueListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityValueResponseDto
+    name: IdentityValueResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Identity.IdentityValueUpdateDto
+    name: IdentityValueUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Response
+  name: Gadema.Core.Dtos.Response
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Response.ErrorResponseDto
+    name: ErrorResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+    name: ListResponseDto<T>
+    type: Class
+  - uid: Gadema.Core.Dtos.Response.PagedResponseDto`1
+    name: PagedResponseDto<T>
+    type: Class
+  - uid: Gadema.Core.Dtos.Response.PaginatedListResponseDto`1
+    name: PaginatedListResponseDto<T>
+    type: Class
+  - uid: Gadema.Core.Dtos.Response.SimpleResponseDto
+    name: SimpleResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Response.SuccessResponseDto
+    name: SuccessResponseDto
+    type: Class
+- uid: Gadema.Core.Dtos.Reviews
+  name: Gadema.Core.Dtos.Reviews
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Reviews.ApproveContentDto
+    name: ApproveContentDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewAssignmentCreateDto
+    name: ReviewAssignmentCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewCreateDto
+    name: ReviewCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewListResponseDto
+    name: ReviewListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewResponseDto
+    name: ReviewResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewStatusCreateDto
+    name: ReviewStatusCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewStatusListResponseDto
+    name: ReviewStatusListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewStatusResponseDto
+    name: ReviewStatusResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Reviews.ReviewUpdateDto
+    name: ReviewUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Search
+  name: Gadema.Core.Dtos.Search
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Search.SearchHitDto
+    name: SearchHitDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Search.SearchMetaInfosDto
+    name: SearchMetaInfosDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Search.SearchResultDto
+    name: SearchResultDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Search.SearchResultsResponseDto
+    name: SearchResultsResponseDto
+    type: Class
+- uid: Gadema.Core.Dtos.Tags
+  name: Gadema.Core.Dtos.Tags
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Tags.AddTagsDto
+    name: AddTagsDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tags.TagCreateDto
+    name: TagCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tags.TagFilterResponseDto
+    name: TagFilterResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tags.TagListResponseDto
+    name: TagListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tags.TagResponseDto
+    name: TagResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tags.TagUpdateDto
+    name: TagUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Tasks
+  name: Gadema.Core.Dtos.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentCreateDto
+    name: ProjectTaskCommentCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentListResponseDto
+    name: ProjectTaskCommentListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentResponseDto
+    name: ProjectTaskCommentResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskCommentUpdateDto
+    name: ProjectTaskCommentUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskCreateDto
+    name: ProjectTaskCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskListResponseDto
+    name: ProjectTaskListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskResponseDto
+    name: ProjectTaskResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Tasks.ProjectTaskUpdateDto
+    name: ProjectTaskUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Writing.Characters
+  name: Gadema.Core.Dtos.Writing.Characters
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterCreateDto
+    name: CharacterCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterListResponseDto
+    name: CharacterListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationCreateDto
+    name: CharacterRelationCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationListResponseDto
+    name: CharacterRelationListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationResponseDto
+    name: CharacterRelationResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterRelationUpdateDto
+    name: CharacterRelationUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterResponseDto
+    name: CharacterResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateCreateDto
+    name: CharacterStateCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateListResponseDto
+    name: CharacterStateListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateResponseDto
+    name: CharacterStateResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStateUpdateDto
+    name: CharacterStateUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileCreateDto
+    name: CharacterStoryProfileCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileListResponseDto
+    name: CharacterStoryProfileListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileResponseDto
+    name: CharacterStoryProfileResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterStoryProfileUpdateDto
+    name: CharacterStoryProfileUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Characters.CharacterUpdateDto
+    name: CharacterUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Writing.DialogueTrees
+  name: Gadema.Core.Dtos.Writing.DialogueTrees
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchCreateDto
+    name: DialogueBranchCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchListResponseDto
+    name: DialogueBranchListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchResponseDto
+    name: DialogueBranchResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueBranchUpdateDto
+    name: DialogueBranchUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeCreateDto
+    name: DialogueNodeCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeListResponseDto
+    name: DialogueNodeListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeResponseDto
+    name: DialogueNodeResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.DialogueNodeUpdateDto
+    name: DialogueNodeUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentCreateDto
+    name: SceneSegmentCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentListResponseDto
+    name: SceneSegmentListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentResponseDto
+    name: SceneSegmentResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.SceneSegmentUpdateDto
+    name: SceneSegmentUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.DialogueTrees.UpdateBranchDto
+    name: UpdateBranchDto
+    type: Class
+- uid: Gadema.Core.Dtos.Writing.Narrative
+  name: Gadema.Core.Dtos.Writing.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto
+    name: LoreEntryCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto
+    name: LoreEntryListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto
+    name: LoreEntryResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto
+    name: LoreEntryUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto
+    name: OutlineSectionCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto
+    name: OutlineSectionListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto
+    name: OutlineSectionResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto
+    name: OutlineSectionUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto
+    name: SceneCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto
+    name: SceneListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+    name: SceneResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto
+    name: SceneUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto
+    name: StoryBeatCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto
+    name: StoryBeatListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto
+    name: StoryBeatResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto
+    name: StoryBeatUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto
+    name: StoryChapterCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto
+    name: StoryChapterListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto
+    name: StoryChapterResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto
+    name: StoryChapterUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto
+    name: StoryCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto
+    name: StoryListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto
+    name: StoryOutlineCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto
+    name: StoryOutlineListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto
+    name: StoryOutlineResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto
+    name: StoryOutlineUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto
+    name: StoryResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto
+    name: StoryUpdateDto
+    type: Class
+- uid: Gadema.Core.Dtos.Writing.Social
+  name: Gadema.Core.Dtos.Writing.Social
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Writing.Social.CommentResponseDto
+    name: CommentResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Social.CreateCommentDto
+    name: CreateCommentDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.Social.UpdateCommentDto
+    name: UpdateCommentDto
+    type: Class
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding
+  name: Gadema.Core.Dtos.Writing.WorldBuilding
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto
+    name: FactionCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto
+    name: FactionListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto
+    name: FactionResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto
+    name: FactionUpdateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto
+    name: WorldLocationCreateDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto
+    name: WorldLocationListResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto
+    name: WorldLocationResponseDto
+    type: Class
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto
+    name: WorldLocationUpdateDto
+    type: Class
+- uid: Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.AudienceEnum
+    name: AudienceEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ExportFormatEnum
+    name: ExportFormatEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.OutlineStatusEnum
+    name: OutlineStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.PrimaryFormatEnum
+    name: PrimaryFormatEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ProjectVisibilityEnum
+    name: ProjectVisibilityEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.RelatedEntityTypeEnum
+    name: RelatedEntityTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.SnapshotTypeEnum
+    name: SnapshotTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.TeamMemberRoleEnum
+    name: TeamMemberRoleEnum
+    type: Enum
+  - uid: Gadema.Core.Enums.ToneEnum
+    name: ToneEnum
+    type: Enum
+- uid: Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Interfaces.IIdentitySyncStrategy
+    name: IIdentitySyncStrategy
+    type: Interface
+  - uid: Gadema.Core.Interfaces.ISoftDeletable
+    name: ISoftDeletable
+    type: Interface
+  - uid: Gadema.Core.Interfaces.IUserContext
+    name: IUserContext
+    type: Interface
+- uid: Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Access.ProjectMember
+    name: ProjectMember
+    type: Class
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Access.ProjectToken
+    name: ProjectToken
+    type: Class
+  - uid: Gadema.Core.Models.Access.TokenUsageStats
+    name: TokenUsageStats
+    type: Class
+  - uid: Gadema.Core.Models.Access.User
+    name: User
+    type: Class
+  - uid: Gadema.Core.Models.Access.UserProviderLink
+    name: UserProviderLink
+    type: Class
+- uid: Gadema.Core.Models.Access.Enums
+  name: Gadema.Core.Models.Access.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Access.Enums.TeamMemberRoleEnum
+    name: TeamMemberRoleEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Access.Enums.UserAuthProviderEnum
+    name: UserAuthProviderEnum
+    type: Enum
+- uid: Gadema.Core.Models.Base
+  name: Gadema.Core.Models.Base
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.ISoftDelete
+    name: ISoftDelete
+    type: Interface
+- uid: Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Enums.ActivityTypeEnum
+    name: ActivityTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.ContentStatusEnum
+    name: ContentStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    name: ContentTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.ExportFormatEnum
+    name: ExportFormatEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+    name: IdentityDataTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.IdentityDefinitionType
+    name: IdentityDefinitionType
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.IdentityTypeEnum
+    name: IdentityTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.RelatedEntityTypeEnum
+    name: RelatedEntityTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+    name: ReviewStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.SnapshotTypeEnum
+    name: SnapshotTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Enums.ViewModeEnum
+    name: ViewModeEnum
+    type: Enum
+- uid: Gadema.Core.Models.Base.Infrastructure
+  name: Gadema.Core.Models.Base.Infrastructure
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+    name: ActivityLog
+    type: Class
+  - uid: Gadema.Core.Models.Base.Infrastructure.AssetLink
+    name: AssetLink
+    type: Class
+  - uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+    name: ContentSnapshot
+    type: Class
+  - uid: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+    name: ContentVersionLog
+    type: Class
+  - uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+    name: ExternalReference
+    type: Class
+  - uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+    name: MediaAttachment
+    type: Class
+- uid: Gadema.Core.Models.Base.Infrastructure.Enums
+  name: Gadema.Core.Models.Base.Infrastructure.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Infrastructure.Enums.ExternalReferenceTypeEnum
+    name: ExternalReferenceTypeEnum
+    type: Enum
+- uid: Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.MetaInfo.BaseMetaInfo
+    name: BaseMetaInfo
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.BaseTag
+    name: BaseTag
+    type: Enum
+  - uid: Gadema.Core.Models.Base.MetaInfo.Comment
+    name: Comment
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    name: ContentMetaInfo
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.MetaTag
+    name: MetaTag
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo
+    name: ProjectMetaInfo
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectSeriesMetaInfo
+    name: ProjectSeriesMetaInfo
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation
+    name: ProjectTagRelation
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+    name: ReviewStatus
+    type: Class
+  - uid: Gadema.Core.Models.Base.MetaInfo.TagRelation`1
+    name: TagRelation<T>
+    type: Class
+- uid: Gadema.Core.Models.Base.MetaInfo.Enums
+  name: Gadema.Core.Models.Base.MetaInfo.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum
+    name: OwnerTypeEnum
+    type: Enum
+- uid: Gadema.Core.Models.Base.Permissions
+  name: Gadema.Core.Models.Base.Permissions
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+    type: Enum
+- uid: Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Projects.Project
+    name: Project
+    type: Class
+  - uid: Gadema.Core.Models.Base.Projects.ProjectSeries
+    name: ProjectSeries
+    type: Class
+  - uid: Gadema.Core.Models.Base.Projects.ProjectTag
+    name: ProjectTag
+    type: Class
+- uid: Gadema.Core.Models.Base.Projects.Enums
+  name: Gadema.Core.Models.Base.Projects.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Base.Projects.Enums.AudienceEnum
+    name: AudienceEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.PrimaryFormatEnum
+    name: PrimaryFormatEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ProjectStatusEnum
+    name: ProjectStatusEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ProjectTemplateTypeEnum
+    name: ProjectTemplateTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ProjectVisibilityEnum
+    name: ProjectVisibilityEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Base.Projects.Enums.ToneEnum
+    name: ToneEnum
+    type: Enum
+- uid: Gadema.Core.Models.Game.Abilities
+  name: Gadema.Core.Models.Game.Abilities
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Game.Abilities.AbilityDefinition
+    name: AbilityDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Game.Abilities.AbilitySet
+    name: AbilitySet
+    type: Class
+  - uid: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition
+    name: StatusEffectDefinition
+    type: Class
+- uid: Gadema.Core.Models.Game.Attributes
+  name: Gadema.Core.Models.Game.Attributes
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Game.Attributes.AttributeDefinition
+    name: AttributeDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Game.Attributes.AttributeSet
+    name: AttributeSet
+    type: Class
+  - uid: Gadema.Core.Models.Game.Attributes.CharacterAttributes
+    name: CharacterAttributes
+    type: Class
+  - uid: Gadema.Core.Models.Game.Attributes.ClassTemplate
+    name: ClassTemplate
+    type: Class
+  - uid: Gadema.Core.Models.Game.Attributes.ClassTemplateAttribute
+    name: ClassTemplateAttribute
+    type: Class
+  - uid: Gadema.Core.Models.Game.Attributes.GameTag
+    name: GameTag
+    type: Enum
+- uid: Gadema.Core.Models.Game.EngineIntegration
+  name: Gadema.Core.Models.Game.EngineIntegration
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Game.EngineIntegration.EngineExportConfig
+    name: EngineExportConfig
+    type: Class
+  - uid: Gadema.Core.Models.Game.EngineIntegration.EngineFieldMapping
+    name: EngineFieldMapping
+    type: Class
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent
+    name: GameKeyEvent
+    type: Class
+  - uid: Gadema.Core.Models.Game.EngineIntegration.GameTriggerType
+    name: GameTriggerType
+    type: Enum
+- uid: Gadema.Core.Models.Game.Inventory
+  name: Gadema.Core.Models.Game.Inventory
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Game.Inventory.EndingDefinition
+    name: EndingDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Game.Inventory.InventoryItem
+    name: InventoryItem
+    type: Class
+- uid: Gadema.Core.Models.Identity
+  name: Gadema.Core.Models.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Identity.CharacterIdentity
+    name: CharacterIdentity
+    type: Class
+  - uid: Gadema.Core.Models.Identity.IdentityDefinition
+    name: IdentityDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Identity.IdentityValue
+    name: IdentityValue
+    type: Class
+- uid: Gadema.Core.Models.Tasks
+  name: Gadema.Core.Models.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Tasks.ProjectTask
+    name: ProjectTask
+    type: Class
+  - uid: Gadema.Core.Models.Tasks.ProjectTaskComment
+    name: ProjectTaskComment
+    type: Class
+  - uid: Gadema.Core.Models.Tasks.ProjectTaskMetaInfo
+    name: ProjectTaskMetaInfo
+    type: Class
+- uid: Gadema.Core.Models.Tasks.Enums
+  name: Gadema.Core.Models.Tasks.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskDifficultyEnum
+    name: TaskDifficultyEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskPriorityEnum
+    name: TaskPriorityEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Tasks.Enums.TaskStatusEnum
+    name: TaskStatusEnum
+    type: Enum
+- uid: Gadema.Core.Models.Templates
+  name: Gadema.Core.Models.Templates
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Templates.AttributeSetDefinition
+    name: AttributeSetDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Templates.ProjectTemplate
+    name: ProjectTemplate
+    type: Class
+  - uid: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition
+    name: TemplateAttributeSetDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Templates.TemplateClassTemplateDefinition
+    name: TemplateClassTemplateDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Templates.TemplateIdentityDefinition
+    name: TemplateIdentityDefinition
+    type: Class
+  - uid: Gadema.Core.Models.Templates.TemplateNarrativeStructure
+    name: TemplateNarrativeStructure
+    type: Class
+- uid: Gadema.Core.Models.Writing.Characters
+  name: Gadema.Core.Models.Writing.Characters
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Writing.Characters.Character
+    name: Character
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRelation
+    name: CharacterRelation
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    type: Enum
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterState
+    name: CharacterState
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterStatus
+    name: CharacterStatus
+    type: Enum
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+    name: CharacterStoryProfile
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+    name: RelationTypeEnum
+    type: Enum
+- uid: Gadema.Core.Models.Writing.Enums
+  name: Gadema.Core.Models.Writing.Enums
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    name: LoreTypeEnum
+    type: Enum
+  - uid: Gadema.Core.Models.Writing.Enums.OutlineStatusEnum
+    name: OutlineStatusEnum
+    type: Enum
+- uid: Gadema.Core.Models.Writing.Narrative
+  name: Gadema.Core.Models.Writing.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+    name: DialogueBranch
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.DialogueNode
+    name: DialogueNode
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.LoreEntry
+    name: LoreEntry
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.OutlineSection
+    name: OutlineSection
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.Scene
+    name: Scene
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.SceneSegment
+    name: SceneSegment
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
+    name: SceneStoryBeatMapping
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.SegmentType
+    name: SegmentType
+    type: Enum
+  - uid: Gadema.Core.Models.Writing.Narrative.Story
+    name: Story
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.StoryBeat
+    name: StoryBeat
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.StoryChapter
+    name: StoryChapter
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.StoryOutline
+    name: StoryOutline
+    type: Class
+  - uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+    name: WritingTag
+    type: Enum
+- uid: Gadema.Core.Models.Writing.WorldBuilding
+  name: Gadema.Core.Models.Writing.WorldBuilding
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.Faction
+    name: Faction
+    type: Class
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.LocationType
+    name: LocationType
+    type: Enum
+  - uid: Gadema.Core.Models.Writing.WorldBuilding.WorldLocation
+    name: WorldLocation
+    type: Class
+- uid: Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  type: Namespace
+  items:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions
+    name: EnumGuidExtensions
+    type: Class
+  - uid: Gadema.Core.Utils.FixtureAttribute
+    name: FixtureAttribute
+    type: Class
+  - uid: Gadema.Core.Utils.FixtureHintEnum
+    name: FixtureHintEnum
+    type: Enum
+  - uid: Gadema.Core.Utils.ModuleIndexAttribute
+    name: ModuleIndexAttribute
+    type: Class
+  - uid: Gadema.Core.Utils.ReservedGuid
+    name: ReservedGuid
+    type: Class
+  - uid: Gadema.Core.Utils.StringSanitizer
+    name: StringSanitizer
+    type: Class
+- uid: Gadema.Data.Configurations.Base.MetaInfo
+  name: Gadema.Data.Configurations.Base.MetaInfo
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+    name: ContentTagRelationEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Core
+  name: Gadema.Data.Configurations.Core
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Core.ActivityLogEntityTypeConfiguration
+    name: ActivityLogEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ExternalReferenceEntityTypeConfiguration
+    name: ExternalReferenceEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.MediaAttachmentEntityTypeConfiguration
+    name: MediaAttachmentEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.MetaInfoEntityTypeConfiguration
+    name: MetaInfoEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.MetaTagEntityTypeConfiguration
+    name: MetaTagEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectEntityTypeConfiguration
+    name: ProjectEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectMemberEntityTypeConfiguration
+    name: ProjectMemberEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectMetaInfoEntityTypeConfiguration
+    name: ProjectMetaInfoEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectSeriesEntityTypeConfiguration
+    name: ProjectSeriesEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration
+    name: ProjectSeriesMetaInfoEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectTagEntityTypeConfiguration
+    name: ProjectTagEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.ProjectTagRelationEntityTypeConfiguration
+    name: ProjectTagRelationEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration<T, TMetaInfo>
+    type: Class
+- uid: Gadema.Data.Configurations.Game.EngineIntegration
+  name: Gadema.Data.Configurations.Game.EngineIntegration
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Game.EngineIntegration.AssetLinkEntityTypeConfiguration
+    name: AssetLinkEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Game.Inventory
+  name: Gadema.Data.Configurations.Game.Inventory
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration
+    name: EndingDefinitionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration
+    name: InventoryItemEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Identity
+  name: Gadema.Data.Configurations.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Identity.CharacterIdentityEntityTypeConfiguration
+    name: CharacterIdentityEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration
+    name: IdentityDefinitionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration
+    name: IdentityValueEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Identity.UserEntityTypeConfiguration
+    name: UserEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration
+    name: UserProviderLinkEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Narrative
+  name: Gadema.Data.Configurations.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
+    name: CharacterRelationEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration
+    name: CharacterStateEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Tasks
+  name: Gadema.Data.Configurations.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration
+    name: CommentEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration
+    name: ProjectTaskCommentsEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration
+    name: ProjectTaskEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Tasks.ProjectTaskMetaInfoEntityTypeConfiguration
+    name: ProjectTaskMetaInfoEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Tasks.ReviewStatusEntityTypeConfiguration
+    name: ReviewStatusEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Templates
+  name: Gadema.Data.Configurations.Templates
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration
+    name: ProjectTemplateEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration
+    name: TemplateAttributeSetDefinitionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration
+    name: TemplateClassTemplateDefinitionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration
+    name: TemplateIdentityDefinitionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration
+    name: TemplateNarrativeStructureEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Versioning
+  name: Gadema.Data.Configurations.Versioning
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Versioning.ContentSnapshotEntityTypeConfiguration
+    name: ContentSnapshotEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Versioning.ContentVersionLogEntityTypeConfiguration
+    name: ContentVersionLogEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Writing.Characters
+  name: Gadema.Data.Configurations.Writing.Characters
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Writing.Characters.CharacterEntityTypeConfiguration
+    name: CharacterEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Characters.CharacterRelationEntityTypeConfiguration
+    name: CharacterRelationEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration
+    name: CharacterStateEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Characters.CharacterStoryProfileEntityTypeConfiguration
+    name: CharacterStoryProfileEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Configurations.Writing.Narrative
+  name: Gadema.Data.Configurations.Writing.Narrative
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
+    name: DialogueBranchEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueNodeEntityTypeConfiguration
+    name: DialogueNodeEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration
+    name: FactionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.LoreEntryEntityTypeConfiguration
+    name: LoreEntryEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration
+    name: OutlineSectionEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.SceneEntityTypeConfiguration
+    name: SceneEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration
+    name: SceneSegmentEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration
+    name: SceneStoryBeatMappingEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.StoryBeatEntityTypeConfiguration
+    name: StoryBeatEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.StoryChapterEntityTypeConfiguration
+    name: StoryChapterEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration
+    name: StoryEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.StoryOutlineEntityTypeConfiguration
+    name: StoryOutlineEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.WorldLocationEntityTypeConfiguration
+    name: WorldLocationEntityTypeConfiguration
+    type: Class
+- uid: Gadema.Data.Database
+  name: Gadema.Data.Database
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.DbInjection
+    name: DbInjection
+    type: Class
+  - uid: Gadema.Data.Database.GademaBaseContext
+    name: GademaBaseContext
+    type: Class
+- uid: Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.Core.CoreDbContext
+    name: CoreDbContext
+    type: Class
+- uid: Gadema.Data.Database.Game
+  name: Gadema.Data.Database.Game
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.Game.GameDbContext
+    name: GameDbContext
+    type: Class
+- uid: Gadema.Data.Database.Identity
+  name: Gadema.Data.Database.Identity
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.Identity.IdentityDbContext
+    name: IdentityDbContext
+    type: Class
+- uid: Gadema.Data.Database.Tasks
+  name: Gadema.Data.Database.Tasks
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.Tasks.TaskDbContext
+    name: TaskDbContext
+    type: Class
+- uid: Gadema.Data.Database.Writing
+  name: Gadema.Data.Database.Writing
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Database.Writing.WritingDbContext
+    name: WritingDbContext
+    type: Class
+- uid: Gadema.Data.Extensions
+  name: Gadema.Data.Extensions
+  type: Namespace
+  items:
+  - uid: Gadema.Data.Extensions.ModelBuilderExtensions
+    name: ModelBuilderExtensions
+    type: Class
+memberLayout: SamePage

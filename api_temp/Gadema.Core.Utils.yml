@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  id: Gadema.Core.Utils
+  children:
+  - Gadema.Core.Utils.EnumGuidExtensions
+  - Gadema.Core.Utils.FixtureAttribute
+  - Gadema.Core.Utils.FixtureHintEnum
+  - Gadema.Core.Utils.ModuleIndexAttribute
+  - Gadema.Core.Utils.ReservedGuid
+  - Gadema.Core.Utils.StringSanitizer
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Utils.ModuleIndexAttribute
+  commentId: T:Gadema.Core.Utils.ModuleIndexAttribute
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.ModuleIndexAttribute.html
+  name: ModuleIndexAttribute
+  nameWithType: ModuleIndexAttribute
+  fullName: Gadema.Core.Utils.ModuleIndexAttribute
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils.FixtureAttribute
+  commentId: T:Gadema.Core.Utils.FixtureAttribute
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.FixtureAttribute.html
+  name: FixtureAttribute
+  nameWithType: FixtureAttribute
+  fullName: Gadema.Core.Utils.FixtureAttribute
+- uid: Gadema.Core.Utils.FixtureHintEnum
+  commentId: T:Gadema.Core.Utils.FixtureHintEnum
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.FixtureHintEnum.html
+  name: FixtureHintEnum
+  nameWithType: FixtureHintEnum
+  fullName: Gadema.Core.Utils.FixtureHintEnum
+- uid: Gadema.Core.Utils.ReservedGuid
+  commentId: T:Gadema.Core.Utils.ReservedGuid
+  href: Gadema.Core.Utils.ReservedGuid.html
+  name: ReservedGuid
+  nameWithType: ReservedGuid
+  fullName: Gadema.Core.Utils.ReservedGuid
+- uid: Gadema.Core.Utils.StringSanitizer
+  commentId: T:Gadema.Core.Utils.StringSanitizer
+  href: Gadema.Core.Utils.StringSanitizer.html
+  name: StringSanitizer
+  nameWithType: StringSanitizer
+  fullName: Gadema.Core.Utils.StringSanitizer
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils

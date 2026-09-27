@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Writing.Narrative
+  commentId: N:Gadema.Api.Services.Writing.Narrative
+  id: Gadema.Api.Services.Writing.Narrative
+  children:
+  - Gadema.Api.Services.Writing.Narrative.DialogueBranchService
+  - Gadema.Api.Services.Writing.Narrative.DialogueNodeService
+  - Gadema.Api.Services.Writing.Narrative.LoreEntryService
+  - Gadema.Api.Services.Writing.Narrative.OutlineSectionService
+  - Gadema.Api.Services.Writing.Narrative.SceneSegmentService
+  - Gadema.Api.Services.Writing.Narrative.SceneService
+  - Gadema.Api.Services.Writing.Narrative.StoryBeatService
+  - Gadema.Api.Services.Writing.Narrative.StoryChapterService
+  - Gadema.Api.Services.Writing.Narrative.StoryOutlineService
+  - Gadema.Api.Services.Writing.Narrative.StoryService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Writing.Narrative
+  nameWithType: Gadema.Api.Services.Writing.Narrative
+  fullName: Gadema.Api.Services.Writing.Narrative
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Writing.Narrative.DialogueBranchService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.DialogueBranchService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.DialogueBranchService.html
+  name: DialogueBranchService
+  nameWithType: DialogueBranchService
+  fullName: Gadema.Api.Services.Writing.Narrative.DialogueBranchService
+- uid: Gadema.Api.Services.Writing.Narrative.DialogueNodeService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.DialogueNodeService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.DialogueNodeService.html
+  name: DialogueNodeService
+  nameWithType: DialogueNodeService
+  fullName: Gadema.Api.Services.Writing.Narrative.DialogueNodeService
+- uid: Gadema.Api.Services.Writing.Narrative.LoreEntryService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.LoreEntryService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.LoreEntryService.html
+  name: LoreEntryService
+  nameWithType: LoreEntryService
+  fullName: Gadema.Api.Services.Writing.Narrative.LoreEntryService
+- uid: Gadema.Api.Services.Writing.Narrative.OutlineSectionService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.OutlineSectionService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.OutlineSectionService.html
+  name: OutlineSectionService
+  nameWithType: OutlineSectionService
+  fullName: Gadema.Api.Services.Writing.Narrative.OutlineSectionService
+- uid: Gadema.Api.Services.Writing.Narrative.SceneSegmentService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.SceneSegmentService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.SceneSegmentService.html
+  name: SceneSegmentService
+  nameWithType: SceneSegmentService
+  fullName: Gadema.Api.Services.Writing.Narrative.SceneSegmentService
+- uid: Gadema.Api.Services.Writing.Narrative.SceneService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.SceneService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.SceneService.html
+  name: SceneService
+  nameWithType: SceneService
+  fullName: Gadema.Api.Services.Writing.Narrative.SceneService
+- uid: Gadema.Api.Services.Writing.Narrative.StoryBeatService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.StoryBeatService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.StoryBeatService.html
+  name: StoryBeatService
+  nameWithType: StoryBeatService
+  fullName: Gadema.Api.Services.Writing.Narrative.StoryBeatService
+- uid: Gadema.Api.Services.Writing.Narrative.StoryChapterService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.StoryChapterService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.StoryChapterService.html
+  name: StoryChapterService
+  nameWithType: StoryChapterService
+  fullName: Gadema.Api.Services.Writing.Narrative.StoryChapterService
+- uid: Gadema.Api.Services.Writing.Narrative.StoryOutlineService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.StoryOutlineService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.StoryOutlineService.html
+  name: StoryOutlineService
+  nameWithType: StoryOutlineService
+  fullName: Gadema.Api.Services.Writing.Narrative.StoryOutlineService
+- uid: Gadema.Api.Services.Writing.Narrative.StoryService
+  commentId: T:Gadema.Api.Services.Writing.Narrative.StoryService
+  parent: Gadema.Api.Services.Writing.Narrative
+  href: Gadema.Api.Services.Writing.Narrative.StoryService.html
+  name: StoryService
+  nameWithType: StoryService
+  fullName: Gadema.Api.Services.Writing.Narrative.StoryService
+- uid: Gadema.Api.Services.Writing.Narrative
+  commentId: N:Gadema.Api.Services.Writing.Narrative
+  name: Gadema.Api.Services.Writing.Narrative
+  nameWithType: Gadema.Api.Services.Writing.Narrative
+  fullName: Gadema.Api.Services.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.Narrative
+    name: Narrative

@@ -1,0 +1,467 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  id: LoreTypeEnum
+  parent: Gadema.Core.Models.Writing.Enums
+  children:
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Culture
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Economy
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Geography
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.History
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Mythology
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Other
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Politics
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Religion
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Society
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Technology
+  langs:
+  - csharp
+  - vb
+  name: LoreTypeEnum
+  nameWithType: LoreTypeEnum
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LoreTypeEnum
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Defines the categories of lore entries used for world-building.
+  example: []
+  syntax:
+    content: public enum LoreTypeEnum
+    content.vb: Public Enum LoreTypeEnum
+  extensionMethods:
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.History
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.History
+  id: History
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: History
+  nameWithType: LoreTypeEnum.History
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.History
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: History
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Historical events, timelines, and chronicles.
+  example: []
+  syntax:
+    content: History = 0
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Mythology
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Mythology
+  id: Mythology
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Mythology
+  nameWithType: LoreTypeEnum.Mythology
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Mythology
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Mythology
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Legends, myths, and folklore that shape a culture's identity.
+  example: []
+  syntax:
+    content: Mythology = 1
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Geography
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Geography
+  id: Geography
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Geography
+  nameWithType: LoreTypeEnum.Geography
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Geography
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Geography
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Physical landscapes, terrain, climates, and locations.
+  example: []
+  syntax:
+    content: Geography = 2
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Culture
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Culture
+  id: Culture
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Culture
+  nameWithType: LoreTypeEnum.Culture
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Culture
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Culture
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Customs, traditions, languages, and social behaviors.
+  example: []
+  syntax:
+    content: Culture = 3
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Technology
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Technology
+  id: Technology
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Technology
+  nameWithType: LoreTypeEnum.Technology
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Technology
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Technology
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Scientific advancements, tools, and technical capabilities of a society.
+  example: []
+  syntax:
+    content: Technology = 4
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Society
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Society
+  id: Society
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Society
+  nameWithType: LoreTypeEnum.Society
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Society
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Society
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Social structures, hierarchies, and community organization.
+  example: []
+  syntax:
+    content: Society = 5
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Economy
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Economy
+  id: Economy
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Economy
+  nameWithType: LoreTypeEnum.Economy
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Economy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Economy
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Trade systems, resources, and financial structures.
+  example: []
+  syntax:
+    content: Economy = 6
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Politics
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Politics
+  id: Politics
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Politics
+  nameWithType: LoreTypeEnum.Politics
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Politics
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Politics
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Governance, laws, and political power dynamics.
+  example: []
+  syntax:
+    content: Politics = 7
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Religion
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Religion
+  id: Religion
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Religion
+  nameWithType: LoreTypeEnum.Religion
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Religion
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Religion
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 36
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Belief systems, deities, and spiritual practices.
+  example: []
+  syntax:
+    content: Religion = 8
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Other
+  commentId: F:Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Other
+  id: Other
+  parent: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Other
+  nameWithType: LoreTypeEnum.Other
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Other
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Other
+    path: src/Gadema.Core/Models/Writing/Enums/LoreTypeEnum.cs
+    startLine: 39
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Enums
+  summary: Miscellaneous lore information that does not fit other categories.
+  example: []
+  syntax:
+    content: Other = 9
+    return:
+      type: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+references:
+- uid: Gadema.Core.Models.Writing.Enums
+  commentId: N:Gadema.Core.Models.Writing.Enums
+  name: Gadema.Core.Models.Writing.Enums
+  nameWithType: Gadema.Core.Models.Writing.Enums
+  fullName: Gadema.Core.Models.Writing.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<LoreTypeEnum>(LoreTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<LoreTypeEnum>(LoreTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Writing.Enums.LoreTypeEnum>(Gadema.Core.Models.Writing.Enums.LoreTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of LoreTypeEnum)(LoreTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Writing.Enums.LoreTypeEnum)(Gadema.Core.Models.Writing.Enums.LoreTypeEnum)
+  name.vb: ToGuid(Of LoreTypeEnum)(LoreTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Enums.LoreTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    name: LoreTypeEnum
+    href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    name: LoreTypeEnum
+    href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Enums.LoreTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    name: LoreTypeEnum
+    href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+    name: LoreTypeEnum
+    href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  parent: Gadema.Core.Models.Writing.Enums
+  href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  name: LoreTypeEnum
+  nameWithType: LoreTypeEnum
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Activities
+  commentId: N:Gadema.Api.Controllers.Activities
+  id: Gadema.Api.Controllers.Activities
+  children:
+  - Gadema.Api.Controllers.Activities.ActivityLogsController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Activities
+  nameWithType: Gadema.Api.Controllers.Activities
+  fullName: Gadema.Api.Controllers.Activities
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Activities.ActivityLogsController
+  commentId: T:Gadema.Api.Controllers.Activities.ActivityLogsController
+  href: Gadema.Api.Controllers.Activities.ActivityLogsController.html
+  name: ActivityLogsController
+  nameWithType: ActivityLogsController
+  fullName: Gadema.Api.Controllers.Activities.ActivityLogsController

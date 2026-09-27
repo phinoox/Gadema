@@ -1,0 +1,442 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Interfaces.IUserContext
+  commentId: T:Gadema.Core.Interfaces.IUserContext
+  id: IUserContext
+  parent: Gadema.Core.Interfaces
+  children:
+  - Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+  - Gadema.Core.Interfaces.IUserContext.CurrentUser
+  - Gadema.Core.Interfaces.IUserContext.Roles
+  - Gadema.Core.Interfaces.IUserContext.UserId
+  langs:
+  - csharp
+  - vb
+  name: IUserContext
+  nameWithType: IUserContext
+  fullName: Gadema.Core.Interfaces.IUserContext
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IUserContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IUserContext
+    path: src/Gadema.Core/Interfaces/IUserContext.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Provides information about the currently authenticated user within the system context.
+  example: []
+  syntax:
+    content: 'public interface IUserContext : IDisposable'
+    content.vb: Public Interface IUserContext Inherits IDisposable
+  derivedClasses:
+  - Gadema.Api.Services.Access.UserContext
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Gadema.Core.Interfaces.IUserContext.CurrentUser
+  commentId: P:Gadema.Core.Interfaces.IUserContext.CurrentUser
+  id: CurrentUser
+  parent: Gadema.Core.Interfaces.IUserContext
+  langs:
+  - csharp
+  - vb
+  name: CurrentUser
+  nameWithType: IUserContext.CurrentUser
+  fullName: Gadema.Core.Interfaces.IUserContext.CurrentUser
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IUserContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CurrentUser
+    path: src/Gadema.Core/Interfaces/IUserContext.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets the current authenticated user, if any.
+  example: []
+  syntax:
+    content: User? CurrentUser { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Access.User
+    content.vb: Property CurrentUser As User
+  overload: Gadema.Core.Interfaces.IUserContext.CurrentUser*
+- uid: Gadema.Core.Interfaces.IUserContext.UserId
+  commentId: P:Gadema.Core.Interfaces.IUserContext.UserId
+  id: UserId
+  parent: Gadema.Core.Interfaces.IUserContext
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: IUserContext.UserId
+  fullName: Gadema.Core.Interfaces.IUserContext.UserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IUserContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UserId
+    path: src/Gadema.Core/Interfaces/IUserContext.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets the unique identifier of the current user, or null if not authenticated.
+  example: []
+  syntax:
+    content: Guid? UserId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Property UserId As Guid?
+  overload: Gadema.Core.Interfaces.IUserContext.UserId*
+- uid: Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+  commentId: P:Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+  id: ApiTokenHash
+  parent: Gadema.Core.Interfaces.IUserContext
+  langs:
+  - csharp
+  - vb
+  name: ApiTokenHash
+  nameWithType: IUserContext.ApiTokenHash
+  fullName: Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IUserContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ApiTokenHash
+    path: src/Gadema.Core/Interfaces/IUserContext.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets the hash of the API token used for authentication, if applicable.
+  example: []
+  syntax:
+    content: string? ApiTokenHash { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property ApiTokenHash As String
+  overload: Gadema.Core.Interfaces.IUserContext.ApiTokenHash*
+- uid: Gadema.Core.Interfaces.IUserContext.Roles
+  commentId: P:Gadema.Core.Interfaces.IUserContext.Roles
+  id: Roles
+  parent: Gadema.Core.Interfaces.IUserContext
+  langs:
+  - csharp
+  - vb
+  name: Roles
+  nameWithType: IUserContext.Roles
+  fullName: Gadema.Core.Interfaces.IUserContext.Roles
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IUserContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Roles
+    path: src/Gadema.Core/Interfaces/IUserContext.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets the list of roles assigned to the current user for authorization checks.
+  example: []
+  syntax:
+    content: List<string> Roles { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Property Roles As List(Of String)
+  overload: Gadema.Core.Interfaces.IUserContext.Roles*
+references:
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Interfaces.IUserContext.CurrentUser*
+  commentId: Overload:Gadema.Core.Interfaces.IUserContext.CurrentUser
+  href: Gadema.Core.Interfaces.IUserContext.html#Gadema_Core_Interfaces_IUserContext_CurrentUser
+  name: CurrentUser
+  nameWithType: IUserContext.CurrentUser
+  fullName: Gadema.Core.Interfaces.IUserContext.CurrentUser
+- uid: Gadema.Core.Models.Access.User
+  commentId: T:Gadema.Core.Models.Access.User
+  parent: Gadema.Core.Models.Access
+  href: Gadema.Core.Models.Access.User.html
+  name: User
+  nameWithType: User
+  fullName: Gadema.Core.Models.Access.User
+- uid: Gadema.Core.Models.Access
+  commentId: N:Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  nameWithType: Gadema.Core.Models.Access
+  fullName: Gadema.Core.Models.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+- uid: Gadema.Core.Interfaces.IUserContext.UserId*
+  commentId: Overload:Gadema.Core.Interfaces.IUserContext.UserId
+  href: Gadema.Core.Interfaces.IUserContext.html#Gadema_Core_Interfaces_IUserContext_UserId
+  name: UserId
+  nameWithType: IUserContext.UserId
+  fullName: Gadema.Core.Interfaces.IUserContext.UserId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Interfaces.IUserContext.ApiTokenHash*
+  commentId: Overload:Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+  href: Gadema.Core.Interfaces.IUserContext.html#Gadema_Core_Interfaces_IUserContext_ApiTokenHash
+  name: ApiTokenHash
+  nameWithType: IUserContext.ApiTokenHash
+  fullName: Gadema.Core.Interfaces.IUserContext.ApiTokenHash
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Interfaces.IUserContext.Roles*
+  commentId: Overload:Gadema.Core.Interfaces.IUserContext.Roles
+  href: Gadema.Core.Interfaces.IUserContext.html#Gadema_Core_Interfaces_IUserContext_Roles
+  name: Roles
+  nameWithType: IUserContext.Roles
+  fullName: Gadema.Core.Interfaces.IUserContext.Roles
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

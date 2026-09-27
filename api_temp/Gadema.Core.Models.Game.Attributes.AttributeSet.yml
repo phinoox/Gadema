@@ -1,0 +1,861 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet
+  commentId: T:Gadema.Core.Models.Game.Attributes.AttributeSet
+  id: AttributeSet
+  parent: Gadema.Core.Models.Game.Attributes
+  children:
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+  - Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+  langs:
+  - csharp
+  - vb
+  name: AttributeSet
+  nameWithType: AttributeSet
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AttributeSet
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: >-
+    Represents a collection of attributes grouped together for a specific entity or template (e.g., "Core Stats", "Magic Attributes").
+
+    This allows for defining complete attribute systems tailored to different archetypes.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo) })]
+
+      public class AttributeSet
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project), GetType(ContentMetaInfo) })>
+
+      Public Class AttributeSet
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+  id: Id
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: AttributeSet.Id
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: Unique identifier for the attribute set.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.Id*
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: AttributeSet.MetaInfoId
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid? MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid?
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: AttributeSet.ContentMetaInfo
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: Navigation property for the attribute set's identity anchor.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+  id: ProjectId
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: ProjectId
+  nameWithType: AttributeSet.ProjectId
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectId
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 34
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: The ID of the project this attribute set belongs to.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      [Display(Name = "Project ID")]
+
+      public Guid ProjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      <Display(Name:="Project ID")>
+
+      Public Property ProjectId As Guid
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Project ID
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+  id: Name
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: AttributeSet.Name
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Name
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: The human-readable name of the attribute set (e.g., "Core Stats").
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(128)]
+
+      [Required]
+
+      public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(128)>
+
+      <Required>
+
+      Public Property Name As String
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.Name*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+  id: DisplayOrder
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: DisplayOrder
+  nameWithType: AttributeSet.DisplayOrder
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DisplayOrder
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 46
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: The sort order for displaying the attribute set in UI lists.
+  example: []
+  syntax:
+    content: public int DisplayOrder { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property DisplayOrder As Integer
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder*
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+  id: IsActive
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: IsActive
+  nameWithType: AttributeSet.IsActive
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsActive
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 51
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: Indicates whether this attribute set is currently active and available for use.
+  example: []
+  syntax:
+    content: public bool IsActive { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsActive As Boolean
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive*
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+  commentId: P:Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+  id: Project
+  parent: Gadema.Core.Models.Game.Attributes.AttributeSet
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: AttributeSet.Project
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Project
+    path: src/Gadema.Core/Models/Game/Attributes/AttributeSet.cs
+    startLine: 56
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Game.Attributes
+  summary: Navigation property for the parent project.
+  example: []
+  syntax:
+    content: public virtual Project Project { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Projects.Project
+    content.vb: Public Overridable Property Project As Project
+  overload: Gadema.Core.Models.Game.Attributes.AttributeSet.Project*
+references:
+- uid: Gadema.Core.Models.Game.Attributes
+  commentId: N:Gadema.Core.Models.Game.Attributes
+  name: Gadema.Core.Models.Game.Attributes
+  nameWithType: Gadema.Core.Models.Game.Attributes
+  fullName: Gadema.Core.Models.Game.Attributes
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Attributes
+    name: Attributes
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Game
+    name: Game
+  - name: .
+  - uid: Gadema.Core.Models.Game.Attributes
+    name: Attributes
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Id*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_Id
+  name: Id
+  nameWithType: AttributeSet.Id
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_MetaInfoId
+  name: MetaInfoId
+  nameWithType: AttributeSet.MetaInfoId
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.MetaInfoId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: AttributeSet.ContentMetaInfo
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_ProjectId
+  name: ProjectId
+  nameWithType: AttributeSet.ProjectId
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.ProjectId
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Name*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_Name
+  name: Name
+  nameWithType: AttributeSet.Name
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_DisplayOrder
+  name: DisplayOrder
+  nameWithType: AttributeSet.DisplayOrder
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.DisplayOrder
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_IsActive
+  name: IsActive
+  nameWithType: AttributeSet.IsActive
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.IsActive
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Gadema.Core.Models.Game.Attributes.AttributeSet.Project*
+  commentId: Overload:Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+  href: Gadema.Core.Models.Game.Attributes.AttributeSet.html#Gadema_Core_Models_Game_Attributes_AttributeSet_Project
+  name: Project
+  nameWithType: AttributeSet.Project
+  fullName: Gadema.Core.Models.Game.Attributes.AttributeSet.Project
+- uid: Gadema.Core.Models.Base.Projects.Project
+  commentId: T:Gadema.Core.Models.Base.Projects.Project
+  parent: Gadema.Core.Models.Base.Projects
+  href: Gadema.Core.Models.Base.Projects.Project.html
+  name: Project
+  nameWithType: Project
+  fullName: Gadema.Core.Models.Base.Projects.Project
+- uid: Gadema.Core.Models.Base.Projects
+  commentId: N:Gadema.Core.Models.Base.Projects
+  name: Gadema.Core.Models.Base.Projects
+  nameWithType: Gadema.Core.Models.Base.Projects
+  fullName: Gadema.Core.Models.Base.Projects
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Projects
+    name: Projects

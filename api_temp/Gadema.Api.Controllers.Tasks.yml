@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Tasks
+  commentId: N:Gadema.Api.Controllers.Tasks
+  id: Gadema.Api.Controllers.Tasks
+  children:
+  - Gadema.Api.Controllers.Tasks.ProjectTaskCommentController
+  - Gadema.Api.Controllers.Tasks.ProjectTaskController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Tasks
+  nameWithType: Gadema.Api.Controllers.Tasks
+  fullName: Gadema.Api.Controllers.Tasks
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Tasks.ProjectTaskCommentController
+  commentId: T:Gadema.Api.Controllers.Tasks.ProjectTaskCommentController
+  href: Gadema.Api.Controllers.Tasks.ProjectTaskCommentController.html
+  name: ProjectTaskCommentController
+  nameWithType: ProjectTaskCommentController
+  fullName: Gadema.Api.Controllers.Tasks.ProjectTaskCommentController
+- uid: Gadema.Api.Controllers.Tasks.ProjectTaskController
+  commentId: T:Gadema.Api.Controllers.Tasks.ProjectTaskController
+  href: Gadema.Api.Controllers.Tasks.ProjectTaskController.html
+  name: ProjectTaskController
+  nameWithType: ProjectTaskController
+  fullName: Gadema.Api.Controllers.Tasks.ProjectTaskController

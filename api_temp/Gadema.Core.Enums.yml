@@ -1,0 +1,175 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  id: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.ActivityTypeEnum
+  - Gadema.Core.Enums.AudienceEnum
+  - Gadema.Core.Enums.ExportFormatEnum
+  - Gadema.Core.Enums.OutlineStatusEnum
+  - Gadema.Core.Enums.OwnerTypeEnum
+  - Gadema.Core.Enums.PrimaryFormatEnum
+  - Gadema.Core.Enums.ProjectDifficultyEnum
+  - Gadema.Core.Enums.ProjectStatusEnum
+  - Gadema.Core.Enums.ProjectTemplateTypeEnum
+  - Gadema.Core.Enums.ProjectVisibilityEnum
+  - Gadema.Core.Enums.RelatedEntityTypeEnum
+  - Gadema.Core.Enums.SnapshotTypeEnum
+  - Gadema.Core.Enums.TaskDifficultyEnum
+  - Gadema.Core.Enums.TaskPriorityEnum
+  - Gadema.Core.Enums.TaskStatusEnum
+  - Gadema.Core.Enums.TeamMemberRoleEnum
+  - Gadema.Core.Enums.ToneEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Enums.ActivityTypeEnum
+  commentId: T:Gadema.Core.Enums.ActivityTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ActivityTypeEnum.html
+  name: ActivityTypeEnum
+  nameWithType: ActivityTypeEnum
+  fullName: Gadema.Core.Enums.ActivityTypeEnum
+- uid: Gadema.Core.Enums.ExportFormatEnum
+  commentId: T:Gadema.Core.Enums.ExportFormatEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ExportFormatEnum.html
+  name: ExportFormatEnum
+  nameWithType: ExportFormatEnum
+  fullName: Gadema.Core.Enums.ExportFormatEnum
+- uid: Gadema.Core.Enums.OutlineStatusEnum
+  commentId: T:Gadema.Core.Enums.OutlineStatusEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.OutlineStatusEnum.html
+  name: OutlineStatusEnum
+  nameWithType: OutlineStatusEnum
+  fullName: Gadema.Core.Enums.OutlineStatusEnum
+- uid: Gadema.Core.Enums.OwnerTypeEnum
+  commentId: T:Gadema.Core.Enums.OwnerTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.OwnerTypeEnum.html
+  name: OwnerTypeEnum
+  nameWithType: OwnerTypeEnum
+  fullName: Gadema.Core.Enums.OwnerTypeEnum
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum
+  commentId: T:Gadema.Core.Enums.ProjectDifficultyEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  name: ProjectDifficultyEnum
+  nameWithType: ProjectDifficultyEnum
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum
+- uid: Gadema.Core.Enums.PrimaryFormatEnum
+  commentId: T:Gadema.Core.Enums.PrimaryFormatEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.PrimaryFormatEnum.html
+  name: PrimaryFormatEnum
+  nameWithType: PrimaryFormatEnum
+  fullName: Gadema.Core.Enums.PrimaryFormatEnum
+- uid: Gadema.Core.Enums.ToneEnum
+  commentId: T:Gadema.Core.Enums.ToneEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ToneEnum.html
+  name: ToneEnum
+  nameWithType: ToneEnum
+  fullName: Gadema.Core.Enums.ToneEnum
+- uid: Gadema.Core.Enums.AudienceEnum
+  commentId: T:Gadema.Core.Enums.AudienceEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.AudienceEnum.html
+  name: AudienceEnum
+  nameWithType: AudienceEnum
+  fullName: Gadema.Core.Enums.AudienceEnum
+- uid: Gadema.Core.Enums.ProjectStatusEnum
+  commentId: T:Gadema.Core.Enums.ProjectStatusEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectStatusEnum.html
+  name: ProjectStatusEnum
+  nameWithType: ProjectStatusEnum
+  fullName: Gadema.Core.Enums.ProjectStatusEnum
+- uid: Gadema.Core.Enums.ProjectTemplateTypeEnum
+  commentId: T:Gadema.Core.Enums.ProjectTemplateTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectTemplateTypeEnum.html
+  name: ProjectTemplateTypeEnum
+  nameWithType: ProjectTemplateTypeEnum
+  fullName: Gadema.Core.Enums.ProjectTemplateTypeEnum
+- uid: Gadema.Core.Enums.ProjectVisibilityEnum
+  commentId: T:Gadema.Core.Enums.ProjectVisibilityEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectVisibilityEnum.html
+  name: ProjectVisibilityEnum
+  nameWithType: ProjectVisibilityEnum
+  fullName: Gadema.Core.Enums.ProjectVisibilityEnum
+- uid: Gadema.Core.Enums.RelatedEntityTypeEnum
+  commentId: T:Gadema.Core.Enums.RelatedEntityTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.RelatedEntityTypeEnum.html
+  name: RelatedEntityTypeEnum
+  nameWithType: RelatedEntityTypeEnum
+  fullName: Gadema.Core.Enums.RelatedEntityTypeEnum
+- uid: Gadema.Core.Enums.SnapshotTypeEnum
+  commentId: T:Gadema.Core.Enums.SnapshotTypeEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.SnapshotTypeEnum.html
+  name: SnapshotTypeEnum
+  nameWithType: SnapshotTypeEnum
+  fullName: Gadema.Core.Enums.SnapshotTypeEnum
+- uid: Gadema.Core.Enums.TaskDifficultyEnum
+  commentId: T:Gadema.Core.Enums.TaskDifficultyEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TaskDifficultyEnum.html
+  name: TaskDifficultyEnum
+  nameWithType: TaskDifficultyEnum
+  fullName: Gadema.Core.Enums.TaskDifficultyEnum
+- uid: Gadema.Core.Enums.TaskPriorityEnum
+  commentId: T:Gadema.Core.Enums.TaskPriorityEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TaskPriorityEnum.html
+  name: TaskPriorityEnum
+  nameWithType: TaskPriorityEnum
+  fullName: Gadema.Core.Enums.TaskPriorityEnum
+- uid: Gadema.Core.Enums.TaskStatusEnum
+  commentId: T:Gadema.Core.Enums.TaskStatusEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TaskStatusEnum.html
+  name: TaskStatusEnum
+  nameWithType: TaskStatusEnum
+  fullName: Gadema.Core.Enums.TaskStatusEnum
+- uid: Gadema.Core.Enums.TeamMemberRoleEnum
+  commentId: T:Gadema.Core.Enums.TeamMemberRoleEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.TeamMemberRoleEnum.html
+  name: TeamMemberRoleEnum
+  nameWithType: TeamMemberRoleEnum
+  fullName: Gadema.Core.Enums.TeamMemberRoleEnum
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums

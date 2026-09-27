@@ -1,0 +1,585 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  id: ContentTagRelationEntityTypeConfiguration
+  parent: Gadema.Data.Configurations.Base.MetaInfo
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ContentTagRelationEntityTypeConfiguration
+  nameWithType: ContentTagRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Base.MetaInfo.ContentTagRelationEntityTypeConfiguration
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Data/Configurations/Core/ContentTagRelationEntityTypeConfiguration.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentTagRelationEntityTypeConfiguration
+    path: src/Gadema.Data/Configurations/Core/ContentTagRelationEntityTypeConfiguration.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Configurations.Base.MetaInfo
+  syntax:
+    content: 'public class ContentTagRelationEntityTypeConfiguration : TagRelationEntityTypeConfiguration<ContentTagRelation, ContentMetaInfo>, IEntityTypeConfiguration<ContentTagRelation>'
+    content.vb: Public Class ContentTagRelationEntityTypeConfiguration Inherits TagRelationEntityTypeConfiguration(Of ContentTagRelation, ContentMetaInfo) Implements IEntityTypeConfiguration(Of ContentTagRelation)
+  inheritance:
+  - System.Object
+  - Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  implements:
+  - Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+  inheritedMembers:
+  - Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation})
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+references:
+- uid: Gadema.Data.Configurations.Base.MetaInfo
+  commentId: N:Gadema.Data.Configurations.Base.MetaInfo
+  name: Gadema.Data.Configurations.Base.MetaInfo
+  nameWithType: Gadema.Data.Configurations.Base.MetaInfo
+  fullName: Gadema.Data.Configurations.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Configurations
+    name: Configurations
+  - name: .
+  - uid: Gadema.Data.Configurations.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Data.Configurations.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Configurations
+    name: Configurations
+  - name: .
+  - uid: Gadema.Data.Configurations.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Data.Configurations.Base.MetaInfo
+    name: MetaInfo
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  commentId: T:Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  parent: Gadema.Data.Configurations.Core
+  definition: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  name: TagRelationEntityTypeConfiguration<ContentTagRelation, ContentMetaInfo>
+  nameWithType: TagRelationEntityTypeConfiguration<ContentTagRelation, ContentMetaInfo>
+  fullName: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration<Gadema.Core.Models.Base.MetaInfo.ContentTagRelation, Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo>
+  nameWithType.vb: TagRelationEntityTypeConfiguration(Of ContentTagRelation, ContentMetaInfo)
+  fullName.vb: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration(Of Gadema.Core.Models.Base.MetaInfo.ContentTagRelation, Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo)
+  name.vb: TagRelationEntityTypeConfiguration(Of ContentTagRelation, ContentMetaInfo)
+  spec.csharp:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    name: ContentMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    name: ContentMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+  commentId: T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  name: IEntityTypeConfiguration<ContentTagRelation>
+  nameWithType: IEntityTypeConfiguration<ContentTagRelation>
+  fullName: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Gadema.Core.Models.Base.MetaInfo.ContentTagRelation>
+  nameWithType.vb: IEntityTypeConfiguration(Of ContentTagRelation)
+  fullName.vb: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of Gadema.Core.Models.Base.MetaInfo.ContentTagRelation)
+  name.vb: IEntityTypeConfiguration(Of ContentTagRelation)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: )
+- uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation})
+  commentId: M:Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation})
+  parent: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  definition: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
+  href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  name: Configure(EntityTypeBuilder<ContentTagRelation>)
+  nameWithType: TagRelationEntityTypeConfiguration<ContentTagRelation, ContentMetaInfo>.Configure(EntityTypeBuilder<ContentTagRelation>)
+  fullName: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration<Gadema.Core.Models.Base.MetaInfo.ContentTagRelation, Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo>.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Gadema.Core.Models.Base.MetaInfo.ContentTagRelation>)
+  nameWithType.vb: TagRelationEntityTypeConfiguration(Of ContentTagRelation, ContentMetaInfo).Configure(EntityTypeBuilder(Of ContentTagRelation))
+  fullName.vb: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration(Of Gadema.Core.Models.Base.MetaInfo.ContentTagRelation, Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo).Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder(Of Gadema.Core.Models.Base.MetaInfo.ContentTagRelation))
+  name.vb: Configure(EntityTypeBuilder(Of ContentTagRelation))
+  spec.csharp:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation})
+    name: Configure
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation,Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.ContentTagRelation})
+    name: Configure
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation
+    name: ContentTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ContentTagRelation.html
+  - name: )
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  commentId: T:Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+  href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  name: TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  nameWithType: TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  fullName: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration<T, TMetaInfo>
+  nameWithType.vb: TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  fullName.vb: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  name.vb: TagRelationEntityTypeConfiguration(Of T, TMetaInfo)
+  spec.csharp:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2
+    name: TagRelationEntityTypeConfiguration
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TMetaInfo
+  - name: )
+- uid: Gadema.Data.Configurations.Core
+  commentId: N:Gadema.Data.Configurations.Core
+  name: Gadema.Data.Configurations.Core
+  nameWithType: Gadema.Data.Configurations.Core
+  fullName: Gadema.Data.Configurations.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Configurations
+    name: Configurations
+  - name: .
+  - uid: Gadema.Data.Configurations.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Configurations
+    name: Configurations
+  - name: .
+  - uid: Gadema.Data.Configurations.Core
+    name: Core
+- uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  commentId: T:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  name: IEntityTypeConfiguration<TEntity>
+  nameWithType: IEntityTypeConfiguration<TEntity>
+  fullName: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TEntity>
+  nameWithType.vb: IEntityTypeConfiguration(Of TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration(Of TEntity)
+  name.vb: IEntityTypeConfiguration(Of TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1
+    name: IEntityTypeConfiguration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.ientitytypeconfiguration-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore
+  commentId: N:Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore
+  nameWithType: Microsoft.EntityFrameworkCore
+  fullName: Microsoft.EntityFrameworkCore
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+- uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
+  commentId: M:Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
+  isExternal: true
+  href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  name: Configure(EntityTypeBuilder<T>)
+  nameWithType: TagRelationEntityTypeConfiguration<T, TMetaInfo>.Configure(EntityTypeBuilder<T>)
+  fullName: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration<T, TMetaInfo>.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<T>)
+  nameWithType.vb: TagRelationEntityTypeConfiguration(Of T, TMetaInfo).Configure(EntityTypeBuilder(Of T))
+  fullName.vb: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration(Of T, TMetaInfo).Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder(Of T))
+  name.vb: Configure(EntityTypeBuilder(Of T))
+  spec.csharp:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
+    name: Configure
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration`2.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
+    name: Configure
+    href: Gadema.Data.Configurations.Core.TagRelationEntityTypeConfiguration-2.html#Gadema_Data_Configurations_Core_TagRelationEntityTypeConfiguration_2_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__0__
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1
+    name: EntityTypeBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )

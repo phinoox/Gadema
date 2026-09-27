@@ -1,0 +1,661 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  commentId: T:Gadema.Api.Services.Access.Authentication.JwtTokenService
+  id: JwtTokenService
+  parent: Gadema.Api.Services.Access.Authentication
+  children:
+  - Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  - Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken(System.Guid,System.String,System.String,System.String)
+  - Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken(System.Guid,System.String)
+  - Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate(System.String)
+  langs:
+  - csharp
+  - vb
+  name: JwtTokenService
+  nameWithType: JwtTokenService
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: JwtTokenService
+    path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Authentication
+  summary: >-
+    Issues and validates JWTs.
+
+    Two kinds:
+     • Access token  – full session (auth_method, sub, email, name), 1 h
+     • Pending token – 2FA step 2 / setup confirmation, 8 min, `purpose` claim
+  example: []
+  syntax:
+    content: public class JwtTokenService
+    content.vb: Public Class JwtTokenService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  commentId: M:Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)
+  id: '#ctor(Microsoft.Extensions.Configuration.IConfiguration)'
+  parent: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  langs:
+  - csharp
+  - vb
+  name: JwtTokenService(IConfiguration)
+  nameWithType: JwtTokenService.JwtTokenService(IConfiguration)
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.JwtTokenService(Microsoft.Extensions.Configuration.IConfiguration)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Authentication
+  syntax:
+    content: public JwtTokenService(IConfiguration configuration)
+    parameters:
+    - id: configuration
+      type: Microsoft.Extensions.Configuration.IConfiguration
+    content.vb: Public Sub New(configuration As IConfiguration)
+  overload: Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor*
+  nameWithType.vb: JwtTokenService.New(IConfiguration)
+  fullName.vb: Gadema.Api.Services.Access.Authentication.JwtTokenService.New(Microsoft.Extensions.Configuration.IConfiguration)
+  name.vb: New(IConfiguration)
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken(System.Guid,System.String,System.String,System.String)
+  commentId: M:Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken(System.Guid,System.String,System.String,System.String)
+  id: IssueAccessToken(System.Guid,System.String,System.String,System.String)
+  parent: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  langs:
+  - csharp
+  - vb
+  name: IssueAccessToken(Guid, string, string?, string)
+  nameWithType: JwtTokenService.IssueAccessToken(Guid, string, string?, string)
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken(System.Guid, string, string?, string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IssueAccessToken
+    path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+    startLine: 26
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Authentication
+  syntax:
+    content: public string IssueAccessToken(Guid userId, string email, string? name, string authMethod)
+    parameters:
+    - id: userId
+      type: System.Guid
+    - id: email
+      type: System.String
+    - id: name
+      type: System.String
+    - id: authMethod
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function IssueAccessToken(userId As Guid, email As String, name As String, authMethod As String) As String
+  overload: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken*
+  nameWithType.vb: JwtTokenService.IssueAccessToken(Guid, String, String, String)
+  fullName.vb: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken(System.Guid, String, String, String)
+  name.vb: IssueAccessToken(Guid, String, String, String)
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken(System.Guid,System.String)
+  commentId: M:Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken(System.Guid,System.String)
+  id: IssuePendingToken(System.Guid,System.String)
+  parent: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  langs:
+  - csharp
+  - vb
+  name: IssuePendingToken(Guid, string)
+  nameWithType: JwtTokenService.IssuePendingToken(Guid, string)
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken(System.Guid, string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IssuePendingToken
+    path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Authentication
+  syntax:
+    content: public string IssuePendingToken(Guid userId, string purpose)
+    parameters:
+    - id: userId
+      type: System.Guid
+    - id: purpose
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function IssuePendingToken(userId As Guid, purpose As String) As String
+  overload: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken*
+  nameWithType.vb: JwtTokenService.IssuePendingToken(Guid, String)
+  fullName.vb: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken(System.Guid, String)
+  name.vb: IssuePendingToken(Guid, String)
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate(System.String)
+  commentId: M:Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate(System.String)
+  id: Validate(System.String)
+  parent: Gadema.Api.Services.Access.Authentication.JwtTokenService
+  langs:
+  - csharp
+  - vb
+  name: Validate(string)
+  nameWithType: JwtTokenService.Validate(string)
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate(string)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Validate
+    path: src/Gadema.Api/Services/Access/Authentication/JwtTokenService.cs
+    startLine: 42
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Authentication
+  syntax:
+    content: public (bool Valid, Guid? UserId, string? Purpose) Validate(string token)
+    parameters:
+    - id: token
+      type: System.String
+    return:
+      type: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}
+    content.vb: Public Function Validate(token As String) As (Valid As Boolean, UserId As Guid?, Purpose As String)
+  overload: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate*
+  nameWithType.vb: JwtTokenService.Validate(String)
+  fullName.vb: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate(String)
+  name.vb: Validate(String)
+references:
+- uid: Gadema.Api.Services.Access.Authentication
+  commentId: N:Gadema.Api.Services.Access.Authentication
+  name: Gadema.Api.Services.Access.Authentication
+  nameWithType: Gadema.Api.Services.Access.Authentication
+  fullName: Gadema.Api.Services.Access.Authentication
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Authentication
+    name: Authentication
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Authentication
+    name: Authentication
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor*
+  commentId: Overload:Gadema.Api.Services.Access.Authentication.JwtTokenService.#ctor
+  href: Gadema.Api.Services.Access.Authentication.JwtTokenService.html#Gadema_Api_Services_Access_Authentication_JwtTokenService__ctor_Microsoft_Extensions_Configuration_IConfiguration_
+  name: JwtTokenService
+  nameWithType: JwtTokenService.JwtTokenService
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.JwtTokenService
+  nameWithType.vb: JwtTokenService.New
+  fullName.vb: Gadema.Api.Services.Access.Authentication.JwtTokenService.New
+  name.vb: New
+- uid: Microsoft.Extensions.Configuration.IConfiguration
+  commentId: T:Microsoft.Extensions.Configuration.IConfiguration
+  parent: Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration.iconfiguration
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: Microsoft.Extensions.Configuration.IConfiguration
+- uid: Microsoft.Extensions.Configuration
+  commentId: N:Microsoft.Extensions.Configuration
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Configuration
+  nameWithType: Microsoft.Extensions.Configuration
+  fullName: Microsoft.Extensions.Configuration
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Configuration
+    name: Configuration
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.configuration
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken*
+  commentId: Overload:Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken
+  href: Gadema.Api.Services.Access.Authentication.JwtTokenService.html#Gadema_Api_Services_Access_Authentication_JwtTokenService_IssueAccessToken_System_Guid_System_String_System_String_System_String_
+  name: IssueAccessToken
+  nameWithType: JwtTokenService.IssueAccessToken
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssueAccessToken
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken*
+  commentId: Overload:Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken
+  href: Gadema.Api.Services.Access.Authentication.JwtTokenService.html#Gadema_Api_Services_Access_Authentication_JwtTokenService_IssuePendingToken_System_Guid_System_String_
+  name: IssuePendingToken
+  nameWithType: JwtTokenService.IssuePendingToken
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.IssuePendingToken
+- uid: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate*
+  commentId: Overload:Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate
+  href: Gadema.Api.Services.Access.Authentication.JwtTokenService.html#Gadema_Api_Services_Access_Authentication_JwtTokenService_Validate_System_String_
+  name: Validate
+  nameWithType: JwtTokenService.Validate
+  fullName: Gadema.Api.Services.Access.Authentication.JwtTokenService.Validate
+- uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}
+  commentId: T:System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: (bool Valid, Guid? UserId, string Purpose)
+  nameWithType: (bool Valid, Guid? UserId, string Purpose)
+  fullName: (bool Valid, System.Guid? UserId, string Purpose)
+  nameWithType.vb: (Valid As Boolean, UserId As Guid?, Purpose As String)
+  fullName.vb: (Valid As Boolean, UserId As System.Guid?, Purpose As String)
+  name.vb: (Valid As Boolean, UserId As Guid?, Purpose As String)
+  spec.csharp:
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.Valid
+    name: Valid
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.valid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.UserId
+    name: UserId
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.userid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.Purpose
+    name: Purpose
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.purpose
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.Valid
+    name: Valid
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.valid
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.UserId
+    name: UserId
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.userid
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Nullable{System.Guid},System.String}.Purpose
+    name: Purpose
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.nullable-system.guid-,system.string-.purpose
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )

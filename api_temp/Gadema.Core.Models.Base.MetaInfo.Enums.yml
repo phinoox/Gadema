@@ -1,0 +1,65 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.MetaInfo.Enums
+  commentId: N:Gadema.Core.Models.Base.MetaInfo.Enums
+  id: Gadema.Core.Models.Base.MetaInfo.Enums
+  children:
+  - Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.MetaInfo.Enums
+  nameWithType: Gadema.Core.Models.Base.MetaInfo.Enums
+  fullName: Gadema.Core.Models.Base.MetaInfo.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum
+  parent: Gadema.Core.Models.Base.MetaInfo.Enums
+  href: Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum.html
+  name: OwnerTypeEnum
+  nameWithType: OwnerTypeEnum
+  fullName: Gadema.Core.Models.Base.MetaInfo.Enums.OwnerTypeEnum
+- uid: Gadema.Core.Models.Base.MetaInfo.Enums
+  commentId: N:Gadema.Core.Models.Base.MetaInfo.Enums
+  name: Gadema.Core.Models.Base.MetaInfo.Enums
+  nameWithType: Gadema.Core.Models.Base.MetaInfo.Enums
+  fullName: Gadema.Core.Models.Base.MetaInfo.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo.Enums
+    name: Enums

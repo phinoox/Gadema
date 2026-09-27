@@ -1,0 +1,63 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  id: Gadema.Core.Interfaces
+  children:
+  - Gadema.Core.Interfaces.IIdentitySyncStrategy
+  - Gadema.Core.Interfaces.ISoftDeletable
+  - Gadema.Core.Interfaces.IUserContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  commentId: T:Gadema.Core.Interfaces.IIdentitySyncStrategy
+  parent: Gadema.Core.Interfaces
+  href: Gadema.Core.Interfaces.IIdentitySyncStrategy.html
+  name: IIdentitySyncStrategy
+  nameWithType: IIdentitySyncStrategy
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy
+- uid: Gadema.Core.Interfaces.ISoftDeletable
+  commentId: T:Gadema.Core.Interfaces.ISoftDeletable
+  parent: Gadema.Core.Interfaces
+  href: Gadema.Core.Interfaces.ISoftDeletable.html
+  name: ISoftDeletable
+  nameWithType: ISoftDeletable
+  fullName: Gadema.Core.Interfaces.ISoftDeletable
+- uid: Gadema.Core.Interfaces.IUserContext
+  commentId: T:Gadema.Core.Interfaces.IUserContext
+  parent: Gadema.Core.Interfaces
+  href: Gadema.Core.Interfaces.IUserContext.html
+  name: IUserContext
+  nameWithType: IUserContext
+  fullName: Gadema.Core.Interfaces.IUserContext
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces

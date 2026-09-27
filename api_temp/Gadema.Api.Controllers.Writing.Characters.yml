@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Writing.Characters
+  commentId: N:Gadema.Api.Controllers.Writing.Characters
+  id: Gadema.Api.Controllers.Writing.Characters
+  children:
+  - Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController
+  - Gadema.Api.Controllers.Writing.Characters.CharacterStatesController
+  - Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController
+  - Gadema.Api.Controllers.Writing.Characters.CharactersController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Writing.Characters
+  nameWithType: Gadema.Api.Controllers.Writing.Characters
+  fullName: Gadema.Api.Controllers.Writing.Characters
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController
+  commentId: T:Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController
+  href: Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController.html
+  name: CharacterRelationsController
+  nameWithType: CharacterRelationsController
+  fullName: Gadema.Api.Controllers.Writing.Characters.CharacterRelationsController
+- uid: Gadema.Api.Controllers.Writing.Characters.CharactersController
+  commentId: T:Gadema.Api.Controllers.Writing.Characters.CharactersController
+  href: Gadema.Api.Controllers.Writing.Characters.CharactersController.html
+  name: CharactersController
+  nameWithType: CharactersController
+  fullName: Gadema.Api.Controllers.Writing.Characters.CharactersController
+- uid: Gadema.Api.Controllers.Writing.Characters.CharacterStatesController
+  commentId: T:Gadema.Api.Controllers.Writing.Characters.CharacterStatesController
+  href: Gadema.Api.Controllers.Writing.Characters.CharacterStatesController.html
+  name: CharacterStatesController
+  nameWithType: CharacterStatesController
+  fullName: Gadema.Api.Controllers.Writing.Characters.CharacterStatesController
+- uid: Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController
+  commentId: T:Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController
+  href: Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController.html
+  name: CharacterStoryProfilesController
+  nameWithType: CharacterStoryProfilesController
+  fullName: Gadema.Api.Controllers.Writing.Characters.CharacterStoryProfilesController

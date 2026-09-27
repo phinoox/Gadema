@@ -1,0 +1,152 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Narrative
+  commentId: N:Gadema.Core.Models.Writing.Narrative
+  id: Gadema.Core.Models.Writing.Narrative
+  children:
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  - Gadema.Core.Models.Writing.Narrative.DialogueNode
+  - Gadema.Core.Models.Writing.Narrative.LoreEntry
+  - Gadema.Core.Models.Writing.Narrative.OutlineSection
+  - Gadema.Core.Models.Writing.Narrative.Scene
+  - Gadema.Core.Models.Writing.Narrative.SceneSegment
+  - Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
+  - Gadema.Core.Models.Writing.Narrative.SegmentType
+  - Gadema.Core.Models.Writing.Narrative.Story
+  - Gadema.Core.Models.Writing.Narrative.StoryBeat
+  - Gadema.Core.Models.Writing.Narrative.StoryChapter
+  - Gadema.Core.Models.Writing.Narrative.StoryOutline
+  - Gadema.Core.Models.Writing.Narrative.WritingTag
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Writing.Narrative
+  nameWithType: Gadema.Core.Models.Writing.Narrative
+  fullName: Gadema.Core.Models.Writing.Narrative
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  commentId: T:Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html
+  name: DialogueBranch
+  nameWithType: DialogueBranch
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueNode
+  commentId: T:Gadema.Core.Models.Writing.Narrative.DialogueNode
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.DialogueNode.html
+  name: DialogueNode
+  nameWithType: DialogueNode
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueNode
+- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry
+  commentId: T:Gadema.Core.Models.Writing.Narrative.LoreEntry
+  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html
+  name: LoreEntry
+  nameWithType: LoreEntry
+  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry
+- uid: Gadema.Core.Models.Writing.Narrative.OutlineSection
+  commentId: T:Gadema.Core.Models.Writing.Narrative.OutlineSection
+  href: Gadema.Core.Models.Writing.Narrative.OutlineSection.html
+  name: OutlineSection
+  nameWithType: OutlineSection
+  fullName: Gadema.Core.Models.Writing.Narrative.OutlineSection
+- uid: Gadema.Core.Models.Writing.Narrative.Scene
+  commentId: T:Gadema.Core.Models.Writing.Narrative.Scene
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.Scene.html
+  name: Scene
+  nameWithType: Scene
+  fullName: Gadema.Core.Models.Writing.Narrative.Scene
+- uid: Gadema.Core.Models.Writing.Narrative.SceneSegment
+  commentId: T:Gadema.Core.Models.Writing.Narrative.SceneSegment
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.SceneSegment.html
+  name: SceneSegment
+  nameWithType: SceneSegment
+  fullName: Gadema.Core.Models.Writing.Narrative.SceneSegment
+- uid: Gadema.Core.Models.Writing.Narrative.SegmentType
+  commentId: T:Gadema.Core.Models.Writing.Narrative.SegmentType
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.SegmentType.html
+  name: SegmentType
+  nameWithType: SegmentType
+  fullName: Gadema.Core.Models.Writing.Narrative.SegmentType
+- uid: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
+  commentId: T:Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
+  href: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html
+  name: SceneStoryBeatMapping
+  nameWithType: SceneStoryBeatMapping
+  fullName: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
+- uid: Gadema.Core.Models.Writing.Narrative.Story
+  commentId: T:Gadema.Core.Models.Writing.Narrative.Story
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.Story.html
+  name: Story
+  nameWithType: Story
+  fullName: Gadema.Core.Models.Writing.Narrative.Story
+- uid: Gadema.Core.Models.Writing.Narrative.StoryBeat
+  commentId: T:Gadema.Core.Models.Writing.Narrative.StoryBeat
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.StoryBeat.html
+  name: StoryBeat
+  nameWithType: StoryBeat
+  fullName: Gadema.Core.Models.Writing.Narrative.StoryBeat
+- uid: Gadema.Core.Models.Writing.Narrative.StoryChapter
+  commentId: T:Gadema.Core.Models.Writing.Narrative.StoryChapter
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.StoryChapter.html
+  name: StoryChapter
+  nameWithType: StoryChapter
+  fullName: Gadema.Core.Models.Writing.Narrative.StoryChapter
+- uid: Gadema.Core.Models.Writing.Narrative.StoryOutline
+  commentId: T:Gadema.Core.Models.Writing.Narrative.StoryOutline
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.StoryOutline.html
+  name: StoryOutline
+  nameWithType: StoryOutline
+  fullName: Gadema.Core.Models.Writing.Narrative.StoryOutline
+- uid: Gadema.Core.Models.Writing.Narrative.WritingTag
+  commentId: T:Gadema.Core.Models.Writing.Narrative.WritingTag
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.WritingTag.html
+  name: WritingTag
+  nameWithType: WritingTag
+  fullName: Gadema.Core.Models.Writing.Narrative.WritingTag
+- uid: Gadema.Core.Models.Writing.Narrative
+  commentId: N:Gadema.Core.Models.Writing.Narrative
+  name: Gadema.Core.Models.Writing.Narrative
+  nameWithType: Gadema.Core.Models.Writing.Narrative
+  fullName: Gadema.Core.Models.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative

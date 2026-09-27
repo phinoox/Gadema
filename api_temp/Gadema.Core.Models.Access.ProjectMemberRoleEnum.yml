@@ -1,0 +1,345 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  commentId: T:Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  id: ProjectMemberRoleEnum
+  parent: Gadema.Core.Models.Access
+  children:
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Admin
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Default
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Editor
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Owner
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Reviewer
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Viewer
+  langs:
+  - csharp
+  - vb
+  name: ProjectMemberRoleEnum
+  nameWithType: ProjectMemberRoleEnum
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectMemberRoleEnum
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: Specifies the role of a member within a specific project, determining their access levels and permissions.
+  example: []
+  syntax:
+    content: public enum ProjectMemberRoleEnum
+    content.vb: Public Enum ProjectMemberRoleEnum
+  extensionMethods:
+  - Gadema.Core.Models.Access.ProjectMemberRoleEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Owner
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Owner
+  id: Owner
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Owner
+  nameWithType: ProjectMemberRoleEnum.Owner
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Owner
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Owner
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: The creator or primary owner of the project with full administrative control.
+  example: []
+  syntax:
+    content: Owner = 0
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Admin
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Admin
+  id: Admin
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Admin
+  nameWithType: ProjectMemberRoleEnum.Admin
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Admin
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Admin
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 13
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: An administrator with high-level management privileges within the project.
+  example: []
+  syntax:
+    content: Admin = 1
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Editor
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Editor
+  id: Editor
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Editor
+  nameWithType: ProjectMemberRoleEnum.Editor
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Editor
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Editor
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: A contributor capable of editing content and managing tasks.
+  example: []
+  syntax:
+    content: Editor = 2
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Reviewer
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Reviewer
+  id: Reviewer
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Reviewer
+  nameWithType: ProjectMemberRoleEnum.Reviewer
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Reviewer
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Reviewer
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: A member whose primary role is to review progress and provide feedback.
+  example: []
+  syntax:
+    content: Reviewer = 3
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Viewer
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Viewer
+  id: Viewer
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Viewer
+  nameWithType: ProjectMemberRoleEnum.Viewer
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Viewer
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Viewer
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: A member with read-only access to the project's contents.
+  example: []
+  syntax:
+    content: Viewer = 4
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Default
+  commentId: F:Gadema.Core.Models.Access.ProjectMemberRoleEnum.Default
+  id: Default
+  parent: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: ProjectMemberRoleEnum.Default
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Default
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectMember.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Default
+    path: src/Gadema.Core/Models/Access/ProjectMember.cs
+    startLine: 25
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  summary: The default role assigned if no specific role is specified.
+  example: []
+  syntax:
+    content: Default = 99
+    return:
+      type: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+references:
+- uid: Gadema.Core.Models.Access
+  commentId: N:Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  nameWithType: Gadema.Core.Models.Access
+  fullName: Gadema.Core.Models.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ProjectMemberRoleEnum>(ProjectMemberRoleEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ProjectMemberRoleEnum>(ProjectMemberRoleEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Access.ProjectMemberRoleEnum>(Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ProjectMemberRoleEnum)(ProjectMemberRoleEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Access.ProjectMemberRoleEnum)(Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  name.vb: ToGuid(Of ProjectMemberRoleEnum)(ProjectMemberRoleEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+    href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+    href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+    href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+    href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  commentId: T:Gadema.Core.Models.Access.ProjectMemberRoleEnum
+  parent: Gadema.Core.Models.Access
+  href: Gadema.Core.Models.Access.ProjectMemberRoleEnum.html
+  name: ProjectMemberRoleEnum
+  nameWithType: ProjectMemberRoleEnum
+  fullName: Gadema.Core.Models.Access.ProjectMemberRoleEnum

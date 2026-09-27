@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Infrastructure
+  commentId: N:Gadema.Core.Models.Base.Infrastructure
+  id: Gadema.Core.Models.Base.Infrastructure
+  children:
+  - Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  - Gadema.Core.Models.Base.Infrastructure.AssetLink
+  - Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  - Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+  - Gadema.Core.Models.Base.Infrastructure.ExternalReference
+  - Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Infrastructure
+  nameWithType: Gadema.Core.Models.Base.Infrastructure
+  fullName: Gadema.Core.Models.Base.Infrastructure
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ActivityLog
+  href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html
+  name: ActivityLog
+  nameWithType: ActivityLog
+  fullName: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+- uid: Gadema.Core.Models.Base.Infrastructure.AssetLink
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.AssetLink
+  href: Gadema.Core.Models.Base.Infrastructure.AssetLink.html
+  name: AssetLink
+  nameWithType: AssetLink
+  fullName: Gadema.Core.Models.Base.Infrastructure.AssetLink
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+  href: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot.html
+  name: ContentSnapshot
+  nameWithType: ContentSnapshot
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentSnapshot
+- uid: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+  href: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog.html
+  name: ContentVersionLog
+  nameWithType: ContentVersionLog
+  fullName: Gadema.Core.Models.Base.Infrastructure.ContentVersionLog
+- uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.ExternalReference
+  href: Gadema.Core.Models.Base.Infrastructure.ExternalReference.html
+  name: ExternalReference
+  nameWithType: ExternalReference
+  fullName: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+- uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  commentId: T:Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+  href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html
+  name: MediaAttachment
+  nameWithType: MediaAttachment
+  fullName: Gadema.Core.Models.Base.Infrastructure.MediaAttachment

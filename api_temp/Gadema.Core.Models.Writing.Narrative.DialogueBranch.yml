@@ -1,0 +1,1047 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  commentId: T:Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  id: DialogueBranch
+  parent: Gadema.Core.Models.Writing.Narrative
+  children:
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+  - Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+  langs:
+  - csharp
+  - vb
+  name: DialogueBranch
+  nameWithType: DialogueBranch
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DialogueBranch
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: >-
+    Represents a distinct path or tree within a branching dialogue system.
+
+    Used for interactive storytelling, visual novels, and RPG-style conversation trees.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(Project), typeof(ContentMetaInfo) })]
+
+      public class DialogueBranch
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(Project), GetType(ContentMetaInfo) })>
+
+      Public Class DialogueBranch
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+  id: Id
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: DialogueBranch.Id
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Unique identifier for the dialogue branch.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id*
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+  id: MetaInfoId
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: MetaInfoId
+  nameWithType: DialogueBranch.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfoId
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid? MetaInfoId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: >-
+      <Required>
+
+      Public Property MetaInfoId As Guid?
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+  id: ContentMetaInfo
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: ContentMetaInfo
+  nameWithType: DialogueBranch.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentMetaInfo
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 25
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Navigation property for the branch's identity anchor.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("MetaInfoId")]
+
+      public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    content.vb: >-
+      <ForeignKey("MetaInfoId")>
+
+      Public Overridable Property ContentMetaInfo As ContentMetaInfo
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MetaInfoId
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+  id: Title
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: DialogueBranch.Title
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Title
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The human-readable title of this dialogue path.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(128)]
+
+      [Required]
+
+      [Display(Name = "Branch Title")]
+
+      public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(128)>
+
+      <Required>
+
+      <Display(Name:="Branch Title")>
+
+      Public Property Title As String
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Branch Title
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+  id: Slug
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: Slug
+  nameWithType: DialogueBranch.Slug
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Slug
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: A unique, URL-friendly slug for the branch.
+  example: []
+  syntax:
+    content: >-
+      [Column("slug")]
+
+      [MaxLength(128)]
+
+      public string Slug { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Column("slug")>
+
+      <MaxLength(128)>
+
+      Public Property Slug As String
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ColumnAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: slug
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 128
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+  id: VisualNodeImageUri
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: VisualNodeImageUri
+  nameWithType: DialogueBranch.VisualNodeImageUri
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: VisualNodeImageUri
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 40
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: URI for a visual representation (e.g., background image) of this dialogue node/branch.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(1024)]
+
+      public string? VisualNodeImageUri { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(1024)>
+
+      Public Property VisualNodeImageUri As String
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1024
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+  id: CharacterIconUri
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: CharacterIconUri
+  nameWithType: DialogueBranch.CharacterIconUri
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterIconUri
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 45
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: URI for the character icon associated with this branch.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(512)]
+
+      public string? CharacterIconUri { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(512)>
+
+      Public Property CharacterIconUri As String
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 512
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+  id: IsRoot
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: IsRoot
+  nameWithType: DialogueBranch.IsRoot
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsRoot
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 51
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Indicates if this is a starting (root) node in the dialogue tree.
+  example: []
+  syntax:
+    content: public bool IsRoot { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsRoot As Boolean
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot*
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+  id: OrderIndex
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: OrderIndex
+  nameWithType: DialogueBranch.OrderIndex
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OrderIndex
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 56
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: The sort order for branches within a parent or list.
+  example: []
+  syntax:
+    content: public int OrderIndex { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property OrderIndex As Integer
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex*
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+  commentId: P:Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+  id: ChildNodes
+  parent: Gadema.Core.Models.Writing.Narrative.DialogueBranch
+  langs:
+  - csharp
+  - vb
+  name: ChildNodes
+  nameWithType: DialogueBranch.ChildNodes
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ChildNodes
+    path: src/Gadema.Core/Models/Writing/Narrative/DialogueBranch.cs
+    startLine: 61
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Narrative
+  summary: Collection of <xref href="Gadema.Core.Models.Writing.Narrative.DialogueNode" data-throw-if-not-resolved="false"></xref> entities that make up the tree structure of this branch.
+  example: []
+  syntax:
+    content: >-
+      [Fixture(FixtureHintEnum.Omit)]
+
+      public virtual ICollection<DialogueNode> ChildNodes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Narrative.DialogueNode}
+    content.vb: >-
+      <Fixture(FixtureHintEnum.Omit)>
+
+      Public Overridable Property ChildNodes As ICollection(Of DialogueNode)
+  overload: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes*
+  attributes:
+  - type: Gadema.Core.Utils.FixtureAttribute
+    ctor: Gadema.Core.Utils.FixtureAttribute.#ctor(Gadema.Core.Utils.FixtureHintEnum)
+    arguments:
+    - type: Gadema.Core.Utils.FixtureHintEnum
+      value: 1
+references:
+- uid: Gadema.Core.Models.Writing.Narrative
+  commentId: N:Gadema.Core.Models.Writing.Narrative
+  name: Gadema.Core.Models.Writing.Narrative
+  nameWithType: Gadema.Core.Models.Writing.Narrative
+  fullName: Gadema.Core.Models.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Narrative
+    name: Narrative
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_Id
+  name: Id
+  nameWithType: DialogueBranch.Id
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_MetaInfoId
+  name: MetaInfoId
+  nameWithType: DialogueBranch.MetaInfoId
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.MetaInfoId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_ContentMetaInfo
+  name: ContentMetaInfo
+  nameWithType: DialogueBranch.ContentMetaInfo
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+  parent: Gadema.Core.Models.Base.MetaInfo
+  href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  name: ContentMetaInfo
+  nameWithType: ContentMetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_Title
+  name: Title
+  nameWithType: DialogueBranch.Title
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_Slug
+  name: Slug
+  nameWithType: DialogueBranch.Slug
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.Slug
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_VisualNodeImageUri
+  name: VisualNodeImageUri
+  nameWithType: DialogueBranch.VisualNodeImageUri
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.VisualNodeImageUri
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_CharacterIconUri
+  name: CharacterIconUri
+  nameWithType: DialogueBranch.CharacterIconUri
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.CharacterIconUri
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_IsRoot
+  name: IsRoot
+  nameWithType: DialogueBranch.IsRoot
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.IsRoot
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_OrderIndex
+  name: OrderIndex
+  nameWithType: DialogueBranch.OrderIndex
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.OrderIndex
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueNode
+  commentId: T:Gadema.Core.Models.Writing.Narrative.DialogueNode
+  parent: Gadema.Core.Models.Writing.Narrative
+  href: Gadema.Core.Models.Writing.Narrative.DialogueNode.html
+  name: DialogueNode
+  nameWithType: DialogueNode
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueNode
+- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes*
+  commentId: Overload:Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html#Gadema_Core_Models_Writing_Narrative_DialogueBranch_ChildNodes
+  name: ChildNodes
+  nameWithType: DialogueBranch.ChildNodes
+  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch.ChildNodes
+- uid: System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Narrative.DialogueNode}
+  commentId: T:System.Collections.Generic.ICollection{Gadema.Core.Models.Writing.Narrative.DialogueNode}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<DialogueNode>
+  nameWithType: ICollection<DialogueNode>
+  fullName: System.Collections.Generic.ICollection<Gadema.Core.Models.Writing.Narrative.DialogueNode>
+  nameWithType.vb: ICollection(Of DialogueNode)
+  fullName.vb: System.Collections.Generic.ICollection(Of Gadema.Core.Models.Writing.Narrative.DialogueNode)
+  name.vb: ICollection(Of DialogueNode)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Narrative.DialogueNode
+    name: DialogueNode
+    href: Gadema.Core.Models.Writing.Narrative.DialogueNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Narrative.DialogueNode
+    name: DialogueNode
+    href: Gadema.Core.Models.Writing.Narrative.DialogueNode.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

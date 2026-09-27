@@ -1,0 +1,380 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterRole
+  id: CharacterRole
+  parent: Gadema.Core.Models.Writing.Characters
+  children:
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Antagonist
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Custom
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Mentor
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Neutral
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Protagonist
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.SideCharacter
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Supporting
+  langs:
+  - csharp
+  - vb
+  name: CharacterRole
+  nameWithType: CharacterRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterRole
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 105
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: Defines the narrative roles a character can occupy within the story.
+  example: []
+  syntax:
+    content: public enum CharacterRole
+    content.vb: Public Enum CharacterRole
+  extensionMethods:
+  - Gadema.Core.Models.Writing.Characters.CharacterRole.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Neutral
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Neutral
+  id: Neutral
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Neutral
+  nameWithType: CharacterRole.Neutral
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Neutral
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Neutral
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 108
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A neutral or non-aligned entity.
+  example: []
+  syntax:
+    content: Neutral = 0
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Protagonist
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Protagonist
+  id: Protagonist
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Protagonist
+  nameWithType: CharacterRole.Protagonist
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Protagonist
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Protagonist
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 110
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The primary driver of the narrative.
+  example: []
+  syntax:
+    content: Protagonist = 1
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Antagonist
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Antagonist
+  id: Antagonist
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Antagonist
+  nameWithType: CharacterRole.Antagonist
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Antagonist
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Antagonist
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 112
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: The primary force of opposition to the protagonist.
+  example: []
+  syntax:
+    content: Antagonist = 2
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Mentor
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Mentor
+  id: Mentor
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Mentor
+  nameWithType: CharacterRole.Mentor
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Mentor
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Mentor
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 114
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A character who provides guidance or teaching.
+  example: []
+  syntax:
+    content: Mentor = 3
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.SideCharacter
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.SideCharacter
+  id: SideCharacter
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: SideCharacter
+  nameWithType: CharacterRole.SideCharacter
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.SideCharacter
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SideCharacter
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 116
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: <typeparam name="T">A standard background character with limited impact.</typeparam>
+  example: []
+  syntax:
+    content: SideCharacter = 4
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Supporting
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Supporting
+  id: Supporting
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Supporting
+  nameWithType: CharacterRole.Supporting
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Supporting
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Supporting
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 118
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A character that supports the protagonist's journey.
+  example: []
+  syntax:
+    content: Supporting = 5
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Custom
+  commentId: F:Gadema.Core.Models.Writing.Characters.CharacterRole.Custom
+  id: Custom
+  parent: Gadema.Core.Models.Writing.Characters.CharacterRole
+  langs:
+  - csharp
+  - vb
+  name: Custom
+  nameWithType: CharacterRole.Custom
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole.Custom
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Custom
+    path: src/Gadema.Core/Models/Writing/Characters/CharacterState.cs
+    startLine: 120
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Writing.Characters
+  summary: A custom or non-standard role.
+  example: []
+  syntax:
+    content: Custom = 6
+    return:
+      type: Gadema.Core.Models.Writing.Characters.CharacterRole
+references:
+- uid: Gadema.Core.Models.Writing.Characters
+  commentId: N:Gadema.Core.Models.Writing.Characters
+  name: Gadema.Core.Models.Writing.Characters
+  nameWithType: Gadema.Core.Models.Writing.Characters
+  fullName: Gadema.Core.Models.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<CharacterRole>(CharacterRole)
+  nameWithType: EnumGuidExtensions.ToGuid<CharacterRole>(CharacterRole)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Writing.Characters.CharacterRole>(Gadema.Core.Models.Writing.Characters.CharacterRole)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of CharacterRole)(CharacterRole)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Writing.Characters.CharacterRole)(Gadema.Core.Models.Writing.Characters.CharacterRole)
+  name.vb: ToGuid(Of CharacterRole)(CharacterRole)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Characters.CharacterRole)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Writing.Characters.CharacterRole)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+    name: CharacterRole
+    href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterRole
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  name: CharacterRole
+  nameWithType: CharacterRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole

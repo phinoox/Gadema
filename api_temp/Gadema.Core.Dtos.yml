@@ -1,0 +1,66 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos
+  commentId: N:Gadema.Core.Dtos
+  id: Gadema.Core.Dtos
+  children:
+  - Gadema.Core.Dtos.ApiResponseDto`1
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos
+  nameWithType: Gadema.Core.Dtos
+  fullName: Gadema.Core.Dtos
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.ApiResponseDto`1
+  commentId: T:Gadema.Core.Dtos.ApiResponseDto`1
+  parent: Gadema.Core.Dtos
+  href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  name: ApiResponseDto<T>
+  nameWithType: ApiResponseDto<T>
+  fullName: Gadema.Core.Dtos.ApiResponseDto<T>
+  nameWithType.vb: ApiResponseDto(Of T)
+  fullName.vb: Gadema.Core.Dtos.ApiResponseDto(Of T)
+  name.vb: ApiResponseDto(Of T)
+  spec.csharp:
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+    href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+    href: Gadema.Core.Dtos.ApiResponseDto-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Dtos
+  commentId: N:Gadema.Core.Dtos
+  name: Gadema.Core.Dtos
+  nameWithType: Gadema.Core.Dtos
+  fullName: Gadema.Core.Dtos
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos

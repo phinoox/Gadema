@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Controllers.Identity
+  commentId: N:Gadema.Api.Controllers.Identity
+  id: Gadema.Api.Controllers.Identity
+  children:
+  - Gadema.Api.Controllers.Identity.IdentityDefinitionController
+  - Gadema.Api.Controllers.Identity.IdentityValueController
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Controllers.Identity
+  nameWithType: Gadema.Api.Controllers.Identity
+  fullName: Gadema.Api.Controllers.Identity
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Controllers.Identity.IdentityDefinitionController
+  commentId: T:Gadema.Api.Controllers.Identity.IdentityDefinitionController
+  href: Gadema.Api.Controllers.Identity.IdentityDefinitionController.html
+  name: IdentityDefinitionController
+  nameWithType: IdentityDefinitionController
+  fullName: Gadema.Api.Controllers.Identity.IdentityDefinitionController
+- uid: Gadema.Api.Controllers.Identity.IdentityValueController
+  commentId: T:Gadema.Api.Controllers.Identity.IdentityValueController
+  href: Gadema.Api.Controllers.Identity.IdentityValueController.html
+  name: IdentityValueController
+  nameWithType: IdentityValueController
+  fullName: Gadema.Api.Controllers.Identity.IdentityValueController

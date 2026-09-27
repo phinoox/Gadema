@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Game.Inventory
+  commentId: N:Gadema.Data.Configurations.Game.Inventory
+  id: Gadema.Data.Configurations.Game.Inventory
+  children:
+  - Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration
+  - Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Game.Inventory
+  nameWithType: Gadema.Data.Configurations.Game.Inventory
+  fullName: Gadema.Data.Configurations.Game.Inventory
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration.html
+  name: EndingDefinitionEntityTypeConfiguration
+  nameWithType: EndingDefinitionEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Game.Inventory.EndingDefinitionEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.html
+  name: InventoryItemEntityTypeConfiguration
+  nameWithType: InventoryItemEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration

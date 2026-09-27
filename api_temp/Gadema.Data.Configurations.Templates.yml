@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Configurations.Templates
+  commentId: N:Gadema.Data.Configurations.Templates
+  id: Gadema.Data.Configurations.Templates
+  children:
+  - Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration
+  - Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration
+  - Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration
+  - Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration
+  - Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Configurations.Templates
+  nameWithType: Gadema.Data.Configurations.Templates
+  fullName: Gadema.Data.Configurations.Templates
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration.html
+  name: ProjectTemplateEntityTypeConfiguration
+  nameWithType: ProjectTemplateEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Templates.ProjectTemplateEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration.html
+  name: TemplateAttributeSetDefinitionEntityTypeConfiguration
+  nameWithType: TemplateAttributeSetDefinitionEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Templates.TemplateAttributeSetDefinitionEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration.html
+  name: TemplateClassTemplateDefinitionEntityTypeConfiguration
+  nameWithType: TemplateClassTemplateDefinitionEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Templates.TemplateClassTemplateDefinitionEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration.html
+  name: TemplateIdentityDefinitionEntityTypeConfiguration
+  nameWithType: TemplateIdentityDefinitionEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Templates.TemplateIdentityDefinitionEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration.html
+  name: TemplateNarrativeStructureEntityTypeConfiguration
+  nameWithType: TemplateNarrativeStructureEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Templates.TemplateNarrativeStructureEntityTypeConfiguration

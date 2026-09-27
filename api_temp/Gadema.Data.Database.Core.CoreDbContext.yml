@@ -1,0 +1,4053 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  id: CoreDbContext
+  parent: Gadema.Data.Database.Core
+  children:
+  - Gadema.Data.Database.Core.CoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext})
+  - Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+  - Gadema.Data.Database.Core.CoreDbContext.Comments
+  - Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+  - Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+  - Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+  - Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+  - Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+  - Gadema.Data.Database.Core.CoreDbContext.MetaTags
+  - Gadema.Data.Database.Core.CoreDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+  - Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+  - Gadema.Data.Database.Core.CoreDbContext.Projects
+  - Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+  - Gadema.Data.Database.Core.CoreDbContext.Users
+  langs:
+  - csharp
+  - vb
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CoreDbContext
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  summary: >-
+    The foundational context for the GaDeMa universe.
+
+    Contains only cross-cutting infrastructure entities that all modules rely on.
+  example: []
+  syntax:
+    content: 'public class CoreDbContext : GademaBaseContext, IInfrastructure<IServiceProvider>, IDbContextDependencies, IDbSetCache, IDbContextPoolable, IResettableService, IDisposable, IAsyncDisposable'
+    content.vb: Public Class CoreDbContext Inherits GademaBaseContext Implements IInfrastructure(Of IServiceProvider), IDbContextDependencies, IDbSetCache, IDbContextPoolable, IResettableService, IDisposable, IAsyncDisposable
+  inheritance:
+  - System.Object
+  - Microsoft.EntityFrameworkCore.DbContext
+  - Gadema.Data.Database.GademaBaseContext
+  implements:
+  - Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure{System.IServiceProvider}
+  - Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies
+  - Microsoft.EntityFrameworkCore.Internal.IDbSetCache
+  - Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable
+  - Microsoft.EntityFrameworkCore.Infrastructure.IResettableService
+  - System.IDisposable
+  - System.IAsyncDisposable
+  inheritedMembers:
+  - Microsoft.EntityFrameworkCore.DbContext.Set``1
+  - Microsoft.EntityFrameworkCore.DbContext.Set``1(System.String)
+  - Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+  - Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+  - Microsoft.EntityFrameworkCore.DbContext.SaveChanges
+  - Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)
+  - Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.Dispose
+  - Microsoft.EntityFrameworkCore.DbContext.DisposeAsync
+  - Microsoft.EntityFrameworkCore.DbContext.Entry``1({TEntity})
+  - Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)
+  - Microsoft.EntityFrameworkCore.DbContext.Add``1({TEntity})
+  - Microsoft.EntityFrameworkCore.DbContext.AddAsync``1({TEntity},System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.Attach``1({TEntity})
+  - Microsoft.EntityFrameworkCore.DbContext.Update``1({TEntity})
+  - Microsoft.EntityFrameworkCore.DbContext.Remove``1({TEntity})
+  - Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)
+  - Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object,System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)
+  - Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)
+  - Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)
+  - Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable{System.Object})
+  - Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable{System.Object})
+  - Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable{System.Object})
+  - Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable{System.Object})
+  - Microsoft.EntityFrameworkCore.DbContext.Find(System.Type,System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[],System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.Find``1(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[])
+  - Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[],System.Threading.CancellationToken)
+  - Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{{TResult}}}})
+  - Microsoft.EntityFrameworkCore.DbContext.Database
+  - Microsoft.EntityFrameworkCore.DbContext.ChangeTracker
+  - Microsoft.EntityFrameworkCore.DbContext.Model
+  - Microsoft.EntityFrameworkCore.DbContext.ContextId
+  - Microsoft.EntityFrameworkCore.DbContext.SavingChanges
+  - Microsoft.EntityFrameworkCore.DbContext.SavedChanges
+  - Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Data.Database.Core.CoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext})
+  commentId: M:Gadema.Data.Database.Core.CoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext})
+  id: '#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext})'
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: CoreDbContext(DbContextOptions<CoreDbContext>)
+  nameWithType: CoreDbContext.CoreDbContext(DbContextOptions<CoreDbContext>)
+  fullName: Gadema.Data.Database.Core.CoreDbContext.CoreDbContext(Microsoft.EntityFrameworkCore.DbContextOptions<Gadema.Data.Database.Core.CoreDbContext>)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public CoreDbContext(DbContextOptions<CoreDbContext> options)
+    parameters:
+    - id: options
+      type: Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext}
+    content.vb: Public Sub New(options As DbContextOptions(Of CoreDbContext))
+  overload: Gadema.Data.Database.Core.CoreDbContext.#ctor*
+  nameWithType.vb: CoreDbContext.New(DbContextOptions(Of CoreDbContext))
+  fullName.vb: Gadema.Data.Database.Core.CoreDbContext.New(Microsoft.EntityFrameworkCore.DbContextOptions(Of Gadema.Data.Database.Core.CoreDbContext))
+  name.vb: New(DbContextOptions(Of CoreDbContext))
+- uid: Gadema.Data.Database.Core.CoreDbContext.Projects
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.Projects
+  id: Projects
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: Projects
+  nameWithType: CoreDbContext.Projects
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Projects
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Projects
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<Project> Projects { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.Project}
+    content.vb: Public Property Projects As DbSet(Of Project)
+  overload: Gadema.Data.Database.Core.CoreDbContext.Projects*
+- uid: Gadema.Data.Database.Core.CoreDbContext.Users
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.Users
+  id: Users
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: Users
+  nameWithType: CoreDbContext.Users
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Users
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Users
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<User> Users { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.User}
+    content.vb: Public Property Users As DbSet(Of User)
+  overload: Gadema.Data.Database.Core.CoreDbContext.Users*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+  id: ProjectTags
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectTags
+  nameWithType: CoreDbContext.ProjectTags
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTags
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectTag> ProjectTags { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectTag}
+    content.vb: Public Property ProjectTags As DbSet(Of ProjectTag)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectTags*
+- uid: Gadema.Data.Database.Core.CoreDbContext.MetaTags
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.MetaTags
+  id: MetaTags
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: MetaTags
+  nameWithType: CoreDbContext.MetaTags
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MetaTags
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaTags
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 25
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<MetaTag> MetaTags { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.MetaTag}
+    content.vb: Public Property MetaTags As DbSet(Of MetaTag)
+  overload: Gadema.Data.Database.Core.CoreDbContext.MetaTags*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+  id: ProjectTagRelations
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectTagRelations
+  nameWithType: CoreDbContext.ProjectTagRelations
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTagRelations
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 27
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectTagRelation> ProjectTagRelations { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+    content.vb: Public Property ProjectTagRelations As DbSet(Of ProjectTagRelation)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+  id: ProjectTokens
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectTokens
+  nameWithType: CoreDbContext.ProjectTokens
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTokens
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectToken> ProjectTokens { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectToken}
+    content.vb: Public Property ProjectTokens As DbSet(Of ProjectToken)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectTokens*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+  id: ProjectMetaInfos
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectMetaInfos
+  nameWithType: CoreDbContext.ProjectMetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectMetaInfos
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 31
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectMetaInfo> ProjectMetaInfos { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo}
+    content.vb: Public Property ProjectMetaInfos As DbSet(Of ProjectMetaInfo)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+  id: ProjectMembers
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectMembers
+  nameWithType: CoreDbContext.ProjectMembers
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectMembers
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 33
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectMember> ProjectMembers { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectMember}
+    content.vb: Public Property ProjectMembers As DbSet(Of ProjectMember)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectMembers*
+- uid: Gadema.Data.Database.Core.CoreDbContext.Comments
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.Comments
+  id: Comments
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: Comments
+  nameWithType: CoreDbContext.Comments
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Comments
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Comments
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<Comment> Comments { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.Comment}
+    content.vb: Public Property Comments As DbSet(Of Comment)
+  overload: Gadema.Data.Database.Core.CoreDbContext.Comments*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+  id: ProjectSeries
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectSeries
+  nameWithType: CoreDbContext.ProjectSeries
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectSeries
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 37
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectSeries> ProjectSeries { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectSeries}
+    content.vb: Public Property ProjectSeries As DbSet(Of ProjectSeries)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectSeries*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+  id: ActivityLogs
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ActivityLogs
+  nameWithType: CoreDbContext.ActivityLogs
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ActivityLogs
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 39
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ActivityLog> ActivityLogs { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ActivityLog}
+    content.vb: Public Property ActivityLogs As DbSet(Of ActivityLog)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ActivityLogs*
+- uid: Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+  id: MetaInfos
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: MetaInfos
+  nameWithType: CoreDbContext.MetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MetaInfos
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 43
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ContentMetaInfo> MetaInfos { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+    content.vb: Public Property MetaInfos As DbSet(Of ContentMetaInfo)
+  overload: Gadema.Data.Database.Core.CoreDbContext.MetaInfos*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+  id: ProjectTaskMetaInfos
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ProjectTaskMetaInfos
+  nameWithType: CoreDbContext.ProjectTaskMetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectTaskMetaInfos
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 45
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ProjectTaskMetaInfo> ProjectTaskMetaInfos { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Tasks.ProjectTaskMetaInfo}
+    content.vb: Public Property ProjectTaskMetaInfos As DbSet(Of ProjectTaskMetaInfo)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos*
+- uid: Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+  id: MediaAttachments
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: MediaAttachments
+  nameWithType: CoreDbContext.MediaAttachments
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: MediaAttachments
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 48
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<MediaAttachment> MediaAttachments { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+    content.vb: Public Property MediaAttachments As DbSet(Of MediaAttachment)
+  overload: Gadema.Data.Database.Core.CoreDbContext.MediaAttachments*
+- uid: Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+  id: ExternalReferences
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: ExternalReferences
+  nameWithType: CoreDbContext.ExternalReferences
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ExternalReferences
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 49
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<ExternalReference> ExternalReferences { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+    content.vb: Public Property ExternalReferences As DbSet(Of ExternalReference)
+  overload: Gadema.Data.Database.Core.CoreDbContext.ExternalReferences*
+- uid: Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+  id: UserProviderLinks
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: UserProviderLinks
+  nameWithType: CoreDbContext.UserProviderLinks
+  fullName: Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UserProviderLinks
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 50
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<UserProviderLink> UserProviderLinks { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.UserProviderLink}
+    content.vb: Public Property UserProviderLinks As DbSet(Of UserProviderLink)
+  overload: Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks*
+- uid: Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+  id: IdentityDefinitions
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: IdentityDefinitions
+  nameWithType: CoreDbContext.IdentityDefinitions
+  fullName: Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IdentityDefinitions
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 52
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<IdentityDefinition> IdentityDefinitions { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityDefinition}
+    content.vb: Public Property IdentityDefinitions As DbSet(Of IdentityDefinition)
+  overload: Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions*
+- uid: Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+  commentId: P:Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+  id: IdentityValues
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: IdentityValues
+  nameWithType: CoreDbContext.IdentityValues
+  fullName: Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IdentityValues
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 54
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  syntax:
+    content: public DbSet<IdentityValue> IdentityValues { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityValue}
+    content.vb: Public Property IdentityValues As DbSet(Of IdentityValue)
+  overload: Gadema.Data.Database.Core.CoreDbContext.IdentityValues*
+- uid: Gadema.Data.Database.Core.CoreDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  commentId: M:Gadema.Data.Database.Core.CoreDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  id: OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  parent: Gadema.Data.Database.Core.CoreDbContext
+  langs:
+  - csharp
+  - vb
+  name: OnModelCreating(ModelBuilder)
+  nameWithType: CoreDbContext.OnModelCreating(ModelBuilder)
+  fullName: Gadema.Data.Database.Core.CoreDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: OnModelCreating
+    path: src/Gadema.Data/Database/Core/CoreDbContext.cs
+    startLine: 56
+  assemblies:
+  - Gadema.Data
+  namespace: Gadema.Data.Database.Core
+  summary: >-
+    Override this method to further configure the model that was discovered by convention from the entity types
+
+    exposed in <xref href="Microsoft.EntityFrameworkCore.DbSet%601" data-throw-if-not-resolved="false"></xref> properties on your derived context. The resulting model may be cached
+
+    and re-used for subsequent instances of your derived context.
+  remarks: >-
+    <p>
+        If a model is explicitly set on the options for this context (via <xref href="Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" data-throw-if-not-resolved="false"></xref>)
+        then this method will not be run. However, it will still run when creating a compiled model.
+    </p>
+
+    <p>
+        See <a href="https://aka.ms/efcore-docs-modeling">Modeling entity types and relationships</a> for more information and
+        examples.
+    </p>
+  example: []
+  syntax:
+    content: protected override void OnModelCreating(ModelBuilder modelBuilder)
+    parameters:
+    - id: modelBuilder
+      type: Microsoft.EntityFrameworkCore.ModelBuilder
+      description: >-
+        The builder being used to construct the model for this context. Databases (and other extensions) typically
+
+        define extension methods on this object that allow you to configure aspects of the model that are specific
+
+        to a given database.
+    content.vb: Protected Overrides Sub OnModelCreating(modelBuilder As ModelBuilder)
+  overridden: Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  overload: Gadema.Data.Database.Core.CoreDbContext.OnModelCreating*
+references:
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Microsoft.EntityFrameworkCore.DbContext
+  commentId: T:Microsoft.EntityFrameworkCore.DbContext
+  parent: Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext
+  name: DbContext
+  nameWithType: DbContext
+  fullName: Microsoft.EntityFrameworkCore.DbContext
+- uid: Gadema.Data.Database.GademaBaseContext
+  commentId: T:Gadema.Data.Database.GademaBaseContext
+  parent: Gadema.Data.Database
+  href: Gadema.Data.Database.GademaBaseContext.html
+  name: GademaBaseContext
+  nameWithType: GademaBaseContext
+  fullName: Gadema.Data.Database.GademaBaseContext
+- uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure{System.IServiceProvider}
+  commentId: T:Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure{System.IServiceProvider}
+  parent: Microsoft.EntityFrameworkCore.Infrastructure
+  definition: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  name: IInfrastructure<IServiceProvider>
+  nameWithType: IInfrastructure<IServiceProvider>
+  fullName: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>
+  nameWithType.vb: IInfrastructure(Of IServiceProvider)
+  fullName.vb: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure(Of System.IServiceProvider)
+  name.vb: IInfrastructure(Of IServiceProvider)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+    name: IInfrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  - name: <
+  - uid: System.IServiceProvider
+    name: IServiceProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+    name: IInfrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.IServiceProvider
+    name: IServiceProvider
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies
+  commentId: T:Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies
+  parent: Microsoft.EntityFrameworkCore.Internal
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextdependencies
+  name: IDbContextDependencies
+  nameWithType: IDbContextDependencies
+  fullName: Microsoft.EntityFrameworkCore.Internal.IDbContextDependencies
+- uid: Microsoft.EntityFrameworkCore.Internal.IDbSetCache
+  commentId: T:Microsoft.EntityFrameworkCore.Internal.IDbSetCache
+  parent: Microsoft.EntityFrameworkCore.Internal
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbsetcache
+  name: IDbSetCache
+  nameWithType: IDbSetCache
+  fullName: Microsoft.EntityFrameworkCore.Internal.IDbSetCache
+- uid: Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable
+  commentId: T:Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable
+  parent: Microsoft.EntityFrameworkCore.Internal
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal.idbcontextpoolable
+  name: IDbContextPoolable
+  nameWithType: IDbContextPoolable
+  fullName: Microsoft.EntityFrameworkCore.Internal.IDbContextPoolable
+- uid: Microsoft.EntityFrameworkCore.Infrastructure.IResettableService
+  commentId: T:Microsoft.EntityFrameworkCore.Infrastructure.IResettableService
+  parent: Microsoft.EntityFrameworkCore.Infrastructure
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iresettableservice
+  name: IResettableService
+  nameWithType: IResettableService
+  fullName: Microsoft.EntityFrameworkCore.Infrastructure.IResettableService
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.IAsyncDisposable
+  commentId: T:System.IAsyncDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iasyncdisposable
+  name: IAsyncDisposable
+  nameWithType: IAsyncDisposable
+  fullName: System.IAsyncDisposable
+- uid: Microsoft.EntityFrameworkCore.DbContext.Set``1
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Set``1
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1
+  name: Set<TEntity>()
+  nameWithType: DbContext.Set<TEntity>()
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Set<TEntity>()
+  nameWithType.vb: DbContext.Set(Of TEntity)()
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Set(Of TEntity)()
+  name.vb: Set(Of TEntity)()
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Set``1
+    name: Set
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Set``1
+    name: Set
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Set``1(System.String)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Set``1(System.String)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1(system-string)
+  name: Set<TEntity>(string)
+  nameWithType: DbContext.Set<TEntity>(string)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Set<TEntity>(string)
+  nameWithType.vb: DbContext.Set(Of TEntity)(String)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Set(Of TEntity)(String)
+  name.vb: Set(Of TEntity)(String)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Set``1(System.String)
+    name: Set
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1(system-string)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Set``1(System.String)
+    name: Set
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.set#microsoft-entityframeworkcore-dbcontext-set-1(system-string)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring
+  name: OnConfiguring(DbContextOptionsBuilder)
+  nameWithType: DbContext.OnConfiguring(DbContextOptionsBuilder)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+    name: OnConfiguring
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+    name: DbContextOptionsBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)
+    name: OnConfiguring
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder
+    name: DbContextOptionsBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.configureconventions
+  name: ConfigureConventions(ModelConfigurationBuilder)
+  nameWithType: DbContext.ConfigureConventions(ModelConfigurationBuilder)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+    name: ConfigureConventions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.configureconventions
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.ModelConfigurationBuilder
+    name: ModelConfigurationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelconfigurationbuilder
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.ConfigureConventions(Microsoft.EntityFrameworkCore.ModelConfigurationBuilder)
+    name: ConfigureConventions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.configureconventions
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.ModelConfigurationBuilder
+    name: ModelConfigurationBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelconfigurationbuilder
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges
+  name: SaveChanges()
+  nameWithType: DbContext.SaveChanges()
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges
+    name: SaveChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges
+    name: SaveChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges
+  - name: (
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges(system-boolean)
+  name: SaveChanges(bool)
+  nameWithType: DbContext.SaveChanges(bool)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SaveChanges(bool)
+  nameWithType.vb: DbContext.SaveChanges(Boolean)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean)
+  name.vb: SaveChanges(Boolean)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)
+    name: SaveChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges(system-boolean)
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChanges(System.Boolean)
+    name: SaveChanges
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechanges#microsoft-entityframeworkcore-dbcontext-savechanges(system-boolean)
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-threading-cancellationtoken)
+  name: SaveChangesAsync(CancellationToken)
+  nameWithType: DbContext.SaveChangesAsync(CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+    name: SaveChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Threading.CancellationToken)
+    name: SaveChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-boolean-system-threading-cancellationtoken)
+  name: SaveChangesAsync(bool, CancellationToken)
+  nameWithType: DbContext.SaveChangesAsync(bool, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(bool, System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.SaveChangesAsync(Boolean, CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean, System.Threading.CancellationToken)
+  name.vb: SaveChangesAsync(Boolean, CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)
+    name: SaveChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-boolean-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(System.Boolean,System.Threading.CancellationToken)
+    name: SaveChangesAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync#microsoft-entityframeworkcore-dbcontext-savechangesasync(system-boolean-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Dispose
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Dispose
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.dispose
+  name: Dispose()
+  nameWithType: DbContext.Dispose()
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Dispose()
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.dispose
+  - name: (
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.DisposeAsync
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.DisposeAsync
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.disposeasync
+  name: DisposeAsync()
+  nameWithType: DbContext.DisposeAsync()
+  fullName: Microsoft.EntityFrameworkCore.DbContext.DisposeAsync()
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.disposeasync
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.DisposeAsync
+    name: DisposeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.disposeasync
+  - name: (
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1({TEntity})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  name: Entry<TEntity>(TEntity)
+  nameWithType: DbContext.Entry<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Entry<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Entry(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Entry(Of TEntity)(TEntity)
+  name.vb: Entry(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry(system-object)
+  name: Entry(object)
+  nameWithType: DbContext.Entry(object)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Entry(object)
+  nameWithType.vb: DbContext.Entry(Object)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Entry(Object)
+  name.vb: Entry(Object)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry(System.Object)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Add``1({TEntity})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  name: Add<TEntity>(TEntity)
+  nameWithType: DbContext.Add<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Add<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Add(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Add(Of TEntity)(TEntity)
+  name.vb: Add(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1({TEntity},System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  name: AddAsync<TEntity>(TEntity, CancellationToken)
+  nameWithType: DbContext.AddAsync<TEntity>(TEntity, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddAsync<TEntity>(TEntity, System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.AddAsync(Of TEntity)(TEntity, CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddAsync(Of TEntity)(TEntity, System.Threading.CancellationToken)
+  name.vb: AddAsync(Of TEntity)(TEntity, CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1({TEntity})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  name: Attach<TEntity>(TEntity)
+  nameWithType: DbContext.Attach<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Attach<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Attach(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Attach(Of TEntity)(TEntity)
+  name.vb: Attach(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Update``1({TEntity})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  name: Update<TEntity>(TEntity)
+  nameWithType: DbContext.Update<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Update<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Update(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Update(Of TEntity)(TEntity)
+  name.vb: Update(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1({TEntity})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  name: Remove<TEntity>(TEntity)
+  nameWithType: DbContext.Remove<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Remove<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Remove(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Remove(Of TEntity)(TEntity)
+  name.vb: Remove(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add(system-object)
+  name: Add(object)
+  nameWithType: DbContext.Add(object)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Add(object)
+  nameWithType.vb: DbContext.Add(Object)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Add(Object)
+  name.vb: Add(Object)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add(System.Object)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object,System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync(system-object-system-threading-cancellationtoken)
+  name: AddAsync(object, CancellationToken)
+  nameWithType: DbContext.AddAsync(object, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddAsync(object, System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.AddAsync(Object, CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddAsync(Object, System.Threading.CancellationToken)
+  name.vb: AddAsync(Object, CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync(system-object-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync(System.Object,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync(system-object-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach(system-object)
+  name: Attach(object)
+  nameWithType: DbContext.Attach(object)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Attach(object)
+  nameWithType.vb: DbContext.Attach(Object)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Attach(Object)
+  name.vb: Attach(Object)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach(System.Object)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update(system-object)
+  name: Update(object)
+  nameWithType: DbContext.Update(object)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Update(object)
+  nameWithType.vb: DbContext.Update(Object)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Update(Object)
+  name.vb: Update(Object)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update(System.Object)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove(system-object)
+  name: Remove(object)
+  nameWithType: DbContext.Remove(object)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Remove(object)
+  nameWithType.vb: DbContext.Remove(Object)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Remove(Object)
+  name.vb: Remove(Object)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove(System.Object)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-object())
+  name: AddRange(params object[])
+  nameWithType: DbContext.AddRange(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddRange(params object[])
+  nameWithType.vb: DbContext.AddRange(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddRange(ParamArray Object())
+  name.vb: AddRange(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])
+    name: AddRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-object())
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Object[])
+    name: AddRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-object())
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-object())
+  name: AddRangeAsync(params object[])
+  nameWithType: DbContext.AddRangeAsync(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(params object[])
+  nameWithType.vb: DbContext.AddRangeAsync(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(ParamArray Object())
+  name.vb: AddRangeAsync(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])
+    name: AddRangeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-object())
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Object[])
+    name: AddRangeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-object())
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-object())
+  name: AttachRange(params object[])
+  nameWithType: DbContext.AttachRange(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AttachRange(params object[])
+  nameWithType.vb: DbContext.AttachRange(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AttachRange(ParamArray Object())
+  name.vb: AttachRange(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])
+    name: AttachRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-object())
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Object[])
+    name: AttachRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-object())
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-object())
+  name: UpdateRange(params object[])
+  nameWithType: DbContext.UpdateRange(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(params object[])
+  nameWithType.vb: DbContext.UpdateRange(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(ParamArray Object())
+  name.vb: UpdateRange(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])
+    name: UpdateRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-object())
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Object[])
+    name: UpdateRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-object())
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-object())
+  name: RemoveRange(params object[])
+  nameWithType: DbContext.RemoveRange(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(params object[])
+  nameWithType.vb: DbContext.RemoveRange(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(ParamArray Object())
+  name.vb: RemoveRange(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])
+    name: RemoveRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-object())
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Object[])
+    name: RemoveRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-object())
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable{System.Object})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable{System.Object})
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-collections-generic-ienumerable((system-object)))
+  name: AddRange(IEnumerable<object>)
+  nameWithType: DbContext.AddRange(IEnumerable<object>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable<object>)
+  nameWithType.vb: DbContext.AddRange(IEnumerable(Of Object))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable(Of Object))
+  name.vb: AddRange(IEnumerable(Of Object))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: AddRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: AddRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrange#microsoft-entityframeworkcore-dbcontext-addrange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-collections-generic-ienumerable((system-object))-system-threading-cancellationtoken)
+  name: AddRangeAsync(IEnumerable<object>, CancellationToken)
+  nameWithType: DbContext.AddRangeAsync(IEnumerable<object>, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable<object>, System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.AddRangeAsync(IEnumerable(Of Object), CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable(Of Object), System.Threading.CancellationToken)
+  name.vb: AddRangeAsync(IEnumerable(Of Object), CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-collections-generic-ienumerable((system-object))-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddRangeAsync(System.Collections.Generic.IEnumerable{System.Object},System.Threading.CancellationToken)
+    name: AddRangeAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addrangeasync#microsoft-entityframeworkcore-dbcontext-addrangeasync(system-collections-generic-ienumerable((system-object))-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable{System.Object})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable{System.Object})
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-collections-generic-ienumerable((system-object)))
+  name: AttachRange(IEnumerable<object>)
+  nameWithType: DbContext.AttachRange(IEnumerable<object>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable<object>)
+  nameWithType.vb: DbContext.AttachRange(IEnumerable(Of Object))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable(Of Object))
+  name.vb: AttachRange(IEnumerable(Of Object))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: AttachRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AttachRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: AttachRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attachrange#microsoft-entityframeworkcore-dbcontext-attachrange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable{System.Object})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable{System.Object})
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-collections-generic-ienumerable((system-object)))
+  name: UpdateRange(IEnumerable<object>)
+  nameWithType: DbContext.UpdateRange(IEnumerable<object>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable<object>)
+  nameWithType.vb: DbContext.UpdateRange(IEnumerable(Of Object))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable(Of Object))
+  name.vb: UpdateRange(IEnumerable(Of Object))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: UpdateRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.UpdateRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: UpdateRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.updaterange#microsoft-entityframeworkcore-dbcontext-updaterange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable{System.Object})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable{System.Object})
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-collections-generic-ienumerable((system-object)))
+  name: RemoveRange(IEnumerable<object>)
+  nameWithType: DbContext.RemoveRange(IEnumerable<object>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable<object>)
+  nameWithType.vb: DbContext.RemoveRange(IEnumerable(Of Object))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable(Of Object))
+  name.vb: RemoveRange(IEnumerable(Of Object))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: RemoveRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.RemoveRange(System.Collections.Generic.IEnumerable{System.Object})
+    name: RemoveRange
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.removerange#microsoft-entityframeworkcore-dbcontext-removerange(system-collections-generic-ienumerable((system-object)))
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Find(System.Type,System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Find(System.Type,System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find(system-type-system-object())
+  name: Find(Type, params object[])
+  nameWithType: DbContext.Find(Type, params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Find(System.Type, params object[])
+  nameWithType.vb: DbContext.Find(Type, ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Find(System.Type, ParamArray Object())
+  name.vb: Find(Type, ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Find(System.Type,System.Object[])
+    name: Find
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find(system-type-system-object())
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Find(System.Type,System.Object[])
+    name: Find
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find(system-type-system-object())
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object())
+  name: FindAsync(Type, params object[])
+  nameWithType: DbContext.FindAsync(Type, params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, params object[])
+  nameWithType.vb: DbContext.FindAsync(Type, ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, ParamArray Object())
+  name.vb: FindAsync(Type, ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[])
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object())
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[])
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object())
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[],System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[],System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object()-system-threading-cancellationtoken)
+  name: FindAsync(Type, object[], CancellationToken)
+  nameWithType: DbContext.FindAsync(Type, object[], CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, object[], System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.FindAsync(Type, Object(), CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type, Object(), System.Threading.CancellationToken)
+  name.vb: FindAsync(Type, Object(), CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[],System.Threading.CancellationToken)
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object()-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync(System.Type,System.Object[],System.Threading.CancellationToken)
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync(system-type-system-object()-system-threading-cancellationtoken)
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Find``1(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Find``1(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find-1(system-object())
+  name: Find<TEntity>(params object[])
+  nameWithType: DbContext.Find<TEntity>(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Find<TEntity>(params object[])
+  nameWithType.vb: DbContext.Find(Of TEntity)(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Find(Of TEntity)(ParamArray Object())
+  name.vb: Find(Of TEntity)(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Find``1(System.Object[])
+    name: Find
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find-1(system-object())
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Find``1(System.Object[])
+    name: Find
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.find#microsoft-entityframeworkcore-dbcontext-find-1(system-object())
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[])
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[])
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object())
+  name: FindAsync<TEntity>(params object[])
+  nameWithType: DbContext.FindAsync<TEntity>(params object[])
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FindAsync<TEntity>(params object[])
+  nameWithType.vb: DbContext.FindAsync(Of TEntity)(ParamArray Object())
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FindAsync(Of TEntity)(ParamArray Object())
+  name.vb: FindAsync(Of TEntity)(ParamArray Object())
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[])
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object())
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: params
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[])
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object())
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: ParamArray
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[],System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[],System.Threading.CancellationToken)
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object()-system-threading-cancellationtoken)
+  name: FindAsync<TEntity>(object[], CancellationToken)
+  nameWithType: DbContext.FindAsync<TEntity>(object[], CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FindAsync<TEntity>(object[], System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.FindAsync(Of TEntity)(Object(), CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FindAsync(Of TEntity)(Object(), System.Threading.CancellationToken)
+  name.vb: FindAsync(Of TEntity)(Object(), CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[],System.Threading.CancellationToken)
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object()-system-threading-cancellationtoken)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FindAsync``1(System.Object[],System.Threading.CancellationToken)
+    name: FindAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.findasync#microsoft-entityframeworkcore-dbcontext-findasync-1(system-object()-system-threading-cancellationtoken)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{{TResult}}}})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  definition: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  name: FromExpression<TResult>(Expression<Func<IQueryable<TResult>>>)
+  nameWithType: DbContext.FromExpression<TResult>(Expression<Func<IQueryable<TResult>>>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FromExpression<TResult>(System.Linq.Expressions.Expression<System.Func<System.Linq.IQueryable<TResult>>>)
+  nameWithType.vb: DbContext.FromExpression(Of TResult)(Expression(Of Func(Of IQueryable(Of TResult))))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FromExpression(Of TResult)(System.Linq.Expressions.Expression(Of System.Func(Of System.Linq.IQueryable(Of TResult))))
+  name.vb: FromExpression(Of TResult)(Expression(Of Func(Of IQueryable(Of TResult))))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+    name: FromExpression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  - name: <
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+    name: FromExpression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Database
+  commentId: P:Microsoft.EntityFrameworkCore.DbContext.Database
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.database
+  name: Database
+  nameWithType: DbContext.Database
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Database
+- uid: Microsoft.EntityFrameworkCore.DbContext.ChangeTracker
+  commentId: P:Microsoft.EntityFrameworkCore.DbContext.ChangeTracker
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.changetracker
+  name: ChangeTracker
+  nameWithType: DbContext.ChangeTracker
+  fullName: Microsoft.EntityFrameworkCore.DbContext.ChangeTracker
+- uid: Microsoft.EntityFrameworkCore.DbContext.Model
+  commentId: P:Microsoft.EntityFrameworkCore.DbContext.Model
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.model
+  name: Model
+  nameWithType: DbContext.Model
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Model
+- uid: Microsoft.EntityFrameworkCore.DbContext.ContextId
+  commentId: P:Microsoft.EntityFrameworkCore.DbContext.ContextId
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.contextid
+  name: ContextId
+  nameWithType: DbContext.ContextId
+  fullName: Microsoft.EntityFrameworkCore.DbContext.ContextId
+- uid: Microsoft.EntityFrameworkCore.DbContext.SavingChanges
+  commentId: E:Microsoft.EntityFrameworkCore.DbContext.SavingChanges
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savingchanges
+  name: SavingChanges
+  nameWithType: DbContext.SavingChanges
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SavingChanges
+- uid: Microsoft.EntityFrameworkCore.DbContext.SavedChanges
+  commentId: E:Microsoft.EntityFrameworkCore.DbContext.SavedChanges
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savedchanges
+  name: SavedChanges
+  nameWithType: DbContext.SavedChanges
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SavedChanges
+- uid: Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed
+  commentId: E:Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed
+  parent: Microsoft.EntityFrameworkCore.DbContext
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesfailed
+  name: SaveChangesFailed
+  nameWithType: DbContext.SaveChangesFailed
+  fullName: Microsoft.EntityFrameworkCore.DbContext.SaveChangesFailed
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.EntityFrameworkCore
+  commentId: N:Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore
+  nameWithType: Microsoft.EntityFrameworkCore
+  fullName: Microsoft.EntityFrameworkCore
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+- uid: Gadema.Data.Database
+  commentId: N:Gadema.Data.Database
+  name: Gadema.Data.Database
+  nameWithType: Gadema.Data.Database
+  fullName: Gadema.Data.Database
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+- uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+  commentId: T:Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  name: IInfrastructure<T>
+  nameWithType: IInfrastructure<T>
+  fullName: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<T>
+  nameWithType.vb: IInfrastructure(Of T)
+  fullName.vb: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure(Of T)
+  name.vb: IInfrastructure(Of T)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+    name: IInfrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure`1
+    name: IInfrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure.iinfrastructure-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.Infrastructure
+  commentId: N:Microsoft.EntityFrameworkCore.Infrastructure
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore.Infrastructure
+  nameWithType: Microsoft.EntityFrameworkCore.Infrastructure
+  fullName: Microsoft.EntityFrameworkCore.Infrastructure
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure
+    name: Infrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Infrastructure
+    name: Infrastructure
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.infrastructure
+- uid: Microsoft.EntityFrameworkCore.Internal
+  commentId: N:Microsoft.EntityFrameworkCore.Internal
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.EntityFrameworkCore.Internal
+  nameWithType: Microsoft.EntityFrameworkCore.Internal
+  fullName: Microsoft.EntityFrameworkCore.Internal
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Internal
+    name: Internal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore
+    name: EntityFrameworkCore
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
+  - name: .
+  - uid: Microsoft.EntityFrameworkCore.Internal
+    name: Internal
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.internal
+- uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  name: Entry<TEntity>(TEntity)
+  nameWithType: DbContext.Entry<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Entry<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Entry(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Entry(Of TEntity)(TEntity)
+  name.vb: Entry(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Entry``1(``0)
+    name: Entry
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.entry#microsoft-entityframeworkcore-dbcontext-entry-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  name: Add<TEntity>(TEntity)
+  nameWithType: DbContext.Add<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Add<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Add(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Add(Of TEntity)(TEntity)
+  name.vb: Add(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Add``1(``0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.add#microsoft-entityframeworkcore-dbcontext-add-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  name: AddAsync<TEntity>(TEntity, CancellationToken)
+  nameWithType: DbContext.AddAsync<TEntity>(TEntity, CancellationToken)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.AddAsync<TEntity>(TEntity, System.Threading.CancellationToken)
+  nameWithType.vb: DbContext.AddAsync(Of TEntity)(TEntity, CancellationToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.AddAsync(Of TEntity)(TEntity, System.Threading.CancellationToken)
+  name.vb: AddAsync(Of TEntity)(TEntity, CancellationToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.AddAsync``1(``0,System.Threading.CancellationToken)
+    name: AddAsync
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.addasync#microsoft-entityframeworkcore-dbcontext-addasync-1(-0-system-threading-cancellationtoken)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  name: Attach<TEntity>(TEntity)
+  nameWithType: DbContext.Attach<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Attach<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Attach(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Attach(Of TEntity)(TEntity)
+  name.vb: Attach(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Attach``1(``0)
+    name: Attach
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.attach#microsoft-entityframeworkcore-dbcontext-attach-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  name: Update<TEntity>(TEntity)
+  nameWithType: DbContext.Update<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Update<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Update(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Update(Of TEntity)(TEntity)
+  name.vb: Update(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Update``1(``0)
+    name: Update
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.update#microsoft-entityframeworkcore-dbcontext-update-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  name: Remove<TEntity>(TEntity)
+  nameWithType: DbContext.Remove<TEntity>(TEntity)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.Remove<TEntity>(TEntity)
+  nameWithType.vb: DbContext.Remove(Of TEntity)(TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.Remove(Of TEntity)(TEntity)
+  name.vb: Remove(Of TEntity)(TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  - name: <
+  - name: TEntity
+  - name: '>'
+  - name: (
+  - name: TEntity
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.Remove``1(``0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.remove#microsoft-entityframeworkcore-dbcontext-remove-1(-0)
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+  - name: (
+  - name: TEntity
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+  commentId: M:Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  name: FromExpression<TResult>(Expression<Func<IQueryable<TResult>>>)
+  nameWithType: DbContext.FromExpression<TResult>(Expression<Func<IQueryable<TResult>>>)
+  fullName: Microsoft.EntityFrameworkCore.DbContext.FromExpression<TResult>(System.Linq.Expressions.Expression<System.Func<System.Linq.IQueryable<TResult>>>)
+  nameWithType.vb: DbContext.FromExpression(Of TResult)(Expression(Of Func(Of IQueryable(Of TResult))))
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContext.FromExpression(Of TResult)(System.Linq.Expressions.Expression(Of System.Func(Of System.Linq.IQueryable(Of TResult))))
+  name.vb: FromExpression(Of TResult)(Expression(Of Func(Of IQueryable(Of TResult))))
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+    name: FromExpression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  - name: <
+  - name: TResult
+  - name: '>'
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: <
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: <
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContext.FromExpression``1(System.Linq.Expressions.Expression{System.Func{System.Linq.IQueryable{``0}}})
+    name: FromExpression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontext.fromexpression
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: (
+  - uid: System.Linq.Expressions.Expression`1
+    name: Expression
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Func`1
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Linq.IQueryable`1
+    name: IQueryable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.linq.iqueryable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+  - name: )
+  - name: )
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.#ctor*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.#ctor
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext__ctor_Microsoft_EntityFrameworkCore_DbContextOptions_Gadema_Data_Database_Core_CoreDbContext__
+  name: CoreDbContext
+  nameWithType: CoreDbContext.CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext.CoreDbContext
+  nameWithType.vb: CoreDbContext.New
+  fullName.vb: Gadema.Data.Database.Core.CoreDbContext.New
+  name.vb: New
+- uid: Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext}
+  commentId: T:Microsoft.EntityFrameworkCore.DbContextOptions{Gadema.Data.Database.Core.CoreDbContext}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbContextOptions`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  name: DbContextOptions<CoreDbContext>
+  nameWithType: DbContextOptions<CoreDbContext>
+  fullName: Microsoft.EntityFrameworkCore.DbContextOptions<Gadema.Data.Database.Core.CoreDbContext>
+  nameWithType.vb: DbContextOptions(Of CoreDbContext)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContextOptions(Of Gadema.Data.Database.Core.CoreDbContext)
+  name.vb: DbContextOptions(Of CoreDbContext)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  - name: <
+  - uid: Gadema.Data.Database.Core.CoreDbContext
+    name: CoreDbContext
+    href: Gadema.Data.Database.Core.CoreDbContext.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Data.Database.Core.CoreDbContext
+    name: CoreDbContext
+    href: Gadema.Data.Database.Core.CoreDbContext.html
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContextOptions`1
+  commentId: T:Microsoft.EntityFrameworkCore.DbContextOptions`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  name: DbContextOptions<TContext>
+  nameWithType: DbContextOptions<TContext>
+  fullName: Microsoft.EntityFrameworkCore.DbContextOptions<TContext>
+  nameWithType.vb: DbContextOptions(Of TContext)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbContextOptions(Of TContext)
+  name.vb: DbContextOptions(Of TContext)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  - name: <
+  - name: TContext
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptions`1
+    name: DbContextOptions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TContext
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.Projects*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.Projects
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_Projects
+  name: Projects
+  nameWithType: CoreDbContext.Projects
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Projects
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.Project}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.Project}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<Project>
+  nameWithType: DbSet<Project>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Projects.Project>
+  nameWithType.vb: DbSet(Of Project)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Projects.Project)
+  name.vb: DbSet(Of Project)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Projects.Project
+    name: Project
+    href: Gadema.Core.Models.Base.Projects.Project.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Projects.Project
+    name: Project
+    href: Gadema.Core.Models.Base.Projects.Project.html
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbSet`1
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<TEntity>
+  nameWithType: DbSet<TEntity>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<TEntity>
+  nameWithType.vb: DbSet(Of TEntity)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of TEntity)
+  name.vb: DbSet(Of TEntity)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - name: TEntity
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEntity
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.Users*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.Users
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_Users
+  name: Users
+  nameWithType: CoreDbContext.Users
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Users
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.User}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.User}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<User>
+  nameWithType: DbSet<User>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Access.User>
+  nameWithType.vb: DbSet(Of User)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Access.User)
+  name.vb: DbSet(Of User)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Access.User
+    name: User
+    href: Gadema.Core.Models.Access.User.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Access.User
+    name: User
+    href: Gadema.Core.Models.Access.User.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTags*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectTags
+  name: ProjectTags
+  nameWithType: CoreDbContext.ProjectTags
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTags
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectTag}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectTag}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectTag>
+  nameWithType: DbSet<ProjectTag>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Projects.ProjectTag>
+  nameWithType.vb: DbSet(Of ProjectTag)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Projects.ProjectTag)
+  name.vb: DbSet(Of ProjectTag)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Projects.ProjectTag
+    name: ProjectTag
+    href: Gadema.Core.Models.Base.Projects.ProjectTag.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Projects.ProjectTag
+    name: ProjectTag
+    href: Gadema.Core.Models.Base.Projects.ProjectTag.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.MetaTags*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.MetaTags
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_MetaTags
+  name: MetaTags
+  nameWithType: CoreDbContext.MetaTags
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MetaTags
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.MetaTag}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.MetaTag}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<MetaTag>
+  nameWithType: DbSet<MetaTag>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.MetaInfo.MetaTag>
+  nameWithType.vb: DbSet(Of MetaTag)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.MetaInfo.MetaTag)
+  name.vb: DbSet(Of MetaTag)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.MetaTag
+    name: MetaTag
+    href: Gadema.Core.Models.Base.MetaInfo.MetaTag.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.MetaTag
+    name: MetaTag
+    href: Gadema.Core.Models.Base.MetaInfo.MetaTag.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectTagRelations
+  name: ProjectTagRelations
+  nameWithType: CoreDbContext.ProjectTagRelations
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTagRelations
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectTagRelation>
+  nameWithType: DbSet<ProjectTagRelation>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation>
+  nameWithType.vb: DbSet(Of ProjectTagRelation)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation)
+  name.vb: DbSet(Of ProjectTagRelation)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation
+    name: ProjectTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation
+    name: ProjectTagRelation
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectTagRelation.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTokens*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectTokens
+  name: ProjectTokens
+  nameWithType: CoreDbContext.ProjectTokens
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTokens
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectToken}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectToken}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectToken>
+  nameWithType: DbSet<ProjectToken>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Access.ProjectToken>
+  nameWithType.vb: DbSet(Of ProjectToken)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Access.ProjectToken)
+  name.vb: DbSet(Of ProjectToken)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Access.ProjectToken
+    name: ProjectToken
+    href: Gadema.Core.Models.Access.ProjectToken.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectToken
+    name: ProjectToken
+    href: Gadema.Core.Models.Access.ProjectToken.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectMetaInfos
+  name: ProjectMetaInfos
+  nameWithType: CoreDbContext.ProjectMetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectMetaInfos
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectMetaInfo>
+  nameWithType: DbSet<ProjectMetaInfo>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo>
+  nameWithType.vb: DbSet(Of ProjectMetaInfo)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo)
+  name.vb: DbSet(Of ProjectMetaInfo)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo
+    name: ProjectMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo
+    name: ProjectMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectMembers*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectMembers
+  name: ProjectMembers
+  nameWithType: CoreDbContext.ProjectMembers
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectMembers
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectMember}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.ProjectMember}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectMember>
+  nameWithType: DbSet<ProjectMember>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Access.ProjectMember>
+  nameWithType.vb: DbSet(Of ProjectMember)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Access.ProjectMember)
+  name.vb: DbSet(Of ProjectMember)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Access.ProjectMember
+    name: ProjectMember
+    href: Gadema.Core.Models.Access.ProjectMember.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMember
+    name: ProjectMember
+    href: Gadema.Core.Models.Access.ProjectMember.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.Comments*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.Comments
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_Comments
+  name: Comments
+  nameWithType: CoreDbContext.Comments
+  fullName: Gadema.Data.Database.Core.CoreDbContext.Comments
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.Comment}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.Comment}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<Comment>
+  nameWithType: DbSet<Comment>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.MetaInfo.Comment>
+  nameWithType.vb: DbSet(Of Comment)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.MetaInfo.Comment)
+  name.vb: DbSet(Of Comment)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.Comment
+    name: Comment
+    href: Gadema.Core.Models.Base.MetaInfo.Comment.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.Comment
+    name: Comment
+    href: Gadema.Core.Models.Base.MetaInfo.Comment.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectSeries*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectSeries
+  name: ProjectSeries
+  nameWithType: CoreDbContext.ProjectSeries
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectSeries
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectSeries}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Projects.ProjectSeries}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectSeries>
+  nameWithType: DbSet<ProjectSeries>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Projects.ProjectSeries>
+  nameWithType.vb: DbSet(Of ProjectSeries)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Projects.ProjectSeries)
+  name.vb: DbSet(Of ProjectSeries)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Projects.ProjectSeries
+    name: ProjectSeries
+    href: Gadema.Core.Models.Base.Projects.ProjectSeries.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Projects.ProjectSeries
+    name: ProjectSeries
+    href: Gadema.Core.Models.Base.Projects.ProjectSeries.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ActivityLogs*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ActivityLogs
+  name: ActivityLogs
+  nameWithType: CoreDbContext.ActivityLogs
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ActivityLogs
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ActivityLog}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ActivityLog}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ActivityLog>
+  nameWithType: DbSet<ActivityLog>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Infrastructure.ActivityLog>
+  nameWithType.vb: DbSet(Of ActivityLog)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Infrastructure.ActivityLog)
+  name.vb: DbSet(Of ActivityLog)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+    name: ActivityLog
+    href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.ActivityLog
+    name: ActivityLog
+    href: Gadema.Core.Models.Base.Infrastructure.ActivityLog.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.MetaInfos*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_MetaInfos
+  name: MetaInfos
+  nameWithType: CoreDbContext.MetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MetaInfos
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ContentMetaInfo>
+  nameWithType: DbSet<ContentMetaInfo>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo>
+  nameWithType.vb: DbSet(Of ContentMetaInfo)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo)
+  name.vb: DbSet(Of ContentMetaInfo)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    name: ContentMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo
+    name: ContentMetaInfo
+    href: Gadema.Core.Models.Base.MetaInfo.ContentMetaInfo.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ProjectTaskMetaInfos
+  name: ProjectTaskMetaInfos
+  nameWithType: CoreDbContext.ProjectTaskMetaInfos
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ProjectTaskMetaInfos
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Tasks.ProjectTaskMetaInfo}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Tasks.ProjectTaskMetaInfo}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ProjectTaskMetaInfo>
+  nameWithType: DbSet<ProjectTaskMetaInfo>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Tasks.ProjectTaskMetaInfo>
+  nameWithType.vb: DbSet(Of ProjectTaskMetaInfo)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Tasks.ProjectTaskMetaInfo)
+  name.vb: DbSet(Of ProjectTaskMetaInfo)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Tasks.ProjectTaskMetaInfo
+    name: ProjectTaskMetaInfo
+    href: Gadema.Core.Models.Tasks.ProjectTaskMetaInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Tasks.ProjectTaskMetaInfo
+    name: ProjectTaskMetaInfo
+    href: Gadema.Core.Models.Tasks.ProjectTaskMetaInfo.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.MediaAttachments*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_MediaAttachments
+  name: MediaAttachments
+  nameWithType: CoreDbContext.MediaAttachments
+  fullName: Gadema.Data.Database.Core.CoreDbContext.MediaAttachments
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.MediaAttachment}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<MediaAttachment>
+  nameWithType: DbSet<MediaAttachment>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Infrastructure.MediaAttachment>
+  nameWithType.vb: DbSet(Of MediaAttachment)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Infrastructure.MediaAttachment)
+  name.vb: DbSet(Of MediaAttachment)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+    name: MediaAttachment
+    href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.MediaAttachment
+    name: MediaAttachment
+    href: Gadema.Core.Models.Base.Infrastructure.MediaAttachment.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.ExternalReferences*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_ExternalReferences
+  name: ExternalReferences
+  nameWithType: CoreDbContext.ExternalReferences
+  fullName: Gadema.Data.Database.Core.CoreDbContext.ExternalReferences
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Base.Infrastructure.ExternalReference}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<ExternalReference>
+  nameWithType: DbSet<ExternalReference>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Base.Infrastructure.ExternalReference>
+  nameWithType.vb: DbSet(Of ExternalReference)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Base.Infrastructure.ExternalReference)
+  name.vb: DbSet(Of ExternalReference)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+    name: ExternalReference
+    href: Gadema.Core.Models.Base.Infrastructure.ExternalReference.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Infrastructure.ExternalReference
+    name: ExternalReference
+    href: Gadema.Core.Models.Base.Infrastructure.ExternalReference.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_UserProviderLinks
+  name: UserProviderLinks
+  nameWithType: CoreDbContext.UserProviderLinks
+  fullName: Gadema.Data.Database.Core.CoreDbContext.UserProviderLinks
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.UserProviderLink}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Access.UserProviderLink}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<UserProviderLink>
+  nameWithType: DbSet<UserProviderLink>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Access.UserProviderLink>
+  nameWithType.vb: DbSet(Of UserProviderLink)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Access.UserProviderLink)
+  name.vb: DbSet(Of UserProviderLink)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Access.UserProviderLink
+    name: UserProviderLink
+    href: Gadema.Core.Models.Access.UserProviderLink.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Access.UserProviderLink
+    name: UserProviderLink
+    href: Gadema.Core.Models.Access.UserProviderLink.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_IdentityDefinitions
+  name: IdentityDefinitions
+  nameWithType: CoreDbContext.IdentityDefinitions
+  fullName: Gadema.Data.Database.Core.CoreDbContext.IdentityDefinitions
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityDefinition}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityDefinition}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<IdentityDefinition>
+  nameWithType: DbSet<IdentityDefinition>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Identity.IdentityDefinition>
+  nameWithType.vb: DbSet(Of IdentityDefinition)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Identity.IdentityDefinition)
+  name.vb: DbSet(Of IdentityDefinition)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Identity.IdentityDefinition
+    name: IdentityDefinition
+    href: Gadema.Core.Models.Identity.IdentityDefinition.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Identity.IdentityDefinition
+    name: IdentityDefinition
+    href: Gadema.Core.Models.Identity.IdentityDefinition.html
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.IdentityValues*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_IdentityValues
+  name: IdentityValues
+  nameWithType: CoreDbContext.IdentityValues
+  fullName: Gadema.Data.Database.Core.CoreDbContext.IdentityValues
+- uid: Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityValue}
+  commentId: T:Microsoft.EntityFrameworkCore.DbSet{Gadema.Core.Models.Identity.IdentityValue}
+  parent: Microsoft.EntityFrameworkCore
+  definition: Microsoft.EntityFrameworkCore.DbSet`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  name: DbSet<IdentityValue>
+  nameWithType: DbSet<IdentityValue>
+  fullName: Microsoft.EntityFrameworkCore.DbSet<Gadema.Core.Models.Identity.IdentityValue>
+  nameWithType.vb: DbSet(Of IdentityValue)
+  fullName.vb: Microsoft.EntityFrameworkCore.DbSet(Of Gadema.Core.Models.Identity.IdentityValue)
+  name.vb: DbSet(Of IdentityValue)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: <
+  - uid: Gadema.Core.Models.Identity.IdentityValue
+    name: IdentityValue
+    href: Gadema.Core.Models.Identity.IdentityValue.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbSet`1
+    name: DbSet
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbset-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Identity.IdentityValue
+    name: IdentityValue
+    href: Gadema.Core.Models.Identity.IdentityValue.html
+  - name: )
+- uid: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)
+  commentId: M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder.usemodel
+  name: UseModel(IModel)
+  nameWithType: DbContextOptionsBuilder.UseModel(IModel)
+  fullName: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)
+  spec.csharp:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)
+    name: UseModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder.usemodel
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.IModel
+    name: IModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.imodel
+  - name: )
+  spec.vb:
+  - uid: Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)
+    name: UseModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder.usemodel
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.Metadata.IModel
+    name: IModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.imodel
+  - name: )
+- uid: Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  commentId: M:Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  parent: Gadema.Data.Database.GademaBaseContext
+  isExternal: true
+  href: Gadema.Data.Database.GademaBaseContext.html#Gadema_Data_Database_GademaBaseContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_
+  name: OnModelCreating(ModelBuilder)
+  nameWithType: GademaBaseContext.OnModelCreating(ModelBuilder)
+  fullName: Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+  spec.csharp:
+  - uid: Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+    name: OnModelCreating
+    href: Gadema.Data.Database.GademaBaseContext.html#Gadema_Data_Database_GademaBaseContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.ModelBuilder
+    name: ModelBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelbuilder
+  - name: )
+  spec.vb:
+  - uid: Gadema.Data.Database.GademaBaseContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)
+    name: OnModelCreating
+    href: Gadema.Data.Database.GademaBaseContext.html#Gadema_Data_Database_GademaBaseContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_
+  - name: (
+  - uid: Microsoft.EntityFrameworkCore.ModelBuilder
+    name: ModelBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelbuilder
+  - name: )
+- uid: Gadema.Data.Database.Core.CoreDbContext.OnModelCreating*
+  commentId: Overload:Gadema.Data.Database.Core.CoreDbContext.OnModelCreating
+  href: Gadema.Data.Database.Core.CoreDbContext.html#Gadema_Data_Database_Core_CoreDbContext_OnModelCreating_Microsoft_EntityFrameworkCore_ModelBuilder_
+  name: OnModelCreating
+  nameWithType: CoreDbContext.OnModelCreating
+  fullName: Gadema.Data.Database.Core.CoreDbContext.OnModelCreating
+- uid: Microsoft.EntityFrameworkCore.ModelBuilder
+  commentId: T:Microsoft.EntityFrameworkCore.ModelBuilder
+  parent: Microsoft.EntityFrameworkCore
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.modelbuilder
+  name: ModelBuilder
+  nameWithType: ModelBuilder
+  fullName: Microsoft.EntityFrameworkCore.ModelBuilder

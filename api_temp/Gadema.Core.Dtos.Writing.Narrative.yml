@@ -1,0 +1,261 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.Narrative
+  commentId: N:Gadema.Core.Dtos.Writing.Narrative
+  id: Gadema.Core.Dtos.Writing.Narrative
+  children:
+  - Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto
+  - Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Writing.Narrative
+  nameWithType: Gadema.Core.Dtos.Writing.Narrative
+  fullName: Gadema.Core.Dtos.Writing.Narrative
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto.html
+  name: LoreEntryCreateDto
+  nameWithType: LoreEntryCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.LoreEntryCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto.html
+  name: LoreEntryUpdateDto
+  nameWithType: LoreEntryUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.LoreEntryUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto.html
+  name: LoreEntryResponseDto
+  nameWithType: LoreEntryResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.LoreEntryResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto.html
+  name: LoreEntryListResponseDto
+  nameWithType: LoreEntryListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.LoreEntryListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto.html
+  name: OutlineSectionCreateDto
+  nameWithType: OutlineSectionCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto.html
+  name: OutlineSectionUpdateDto
+  nameWithType: OutlineSectionUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto.html
+  name: OutlineSectionResponseDto
+  nameWithType: OutlineSectionResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto.html
+  name: OutlineSectionListResponseDto
+  nameWithType: OutlineSectionListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.OutlineSectionListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto.html
+  name: SceneCreateDto
+  nameWithType: SceneCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto.html
+  name: SceneUpdateDto
+  nameWithType: SceneUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto.html
+  name: SceneResponseDto
+  nameWithType: SceneResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto.html
+  name: SceneListResponseDto
+  nameWithType: SceneListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.SceneListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto.html
+  name: StoryBeatCreateDto
+  nameWithType: StoryBeatCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryBeatCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto.html
+  name: StoryBeatResponseDto
+  nameWithType: StoryBeatResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryBeatResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto.html
+  name: StoryBeatUpdateDto
+  nameWithType: StoryBeatUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryBeatUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto.html
+  name: StoryBeatListResponseDto
+  nameWithType: StoryBeatListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryBeatListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto.html
+  name: StoryChapterCreateDto
+  nameWithType: StoryChapterCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryChapterCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto.html
+  name: StoryChapterUpdateDto
+  nameWithType: StoryChapterUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryChapterUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto.html
+  name: StoryChapterResponseDto
+  nameWithType: StoryChapterResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryChapterResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto.html
+  name: StoryChapterListResponseDto
+  nameWithType: StoryChapterListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryChapterListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto.html
+  name: StoryCreateDto
+  nameWithType: StoryCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto.html
+  name: StoryUpdateDto
+  nameWithType: StoryUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto.html
+  name: StoryResponseDto
+  nameWithType: StoryResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto.html
+  name: StoryListResponseDto
+  nameWithType: StoryListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto.html
+  name: StoryOutlineCreateDto
+  nameWithType: StoryOutlineCreateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineCreateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto
+  parent: Gadema.Core.Dtos.Writing.Narrative
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto.html
+  name: StoryOutlineUpdateDto
+  nameWithType: StoryOutlineUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineUpdateDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto.html
+  name: StoryOutlineResponseDto
+  nameWithType: StoryOutlineResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto
+  href: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto.html
+  name: StoryOutlineListResponseDto
+  nameWithType: StoryOutlineListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.Narrative.StoryOutlineListResponseDto
+- uid: Gadema.Core.Dtos.Writing.Narrative
+  commentId: N:Gadema.Core.Dtos.Writing.Narrative
+  name: Gadema.Core.Dtos.Writing.Narrative
+  nameWithType: Gadema.Core.Dtos.Writing.Narrative
+  fullName: Gadema.Core.Dtos.Writing.Narrative
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Narrative
+    name: Narrative
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.Narrative
+    name: Narrative

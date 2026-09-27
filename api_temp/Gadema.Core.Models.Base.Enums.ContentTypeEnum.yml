@@ -1,0 +1,873 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  id: ContentTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  children:
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Ability
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Character
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.CharacterState
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Comment
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.ContentReview
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Enemy
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.ExternalReference
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Faction
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.IdentityDefinition
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Item
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.LoreEntry
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Mechanic
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Other
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.PlotPoint
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.ProjectSeries
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Quest
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Scene
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.SceneSegment
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Spell
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryBeat
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryOutline
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Vehicle
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.World
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.WorldLocation
+  langs:
+  - csharp
+  - vb
+  name: ContentTypeEnum
+  nameWithType: ContentTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentTypeEnum
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: Defines the various types of content that can be tracked within the GaDeMa system.
+  example: []
+  syntax:
+    content: public enum ContentTypeEnum
+    content.vb: Public Enum ContentTypeEnum
+  extensionMethods:
+  - Gadema.Core.Models.Base.Enums.ContentTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Other
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Other
+  id: Other
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Other
+  nameWithType: ContentTypeEnum.Other
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Other
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Other
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: Unspecified or other type of content.
+  example: []
+  syntax:
+    content: Other = 0
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Character
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Character
+  id: Character
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Character
+  nameWithType: ContentTypeEnum.Character
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Character
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Character
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A character entity.
+  example: []
+  syntax:
+    content: Character = 1
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.World
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.World
+  id: World
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: World
+  nameWithType: ContentTypeEnum.World
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.World
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: World
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 17
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A world or geographic location.
+  example: []
+  syntax:
+    content: World = 2
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Mechanic
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Mechanic
+  id: Mechanic
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Mechanic
+  nameWithType: ContentTypeEnum.Mechanic
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Mechanic
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Mechanic
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A game mechanic or system component.
+  example: []
+  syntax:
+    content: Mechanic = 3
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.PlotPoint
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.PlotPoint
+  id: PlotPoint
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: PlotPoint
+  nameWithType: ContentTypeEnum.PlotPoint
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.PlotPoint
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: PlotPoint
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A key plot point in a narrative.
+  example: []
+  syntax:
+    content: PlotPoint = 4
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Quest
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Quest
+  id: Quest
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Quest
+  nameWithType: ContentTypeEnum.Quest
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Quest
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Quest
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 26
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A quest or mission.
+  example: []
+  syntax:
+    content: Quest = 5
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Item
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Item
+  id: Item
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Item
+  nameWithType: ContentTypeEnum.Item
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Item
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Item
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 29
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: An item or artifact within the setting.
+  example: []
+  syntax:
+    content: Item = 6
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Faction
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Faction
+  id: Faction
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Faction
+  nameWithType: ContentTypeEnum.Faction
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Faction
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Faction
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 32
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A faction or organized group.
+  example: []
+  syntax:
+    content: Faction = 7
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Enemy
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Enemy
+  id: Enemy
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Enemy
+  nameWithType: ContentTypeEnum.Enemy
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Enemy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Enemy
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: An enemy or monster entity.
+  example: []
+  syntax:
+    content: Enemy = 8
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Ability
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Ability
+  id: Ability
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Ability
+  nameWithType: ContentTypeEnum.Ability
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Ability
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Ability
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 38
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: An ability or skill set.
+  example: []
+  syntax:
+    content: Ability = 9
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Spell
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Spell
+  id: Spell
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Spell
+  nameWithType: ContentTypeEnum.Spell
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Spell
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Spell
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 41
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A spell or magical element.
+  example: []
+  syntax:
+    content: Spell = 10
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Vehicle
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Vehicle
+  id: Vehicle
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Vehicle
+  nameWithType: ContentTypeEnum.Vehicle
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Vehicle
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Vehicle
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 44
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A vehicle or mode of transport.
+  example: []
+  syntax:
+    content: Vehicle = 11
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Scene
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Scene
+  id: Scene
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Scene
+  nameWithType: ContentTypeEnum.Scene
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Scene
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Scene
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 47
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A narrative scene.
+  example: []
+  syntax:
+    content: Scene = 12
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.LoreEntry
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.LoreEntry
+  id: LoreEntry
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: LoreEntry
+  nameWithType: ContentTypeEnum.LoreEntry
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.LoreEntry
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: LoreEntry
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 50
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: An entry in a lore database.
+  example: []
+  syntax:
+    content: LoreEntry = 13
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryOutline
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryOutline
+  id: StoryOutline
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: StoryOutline
+  nameWithType: ContentTypeEnum.StoryOutline
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryOutline
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StoryOutline
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 53
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A high-level story outline.
+  example: []
+  syntax:
+    content: StoryOutline = 14
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryBeat
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryBeat
+  id: StoryBeat
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: StoryBeat
+  nameWithType: ContentTypeEnum.StoryBeat
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.StoryBeat
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: StoryBeat
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 56
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A major narrative beat or milestone.
+  example: []
+  syntax:
+    content: StoryBeat = 15
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.WorldLocation
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.WorldLocation
+  id: WorldLocation
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: WorldLocation
+  nameWithType: ContentTypeEnum.WorldLocation
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.WorldLocation
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: WorldLocation
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 59
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A specific location within a world.
+  example: []
+  syntax:
+    content: WorldLocation = 16
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.CharacterState
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.CharacterState
+  id: CharacterState
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: CharacterState
+  nameWithType: ContentTypeEnum.CharacterState
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.CharacterState
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CharacterState
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 62
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: The current state of a character.
+  example: []
+  syntax:
+    content: CharacterState = 17
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.IdentityDefinition
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.IdentityDefinition
+  id: IdentityDefinition
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: IdentityDefinition
+  nameWithType: ContentTypeEnum.IdentityDefinition
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.IdentityDefinition
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IdentityDefinition
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 65
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: An identity definition for authentication or tracking.
+  example: []
+  syntax:
+    content: IdentityDefinition = 18
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ExternalReference
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.ExternalReference
+  id: ExternalReference
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: ExternalReference
+  nameWithType: ContentTypeEnum.ExternalReference
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ExternalReference
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ExternalReference
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 68
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A reference to external data or systems.
+  example: []
+  syntax:
+    content: ExternalReference = 19
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ContentReview
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.ContentReview
+  id: ContentReview
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: ContentReview
+  nameWithType: ContentTypeEnum.ContentReview
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ContentReview
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ContentReview
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 71
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A content review record.
+  example: []
+  syntax:
+    content: ContentReview = 20
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ProjectSeries
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.ProjectSeries
+  id: ProjectSeries
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: ProjectSeries
+  nameWithType: ContentTypeEnum.ProjectSeries
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.ProjectSeries
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectSeries
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 74
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A series of related projects.
+  example: []
+  syntax:
+    content: ProjectSeries = 21
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Comment
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.Comment
+  id: Comment
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Comment
+  nameWithType: ContentTypeEnum.Comment
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Comment
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Comment
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 77
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A user-provided comment on a piece of content.
+  example: []
+  syntax:
+    content: Comment = 22
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.SceneSegment
+  commentId: F:Gadema.Core.Models.Base.Enums.ContentTypeEnum.SceneSegment
+  id: SceneSegment
+  parent: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: SceneSegment
+  nameWithType: ContentTypeEnum.SceneSegment
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum.SceneSegment
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SceneSegment
+    path: src/Gadema.Core/Models/Base/Enums/ContentTypeEnum.cs
+    startLine: 80
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Enums
+  summary: A segment within a scene.
+  example: []
+  syntax:
+    content: SceneSegment = 23
+    return:
+      type: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+references:
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ContentTypeEnum>(ContentTypeEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ContentTypeEnum>(ContentTypeEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Base.Enums.ContentTypeEnum>(Gadema.Core.Models.Base.Enums.ContentTypeEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ContentTypeEnum)(ContentTypeEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Base.Enums.ContentTypeEnum)(Gadema.Core.Models.Base.Enums.ContentTypeEnum)
+  name.vb: ToGuid(Of ContentTypeEnum)(ContentTypeEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Enums.ContentTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    name: ContentTypeEnum
+    href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    name: ContentTypeEnum
+    href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Enums.ContentTypeEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    name: ContentTypeEnum
+    href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+    name: ContentTypeEnum
+    href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ContentTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ContentTypeEnum.html
+  name: ContentTypeEnum
+  nameWithType: ContentTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.ContentTypeEnum

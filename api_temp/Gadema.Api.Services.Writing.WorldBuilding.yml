@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Writing.WorldBuilding
+  commentId: N:Gadema.Api.Services.Writing.WorldBuilding
+  id: Gadema.Api.Services.Writing.WorldBuilding
+  children:
+  - Gadema.Api.Services.Writing.WorldBuilding.FactionService
+  - Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Api.Services.Writing.WorldBuilding
+  nameWithType: Gadema.Api.Services.Writing.WorldBuilding
+  fullName: Gadema.Api.Services.Writing.WorldBuilding
+  type: Namespace
+  assemblies:
+  - Gadema.Api
+references:
+- uid: Gadema.Api.Services.Writing.WorldBuilding.FactionService
+  commentId: T:Gadema.Api.Services.Writing.WorldBuilding.FactionService
+  parent: Gadema.Api.Services.Writing.WorldBuilding
+  href: Gadema.Api.Services.Writing.WorldBuilding.FactionService.html
+  name: FactionService
+  nameWithType: FactionService
+  fullName: Gadema.Api.Services.Writing.WorldBuilding.FactionService
+- uid: Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService
+  commentId: T:Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService
+  parent: Gadema.Api.Services.Writing.WorldBuilding
+  href: Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService.html
+  name: WorldLocationService
+  nameWithType: WorldLocationService
+  fullName: Gadema.Api.Services.Writing.WorldBuilding.WorldLocationService
+- uid: Gadema.Api.Services.Writing.WorldBuilding
+  commentId: N:Gadema.Api.Services.Writing.WorldBuilding
+  name: Gadema.Api.Services.Writing.WorldBuilding
+  nameWithType: Gadema.Api.Services.Writing.WorldBuilding
+  fullName: Gadema.Api.Services.Writing.WorldBuilding
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.WorldBuilding
+    name: WorldBuilding
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Api.Services.Writing.WorldBuilding
+    name: WorldBuilding

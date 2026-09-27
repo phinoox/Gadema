@@ -1,0 +1,1563 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  commentId: T:Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  id: IdentityDefinitionService
+  parent: Gadema.Api.Services.Access.Identity
+  children:
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService},Gadema.Api.CoreServices.CoreServicesProvider)
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto)
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync(System.Guid)
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync(System.Guid)
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync(System.Guid)
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync(System.String,System.Nullable{System.Guid})
+  - Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto)
+  langs:
+  - csharp
+  - vb
+  name: IdentityDefinitionService
+  nameWithType: IdentityDefinitionService
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IdentityDefinitionService
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 22
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  summary: >-
+    Service for managing IdentityDefinitions - defines what attributes/properties
+
+    a character identity can have (e.g., "Race", "Faction").
+  example: []
+  syntax:
+    content: >-
+      [ServiceLifetime(ServiceLifetime.Scoped)]
+
+      public class IdentityDefinitionService : DomainService
+    content.vb: >-
+      <ServiceLifetime(ServiceLifetime.Scoped)>
+
+      Public Class IdentityDefinitionService Inherits DomainService
+  inheritance:
+  - System.Object
+  - Gadema.Api.Services.Core.DomainService
+  inheritedMembers:
+  - Gadema.Api.Services.Core.DomainService._core
+  - Gadema.Api.Services.Core.DomainService._logger
+  - Gadema.Api.Services.Core.DomainService._userId
+  - Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid,System.String,System.String,System.Guid,System.String)
+  - Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn
+  - Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid,System.Guid)
+  - Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Nullable{System.Guid},Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  - Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Guid,Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  - Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+  - Gadema.Api.Services.Core.DomainService.SyncIdentityAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Gadema.Api.Services.Core.ServiceLifetimeAttribute
+    ctor: Gadema.Api.Services.Core.ServiceLifetimeAttribute.#ctor(Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+    arguments:
+    - type: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+      value: 1
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService},Gadema.Api.CoreServices.CoreServicesProvider)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService},Gadema.Api.CoreServices.CoreServicesProvider)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService},Gadema.Api.CoreServices.CoreServicesProvider)'
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: IdentityDefinitionService(CoreDbContext, ILogger<IdentityDefinitionService>, CoreServicesProvider)
+  nameWithType: IdentityDefinitionService.IdentityDefinitionService(CoreDbContext, ILogger<IdentityDefinitionService>, CoreServicesProvider)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.IdentityDefinitionService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Access.Identity.IdentityDefinitionService>, Gadema.Api.CoreServices.CoreServicesProvider)
+  type: Constructor
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: .ctor
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 26
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public IdentityDefinitionService(CoreDbContext db, ILogger<IdentityDefinitionService> logger, CoreServicesProvider coreServices)
+    parameters:
+    - id: db
+      type: Gadema.Data.Database.Core.CoreDbContext
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService}
+    - id: coreServices
+      type: Gadema.Api.CoreServices.CoreServicesProvider
+    content.vb: Public Sub New(db As CoreDbContext, logger As ILogger(Of IdentityDefinitionService), coreServices As CoreServicesProvider)
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor*
+  nameWithType.vb: IdentityDefinitionService.New(CoreDbContext, ILogger(Of IdentityDefinitionService), CoreServicesProvider)
+  fullName.vb: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Access.Identity.IdentityDefinitionService), Gadema.Api.CoreServices.CoreServicesProvider)
+  name.vb: New(CoreDbContext, ILogger(Of IdentityDefinitionService), CoreServicesProvider)
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync(System.Guid)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync(System.Guid)
+  id: GetDefinitionsAsync(System.Guid)
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: GetDefinitionsAsync(Guid)
+  nameWithType: IdentityDefinitionService.GetDefinitionsAsync(Guid)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: GetDefinitionsAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public Task<ApiResponseDto<ListResponseDto<IdentityDefinitionResponseDto>>> GetDefinitionsAsync(Guid projectId)
+    parameters:
+    - id: projectId
+      type: System.Guid
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Response.ListResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}}
+    content.vb: Public Function GetDefinitionsAsync(projectId As Guid) As Task(Of ApiResponseDto(Of ListResponseDto(Of IdentityDefinitionResponseDto)))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync*
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync(System.Guid)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync(System.Guid)
+  id: GetDefinitionAsync(System.Guid)
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: GetDefinitionAsync(Guid)
+  nameWithType: IdentityDefinitionService.GetDefinitionAsync(Guid)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: GetDefinitionAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 57
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public Task<ApiResponseDto<IdentityDefinitionResponseDto>> GetDefinitionAsync(Guid id)
+    parameters:
+    - id: id
+      type: System.Guid
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}
+    content.vb: Public Function GetDefinitionAsync(id As Guid) As Task(Of ApiResponseDto(Of IdentityDefinitionResponseDto))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync*
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto)
+  id: CreateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto)
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: CreateDefinitionAsync(Guid, IdentityDefinitionCreateDto)
+  nameWithType: IdentityDefinitionService.CreateDefinitionAsync(Guid, IdentityDefinitionCreateDto)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync(System.Guid, Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreateDefinitionAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 76
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public Task<ApiResponseDto<CreateResponseDto>> CreateDefinitionAsync(Guid projectId, IdentityDefinitionCreateDto createDto)
+    parameters:
+    - id: projectId
+      type: System.Guid
+    - id: createDto
+      type: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto}}
+    content.vb: Public Function CreateDefinitionAsync(projectId As Guid, createDto As IdentityDefinitionCreateDto) As Task(Of ApiResponseDto(Of CreateResponseDto))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync*
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto)
+  id: UpdateDefinitionAsync(System.Guid,Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto)
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: UpdateDefinitionAsync(Guid, IdentityDefinitionUpdateDto)
+  nameWithType: IdentityDefinitionService.UpdateDefinitionAsync(Guid, IdentityDefinitionUpdateDto)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync(System.Guid, Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: UpdateDefinitionAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 117
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public Task<ApiResponseDto<IdentityDefinitionResponseDto>> UpdateDefinitionAsync(Guid id, IdentityDefinitionUpdateDto updateDto)
+    parameters:
+    - id: id
+      type: System.Guid
+    - id: updateDto
+      type: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}
+    content.vb: Public Function UpdateDefinitionAsync(id As Guid, updateDto As IdentityDefinitionUpdateDto) As Task(Of ApiResponseDto(Of IdentityDefinitionResponseDto))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync*
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync(System.Guid)
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync(System.Guid)
+  id: DeleteDefinitionAsync(System.Guid)
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: DeleteDefinitionAsync(Guid)
+  nameWithType: IdentityDefinitionService.DeleteDefinitionAsync(Guid)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync(System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DeleteDefinitionAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 151
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  syntax:
+    content: public Task<ApiResponseDto<DeleteResponseDto>> DeleteDefinitionAsync(Guid id)
+    parameters:
+    - id: id
+      type: System.Guid
+    return:
+      type: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto}}
+    content.vb: Public Function DeleteDefinitionAsync(id As Guid) As Task(Of ApiResponseDto(Of DeleteResponseDto))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync*
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync(System.String,System.Nullable{System.Guid})
+  commentId: M:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync(System.String,System.Nullable{System.Guid})
+  id: GetMatchesAsync(System.String,System.Nullable{System.Guid})
+  parent: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+  langs:
+  - csharp
+  - vb
+  name: GetMatchesAsync(string, Guid?)
+  nameWithType: IdentityDefinitionService.GetMatchesAsync(string, Guid?)
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync(string, System.Guid?)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: GetMatchesAsync
+    path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
+    startLine: 178
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Access.Identity
+  example: []
+  syntax:
+    content: public Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
+    parameters:
+    - id: query
+      type: System.String
+    - id: projectId
+      type: System.Nullable{System.Guid}
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Gadema.Core.Dtos.Search.SearchHitDto}}
+    content.vb: Public Function GetMatchesAsync(query As String, projectId As Guid?) As Task(Of IEnumerable(Of SearchHitDto))
+  overload: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync*
+  nameWithType.vb: IdentityDefinitionService.GetMatchesAsync(String, Guid?)
+  fullName.vb: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync(String, System.Guid?)
+  name.vb: GetMatchesAsync(String, Guid?)
+references:
+- uid: Gadema.Api.Services.Access.Identity
+  commentId: N:Gadema.Api.Services.Access.Identity
+  name: Gadema.Api.Services.Access.Identity
+  nameWithType: Gadema.Api.Services.Access.Identity
+  fullName: Gadema.Api.Services.Access.Identity
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Identity
+    name: Identity
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Access
+    name: Access
+  - name: .
+  - uid: Gadema.Api.Services.Access.Identity
+    name: Identity
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Gadema.Api.Services.Core.DomainService
+  commentId: T:Gadema.Api.Services.Core.DomainService
+  parent: Gadema.Api.Services.Core
+  href: Gadema.Api.Services.Core.DomainService.html
+  name: DomainService
+  nameWithType: DomainService
+  fullName: Gadema.Api.Services.Core.DomainService
+- uid: Gadema.Api.Services.Core.DomainService._core
+  commentId: F:Gadema.Api.Services.Core.DomainService._core
+  parent: Gadema.Api.Services.Core.DomainService
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__core
+  name: _core
+  nameWithType: DomainService._core
+  fullName: Gadema.Api.Services.Core.DomainService._core
+- uid: Gadema.Api.Services.Core.DomainService._logger
+  commentId: F:Gadema.Api.Services.Core.DomainService._logger
+  parent: Gadema.Api.Services.Core.DomainService
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__logger
+  name: _logger
+  nameWithType: DomainService._logger
+  fullName: Gadema.Api.Services.Core.DomainService._logger
+- uid: Gadema.Api.Services.Core.DomainService._userId
+  commentId: F:Gadema.Api.Services.Core.DomainService._userId
+  parent: Gadema.Api.Services.Core.DomainService
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService__userId
+  name: _userId
+  nameWithType: DomainService._userId
+  fullName: Gadema.Api.Services.Core.DomainService._userId
+- uid: Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid,System.String,System.String,System.Guid,System.String)
+  commentId: M:Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid,System.String,System.String,System.Guid,System.String)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_LogDbAsync_System_Guid_System_String_System_String_System_Guid_System_String_
+  name: LogDbAsync(Guid, string, string, Guid, string)
+  nameWithType: DomainService.LogDbAsync(Guid, string, string, Guid, string)
+  fullName: Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid, string, string, System.Guid, string)
+  nameWithType.vb: DomainService.LogDbAsync(Guid, String, String, Guid, String)
+  fullName.vb: Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid, String, String, System.Guid, String)
+  name.vb: LogDbAsync(Guid, String, String, Guid, String)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid,System.String,System.String,System.Guid,System.String)
+    name: LogDbAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_LogDbAsync_System_Guid_System_String_System_String_System_Guid_System_String_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.LogDbAsync(System.Guid,System.String,System.String,System.Guid,System.String)
+    name: LogDbAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_LogDbAsync_System_Guid_System_String_System_String_System_Guid_System_String_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn
+  commentId: M:Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn
+  parent: Gadema.Api.Services.Core.DomainService
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckIsLoggedIn
+  name: CheckIsLoggedIn()
+  nameWithType: DomainService.CheckIsLoggedIn()
+  fullName: Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn()
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn
+    name: CheckIsLoggedIn
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckIsLoggedIn
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckIsLoggedIn
+    name: CheckIsLoggedIn
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckIsLoggedIn
+  - name: (
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid,System.Guid)
+  commentId: M:Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid,System.Guid)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsTargetInProjectAsync_System_Guid_System_Guid_
+  name: IsTargetInProjectAsync(Guid, Guid)
+  nameWithType: DomainService.IsTargetInProjectAsync(Guid, Guid)
+  fullName: Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid, System.Guid)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid,System.Guid)
+    name: IsTargetInProjectAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsTargetInProjectAsync_System_Guid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.IsTargetInProjectAsync(System.Guid,System.Guid)
+    name: IsTargetInProjectAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsTargetInProjectAsync_System_Guid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Nullable{System.Guid},Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  commentId: M:Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Nullable{System.Guid},Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Nullable_System_Guid__Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  name: CheckAccessAsync<T>(Guid?, Permission, ProjectMemberRoleEnum)
+  nameWithType: DomainService.CheckAccessAsync<T>(Guid?, Permission, ProjectMemberRoleEnum)
+  fullName: Gadema.Api.Services.Core.DomainService.CheckAccessAsync<T>(System.Guid?, Gadema.Core.Models.Base.Permissions.Permission, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  nameWithType.vb: DomainService.CheckAccessAsync(Of T)(Guid?, Permission, ProjectMemberRoleEnum)
+  fullName.vb: Gadema.Api.Services.Core.DomainService.CheckAccessAsync(Of T)(System.Guid?, Gadema.Core.Models.Base.Permissions.Permission, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  name.vb: CheckAccessAsync(Of T)(Guid?, Permission, ProjectMemberRoleEnum)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Nullable{System.Guid},Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Nullable_System_Guid__Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Nullable{System.Guid},Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Nullable_System_Guid__Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Guid,Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  commentId: M:Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Guid,Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  name: CheckAccessAsync<T>(Guid, Permission, ProjectMemberRoleEnum)
+  nameWithType: DomainService.CheckAccessAsync<T>(Guid, Permission, ProjectMemberRoleEnum)
+  fullName: Gadema.Api.Services.Core.DomainService.CheckAccessAsync<T>(System.Guid, Gadema.Core.Models.Base.Permissions.Permission, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  nameWithType.vb: DomainService.CheckAccessAsync(Of T)(Guid, Permission, ProjectMemberRoleEnum)
+  fullName.vb: Gadema.Api.Services.Core.DomainService.CheckAccessAsync(Of T)(System.Guid, Gadema.Core.Models.Base.Permissions.Permission, Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  name.vb: CheckAccessAsync(Of T)(Guid, Permission, ProjectMemberRoleEnum)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Guid,Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.CheckAccessAsync``1(System.Guid,Gadema.Core.Models.Base.Permissions.Permission,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+    name: CheckAccessAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_CheckAccessAsync__1_System_Guid_Gadema_Core_Models_Base_Permissions_Permission_Gadema_Core_Models_Access_ProjectMemberRoleEnum_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Models.Access.ProjectMemberRoleEnum
+    name: ProjectMemberRoleEnum
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+  commentId: M:Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsAdminAsync_System_Guid_
+  name: IsAdminAsync(Guid)
+  nameWithType: DomainService.IsAdminAsync(Guid)
+  fullName: Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+    name: IsAdminAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsAdminAsync_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.IsAdminAsync(System.Guid)
+    name: IsAdminAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_IsAdminAsync_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Gadema.Api.Services.Core.DomainService.SyncIdentityAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Api.Services.Core.DomainService.SyncIdentityAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Api.Services.Core.DomainService
+  isExternal: true
+  href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_SyncIdentityAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  name: SyncIdentityAsync<T>(Guid, BaseMetaInfoUpdateData)
+  nameWithType: DomainService.SyncIdentityAsync<T>(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Api.Services.Core.DomainService.SyncIdentityAsync<T>(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  nameWithType.vb: DomainService.SyncIdentityAsync(Of T)(Guid, BaseMetaInfoUpdateData)
+  fullName.vb: Gadema.Api.Services.Core.DomainService.SyncIdentityAsync(Of T)(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  name.vb: SyncIdentityAsync(Of T)(Guid, BaseMetaInfoUpdateData)
+  spec.csharp:
+  - uid: Gadema.Api.Services.Core.DomainService.SyncIdentityAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+    name: SyncIdentityAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_SyncIdentityAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    name: BaseMetaInfoUpdateData
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.Services.Core.DomainService.SyncIdentityAsync``1(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+    name: SyncIdentityAsync
+    href: Gadema.Api.Services.Core.DomainService.html#Gadema_Api_Services_Core_DomainService_SyncIdentityAsync__1_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+    name: BaseMetaInfoUpdateData
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Api.Services.Core
+  commentId: N:Gadema.Api.Services.Core
+  name: Gadema.Api.Services.Core
+  nameWithType: Gadema.Api.Services.Core
+  fullName: Gadema.Api.Services.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.Services
+    name: Services
+  - name: .
+  - uid: Gadema.Api.Services.Core
+    name: Core
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.#ctor
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Access_Identity_IdentityDefinitionService__Gadema_Api_CoreServices_CoreServicesProvider_
+  name: IdentityDefinitionService
+  nameWithType: IdentityDefinitionService.IdentityDefinitionService
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.IdentityDefinitionService
+  nameWithType.vb: IdentityDefinitionService.New
+  fullName.vb: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.New
+  name.vb: New
+- uid: Gadema.Data.Database.Core.CoreDbContext
+  commentId: T:Gadema.Data.Database.Core.CoreDbContext
+  parent: Gadema.Data.Database.Core
+  href: Gadema.Data.Database.Core.CoreDbContext.html
+  name: CoreDbContext
+  nameWithType: CoreDbContext
+  fullName: Gadema.Data.Database.Core.CoreDbContext
+- uid: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Access.Identity.IdentityDefinitionService}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<IdentityDefinitionService>
+  nameWithType: ILogger<IdentityDefinitionService>
+  fullName: Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Access.Identity.IdentityDefinitionService>
+  nameWithType.vb: ILogger(Of IdentityDefinitionService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Access.Identity.IdentityDefinitionService)
+  name.vb: ILogger(Of IdentityDefinitionService)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+    name: IdentityDefinitionService
+    href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService
+    name: IdentityDefinitionService
+    href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html
+  - name: )
+- uid: Gadema.Api.CoreServices.CoreServicesProvider
+  commentId: T:Gadema.Api.CoreServices.CoreServicesProvider
+  parent: Gadema.Api.CoreServices
+  href: Gadema.Api.CoreServices.CoreServicesProvider.html
+  name: CoreServicesProvider
+  nameWithType: CoreServicesProvider
+  fullName: Gadema.Api.CoreServices.CoreServicesProvider
+- uid: Gadema.Data.Database.Core
+  commentId: N:Gadema.Data.Database.Core
+  name: Gadema.Data.Database.Core
+  nameWithType: Gadema.Data.Database.Core
+  fullName: Gadema.Data.Database.Core
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  - name: .
+  - uid: Gadema.Data.Database.Core
+    name: Core
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: Gadema.Api.CoreServices
+  commentId: N:Gadema.Api.CoreServices
+  name: Gadema.Api.CoreServices
+  nameWithType: Gadema.Api.CoreServices
+  fullName: Gadema.Api.CoreServices
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_GetDefinitionsAsync_System_Guid_
+  name: GetDefinitionsAsync
+  nameWithType: IdentityDefinitionService.GetDefinitionsAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionsAsync
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Response.ListResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Response.ListResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ApiResponseDto<ListResponseDto<IdentityDefinitionResponseDto>>>
+  nameWithType: Task<ApiResponseDto<ListResponseDto<IdentityDefinitionResponseDto>>>
+  fullName: System.Threading.Tasks.Task<Gadema.Core.Dtos.ApiResponseDto<Gadema.Core.Dtos.Response.ListResponseDto<Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto>>>
+  nameWithType.vb: Task(Of ApiResponseDto(Of ListResponseDto(Of IdentityDefinitionResponseDto)))
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Core.Dtos.ApiResponseDto(Of Gadema.Core.Dtos.Response.ListResponseDto(Of Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto)))
+  name.vb: Task(Of ApiResponseDto(Of ListResponseDto(Of IdentityDefinitionResponseDto)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: <
+  - uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+    name: ListResponseDto
+  - name: <
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+    name: IdentityDefinitionResponseDto
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Response.ListResponseDto`1
+    name: ListResponseDto
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+    name: IdentityDefinitionResponseDto
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_GetDefinitionAsync_System_Guid_
+  name: GetDefinitionAsync
+  nameWithType: IdentityDefinitionService.GetDefinitionAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetDefinitionAsync
+- uid: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ApiResponseDto<IdentityDefinitionResponseDto>>
+  nameWithType: Task<ApiResponseDto<IdentityDefinitionResponseDto>>
+  fullName: System.Threading.Tasks.Task<Gadema.Core.Dtos.ApiResponseDto<Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto>>
+  nameWithType.vb: Task(Of ApiResponseDto(Of IdentityDefinitionResponseDto))
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Core.Dtos.ApiResponseDto(Of Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto))
+  name.vb: Task(Of ApiResponseDto(Of IdentityDefinitionResponseDto))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: <
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+    name: IdentityDefinitionResponseDto
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Identity.IdentityDefinitionResponseDto
+    name: IdentityDefinitionResponseDto
+  - name: )
+  - name: )
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_CreateDefinitionAsync_System_Guid_Gadema_Core_Dtos_Identity_IdentityDefinitionCreateDto_
+  name: CreateDefinitionAsync
+  nameWithType: IdentityDefinitionService.CreateDefinitionAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.CreateDefinitionAsync
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto.html
+  name: IdentityDefinitionCreateDto
+  nameWithType: IdentityDefinitionCreateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionCreateDto
+- uid: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto}}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ApiResponseDto<CreateResponseDto>>
+  nameWithType: Task<ApiResponseDto<CreateResponseDto>>
+  fullName: System.Threading.Tasks.Task<Gadema.Core.Dtos.ApiResponseDto<Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto>>
+  nameWithType.vb: Task(Of ApiResponseDto(Of CreateResponseDto))
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Core.Dtos.ApiResponseDto(Of Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto))
+  name.vb: Task(Of ApiResponseDto(Of CreateResponseDto))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: <
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+    name: CreateResponseDto
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.CreateResponseDto
+    name: CreateResponseDto
+  - name: )
+  - name: )
+- uid: Gadema.Core.Dtos.Identity
+  commentId: N:Gadema.Core.Dtos.Identity
+  name: Gadema.Core.Dtos.Identity
+  nameWithType: Gadema.Core.Dtos.Identity
+  fullName: Gadema.Core.Dtos.Identity
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Identity
+    name: Identity
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_UpdateDefinitionAsync_System_Guid_Gadema_Core_Dtos_Identity_IdentityDefinitionUpdateDto_
+  name: UpdateDefinitionAsync
+  nameWithType: IdentityDefinitionService.UpdateDefinitionAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.UpdateDefinitionAsync
+- uid: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  commentId: T:Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+  parent: Gadema.Core.Dtos.Identity
+  href: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto.html
+  name: IdentityDefinitionUpdateDto
+  nameWithType: IdentityDefinitionUpdateDto
+  fullName: Gadema.Core.Dtos.Identity.IdentityDefinitionUpdateDto
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_DeleteDefinitionAsync_System_Guid_
+  name: DeleteDefinitionAsync
+  nameWithType: IdentityDefinitionService.DeleteDefinitionAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.DeleteDefinitionAsync
+- uid: System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto}}
+  commentId: T:System.Threading.Tasks.Task{Gadema.Core.Dtos.ApiResponseDto{Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<ApiResponseDto<DeleteResponseDto>>
+  nameWithType: Task<ApiResponseDto<DeleteResponseDto>>
+  fullName: System.Threading.Tasks.Task<Gadema.Core.Dtos.ApiResponseDto<Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto>>
+  nameWithType.vb: Task(Of ApiResponseDto(Of DeleteResponseDto))
+  fullName.vb: System.Threading.Tasks.Task(Of Gadema.Core.Dtos.ApiResponseDto(Of Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto))
+  name.vb: Task(Of ApiResponseDto(Of DeleteResponseDto))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: <
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+    name: DeleteResponseDto
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.ApiResponseDto`1
+    name: ApiResponseDto
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Base.Infrastructure.DeleteResponseDto
+    name: DeleteResponseDto
+  - name: )
+  - name: )
+- uid: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync*
+  commentId: Overload:Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync
+  href: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.html#Gadema_Api_Services_Access_Identity_IdentityDefinitionService_GetMatchesAsync_System_String_System_Nullable_System_Guid__
+  name: GetMatchesAsync
+  nameWithType: IdentityDefinitionService.GetMatchesAsync
+  fullName: Gadema.Api.Services.Access.Identity.IdentityDefinitionService.GetMatchesAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Gadema.Core.Dtos.Search.SearchHitDto}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{Gadema.Core.Dtos.Search.SearchHitDto}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IEnumerable<SearchHitDto>>
+  nameWithType: Task<IEnumerable<SearchHitDto>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Gadema.Core.Dtos.Search.SearchHitDto>>
+  nameWithType.vb: Task(Of IEnumerable(Of SearchHitDto))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IEnumerable(Of Gadema.Core.Dtos.Search.SearchHitDto))
+  name.vb: Task(Of IEnumerable(Of SearchHitDto))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Gadema.Core.Dtos.Search.SearchHitDto
+    name: SearchHitDto
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Dtos.Search.SearchHitDto
+    name: SearchHitDto
+  - name: )
+  - name: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

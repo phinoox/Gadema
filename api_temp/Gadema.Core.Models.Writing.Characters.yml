@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Characters
+  commentId: N:Gadema.Core.Models.Writing.Characters
+  id: Gadema.Core.Models.Writing.Characters
+  children:
+  - Gadema.Core.Models.Writing.Characters.Character
+  - Gadema.Core.Models.Writing.Characters.CharacterRelation
+  - Gadema.Core.Models.Writing.Characters.CharacterRole
+  - Gadema.Core.Models.Writing.Characters.CharacterState
+  - Gadema.Core.Models.Writing.Characters.CharacterStatus
+  - Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  - Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Writing.Characters
+  nameWithType: Gadema.Core.Models.Writing.Characters
+  fullName: Gadema.Core.Models.Writing.Characters
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Writing.Characters.Character
+  commentId: T:Gadema.Core.Models.Writing.Characters.Character
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.Character.html
+  name: Character
+  nameWithType: Character
+  fullName: Gadema.Core.Models.Writing.Characters.Character
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRelation
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterRelation
+  href: Gadema.Core.Models.Writing.Characters.CharacterRelation.html
+  name: CharacterRelation
+  nameWithType: CharacterRelation
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRelation
+- uid: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.RelationTypeEnum.html
+  name: RelationTypeEnum
+  nameWithType: RelationTypeEnum
+  fullName: Gadema.Core.Models.Writing.Characters.RelationTypeEnum
+- uid: Gadema.Core.Models.Writing.Characters.CharacterState
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterState
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterState.html
+  name: CharacterState
+  nameWithType: CharacterState
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterState
+- uid: Gadema.Core.Models.Writing.Characters.CharacterRole
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterRole
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterRole.html
+  name: CharacterRole
+  nameWithType: CharacterRole
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterRole
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStatus
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterStatus
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterStatus.html
+  name: CharacterStatus
+  nameWithType: CharacterStatus
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStatus
+- uid: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+  parent: Gadema.Core.Models.Writing.Characters
+  href: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile.html
+  name: CharacterStoryProfile
+  nameWithType: CharacterStoryProfile
+  fullName: Gadema.Core.Models.Writing.Characters.CharacterStoryProfile
+- uid: Gadema.Core.Models.Writing.Characters
+  commentId: N:Gadema.Core.Models.Writing.Characters
+  name: Gadema.Core.Models.Writing.Characters
+  nameWithType: Gadema.Core.Models.Writing.Characters
+  fullName: Gadema.Core.Models.Writing.Characters
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Characters
+    name: Characters

@@ -1,0 +1,201 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Interfaces.ISoftDeletable
+  commentId: T:Gadema.Core.Interfaces.ISoftDeletable
+  id: ISoftDeletable
+  parent: Gadema.Core.Interfaces
+  children:
+  - Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+  - Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+  langs:
+  - csharp
+  - vb
+  name: ISoftDeletable
+  nameWithType: ISoftDeletable
+  fullName: Gadema.Core.Interfaces.ISoftDeletable
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ISoftDeletable
+    path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Defines a contract for entities that support soft deletion, allowing them to be marked as deleted without being removed from the database.
+  example: []
+  syntax:
+    content: public interface ISoftDeletable
+    content.vb: Public Interface ISoftDeletable
+  derivedClasses:
+  - Gadema.Core.Models.Base.Projects.Project
+- uid: Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+  commentId: P:Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+  id: IsDeleted
+  parent: Gadema.Core.Interfaces.ISoftDeletable
+  langs:
+  - csharp
+  - vb
+  name: IsDeleted
+  nameWithType: ISoftDeletable.IsDeleted
+  fullName: Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsDeleted
+    path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets a value indicating whether the entity has been soft-deleted.
+  example: []
+  syntax:
+    content: bool IsDeleted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsDeleted As Boolean
+  overload: Gadema.Core.Interfaces.ISoftDeletable.IsDeleted*
+- uid: Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+  commentId: P:Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+  id: DeletedAt
+  parent: Gadema.Core.Interfaces.ISoftDeletable
+  langs:
+  - csharp
+  - vb
+  name: DeletedAt
+  nameWithType: ISoftDeletable.DeletedAt
+  fullName: Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: DeletedAt
+    path: src/Gadema.Core/Interfaces/ISoftDeletable.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Gets or sets the timestamp when the entity was soft-deleted.
+  example: []
+  syntax:
+    content: DateTime? DeletedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Property DeletedAt As Date?
+  overload: Gadema.Core.Interfaces.ISoftDeletable.DeletedAt*
+references:
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+- uid: Gadema.Core.Interfaces.ISoftDeletable.IsDeleted*
+  commentId: Overload:Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+  href: Gadema.Core.Interfaces.ISoftDeletable.html#Gadema_Core_Interfaces_ISoftDeletable_IsDeleted
+  name: IsDeleted
+  nameWithType: ISoftDeletable.IsDeleted
+  fullName: Gadema.Core.Interfaces.ISoftDeletable.IsDeleted
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Interfaces.ISoftDeletable.DeletedAt*
+  commentId: Overload:Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+  href: Gadema.Core.Interfaces.ISoftDeletable.html#Gadema_Core_Interfaces_ISoftDeletable_DeletedAt
+  name: DeletedAt
+  nameWithType: ISoftDeletable.DeletedAt
+  fullName: Gadema.Core.Interfaces.ISoftDeletable.DeletedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

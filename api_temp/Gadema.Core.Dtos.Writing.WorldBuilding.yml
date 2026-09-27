@@ -1,0 +1,111 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding
+  commentId: N:Gadema.Core.Dtos.Writing.WorldBuilding
+  id: Gadema.Core.Dtos.Writing.WorldBuilding
+  children:
+  - Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto
+  - Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Dtos.Writing.WorldBuilding
+  nameWithType: Gadema.Core.Dtos.Writing.WorldBuilding
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto
+  parent: Gadema.Core.Dtos.Writing.WorldBuilding
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto.html
+  name: FactionCreateDto
+  nameWithType: FactionCreateDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.FactionCreateDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto
+  parent: Gadema.Core.Dtos.Writing.WorldBuilding
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto.html
+  name: FactionUpdateDto
+  nameWithType: FactionUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.FactionUpdateDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto.html
+  name: FactionResponseDto
+  nameWithType: FactionResponseDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.FactionResponseDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto.html
+  name: FactionListResponseDto
+  nameWithType: FactionListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.FactionListResponseDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto
+  parent: Gadema.Core.Dtos.Writing.WorldBuilding
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto.html
+  name: WorldLocationCreateDto
+  nameWithType: WorldLocationCreateDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationCreateDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto
+  parent: Gadema.Core.Dtos.Writing.WorldBuilding
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto.html
+  name: WorldLocationUpdateDto
+  nameWithType: WorldLocationUpdateDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationUpdateDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto.html
+  name: WorldLocationResponseDto
+  nameWithType: WorldLocationResponseDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationResponseDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto
+  commentId: T:Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto
+  href: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto.html
+  name: WorldLocationListResponseDto
+  nameWithType: WorldLocationListResponseDto
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding.WorldLocationListResponseDto
+- uid: Gadema.Core.Dtos.Writing.WorldBuilding
+  commentId: N:Gadema.Core.Dtos.Writing.WorldBuilding
+  name: Gadema.Core.Dtos.Writing.WorldBuilding
+  nameWithType: Gadema.Core.Dtos.Writing.WorldBuilding
+  fullName: Gadema.Core.Dtos.Writing.WorldBuilding
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding
+    name: WorldBuilding
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Dtos.Writing.WorldBuilding
+    name: WorldBuilding

@@ -1,0 +1,207 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  commentId: T:Gadema.Core.Interfaces.IIdentitySyncStrategy
+  id: IIdentitySyncStrategy
+  parent: Gadema.Core.Interfaces
+  children:
+  - Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  langs:
+  - csharp
+  - vb
+  name: IIdentitySyncStrategy
+  nameWithType: IIdentitySyncStrategy
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  type: Interface
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IIdentitySyncStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IIdentitySyncStrategy
+    path: src/Gadema.Core/Interfaces/IIdentitySyncStrategy.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Defines a strategy for synchronizing identity information across different systems or components.
+  example: []
+  syntax:
+    content: public interface IIdentitySyncStrategy
+    content.vb: Public Interface IIdentitySyncStrategy
+  derivedClasses:
+  - Gadema.Api.CoreServices.Strategies.BaseIdentityStrategy`2
+  - Gadema.Api.CoreServices.Strategies.ContentIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectSeriesIdentityStrategy
+  - Gadema.Api.CoreServices.Strategies.ProjectTaskIdentityStrategy
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  commentId: M:Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  id: SyncAsync(System.Guid,Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  parent: Gadema.Core.Interfaces.IIdentitySyncStrategy
+  langs:
+  - csharp
+  - vb
+  name: SyncAsync(Guid, BaseMetaInfoUpdateData)
+  nameWithType: IIdentitySyncStrategy.SyncAsync(Guid, BaseMetaInfoUpdateData)
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync(System.Guid, Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Core/Interfaces/IIdentitySyncStrategy.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: SyncAsync
+    path: src/Gadema.Core/Interfaces/IIdentitySyncStrategy.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Interfaces
+  summary: Asynchronously synchronizes the identity with the provided update data.
+  example: []
+  syntax:
+    content: Task SyncAsync(Guid identityId, BaseMetaInfoUpdateData updateData)
+    parameters:
+    - id: identityId
+      type: System.Guid
+      description: The unique identifier of the identity to sync.
+    - id: updateData
+      type: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+      description: The data used for updating the identity.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous sync operation.
+    content.vb: Function SyncAsync(identityId As Guid, updateData As BaseMetaInfoUpdateData) As Task
+  overload: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync*
+references:
+- uid: Gadema.Core.Interfaces
+  commentId: N:Gadema.Core.Interfaces
+  name: Gadema.Core.Interfaces
+  nameWithType: Gadema.Core.Interfaces
+  fullName: Gadema.Core.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Interfaces
+    name: Interfaces
+- uid: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync*
+  commentId: Overload:Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync
+  href: Gadema.Core.Interfaces.IIdentitySyncStrategy.html#Gadema_Core_Interfaces_IIdentitySyncStrategy_SyncAsync_System_Guid_Gadema_Core_Dtos_Base_Infrastructure_BaseMetaInfoUpdateData_
+  name: SyncAsync
+  nameWithType: IIdentitySyncStrategy.SyncAsync
+  fullName: Gadema.Core.Interfaces.IIdentitySyncStrategy.SyncAsync
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  commentId: T:Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+  parent: Gadema.Core.Dtos.Base.Infrastructure
+  href: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData.html
+  name: BaseMetaInfoUpdateData
+  nameWithType: BaseMetaInfoUpdateData
+  fullName: Gadema.Core.Dtos.Base.Infrastructure.BaseMetaInfoUpdateData
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Dtos.Base.Infrastructure
+  commentId: N:Gadema.Core.Dtos.Base.Infrastructure
+  name: Gadema.Core.Dtos.Base.Infrastructure
+  nameWithType: Gadema.Core.Dtos.Base.Infrastructure
+  fullName: Gadema.Core.Dtos.Base.Infrastructure
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Dtos
+    name: Dtos
+  - name: .
+  - uid: Gadema.Core.Dtos.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Dtos.Base.Infrastructure
+    name: Infrastructure
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

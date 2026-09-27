@@ -1,0 +1,59 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Permissions
+  commentId: N:Gadema.Core.Models.Base.Permissions
+  id: Gadema.Core.Models.Base.Permissions
+  children:
+  - Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Base.Permissions
+  nameWithType: Gadema.Core.Models.Base.Permissions
+  fullName: Gadema.Core.Models.Base.Permissions
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Base.Permissions.Permission
+  commentId: T:Gadema.Core.Models.Base.Permissions.Permission
+  parent: Gadema.Core.Models.Base.Permissions
+  href: Gadema.Core.Models.Base.Permissions.Permission.html
+  name: Permission
+  nameWithType: Permission
+  fullName: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions
+  commentId: N:Gadema.Core.Models.Base.Permissions
+  name: Gadema.Core.Models.Base.Permissions
+  nameWithType: Gadema.Core.Models.Base.Permissions
+  fullName: Gadema.Core.Models.Base.Permissions
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions

@@ -1,0 +1,67 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Writing.Enums
+  commentId: N:Gadema.Core.Models.Writing.Enums
+  id: Gadema.Core.Models.Writing.Enums
+  children:
+  - Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  - Gadema.Core.Models.Writing.Enums.OutlineStatusEnum
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Core.Models.Writing.Enums
+  nameWithType: Gadema.Core.Models.Writing.Enums
+  fullName: Gadema.Core.Models.Writing.Enums
+  type: Namespace
+  assemblies:
+  - Gadema.Core
+references:
+- uid: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  commentId: T:Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+  parent: Gadema.Core.Models.Writing.Enums
+  href: Gadema.Core.Models.Writing.Enums.LoreTypeEnum.html
+  name: LoreTypeEnum
+  nameWithType: LoreTypeEnum
+  fullName: Gadema.Core.Models.Writing.Enums.LoreTypeEnum
+- uid: Gadema.Core.Models.Writing.Enums.OutlineStatusEnum
+  commentId: T:Gadema.Core.Models.Writing.Enums.OutlineStatusEnum
+  parent: Gadema.Core.Models.Writing.Enums
+  href: Gadema.Core.Models.Writing.Enums.OutlineStatusEnum.html
+  name: OutlineStatusEnum
+  nameWithType: OutlineStatusEnum
+  fullName: Gadema.Core.Models.Writing.Enums.OutlineStatusEnum
+- uid: Gadema.Core.Models.Writing.Enums
+  commentId: N:Gadema.Core.Models.Writing.Enums
+  name: Gadema.Core.Models.Writing.Enums
+  nameWithType: Gadema.Core.Models.Writing.Enums
+  fullName: Gadema.Core.Models.Writing.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Writing
+    name: Writing
+  - name: .
+  - uid: Gadema.Core.Models.Writing.Enums
+    name: Enums

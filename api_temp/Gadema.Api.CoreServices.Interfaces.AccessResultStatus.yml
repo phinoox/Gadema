@@ -1,0 +1,277 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  commentId: T:Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  id: AccessResultStatus
+  parent: Gadema.Api.CoreServices.Interfaces
+  children:
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Allowed
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Forbidden
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus.NotFound
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Unauthorized
+  langs:
+  - csharp
+  - vb
+  name: AccessResultStatus
+  nameWithType: AccessResultStatus
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: AccessResultStatus
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: public enum AccessResultStatus
+    content.vb: Public Enum AccessResultStatus
+  extensionMethods:
+  - Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Allowed
+  commentId: F:Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Allowed
+  id: Allowed
+  parent: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  langs:
+  - csharp
+  - vb
+  name: Allowed
+  nameWithType: AccessResultStatus.Allowed
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Allowed
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Allowed
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: Allowed = 0
+    return:
+      type: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Forbidden
+  commentId: F:Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Forbidden
+  id: Forbidden
+  parent: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  langs:
+  - csharp
+  - vb
+  name: Forbidden
+  nameWithType: AccessResultStatus.Forbidden
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Forbidden
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Forbidden
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: Forbidden = 1
+    return:
+      type: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.NotFound
+  commentId: F:Gadema.Api.CoreServices.Interfaces.AccessResultStatus.NotFound
+  id: NotFound
+  parent: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  langs:
+  - csharp
+  - vb
+  name: NotFound
+  nameWithType: AccessResultStatus.NotFound
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.NotFound
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: NotFound
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: NotFound = 2
+    return:
+      type: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Unauthorized
+  commentId: F:Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Unauthorized
+  id: Unauthorized
+  parent: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  langs:
+  - csharp
+  - vb
+  name: Unauthorized
+  nameWithType: AccessResultStatus.Unauthorized
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Unauthorized
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Unauthorized
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 6
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: Unauthorized = 3
+    return:
+      type: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+references:
+- uid: Gadema.Api.CoreServices.Interfaces
+  commentId: N:Gadema.Api.CoreServices.Interfaces
+  name: Gadema.Api.CoreServices.Interfaces
+  nameWithType: Gadema.Api.CoreServices.Interfaces
+  fullName: Gadema.Api.CoreServices.Interfaces
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Api
+    name: Api
+  - name: .
+  - uid: Gadema.Api.CoreServices
+    name: CoreServices
+  - name: .
+  - uid: Gadema.Api.CoreServices.Interfaces
+    name: Interfaces
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<AccessResultStatus>(AccessResultStatus)
+  nameWithType: EnumGuidExtensions.ToGuid<AccessResultStatus>(AccessResultStatus)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Api.CoreServices.Interfaces.AccessResultStatus>(Gadema.Api.CoreServices.Interfaces.AccessResultStatus)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of AccessResultStatus)(AccessResultStatus)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Api.CoreServices.Interfaces.AccessResultStatus)(Gadema.Api.CoreServices.Interfaces.AccessResultStatus)
+  name.vb: ToGuid(Of AccessResultStatus)(AccessResultStatus)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Api.CoreServices.Interfaces.AccessResultStatus)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+    name: AccessResultStatus
+    href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+    name: AccessResultStatus
+    href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Api.CoreServices.Interfaces.AccessResultStatus)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+    name: AccessResultStatus
+    href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  - name: )
+  - name: (
+  - uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+    name: AccessResultStatus
+    href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  commentId: T:Gadema.Api.CoreServices.Interfaces.AccessResultStatus
+  parent: Gadema.Api.CoreServices.Interfaces
+  href: Gadema.Api.CoreServices.Interfaces.AccessResultStatus.html
+  name: AccessResultStatus
+  nameWithType: AccessResultStatus
+  fullName: Gadema.Api.CoreServices.Interfaces.AccessResultStatus

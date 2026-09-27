@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Data.Database
+  commentId: N:Gadema.Data.Database
+  id: Gadema.Data.Database
+  children:
+  - Gadema.Data.Database.DbInjection
+  - Gadema.Data.Database.GademaBaseContext
+  langs:
+  - csharp
+  - vb
+  name: Gadema.Data.Database
+  nameWithType: Gadema.Data.Database
+  fullName: Gadema.Data.Database
+  type: Namespace
+  assemblies:
+  - Gadema.Data
+references:
+- uid: Gadema.Data.Database.DbInjection
+  commentId: T:Gadema.Data.Database.DbInjection
+  href: Gadema.Data.Database.DbInjection.html
+  name: DbInjection
+  nameWithType: DbInjection
+  fullName: Gadema.Data.Database.DbInjection
+- uid: Gadema.Data.Database.GademaBaseContext
+  commentId: T:Gadema.Data.Database.GademaBaseContext
+  parent: Gadema.Data.Database
+  href: Gadema.Data.Database.GademaBaseContext.html
+  name: GademaBaseContext
+  nameWithType: GademaBaseContext
+  fullName: Gadema.Data.Database.GademaBaseContext
+- uid: Gadema.Data.Database
+  commentId: N:Gadema.Data.Database
+  name: Gadema.Data.Database
+  nameWithType: Gadema.Data.Database
+  fullName: Gadema.Data.Database
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Data
+    name: Data
+  - name: .
+  - uid: Gadema.Data.Database
+    name: Database

@@ -1,0 +1,366 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.Permissions.Permission
+  commentId: T:Gadema.Core.Models.Base.Permissions.Permission
+  id: Permission
+  parent: Gadema.Core.Models.Base.Permissions
+  children:
+  - Gadema.Core.Models.Base.Permissions.Permission.CanAssignRole
+  - Gadema.Core.Models.Base.Permissions.Permission.CanCreate
+  - Gadema.Core.Models.Base.Permissions.Permission.CanDelete
+  - Gadema.Core.Models.Base.Permissions.Permission.CanEdit
+  - Gadema.Core.Models.Base.Permissions.Permission.CanManageTags
+  - Gadema.Core.Models.Base.Permissions.Permission.CanPublish
+  - Gadema.Core.Models.Base.Permissions.Permission.CanView
+  langs:
+  - csharp
+  - vb
+  name: Permission
+  nameWithType: Permission
+  fullName: Gadema.Core.Models.Base.Permissions.Permission
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Permission
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 5
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  summary: Defines the set of granular actions that can be performed on resources.
+  example: []
+  syntax:
+    content: public enum Permission
+    content.vb: Public Enum Permission
+  extensionMethods:
+  - Gadema.Core.Models.Base.Permissions.Permission.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanView
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanView
+  id: CanView
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanView
+  nameWithType: Permission.CanView
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanView
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanView
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 8
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanView = 0
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanCreate
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanCreate
+  id: CanCreate
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanCreate
+  nameWithType: Permission.CanCreate
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanCreate
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanCreate
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanCreate = 1
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanEdit
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanEdit
+  id: CanEdit
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanEdit
+  nameWithType: Permission.CanEdit
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanEdit
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanEdit
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 10
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanEdit = 2
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanDelete
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanDelete
+  id: CanDelete
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanDelete
+  nameWithType: Permission.CanDelete
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanDelete
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanDelete
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 11
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanDelete = 3
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanPublish
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanPublish
+  id: CanPublish
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanPublish
+  nameWithType: Permission.CanPublish
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanPublish
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanPublish
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanPublish = 4
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanManageTags
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanManageTags
+  id: CanManageTags
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanManageTags
+  nameWithType: Permission.CanManageTags
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanManageTags
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanManageTags
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanManageTags = 5
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+- uid: Gadema.Core.Models.Base.Permissions.Permission.CanAssignRole
+  commentId: F:Gadema.Core.Models.Base.Permissions.Permission.CanAssignRole
+  id: CanAssignRole
+  parent: Gadema.Core.Models.Base.Permissions.Permission
+  langs:
+  - csharp
+  - vb
+  name: CanAssignRole
+  nameWithType: Permission.CanAssignRole
+  fullName: Gadema.Core.Models.Base.Permissions.Permission.CanAssignRole
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CanAssignRole
+    path: src/Gadema.Core/Models/Base/Permissions/Permission.cs
+    startLine: 16
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.Permissions
+  syntax:
+    content: CanAssignRole = 6
+    return:
+      type: Gadema.Core.Models.Base.Permissions.Permission
+references:
+- uid: Gadema.Core.Models.Base.Permissions
+  commentId: N:Gadema.Core.Models.Base.Permissions
+  name: Gadema.Core.Models.Base.Permissions
+  nameWithType: Gadema.Core.Models.Base.Permissions
+  fullName: Gadema.Core.Models.Base.Permissions
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Permissions
+    name: Permissions
+- uid: Gadema.Core.Models.Base.Permissions.Permission.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<Permission>(Permission)
+  nameWithType: EnumGuidExtensions.ToGuid<Permission>(Permission)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Models.Base.Permissions.Permission>(Gadema.Core.Models.Base.Permissions.Permission)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of Permission)(Permission)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Models.Base.Permissions.Permission)(Gadema.Core.Models.Base.Permissions.Permission)
+  name.vb: ToGuid(Of Permission)(Permission)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Permissions.Permission)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+    href: Gadema.Core.Models.Base.Permissions.Permission.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+    href: Gadema.Core.Models.Base.Permissions.Permission.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Models.Base.Permissions.Permission)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+    href: Gadema.Core.Models.Base.Permissions.Permission.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Models.Base.Permissions.Permission
+    name: Permission
+    href: Gadema.Core.Models.Base.Permissions.Permission.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Models.Base.Permissions.Permission
+  commentId: T:Gadema.Core.Models.Base.Permissions.Permission
+  parent: Gadema.Core.Models.Base.Permissions
+  href: Gadema.Core.Models.Base.Permissions.Permission.html
+  name: Permission
+  nameWithType: Permission
+  fullName: Gadema.Core.Models.Base.Permissions.Permission

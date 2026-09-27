@@ -1,0 +1,297 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum
+  commentId: T:Gadema.Core.Enums.ProjectDifficultyEnum
+  id: ProjectDifficultyEnum
+  parent: Gadema.Core.Enums
+  children:
+  - Gadema.Core.Enums.ProjectDifficultyEnum.Easy
+  - Gadema.Core.Enums.ProjectDifficultyEnum.Hard
+  - Gadema.Core.Enums.ProjectDifficultyEnum.Medium
+  langs:
+  - csharp
+  - vb
+  name: ProjectDifficultyEnum
+  nameWithType: ProjectDifficultyEnum
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum
+  type: Enum
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectDifficultyEnum
+    path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+    startLine: 7
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Represents the estimated difficulty level of a project, used for workload management and planning.
+  example: []
+  syntax:
+    content: public enum ProjectDifficultyEnum
+    content.vb: Public Enum ProjectDifficultyEnum
+  extensionMethods:
+  - Gadema.Core.Enums.ProjectDifficultyEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum.Easy
+  commentId: F:Gadema.Core.Enums.ProjectDifficultyEnum.Easy
+  id: Easy
+  parent: Gadema.Core.Enums.ProjectDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Easy
+  nameWithType: ProjectDifficultyEnum.Easy
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum.Easy
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Easy
+    path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Simple projects with minimal complexity and straightforward implementation.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Easy")]
+
+      Easy = 0
+    return:
+      type: Gadema.Core.Enums.ProjectDifficultyEnum
+    content.vb: >-
+      <Display(Name:="Easy")>
+
+      Easy = 0
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Easy
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum.Medium
+  commentId: F:Gadema.Core.Enums.ProjectDifficultyEnum.Medium
+  id: Medium
+  parent: Gadema.Core.Enums.ProjectDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Medium
+  nameWithType: ProjectDifficultyEnum.Medium
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum.Medium
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Medium
+    path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+    startLine: 18
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Projects of moderate difficulty requiring some planning and coordination.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Medium")]
+
+      Medium = 1
+    return:
+      type: Gadema.Core.Enums.ProjectDifficultyEnum
+    content.vb: >-
+      <Display(Name:="Medium")>
+
+      Medium = 1
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Medium
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum.Hard
+  commentId: F:Gadema.Core.Enums.ProjectDifficultyEnum.Hard
+  id: Hard
+  parent: Gadema.Core.Enums.ProjectDifficultyEnum
+  langs:
+  - csharp
+  - vb
+  name: Hard
+  nameWithType: ProjectDifficultyEnum.Hard
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum.Hard
+  type: Field
+  source:
+    remote:
+      path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Hard
+    path: src/Gadema.Core/Enums/ProjectDifficultyEnum.cs
+    startLine: 24
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Enums
+  summary: Complex projects involving extensive research or implementation requirements.
+  example: []
+  syntax:
+    content: >-
+      [Display(Name = "Hard")]
+
+      Hard = 2
+    return:
+      type: Gadema.Core.Enums.ProjectDifficultyEnum
+    content.vb: >-
+      <Display(Name:="Hard")>
+
+      Hard = 2
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
+    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Hard
+references:
+- uid: Gadema.Core.Enums
+  commentId: N:Gadema.Core.Enums
+  name: Gadema.Core.Enums
+  nameWithType: Gadema.Core.Enums
+  fullName: Gadema.Core.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Enums
+    name: Enums
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum.Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  parent: Gadema.Core.Utils.EnumGuidExtensions
+  definition: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<ProjectDifficultyEnum>(ProjectDifficultyEnum)
+  nameWithType: EnumGuidExtensions.ToGuid<ProjectDifficultyEnum>(ProjectDifficultyEnum)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<Gadema.Core.Enums.ProjectDifficultyEnum>(Gadema.Core.Enums.ProjectDifficultyEnum)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of ProjectDifficultyEnum)(ProjectDifficultyEnum)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of Gadema.Core.Enums.ProjectDifficultyEnum)(Gadema.Core.Enums.ProjectDifficultyEnum)
+  name.vb: ToGuid(Of ProjectDifficultyEnum)(ProjectDifficultyEnum)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectDifficultyEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - uid: Gadema.Core.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  - name: '>'
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(Gadema.Core.Enums.ProjectDifficultyEnum)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Gadema.Core.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  - name: )
+  - name: (
+  - uid: Gadema.Core.Enums.ProjectDifficultyEnum
+    name: ProjectDifficultyEnum
+    href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  commentId: M:Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+  href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  name: ToGuid<T>(T)
+  nameWithType: EnumGuidExtensions.ToGuid<T>(T)
+  fullName: Gadema.Core.Utils.EnumGuidExtensions.ToGuid<T>(T)
+  nameWithType.vb: EnumGuidExtensions.ToGuid(Of T)(T)
+  fullName.vb: Gadema.Core.Utils.EnumGuidExtensions.ToGuid(Of T)(T)
+  name.vb: ToGuid(Of T)(T)
+  spec.csharp:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Gadema.Core.Utils.EnumGuidExtensions.ToGuid``1(``0)
+    name: ToGuid
+    href: Gadema.Core.Utils.EnumGuidExtensions.html#Gadema_Core_Utils_EnumGuidExtensions_ToGuid__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: )
+- uid: Gadema.Core.Utils.EnumGuidExtensions
+  commentId: T:Gadema.Core.Utils.EnumGuidExtensions
+  parent: Gadema.Core.Utils
+  href: Gadema.Core.Utils.EnumGuidExtensions.html
+  name: EnumGuidExtensions
+  nameWithType: EnumGuidExtensions
+  fullName: Gadema.Core.Utils.EnumGuidExtensions
+- uid: Gadema.Core.Utils
+  commentId: N:Gadema.Core.Utils
+  name: Gadema.Core.Utils
+  nameWithType: Gadema.Core.Utils
+  fullName: Gadema.Core.Utils
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Utils
+    name: Utils
+- uid: Gadema.Core.Enums.ProjectDifficultyEnum
+  commentId: T:Gadema.Core.Enums.ProjectDifficultyEnum
+  parent: Gadema.Core.Enums
+  href: Gadema.Core.Enums.ProjectDifficultyEnum.html
+  name: ProjectDifficultyEnum
+  nameWithType: ProjectDifficultyEnum
+  fullName: Gadema.Core.Enums.ProjectDifficultyEnum

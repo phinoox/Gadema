@@ -1,0 +1,836 @@
+### YamlMime:ManagedReference
+items:
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  commentId: T:Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  id: ReviewStatus
+  parent: Gadema.Core.Models.Base.MetaInfo
+  children:
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+  langs:
+  - csharp
+  - vb
+  name: ReviewStatus
+  nameWithType: ReviewStatus
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  type: Class
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReviewStatus
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 9
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: Represents a review status for a specific piece of content.
+  example: []
+  syntax:
+    content: >-
+      [ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
+
+      public class ReviewStatus
+    content.vb: >-
+      <ModelDependency(New Type() { GetType(ContentMetaInfo) })>
+
+      Public Class ReviewStatus
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: ReviewStatus.Id
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 15
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: Unique identifier for this review record.
+  example: []
+  syntax:
+    content: public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id*
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+  id: TargetId
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: TargetId
+  nameWithType: ReviewStatus.TargetId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TargetId
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 19
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The ID of the content item being reviewed (the anchor).
+  example: []
+  syntax:
+    content: >-
+      [Required]
+
+      public Guid TargetId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Required>
+
+      Public Property TargetId As Guid
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+  id: Status
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: ReviewStatus.Status
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Status
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 25
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The current status of the review process.
+  example: []
+  syntax:
+    content: public ReviewStatusEnum Status { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+    content.vb: Public Property Status As ReviewStatusEnum
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status*
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+  id: ReviewedByUserId
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: ReviewedByUserId
+  nameWithType: ReviewStatus.ReviewedByUserId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReviewedByUserId
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 30
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The ID of the user who performed the review.
+  example: []
+  syntax:
+    content: public Guid? ReviewedByUserId { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Guid}
+    content.vb: Public Property ReviewedByUserId As Guid?
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId*
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+  id: Reviewer
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: Reviewer
+  nameWithType: ReviewStatus.Reviewer
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Reviewer
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 35
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: Navigation property for the reviewer.
+  example: []
+  syntax:
+    content: >-
+      [ForeignKey("ReviewedByUserId")]
+
+      public virtual User? Reviewer { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Access.User
+    content.vb: >-
+      <ForeignKey("ReviewedByUserId")>
+
+      Public Overridable Property Reviewer As User
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ReviewedByUserId
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+  id: ReviewComment
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: ReviewComment
+  nameWithType: ReviewStatus.ReviewComment
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReviewComment
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 41
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The qualitative feedback or notes provided by the reviewer.
+  example: []
+  syntax:
+    content: >-
+      [MaxLength(4096)]
+
+      public string? ReviewComment { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <MaxLength(4096)>
+
+      Public Property ReviewComment As String
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
+    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4096
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+  id: ReviewedAt
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: ReviewedAt
+  nameWithType: ReviewStatus.ReviewedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ReviewedAt
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 47
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The timestamp when the review was completed.
+  example: []
+  syntax:
+    content: public DateTime? ReviewedAt { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTime}
+    content.vb: Public Property ReviewedAt As Date?
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt*
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+  id: CreatedAt
+  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: ReviewStatus.CreatedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: CreatedAt
+    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
+    startLine: 52
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The timestamp when the review record was created.
+  example: []
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt*
+references:
+- uid: Gadema.Core.Models.Base.MetaInfo
+  commentId: N:Gadema.Core.Models.Base.MetaInfo
+  name: Gadema.Core.Models.Base.MetaInfo
+  nameWithType: Gadema.Core.Models.Base.MetaInfo
+  fullName: Gadema.Core.Models.Base.MetaInfo
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.MetaInfo
+    name: MetaInfo
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_Id
+  name: Id
+  nameWithType: ReviewStatus.Id
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id
+- uid: System.Guid
+  commentId: T:System.Guid
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid
+  nameWithType: Guid
+  fullName: System.Guid
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_TargetId
+  name: TargetId
+  nameWithType: ReviewStatus.TargetId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_Status
+  name: Status
+  nameWithType: ReviewStatus.Status
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
+- uid: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.ReviewStatusEnum.html
+  name: ReviewStatusEnum
+  nameWithType: ReviewStatusEnum
+  fullName: Gadema.Core.Models.Base.Enums.ReviewStatusEnum
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_ReviewedByUserId
+  name: ReviewedByUserId
+  nameWithType: ReviewStatus.ReviewedByUserId
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
+- uid: System.Nullable{System.Guid}
+  commentId: T:System.Nullable{System.Guid}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.guid
+  name: Guid?
+  nameWithType: Guid?
+  fullName: System.Guid?
+  spec.csharp:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  spec.vb:
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_Reviewer
+  name: Reviewer
+  nameWithType: ReviewStatus.Reviewer
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
+- uid: Gadema.Core.Models.Access.User
+  commentId: T:Gadema.Core.Models.Access.User
+  parent: Gadema.Core.Models.Access
+  href: Gadema.Core.Models.Access.User.html
+  name: User
+  nameWithType: User
+  fullName: Gadema.Core.Models.Access.User
+- uid: Gadema.Core.Models.Access
+  commentId: N:Gadema.Core.Models.Access
+  name: Gadema.Core.Models.Access
+  nameWithType: Gadema.Core.Models.Access
+  fullName: Gadema.Core.Models.Access
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Access
+    name: Access
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_ReviewComment
+  name: ReviewComment
+  nameWithType: ReviewStatus.ReviewComment
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewComment
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_ReviewedAt
+  name: ReviewedAt
+  nameWithType: ReviewStatus.ReviewedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedAt
+- uid: System.Nullable{System.DateTime}
+  commentId: T:System.Nullable{System.DateTime}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime?
+  nameWithType: DateTime?
+  fullName: System.DateTime?
+  nameWithType.vb: Date?
+  fullName.vb: Date?
+  name.vb: Date?
+  spec.csharp:
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: '?'
+- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_CreatedAt
+  name: CreatedAt
+  nameWithType: ReviewStatus.CreatedAt
+  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
