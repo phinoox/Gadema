@@ -1,12 +1,12 @@
-# 🛠️ GaDeMa Coding Standards & Patterns
+# 📜 The Laws of Animation: Coding Standards & Patterns
 
 This guide is the **Single Source of Truth** for implementation within the GaDeMa project. It is designed as a high-density "Cheat Sheet" to ensure consistency, prevent ambiguity, and maintain our architectural integrity.
 
 ---
 
-## 📂 1. The Core Rule: Domain Clustering & Naming
+## 📂 1. The Law of Domain Clustering & Naming
 
-To avoid name collisions (e.g., with `System.Threading.Task`) and maintain organization, we use **Domain Clustering**.
+To avoid name collisions (e.g., with `System.Threading.Task`) and maintain order, we follow the law of **Domain Clustering**.
 
 ### 📏 Naming Conventions
 | Type | Pattern | ✅ Correct Example | ❌ Avoid! |
@@ -29,9 +29,9 @@ src/Gadema.Api/Services/Tasks/         <-- Services
 
 ---
 
-## 🎮 2. The Controller Pattern: "Thin Controllers"
+## 🎮 2. The Law of the Thin Controller
 
-Controllers should be minimal routing and dispatching layers. They should contain **zero** business logic and **zero** database access.
+Controllers are merely routing and dispatching layers. They must never hold business logic or touch the database directly.
 
 ### ✅ Correct Implementation (One-Liner)
 For simple retrieval or actions, use the `Ok(await ...)` pattern:
@@ -42,7 +42,7 @@ public async Task<IActionResult> Search([FromQuery] string query, [FromQuery] Gu
 
 ---
 
-## 🛡️ 3. The Service Pattern: Authorization & Logic
+## 🛡️ 3. The Law of Service Responsibility
 
 The Service layer is the "Muscle." It handles all business rules, permission checks, and data integrity.
 
@@ -70,7 +70,7 @@ public async Task<ApiResponseDto<ProjectResponseDto>> GetProjectAsync(Guid proje
 
 ---
 
-## 🔄 4. The Hybrid Response Pattern
+## 🔄 4. The Law of Hybrid Responses
 
 To provide a consistent API experience, we distinguish between **Data Retrieval** and **Action Confirmation**.
 
@@ -95,14 +95,13 @@ return Ok(new {
 ```
 
 **Error Example:**
-```csharp
-// Returns a wrapped error object
+```c// Returns a wrapped error object
 return Ok(ApiResponseDto<CreateResponseDto>.Failure("Description is required"));
 ```
 
 ---
 
-## ⚙️ 5. Data Integrity & Performance
+## ⚙️ 5. The Law of Data Integrity & Performance
 
 ### ✅ Validation: DTO vs. Model
 - **DTOs**: Must contain all validation attributes (`[Required]`, `[MaxLength]`, etc.).
