@@ -148,3 +148,6 @@ api-keys.json
 # ============================================================
 # nuget.config.lock
 # packages.lock.json
+
+# documentation
+docs/tmp*
