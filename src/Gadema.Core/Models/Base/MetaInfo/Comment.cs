@@ -8,11 +8,11 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 public class Comment
 {
     /// <summary>
-    /// Gets or sets the unique identifier for this comment.
+    /// The unique identifier for this comment, which is also the ID of the target entity (The Soul).
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
-
     /// <summary>
     /// Gets or sets the identifier of the target entity (e.s. a LoreEntry, Scene, etc.) that this comment is attached to.
     /// </summary>
@@ -26,13 +26,13 @@ public class Comment
     public Guid AuthorUserId { get; set; }
     
     /// <summary>
-    /// Gets or sets the text content of the comment.
+    /// The text content of the comment.
     /// </summary>
     [MaxLength(4096)] 
     public string Text { get; set; } = "";
     
     /// <summary>
-    /// Gets or sets the identifier of the parent comment, if this is a reply in a threaded conversation.
+    /// The ID of the parent comment, if this is a reply in a threaded conversation.
     /// </summary>
     public Guid? ParentCommentId { get; set; }
     

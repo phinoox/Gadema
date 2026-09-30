@@ -11,9 +11,11 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 public class ReviewStatus
 {
     /// <summary>
-    /// Unique identifier for this review record.
+    /// The unique identifier for this review, which is also the ID of the target content item (The Soul).
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
+
     /// <summary>
     /// The ID of the content item being reviewed (the anchor).
     /// </summary>
