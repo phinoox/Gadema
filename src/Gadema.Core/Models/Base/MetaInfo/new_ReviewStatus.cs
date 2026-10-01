@@ -6,6 +6,7 @@ using Gadema.Core.Models.Access;
 /// <summary>
 /// Represents a review status for a specific piece of content.
 /// </summary>
+ [ModelDependency(typeof(ContentMetaInfo))]
 public class ReviewStatus
 {
     /// <summary>

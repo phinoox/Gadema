@@ -2,9 +2,11 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 
 using System.ComponentModel.DataAnnotations;
 
-/// <summary>
-/// Represents a user-provided comment attached to a specific content item or entity.
-/// </summary>
+
+ /// <summary>
+ /// Represents a user-provided comment attached to a specific content item or entity.
+ /// </summary>
+ [ModelDependency(typeof(ContentMetaInfo))]
 public class Comment
 {
     /// <summary>

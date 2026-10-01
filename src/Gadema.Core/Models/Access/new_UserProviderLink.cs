@@ -7,6 +7,7 @@ using Gadema.Core.Models.Access;
 /// An extension of the User identity, adding external provider data.
 /// Following Law I: This is a 1:1 extension, so Id == UserId.
 /// </summary>
+[ModelDependency(typeof(User))]
 public class UserProviderLink
 {
     [Key]
