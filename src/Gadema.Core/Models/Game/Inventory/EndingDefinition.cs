@@ -1,10 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
-using Gadema.Core.Models.Base.Projects;
-
 namespace Gadema.Core.Models.Game.Inventory;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a predefined narrative ending within a project.
@@ -16,7 +12,8 @@ public class EndingDefinition
     /// <summary>
     /// Unique identifier for the ending definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project this ending belongs to.

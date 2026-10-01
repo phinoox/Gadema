@@ -1,8 +1,6 @@
-// =============================================================================
-// TemplateNarrativeStructure - Entity for narrative structure definitions in project templates
-// =============================================================================
-
 namespace Gadema.Core.Models.Templates;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Defines a pre-configured narrative structure (e.g., Act Sequences, Plot Points) for a project template.
@@ -14,7 +12,8 @@ public class TemplateNarrativeStructure
     /// <summary>
     /// Unique identifier for the template narrative structure.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project template this structure belongs to.
@@ -52,4 +51,3 @@ public class TemplateNarrativeStructure
     public string? Description { get; set; }
 
 }
-

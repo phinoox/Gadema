@@ -1,13 +1,12 @@
-// ... existing imports ...
-
-using Gadema.Core.Models.Access;
-
 namespace Gadema.Core.Models.Base.MetaInfo;
+
+using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Access;
 
 /// <summary>
 /// Represents a review status for a specific piece of content.
 /// </summary>
-[ModelDependency(typeof(ContentMetaInfo))] // Still dependency of ContentMetaInfo conceptually, but no direct navigation
+ [ModelDependency(typeof(ContentMetaInfo))]
 public class ReviewStatus
 {
     /// <summary>
@@ -15,12 +14,6 @@ public class ReviewStatus
     /// </summary>
     [Key]
     public Guid Id { get; set; }
-
-    /// <summary>
-    /// The ID of the content item being reviewed (the anchor).
-    /// </summary>
-    [Required]
-    public Guid TargetId { get; set; }
 
     /// <summary>
     /// The current status of the review process.

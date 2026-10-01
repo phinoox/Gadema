@@ -1,10 +1,12 @@
 namespace Gadema.Core.Models.Base.MetaInfo;
 
-/// <summary>
+using System.ComponentModel.DataAnnotations;
 
-/// Represents a user-provided comment attached to a specific content item or entity.
-/// </summary>
-[ModelDependency(typeof(ContentMetaInfo))]
+
+ /// <summary>
+ /// Represents a user-provided comment attached to a specific content item or entity.
+ /// </summary>
+ [ModelDependency(typeof(ContentMetaInfo))]
 public class Comment
 {
     /// <summary>
@@ -13,12 +15,6 @@ public class Comment
     [Key]
     public Guid Id { get; set; }
     
-    /// <summary>
-    /// Gets or sets the identifier of the target entity (e.s. a LoreEntry, Scene, etc.) that this comment is attached to.
-    /// </summary>
-    [Required] 
-    public Guid TargetId { get; set; }
-
     /// <summary>
     /// Gets or sets the identifier of the user who authored this comment.
     /// </summary>

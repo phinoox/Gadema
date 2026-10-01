@@ -1,7 +1,4 @@
-// =============================================================================
-// EngineFieldMapping - Entity for engine field name mappings per content type
-// =============================================================================
-
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Core.Models.Game.EngineIntegration;
@@ -17,18 +14,21 @@ public class EngineFieldMapping
     /// <summary>
     /// Unique identifier for this mapping entry.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
+
     /// <summary>
     /// The ID of the project this mapping applies to.
     /// </summary>
     [Required, Display(Name = "Project ID")]
     public Guid ProjectId { get; set; }
+
     /// <summary>
     /// Navigation property for the parent project.
     /// </summary>
     // Navigation property for Project (Many-to-One)
     [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
+    public virtual Project Project { get; set; } = null!;
 
     /// <summary>
     /// The type of content being mapped (e.g., Character, Item, Location).
@@ -86,6 +86,5 @@ public class EngineFieldMapping
     /// Navigation property for the engine export configuration.
     /// </summary>
     [ForeignKey("EngineExportConfigId")]
-    public virtual EngineExportConfig EngineExportConfig { get; set; }
+    public virtual EngineExportConfig EngineExportConfig { get; set; } = null!;
 }
-

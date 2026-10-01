@@ -1,8 +1,6 @@
-// =============================================================================
-// CharacterIdentity - Entity for character identity assignments (race, faction, guild)
-// =============================================================================
-
 namespace Gadema.Core.Models.Identity;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a character's identity assignment, linking a content item to specific identity definitions and values.
@@ -14,7 +12,8 @@ public class CharacterIdentity
     /// <summary>
         /// Unique identifier for this character identity assignment.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity.

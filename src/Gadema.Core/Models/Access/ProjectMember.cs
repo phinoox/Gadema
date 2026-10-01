@@ -1,6 +1,7 @@
-using Gadema.Core.Models.Base.Projects;
-
 namespace Gadema.Core.Models.Access;
+
+using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Specifies the role of a member within a specific project, determining their access levels and permissions.
@@ -35,6 +36,7 @@ public class ProjectMember
     /// <summary>
     /// Gets or sets the unique identifier for this membership record.
     /// </summary>
+    [Key]
     public Guid Id { get; set; }
 
     /// <summary>

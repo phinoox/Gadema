@@ -1,7 +1,6 @@
-// =============================================================================
-// =============================================================================
-
 namespace Gadema.Core.Models.Identity;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a specific option within an identity category (e.g., "Human" within the "Race" definition).
@@ -13,7 +12,8 @@ public class IdentityValue
     /// <summary>
     /// Unique identifier for the identity value.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     // --- Identity Anchor (The "Soul") ---
     /// <summary>
@@ -37,7 +37,7 @@ public class IdentityValue
     /// Navigation property for the parent identity definition.
     /// </summary>
     [ForeignKey("IdentityDefinitionId")]
-    public virtual IdentityDefinition IdentityDefinition { get; set; }
+    public virtual IdentityDefinition IdentityDefinition { get; set; } = null!;
 
     /// <summary>
     /// The human-readable name of the value (e.g., "Human").

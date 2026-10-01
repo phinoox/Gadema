@@ -1,7 +1,4 @@
-// =============================================================================
-// TemplateIdentityDefinition - Entity for identity system definitions in project templates
-// =============================================================================
-
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Identity;
 
 namespace Gadema.Core.Models.Templates;
@@ -16,7 +13,8 @@ public class TemplateIdentityDefinition
     /// <summary>
     /// Unique identifier for the template identity definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the project template this definition belongs to.
@@ -56,4 +54,3 @@ public class TemplateIdentityDefinition
     [MaxLength(128), Required, Display(Name = "Identity Type Name")]
     public string IdentityName { get; set; } = "";
 }
-

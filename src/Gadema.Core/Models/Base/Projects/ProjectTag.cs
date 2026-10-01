@@ -1,5 +1,7 @@
 namespace Gadema.Core.Models.Base.Projects;
 
+using System.ComponentModel.DataAnnotations;
+
 /// <summary>
 /// Represents a tag specifically for organizing and categorizing projects.
 /// </summary>
@@ -9,7 +11,8 @@ public class ProjectTag
     /// <summary>
     /// Unique identifier for the project tag.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The human-readable name of the tag (e.g., "High Fantasy", "Completed").

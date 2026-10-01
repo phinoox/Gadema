@@ -1,8 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Templates;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Links a <see cref="AttributeSetDefinition"/> to its parent <see cref="ProjectTemplate"/>.
@@ -14,7 +12,8 @@ public class TemplateAttributeSetDefinition
     /// <summary>
     /// Unique identifier for this link.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project template this definition belongs to.

@@ -1,7 +1,4 @@
-// =============================================================================
-// TemplateClassTemplateDefinition - Entity for class template configurations in project templates
-// =============================================================================
-
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Game.Attributes;
 
 namespace Gadema.Core.Models.Templates;
@@ -16,7 +13,8 @@ public class TemplateClassTemplateDefinition
     /// <summary>
     /// Unique identifier for the class template definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project template this class template belongs to.
@@ -54,4 +52,3 @@ public class TemplateClassTemplateDefinition
     public string? Description { get; set; }
 
 }
-

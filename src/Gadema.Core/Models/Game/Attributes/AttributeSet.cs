@@ -1,10 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
-using Gadema.Core.Models.Base.Projects;
-
 namespace Gadema.Core.Models.Game.Attributes;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a collection of attributes grouped together for a specific entity or template (e.g., "Core Stats", "Magic Attributes").
@@ -16,7 +12,8 @@ public class AttributeSet
     /// <summary>
     /// Unique identifier for the attribute set.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
@@ -29,6 +26,7 @@ public class AttributeSet
     /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+
     /// <summary>
     /// The ID of the project this attribute set belongs to.
     /// </summary>

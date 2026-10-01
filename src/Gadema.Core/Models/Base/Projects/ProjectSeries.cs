@@ -1,8 +1,5 @@
 // =============================================================================
 
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Base.Projects;
 
 /// <summary>
@@ -15,17 +12,13 @@ public class ProjectSeries
     /// <summary>
     /// Unique identifier for the series.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
-    /// The ID of the associated identity anchor for the series.
+    /// The ID of the associated identity anchor for the series (Vertical Unification).
     /// </summary>
-    public Guid ProjectSeriesMetaInfoId { get; set; }
-    
-    /// <summary>
-    /// Navigation property for the series' identity anchor.
-    /// </summary>
-    [ForeignKey("ProjectSeriesMetaInfoId")]
+    [ForeignKey("Id")]
     public virtual ProjectSeriesMetaInfo ProjectSeriesMetaInfo { get; set; } = null!;
 
     /// <summary>

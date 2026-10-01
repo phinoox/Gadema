@@ -1,8 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Game.Abilities;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a blueprint for an individual ability (e.g., "Fireball", "Shield Bash").
@@ -14,7 +12,8 @@ public class AbilityDefinition
     /// <summary>
     /// Unique identifier for the ability definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
@@ -27,6 +26,7 @@ public class AbilityDefinition
     /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+
     /// <summary>
     /// The human-readable name of the ability.
     /// </summary>
@@ -38,6 +38,7 @@ public class AbilityDefinition
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
+
     /// <summary>
     /// A detailed description of what the ability does and its narrative flavor.
     /// </summary>
@@ -48,6 +49,7 @@ public class AbilityDefinition
     /// The functional type of the ability (e.g., Attack, Defense, Buff, Debuff).
     /// </summary>
     public int AbilityType { get; set; }  // Enum: Attack, Defense, Buff, Debuff
+
     /// <summary>
     /// The cooldown duration in seconds before the ability can be used again.
     /// </summary>
@@ -57,6 +59,7 @@ public class AbilityDefinition
     /// The resource cost (e.g., mana, stamina) required to activate the ability.
     /// </summary>
     public decimal? ResourceCost { get; set; }
+
     /// <summary>
     /// The maximum level this ability can reach through progression.
     /// </summary>

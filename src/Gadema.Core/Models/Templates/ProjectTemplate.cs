@@ -1,9 +1,6 @@
-// =============================================================================
-
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Templates;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a blueprint for creating new projects, defining preset structures and content requirements.
@@ -14,7 +11,8 @@ public class ProjectTemplate
     /// <summary>
     /// Unique identifier for the project template.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The human-readable name of the template (e.g., "Fantasy Novel", "RPG Campaign").

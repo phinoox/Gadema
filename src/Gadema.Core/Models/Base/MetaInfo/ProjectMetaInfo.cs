@@ -1,5 +1,6 @@
 using Gadema.Core.Enums;
 using Gadema.Core.Models.Base.Projects;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Models.Base.MetaInfo;
 

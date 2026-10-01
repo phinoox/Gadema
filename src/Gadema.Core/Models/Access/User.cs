@@ -1,11 +1,4 @@
-// =============================================================================
-
-// Gadema.Core - Shared Domain Models & Interfaces
-
-// =============================================================================
-
-
-
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Access.Enums;
 
 namespace Gadema.Core.Models.Access;
@@ -20,7 +13,8 @@ public class User
     /// <summary>
     /// Gets or sets the unique identifier for the user.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// Gets or sets the unique username used for authentication and identification.

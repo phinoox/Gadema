@@ -1,4 +1,5 @@
 using Gadema.Core.Models.Base.Projects;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Models.Base.MetaInfo;
 
@@ -9,8 +10,6 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 [ModelDependency(typeof(RootMarker))]
 public class ProjectSeriesMetaInfo : BaseMetaInfo
 {
-    // Note: Title, Slug, IsPublic, CreatedAt, LastModifiedAt are inherited from BaseMetaInfo
-
     /// <summary>
     /// A detailed description of the series and its overarching themes/universe.
     /// </summary>
@@ -22,4 +21,3 @@ public class ProjectSeriesMetaInfo : BaseMetaInfo
     /// </summary>
     public virtual ProjectSeries ProjectSeries { get; set; } = null!;
 }
-

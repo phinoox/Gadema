@@ -1,7 +1,4 @@
-// =============================================================================
-// EngineExportConfig - Entity for engine-specific export configurations
-// =============================================================================
-
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Base.Projects;
 
 namespace Gadema.Core.Models.Game.EngineIntegration;
@@ -16,7 +13,8 @@ public class EngineExportConfig
     /// <summary>
     /// Unique identifier for the export configuration.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project this configuration belongs to.
@@ -29,7 +27,7 @@ public class EngineExportConfig
     /// </summary>
     // Navigation property for Project (Many-to-One)
     [ForeignKey("ProjectId")]
-    public virtual Project Project { get; set; }
+    public virtual Project Project { get; set; } = null!;
     
     /// <summary>
     /// The target game engine (e.g., Unity, Unreal).
@@ -64,4 +62,3 @@ public class EngineExportConfig
     /// </summary>
     public bool IsEnabled { get; set; }
 }
-

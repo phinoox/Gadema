@@ -1,10 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
-using Gadema.Core.Models.Base.Projects;
-
 namespace Gadema.Core.Models.Game.Abilities;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a collection of abilities grouped together (e.g., a "Mage Ability Set").
@@ -16,7 +12,8 @@ public class AbilitySet
     /// <summary>
     /// Unique identifier for the ability set.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
@@ -29,6 +26,7 @@ public class AbilitySet
     /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+
     /// <summary>
     /// The human-readable name of the ability set (e.g., "Warrior Skills").
     /// </summary>
@@ -40,6 +38,7 @@ public class AbilitySet
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
+
     /// <summary>
     /// A detailed description of what this set contains and its intended use.
     /// </summary>

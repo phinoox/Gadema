@@ -3,8 +3,6 @@ using Gadema.Core.Enums;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
 using Gadema.Core.Utils;
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
 
 namespace Gadema.Core.Models.Base.Projects;
 
@@ -12,14 +10,11 @@ namespace Gadema.Core.Models.Base.Projects;
 /// Represents a project in the game development management system.
 /// Owned by a single User (CreatedBy).
 /// </summary>
-// ... existing code ...
-[ModelDependency(typeof(User), typeof(ProjectMetaInfo))] // Added ProjectMetaInfo dependency
+[ModelDependency(typeof(User), typeof(ProjectMetaInfo))] 
 public class Project : ISoftDeletable
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-
-    // --- Identity (Moved to ProjectMetaInfo) ---
-    // Title, Slug, Status, Visibility, ViewMode, Timestamps removed
+    [Key]
+    public Guid Id { get; set; }
 
     // --- Domain Data ---
     [MaxLength(4096)]
@@ -28,7 +23,6 @@ public class Project : ISoftDeletable
     public bool IsActive { get; set; } = true;
 
     // --- Relationships ---
-    [Fixture(FixtureHintEnum.Omit)]
     public Guid UserId { get; set; }
     
     [ForeignKey("UserId")]
@@ -39,13 +33,9 @@ public class Project : ISoftDeletable
     [ForeignKey("ProjectSeriesId")]
     public virtual ProjectSeries? ProjectSeries { get; set; }
 
-    public Guid ProjectMetaInfoId {get;set;}
-
-    // New Relationship to the identity anchor
-    [ForeignKey("ProjectMetaInfoId")]
+    // The Id of the project is now also the FK to its MetaInfo (Vertical Unification)
+    [ForeignKey("Id")]
     public virtual ProjectMetaInfo ProjectMetaInfo { get; set; } = null!;
-
-    // ... remaining relationships (Members, Tokens, Tasks, etc.) remain unchanged ...
 
     // --- Domain Specific Metadata ---
     public bool EnableUserRegistration { get; set; } = false;
@@ -65,7 +55,9 @@ public class Project : ISoftDeletable
 
     [EnumDataType(typeof(AudienceEnum))]
     public AudienceEnum Audience { get; set; } = AudienceEnum.AllAges;
-    public ICollection<ProjectMember> Members { get; set; }
-    public bool IsDeleted { get; set ; } = false;
-    public DateTime? DeletedAt { get ; set ; }
+
+    public ICollection<ProjectMember> Members { get; set; } = new List<ProjectMember>();
+
+    public bool IsDeleted { get; set; } = false;
+    public DateTime? DeletedAt { get; set; }
 }

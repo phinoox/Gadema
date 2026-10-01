@@ -1,5 +1,6 @@
 using Gadema.Core.Models.Base.Projects;
 using Gadema.Core.Models.Base.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gadema.Core.Models.Base.MetaInfo;
 
@@ -9,9 +10,6 @@ namespace Gadema.Core.Models.Base.MetaInfo;
 [ModelDependency(typeof(Project))]
 public class ContentMetaInfo : BaseMetaInfo
 {
-    // --- Identity (Moved to BaseMetaInfo) ---
-    // Id, Title, Slug, CreatedAt, LastModifiedAt removed
-
     // --- Relationships & Domain Data ---
     
     public Guid? ProjectId { get; set; }

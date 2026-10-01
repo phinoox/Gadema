@@ -1,19 +1,21 @@
+using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Writing.Narrative;
 
 namespace Gadema.Core.Models.Game.EngineIntegration;
 
-    /// <summary>
+/// <summary>
 /// Represents a game-related event triggered by a specific narrative segment.
 /// This allows writers to embed interactive mechanics (like giving items or setting flags)
 /// directly into the story flow via scene segments.
-    /// </summary>
+/// </summary>
 [ModelDependency(typeof(ContentMetaInfo), typeof(SceneSegment))]
 public class GameKeyEvent
 {
     /// <summary>
     /// Unique identifier for this game event.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
@@ -57,10 +59,10 @@ public class GameKeyEvent
     [MaxLength(1024)] public string? Description { get; set; }
 }
 
-public enum GameTriggerType
 /// <summary>
 /// Defines the types of mechanical events that can be triggered within the narrative flow.
-/// </summary>public enum GameTriggerType
+/// </summary>
+public enum GameTriggerType
 {
     /// <summary>No trigger defined.</summary>
     None,

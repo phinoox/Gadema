@@ -1,8 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Game.Attributes;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents a blueprint for a character attribute (e.g., "Strength", "Health", "Mana").
@@ -14,7 +12,8 @@ public class AttributeDefinition
     /// <summary>
     /// Unique identifier for the attribute definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
 
     /// <summary>
     /// The ID of the associated ContentMetaInfo entity, used for identity anchoring and searching.
@@ -27,6 +26,7 @@ public class AttributeDefinition
     /// </summary>
     [ForeignKey("MetaInfoId")]
     public virtual ContentMetaInfo? ContentMetaInfo { get; set; }
+
     /// <summary>
     /// The human-readable name of the attribute (e.g., "Strength", "Agility").
     /// </summary>
@@ -38,6 +38,7 @@ public class AttributeDefinition
     /// </summary>
     [Column("slug"), MaxLength(128)]
     public string Slug { get; set; } = "";
+
     /// <summary>
     /// A detailed description of what this attribute represents and how it functions.
     /// </summary>
@@ -48,6 +49,7 @@ public class AttributeDefinition
     /// The underlying numeric data type (e.g., Integer, Float, Decimal).
     /// </summary>
     public int ValueType { get; set; }  // Enum: Int, Float, Decimal
+
     /// <summary>
     /// A mathematical expression used for calculating attribute values dynamically.
     /// </summary>
@@ -59,6 +61,7 @@ public class AttributeDefinition
     /// </summary>
     [MaxLength(1024)]
     public string? LevelMappingJson { get; set; }  // JSON for scaling
+
     /// <summary>
     /// The default minimum possible value for this attribute.
     /// </summary>

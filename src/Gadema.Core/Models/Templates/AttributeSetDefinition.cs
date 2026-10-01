@@ -1,8 +1,6 @@
-// =============================================================================
-// AttributeSetDefinition - Entity for attribute set definitions in project templates
-// =============================================================================
-
 namespace Gadema.Core.Models.Templates;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Defines a predefined group of attributes (e.g., Strength, Dexterity, Intelligence) used in project templates.
@@ -14,7 +12,8 @@ public class AttributeSetDefinition
     /// <summary>
     /// Unique identifier for the attribute set definition.
     /// </summary>
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [Key]
+    public Guid Id { get; set; }
     
     /// <summary>
     /// The ID of the project template this attribute set belongs to.
@@ -51,4 +50,3 @@ public class AttributeSetDefinition
     [MaxLength(4096)]
     public string? Description { get; set; }
 }
-

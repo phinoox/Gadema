@@ -1,8 +1,6 @@
-// =============================================================================
-// Gadema.Core - Shared Domain Models & Interfaces
-// =============================================================================
-
 namespace Gadema.Core.Models.Game.Attributes;
+
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Represents the current concrete values for a specific attribute on a character.
@@ -16,6 +14,7 @@ public class CharacterAttributes
     /// The ID of the associated ContentMetaInfo entity (the character's identity anchor).
     /// Used as part of the composite primary key.
     /// </summary>
+    [Key]
     public Guid MetaInfoId { get; set; }
 
     /// <summary>
@@ -23,7 +22,7 @@ public class CharacterAttributes
     /// </summary>
     // Navigation property for ContentMetaInfo (Many-to-One)
     [ForeignKey("MetaInfoId")]
-    public virtual ContentMetaInfo ContentMetaInfo { get; set; }
+    public virtual ContentMetaInfo ContentMetaInfo { get; set; } = null!;
     
     /// <summary>
     /// The ID of the attribute definition this value pertains to.
@@ -36,7 +35,8 @@ public class CharacterAttributes
     /// </summary>
     // Navigation property for AttributeDefinition (Many-to-One)
     [ForeignKey("AttributeDefinitionId")]
-    public virtual AttributeDefinition AttributeDefinition { get; set; }
+    public virtual AttributeDefinition AttributeDefinition { get; set; } = null!;
+
     /// <summary>
     /// The current numeric value of this specific attribute for the character.
     /// </summary>
