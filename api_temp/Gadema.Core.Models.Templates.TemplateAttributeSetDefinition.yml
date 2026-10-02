@@ -25,7 +25,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TemplateAttributeSetDefinition
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 10
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -71,19 +71,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 16
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
   summary: Unique identifier for this link.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Templates.TemplateAttributeSetDefinition.ProjectTemplateId
   commentId: P:Gadema.Core.Models.Templates.TemplateAttributeSetDefinition.ProjectTemplateId
   id: ProjectTemplateId
@@ -102,7 +112,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTemplateId
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -143,7 +153,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTemplate
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 28
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -186,7 +196,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AttributeSetDefinitionId
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 34
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -227,7 +237,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AttributeSetDefinition
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 41
+    startLine: 40
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -270,7 +280,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Name
     path: src/Gadema.Core/Models/Templates/TemplateAttributeSetDefinition.cs
-    startLine: 47
+    startLine: 46
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates

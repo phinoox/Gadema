@@ -20,7 +20,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AssetLinkEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Game/EngineIntegration/AssetLinkEntityTypeConfiguration.cs
-    startLine: 14
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.EngineIntegration
@@ -59,7 +59,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Game/EngineIntegration/AssetLinkEntityTypeConfiguration.cs
-    startLine: 19
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.EngineIntegration

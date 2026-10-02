@@ -20,16 +20,11 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SceneStoryBeatMappingEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/SceneStoryBeatMappingEntityTypeConfiguration.cs
-    startLine: 11
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: >-
-    Configuration for SceneStoryBeatMapping junction entity in game development management system.
-
-    Enables Many-to-Many relationship between Scene and StoryBeat.
-
-    Allows a single scene to fulfill multiple narrative beats, and a beat to be referenced by many scenes.
+  summary: Configuration for SceneStoryBeatMapping junction entity in game development management system.
   example: []
   syntax:
     content: 'public class SceneStoryBeatMappingEntityTypeConfiguration : IEntityTypeConfiguration<SceneStoryBeatMapping>'
@@ -64,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/SceneStoryBeatMappingEntityTypeConfiguration.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure SceneStoryBeatMapping entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<SceneStoryBeatMapping> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of SceneStoryBeatMapping))
   overload: Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.Configure*
   implements:
@@ -444,12 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
-  commentId: T:Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
-  href: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping.html
-  name: SceneStoryBeatMapping
-  nameWithType: SceneStoryBeatMapping
-  fullName: Gadema.Core.Models.Writing.Narrative.SceneStoryBeatMapping
 - uid: Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_SceneStoryBeatMappingEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_SceneStoryBeatMapping__

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127991;️ Enums &amp; Type Definitions </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127991;️ Enums &amp; Type Definitions ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-enums--type-definitions">🏷️ Enums &amp; Type Definitions</h1>
+
+<p>This guide provides a comprehensive reference for the enumerations used throughout Anima Lab, mapping them to their respective domains and explaining their design rationale.</p>
+<h2 id="1-overview">1. Overview</h2>
+<p>Anima Lab uses strongly-typed enumerations to ensure data integrity, facilitate efficient database storage, and enable bitwise operations for multi-dimensional classification. All enums are defined in <code>src/Gadema.Core/Enums/</code>.</p>
+<h3 id="core-design-principles">Core Design Principles:</h3>
+<ul>
+<li><strong>Dense Integers</strong>: Enums use consecutive integers starting from <code>0</code> for efficient SQL storage and bitwise logic.</li>
+<li><strong>[Flags] Attribute</strong>: Used for multi-dimensional classification (e.s., character identity) where an entity can belong to multiple categories simultaneously.</li>
+<li><strong>Actionable States</strong>: Every enum value represents a valid, actionable state; there are no &quot;Unknown&quot; or &quot;None&quot; sentinel values.</li>
+</ul>
+<hr>
+<h2 id="2-enum-registry-by-domain">2. Enum Registry by Domain</h2>
+<h3 id="-content-model-classification">🧩 Content Model Classification</h3>
+<p>Used to classify the nature of content items and their lifecycle states.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ContentTypeEnum</code></td>
+<td style="text-align: left;">Determines the kind of content (e.g., Character, World).</td>
+<td style="text-align: left;"><code>Character</code>, <code>World</code>, <code>Mechanic</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ContentStatusEnum</code></td>
+<td style="text-align: left;">Tracks the lifecycle stage of an item.</td>
+<td style="text-align: left;"><code>Draft</code>, <code>Published</code>, <code>Archived</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ViewModeEnum</code></td>
+<td style="text-align: left;">Controls UI rendering mode.</td>
+<td style="text-align: left;"><code>PrivateWriting</code> (Editor), <code>Presentation</code> (Reader)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-task--workflow-management">🛠️ Task &amp; Workflow Management</h3>
+<p>Designed with ADHD-friendly principles to support energy-matching and momentum building.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>TaskStatusEnum</code></td>
+<td style="text-align: left;">Tracks the workflow pipeline.</td>
+<td style="text-align: left;"><code>Backlog</code>, <code>InProgress</code>, <code>Done</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TaskDifficultyEnum</code></td>
+<td style="text-align: left;">Matches task complexity to user energy levels.</td>
+<td style="text-align: left;"><code>Easy</code> (Quick Win), <code>Medium</code>, <code>Hard</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TaskPriorityEnum</code></td>
+<td style="text-align: left;">Drives scheduling and urgency.</td>
+<td style="text-align: left;"><code>High</code>, <code>Medium</code>, <code>Low</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-character-identity-system">🎭 Character Identity System</h3>
+<p>Uses the <code>[Flags]</code> attribute to support multi-dimensional character typing.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples (Bitwise combinations)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>IdentityTypeEnum</code></td>
+<td style="text-align: left;">Multi-dimensional identity (Race, Faction, Alignment).</td>
+<td style="text-align: left;"><code>Human (Race) \| Alliance (Faction)</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IdentityDefinitionType</code></td>
+<td style="text-align: left;">Categorizes the type of identity being defined.</td>
+<td style="text-align: left;"><code>Race</code>, <code>Faction</code>, <code>Alignment</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-project--team-structure">🏗️ Project &amp; Team Structure</h3>
+<p>Defines how projects are owned and managed within a collaborative environment.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>OwnerTypeEnum</code></td>
+<td style="text-align: left;">Determines if the owner is a User or a Team.</td>
+<td style="text-align: left;"><code>User</code>, <code>Team</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ProjectStatusEnum</code></td>
+<td style="text-align: left;">Tracks project lifecycle stages.</td>
+<td style="text-align: left;"><code>Draft</code>, <code>InProgress</code>, <code>Published</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ProjectVisibilityEnum</code></td>
+<td style="text-align: left;">Controls access levels for project content.</td>
+<td style="text-align: left;"><code>Private</code>, <code>Public</code>, <code>Anonymous</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TeamMemberRoleEnum</code></td>
+<td style="text-align: left;">Defines permission hierarchy within a team.</td>
+<td style="text-align: left;"><code>Admin</code>, <code>Editor</code>, <code>Viewer</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-narrative--world-building">📜 Narrative &amp; World Building</h3>
+<p>Tracks the development and classification of story elements.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>OutlineStatusEnum</code></td>
+<td style="text-align: left;">Tracks narrative planning stages.</td>
+<td style="text-align: left;"><code>Draft</code>, <code>Outlined</code>, <code>Structured</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LoreTypeEnum</code></td>
+<td style="text-align: left;">Categorizes world-building entries.</td>
+<td style="text-align: left;"><code>History</code>, <code>Mythology</code>, <code>Geography</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-export--versioning">📦 Export &amp; Versioning</h3>
+<p>Controls how data is transformed for external use and how snapshots are stored.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Enum Name</th>
+<th style="text-align: left;">Usage Context</th>
+<th style="text-align: left;">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ExportFormatEnum</code></td>
+<td style="text-align: left;">Defines target file formats.</td>
+<td style="text-align: left;"><code>Pdf</code>, <code>Json</code>, <code>Markdown</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SnapshotTypeEnum</code></td>
+<td style="text-align: left;">Classifies versioning snapshots.</td>
+<td style="text-align: left;"><code>Full</code>, <code>Delta</code>, <code>Comparison</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-implementation-reference-bitwise-identity">3. Implementation Reference: Bitwise Identity</h2>
+<p>The <code>IdentityTypeEnum</code> uses the <code>[Flags]</code> attribute to allow a single integer to represent multiple simultaneous identities.</p>
+<pre><code class="lang-csharp">// src/Gadema.Core/Enums/IdentityTypeEnum.cs
+[Flags]
+public enum IdentityTypeEnum : int
+{
+    Race      = 1,   // 0001
+    Faction   = 2,   // 0010
+    Alignment = 4,   // 0100
+    Guild     = 8    // 1000
+}
+
+// Example: A character that is both Human (Race) and part of the Alliance (Faction).
+// IdentityValue = 3 (0011 in binary)
+</code></pre>
+<hr>
+<h2 id="4-developer-guide-adding-new-enums">4. Developer Guide: Adding New Enums</h2>
+<p>To maintain system integrity, follow these rules when adding new enumerations:</p>
+<ol>
+<li><strong>Location</strong>: Place the new enum in <code>src/Gadema.Core/Enums/</code>.</li>
+<li><strong>Integer Values</strong>: Always start at <code>0</code> and use consecutive integers.</li>
+<li><strong>Documentation</strong>: Add a brief comment describing the purpose of each value.</li>
+<li><strong>Validation</strong>: If used in a model, ensure the property is decorated with <code>[EnumDataType(typeof(YourEnum))]</code>.</li>
+<li><strong>Migrations</strong>: When adding new values to an existing enum, ensure you create a database migration to update the type if using PostgreSQL enums.</li>
+</ol>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/enums.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

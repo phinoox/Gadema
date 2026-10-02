@@ -23,7 +23,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectMetaInfo
     path: src/Gadema.Core/Models/Base/MetaInfo/ProjectMetaInfo.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -78,7 +78,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Status
     path: src/Gadema.Core/Models/Base/MetaInfo/ProjectMetaInfo.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -119,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ViewMode
     path: src/Gadema.Core/Models/Base/MetaInfo/ProjectMetaInfo.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -160,7 +160,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectId
     path: src/Gadema.Core/Models/Base/MetaInfo/ProjectMetaInfo.cs
-    startLine: 29
+    startLine: 30
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -191,7 +191,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Project
     path: src/Gadema.Core/Models/Base/MetaInfo/ProjectMetaInfo.cs
-    startLine: 34
+    startLine: 35
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo

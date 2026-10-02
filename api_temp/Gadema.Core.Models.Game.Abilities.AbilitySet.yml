@@ -29,7 +29,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AbilitySet
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 12
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -75,19 +75,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
   summary: Unique identifier for the ability set.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Game.Abilities.AbilitySet.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Game.Abilities.AbilitySet.MetaInfoId
   commentId: P:Gadema.Core.Models.Game.Abilities.AbilitySet.MetaInfoId
   id: MetaInfoId
@@ -106,7 +116,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: MetaInfoId
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 23
+    startLine: 21
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -147,7 +157,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ContentMetaInfo
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 29
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -190,7 +200,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Name
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 34
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -231,7 +241,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Slug
     path: src/Gadema.Core/Models/Game/Abilities/AbilitySet.cs
-    startLine: 40
+    startLine: 39
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities

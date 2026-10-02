@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127959;️ Schema &amp; Entity Configuration </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127959;️ Schema &amp; Entity Configuration ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-schema--entity-configuration">🏗️ Schema &amp; Entity Configuration</h1>
+
+<p>This guide defines the database schema and the architectural pattern used for entity configuration in Anima Lab. We use a <strong>Configuration-per-Domain</strong> pattern to ensure a clean, scalable, and maintainable data access layer.</p>
+<h2 id="1-architectural-pattern-configuration-per-domain">1. Architectural Pattern: Configuration-per-Domain</h2>
+<p>Instead of a monolithic <code>GameDbContext</code> containing all Fluent API configurations, we separate the configuration logic into individual files organized by domain. This keeps the <code>DbContext</code> slim and ensures that entity-specific logic lives alongside its model.</p>
+<h3 id="directory-structure">Directory Structure</h3>
+<pre><code class="lang-bash">src/Gadema.Core/Configurations/  # Fluent API configurations per domain
+├── Authentication/              # User, TeamMember
+├── Projects/                    # Project (Polymorphic Ownership)
+├── Content/                     # MetaInfo, StoryOutline, DialogueBranch, etc.
+├── Narrative/                   # StorySequence, StoryBeat, LoreEntry
+├── Characters/                  # CharacterDetails, CharacterBackground
+├── Attributes/                  # AttributeSet, ClassTemplate, etc.
+├── Abilities/                   # AbilitySet, AbilityDefinition, StatusEffect
+├── Tasks/                       # ProjectTask, TaskComments, ReviewStatus
+├── Activities/                  # ActivityLog, TokenUsageLog
+├── Tokens/                      # ProjectToken
+├── Versioning/                  # ContentSnapshot
+├── Inventory/                   # InventoryItem, EndingDefinition
+├── Templates/                   # ProjectTemplate + sub-definitions
+├── Identity/                    # ProjectIdentityDefinition, CharacterIdentity
+└── EngineIntegration/          # ExportConfig, FieldMapping, AssetLink
+</code></pre>
+<h3 id="implementation-in-gamedbcontext">Implementation in <code>GameDbContext</code></h3>
+<p>The <code>DbContext</code> uses assembly-wide discovery to load all configurations automatically:</p>
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    base.OnModelCreating(modelBuilder);
+    
+    // Automatically discover and apply all IEntityTypeConfiguration implementations 
+    // in the current assembly.
+    modelBuilder.ApplyConfigurationsFromAssembly(typeof(GameDbContext).Assembly);
+}
+</code></pre>
+<hr>
+<h2 id="2-core-schema-patterns">2. Core Schema Patterns</h2>
+<h3 id="21-polymorphic-ownership-the-project-pattern">2.1 Polymorphic Ownership (The Project Pattern)</h3>
+<p>The <code>Project</code> entity uses a polymorphic ownership model to support both individual users and collaborative teams without duplicating tables.</p>
+<ul>
+<li><strong><code>OwnerType</code></strong>: An integer discriminator (<code>0 = User</code>, <code>1 = Team</code>).</li>
+<li><strong><code>OwnerId</code></strong>: A single foreign key that points to either the <code>Users</code> table or the <code>Teams</code> table, determined by the <code>OwnerType</code>.</li>
+</ul>
+<h3 id="22-fk-as-pk-junction-tables">2.2 FK-as-PK Junction Tables</h3>
+<p>To reduce database blobedness and eliminate unnecessary surrogate keys, we use the Foreign Key as the Primary Key for many-to-many junction tables (e.g., <code>TeamMemberships</code>, <code>ContentTags</code>).</p>
+<pre><code class="lang-csharp">// Example: TeamMember Configuration
+public class TeamMemberEntityTypeConfiguration : IEntityTypeConfiguration&lt;TeamMember&gt;
+{
+    public void Configure(EntityTypeBuilder&lt;TeamMember&gt; builder)
+    {
+        builder.HasKey(e =&gt; e.Id); // In some patterns, this would be (UserId, TeamId)
+        // ...
+    }
+}
+</code></pre>
+<h3 id="23-soft-delete-pattern">2.3 Soft Delete Pattern</h3>
+<p>All entities implement an <code>IsActive</code> flag. Deletions are handled as updates rather than hard removals to preserve audit trails and prevent orphaned references.</p>
+<hr>
+<h2 id="3-entity-inventory-summary">3. Entity Inventory Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Domain</th>
+<th style="text-align: left;">Key Entities</th>
+<th style="text-align: left;">Configuration Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Authentication</strong></td>
+<td style="text-align: left;"><code>User</code>, <code>Team</code>, <code>TeamMember</code></td>
+<td style="text-align: left;">Individual config files per domain folder</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Content</strong></td>
+<td style="text-align: left;"><code>MetaInfo</code>, <code>MediaAttachment</code>, <code>Tag</code></td>
+<td style="text-align: left;">Cascading deletes for attachments; SetNull for tags</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Narrative</strong></td>
+<td style="text-align: left;"><code>StorySequence</code>, <code>StoryBeat</code></td>
+<td style="text-align: left;">Self-referencing hierarchy (optional parents)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Characters</strong></td>
+<td style="text-align: left;"><code>CharacterDetails</code>, <code>Background</code></td>
+<td style="text-align: left;">FK-as-PK pattern for child entities</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tasks</strong></td>
+<td style="text-align: left;"><code>ProjectTask</code>, <code>ReviewStatus</code></td>
+<td style="text-align: left;">Indexed difficulty and quick-win flags</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity</strong></td>
+<td style="text-align: left;"><code>ProjectIdentityDefinition</code>, <code>CharacterIdentity</code></td>
+<td style="text-align: left;">Multi-dimensional typing via bitwise/integer enums</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-developer-guide-creating-a-new-entity">4. Developer Guide: Creating a New Entity</h2>
+<p>When adding a new entity to the system, follow these steps:</p>
+<ol>
+<li><strong>Define the Model</strong>: Create the class in <code>src/Gadema.Core/Models/{Domain}/</code>.</li>
+<li><strong>Create Configuration</strong>: Create an <code>EntityTypeConfiguration&lt;T&gt;</code> file in <code>src/Gadema.Core/Configurations/{Domain}/</code>.</li>
+<li><strong>Implement Fluent API</strong>:
+<ul>
+<li>Define the Primary Key.</li>
+<li>Set up required properties and constraints (<code>HasMaxLength</code>, <code>IsRequired</code>).</li>
+<li>Define Indexes for frequently filtered columns (e.g., <code>Slug</code>, <code>Status</code>).</li>
+<li>Configure Navigation Properties and Delete Behaviors (<code>Cascade</code>, <code>Restrict</code>, or <code>SetNull</code>).</li>
+</ul>
+</li>
+<li><strong>Register in DbContext</strong>: Add the <code>DbSet&lt;T&gt;</code> property to <code>GameDbContext.cs</code>. The configuration will be auto-discovered.</li>
+</ol>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/schema.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

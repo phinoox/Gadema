@@ -5,7 +5,7 @@ items:
   id: ProjectTagService
   parent: Gadema.Api.Services.Base.Projects
   children:
-  - Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
+  - Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)
   - Gadema.Api.Services.Base.Projects.ProjectTagService.AddTagsToProjectAsync(System.Guid,Gadema.Core.Dtos.Base.Projects.AddTagsToProjectDto)
   - Gadema.Api.Services.Base.Projects.ProjectTagService.CreateTagAsync(System.Guid,Gadema.Core.Dtos.Base.Projects.ProjectTagCreateDto)
   - Gadema.Api.Services.Base.Projects.ProjectTagService.GetTagsAsync(System.Guid)
@@ -63,16 +63,16 @@ items:
     arguments:
     - type: Microsoft.Extensions.DependencyInjection.ServiceLifetime
       value: 1
-- uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  commentId: M:Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)'
+- uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)
+  commentId: M:Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)'
   parent: Gadema.Api.Services.Base.Projects.ProjectTagService
   langs:
   - csharp
   - vb
-  name: ProjectTagService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  nameWithType: ProjectTagService.ProjectTagService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  fullName: Gadema.Api.Services.Base.Projects.ProjectTagService.ProjectTagService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>, Gadema.Api.CoreServices.CoreServicesProvider)
+  name: ProjectTagService(CoreDbContext, ILogger<ProjectTagService>, CoreServicesProvider)
+  nameWithType: ProjectTagService.ProjectTagService(CoreDbContext, ILogger<ProjectTagService>, CoreServicesProvider)
+  fullName: Gadema.Api.Services.Base.Projects.ProjectTagService.ProjectTagService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectTagService>, Gadema.Api.CoreServices.CoreServicesProvider)
   type: Constructor
   source:
     remote:
@@ -81,24 +81,24 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Base/Projects/ProjectTagService.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
   syntax:
-    content: public ProjectTagService(CoreDbContext db, ILogger<ProjectService> logger, CoreServicesProvider coreServices)
+    content: public ProjectTagService(CoreDbContext db, ILogger<ProjectTagService> logger, CoreServicesProvider coreServices)
     parameters:
     - id: db
       type: Gadema.Data.Database.Core.CoreDbContext
     - id: logger
-      type: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
+      type: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService}
     - id: coreServices
       type: Gadema.Api.CoreServices.CoreServicesProvider
-    content.vb: Public Sub New(db As CoreDbContext, logger As ILogger(Of ProjectService), coreServices As CoreServicesProvider)
+    content.vb: Public Sub New(db As CoreDbContext, logger As ILogger(Of ProjectTagService), coreServices As CoreServicesProvider)
   overload: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor*
-  nameWithType.vb: ProjectTagService.New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
-  fullName.vb: Gadema.Api.Services.Base.Projects.ProjectTagService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService), Gadema.Api.CoreServices.CoreServicesProvider)
-  name.vb: New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
+  nameWithType.vb: ProjectTagService.New(CoreDbContext, ILogger(Of ProjectTagService), CoreServicesProvider)
+  fullName.vb: Gadema.Api.Services.Base.Projects.ProjectTagService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectTagService), Gadema.Api.CoreServices.CoreServicesProvider)
+  name.vb: New(CoreDbContext, ILogger(Of ProjectTagService), CoreServicesProvider)
 - uid: Gadema.Api.Services.Base.Projects.ProjectTagService.GetTagsAsync(System.Guid)
   commentId: M:Gadema.Api.Services.Base.Projects.ProjectTagService.GetTagsAsync(System.Guid)
   id: GetTagsAsync(System.Guid)
@@ -117,7 +117,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetTagsAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTagService.cs
-    startLine: 25
+    startLine: 23
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -148,7 +148,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateTagAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTagService.cs
-    startLine: 47
+    startLine: 45
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -181,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AddTagsToProjectAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTagService.cs
-    startLine: 67
+    startLine: 65
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -853,7 +853,7 @@ references:
     name: Core
 - uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor*
   commentId: Overload:Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor
-  href: Gadema.Api.Services.Base.Projects.ProjectTagService.html#Gadema_Api_Services_Base_Projects_ProjectTagService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_
+  href: Gadema.Api.Services.Base.Projects.ProjectTagService.html#Gadema_Api_Services_Base_Projects_ProjectTagService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectTagService__Gadema_Api_CoreServices_CoreServicesProvider_
   name: ProjectTagService
   nameWithType: ProjectTagService.ProjectTagService
   fullName: Gadema.Api.Services.Base.Projects.ProjectTagService.ProjectTagService
@@ -867,26 +867,26 @@ references:
   name: CoreDbContext
   nameWithType: CoreDbContext
   fullName: Gadema.Data.Database.Core.CoreDbContext
-- uid: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
-  commentId: T:Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
+- uid: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService}
   parent: Microsoft.Extensions.Logging
   definition: Microsoft.Extensions.Logging.ILogger`1
   href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
-  name: ILogger<ProjectService>
-  nameWithType: ILogger<ProjectService>
-  fullName: Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>
-  nameWithType.vb: ILogger(Of ProjectService)
-  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService)
-  name.vb: ILogger(Of ProjectService)
+  name: ILogger<ProjectTagService>
+  nameWithType: ILogger<ProjectTagService>
+  fullName: Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectTagService>
+  nameWithType.vb: ILogger(Of ProjectTagService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectTagService)
+  name.vb: ILogger(Of ProjectTagService)
   spec.csharp:
   - uid: Microsoft.Extensions.Logging.ILogger`1
     name: ILogger
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
   - name: <
-  - uid: Gadema.Api.Services.Base.Projects.ProjectService
-    name: ProjectService
-    href: Gadema.Api.Services.Base.Projects.ProjectService.html
+  - uid: Gadema.Api.Services.Base.Projects.ProjectTagService
+    name: ProjectTagService
+    href: Gadema.Api.Services.Base.Projects.ProjectTagService.html
   - name: '>'
   spec.vb:
   - uid: Microsoft.Extensions.Logging.ILogger`1
@@ -896,9 +896,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Gadema.Api.Services.Base.Projects.ProjectService
-    name: ProjectService
-    href: Gadema.Api.Services.Base.Projects.ProjectService.html
+  - uid: Gadema.Api.Services.Base.Projects.ProjectTagService
+    name: ProjectTagService
+    href: Gadema.Api.Services.Base.Projects.ProjectTagService.html
   - name: )
 - uid: Gadema.Api.CoreServices.CoreServicesProvider
   commentId: T:Gadema.Api.CoreServices.CoreServicesProvider

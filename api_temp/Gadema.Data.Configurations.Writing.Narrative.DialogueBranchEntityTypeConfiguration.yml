@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DialogueBranchEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/DialogueBranchEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
+  summary: Configuration for DialogueBranch entity in game development management system.
+  example: []
   syntax:
     content: 'public class DialogueBranchEntityTypeConfiguration : IEntityTypeConfiguration<DialogueBranch>'
     content.vb: Public Class DialogueBranchEntityTypeConfiguration Implements IEntityTypeConfiguration(Of DialogueBranch)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/DialogueBranchEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.DialogueBranch" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure DialogueBranch entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<DialogueBranch> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.DialogueBranch}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of DialogueBranch))
   overload: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.Configure*
   implements:
@@ -437,13 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.DialogueBranch
-  commentId: T:Gadema.Core.Models.Writing.Narrative.DialogueBranch
-  parent: Gadema.Core.Models.Writing.Narrative
-  href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html
-  name: DialogueBranch
-  nameWithType: DialogueBranch
-  fullName: Gadema.Core.Models.Writing.Narrative.DialogueBranch
 - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_DialogueBranchEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_DialogueBranch__
@@ -528,41 +522,6 @@ references:
     name: DialogueBranch
     href: Gadema.Core.Models.Writing.Narrative.DialogueBranch.html
   - name: )
-- uid: Gadema.Core.Models.Writing.Narrative
-  commentId: N:Gadema.Core.Models.Writing.Narrative
-  name: Gadema.Core.Models.Writing.Narrative
-  nameWithType: Gadema.Core.Models.Writing.Narrative
-  fullName: Gadema.Core.Models.Writing.Narrative
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

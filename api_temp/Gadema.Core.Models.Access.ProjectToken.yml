@@ -6,12 +6,9 @@ items:
   parent: Gadema.Core.Models.Access
   children:
   - Gadema.Core.Models.Access.ProjectToken.CreatedAt
-  - Gadema.Core.Models.Access.ProjectToken.CurrentUsage
   - Gadema.Core.Models.Access.ProjectToken.ExpiresAt
   - Gadema.Core.Models.Access.ProjectToken.Id
   - Gadema.Core.Models.Access.ProjectToken.IsActive
-  - Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  - Gadema.Core.Models.Access.ProjectToken.PermissionsJson
   - Gadema.Core.Models.Access.ProjectToken.Project
   - Gadema.Core.Models.Access.ProjectToken.ProjectId
   - Gadema.Core.Models.Access.ProjectToken.TokenHash
@@ -30,24 +27,18 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectToken
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 11
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
   summary: >-
-    Represents a project-level API token for automation access.
+    Provides access credentials for a specific project context.
 
-    Tokens are hashed before storage for security.
+    Following Law I: This is a 1:1 extension, so Id == ProjectId.
   example: []
   syntax:
-    content: >-
-      [ModelDependency(new Type[] { typeof(Project) })]
-
-      public class ProjectToken
-    content.vb: >-
-      <ModelDependency(New Type() { GetType(Project) })>
-
-      Public Class ProjectToken
+    content: public class ProjectToken
+    content.vb: Public Class ProjectToken
   inheritance:
   - System.Object
   inheritedMembers:
@@ -76,19 +67,27 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 17
+    startLine: 11
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the unique identifier for the project token.
-  example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Access.ProjectToken.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Access.ProjectToken.ProjectId
   commentId: P:Gadema.Core.Models.Access.ProjectToken.ProjectId
   id: ProjectId
@@ -107,12 +106,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectId
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 22
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the unique identifier of the associated project.
-  example: []
   syntax:
     content: >-
       [Required]
@@ -148,12 +145,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Project
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 28
+    startLine: 17
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the associated project entity.
-  example: []
   syntax:
     content: >-
       [ForeignKey("ProjectId")]
@@ -173,175 +168,6 @@ items:
     arguments:
     - type: System.String
       value: ProjectId
-- uid: Gadema.Core.Models.Access.ProjectToken.TokenName
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.TokenName
-  id: TokenName
-  parent: Gadema.Core.Models.Access.ProjectToken
-  langs:
-  - csharp
-  - vb
-  name: TokenName
-  nameWithType: ProjectToken.TokenName
-  fullName: Gadema.Core.Models.Access.ProjectToken.TokenName
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: TokenName
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 34
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets a descriptive name for the token (e.g., "CI/CD Pipeline").
-  example: []
-  syntax:
-    content: >-
-      [MaxLength(128)]
-
-      [Required]
-
-      [Display(Name = "Token Name")]
-
-      public string TokenName { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: >-
-      <MaxLength(128)>
-
-      <Required>
-
-      <Display(Name:="Token Name")>
-
-      Public Property TokenName As String
-  overload: Gadema.Core.Models.Access.ProjectToken.TokenName*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
-    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
-    arguments:
-    - type: System.Int32
-      value: 128
-  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
-    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
-    arguments: []
-  - type: System.ComponentModel.DataAnnotations.DisplayAttribute
-    ctor: System.ComponentModel.DataAnnotations.DisplayAttribute.#ctor
-    arguments: []
-    namedArguments:
-    - name: Name
-      type: System.String
-      value: Token Name
-- uid: Gadema.Core.Models.Access.ProjectToken.TokenHash
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.TokenHash
-  id: TokenHash
-  parent: Gadema.Core.Models.Access.ProjectToken
-  langs:
-  - csharp
-  - vb
-  name: TokenHash
-  nameWithType: ProjectToken.TokenHash
-  fullName: Gadema.Core.Models.Access.ProjectToken.TokenHash
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: TokenHash
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 40
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the hashed token value (e.g., SHA256 + salt).
-  example: []
-  syntax:
-    content: >-
-      [MaxLength(512)]
-
-      public string TokenHash { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: >-
-      <MaxLength(512)>
-
-      Public Property TokenHash As String
-  overload: Gadema.Core.Models.Access.ProjectToken.TokenHash*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
-    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
-    arguments:
-    - type: System.Int32
-      value: 512
-- uid: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  id: MaxRequests
-  parent: Gadema.Core.Models.Access.ProjectToken
-  langs:
-  - csharp
-  - vb
-  name: MaxRequests
-  nameWithType: ProjectToken.MaxRequests
-  fullName: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: MaxRequests
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 47
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: >-
-    Gets or sets the maximum number of requests allowed with this token.
-
-    A value of 0 indicates an unlimited quota.
-  example: []
-  syntax:
-    content: public int MaxRequests { get; set; }
-    parameters: []
-    return:
-      type: System.Int32
-    content.vb: Public Property MaxRequests As Integer
-  overload: Gadema.Core.Models.Access.ProjectToken.MaxRequests*
-- uid: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  id: CurrentUsage
-  parent: Gadema.Core.Models.Access.ProjectToken
-  langs:
-  - csharp
-  - vb
-  name: CurrentUsage
-  nameWithType: ProjectToken.CurrentUsage
-  fullName: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: CurrentUsage
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 52
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the number of requests already consumed by this token.
-  example: []
-  syntax:
-    content: public int CurrentUsage { get; set; }
-    parameters: []
-    return:
-      type: System.Int32
-    content.vb: Public Property CurrentUsage As Integer
-  overload: Gadema.Core.Models.Access.ProjectToken.CurrentUsage*
 - uid: Gadema.Core.Models.Access.ProjectToken.IsActive
   commentId: P:Gadema.Core.Models.Access.ProjectToken.IsActive
   id: IsActive
@@ -360,12 +186,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsActive
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 57
+    startLine: 19
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets a value indicating whether the token is active.
-  example: []
   syntax:
     content: public bool IsActive { get; set; }
     parameters: []
@@ -373,6 +197,35 @@ items:
       type: System.Boolean
     content.vb: Public Property IsActive As Boolean
   overload: Gadema.Core.Models.Access.ProjectToken.IsActive*
+- uid: Gadema.Core.Models.Access.ProjectToken.TokenName
+  commentId: P:Gadema.Core.Models.Access.ProjectToken.TokenName
+  id: TokenName
+  parent: Gadema.Core.Models.Access.ProjectToken
+  langs:
+  - csharp
+  - vb
+  name: TokenName
+  nameWithType: ProjectToken.TokenName
+  fullName: Gadema.Core.Models.Access.ProjectToken.TokenName
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TokenName
+    path: src/Gadema.Core/Models/Access/ProjectToken.cs
+    startLine: 20
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  syntax:
+    content: public string TokenName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TokenName As String
+  overload: Gadema.Core.Models.Access.ProjectToken.TokenName*
 - uid: Gadema.Core.Models.Access.ProjectToken.ExpiresAt
   commentId: P:Gadema.Core.Models.Access.ProjectToken.ExpiresAt
   id: ExpiresAt
@@ -391,12 +244,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ExpiresAt
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 62
+    startLine: 21
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the expiration timestamp (optional).
-  example: []
   syntax:
     content: public DateTime? ExpiresAt { get; set; }
     parameters: []
@@ -404,49 +255,6 @@ items:
       type: System.Nullable{System.DateTime}
     content.vb: Public Property ExpiresAt As Date?
   overload: Gadema.Core.Models.Access.ProjectToken.ExpiresAt*
-- uid: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  id: PermissionsJson
-  parent: Gadema.Core.Models.Access.ProjectToken
-  langs:
-  - csharp
-  - vb
-  name: PermissionsJson
-  nameWithType: ProjectToken.PermissionsJson
-  fullName: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: PermissionsJson
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 67
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets a JSON string representing the permissions granted to this token.
-  example: []
-  syntax:
-    content: >-
-      [MaxLength(2048)]
-
-      public string PermissionsJson { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: >-
-      <MaxLength(2048)>
-
-      Public Property PermissionsJson As String
-  overload: Gadema.Core.Models.Access.ProjectToken.PermissionsJson*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
-    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
-    arguments:
-    - type: System.Int32
-      value: 2048
 - uid: Gadema.Core.Models.Access.ProjectToken.CreatedAt
   commentId: P:Gadema.Core.Models.Access.ProjectToken.CreatedAt
   id: CreatedAt
@@ -465,12 +273,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreatedAt
     path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 73
+    startLine: 22
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the timestamp when the token was created.
-  example: []
   syntax:
     content: public DateTime CreatedAt { get; set; }
     parameters: []
@@ -478,6 +284,35 @@ items:
       type: System.DateTime
     content.vb: Public Property CreatedAt As Date
   overload: Gadema.Core.Models.Access.ProjectToken.CreatedAt*
+- uid: Gadema.Core.Models.Access.ProjectToken.TokenHash
+  commentId: P:Gadema.Core.Models.Access.ProjectToken.TokenHash
+  id: TokenHash
+  parent: Gadema.Core.Models.Access.ProjectToken
+  langs:
+  - csharp
+  - vb
+  name: TokenHash
+  nameWithType: ProjectToken.TokenHash
+  fullName: Gadema.Core.Models.Access.ProjectToken.TokenHash
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: TokenHash
+    path: src/Gadema.Core/Models/Access/ProjectToken.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  syntax:
+    content: public string TokenHash { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TokenHash As String
+  overload: Gadema.Core.Models.Access.ProjectToken.TokenHash*
 references:
 - uid: Gadema.Core.Models.Access
   commentId: N:Gadema.Core.Models.Access
@@ -813,52 +648,6 @@ references:
   - name: .
   - uid: Gadema.Core.Models.Base.Projects
     name: Projects
-- uid: Gadema.Core.Models.Access.ProjectToken.TokenName*
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.TokenName
-  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_TokenName
-  name: TokenName
-  nameWithType: ProjectToken.TokenName
-  fullName: Gadema.Core.Models.Access.ProjectToken.TokenName
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: Gadema.Core.Models.Access.ProjectToken.TokenHash*
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.TokenHash
-  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_TokenHash
-  name: TokenHash
-  nameWithType: ProjectToken.TokenHash
-  fullName: Gadema.Core.Models.Access.ProjectToken.TokenHash
-- uid: Gadema.Core.Models.Access.ProjectToken.MaxRequests*
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_MaxRequests
-  name: MaxRequests
-  nameWithType: ProjectToken.MaxRequests
-  fullName: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: Gadema.Core.Models.Access.ProjectToken.CurrentUsage*
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_CurrentUsage
-  name: CurrentUsage
-  nameWithType: ProjectToken.CurrentUsage
-  fullName: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
 - uid: Gadema.Core.Models.Access.ProjectToken.IsActive*
   commentId: Overload:Gadema.Core.Models.Access.ProjectToken.IsActive
   href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_IsActive
@@ -876,6 +665,23 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Gadema.Core.Models.Access.ProjectToken.TokenName*
+  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.TokenName
+  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_TokenName
+  name: TokenName
+  nameWithType: ProjectToken.TokenName
+  fullName: Gadema.Core.Models.Access.ProjectToken.TokenName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: Gadema.Core.Models.Access.ProjectToken.ExpiresAt*
   commentId: Overload:Gadema.Core.Models.Access.ProjectToken.ExpiresAt
   href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_ExpiresAt
@@ -933,12 +739,6 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Gadema.Core.Models.Access.ProjectToken.PermissionsJson*
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_PermissionsJson
-  name: PermissionsJson
-  nameWithType: ProjectToken.PermissionsJson
-  fullName: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
 - uid: Gadema.Core.Models.Access.ProjectToken.CreatedAt*
   commentId: Overload:Gadema.Core.Models.Access.ProjectToken.CreatedAt
   href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_CreatedAt
@@ -956,3 +756,9 @@ references:
   nameWithType.vb: Date
   fullName.vb: Date
   name.vb: Date
+- uid: Gadema.Core.Models.Access.ProjectToken.TokenHash*
+  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.TokenHash
+  href: Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_TokenHash
+  name: TokenHash
+  nameWithType: ProjectToken.TokenHash
+  fullName: Gadema.Core.Models.Access.ProjectToken.TokenHash

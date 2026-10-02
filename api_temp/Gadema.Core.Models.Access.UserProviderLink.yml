@@ -5,9 +5,7 @@ items:
   id: UserProviderLink
   parent: Gadema.Core.Models.Access
   children:
-  - Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  - Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  - Gadema.Core.Models.Access.UserProviderLink.Provider
+  - Gadema.Core.Models.Access.UserProviderLink.Id
   - Gadema.Core.Models.Access.UserProviderLink.User
   - Gadema.Core.Models.Access.UserProviderLink.UserId
   langs:
@@ -29,9 +27,9 @@ items:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
   summary: >-
-    Represents a link between a user account and an external authentication provider.
+    An extension of the User identity, adding external provider data.
 
-    This provides an audit trail of which providers are associated with a specific user.
+    Following Law I: This is a 1:1 extension, so Id == UserId.
   example: []
   syntax:
     content: >-
@@ -52,6 +50,45 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+- uid: Gadema.Core.Models.Access.UserProviderLink.Id
+  commentId: P:Gadema.Core.Models.Access.UserProviderLink.Id
+  id: Id
+  parent: Gadema.Core.Models.Access.UserProviderLink
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserProviderLink.Id
+  fullName: Gadema.Core.Models.Access.UserProviderLink.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Access/UserProviderLink.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Access/UserProviderLink.cs
+    startLine: 12
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Access
+  syntax:
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
+  overload: Gadema.Core.Models.Access.UserProviderLink.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Access.UserProviderLink.UserId
   commentId: P:Gadema.Core.Models.Access.UserProviderLink.UserId
   id: UserId
@@ -74,15 +111,23 @@ items:
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the unique identifier of the associated user.
-  example: []
   syntax:
-    content: public Guid UserId { get; set; }
+    content: >-
+      [Required]
+
+      public Guid UserId { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property UserId As Guid
+    content.vb: >-
+      <Required>
+
+      Public Property UserId As Guid
   overload: Gadema.Core.Models.Access.UserProviderLink.UserId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
+    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Access.UserProviderLink.User
   commentId: P:Gadema.Core.Models.Access.UserProviderLink.User
   id: User
@@ -101,24 +146,22 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: User
     path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-    startLine: 20
+    startLine: 18
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the associated user entity.
-  example: []
   syntax:
     content: >-
       [ForeignKey("UserId")]
 
-      public User User { get; set; }
+      public virtual User User { get; set; }
     parameters: []
     return:
       type: Gadema.Core.Models.Access.User
     content.vb: >-
       <ForeignKey("UserId")>
 
-      Public Property User As User
+      Public Overridable Property User As User
   overload: Gadema.Core.Models.Access.UserProviderLink.User*
   attributes:
   - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
@@ -126,99 +169,6 @@ items:
     arguments:
     - type: System.String
       value: UserId
-- uid: Gadema.Core.Models.Access.UserProviderLink.Provider
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.Provider
-  id: Provider
-  parent: Gadema.Core.Models.Access.UserProviderLink
-  langs:
-  - csharp
-  - vb
-  name: Provider
-  nameWithType: UserProviderLink.Provider
-  fullName: Gadema.Core.Models.Access.UserProviderLink.Provider
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: Provider
-    path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-    startLine: 26
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the authentication provider used for this link (e.g., Google).
-  example: []
-  syntax:
-    content: public UserAuthProviderEnum Provider { get; set; }
-    parameters: []
-    return:
-      type: Gadema.Core.Models.Access.Enums.UserAuthProviderEnum
-    content.vb: Public Property Provider As UserAuthProviderEnum
-  overload: Gadema.Core.Models.Access.UserProviderLink.Provider*
-- uid: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  id: LinkedAtUtc
-  parent: Gadema.Core.Models.Access.UserProviderLink
-  langs:
-  - csharp
-  - vb
-  name: LinkedAtUtc
-  nameWithType: UserProviderLink.LinkedAtUtc
-  fullName: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: LinkedAtUtc
-    path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-    startLine: 31
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the timestamp when this provider was linked to the user account.
-  example: []
-  syntax:
-    content: public DateTime LinkedAtUtc { get; set; }
-    parameters: []
-    return:
-      type: System.DateTime
-    content.vb: Public Property LinkedAtUtc As Date
-  overload: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc*
-- uid: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  id: ExternalSubjectId
-  parent: Gadema.Core.Models.Access.UserProviderLink
-  langs:
-  - csharp
-  - vb
-  name: ExternalSubjectId
-  nameWithType: UserProviderLink.ExternalSubjectId
-  fullName: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: ExternalSubjectId
-    path: src/Gadema.Core/Models/Access/UserProviderLink.cs
-    startLine: 36
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Access
-  summary: Gets or sets the unique identifier provided by the external service (e.g., Google's 'sub' claim).
-  example: []
-  syntax:
-    content: public string? ExternalSubjectId { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: Public Property ExternalSubjectId As String
-  overload: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId*
 references:
 - uid: Gadema.Core.Models.Access
   commentId: N:Gadema.Core.Models.Access
@@ -486,12 +436,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Gadema.Core.Models.Access.UserProviderLink.UserId*
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.UserId
-  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_UserId
-  name: UserId
-  nameWithType: UserProviderLink.UserId
-  fullName: Gadema.Core.Models.Access.UserProviderLink.UserId
+- uid: Gadema.Core.Models.Access.UserProviderLink.Id*
+  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.Id
+  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Id
+  name: Id
+  nameWithType: UserProviderLink.Id
+  fullName: Gadema.Core.Models.Access.UserProviderLink.Id
 - uid: System.Guid
   commentId: T:System.Guid
   parent: System
@@ -500,6 +450,12 @@ references:
   name: Guid
   nameWithType: Guid
   fullName: System.Guid
+- uid: Gadema.Core.Models.Access.UserProviderLink.UserId*
+  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.UserId
+  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_UserId
+  name: UserId
+  nameWithType: UserProviderLink.UserId
+  fullName: Gadema.Core.Models.Access.UserProviderLink.UserId
 - uid: Gadema.Core.Models.Access.UserProviderLink.User*
   commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.User
   href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_User
@@ -513,85 +469,3 @@ references:
   name: User
   nameWithType: User
   fullName: Gadema.Core.Models.Access.User
-- uid: Gadema.Core.Models.Access.UserProviderLink.Provider*
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.Provider
-  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Provider
-  name: Provider
-  nameWithType: UserProviderLink.Provider
-  fullName: Gadema.Core.Models.Access.UserProviderLink.Provider
-- uid: Gadema.Core.Models.Access.Enums.UserAuthProviderEnum
-  commentId: T:Gadema.Core.Models.Access.Enums.UserAuthProviderEnum
-  parent: Gadema.Core.Models.Access.Enums
-  href: Gadema.Core.Models.Access.Enums.UserAuthProviderEnum.html
-  name: UserAuthProviderEnum
-  nameWithType: UserAuthProviderEnum
-  fullName: Gadema.Core.Models.Access.Enums.UserAuthProviderEnum
-- uid: Gadema.Core.Models.Access.Enums
-  commentId: N:Gadema.Core.Models.Access.Enums
-  name: Gadema.Core.Models.Access.Enums
-  nameWithType: Gadema.Core.Models.Access.Enums
-  fullName: Gadema.Core.Models.Access.Enums
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Access
-    name: Access
-  - name: .
-  - uid: Gadema.Core.Models.Access.Enums
-    name: Enums
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Access
-    name: Access
-  - name: .
-  - uid: Gadema.Core.Models.Access.Enums
-    name: Enums
-- uid: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc*
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_LinkedAtUtc
-  name: LinkedAtUtc
-  nameWithType: UserProviderLink.LinkedAtUtc
-  fullName: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-- uid: System.DateTime
-  commentId: T:System.DateTime
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.datetime
-  name: DateTime
-  nameWithType: DateTime
-  fullName: System.DateTime
-  nameWithType.vb: Date
-  fullName.vb: Date
-  name.vb: Date
-- uid: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId*
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  href: Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_ExternalSubjectId
-  name: ExternalSubjectId
-  nameWithType: UserProviderLink.ExternalSubjectId
-  fullName: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String

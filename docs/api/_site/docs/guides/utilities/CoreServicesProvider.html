@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>CoreServicesProvider (The Gateway) </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="CoreServicesProvider (The Gateway) ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="coreservicesprovider-the-gateway">CoreServicesProvider (The Gateway)</h1>
+
+<p><code>CoreServicesProvider</code> is a central container used to bundle all core infrastructure services. It acts as a <strong>Gateway</strong> for <code>DomainService</code> implementations, providing them with access to the cross-cutting engines required for auditing, authorization, metadata management, and identity tracking.</p>
+<p>Instead of injecting multiple individual interfaces into every service constructor—which leads to &quot;Constructor Bloat&quot;—we inject this single provider.</p>
+<h2 id="1-purpose--design-pattern">1. Purpose &amp; Design Pattern</h2>
+<p>The <code>CoreServicesProvider</code> implements a <strong>Parameter Object</strong> pattern (often referred to in this context as a <strong>Gateway</strong>) to manage the complexity of dependency injection for core services.</p>
+<h3 id="benefits">Benefits:</h3>
+<ul>
+<li><strong>Simplified Dependency Injection</strong>: Reduces the number of parameters in domain service constructors, making them easier to read and maintain.</li>
+<li><strong>Unified API</strong>: Provides a single, predictable entry point for all core infrastructure capabilities.</li>
+<li><strong>Decoupling</strong>: Allows the implementation details of the core engines (like <code>IAuditService</code>) to evolve without requiring changes to every service that consumes them.</li>
+</ul>
+<hr>
+<h2 id="2-the-core-engines">2. The Core Engines</h2>
+<p>The provider exposes access to four primary systems. These interfaces are designed to be &quot;purely logical,&quot; meaning they focus on business rules and do not depend on web-specific contexts like <code>HttpContext</code> or <code>ApiResponseDto</code>.</p>
+<h3 id="iauditservice">IAuditService</h3>
+<p>Responsible for recording business-level audit events and activity logs.</p>
+<ul>
+<li><code>Task LogDbAsync(Guid? projectId, string action, string relatedEntityType, Guid? relatedEntityId = null, string? description = null)</code></li>
+</ul>
+<h3 id="imetadataservice">IMetadataService</h3>
+<p>Manages the creation, updates, and synchronization of <code>MetaInfo</code> anchors (the &quot;Soul&quot; of entities).</p>
+<ul>
+<li><code>Task&lt;T&gt; CreateAsync&lt;T&gt;(BaseMetaInfoCreateData createData, Action&lt;T&gt; initialize) where T : BaseMetaInfo</code></li>
+<li><code>Task ApplyUpdatesAsync(Guid metaInfoId, BaseMetaInfoUpdateData updateData)</code></li>
+<li><code>Task&lt;bool&gt; SyncAsync&lt;T&gt;(Guid identityId, BaseMetaInfoUpdateData updateData) where T : IIdentitySyncStrategy</code></li>
+<li><code>Task&lt;bool&gt; DeleteAsync&lt;T&gt;(Guid identityId) where T : BaseMetaInfo</code></li>
+</ul>
+<h3 id="ipermissionengine">IPermissionEngine</h3>
+<p>The central engine for evaluating granular, scope-based permissions.</p>
+<ul>
+<li><code>Task&lt;AccessResult&gt; CheckAccessAsync(Guid userId, Guid projectId, ProjectMemberRoleEnum minRole)</code></li>
+</ul>
+<h3 id="iusercontext">IUserContext</h3>
+<p>Provides the identity and roles of the currently authenticated user within the request scope.</p>
+<ul>
+<li><code>User? CurrentUser { get; set; }</code></li>
+<li><code>Guid? UserId { get; set; }</code></li>
+<li><code>string? ApiTokenHash { get; set; }</code></li>
+<li><code>List&lt;string&gt; Roles { get; set; }</code></li>
+</ul>
+<hr>
+<h2 id="3-integration-with-domain-services">3. Integration with Domain Services</h2>
+<p>The <code>DomainService</code> acts as the primary consumer of this provider. It uses the gateway to wrap the complex engine logic into high-level, readable helper methods for domain developers.</p>
+<p><strong>Implementation Reference:</strong>
+In a typical implementation, a <code>DomainService</code> will hold a reference to <code>CoreServicesProvider _core</code>. It then provides convenience wrappers such as:</p>
+<ul>
+<li><code>LogDbAsync(...)</code>: A wrapper around <code>IAuditService</code>.</li>
+<li><code>SyncIdentityAsync&lt;T&gt;(...)</code>: A wrapper around <code>IMetadataService</code>.</li>
+<li><code>CheckAccessAsync&lt;T&gt;(...)</code>: A wrapper around <code>IPermissionEngine</code> that maps engine results to API response types.</li>
+</ul>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Cleaner Constructors</strong>: Prevents long parameter lists in domain services.</td>
+<td style="text-align: left;"><strong>Hidden Dependencies</strong>: It can be harder to see at a glance exactly which specific sub-services a class depends on.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Centralized Access</strong>: Provides a single, predictable way to access all core infrastructure.</td>
+<td style="text-align: left;"><strong>Service Locator Risk</strong>: If used for <em>all</em> services (not just domain services), it risks becoming an anti-pattern that hides architectural intent.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/CoreServicesProvider.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

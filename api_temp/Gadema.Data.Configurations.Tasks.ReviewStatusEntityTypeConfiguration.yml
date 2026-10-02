@@ -20,7 +20,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewStatusEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Tasks/ReviewStatusEntityTypeConfiguration.cs
-    startLine: 10
+    startLine: 8
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
@@ -59,7 +59,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Tasks/ReviewStatusEntityTypeConfiguration.cs
-    startLine: 15
+    startLine: 13
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks

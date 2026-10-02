@@ -26,7 +26,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CharacterAttributes
     path: src/Gadema.Core/Models/Game/Attributes/CharacterAttributes.cs
-    startLine: 11
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Attributes
@@ -74,7 +74,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: MetaInfoId
     path: src/Gadema.Core/Models/Game/Attributes/CharacterAttributes.cs
-    startLine: 18
+    startLine: 16
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Attributes
@@ -84,12 +84,22 @@ items:
     Used as part of the composite primary key.
   example: []
   syntax:
-    content: public Guid MetaInfoId { get; set; }
+    content: >-
+      [Key]
+
+      public Guid MetaInfoId { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property MetaInfoId As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property MetaInfoId As Guid
   overload: Gadema.Core.Models.Game.Attributes.CharacterAttributes.MetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Game.Attributes.CharacterAttributes.ContentMetaInfo
   commentId: P:Gadema.Core.Models.Game.Attributes.CharacterAttributes.ContentMetaInfo
   id: ContentMetaInfo
@@ -108,7 +118,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ContentMetaInfo
     path: src/Gadema.Core/Models/Game/Attributes/CharacterAttributes.cs
-    startLine: 24
+    startLine: 23
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Attributes
@@ -151,7 +161,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AttributeDefinitionId
     path: src/Gadema.Core/Models/Game/Attributes/CharacterAttributes.cs
-    startLine: 30
+    startLine: 29
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Attributes
@@ -203,7 +213,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AttributeDefinition
     path: src/Gadema.Core/Models/Game/Attributes/CharacterAttributes.cs
-    startLine: 37
+    startLine: 36
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Attributes

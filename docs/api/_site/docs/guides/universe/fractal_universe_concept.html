@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127756; The GaDeMa Architecture: A Fractal Universe </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127756; The GaDeMa Architecture: A Fractal Universe ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>Since we are building a system that allows for <strong>Scale-Invariant Storytelling</strong>, a standard text summary isn't enough. You need to see the &quot;shape&quot; of the logic.</p>
+<p>Here is a conceptual and visual overview of the GaDeMa architecture.</p>
+<hr>
+<h1 id="-the-gadema-architecture-a-fractal-universe">🌌 The GaDeMa Architecture: A Fractal Universe</h1>
+<p>The core philosophy is that <strong>the world is fractal</strong>. Whether you are looking at a single character or an entire galaxy, the rules for how they are identified, how they are searched, and how they are updated remain exactly the same.</p>
+<h2 id="1-the-structural-hierarchy-the-bones">1. The Structural Hierarchy (The &quot;Bones&quot;)</h2>
+<p>This view shows how data is nested. A <code>ProjectSeries</code> is the ultimate container, but it doesn't &quot;own&quot; everything—it provides a <strong>shared scope</strong> for things to live in.</p>
+<pre><code class="lang-text">[ PROJECT SERIES ] (The Universe / Shared Lore)
+       │
+       ├── [ Project: The Novel ] (Local Workspace)
+       │      ├── Character A (Local - only exists here)
+       │      └── Character B (Shared - part of the Series lore) ◄───┐
+       │                                                             │
+       ├── [ Project: The RPG ] (Local Workspace)                   │ (Shared via Scope)
+       │      ├── Character C (Local - unique to this game)         │
+       │      └── Character B (Shared - seen in the RPG too) ───────┘
+       │
+       └── [ Project: Action Game ] (Local Workspace)
+              └── Character B (Shared - part of the universe's history)
+</code></pre>
+<hr>
+<h2 id="2-the-entity-pattern-the-dna">2. The Entity Pattern (The &quot;DNA&quot;)</h2>
+<p>Every single object in this system—whether it's a Series, a Project, or a Character—is constructed using the same <strong>Anchor &amp; Component</strong> pattern. We never create &quot;monolith&quot; objects; we assemble them.</p>
+<h3 id="the-formula-entity--anchor-identity--components-domain-data">The Formula: <code>Entity = Anchor (Identity) + Components (Domain Data)</code></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Part</th>
+<th style="text-align: left;">Role</th>
+<th style="text-align: left;">Example (A Character)</th>
+<th style="text-align: left;">Example (A Project)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Anchor</strong></td>
+<td style="text-align: left;"><strong>The Soul</strong>: Defines <em>what</em> it is. Provides the identity used for searching and syncing.</td>
+<td style="text-align: left;"><code>MetaInfo</code> (Name, Slug, Status)</td>
+<td style="text-align: left;"><code>ProjectMetaInfo</code> (Title, Slug, Status)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Components</strong></td>
+<td style="text-align: left;"><strong>The Body</strong>: Defines <em>how</em> it behaves in its specific medium.</td>
+<td style="text-align: left;"><code>CombatStats</code>, <code>Backstory</code>, <code>Inventory</code></td>
+<td style="text-align: left;"><code>Genre</code>, <code>Tone</code>, <code>Audience</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Crucial Rule:</strong> The Anchor is the &quot;Source of Truth.&quot; If you change the Name in the Anchor, the name changes everywhere.</p>
+<hr>
+<h2 id="3-the-operational-patterns-the-flow">3. The Operational Patterns (The &quot;Flow&quot;)</h2>
+<p>This is how data moves through the system via our two main engines.</p>
+<h3 id="a-the-identity-sync-engine-writing">A. The Identity Sync Engine (Writing)</h3>
+<p>Instead of many small updates, we use <strong>Strategy-based Synchronization</strong>. This ensures that when an identity changes, the entire &quot;identity footprint&quot; stays consistent.</p>
+<pre><code class="lang-text">[ User Input ] ──▶ [ Update DTO ] ──▶ [ Identity Sync Strategy ] ──▶ [ Atomic DB Transaction ]
+                                              │
+                                     (Calculates Deltas for:
+                                      Title, Slug, Status, Tags)
+</code></pre>
+<h3 id="b-the-search-orchestration-engine-reading">B. The Search Orchestration Engine (Reading)</h3>
+<p>We don't have a &quot;Search Service&quot; that knows everything. We have an <strong>Orchestrator</strong> that asks many specialized <strong>Providers</strong> for help.</p>
+<pre><code class="lang-text">[ User Query: &quot;Aragorn&quot; ]
+          │
+          ▼
+[ Search Orchestrator ] ◀─── (Asks in parallel) ───┐
+          │                                        │
+          ├─▶ [ Project Provider ] ───────────────┤
+          ├─▶ [ Character Provider ] ─────────────┤ ──▶ [ Merged &amp; Paginated Results ]
+          └─▶ [ Location Provider ] ──────────────┘      (Standardized SearchHitDto)
+</code></pre>
+<hr>
+<h2 id="4-the-authorization-logic-the-shield">4. The Authorization Logic (The &quot;Shield&quot;)</h2>
+<p>Because we have a hierarchy, access is determined by <strong>Scope</strong>. This prevents users from accidentally editing the &quot;Core Lore&quot; of a series when they only have permission to edit their own local project.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">If the user owns...</th>
+<th style="text-align: left;">They can Edit...</th>
+<th style="text-align: left;">They can Read...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Project</strong></td>
+<td style="text-align: left;">Local Assets (<code>ProjectId</code> matches)</td>
+<td style="text-align: left;">Local + Shared Assets in the Series</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Series</strong></td>
+<td style="text-align: left;">All Shared Assets (<code>SeriesId</code> matches)</td>
+<td style="text-align: left;">The entire Universe</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Nothing</strong></td>
+<td style="text-align: left;">Nothing</td>
+<td style="text-align: left;">Only their own local assets (if any)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="summary-of-the-vision">Summary of the Vision</h3>
+<ul>
+<li><strong>Identity is decoupled from Domain:</strong> You can change a character's name without touching their combat stats.</li>
+<li><strong>Scope is explicit:</strong> An object knows if it belongs to a Project or a Series.</li>
+<li><strong>Discovery is unified:</strong> Searching &quot;The Universe&quot; feels the same as searching &quot;A Book.&quot;</li>
+<li><strong>Scaling is seamless:</strong> You can add new media types (e.g., a &quot;Movie Project&quot;) just by adding new <code>Components</code>, without ever changing the core architecture.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/universe/fractal_universe_concept.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

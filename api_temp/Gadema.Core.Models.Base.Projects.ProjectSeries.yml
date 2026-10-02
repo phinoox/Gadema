@@ -7,7 +7,6 @@ items:
   children:
   - Gadema.Core.Models.Base.Projects.ProjectSeries.Id
   - Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo
-  - Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
   - Gadema.Core.Models.Base.Projects.ProjectSeries.Projects
   langs:
   - csharp
@@ -23,7 +22,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectSeries
     path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-    startLine: 11
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -69,50 +68,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-    startLine: 17
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
   summary: Unique identifier for the series.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Base.Projects.ProjectSeries.Id*
-- uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  commentId: P:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  id: ProjectSeriesMetaInfoId
-  parent: Gadema.Core.Models.Base.Projects.ProjectSeries
-  langs:
-  - csharp
-  - vb
-  name: ProjectSeriesMetaInfoId
-  nameWithType: ProjectSeries.ProjectSeriesMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: ProjectSeriesMetaInfoId
-    path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-    startLine: 22
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Base.Projects
-  summary: The ID of the associated identity anchor for the series.
-  example: []
-  syntax:
-    content: public Guid ProjectSeriesMetaInfoId { get; set; }
-    parameters: []
-    return:
-      type: System.Guid
-    content.vb: Public Property ProjectSeriesMetaInfoId As Guid
-  overload: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo
   commentId: P:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo
   id: ProjectSeriesMetaInfo
@@ -131,22 +109,22 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectSeriesMetaInfo
     path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-    startLine: 27
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
-  summary: Navigation property for the series' identity anchor.
+  summary: The ID of the associated identity anchor for the series (Vertical Unification).
   example: []
   syntax:
     content: >-
-      [ForeignKey("ProjectSeriesMetaInfoId")]
+      [ForeignKey("Id")]
 
       public virtual ProjectSeriesMetaInfo ProjectSeriesMetaInfo { get; set; }
     parameters: []
     return:
       type: Gadema.Core.Models.Base.MetaInfo.ProjectSeriesMetaInfo
     content.vb: >-
-      <ForeignKey("ProjectSeriesMetaInfoId")>
+      <ForeignKey("Id")>
 
       Public Overridable Property ProjectSeriesMetaInfo As ProjectSeriesMetaInfo
   overload: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo*
@@ -155,7 +133,7 @@ items:
     ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
     arguments:
     - type: System.String
-      value: ProjectSeriesMetaInfoId
+      value: Id
 - uid: Gadema.Core.Models.Base.Projects.ProjectSeries.Projects
   commentId: P:Gadema.Core.Models.Base.Projects.ProjectSeries.Projects
   id: Projects
@@ -174,7 +152,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Projects
     path: src/Gadema.Core/Models/Base/Projects/ProjectSeries.cs
-    startLine: 33
+    startLine: 26
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -474,12 +452,6 @@ references:
   name: Guid
   nameWithType: Guid
   fullName: System.Guid
-- uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId*
-  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  href: Gadema.Core.Models.Base.Projects.ProjectSeries.html#Gadema_Core_Models_Base_Projects_ProjectSeries_ProjectSeriesMetaInfoId
-  name: ProjectSeriesMetaInfoId
-  nameWithType: ProjectSeries.ProjectSeriesMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
 - uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo*
   commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo
   href: Gadema.Core.Models.Base.Projects.ProjectSeries.html#Gadema_Core_Models_Base_Projects_ProjectSeries_ProjectSeriesMetaInfo

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>✍️ Status: Content Items &amp; Narrative Structure </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="✍️ Status: Content Items &amp; Narrative Structure ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-content-items--narrative-structure">✍️ Status: Content Items &amp; Narrative Structure</h1>
+
+<p>This document provides a validation report comparing the polymorphic content model and narrative hierarchy outlined in <code>content-items.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Polymorphic Model (<code>MetaInfo</code>)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The core architecture is strongly implemented. <code>BaseMetaInfo</code> serves as the anchor, and specialized child entities (like <code>WorldLocation</code>, <code>ProjectTask</code>, etc.) correctly link back via <code>MetaInfoId</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ContentType Discriminator</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>ContentTypeEnum</code> is present in the codebase to distinguish between different types of content items.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ViewMode Pattern</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The <code>ViewModeEnum</code> (e.g., <code>PrivateWriting</code> vs <code>Presentation</code>) is implemented and available for use in the rendering logic.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Narrative Hierarchy</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">While the concept of <code>StorySequence</code> and <code>StoryBeat</code> is documented, the actual implementation of a nested sequence tree or specific &quot;beat&quot; entities requires further verification to ensure they follow the intended hierarchy.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Branching Narratives</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual / In-Progress</td>
+<td style="text-align: left;">The documentation describes dialogue trees branching from a <code>PlotPoint</code>. While the concept of many-to-many relationships and nodes exists, a dedicated <code>DialogueNode</code> structure for tree traversal is not yet fully realized in the current service/model scan.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Shared Infrastructure</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><strong>Tagging</strong>: Implemented via <code>TagRelation&lt;T&gt;</code>. <strong>Media</strong>: Supported through <code>MediaAttachment</code> entities. <strong>Versioning</strong>: Supported via <code>ContentSnapshot</code> and version tracking logic.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Formalize Narrative Hierarchy</strong>: Ensure that the implementation of <code>StorySequence</code> supports the nested parent-child relationship described in the guide to allow for complex acts/chapters.</li>
+<li><strong>Solidify Branching Logic</strong>: To support &quot;Dialogue Trees,&quot; implement a formal node-based structure (e.g., <code>DialogueNode</code>) with clear pointer logic for branching paths, moving beyond simple many-to-many tagging.</li>
+<li><strong>Verify Versioning Workflow</strong>: Ensure the backend distinguishes between a &quot;Silent Autosave&quot; and an &quot;Intentional Snapshot&quot; to maintain the integrity of the versioned history as described in the UX guidelines.</li>
+</ul>
+<h2 id="-summary-table-audit">📋 Summary Table Audit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Character</code></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Supported via <code>CharacterDetails</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>World</code></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Supported via <code>WorldLocation</code> and hierarchy.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Mechanic</code></td>
+<td style="text-align: left;">⚠️ In Progress</td>
+<td style="text-align: left;"><code>AbilityDefinition</code> exists, but the full &quot;Mechanic&quot; content type is still evolving.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PlotPoint</code></td>
+<td style="text-align: left;">ℹ️ Conceptual</td>
+<td style="text-align: left;">Branching logic for dialogue trees needs concrete implementation.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/content-items_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>DomainService Base Class </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="DomainService Base Class ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="domainservice-base-class">DomainService Base Class</h1>
+
+<p>The <code>DomainService</code> is an abstract base class that serves as the foundation for all business logic implementations in GaDeMa. It provides a unified way to interact with core infrastructure engines and simplifies common tasks like authorization, auditing, and identity synchronization.</p>
+<h2 id="1-role--responsibility">1. Role &amp; Responsibility</h2>
+<p>A <code>DomainService</code> is responsible for implementing the actual &quot;business rules&quot; of a specific domain (e.g., managing tasks, handling characters, or processing stories). It sits between the API Controllers and the Data Access layer.</p>
+<p>Rather than interacting with low-level engines like <code>IPermissionEngine</code> or <code>IAuditService</code> directly, domain services consume these capabilities through the <code>CoreServicesProvider</code>. This allows the base class to provide high-level &quot;helper&quot; methods that handle repetitive tasks such as mapping engine results into standardized API responses.</p>
+<hr>
+<h2 id="2-relationship-with-coreservicesprovider">2. Relationship with CoreServicesProvider</h2>
+<p>The <code>DomainService</code> holds a reference to the <code>CoreServicesProvider</code>. This provider acts as a gateway, giving the service access to the core engines without requiring a massive list of individual dependencies in every constructor.</p>
+<pre><code class="lang-csharp">public abstract class DomainService
+{
+    protected CoreServicesProvider _core; // The Gateway to all infrastructure
+    // ...
+}
+</code></pre>
+<hr>
+<h2 id="3-provided-helper-methods">3. Provided Helper Methods</h2>
+<p>To reduce boilerplate and ensure consistency, <code>DomainService</code> provides several high-level methods that subclasses can use to perform common operations.</p>
+<h3 id="authorization-helpers">Authorization Helpers</h3>
+<p>These methods wrap the <code>IPermissionEngine</code> logic. They are responsible for both <strong>Role Resolution</strong> and <strong>Response Mapping</strong>.</p>
+<ul>
+<li><strong><code>CheckAccessAsync&lt;T&gt;(Guid projectId, Permission permission, ...)</code></strong>: The primary method for checking if a user has permission to perform an action on a resource.
+<ul>
+<li><strong>Role Resolution (Arrangement)</strong>: If no specific role is provided, the service &quot;arranges&quot; the necessary data by mapping the abstract <code>Permission</code> to a concrete <code>ProjectMemberRoleEnum</code> (e.g., <code>CanEdit</code> <span class="math">\(\rightarrow\)</span> <code>Editor</code>). This translation is kept in the domain layer because it represents business-level logic rather than pure engine mechanics.</li>
+<li><strong>Response Mapping</strong>: It translates internal <code>AccessResult</code> statuses from the permission engine into standard <code>ApiResponseDto&lt;T&gt;</code> objects suitable for API consumers.</li>
+</ul>
+</li>
+<li><strong><code>IsAdminAsync(Guid projectId)</code></strong>: A convenience check to verify if the current user holds the <code>Admin</code> role for a specific project.</li>
+</ul>
+<h3 id="identity--auditing-helpers">Identity &amp; Auditing Helpers</h3>
+<ul>
+<li><strong><code>CheckIsLoggedIn()</code></strong>: A quick check to see if the <code>IUserContext</code> contains an authenticated identity.</li>
+<li><strong><code>LogDbAsync(...)</code></strong>: A high-level wrapper for the <code>IAuditService</code>, allowing developers to record business events (e.g., &quot;Task Updated&quot;) with minimal code.</li>
+<li><strong><code>SyncIdentityAsync&lt;T&gt;(...)</code></strong>: A wrapper for the <code>IMetadataService.SyncAsync</code> method, used to perform the &quot;Harmonization&quot; of a resource's identity.</li>
+</ul>
+<hr>
+<h2 id="4-implementation-guidelines">4. Implementation Guidelines</h2>
+<p>When inheriting from <code>DomainService</code>, follow these principles:</p>
+<ol>
+<li><strong>Use Helpers First</strong>: Always prefer the provided helper methods (like <code>CheckAccessAsync</code>) over calling the core engines directly. This ensures that your service adheres to the standard response patterns and role-mapping logic of the system.</li>
+<li><strong>Don't Bypass Authorization</strong>: Every write operation or sensitive read should be preceded by an authorization check using the provided helpers.</li>
+<li><strong>Keep Logic in the Service</strong>: The <code>DomainService</code> is where the complex business logic belongs. Keep controllers thin and move all validation, state management, and rule enforcement here.</li>
+</ol>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Reduced Boilerplate</strong>: Eliminates repetitive mapping and authorization code in every service.</td>
+<td style="text-align: left;"><strong>Inheritance Coupling</strong>: Subclasses are tightly coupled to the base class and its dependency on <code>CoreServicesProvider</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Standardized Responses</strong>: Ensures that all permission-based errors follow a consistent API format.</td>
+<td style="text-align: left;"><strong>Abstraction Overhead</strong>: Can occasionally obscure the exact implementation of an underlying engine for developers debugging deep stack traces.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/DomainService.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

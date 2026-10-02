@@ -17,7 +17,6 @@ items:
   - Gadema.Core.Models.Base.Projects.Project.Members
   - Gadema.Core.Models.Base.Projects.Project.PrimaryFormat
   - Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo
-  - Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
   - Gadema.Core.Models.Base.Projects.Project.ProjectSeries
   - Gadema.Core.Models.Base.Projects.Project.ProjectSeriesId
   - Gadema.Core.Models.Base.Projects.Project.Theme
@@ -38,7 +37,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Project
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 15
+    startLine: 12
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -86,17 +85,27 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Base.Projects.Project.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Base.Projects.Project.Description
   commentId: P:Gadema.Core.Models.Base.Projects.Project.Description
   id: Description
@@ -115,7 +124,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Description
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 24
+    startLine: 19
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -156,7 +165,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsActive
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 27
+    startLine: 22
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -185,29 +194,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UserId
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 30
+    startLine: 25
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
   syntax:
-    content: >-
-      [Fixture(FixtureHintEnum.Omit)]
-
-      public Guid UserId { get; set; }
+    content: public Guid UserId { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: >-
-      <Fixture(FixtureHintEnum.Omit)>
-
-      Public Property UserId As Guid
+    content.vb: Public Property UserId As Guid
   overload: Gadema.Core.Models.Base.Projects.Project.UserId*
-  attributes:
-  - type: Gadema.Core.Utils.FixtureAttribute
-    ctor: Gadema.Core.Utils.FixtureAttribute.#ctor(Gadema.Core.Utils.FixtureHintEnum)
-    arguments:
-    - type: Gadema.Core.Utils.FixtureHintEnum
-      value: 1
 - uid: Gadema.Core.Models.Base.Projects.Project.User
   commentId: P:Gadema.Core.Models.Base.Projects.Project.User
   id: User
@@ -226,7 +223,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: User
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 33
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -267,7 +264,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectSeriesId
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 36
+    startLine: 30
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -296,7 +293,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectSeries
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 38
+    startLine: 32
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -319,35 +316,6 @@ items:
     arguments:
     - type: System.String
       value: ProjectSeriesId
-- uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  commentId: P:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  id: ProjectMetaInfoId
-  parent: Gadema.Core.Models.Base.Projects.Project
-  langs:
-  - csharp
-  - vb
-  name: ProjectMetaInfoId
-  nameWithType: Project.ProjectMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Base/Projects/Project.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: ProjectMetaInfoId
-    path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 41
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Base.Projects
-  syntax:
-    content: public Guid ProjectMetaInfoId { get; set; }
-    parameters: []
-    return:
-      type: System.Guid
-    content.vb: Public Property ProjectMetaInfoId As Guid
-  overload: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId*
 - uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo
   commentId: P:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo
   id: ProjectMetaInfo
@@ -366,20 +334,20 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectMetaInfo
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 44
+    startLine: 36
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
   syntax:
     content: >-
-      [ForeignKey("ProjectMetaInfoId")]
+      [ForeignKey("Id")]
 
       public virtual ProjectMetaInfo ProjectMetaInfo { get; set; }
     parameters: []
     return:
       type: Gadema.Core.Models.Base.MetaInfo.ProjectMetaInfo
     content.vb: >-
-      <ForeignKey("ProjectMetaInfoId")>
+      <ForeignKey("Id")>
 
       Public Overridable Property ProjectMetaInfo As ProjectMetaInfo
   overload: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo*
@@ -388,7 +356,7 @@ items:
     ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
     arguments:
     - type: System.String
-      value: ProjectMetaInfoId
+      value: Id
 - uid: Gadema.Core.Models.Base.Projects.Project.EnableUserRegistration
   commentId: P:Gadema.Core.Models.Base.Projects.Project.EnableUserRegistration
   id: EnableUserRegistration
@@ -407,7 +375,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: EnableUserRegistration
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 50
+    startLine: 40
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -436,7 +404,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AllowManualInvites
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 51
+    startLine: 41
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -465,7 +433,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: PrimaryFormat
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 53
+    startLine: 43
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -513,7 +481,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Genre
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 56
+    startLine: 46
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -554,7 +522,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Theme
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 59
+    startLine: 49
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -595,7 +563,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Tone
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 62
+    startLine: 52
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -636,7 +604,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Audience
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 65
+    startLine: 55
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -677,7 +645,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Members
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 67
+    startLine: 58
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -706,7 +674,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsDeleted
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 68
+    startLine: 60
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -739,7 +707,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeletedAt
     path: src/Gadema.Core/Models/Base/Projects/Project.cs
-    startLine: 69
+    startLine: 61
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -1220,12 +1188,6 @@ references:
   name: ProjectSeries
   nameWithType: ProjectSeries
   fullName: Gadema.Core.Models.Base.Projects.ProjectSeries
-- uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId*
-  commentId: Overload:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  href: Gadema.Core.Models.Base.Projects.Project.html#Gadema_Core_Models_Base_Projects_Project_ProjectMetaInfoId
-  name: ProjectMetaInfoId
-  nameWithType: Project.ProjectMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
 - uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo*
   commentId: Overload:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo
   href: Gadema.Core.Models.Base.Projects.Project.html#Gadema_Core_Models_Base_Projects_Project_ProjectMetaInfo

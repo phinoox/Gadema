@@ -19,20 +19,15 @@ items:
   type: Class
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTaskCommentService
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 18
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 15
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
-  summary: >-
-    Service for managing comments on tasks.
-
-    Comments are treated as leaf entities belonging to a ProjectTask.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -82,12 +77,12 @@ items:
   type: Constructor
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 22
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 19
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -118,12 +113,12 @@ items:
   type: Method
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: GetCommentsAsync
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 31
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 24
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -149,12 +144,12 @@ items:
   type: Method
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: AddCommentAsync
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 49
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 44
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -182,12 +177,12 @@ items:
   type: Method
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateCommentAsync
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 84
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 74
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -215,12 +210,12 @@ items:
   type: Method
   source:
     remote:
-      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
+      path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteCommentAsync
-    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentsService.cs
-    startLine: 105
+    path: src/Gadema.Api/Services/Tasks/ProjectTaskCommentService.cs
+    startLine: 91
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks

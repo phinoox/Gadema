@@ -29,7 +29,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: StatusEffectDefinition
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 10
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -75,19 +75,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 16
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
   summary: Unique identifier for the status effect definition.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Game.Abilities.StatusEffectDefinition.MetaInfoId
   commentId: P:Gadema.Core.Models.Game.Abilities.StatusEffectDefinition.MetaInfoId
   id: MetaInfoId
@@ -106,7 +116,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: MetaInfoId
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 21
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -147,7 +157,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ContentMetaInfo
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 27
+    startLine: 26
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -283,7 +293,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Description
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 43
+    startLine: 44
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -326,7 +336,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: EffectType
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 49
+    startLine: 50
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -357,7 +367,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DurationSeconds
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 53
+    startLine: 55
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -388,7 +398,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DamagePerTick
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 58
+    startLine: 60
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities
@@ -419,7 +429,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: RequiresCondition
     path: src/Gadema.Core/Models/Game/Abilities/StatusEffectDefinition.cs
-    startLine: 63
+    startLine: 65
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Abilities

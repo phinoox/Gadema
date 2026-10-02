@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTaskEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Tasks/ProjectTaskEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
+  summary: Configuration for ProjectTask entity in game development management system.
+  example: []
   syntax:
     content: 'public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask>'
     content.vb: Public Class ProjectTaskEntityTypeConfiguration Implements IEntityTypeConfiguration(Of ProjectTask)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Tasks/ProjectTaskEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Tasks.ProjectTask" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure ProjectTask entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<ProjectTask> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Tasks.ProjectTask}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of ProjectTask))
   overload: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.Configure*
   implements:
@@ -431,13 +432,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Tasks.ProjectTask
-  commentId: T:Gadema.Core.Models.Tasks.ProjectTask
-  parent: Gadema.Core.Models.Tasks
-  href: Gadema.Core.Models.Tasks.ProjectTask.html
-  name: ProjectTask
-  nameWithType: ProjectTask
-  fullName: Gadema.Core.Models.Tasks.ProjectTask
 - uid: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.html#Gadema_Data_Configurations_Tasks_ProjectTaskEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Tasks_ProjectTask__
@@ -522,35 +516,6 @@ references:
     name: ProjectTask
     href: Gadema.Core.Models.Tasks.ProjectTask.html
   - name: )
-- uid: Gadema.Core.Models.Tasks
-  commentId: N:Gadema.Core.Models.Tasks
-  name: Gadema.Core.Models.Tasks
-  nameWithType: Gadema.Core.Models.Tasks
-  fullName: Gadema.Core.Models.Tasks
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Tasks
-    name: Tasks
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Tasks
-    name: Tasks
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

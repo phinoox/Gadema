@@ -28,7 +28,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GameKeyEvent
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -76,19 +76,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
   summary: Unique identifier for this game event.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent.MetaInfoId
   commentId: P:Gadema.Core.Models.Game.EngineIntegration.GameKeyEvent.MetaInfoId
   id: MetaInfoId
@@ -107,7 +117,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: MetaInfoId
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 20
+    startLine: 22
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -148,7 +158,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ContentMetaInfo
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 25
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -191,7 +201,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SceneSegmentId
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 31
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -232,7 +242,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SceneSegment
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 36
+    startLine: 38
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -275,7 +285,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TriggerType
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 41
+    startLine: 43
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -306,7 +316,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TargetId
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 46
+    startLine: 48
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -349,7 +359,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Payload
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 51
+    startLine: 53
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -380,7 +390,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Description
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 56
+    startLine: 58
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration

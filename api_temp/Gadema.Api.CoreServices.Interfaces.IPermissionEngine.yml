@@ -6,6 +6,7 @@ items:
   parent: Gadema.Api.CoreServices.Interfaces
   children:
   - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
   langs:
   - csharp
   - vb
@@ -64,6 +65,39 @@ items:
       type: System.Threading.Tasks.Task{Gadema.Api.CoreServices.Interfaces.AccessResult}
     content.vb: Function CheckAccessAsync(userId As Guid, projectId As Guid, minRole As ProjectMemberRoleEnum) As Task(Of AccessResult)
   overload: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync*
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  id: IsTargetInProjectAsync(System.Guid,System.Guid)
+  parent: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: IsTargetInProjectAsync(Guid, Guid)
+  nameWithType: IPermissionEngine.IsTargetInProjectAsync(Guid, Guid)
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsTargetInProjectAsync
+    path: src/Gadema.Api/CoreServices/Interfaces/IPermissionEngine.cs
+    startLine: 14
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.CoreServices.Interfaces
+  syntax:
+    content: Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+    parameters:
+    - id: projectId
+      type: System.Guid
+    - id: targetId
+      type: System.Guid
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Function IsTargetInProjectAsync(projectId As Guid, targetId As Guid) As Task(Of Boolean)
+  overload: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync*
 references:
 - uid: Gadema.Api.CoreServices.Interfaces
   commentId: N:Gadema.Api.CoreServices.Interfaces
@@ -249,3 +283,44 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync*
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  name: IsTargetInProjectAsync
+  nameWithType: IPermissionEngine.IsTargetInProjectAsync
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )

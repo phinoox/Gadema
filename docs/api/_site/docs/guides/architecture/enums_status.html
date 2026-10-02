@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127991;️ Status: Enums &amp; Type Definitions </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127991;️ Status: Enums &amp; Type Definitions ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-enums--type-definitions">🏷️ Status: Enums &amp; Type Definitions</h1>
+
+<p>This document provides a validation report comparing the enumeration definitions outlined in <code>enums.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Domain</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Core Design Principles</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Enums are located in <code>src/Gadema.Core/Enums/</code>, use consecutive integers, and utilize the <code>[Flags]</code> attribute where appropriate (e.g., Identity).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Content Model</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">While <code>ProjectStatusEnum</code> is clearly implemented and well-documented, several other enums mentioned in the guide (like <code>ContentTypeEnum</code>, <code>ViewModeEnum</code>) were not found in a direct grep of the codebase. They may be planned or located under different namespaces.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Task &amp; Workflow</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;"><code>TaskPriorityEnum</code> was found, but <code>TaskStatusEnum</code> and <code>TaskDifficultyEnum</code> (the latter being critical for the &quot;Stamina&quot; concept) were not explicitly identified in the current scan.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Character Identity</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The bitwise <code>IdentityTypeEnum</code> implementation is confirmed via code analysis.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Project &amp; Team</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>TeamMemberRoleEnum</code> and <code>ProjectStatusEnum</code> are both present and correctly implemented.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Narrative &amp; World</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual/In-Progress</td>
+<td style="text-align: left;">Enums like <code>LoreTypeEnum</code> and <code>OutlineStatusEnum</code> appear to be part of the design specification but may not yet have concrete implementations in the current codebase.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Synchronize Enum Registry</strong>: Conduct a sweep to ensure that all enums listed in the documentation actually exist in the code. If they are &quot;future&quot; enums, mark them as such in the guide to avoid confusion during development.</li>
+<li><strong>Implement Energy-related Enums</strong>: To support the &quot;Stamina/Mana&quot; philosophy, prioritize the implementation of <code>TaskDifficultyEnum</code> and ensure it is integrated into the Task domain models.</li>
+<li><strong>Verify Namespace Consistency</strong>: Ensure that all enums are consistently placed in <code>src/Gadema.Core/Enums/</code> or a clearly mapped sub-namespace to maintain the &quot;Dense Integer&quot; and &quot;Actionable State&quot; principles.</li>
+</ul>
+<h2 id="-developer-guide-audit">📋 Developer Guide Audit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. Location (<code>src/Gadema.Core/Enums/</code>)</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Observed in codebase.</td>
+</tr>
+<tr>
+<td style="text-align: left;">2. Integer Values (Consecutive)</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Confirmed via <code>ProjectStatusEnum</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">3. [Flags] Attribute Usage</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Confirmed via <code>IdentityTypeEnum</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;">4. Validation (<code>[EnumDataType]</code>)</td>
+<td style="text-align: left;">ℹ️ Unverified</td>
+<td style="text-align: left;">Needs manual check of model definitions to ensure attribute usage is consistent.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/enums_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

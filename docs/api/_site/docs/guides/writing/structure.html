@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Narrative Structure (Macro View) </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Narrative Structure (Macro View) ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="narrative-structure-macro-view">Narrative Structure (Macro View)</h1>
+
+<p>The GaDeMa narrative system is organized into a hierarchical progression that moves from high-level story arcs down to the granular, interactive units of writing. This structure allows for both long-term planning and detailed, moment-to-moment execution.</p>
+<h2 id="-the-hierarchy">🏗️ The Hierarchy</h2>
+<h3 id="1-story-the-overarching-work">1. Story (The Overarching Work)</h3>
+<p>The top-level container representing a complete work (e.g., a novel, screenplay, or campaign). A <code>Story</code> serves as the anchor for all narrative elements.</p>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Structural Outline</strong>: Defines the high-level progression of the story.</li>
+<li><strong>Chapters</strong>: Major organizational segments that group scenes together.</li>
+<li><strong>Beats</strong>: The fundamental landmarks in a story's arc.</li>
+</ul>
+<h3 id="2-chapter-the-organizational-unit">2. Chapter (The Organizational Unit)</h3>
+<p>A chapter acts as a middle layer, organizing multiple <code>Scene</code> entities into logical, manageable chunks of the narrative. Chapters allow writers to segment the story for pacing and structure.</p>
+<h3 id="3-scene-the-fundamental-unit-of-work">3. Scene (The Fundamental Unit of Work)</h3>
+<p>The <code>Scene</code> is the &quot;canvas&quot; where actual writing occurs. It is the most active entity in the system, acting as the intersection between static narrative intent and dynamic character progression.</p>
+<p><strong>A Scene serves three primary roles:</strong></p>
+<ul>
+<li><strong>Content Container</strong>: Holds the <code>RawText</code> (the actual prose/script).</li>
+<li><strong>Structural Anchor</strong>: Links to <code>StoryBeat</code> milestones and uses <code>SceneSegment</code> to index interactive elements like dialogue or actions without relying on fragile text indices.</li>
+<li><strong>Dynamic Driver</strong>: Captentures changes in <code>CharacterState</code> and <code>CharacterRelation</code>, recording how the narrative arc transforms the characters through their experiences.</li>
+</ul>
+<hr>
+<h2 id="-visualizing-the-flow">🗺️ Visualizing the Flow</h2>
+<pre><code class="lang-mermaid">graph TD
+    Story[Story: The Complete Work] --&gt; Outline[Outline: High-level structure]
+    Story --&gt; Chapters[Chapters: Organizational segments]
+    Chapters --&gt; Scenes[Scenes: The actual writing canvas]
+    
+    subgraph &quot;The Scene Ecosystem&quot;
+        Scenes --&gt; Segments[SceneSegments: Interactive markers]
+        Scenes --&gt; Beats[StoryBeats: Narrative landmarks]
+        Scenes --&gt; State[CharacterState/Relations: Dynamic changes]
+    end
+
+    subgraph &quot;Branching Logic&quot;
+        Story -.-&gt; Branches[DialogueBranches: Decision trees]
+        Branches --&gt; Nodes[DialogueNodes: Individual choices]
+    end
+</code></pre>
+<h2 id="-architectural-notes">⚠️ Architectural Notes</h2>
+<h3 id="the-scene-as-a-nexus">The Scene as a &quot;Nexus&quot;</h3>
+<p>In many systems, a scene is just a container for text. In GaDeMa, the <code>Scene</code> is a <strong>nexus of state</strong>. It is where the static world (the story) meets the dynamic inhabitants (the characters). By linking <code>CharacterState</code> and <code>StoryBeat</code> directly to the <code>Scene</code>, we enable a &quot;Living Narrative&quot; where the act of writing a scene can trigger measurable changes in the character's journey.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/structure.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

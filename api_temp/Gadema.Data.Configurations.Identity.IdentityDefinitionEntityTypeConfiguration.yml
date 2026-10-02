@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityDefinitionEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Identity/IdentityDefinitionEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity
+  summary: Configuration for IdentityDefinition entity in game development management system.
+  example: []
   syntax:
     content: 'public class IdentityDefinitionEntityTypeConfiguration : IEntityTypeConfiguration<IdentityDefinition>'
     content.vb: Public Class IdentityDefinitionEntityTypeConfiguration Implements IEntityTypeConfiguration(Of IdentityDefinition)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Identity/IdentityDefinitionEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Identity.IdentityDefinition" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure IdentityDefinition entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<IdentityDefinition> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Identity.IdentityDefinition}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of IdentityDefinition))
   overload: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.Configure*
   implements:
@@ -431,13 +432,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Identity.IdentityDefinition
-  commentId: T:Gadema.Core.Models.Identity.IdentityDefinition
-  parent: Gadema.Core.Models.Identity
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html
-  name: IdentityDefinition
-  nameWithType: IdentityDefinition
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition
 - uid: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.html#Gadema_Data_Configurations_Identity_IdentityDefinitionEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Identity_IdentityDefinition__
@@ -522,35 +516,6 @@ references:
     name: IdentityDefinition
     href: Gadema.Core.Models.Identity.IdentityDefinition.html
   - name: )
-- uid: Gadema.Core.Models.Identity
-  commentId: N:Gadema.Core.Models.Identity
-  name: Gadema.Core.Models.Identity
-  nameWithType: Gadema.Core.Models.Identity
-  fullName: Gadema.Core.Models.Identity
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Identity
-    name: Identity
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Identity
-    name: Identity
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

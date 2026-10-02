@@ -25,10 +25,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Comment
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 6
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: Represents a user-provided comment attached to a specific content item or entity.
+  example: []
   syntax:
     content: >-
       [ModelDependency(new Type[] { typeof(ContentMetaInfo) })]
@@ -48,37 +50,6 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Gadema.Core.Models.Base.MetaInfo.Comment.Id
-  commentId: P:Gadema.Core.Models.Base.MetaInfo.Comment.Id
-  id: Id
-  parent: Gadema.Core.Models.Base.MetaInfo.Comment
-  langs:
-  - csharp
-  - vb
-  name: Id
-  nameWithType: Comment.Id
-  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.Id
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: Id
-    path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 12
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: Gets or sets the unique identifier for this comment.
-  example: []
-  syntax:
-    content: public Guid Id { get; set; }
-    parameters: []
-    return:
-      type: System.Guid
-    content.vb: Public Property Id As Guid
-  overload: Gadema.Core.Models.Base.MetaInfo.Comment.Id*
 - uid: Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
   commentId: P:Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
   id: TargetId
@@ -97,11 +68,14 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TargetId
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: Gets or sets the identifier of the target entity (e.s. a LoreEntry, Scene, etc.) that this comment is attached to.
+  summary: >-
+    The ID of the target entity (e.g., a Scene or Character) this comment belongs to.
+
+    This acts as the anchor link for $1:N$ relationships.
   example: []
   syntax:
     content: >-
@@ -119,6 +93,47 @@ items:
   attributes:
   - type: System.ComponentModel.DataAnnotations.RequiredAttribute
     ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+    arguments: []
+- uid: Gadema.Core.Models.Base.MetaInfo.Comment.Id
+  commentId: P:Gadema.Core.Models.Base.MetaInfo.Comment.Id
+  id: Id
+  parent: Gadema.Core.Models.Base.MetaInfo.Comment
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: Comment.Id
+  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.Id
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Id
+    path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Base.MetaInfo
+  summary: The unique identifier for this comment, which is also the ID of the target entity (The Soul).
+  example: []
+  syntax:
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.MetaInfo.Comment.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
     arguments: []
 - uid: Gadema.Core.Models.Base.MetaInfo.Comment.AuthorUserId
   commentId: P:Gadema.Core.Models.Base.MetaInfo.Comment.AuthorUserId
@@ -138,7 +153,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: AuthorUserId
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 24
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -179,11 +194,11 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Text
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 30
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: Gets or sets the text content of the comment.
+  summary: The text content of the comment.
   example: []
   syntax:
     content: >-
@@ -222,11 +237,11 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ParentCommentId
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 36
+    startLine: 39
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: Gets or sets the identifier of the parent comment, if this is a reply in a threaded conversation.
+  summary: The ID of the parent comment, if this is a reply in a threaded conversation.
   example: []
   syntax:
     content: public Guid? ParentCommentId { get; set; }
@@ -253,7 +268,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreatedAt
     path: src/Gadema.Core/Models/Base/MetaInfo/Comment.cs
-    startLine: 41
+    startLine: 44
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -539,12 +554,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Gadema.Core.Models.Base.MetaInfo.Comment.Id*
-  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.Comment.Id
-  href: Gadema.Core.Models.Base.MetaInfo.Comment.html#Gadema_Core_Models_Base_MetaInfo_Comment_Id
-  name: Id
-  nameWithType: Comment.Id
-  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.Id
+- uid: Gadema.Core.Models.Base.MetaInfo.Comment.TargetId*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
+  href: Gadema.Core.Models.Base.MetaInfo.Comment.html#Gadema_Core_Models_Base_MetaInfo_Comment_TargetId
+  name: TargetId
+  nameWithType: Comment.TargetId
+  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
 - uid: System.Guid
   commentId: T:System.Guid
   parent: System
@@ -553,12 +568,12 @@ references:
   name: Guid
   nameWithType: Guid
   fullName: System.Guid
-- uid: Gadema.Core.Models.Base.MetaInfo.Comment.TargetId*
-  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
-  href: Gadema.Core.Models.Base.MetaInfo.Comment.html#Gadema_Core_Models_Base_MetaInfo_Comment_TargetId
-  name: TargetId
-  nameWithType: Comment.TargetId
-  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.TargetId
+- uid: Gadema.Core.Models.Base.MetaInfo.Comment.Id*
+  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.Comment.Id
+  href: Gadema.Core.Models.Base.MetaInfo.Comment.html#Gadema_Core_Models_Base_MetaInfo_Comment_Id
+  name: Id
+  nameWithType: Comment.Id
+  fullName: Gadema.Core.Models.Base.MetaInfo.Comment.Id
 - uid: Gadema.Core.Models.Base.MetaInfo.Comment.AuthorUserId*
   commentId: Overload:Gadema.Core.Models.Base.MetaInfo.Comment.AuthorUserId
   href: Gadema.Core.Models.Base.MetaInfo.Comment.html#Gadema_Core_Models_Base_MetaInfo_Comment_AuthorUserId

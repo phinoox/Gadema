@@ -5,7 +5,7 @@ items:
   id: ProjectTokenUpdateDto
   parent: Gadema.Core.Dtos.Base.Projects
   children:
-  - Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
+  - Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
   - Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.TokenType
   langs:
   - csharp
@@ -76,23 +76,23 @@ items:
       type: System.Nullable{System.Int32}
     content.vb: Public Property TokenType As Integer?
   overload: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.TokenType*
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  id: ExpirationDate
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  id: ExpiresAt
   parent: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
   langs:
   - csharp
   - vb
-  name: ExpirationDate
-  nameWithType: ProjectTokenUpdateDto.ExpirationDate
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
+  name: ExpiresAt
+  nameWithType: ProjectTokenUpdateDto.ExpiresAt
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
   type: Property
   source:
     remote:
       path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
-    id: ExpirationDate
+    id: ExpiresAt
     path: src/Gadema.Core/Dtos/Base/Projects/ProjectTokenDto.cs
     startLine: 81
   assemblies:
@@ -104,12 +104,12 @@ items:
     Set to a past DateTime to effectively revoke the token without changing IsRevoked flag.
   example: []
   syntax:
-    content: public DateTime? ExpirationDate { get; set; }
+    content: public DateTime? ExpiresAt { get; set; }
     parameters: []
     return:
       type: System.Nullable{System.DateTime}
-    content.vb: Public Property ExpirationDate As Date?
-  overload: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate*
+    content.vb: Public Property ExpiresAt As Date?
+  overload: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt*
 references:
 - uid: Gadema.Core.Dtos.Base.Projects
   commentId: N:Gadema.Core.Dtos.Base.Projects
@@ -489,12 +489,12 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate*
-  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpirationDate
-  name: ExpirationDate
-  nameWithType: ProjectTokenUpdateDto.ExpirationDate
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt*
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  href: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpiresAt
+  name: ExpiresAt
+  nameWithType: ProjectTokenUpdateDto.ExpiresAt
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
 - uid: System.Nullable{System.DateTime}
   commentId: T:System.Nullable{System.DateTime}
   parent: System

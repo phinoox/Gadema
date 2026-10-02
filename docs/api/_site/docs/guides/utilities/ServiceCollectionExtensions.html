@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>ServiceCollectionExtensions </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="ServiceCollectionExtensions ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="servicecollectionextensions">ServiceCollectionExtensions</h1>
+
+<p>The <code>ServiceCollectionExtensions</code> class provides an automated way to register all domain services into the .NET Dependency Injection (DI) container. It uses reflection to scan for classes inheriting from <code>DomainService</code> and registers them with their corresponding interfaces.</p>
+<h2 id="1-purpose--automation">1. Purpose &amp; Automation</h2>
+<p>Manual registration of every service in a growing project is error-prone and creates significant maintenance overhead. This extension method automates that process by following a standardized naming convention and applying custom lifetime metadata via attributes.</p>
+<h2 id="2-registration-logic">2. Registration Logic</h2>
+<p>When <code>AddDomainServices</code> is called, it performs the following steps:</p>
+<h3 id="a-assembly-scanning">A. Assembly Scanning</h3>
+<p>The system scans the assembly containing the <code>DomainService</code> base class to find all concrete (non-abstract) classes that inherit from it.</p>
+<h3 id="b-lifetime-management">B. Lifetime Management</h3>
+<p>Instead of assuming a single lifetime for all services, it looks for a custom <code>[ServiceLifetime]</code> attribute on each implementation.</p>
+<ul>
+<li><strong>Custom Lifetime</strong>: If the attribute is present, the service is registered with the specified lifetime (e.g., Singleton or Transient).</li>
+<li><strong>Default Lifetime</strong>: If no attribute is found, the service defaults to <code>Scoped</code>.</li>
+</ul>
+<h3 id="c-interface-mapping">C. Interface Mapping</h3>
+<p>The extension identifies all interfaces implemented by the class that follow the standard <code>&quot;I&quot;</code> naming convention (e.g., <code>IProjectService</code>). It then registers the mapping:
+<code>services.Add(new ServiceDescriptor(interfaceType, implementationType, lifetime));</code></p>
+<h3 id="d-concrete-type-registration">D. Concrete Type Registration</h3>
+<p>To support direct injection of the concrete implementation (e.g., <code>AddScoped&lt;ProjectService, ProjectService&gt;()</code>), it also registers the class itself in the DI container.</p>
+<hr>
+<h2 id="3-implementation-example">3. Implementation Example</h2>
+<p>If you have a service defined as follows:</p>
+<pre><code class="lang-csharp">[ServiceLifetime(ServiceLifetime.Transient)] // Custom lifetime
+public class TaskService : ITaskService, IAnotherInterface
+{
+    // ... implementation
+}
+</code></pre>
+<p>Calling <code>services.AddDomainServices();</code> will automatically perform the following registrations:</p>
+<ol>
+<li><code>services.AddTransient&lt;ITaskService, TaskService&gt;();</code></li>
+<li><code>services.AddTransient&lt;IAnotherInterface, TaskService&gt;();</code></li>
+<li><code>services.AddTransient&lt;TaskService, TaskService&gt;();</code></li>
+</ol>
+<hr>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Low Maintenance</strong>: Adding a new service requires zero changes to the startup/DI configuration as long as it inherits from <code>DomainService</code>.</td>
+<td style="text-align: left;"><strong>Reflection Overhead</strong>: Scanning assemblies via reflection at startup adds a small amount of time to application initialization.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Consistency</strong>: Enforces a standardized way of registering services and managing their lifetimes across the entire domain.</td>
+<td style="text-align: left;"><strong>Magic Registration</strong>: Since registration happens &quot;under the hood,&quot; it can be harder for new developers to trace exactly how a service was registered without looking at the extension method.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/ServiceCollectionExtensions.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

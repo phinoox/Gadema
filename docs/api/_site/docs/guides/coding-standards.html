@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128220; The Laws of Animation: Coding Standards &amp; Patterns </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128220; The Laws of Animation: Coding Standards &amp; Patterns ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-the-laws-of-animation-coding-standards--patterns">📜 The Laws of Animation: Coding Standards &amp; Patterns</h1>
+
+<p>This guide is the <strong>Single Source of Truth</strong> for implementation within the GaDeMa project. It is designed as a high-density &quot;Cheat Sheet&quot; to ensure consistency, prevent ambiguity, and maintain our architectural integrity.</p>
+<hr>
+<h2 id="-1-the-law-of-domain-clustering--naming">📂 1. The Law of Domain Clustering &amp; Naming</h2>
+<p>To avoid name collisions (e.g., with <code>System.Threading.Task</code>) and maintain order, we follow the law of <strong>Domain Clustering</strong>.</p>
+<h3 id="-naming-conventions">📏 Naming Conventions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">✅ Correct Example</th>
+<th style="text-align: left;">❌ Avoid!</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Models</strong></td>
+<td style="text-align: left;"><code>EntityName</code> (PascalCase)</td>
+<td style="text-align: left;"><code>ProjectTask.cs</code></td>
+<td style="text-align: left;"><code>Task.cs</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DTOs (Create)</strong></td>
+<td style="text-align: left;"><code>CreateXDto</code></td>
+<td style="text-align: left;"><code>ProjectTaskCreateDto</code></td>
+<td style="text-align: left;"><code>TaskCreateDto</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DTOs (Update)</strong></td>
+<td style="text-align: left;"><code>UpdateXDto</code></td>
+<td style="text-align: left;"><code>ProjectTaskUpdateDto</code></td>
+<td style="text-align: left;"><code>TaskUpdateDto</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DTOs (Response)</strong></td>
+<td style="text-align: left;"><code>ResponseXDto</code></td>
+<td style="text-align: left;"><code>ProjectTaskResponseDto</code></td>
+<td style="text-align: left;"><code>TaskResponseDto</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Controllers</strong></td>
+<td style="text-align: left;"><code>ResourceNameController</code></td>
+<td style="text-align: left;"><code>TasksController</code></td>
+<td style="text-align: left;"><code>TaskController</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Services</strong></td>
+<td style="text-align: left;"><code>XxxService</code></td>
+<td style="text-align: left;"><code>ProjectTaskService</code></td>
+<td style="text-align: left;"><code>TaskService</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="-folder-structure-domain-aware">📁 Folder Structure (Domain-Aware)</h3>
+<p>All files must be clustered by their domain:</p>
+<pre><code class="lang-text">src/Gadema.Core/Models/Tasks/          &lt;-- Models
+src/Gadema.Core/Dtos/Tasks/            &lt;-- DTOs
+src/Gadema.Api/Controllers/Tasks/      &lt;-- Controllers
+src/Gadema.Api/Services/Tasks/         &lt;-- Services
+</code></pre>
+<hr>
+<h2 id="-2-the-law-of-the-thin-controller">🎮 2. The Law of the Thin Controller</h2>
+<p>Controllers are merely routing and dispatching layers. They must never hold business logic or touch the database directly.</p>
+<h3 id="-correct-implementation-one-liner">✅ Correct Implementation (One-Liner)</h3>
+<p>For simple retrieval or actions, use the <code>Ok(await ...)</code> pattern:</p>
+<pre><code class="lang-csharp">public async Task&lt;IActionResult&gt; Search([FromQuery] string query, [FromQuery] Guid? projectId) 
+    =&gt; Ok(await _projectService.GetMatchesAsync(query, projectId));
+</code></pre>
+<hr>
+<h2 id="-3-the-law-of-service-responsibility">🛡️ 3. The Law of Service Responsibility</h2>
+<p>The Service layer is the &quot;Muscle.&quot; It handles all business rules, permission checks, and data integrity.</p>
+<h3 id="-correct-implementation-access--auth">✅ Correct Implementation (Access &amp; Auth)</h3>
+<p>Always check for identity and permissions at the start of your service method using the <code>ApiResponseDto</code> pattern.</p>
+<pre><code class="lang-csharp">public async Task&lt;ApiResponseDto&lt;ProjectResponseDto&gt;&gt; GetProjectAsync(Guid projectId)
+{
+    // 1. Check Authentication
+    var loggedIn = await CheckIsLoggedIn();
+    if (!loggedIn)
+        return ApiResponseDto&lt;ProjectResponseDto&gt;.Unauthorized(&quot;you need to be logged in&quot;);
+
+    // 2. Check Authorization (Scope-based)
+    var authorizationError = await CheckAccessAsync&lt;ProjectResponseDto&gt;(projectId, Permission.CanView);
+    if (authorizationError != null) 
+        return authorizationError; // Return the error object directly
+
+    // 3. Proceed with Business Logic
+    var project = await _context.Projects.FindAsync(projectId);
+    return ApiResponseDto&lt;ProjectResponseDto&gt;.Success(project);
+}
+</code></pre>
+<hr>
+<h2 id="-4-the-law-of-hybrid-responses">🔄 4. The Law of Hybrid Responses</h2>
+<p>To provide a consistent API experience, we distinguish between <strong>Data Retrieval</strong> and <strong>Action Confirmation</strong>.</p>
+<h3 id="-raw-pattern-for-data-retrieval">🧪 RAW Pattern (For Data Retrieval)</h3>
+<p>Used for <code>GET</code> requests where the goal is simply to return data.</p>
+<pre><code class="lang-csharp">// Returns the raw object/collection directly in an Ok() wrapper
+return Ok(await _service.GetAsync(id)); 
+</code></pre>
+<h3 id="-wrapped-pattern-for-actions--errors">📦 WRAPPED Pattern (For Actions &amp; Errors)</h3>
+<p>Used for <code>POST</code>, <code>PUT</code>, and <code>DELETE</code>. Every action must return a success/failure status.</p>
+<p><strong>Success Example:</strong></p>
+<pre><code class="lang-csharp">// Returns a wrapped confirmation of the action
+return Ok(new {
+    success = true,
+    message = &quot;Task created successfully&quot;,
+    data = new { id = newTask.Id } 
+});
+</code></pre>
+<p><strong>Error Example:</strong></p>
+<pre><code class="lang-c//">return Ok(ApiResponseDto&lt;CreateResponseDto&gt;.Failure(&quot;Description is required&quot;));
+</code></pre>
+<hr>
+<h2 id="-5-the-law-of-data-integrity--performance">⚙️ 5. The Law of Data Integrity &amp; Performance</h2>
+<h3 id="-validation-dto-vs-model">✅ Validation: DTO vs. Model</h3>
+<ul>
+<li><strong>DTOs</strong>: Must contain all validation attributes (<code>[Required]</code>, <code>[MaxLength]</code>, etc.).</li>
+<li><strong>Models</strong>: Should only contain structural constraints via the Fluent API in the configuration files. <strong>Never put validation logic on Models.</strong></li>
+</ul>
+<h3 id="-eager-loading-preventing-n1">✅ Eager Loading (Preventing N+1)</h3>
+<p>Always use <code>.Include()</code> when fetching entities that have related data to avoid multiple database roundtrips.</p>
+<pre><code class="lang-csharp">// ✅ CORRECT: Single query with eager loading
+var tasks = await _context.ProjectTasks
+    .Include(t =&gt; t.Comments)
+    .ToListAsync();
+
+// ❌ INCORRECT: N+1 problem (querying comments in a loop)
+foreach(var task in tasks) {
+    task.Comments = await _context.Comments.Where(c =&gt; c.TaskId == task.Id).ToListAsync();
+}
+</code></pre>
+<h3 id="-pagination-rules">✅ Pagination Rules</h3>
+<p>All list endpoints must be paginated to prevent performance degradation.</p>
+<ul>
+<li><strong>Default Page Size</strong>: 20</li>
+<li><strong>Maximum Page Size</strong>: 100</li>
+<li><strong>Pattern</strong>: Always provide <code>TotalCount</code> and <code>TotalPages</code>.</li>
+</ul>
+<hr>
+<p><em>Compiled from the GaDeMa Coding Guidelines Repository.</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/coding-standards.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

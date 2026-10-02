@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128483;️ Status: Dialogue &amp; Branching Narrative </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128483;️ Status: Dialogue &amp; Branching Narrative ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-dialogue--branching-narrative">🗣️ Status: Dialogue &amp; Branching Narrative</h1>
+
+<p>This document provides a validation report comparing the branching narrative model outlined in <code>dialogue.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Dialogue Branch (Root)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The <code>DialogueBranchResponseDto</code> and <code>DialogueBranchService</code> (implied) support the concept of a root branch (<code>IsRoot</code> property).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dialogue Node (The Choice/Line)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>DialogueNodeService</code> and <code>DialogueNodeResponseDto</code> are implemented, supporting the creation and retrieval of individual units within a branch.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Self-Reference (ParentNodeId)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The architecture supports hierarchical structures through parent-child relationships (<code>branchId</code> in <code>GetNodesAsync</code>), enabling the described non-linear paths.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Integration with Scenes</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual / In-Progress</td>
+<td style="text-align: left;">While the data models for both scenes and dialogue exist, the &quot;Logic vs Canvas&quot; integration (where a scene contains multiple branches) is an orchestration layer requirement that needs to be fully realized in the service/API interaction.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Formalize Decision Logic</strong>: To move from &quot;nodes with parents&quot; to true &quot;decision points,&quot; implement explicit logic within <code>DialogueNodeService</code> to handle branching paths (e.g., evaluating conditions that trigger a move to a specific child node).</li>
+<li><strong>Enhance Visual/Logical Linkage</strong>: Ensure the API provides enough context for the frontend to render the &quot;Tree&quot; view described in the guide, such as clear parent-child relationship pointers and order indices.</li>
+<li><strong>Stress Test Branching Complexity</strong>: Perform integration tests on deeply nested or cyclical paths (as mentioned in the &quot;Cyclical Paths&quot; section) to ensure the self-referencing logic doesn't cause infinite loops or performance degradation.</li>
+</ul>
+<h2 id="-architectural-alignment-check">📋 Architectural Alignment Check</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Non-Linearity</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Supported via <code>ParentNodeId</code> / <code>branchId</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tree Structure</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Data models support hierarchical traversal.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Complexity Management</strong></td>
+<td style="text-align: left;">⚠️ In Progress</td>
+<td style="text-align: left;">Requires formalization of &quot;Decision Point&quot; logic in the service layer.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/dialogue_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

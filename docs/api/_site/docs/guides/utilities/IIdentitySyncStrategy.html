@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>IIdentitySyncStrategy Interface </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="IIdentitySyncStrategy Interface ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="iidentitysyncstrategy-interface">IIdentitySyncStrategy Interface</h1>
+
+<p>The <code>IIdentitySyncStrategy</code> interface defines the contract for specialized modules responsible for the <strong>Harmonization</strong> process. It manages how updates to a resource's &quot;Body&quot; (its domain-specific data) are synchronized with its &quot;Soul&quot; (its core identity anchor).</p>
+<h2 id="1-purpose--role">1. Purpose &amp; Role</h2>
+<p>In GaDeMa, an entity is composed of two parts: a stable <strong>Anchor</strong> (<code>MetaInfo</code>) and evolving <strong>Domain Data</strong>. When the domain data changes, the Anchor must be updated to reflect these changes (e.g., updating a Title or Slug).</p>
+<p><code>IIdentitySyncStrategy</code> provides a standardized way to perform this synchronization. It allows different types of content—such as Characters, Projects, or Tasks—to implement their own unique logic for how their identity is transformed during an update.</p>
+<h2 id="2-interface-definition">2. Interface Definition</h2>
+<pre><code class="lang-csharp">public interface IIdentitySyncStrategy
+{
+    /// &lt;summary&gt;
+    /// Synchronizes the identity anchor with the provided update data.
+    /// &lt;/summary&gt;
+    /// &lt;typeparam name=&quot;T&quot;&gt;The specific implementation type.&lt;/typeparam&gt;
+    /// &lt;param name=&quot;identityId&quot;&gt;The unique identifier of the MetaInfo anchor.&lt;/param&gt;
+    /// &lt;param name=&quot;updateData&quot;&gt;The new data to be applied and synchronized.&lt;/param&gt;
+    Task&lt;bool&gt; SyncAsync&lt;T&gt;(Guid identityId, BaseMetaInfoUpdateData updateData) where T : IIdentitySyncStrategy;
+}
+</code></pre>
+<h2 id="3-the-synchronization-workflow">3. The Synchronization Workflow</h2>
+<p>This interface is part of the <strong>Harmonization Protocol</strong> used by <code>DomainService</code>. The workflow typically follows these steps:</p>
+<ol>
+<li><strong>Trigger</strong>: A domain service receives an update request containing both new domain data and identity metadata (<code>BaseMetaInfoUpdateData</code>).</li>
+<li><strong>Dispatch</strong>: The service calls <code>SyncIdentityAsync&lt;T&gt;(...)</code>, which routes the request to the appropriate implementation via the <code>MetadataService</code>.
+3.s <strong>Execution</strong>: The strategy performs a &quot;Delta Calculation&quot; (determining what changed) and executes an atomic transaction that updates both the domain entity and its corresponding <code>MetaInfo</code> anchor.</li>
+</ol>
+<h2 id="4-implementation-examples">4. Implementation Examples</h2>
+<p>Different content types require different synchronization logic. This is achieved by implementing specific strategies:</p>
+<ul>
+<li><strong><code>ContentIdentityStrategy</code></strong>: Mannages identity for general content items (e.g., Lore entries).</li>
+<li><strong><code>ProjectSeriesIdentityStrategy</code></strong>: Handles the complex hierarchy and identity requirements of a Project Series.</li>
+<li><strong><code>ProjectTaskIdentityStrategy</code></strong>: Manages the identity synchronization for task-specific metadata.</li>
+</ul>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Decoupled Logic</strong>: Separates the &quot;how&quot; of identity updates from the main domain business logic.</td>
+<td style="text-align: left;"><strong>Complexity</strong>: Requires maintaining a mapping between content types and their respective strategies.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Atomicity</strong>: Ensures that identity anchors and domain data are updated in a single, consistent operation.</td>
+<td style="text-align: left;"><strong>Abstraction Overhead</strong>: Adds an extra layer of indirection for developers tracing the flow of an update.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/IIdentitySyncStrategy.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

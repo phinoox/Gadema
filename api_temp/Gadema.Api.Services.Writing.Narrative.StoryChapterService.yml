@@ -25,15 +25,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: StoryChapterService
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 19
+    startLine: 15
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
-  summary: >-
-    Service for managing StoryChapters within the narrative domain.
-
-    Handles CRUD operations including ContentMetaInfo creation and authorization.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -88,7 +83,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 23
+    startLine: 19
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -124,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetStoryChaptersAsync
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 32
+    startLine: 24
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -155,7 +150,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetStoryChapterAsync
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 63
+    startLine: 38
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -186,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateStoryChapterAsync
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 94
+    startLine: 53
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -219,7 +214,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateStoryChapterAsync
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 129
+    startLine: 84
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -252,7 +247,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteStoryChapterAsync
     path: src/Gadema.Api/Services/Writing/Narrative/StoryChapterService.cs
-    startLine: 177
+    startLine: 116
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative

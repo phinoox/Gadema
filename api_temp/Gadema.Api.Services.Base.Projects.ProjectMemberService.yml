@@ -217,7 +217,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: RemoveMemberAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectMemberService.cs
-    startLine: 101
+    startLine: 100
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects

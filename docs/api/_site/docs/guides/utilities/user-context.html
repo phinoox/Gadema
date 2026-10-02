@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>IUserContext Interface </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="IUserContext Interface ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="iusercontext-interface">IUserContext Interface</h1>
+
+<p>The <code>IUserContext</code> interface provides a mechanism for accessing information about the currently authenticated user within the execution context of a request. It acts as a transient identity provider that is populated during the authentication phase and consumed throughout the application lifecycle.</p>
+<h2 id="1-purpose">1. Purpose</h2>
+<p>In GaDeMa, identity is not just data; it's an active state used to drive security and auditing. <code>IUserContext</code> serves three primary roles:</p>
+<ul>
+<li><strong>Identity Verification</strong>: Provides the <code>UserId</code> and <code>CurrentUser</code> entity for checking authentication status.</li>
+<li><strong>Authorization Context</strong>: Supplies user-specific <code>Roles</code> used by the <code>IPermissionEngine</code> to evaluate granular permissions.</li>
+<li><strong>Audit Provenance</strong>: Allows services (like <code>AuditService</code>) to record which user performed specific actions.</li>
+</ul>
+<h2 id="2-interface-definition">2. Interface Definition</h2>
+<pre><code class="lang-csharp">public interface IUserContext : IDisposable
+{
+    /// &lt;summary&gt;
+    /// Gets or sets the current authenticated user entity.
+    /// &lt;/summary&gt;
+    User? CurrentUser { get; set; }
+    
+    /// &lt;summary&gt;
+    /// Gets or sets the unique identifier of the current user, 
+    /// or null if not authenticated.
+    /// &lt;/summary&gt;
+    Guid? UserId { get; set; }
+    
+    /// &lt;summary&gt;
+    /// Gets or sets the hash of the API token used for authentication, if applicable.
+    /// &lt;/summary&gt;
+    string? ApiTokenHash { get; set; }
+    
+    /// &lt;summary&gt;
+    /// Gets or set the list of roles assigned to the current user for authorization checks.
+    /// &lt;/summary&gt;
+    List&lt;string&gt; Roles { get; set; }
+}
+</code></pre>
+<h2 id="3-lifecycle--implementation">3. Lifecycle &amp; Implementation</h2>
+<h3 id="the-usercontext-implementation">The <code>UserContext</code> Implementation</h3>
+<p>The concrete implementation, <code>UserContext</code>, is registered as a <strong>Scoped</strong> service in the Dependency Injection container. This means:</p>
+<ol>
+<li>A new instance is created for every unique HTTP request/session.</li>
+<li>The instance is destroyed at the end of the request, ensuring no identity leakage between users.</li>
+</ol>
+<h3 id="the-population-flow-middleware">The Population Flow (Middleware)</h3>
+<p>The <code>AuthMiddleware</code> is responsible for populating this context. When a request arrives:</p>
+<ol>
+<li>The middleware validates the authentication token/credentials.
+2.s If valid, it resolves the corresponding <code>User</code> from the database.</li>
+<li>It then sets the <code>UserId</code>, <code>CurrentUser</code>, and <code>Roles</code> on the scoped <code>IUserContext</code> instance for that specific request.</li>
+</ol>
+<h2 id="4-consumption-patterns">4. Consumption Patterns</h2>
+<h3 id="a-authorization-the-permission-engine">A. Authorization (The Permission Engine)</h3>
+<p>The <code>IPermissionEngine</code> consumes <code>IUserContext.Roles</code> to determine if a user has the necessary permissions to access a resource within a given scope (e.g., &quot;Can this user edit this Project?&quot;).</p>
+<h3 id="b-auditing-the-audit-service">B. Auditing (The Audit Service)</h3>
+<p>Services like <code>AuditService</code> consume <code>IUserContext.UserId</code> and <code>ApiTokenHash</code> to provide immutable proof of who performed an action, ensuring high-integrity audit logs.</p>
+<h2 id="5-testing-patterns">5. Testing Patterns</h2>
+<p>Testing identity requires different approaches depending on the test type.</p>
+<h3 id="unit-testing-mocking-identity">Unit Testing: Mocking Identity</h3>
+<p>For unit tests where you are testing a single service in isolation, use a mocking library (like Moq) to simulate the <code>IUserContext</code>. This is fast and does not require database access.</p>
+<pre><code class="lang-csharp">// Example: Simulating an authenticated Admin user in a unit test
+var mockUser = new User { Id = Guid.NewGuid(), UserName = &quot;TestAdmin&quot; };
+var userContextMock = new Mock&lt;IUserContext&gt;();
+
+userContextMock.SetupGet(x =&gt; x.UserId).Returns(mockUser.Id);
+userContextMock.SetupGet(x =&gt; x.CurrentUser).Returns(mockUser);
+userContextMock.SetupGet(x =&gt; x.Roles).Returns(new List&lt;string&gt; { &quot;Admin&quot; });
+
+// Inject the mock into your service under test
+var service = new ProjectService(..., userContextMock.Object);
+</code></pre>
+<h3 id="integration-testing-testusercontexthelper">Integration Testing: <code>TestUserContextHelper</code></h3>
+<p>For integration tests that run against a real (or in-memory) database, use the <code>TestUserContextHelper</code>. This helper automates the process of resolving services from your test factory and populating the context with an existing user from the database.</p>
+<p><strong>Crucial Requirement:</strong>
+The <code>TestUserContextHelper</code> relies on a user already existing in the database. You <strong>must</strong> ensure your test setup includes a seeding step that creates at least one active user before calling this helper to avoid identity mismatch errors during execution.</p>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Decoupling</strong>: Services depend on an interface, not the HTTP context, making them easier to unit test.</td>
+<td style="text-align: left;"><strong>State Management</strong>: Requires careful management of the Scoped lifecycle to prevent stale data.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Centralized Identity</strong>: Provides a single source of truth for identity throughout a request.</td>
+<td style="text-align: left;"><strong>Dependency Requirement</strong>: Most core services now implicitly depend on <code>IUserContext</code> being correctly populated by middleware.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/user-context.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Tagging System </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Tagging System ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="tagging-system">Tagging System</h1>
+
+<p>The GaDeMa tagging system is built on a <strong>Dual-Track Model</strong>. Instead of treating all tags as identical database entries, the architecture distinguishes between structural, code-defined categories and flexible, user-driven organization.</p>
+<p>This distinction ensures that core architectural constraints (like game mechanics or story structures) remain stable while allowing creators to apply infinite, organic categorization to their work.</p>
+<hr>
+<h2 id="1-static-tags-code-defined">1. Static Tags (Code-Defined)</h2>
+<p>Static tags are fundamental, structural elements of the system. They are defined as <code>Enums</code> in the codebase and represent categories that are intrinsic to the domain logic itself.</p>
+<h3 id="characteristics">Characteristics</h3>
+<ul>
+<li><strong>Stability</strong>: Since they are part of the compiled code, these tags are immutable at runtime.</li>
+<li><strong>Deterministic Identity</strong>: Every enum member is mapped to a unique, predictable GUID via the <code>EnumGuidExtensions</code>. This allows them to be used as reliable identifiers in database relationships and complex logic.</li>
+<li><strong>Scope</strong>: They represent &quot;hard&quot; categories such as <code>BaseTag</code> (e.g., Lore, Tutorial) or domain-specific tags like <code>GameTag</code> (e.g., Fire, Water) or <code>WritingTag</code>.</li>
+</ul>
+<h3 id="implementation-pattern">Implementation Pattern</h3>
+<p>Static tags are defined using the <code>[ModuleIndex]</code> attribute to establish their position in the system's global indexing scheme.</p>
+<pre><code class="lang-csharp">[ModuleIndex(2)]
+public enum GameTag
+{
+    Fire = 0,
+    Water = 1,
+    Stunned = 2
+}
+</code></pre>
+<hr>
+<h2 id="2-dynamic-tags-database-driven">2. Dynamic Tags (Database-Driven)</h2>
+<p>Dynamic tags are the &quot;soft&quot; organizational layer. They represent the organic, user-driven categorization that emerges during the creative process.</p>
+<h3 id="characteristics-1">Characteristics</h3>
+<ul>
+<li><strong>Flexability</strong>: Users can create, rename, and delete these tags at runtime without code changes.</li>
+<li><strong>Unstructured Growth</strong>: They allow for infinite expansion (e.g., tagging a scene as &quot;Spooky&quot; or &quot;High Tension&quot;) which cannot be predicted by developers.</li>
+<li><strong>Storage</strong>: These are stored in the <code>MetaTag</code> table and linked to content items via many-to-many junction tables.</li>
+</ul>
+<h3 id="implementation-pattern-1">Implementation Pattern</h3>
+<p>Dynamic tags are managed through the <code>IMetadataService</code>, which handles the creation and persistence of <code>MetaTag</code> entities within the database.</p>
+<hr>
+<h2 id="3-comparison-summary">3. Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Static Tags (Enums)</th>
+<th style="text-align: left;">Dynamic Tags (Database)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Definition</strong></td>
+<td style="text-align: left;">Hardcoded in the codebase.</td>
+<td style="text-align: left;">Created by users at runtime.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Stability</strong></td>
+<td style="text-align: left;">High (Immutable).</td>
+<td style="text-align: left;">Low (Mutable).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity</strong></td>
+<td style="text-align: left;">Deterministic GUIDs via <code>[ModuleIndex]</code>.</td>
+<td style="text-align: left;">Randomly generated UUIDs.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Use</strong></td>
+<td style="text-align: left;">Structural classification &amp; game mechanics.</td>
+<td style="text-align: left;">Creative organization &amp; discovery.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Approach</th>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Static Tags</strong></td>
+<td style="text-align: left;">Extremely fast, type-safe, and provides a reliable &quot;Source of Truth&quot; for core logic.</td>
+<td style="text-align: left;">Requires a code deployment to add or change categories.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Dynamic Tags</strong></td>
+<td style="text-align: left;">Provides infinite flexibility for the user; no technical friction for new ideas.</td>
+<td style="text-align: left;">Harder to enforce strict rules; requires database management and can lead to fragmentation (e.g., &quot;Spooky&quot; vs &quot;Spookey&quot;).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/systems/tagging.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

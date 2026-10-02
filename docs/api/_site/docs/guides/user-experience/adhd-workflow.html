@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127912; User Experience &amp; ADHD Workflow </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127912; User Experience &amp; ADHD Workflow ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-user-experience--adhd-workflow">🎨 User Experience &amp; ADHD Workflow</h1>
+
+<hr>
+<h2 id="-core-philosophy">🧠 Core Philosophy</h2>
+<blockquote>
+<p><strong>Structure should serve the writer, not constrain them.</strong></p>
+</blockquote>
+<p>The system matches how ADHD brains actually work: non-linearly, associatively, and in bursts of focus followed by decision paralysis. Every design decision reduces friction between &quot;I have an idea&quot; and &quot;that idea is safely stored.&quot;</p>
+<hr>
+<h2 id="-core-architecture">📐 Core Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│                    GaDeMa CMS                        │
+├─────────────────────────────────────────────────────┤
+│  ┌──────────────┬────────────────────┬──────────┐   │
+│  │  Content     │  Relationships     │  Meta-    │   │
+│  │  Items       │  (many-to-many)    │  Data     │   │
+│  │              │                    │           │   │
+│  ├──────────────┼────────────────────┤──────────┤   │
+│  │ Story →      │ • Scenes link to   │• Version- │   │
+│  │ Sequences    │   Beats (M2M)      │  aware    │   │
+│  │              │ • Characters       │  history  │   │
+│  │              │   linked via       │           │   │
+│  │              │   CharacterDetails  │          │   │
+│  │              │   (FK-as-PK pattern)│          │   │
+│  └──────────────┴────────────────────┴──────────┘   │
+│                          │                           │
+│                        ┌─┴─┐                         │
+│                        │📷 │ ← Only manual snapshots │
+│                        │💾 │ ← Autosave = fail-safe  │
+│                        └───┘                         │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Key design decisions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>PK Strategy</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ProjectTaskComments</code></td>
+<td>FK (<code>TaskId</code>) as PK column</td>
+<td>Eliminates nullable primary keys; row = comment</td>
+</tr>
+<tr>
+<td><code>ContentTags</code></td>
+<td>Self-composite key (<code>Id</code>) + FKs inline</td>
+<td>No separate junction table needed</td>
+</tr>
+<tr>
+<td><code>CharacterBackground</code></td>
+<td>FK (<code>MetaInfoId</code>) as PK column</td>
+<td>Direct link to character, no intermediate ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-uiux-design-decisions">🎨 UI/UX Design Decisions</h2>
+<h3 id="1-split-workspace-with-ghost-preview">1. Split Workspace with Ghost Preview</h3>
+<pre><code>┌──────────────┬─────────────────────────┐
+│              │   OVERVIEW (collapsible)│
+│  FOCUS MODE  ├─────────────────────────┤
+│  Write       │ ┌─────────────────────┐│
+│  here        │ │ Where to go next?  ││
+│              │ │ • Quick wins: [ ]   ││
+│ ───────────  │ │ • Connect X → Y     ││
+│  Timeline    │ │ • Review outline    ││
+│  (collapsible)│ └─────────────────────┘│
+│  • Scene 1.1 ▼│                         │
+│  • Scene 1.2 ◄┤  [Dismiss]   [Keep showing]│
+│  • Scene 1.3 ◄└─────────────────────────┘│
+└──────────────┴───────────────────────────┘
+</code></pre>
+<ul>
+<li><strong>Ghost preview:</strong> Small thumbnail of related elements visible but collapsible</li>
+<li><strong>Toggle with keyboard shortcut</strong> — no mouse hunting needed</li>
+<li>Overview stays visible when collapsed, never hidden permanently</li>
+</ul>
+<hr>
+<h3 id="2-two-tier-save-system-the-core-ritual">2. Two-Tier Save System (The Core Ritual)</h3>
+<h4 id="minor-save-background">Minor Save (Background)</h4>
+<pre><code>[Save] → &quot;✓ Saved in 0.4s • +127 words&quot; → auto-dismisses after 3s
+</code></pre>
+<ul>
+<li><strong>Overwrites</strong> the last autosave silently</li>
+<li><strong>No version number shown.</strong> Never says &quot;v5.&quot;</li>
+<li><strong>No history entry created.</strong> Invisible to version timeline.</li>
+<li>Purpose: <em>Safety only</em> — failsafe if you forget or crash.</li>
+</ul>
+<h4 id="snapshot-save-intentional">Snapshot Save (Intentional)</h4>
+<pre><code>[📸 Save Snapshot] → &quot;✓ Saved as Milestone #12&quot; → comment field appears
+</code></pre>
+<ul>
+<li><strong>Creates a real version</strong> in the timeline</li>
+<li><strong>Requires one-line comment</strong> — forces micro-reflection</li>
+<li><strong>Suggestions appear ONLY after this action</strong></li>
+<li>Purpose: <em>Commitment &amp; reflection</em> — marking a boundary you chose</li>
+</ul>
+<h4 id="autosave-the-silent-guardian">Autosave (The Silent Guardian)</h4>
+<ul>
+<li>Runs every 30–60 seconds in background</li>
+<li>Creates <code>.autosaved</code> versions internally, never visible to the user</li>
+<li>If tab crashes or browser closes → reopens with last autosaved state immediately</li>
+<li><strong>Never contributes</strong> to versioned snapshot history</li>
+</ul>
+<hr>
+<h3 id="3-version-history-as-a-visual-timeline-not-a-list">3. Version History as a Visual Timeline (Not a List)</h3>
+<pre><code>[←] v1 ────► [v2] ─────► [v3] ◄──── [v4]
+     (Jan 8)       (Jan 10)   (Jan 12)    (Jan 14)
+              │          │         │        │
+           &quot;Intro&quot;   &quot;Added door motif&quot; &quot;Blocked on X research&quot;
+</code></pre>
+<ul>
+<li><strong>Horizontal scroll</strong> — not a dropdown or modal</li>
+<li>Clicking any version jumps back to <em>that exact state</em></li>
+<li>Comment appears as hover tooltip (not a full modal)</li>
+<li>Relative labels (<code>prev</code>, <code>next</code>) make navigation intuitive</li>
+</ul>
+<hr>
+<h3 id="4-where-to-go-from-here-panel">4. &quot;Where To Go From Here?&quot; Panel</h3>
+<p>Appears <strong>only after</strong> a Snapshot Save. Dismissible at any time.</p>
+<pre><code>┌─────────────────────────────────────────────┐
+│  ✨ Suggestions for what's next             │
+│                                            │
+│  ⚡ Quick wins (no new research):           │
+│     [ ] Add a character emotion tag         │
+│     [ ] Tag this scene with &quot;tension&quot;       │
+│                                             │
+│  🔍 Related items to review:                │
+│     • The door motif appears in Scene 7    │
+│       → Should we resolve it?              │
+│     • CharacterBackground for Protagonist  │
+│       is outdated (last edited 3 weeks ago)│
+└─────────────────────────────────────────────┘
+
+[Dismiss until next save]   [Keep showing me]
+</code></pre>
+<p><strong>Key rules:</strong></p>
+<ul>
+<li>Suggestions are <strong>tied to the version</strong> — if you undo to v2, suggestions disappear</li>
+<li>Can be dismissed without guilt (&quot;I'll look at this on v4&quot;)</li>
+<li>No forms or multi-step setup required — single click to act</li>
+</ul>
+<hr>
+<h3 id="5-connection-threads-visual-not-forced">5. Connection Threads (Visual, Not Forced)</h3>
+<pre><code>[Scene: The Confrontation] 
+         │
+    ┌────┴────┐
+    │         │
+[Beat]   [Beat]
+  ⚡        ✨
+   \      /
+    \    /
+[Outstanding beat in another scene that references this] → &quot;This might connect here&quot;
+</code></pre>
+<ul>
+<li>Threads <strong>pulse</strong> when an unresolved link exists (a beat referenced elsewhere but not yet written)</li>
+<li>Dragging a thread between two elements creates the relationship — no forms</li>
+<li>If you don't know where something belongs? Leave it floating. The system suggests connections over time as you write more.</li>
+</ul>
+<hr>
+<h3 id="6-idea-dump-zone-non-linear-capture">6. Idea Dump Zone (Non-Linear Capture)</h3>
+<pre><code>┌─────────────────────────┐
+│  IDEA DUMP (auto-saved) │ ← Always visible, never blocking
+├─────────────────────────┤
+│ • What if the weapon    │
+│   glows when someone is lying?          │
+│                           │
+│ • The red thread motif   │
+│   appears in Scene 7... │
+│                           │
+│ [Drag a beat here]       │ ← Drag-and-drop into existing scene
+│ [Attach to existing scene]│
+└─────────────────────────┘
+</code></pre>
+<ul>
+<li>Ideas are saved instantly (no &quot;write them down&quot; friction)</li>
+<li>Can drag any idea into an existing scene later — no commitment required</li>
+<li>System gently suggests: <em>&quot;You wrote about X in Scene 3. Do you want to connect this?&quot;</em></li>
+</ul>
+<hr>
+<h3 id="7-time-based-scaffolding-modes">7. Time-Based Scaffolding Modes</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What It Hides</th>
+<th>When To Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>25-min sprint</strong></td>
+<td>Everything except current scene + timer</td>
+<td>When writer's block hits — reduce noise</td>
+</tr>
+<tr>
+<td><strong>Freeform hour</strong></td>
+<td>All structure; no tags, no beats required</td>
+<td>First draft, discovery writing</td>
+</tr>
+<tr>
+<td><strong>Retroactive planning</strong></td>
+<td>Writer writes first → AI asks: <em>&quot;What beats did you accidentally create?&quot;</em></td>
+<td>After the fact structuring</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-the-complete-flow-end-to-end">🧩 The Complete Flow (End-to-End)</h2>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│  PHASE 1: FLOW STATE                                │
+│  ───────────────────                                │
+│  • Clean canvas — no suggestions visible            │
+│  • Autosave happening silently in background        │
+│  • Idea Dump open for capture (but non-intrusive)   │
+│  • No decisions to make, no history to navigate     │
+└───────────────┬─────────────────────────────────────┘
+                ▼ [User stops typing / takes a break]
+┌─────────────────────────────────────────────────────┐
+│  PHASE 2: COMMIT RITUAL                             │
+│  ───────────────────                                │
+│  • Click [📸 Save Snapshot]                         │
+│  • One-line comment appears (required)              │
+│  • Version enters the timeline                      │
+│  • Suggestions panel fades in *after* save          │
+└───────────────┬─────────────────────────────────────┘
+                ▼ [User chooses next action]
+┌─────────────────────────────────────────────────────┐
+│  PHASE 3: DECISION POINT                            │
+│  ───────────────────                                │
+│  • Click &quot;Dismiss Suggestions&quot; → back to flow       │
+│  • Click a suggestion → it becomes the next task   │
+│  • Or open a new draft without closing this one     │
+└───────────────┬─────────────────────────────────────┘
+                ▼ [User continues or dismisses]
+┌─────────────────────────────────────────────────────┐
+│  PHASE 4: BACK TO FLOW                              │
+│  ───────────────────                                │
+│  • Suggestions can be dismissed                     │
+│  • Overview mode collapses suggestions               │
+│  • User returns to clean writing space              │
+└─────────────────────────────────────────────────────┘
+
+This loop is the core of the ADHD-friendly workflow:
+Flow → Commit → Decide → Flow → ...
+</code></pre>
+<hr>
+<h2 id="-what-we-explicitly-avoid-anti-patterns">🚫 What We Explicitly Avoid (Anti-Patterns)</h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Why It Fails for ADHD</th>
+<th>Our Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto-save prompts (&quot;You haven't saved!&quot;)</td>
+<td>Creates anxiety, feels like nagging</td>
+<td>Silent autosave; only snapshot creates visible history</td>
+</tr>
+<tr>
+<td>Mandatory outlines before writing</td>
+<td>Blocks momentum entirely</td>
+<td>Outlines are optional attachments on any layer</td>
+</tr>
+<tr>
+<td>Multi-step versioning dialogs</td>
+<td>Friction kills the completion feeling</td>
+<td>One-click snapshot → one-line comment → done</td>
+</tr>
+<tr>
+<td>Linear tree navigation (Scene 1.1 → 1.2 → 1.3)</td>
+<td>Doesn't match how ADHD brains associate ideas</td>
+<td>Graph-based linking: drag threads between any elements</td>
+</tr>
+<tr>
+<td>Pop-ups and modals for suggestions</td>
+<td>Breaks flow, feels intrusive</td>
+<td>Suggestions appear only after intentional save; dismissible at any time</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="-summary-of-core-principles">🧭 Summary of Core Principles</h2>
+<ol>
+<li><strong>Progressive disclosure</strong> — Hide complexity until the user is ready to engage with it (save → then show suggestions)</li>
+<li><strong>Ritual over friction</strong> — Turn &quot;I should have saved&quot; into a satisfying completion ritual that feels like progress, not work</li>
+<li><strong>Capture &gt; structure</strong> — Ideas are captured first; organization comes later as an optional layer on top</li>
+<li><strong>Visual timeline over lists</strong> — Temporal relationships are shown spatially (horizontal scroll), not hierarchically (dropdowns)</li>
+<li><strong>Suggestions are suggestions</strong> — Never required, never sticky, always dismissible with zero guilt</li>
+</ol>
+<hr>
+<p>This is the complete design system for GaDeMa as an ADHD-friendly CMS. It's built on the insight that the tool shouldn't <em>fix</em> the writer's thinking process — it should match it and provide scaffolding only when explicitly invited to do so.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/user-experience/adhd-workflow.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

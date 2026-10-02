@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityValueEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Identity/IdentityValueEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity
+  summary: Configuration for IdentityValue entity.
+  example: []
   syntax:
     content: 'public class IdentityValueEntityTypeConfiguration : IEntityTypeConfiguration<IdentityValue>'
     content.vb: Public Class IdentityValueEntityTypeConfiguration Implements IEntityTypeConfiguration(Of IdentityValue)
@@ -57,7 +59,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Identity/IdentityValueEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 11
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity

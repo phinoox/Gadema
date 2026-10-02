@@ -138,7 +138,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SyncAsync
     path: src/Gadema.Api/CoreServices/Services/MetadataService.cs
-    startLine: 43
+    startLine: 44
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.CoreServices.Services
@@ -179,7 +179,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ApplyUpdatesAsync
     path: src/Gadema.Api/CoreServices/Services/MetadataService.cs
-    startLine: 58
+    startLine: 59
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.CoreServices.Services
@@ -218,7 +218,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteAsync
     path: src/Gadema.Api/CoreServices/Services/MetadataService.cs
-    startLine: 91
+    startLine: 92
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.CoreServices.Services

@@ -32,7 +32,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: User
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 16
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -78,19 +78,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 22
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
   summary: Gets or sets the unique identifier for the user.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Access.User.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Access.User.UserName
   commentId: P:Gadema.Core.Models.Access.User.UserName
   id: UserName
@@ -109,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UserName
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 27
+    startLine: 21
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -161,7 +171,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Email
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 33
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -229,7 +239,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DisplayName
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 39
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -283,7 +293,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ImageUri
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 45
+    startLine: 39
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -326,7 +336,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: RecoveryCodeHash
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 52
+    startLine: 46
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -369,7 +379,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreatedAt
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 58
+    startLine: 52
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -400,7 +410,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: LastLogin
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 63
+    startLine: 57
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -431,7 +441,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsActive
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 68
+    startLine: 62
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -462,7 +472,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: PasswordHash
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 73
+    startLine: 67
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -493,7 +503,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Provider
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 78
+    startLine: 72
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -524,7 +534,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProviderLinks
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 83
+    startLine: 77
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -555,7 +565,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: EmailConfirmed
     path: src/Gadema.Core/Models/Access/User.cs
-    startLine: 88
+    startLine: 82
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access

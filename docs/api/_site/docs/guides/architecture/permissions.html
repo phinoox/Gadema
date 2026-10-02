@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128737;️ Authorization Architecture </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128737;️ Authorization Architecture ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-authorization-architecture">🛡️ Authorization Architecture</h1>
+
+<p>The Anima Lab uses a <strong>Decoupled, Multi-Dimensional Authorization Engine</strong>. Instead of hardcoded role checks inside services, we use a &quot;Brain&quot; (<code>IPermissionEngine</code>) that evaluates granular permissions against specific resource scopes via pluggable strategies.</p>
+<p>This architecture separates <strong>Identity</strong> (who you are) from <strong>Authorization</strong> (what you can do), and allows for complex, context-aware decisions (e.g., <em>&quot;Does this user have the 'Editor' role within this specific project?&quot;</em>).</p>
+<h2 id="1-the-architectural-hierarchy">1. The Architectural Hierarchy</h2>
+<p>The system is organized into four distinct layers to ensure strict separation of concerns:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Layer</th>
+<th style="text-align: left;">Responsibility</th>
+<th style="text-align: left;">Key Components</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Law</strong></td>
+<td style="text-align: left;"><code>GademaBaseContext</code></td>
+<td style="text-align: left;">Enforces global invariants (e.g., <code>ISoftDelete</code>) via Expression Trees.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Brain</strong></td>
+<td style="text-align: left;"><code>IPermissionEngine</code></td>
+<td style="text-align: left;">Orchestrates decision-making by iterating through injected strategies.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Muscle</strong></td>
+<td style="text-align: left;"><code>IPermissionStrategy</code></td>
+<td style="text-align: left;">Executes the actual data/role lookups (e.g., <code>ProjectRoleStrategy</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Domain</strong></td>
+<td style="text-align: left;"><code>DomainServices</code></td>
+<td style="text-align: left;">Performs business logic and calls the engine for access checks.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-the-request-lifecycle-the-four-gate-flow">2. The Request Lifecycle (The Four-Gate Flow)</h2>
+<p>Every request follows this sequence of gates to ensure security and data integrity:</p>
+<ol>
+<li><strong>Gate 1: Visibility Gate (Is it visible?)</strong>
+<ul>
+<li>Checks the <code>IsPublic</code> flag on the resource.</li>
+<li>If <code>true</code>, access is granted for <strong>viewing only</strong>.</li>
+</ul>
+</li>
+<li><strong>Gate 2: Identity Gate (Who are you?)</strong>
+<ul>
+<li>Uses <code>IUserContext</code> to verify authentication.</li>
+<li>If anonymous and the resource is private <span class="math">\(\rightarrow\)</span> <strong>Denied</strong>.</li>
+</ul>
+</li>
+<li><strong>Gate 3: Authorization Gate (Can you do this?)</strong>
+<ul>
+<li>Calls <code>IPermissionEngine.CheckPermissionAsync(...)</code>.</li>
+<li>The engine iterates through all registered <code>IPermissionStrategy</code> implementations until one returns <code>true</code>.</li>
+</ul>
+</li>
+<li><strong>Gate 4: Execution Gate (The Work)</strong>
+<ul>
+<li>If authorized, the Service proceeds to call the <code>IIdentitySyncStrategy</code> to perform the atomic &quot;Soul &amp; Body&quot; update.</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-developer-guide-extending-the-system">3. Developer Guide: Extending the System</h2>
+<h3 id="a-adding-a-new-permission">A. Adding a New Permission</h3>
+<p>To add a new action (e.g., <code>CanPublish</code>), simply add it to the <code>Permission</code> enum in the core models.</p>
+<pre><code class="lang-csharp">// src/Gadema.Core/Models/Base/Permissions/Permission.cs
+public enum Permission {
+    CanView, CanCreate, CanEdit, CanDelete, 
+    CanPublish // New permission added here
+}
+</code></pre>
+<h3 id="b-implementing-a-new-strategy-the-how">B. Implementing a New Strategy (The &quot;How&quot;)</h3>
+<p>If you have new logic (e.g., checking if a user is part of a Guild), create a class implementing <code>IPermissionStrategy</code>.</p>
+<ol>
+<li><strong>Create the class</strong>:
+<pre><code class="lang-csharp">public class GuildPermissionStrategy : IPermissionStrategy {
+    public async Task&lt;bool&gt; EvaluateAsync(Guid userId, Guid scopeId, Permission permission) {
+        // Implement your custom logic here (e.g., query the database)
+        return await _db.GuildMembers.AnyAsync(m =&gt; m.UserId == userId &amp;&amp; m.GuildId == scopeId);
+    }
+}
+</code></pre>
+</li>
+<li><strong>Register it in DI</strong>:
+In <code>DbInjection.cs</code>, add: <code>services.AddScoped&lt;IPermissionStrategy, GuildPermissionStrategy&gt;();</code></li>
+</ol>
+<h3 id="c-using-permissions-in-a-service-the-call">C. Using Permissions in a Service (The &quot;Call&quot;)</h3>
+<p>To prevent &quot;magic&quot; and ensure visibility, always call the engine explicitly in your domain services.</p>
+<pre><code class="lang-csharp">public async Task UpdateStoryAsync(Guid storyId, StoryUpdateDto dto) {
+    // 1. Explicit Authorization Check
+    bool isAuthorized = await _permissionEngine.CheckPermissionAsync(
+        _userContext.CurrentUser.Id, 
+        storyId, 
+        Permission.CanEdit
+    );
+
+    if (!isAuthorized) throw new UnauthorizedAccessException();
+
+    // 2. Proceed with Business Logic
+    await _identitySyncStrategy.SyncAsync(storyId, dto);
+}
+</code></pre>
+<h2 id="4-core-principles-to-remember">4. Core Principles to Remember</h2>
+<ul>
+<li><strong>The &quot;Dumb&quot; Engine</strong>: The <code>PermissionEngine</code> should not know about databases or specific entities; it only orchestrates the strategies.</li>
+<li><strong>No Magic Extensions</strong>: Avoid adding extension methods like <code>.HasPermission()</code> directly onto primitives (<code>Guid</code>). This keeps authorization explicit and easy to audit in the service layer.</li>
+<li><strong>The Law is Absolute</strong>: Any entity implementing <code>ISoftDelete</code> must be filtered by the <code>GademaBaseContext</code> automatically via its expression tree implementation.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/permissions.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

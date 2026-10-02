@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128506;️ Status: Narrative Structure (Macro View) </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128506;️ Status: Narrative Structure (Macro View) ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-narrative-structure-macro-view">🗺️ Status: Narrative Structure (Macro View)</h1>
+
+<p>This document provides a validation report comparing the hierarchical progression and structural concepts outlined in <code>structure.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Hierarchy (Story <span class="math">\(\rightarrow\)</span> Chapter <span class="math">\(\rightarrow\)</span> Scene)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The data models for <code>Story</code>, <code>StoryChapter</code>, and <code>Scene</code> are present. The hierarchical relationship is supported through foreign keys (<code>StoryId</code>, <code>ParentId</code>), allowing for the described nesting of chapters within stories and scenes within chapters.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Scene as a &quot;Nexus&quot;</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The implementation of <code>CharacterState</code> and <code>CharacterRelation</code> being linked to the scene context (via <code>SceneStoryBeatMapping</code> or direct association) realizes the concept of the scene as an intersection between static structure and dynamic character progression.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Structural Markers (Segments/Beats)</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;"><strong>StoryBeats</strong>: The implementation of <code>StoryBeat</code> and its mapping to scenes is solid. <br> <strong>SceneSegments</strong>: As noted in the <code>scene-canvas.md</code> audit, the specific model for non-textual &quot;interactive markers&quot; (<code>SceneSegment</code>) is currently missing from the codebase.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Branching Logic</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The existence of <code>DialogueBranch</code> and <code>DialogueNode</code> models ensures that the branching narrative capability described in the architecture is supported by the data layer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Implement SceneSegments</strong>: To fully realize the &quot;Structural Anchor&quot; pillar, implement a formal <code>SceneSegment</code> entity to handle the non-textual interactive markers (e.g., action triggers) mentioned in the guide.</li>
+<li><strong>Validate Hierarchical Integrity</strong>: Ensure that the service layer enforces the hierarchical constraints (e.g., a Scene cannot exist without a valid parent Chapter/Story) to maintain the structural integrity of the &quot;Hierarchy Chain.&quot;</li>
+<li><strong>Strengthen Decision Logic</strong>: As part of the branching narrative implementation, focus on creating the logic that allows <code>DialogueNodes</code> to act as true decision points within the service layer.</li>
+</ul>
+<h2 id="-hierarchy-audit">📋 Hierarchy Audit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Level</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Story</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Top-level container implemented.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Chapter</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Organizational unit with parent-child linking implemented.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scene</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Fundamental unit with complex state links implemented.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Beat/Segment</strong></td>
+<td style="text-align: left;">⚠️ In Progress</td>
+<td style="text-align: left;">Beats are active; Segments require implementation.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/structure_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

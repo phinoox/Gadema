@@ -4,6 +4,8 @@ items:
   commentId: N:Gadema.Data.Configurations.Writing.Narrative
   id: Gadema.Data.Configurations.Writing.Narrative
   children:
+  - Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  - Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
   - Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
   - Gadema.Data.Configurations.Writing.Narrative.DialogueNodeEntityTypeConfiguration
   - Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration
@@ -27,6 +29,18 @@ items:
   assemblies:
   - Gadema.Data
 references:
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.html
+  name: CharacterRelationEntityTypeConfiguration
+  nameWithType: CharacterRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+  commentId: T:Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+  href: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.html
+  name: CharacterStateEntityTypeConfiguration
+  nameWithType: CharacterStateEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
 - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
   commentId: T:Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
   href: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.html

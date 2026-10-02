@@ -13,6 +13,9 @@
     "content": [
       {
         "files": ["api_temp/**/*.yml"]
+      },
+      {
+        "files": ["docs/guides/**/*.md"]
       }
     ],
     "template": ["default"],

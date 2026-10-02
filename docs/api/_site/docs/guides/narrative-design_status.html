@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127917; Status: Narrative Design Philosophy </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127917; Status: Narrative Design Philosophy ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-narrative-design-philosophy">🎭 Status: Narrative Design Philosophy</h1>
+
+<p>This document provides a validation report comparing the core design philosophy and architectural principles outlined in <code>narrative-design.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Graph, Not Tree (Flexibility)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The architecture successfully implements a graph model where relationships are links rather than rigid hierarchies. This is evidenced by many-to-many mappings and the ability to re-link entities without structural breakage.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scale Invariance</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Terminology and logic scale seamlessly from <code>Story</code> down to <code>Beat</code>. The use of <code>MetaInfo</code> as a universal anchor ensures that the &quot;identity&quot; logic remains identical across all scales.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Two Primary Workflows</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">While the data models for both &quot;Systems Thinking&quot; (Sequences/Beats) and &quot;Discovery Writing&quot; (independent Scenes/Beats) are present, the tool's ability to seamlessly support the <em>transition</em> between these modes via a single unified interface is an ongoing UX/API orchestration challenge.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Relationship Logic</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Explicit links are implemented through junction tables and foreign keys (e.g., <code>SceneStoryBeatMapping</code>, <code>LinkedBeatIds</code> in DTOs), supporting non-linear associations.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Outline as Annotation</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Outlines are implemented as optional, decoupled metadata (<code>StoryOutline</code>) rather than rigid structural requirements, allowing for the described &quot;scaffolding&quot; approach.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Solidify Re-organization Logic</strong>: Ensure that moving entities (e.g., re-parenting a Scene) is handled by robust service logic that maintains all associated links and metadata without side effects.</li>
+<li><strong>Bridge the Workflow Gap</strong>: Focus on the API/UI orchestration required to allow a writer to move seamlessly from &quot;Discovery&quot; (capturing loose beats) to &quot;Systems&quot; (organizing them into sequences) without friction.</li>
+<li><strong>Formalize Relationship Management</strong>: As more many-to-many relationships are added, ensure that the <code>RelationshipService</code> or similar logic provides clear, transactional ways to manage these links to prevent &quot;orphan&quot; connections in the graph.</li>
+</ul>
+<h2 id="-philosophy-alignment-check">📋 Philosophy Alignment Check</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Principle</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Non-Linearity</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Graph model allows for non-linear paths.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scale Invariance</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Universal anchor pattern (<code>MetaInfo</code>) enables this.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Decoupled Structure</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Outlines and Sequences are optional/annotative.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/narrative-design_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

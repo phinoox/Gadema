@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128737;️ Security &amp; Identity Architecture </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128737;️ Security &amp; Identity Architecture ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-security--identity-architecture">🛡️ Security &amp; Identity Architecture</h1>
+
+<p>This guide defines the security implementation, authentication protocols, and data protection strategies for Anima Lab. It covers everything from JWT management to file upload sanitization.</p>
+<h2 id="1-authentication--authorization-protocols">1. Authentication &amp; Authorization Protocols</h2>
+<p>Anima Lab uses a multi-layered approach to ensure that only authorized users can access sensitive content and perform critical actions.</p>
+<h3 id="11-identity-management">1.1 Identity Management</h3>
+<ul>
+<li><strong>JWT Bearer Tokens</strong>: Uses HS256 (HMAC-SHA256) with a 1-hour expiry for stateless API authentication.</li>
+<li><strong>Refresh Token Rotation</strong>: To mitigate the risk of stolen tokens, every use of a refresh token issues a new one and invalidates the old one.</li>
+<li><strong>Two-Factor Authentication (2FA)</strong>: Supports TOTP (Time-based One-Time Password) via Google Authenticator or Authy to provide an extra layer of security.</li>
+<li><strong>Recovery Codes</strong>: Provides eight single-use base64 recovery codes for users who lose access to their 2FA device.</li>
+</ul>
+<h3 id="12-authorization-model">1.2 Authorization Model</h3>
+<p>The system employs a <strong>Capability-Based Authorization</strong> model rather than simple role checks:</p>
+<ol>
+<li><strong>Identity Verification</strong>: Confirms the user is authenticated via <code>IUserContext</code>.</li>
+<li><strong>Ownership Check</strong>: If the user owns the resource, full access is granted (the &quot;Owner&quot; bypass).</li>
+<li><strong>Permission Evaluation</strong>: For non-owners, the <code>IPermissionEngine</code> evaluates granular permissions (e.g., <code>CanEdit</code>, <code>CanPublish</code>) against the user's role and the resource's specific policy.</li>
+</ol>
+<hr>
+<h2 id="2-data-protection--security-best-practices">2. Data Protection &amp; Security Best Practices</h2>
+<h3 id="21-password-security">2.1 Password Security</h3>
+<ul>
+<li><strong>Hashing Algorithm</strong>: All passwords are hashed using <strong>BCrypt</strong> via PBKDF2.</li>
+<li><strong>Implementation</strong>: We use a unique 32-byte random salt per password to prevent rainbow table attacks.</li>
+<li><strong>Complexity Requirements</strong>: Minimum 8 characters, including uppercase, lowercase, digits, and special characters.</li>
+</ul>
+<h3 id="22-file-upload-sanitization">2.2 File Upload Sanitization</h3>
+<p>To prevent malicious uploads (e. Wrappers/OOM attacks), every upload follows this strict pipeline:</p>
+<ol>
+<li><strong>MIME Type Validation</strong>: Validates against a strict whitelist (<code>image/png</code>, <code>image/jpeg</code>, <code>application/pdf</code>) <strong>before</strong> any processing.</li>
+<li><strong>Size Constraint</strong>: Rejects files exceeding the 100MB limit immediately.</li>
+<li><strong>Filename Sanitization</strong>: Strips directory traversal attempts and prefixes filenames with a unique UUID to prevent collisions and path injection.</li>
+</ol>
+<h3 id="23-input-sanitization-xss-prevention">2.3 Input Sanitization (XSS Prevention)</h3>
+<ul>
+<li>All user-generated text (e.g., <code>Description</code>, <code>CommentText</code>) is encoded using <code>HtmlEncoder.Encode()</code> before being stored or rendered to prevent Cross-Site Scripting (XSS).</li>
+</ul>
+<hr>
+<h2 id="3-infrastructure-hardening">3. Infrastructure Hardening</h2>
+<h3 id="31-api-security">3.1 API Security</h3>
+<ul>
+<li><strong>Rate Limiting</strong>: Enforced at the Caddy reverse proxy level to prevent brute force and DDoS attacks:
+<ul>
+<li><code>General API</code>: 100 req/min per IP.</li>
+<li><code>Auth Endpoints</code>: 1000 req/hour per IP.</li>
+<li><code>Export Endpoints</code>: 5 req/min (due to high CPU cost).</li>
+</ul>
+</li>
+<li><strong>CORS Policy</strong>: Strictly configured to prevent unauthorized cross-origin requests in production environments.</li>
+</ul>
+<h3 id="32-transport-security">3.2 Transport Security</h3>
+<ul>
+<li><strong>HTTPS Enforcement</strong>: All traffic must be served over TLS.</li>
+<li><strong>Security Headers</strong>: The Caddy proxy injects critical headers:
+<ul>
+<li><code>Strict-Transport-Security</code> (HSTS)</li>
+<li><code>X-Content-Type-Options: nosniff</code></li>
+<li><code>X-Frame-Options: SAMEORIGIN</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-developer-checklist-for-secure-implementation">4. Developer Checklist for Secure Implementation</h2>
+<ul>
+<li>[ ] <strong>JWT Key</strong>: Is the signing key <span class="math">\(\ge\)</span> 64 random bytes?</li>
+<li>[ ] <strong>Clock Skew</strong>: Is <code>ClockSkew</code> set to <code>TimeSpan.Zero</code> in your JWT configuration?</li>
+<li>[ ] <strong>Validation</strong>: Are you checking <code>ModelState.IsValid</code> at the start of every controller action?</li>
+<li>[ ] <strong>Streaming</strong>: Are you using <code>FileStream</code> for uploads instead of loading bytes into memory?</li>
+<li>[ ] <strong>Logging</strong>: Ensure sensitive data (passwords, tokens) is NEVER written to logs.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/security.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

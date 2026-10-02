@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127756; Anima Lab Documentation Index </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127756; Anima Lab Documentation Index ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-anima-lab-documentation-index">🌌 Anima Lab Documentation Index</h1>
+
+<p>This document provides a functional overview of the documentation. Each entry describes the core information contained within the guide and its current implementation status.</p>
+<h2 id="-the-status-pattern">🧭 The Status Pattern</h2>
+<p>Every guide is accompanied by a <code>[filename]_status.md</code> file used for technical validation.</p>
+<ul>
+<li>✅ <strong>Match</strong>: Concept fully implemented.</li>
+<li>⚠️ <strong>Partial / In Progress</strong>: Implementation is incomplete or evolving.</li>
+<li>ℹ️ <strong>Conceptual / UI-Driven</strong>: Design goals/UX patterns.</li>
+</ul>
+<hr>
+<h2 id="-access--identity">🧬 Access &amp; Identity</h2>
+<p>The foundation of the security model, managing user identities and project-scoped access.</p>
+<ul>
+<li><a href="access/overview.html">Overview</a>: The fundamental identity anchor and scoped access model. <em>[Status: ✅ Match]</em></li>
+<li><a href="access/project-member.html">Project Member</a>: Roles and membership within a specific project. <em>[Status: ✅ Match]</em></li>
+<li><a href="access/project-token.html">Project Token</a>: Secure, hashed keys for automated system access. <em>[Status: ✅ Match]</em></li>
+<li><a href="access/user.html">User</a>: The central identity anchor for all system interactions. <em>[Status: ✅ Match]</em></li>
+</ul>
+<h2 id="-architecture--infrastructure">🏗️ Architecture &amp; Infrastructure</h2>
+<p>The technical blueprints for core patterns, permissions, and performance.</p>
+<ul>
+<li><a href="architecture/enums.html">Enums</a>: Core type definitions and integer-based state management. <em>[Status: ⚠️ Partial]</em></li>
+<li><a href="architecture/identity-system.html">Identity System</a>: The mechanism for identity anchoring and synchronization. <em>[Status: ✅ Match]</em></li>
+<li><a href="architecture/permissions.html">Permissions</a>: The authorization engine (Brain, Muscle, Law) and access gates. <em>[Status: ⚠️ Partial]</em></li>
+<li><a href="architecture/schema.html">Schema</a>: Entity configuration patterns and polymorphic ownership logic. <em>[Status: ✅ Match]</em></li>
+<li><a href="architecture/security.html">Security</a>: Data protection protocols including JWT and sanitization. <em>[Status: ⚠️ Verification Required]</em></li>
+<li><a href="infrastructure/performance.html">Performance</a>: Query optimization, pagination, and infrastructure requirements. <em>[Status: ✅ Match]</em></li>
+</ul>
+<h2 id="-writing--narrative-engine">✍️ Writing &amp; Narrative Engine</h2>
+<p>The creative engine for non-linear, graph-based storytelling.</p>
+<ul>
+<li><a href="writing/content-items.html">Content Items</a>: The polymorphic content model and narrative hierarchy. <em>[Status: ✅ Match]</em></li>
+<li><a href="writing/dialogue.html">Dialogue</a>: Branching dialogue trees and node-based decision logic. <em>[Status: ⚠️ In Progress]</em></li>
+<li><a href="writing/overview.html">Overview</a>: Writing philosophy, focusing on Graph vs Tree structures. <em>[Status: ✅ Match]</em></li>
+<li><a href="writing/scene-canvas.html">Scene Canvas</a>: The scene as a unit of content with structural markers (Beats/Segments). <em>[Status: ⚠️ In Progress]</em></li>
+<li><a href="writing/structure.html">Structure</a>: Macro-level hierarchy from Story to Scene. <em>[Status: ✅ Match]</em></li>
+</ul>
+<h2 id="-task--productivity-layer">📋 Task &amp; Productivity Layer</h2>
+<p>A task management system optimized for ADHD-friendly workflows.</p>
+<ul>
+<li><a href="tasks/project-task.html">Project Task</a>: Lifecycle and features of individual project tasks. <em>[Status: ⚠️ In Progress]</em></li>
+<li><a href="tasks/project-task-comment.html">Task Comment</a>: The model for task-linked communication. <em>[Status: ✅ Match]</em></li>
+<li><a href="tasks/project-task-meta-info.html">Task MetaInfo</a>: Metadata (Priority, Status) and ADHD energy-matching fields. <em>[Status: ⚠️ In Progress]</em></li>
+<li><a href="tasks/user-stories.html">User Stories</a>: Functional requirements and acceptance criteria for system features. <em>[Status: ✅ Mixed]</em></li>
+</ul>
+<h2 id="-the-universe">🌌 The Universe</h2>
+<p>The high-level architectural scale-invariance principles.</p>
+<ul>
+<li><a href="universe/fractal_universe_concept.html">Fractal Universe Concept</a>: The Anchor &amp; Component pattern and scale-invariant design. <em>[Status: ✅ Match]</em></li>
+<li><a href="universe/SYSTEM_ARCHITECTURE.html">System Architecture</a>: Core patterns, orchestration, and the Root vs Content distinction. <em>[Status: ⚠️ In Progress]</em></li>
+<li><a href="universe/IDENTITY_SYNC_SEARCH.html">Identity Sync &amp; Search</a>: Protocols for identity synchronization and search discovery. <em>[Status: ⚠️ In Progress]</em></li>
+</ul>
+<h2 id="-user-experience">🎨 User Experience</h2>
+<p>UX design principles and sensory state metaphors.</p>
+<ul>
+<li><a href="user-experience/adhd-workflow.html">ADHD Workflow</a>: Interaction patterns like Quick Wins and the two-tier save system. <em>[Status: ⚠️ Partial]</em></li>
+<li><a href="user-experience/philosophy.html">Philosophy</a>: Conceptual framework for energy management (Stamina/Mana). <em>[Status: ⚠️ Implementation Gap]</em></li>
+</ul>
+<hr>
+<p><em>Last Updated: 2025-05-14</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/index.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

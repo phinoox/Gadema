@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127912; Status: User Experience &amp; ADHD Workflow </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127912; Status: User Experience &amp; ADHD Workflow ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-user-experience--adhd-workflow">🎨 Status: User Experience &amp; ADHD Workflow</h1>
+
+<p>This document provides a validation report comparing the UX design principles and workflow patterns outlined in <code>adhd-workflow.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Two-Tier Save System</strong> (Minor vs. Snapshot)</td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">The &quot;Snapshot&quot; concept is reflected in the requirement for a comment during versioning, but the distinction between a &quot;Silent Autosave&quot; and an &quot;Intentional Snapshot&quot; is not explicitly enforced by any backend logic. Currently, the backend primarily supports <code>SyncAsync</code> (identity updates), which acts as the foundation for both.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Visual Timeline</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual / UI-Driven</td>
+<td style="text-align: left;">This is a frontend navigation pattern. While the data models support versioning/history, the visual &quot;Horizontal Scroll&quot; experience described in the guide is a client-side implementation detail that cannot be fully validated through backend code alone.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Relationship Threads</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">The &quot;Connection Threads&quot; (graph-based linking) are supported by the <code>ContentTags</code> and polymorphic ownership logic, but the specific visual/interactive &quot;Pulse&quot; behavior described is a frontend feature.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Idea Dump Zone</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Supported by the rapid-response <code>IdentitySyncStrategy</code> and the ability to capture data without immediate structural commitment (as seen in <code>MetaInfo</code> updates).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scaffolding Modes</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual/UI-Driven</td>
+<td style="text-align: left;">These modes (Sprint, Freeform) are UI states intended to control information density. They represent a &quot;view layer&quot; instruction rather than a backend service requirement.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Formalize the Snapshot Ritual</strong>: To ensure the &quot;Commitment &amp; Reflection&quot; aspect of the Snapshot Save works as described, the API should require a <code>Comment</code> field specifically for versioned snapshots, distinguishing them from silent background updates.</li>
+<li><strong>Backend Support for Suggestions</strong>: The &quot;Where to Go From Here?&quot; panel relies on intelligent suggestions (e.g., &quot;The door motif appears in Scene 7&quot;). This requires an implementation of relationship-tracking logic or a basic AI/heuristic layer that can identify recurring motifs across different content items.</li>
+<li><strong>Explicit Versioning Logic</strong>: Ensure the backend distinguishes between an <code>Autosave</code> (low-cost, high-frequency) and a <code>Snapshot</code> (high-value, permanent history entry) to prevent the version timeline from becoming cluttered with &quot;noise.&quot;</li>
+</ul>
+<h2 id="-design-principle-audit">📋 Design Principle Audit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Anti-Pattern Avoided</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Autosave Prompts</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Implementation is silent; no prompt logic found.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Mandatory Outlines</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">Models allow for loose, non-linear structure.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-step Dialogs</strong></td>
+<td style="text-align: left;">⚠️ In Progress</td>
+<td style="text-align: left;">Ensure the Snapshot process remains a &quot;one-line comment&quot; workflow to minimize friction.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Linear Navigation</strong></td>
+<td style="text-align: left;">✅ Achieved</td>
+<td style="text-align: left;">The graph/relationship model (M2M) supports non-linear traversal.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/user-experience/adhd-workflow_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

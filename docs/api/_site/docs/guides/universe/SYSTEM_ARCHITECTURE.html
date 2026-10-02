@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>GaDeMa System Architecture &amp; Patterns </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="GaDeMa System Architecture &amp; Patterns ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="gadema-system-architecture--patterns">GaDeMa System Architecture &amp; Patterns</h1>
+
+<p>This document defines the core architectural patterns for the GaDeMa API. These patterns are designed to ensure scalability, maintainable search/discovery, and a clear distinction between different levels of data hierarchy.</p>
+<hr>
+<h2 id="1-the-hierarchy-distinction-root-vs-content">1. The Hierarchy Distinction: Root vs. Content</h2>
+<p>A fundamental principle of this system is the semantic distinction between &quot;The Environment&quot; and &quot;The Data within it.&quot;</p>
+<h3 id="a-root-anchors-the-universe">A. Root Anchors (The Universe)</h3>
+<ul>
+<li><strong>Examples</strong>: <code>Project</code>, <code>Community</code> (future).</li>
+<li><strong>Role</strong>: These are the top-level containers/workspaces. They define the scope for all other data.</li>
+<li><strong>Identity</strong>: They have their own unique identity properties (Title, Slug, Status, etc.) that are <strong>not</strong> part of a shared content pool.</li>
+<li><strong>Discovery</strong>: Searched at the &quot;Universe&quot; level. A user discovers a Project to begin working within it.</li>
+</ul>
+<h3 id="b-content-anchors--components-the-data">B. Content Anchors &amp; Components (The Data)</h3>
+<ul>
+<li><strong>Examples</strong>: <code>Character</code>, <code>Scene</code>, <code>LoreEntry</code> (Anchors); <code>DialogueNode</code>, <code>Comment</code>, <code>ReviewStatus</code> (Components).</li>
+<li><strong>Role</strong>: These are the entities that live <em>inside</em> a Root Anchor.</li>
+<li><strong>Identity</strong>: They use the <strong>MetaInfo Pattern</strong>. They are &quot;anonymous&quot; until attached to a Project via a <code>ProjectId</code>.</li>
+<li><strong>Discovery</strong>: Searched within the scope of a specific project.</li>
+</ul>
+<hr>
+<h2 id="2-the-search-engine-architecture">2. The Search Engine Architecture</h2>
+<p>To prevent API bloat and ensure a unified experience for consumers, we use an <strong>Orchestrator-based Search Pattern</strong>.</p>
+<h3 id="a-the-contract-searchhitdto">A. The Contract: <code>SearchHitDto</code></h3>
+<p>All search operations—regardless of whether they are searching for Projects or Characters—must return this standardized shape to the consumer.</p>
+<pre><code class="lang-csharp">public class SearchHitDto 
+{
+    public Guid ResourceId { get; set; }      // The actual ID of the resource
+    public string DisplayName { get; set; }   // For display in lists (Title/Name)
+    public string Slug { get; set; }          // URL-friendly identifier
+    public string ResourceType { get; set; }  // &quot;Project&quot;, &quot;Character&quot;, etc.
+    public Guid? ScopeId { get; set; }        // Null for Projects, ProjectId for Content
+    public string ResourceLink { get; set; }  // The API endpoint to fetch details
+}
+</code></pre>
+<h3 id="b-the-implementation-orchestrator-pattern">B. The Implementation: Orchestrator Pattern</h3>
+<p>We avoid &quot;Service Bloat&quot; by separating <strong>Data Retrieval</strong> from <strong>Search Logic</strong>.</p>
+<ol>
+<li><p><strong>Data Providers (The Services)</strong>:</p>
+<ul>
+<li>Services like <code>CharacterService</code> or <code>ProjectService</code> are responsible <em>only</em> for finding matches in the database.</li>
+<li>They do <strong>not</strong> handle pagination or complex search merging.</li>
+<li>They return a raw collection of results (or a simple count).</li>
+</ul>
+</li>
+<li><p><strong>The Orchestrator (The Search Engine)</strong>:</p>
+<ul>
+<li>A single <code>SearchOrchestrator</code> service manages the complexity of merging multiple streams.</li>
+<li>It calls the various Data Providers, gathers their results, and handles the &quot;Global&quot; logic.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="3-the-pagination-pattern-centralized-paging">3. The Pagination Pattern: Centralized Paging</h2>
+<p>To prevent redundant paging logic across every controller/service, we use <strong>Orchestrator-Level Pagination</strong>.</p>
+<h3 id="the-workflow">The Workflow:</h3>
+<ol>
+<li><strong>Providers</strong>: <code>GetMatchesAsync(query)</code> returns all matching items from the database (no <code>Skip</code> or <code>Take</code>).</li>
+<li><strong>Orchestrator</strong>:
+<ul>
+<li>Calls multiple providers to gather a master list of results.</li>
+<li>Performs the pagination math (<code>Skip</code> and <code>Take</code>) in <strong>one single place</strong>.</li>
+<li>Wraps the final slice into a <code>ListResponseDto&lt;T&gt;</code>.</li>
+</ul>
+</li>
+<li><strong>Consumer</strong>: Receives a perfectly sliced, paginated list that represents a true cross-section of the entire system.</li>
+</ol>
+<h3 id="benefits">Benefits:</h3>
+<ul>
+<li><strong>Single Source of Truth</strong>: The math for <code>page</code> and <code>pageSize</code> exists in only one place.</li>
+<li><strong>True Cross-Type Pagination</strong>: Allows users to search &quot;everything&quot; and get an accurate, paginated list that includes both Projects and Content.</li>
+<li><strong>Testability</strong>: Testing a service becomes a simple check of: <em>&quot;Does this query return the right items?&quot;</em> rather than complex offset/limit math.</li>
+</ul>
+<hr>
+<h2 id="4-summary-table">4. Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pattern</th>
+<th style="text-align: left;">Logic Location</th>
+<th style="text-align: left;">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Identity</strong></td>
+<td style="text-align: left;">Domain Model / MetaInfo</td>
+<td style="text-align: left;">Defines <em>what</em> a thing is.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Discovery</strong></td>
+<td style="text-align: left;"><code>SearchHitDto</code></td>
+<td style="text-align: left;">Defines <em>how</em> a consumer sees it.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Retrieval</strong></td>
+<td style="text-align: left;">Data Providers (Services)</td>
+<td style="text-align: left;">Finds raw data in the DB.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Orchestration</strong></td>
+<td style="text-align: left;"><code>SearchOrchestrator</code></td>
+<td style="text-align: left;">Merges streams and applies pagination.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/universe/SYSTEM_ARCHITECTURE.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

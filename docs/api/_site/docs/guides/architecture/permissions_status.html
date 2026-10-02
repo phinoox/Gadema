@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128737;️ Status: Authorization Architecture </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128737;️ Status: Authorization Architecture ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-authorization-architecture">🛡️ Status: Authorization Architecture</h1>
+
+<p>This document provides a validation report comparing the architectural framework outlined in <code>permissions.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>The Law (<code>GademaBaseContext</code>)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Confirmed via <code>TaskDbContext</code> inheriting from <code>GademaBaseContext</code>. Global invariants like <code>ISoftDelete</code> are enforced at the context level.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Brain (<code>IPermissionEngine</code>)</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">While the architecture describes an <code>IPermissionEngine</code> orchestrating strategies, the current code shows access logic centralized in <code>DomainService.CheckAccessAsync&lt;T&gt;</code>. The engine/strategy pattern is implied but appears to be integrated into a more monolithic service method for now.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Muscle (<code>IPermissionStrategy</code>)</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">Similar to the Engine, specific strategies (like project-level role checks) are currently handled within <code>DomainService</code>. The &quot;Pluggable Strategy&quot; pattern is documented but not fully decoupled into independent strategy classes in the current codebase.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Domain (<code>DomainServices</code>)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Services like <code>DomainService</code> correctly call access methods (<code>CheckAccessAsync</code>) before performing business logic, following the intended workflow.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Four-Gate Flow</strong></td>
+<td style="text-align: left;">ℹ️ Conceptual/In-Progress</td>
+<td style="text-align: left;">The &quot;Identity Gate&quot; and &quot;Execution Gate&quot; (via <code>IIdentitySyncStrategy</code>) are well-represented in the code. The explicit &quot;Visibility&quot; and &quot;Authorization&quot; gates are being handled through service-layer logic rather than a strict middleware/pipeline sequence for every single resource.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Decouple Authorization Logic</strong>: To fully realize the &quot;Brain &amp; Muscle&quot; architecture, move the logic inside <code>DomainService.CheckAccessAsync</code> into discrete <code>IPermissionStrategy</code> implementations (e.g., <code>ProjectRoleStrategy</code>, <code>GlobalAdminStrategy</code>). This will make the system truly pluggable as described in the guide.</li>
+<li><strong>Clarify <code>DomainService</code> Role</strong>: The guide suggests a &quot;Dumb Engine&quot; and &quot;Muscle Strategies.&quot; Currently, <code>DomainService</code> is doing heavy lifting. Refactoring toward the documented strategy pattern will improve testability and scalability.</li>
+<li><strong>Standardize Gate Terminology</strong>: Ensure that the &quot;Gates&quot; described in the documentation are clearly reflected in the service methods (e.g., naming methods <code>CheckVisibilityAsync</code>, <code>VerifyIdentityAsync</code>, etc.) to align the mental model with the implementation.</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/permissions_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

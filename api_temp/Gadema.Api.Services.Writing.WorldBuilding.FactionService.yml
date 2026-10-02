@@ -119,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetFactionsAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/FactionService.cs
-    startLine: 28
+    startLine: 24
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding
@@ -150,7 +150,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetFactionAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/FactionService.cs
-    startLine: 61
+    startLine: 53
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding
@@ -181,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateFactionAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/FactionService.cs
-    startLine: 94
+    startLine: 82
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding
@@ -214,7 +214,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateFactionAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/FactionService.cs
-    startLine: 129
+    startLine: 113
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding
@@ -247,7 +247,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteFactionAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/FactionService.cs
-    startLine: 178
+    startLine: 158
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding

@@ -7,6 +7,7 @@ items:
   children:
   - Gadema.Api.Services.Authorization.PermissionEngine.#ctor(Gadema.Data.Database.Core.CoreDbContext)
   - Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+  - Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
   langs:
   - csharp
   - vb
@@ -112,6 +113,46 @@ items:
   overload: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync*
   implements:
   - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync(System.Guid,System.Guid,Gadema.Core.Models.Access.ProjectMemberRoleEnum)
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  commentId: M:Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  id: IsTargetInProjectAsync(System.Guid,System.Guid)
+  parent: Gadema.Api.Services.Authorization.PermissionEngine
+  langs:
+  - csharp
+  - vb
+  name: IsTargetInProjectAsync(Guid, Guid)
+  nameWithType: PermissionEngine.IsTargetInProjectAsync(Guid, Guid)
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid, System.Guid)
+  type: Method
+  source:
+    remote:
+      path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: IsTargetInProjectAsync
+    path: src/Gadema.Api/CoreServices/Services/PermissionEngine.cs
+    startLine: 67
+  assemblies:
+  - Gadema.Api
+  namespace: Gadema.Api.Services.Authorization
+  summary: checks if a given entity is in the given project
+  example: []
+  syntax:
+    content: public Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+    parameters:
+    - id: projectId
+      type: System.Guid
+      description: the project id
+    - id: targetId
+      type: System.Guid
+      description: the contentmetainfoid
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+      description: ''
+    content.vb: Public Function IsTargetInProjectAsync(projectId As Guid, targetId As Guid) As Task(Of Boolean)
+  overload: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync*
+  implements:
+  - Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
 references:
 - uid: Gadema.Api.Services.Authorization
   commentId: N:Gadema.Api.Services.Authorization
@@ -656,3 +697,84 @@ references:
     name: Tasks
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync*
+  commentId: Overload:Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync
+  href: Gadema.Api.Services.Authorization.PermissionEngine.html#Gadema_Api_Services_Authorization_PermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  name: IsTargetInProjectAsync
+  nameWithType: PermissionEngine.IsTargetInProjectAsync
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  parent: Gadema.Api.CoreServices.Interfaces.IPermissionEngine
+  isExternal: true
+  href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  name: IsTargetInProjectAsync(Guid, Guid)
+  nameWithType: IPermissionEngine.IsTargetInProjectAsync(Guid, Guid)
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid, System.Guid)
+  spec.csharp:
+  - uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+    name: IsTargetInProjectAsync
+    href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+    name: IsTargetInProjectAsync
+    href: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  - name: (
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )

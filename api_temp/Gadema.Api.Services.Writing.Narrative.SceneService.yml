@@ -25,15 +25,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SceneService
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 19
+    startLine: 15
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
-  summary: >-
-    Service for managing Scenes within the narrative domain.
-
-    Handles CRUD operations including ContentMetaInfo creation and authorization.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -88,7 +83,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 23
+    startLine: 19
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -124,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetScenesAsync
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 32
+    startLine: 24
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -155,7 +150,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetSceneAsync
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 62
+    startLine: 38
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -186,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateSceneAsync
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 92
+    startLine: 53
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -219,7 +214,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateSceneAsync
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 128
+    startLine: 85
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative
@@ -252,7 +247,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteSceneAsync
     path: src/Gadema.Api/Services/Writing/Narrative/SceneService.cs
-    startLine: 175
+    startLine: 116
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Narrative

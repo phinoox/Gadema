@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SceneSegmentEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/SceneSegmentEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
+  summary: Configuration for SceneSegment entity in game development management system.
+  example: []
   syntax:
     content: 'public class SceneSegmentEntityTypeConfiguration : IEntityTypeConfiguration<SceneSegment>'
     content.vb: Public Class SceneSegmentEntityTypeConfiguration Implements IEntityTypeConfiguration(Of SceneSegment)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/SceneSegmentEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.SceneSegment" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure SceneSegment entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<SceneSegment> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.SceneSegment}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of SceneSegment))
   overload: Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration.Configure*
   implements:
@@ -437,13 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.SceneSegment
-  commentId: T:Gadema.Core.Models.Writing.Narrative.SceneSegment
-  parent: Gadema.Core.Models.Writing.Narrative
-  href: Gadema.Core.Models.Writing.Narrative.SceneSegment.html
-  name: SceneSegment
-  nameWithType: SceneSegment
-  fullName: Gadema.Core.Models.Writing.Narrative.SceneSegment
 - uid: Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_SceneSegmentEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_SceneSegment__
@@ -528,41 +522,6 @@ references:
     name: SceneSegment
     href: Gadema.Core.Models.Writing.Narrative.SceneSegment.html
   - name: )
-- uid: Gadema.Core.Models.Writing.Narrative
-  commentId: N:Gadema.Core.Models.Writing.Narrative
-  name: Gadema.Core.Models.Writing.Narrative
-  nameWithType: Gadema.Core.Models.Writing.Narrative
-  fullName: Gadema.Core.Models.Writing.Narrative
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

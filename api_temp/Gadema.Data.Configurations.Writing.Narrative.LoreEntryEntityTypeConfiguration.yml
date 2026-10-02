@@ -59,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/LoreEntryEntityTypeConfiguration.cs
-    startLine: 11
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.LoreEntry" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure LoreEntry entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<LoreEntry> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.LoreEntry}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of LoreEntry))
   overload: Gadema.Data.Configurations.Writing.Narrative.LoreEntryEntityTypeConfiguration.Configure*
   implements:
@@ -439,12 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.LoreEntry
-  commentId: T:Gadema.Core.Models.Writing.Narrative.LoreEntry
-  href: Gadema.Core.Models.Writing.Narrative.LoreEntry.html
-  name: LoreEntry
-  nameWithType: LoreEntry
-  fullName: Gadema.Core.Models.Writing.Narrative.LoreEntry
 - uid: Gadema.Data.Configurations.Writing.Narrative.LoreEntryEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.LoreEntryEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.LoreEntryEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_LoreEntryEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_LoreEntry__

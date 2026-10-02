@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Writing Domain Overview </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Writing Domain Overview ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="writing-domain-overview">Writing Domain Overview</h1>
+
+<p>The <strong>Writing</strong> domain provides the tools for both structured narrative (like game design) and fluid discovery-based writing (like novel drafting). It is built on a &quot;Graph, Not Tree&quot; philosophy to support non-linear thinking.</p>
+<h2 id="-core-concept-graph-based-storytelling">🧬 Core Concept: Graph-Based Storytelling</h2>
+<p>Unlike traditional hierarchical systems that force a rigid parent-child structure, the GaDeMa writing engine treats all narrative elements as nodes in a flexible graph. This allows writers to move between high-level planning and granular drafting without being constrained by structural rules.</p>
+<h3 id="the-hierarchy-of-intent">The Hierarchy of Intent</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Level</th>
+<th style="text-align: left;">Entity</th>
+<th style="text-align: left;">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Container</strong></td>
+<td style="text-align: left;"><code>Story</code></td>
+<td style="text-align: left;">The overarching work (e.g., a novel, campaign, or game).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Segment</strong></td>
+<td style="text-align: left;"><code>Chapter</code></td>
+<td style="text-align: left;">An organizational unit used to group scenes and manage pacing.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Unit of Work</strong></td>
+<td style="text-align: left;"><code>Scene</code></td>
+<td style="text-align: left;">The primary canvas for writing; the intersection of narrative intent and character state.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on Non-Linear Elements:</strong>
+Elements like <strong>StoryOutlines</strong> (the macro structure) and <strong>StoryBeats</strong> (narrative milestones) exist alongside this hierarchy. They are not locked into a rigid tree; instead, they act as landmarks that can be linked to Chapters or Scenes, allowing your narrative structure to evolve organically.</p>
+<hr>
+<h2 id="-design-philosophy-structure-as-a-choice">🧠 Design Philosophy: Structure as a Choice</h2>
+<p>The system is designed to accommodate two distinct creative modes:</p>
+<h3 id="1-the-structural-approach-planning-first">1. The Structural Approach (Planning-First)</h3>
+<p>Used by designers who think in pacing and architecture. They define the <strong>Story</strong> and <strong>Chapters</strong> first, establishing the structural milestones (<strong>Beats</strong>) before populating them with detailed <strong>Scenes</strong>.
+<em>Example: A Game Designer planning &quot;Act I&quot; <span class="math">\(\rightarrow\)</span> &quot;Chapter 1&quot; <span class="math">\(\rightarrow\)</span> &quot;Tutorial Encounter&quot;.</em></p>
+<h3 id="2-the-discovery-approach-writing-first">2. The Discovery Approach (Writing-First)</h3>
+<p>Used by authors who write non-linearly. They create <strong>Scenes</strong> as they come to them, without a predefined structure. Later, they use <strong>Chapters</strong> and <strong>Outlines</strong> to group these scenes into a coherent narrative arc.
+<em>Example: A Novelist writing &quot;The Discovery Scene&quot; and &quot;The Climax&quot; separately, then organizing them into chapters later.</em></p>
+<hr>
+<h2 id="-key-features-for-narrative-control">🛠️ Key Features for Narrative Control</h2>
+<ul>
+<li><strong>Flexible Outlining</strong>: Outlines are not rigid templates; they are annotations that can be attached to any level (Story, Chapter, or Scene) to provide scaffolding without being mandatory.</li>
+<li><strong>Bi-directional Linking</strong>: Because the system is a graph, you can link elements across different levels (e.g., a Beat referencing a specific Scene) without breaking the hierarchy.</li>
+<li><strong>View Mode Separation</strong>:
+<ul>
+<li><code>PrivateWriting</code>: For the messy, iterative drafting process.</li>
+<li><code>Presentation</code>: For viewing the polished, structural narrative for review or export.</li>
+</ul>
+</li>
+</ul>
+<h2 id="-technical-implementation">⚙️ Technical implementation</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Structural Integrity</strong></td>
+<td style="text-align: left;">Uses a graph structure where relationships are explicit links rather than rigid inheritance.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Collapsible Hierarchy</strong></td>
+<td style="text-align: left;">Supports hierarchical view (Story <span class="math">\(\rightarrow\)</span> Chapter <span class="math">\(\rightarrow\)</span> Scene) for high-level overview without losing detail.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Nexus (Scene)</strong></td>
+<td style="text-align: left;">The <code>Scene</code> acts as the intersection between static narrative structure and dynamic character state.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Part of the <a href="./../hierarchy.md">Core Domain Hierarchy</a></em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/overview.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

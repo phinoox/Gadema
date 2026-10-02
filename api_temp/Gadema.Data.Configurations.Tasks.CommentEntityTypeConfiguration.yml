@@ -59,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Tasks/CommentEntityTypeConfiguration.cs
-    startLine: 10
+    startLine: 13
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Base.MetaInfo.Comment" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure Comment entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<Comment> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Base.MetaInfo.Comment}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of Comment))
   overload: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration.Configure*
   implements:
@@ -433,12 +432,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Base.MetaInfo.Comment
-  commentId: T:Gadema.Core.Models.Base.MetaInfo.Comment
-  href: Gadema.Core.Models.Base.MetaInfo.Comment.html
-  name: Comment
-  nameWithType: Comment
-  fullName: Gadema.Core.Models.Base.MetaInfo.Comment
 - uid: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Tasks.CommentEntityTypeConfiguration.html#Gadema_Data_Configurations_Tasks_CommentEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Base_MetaInfo_Comment__

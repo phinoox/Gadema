@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>User </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="User ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="user">User</h1>
+
+<p>The <code>User</code> entity represents a unique account within the GaDeMa system. It serves as the primary identity used by the <strong>Identity Gate</strong> to establish who is interacting with the application.</p>
+<h2 id="-identity--role">🧬 Identity &amp; Role</h2>
+<p>A user's presence in the system is defined by their authentication credentials and their ability to hold roles across different organizational scopes (Teams and Projects).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Id</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">The unique identifier used for all authorization checks.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>UserName</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Unique identifier for login and identification.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Email</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">Verified contact address.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DisplayName</code></td>
+<td style="text-align: left;"><code>string?</code></td>
+<td style="text-align: left;">The human-readable name shown in the UI.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Provider</code></td>
+<td style="text-align: left;"><code>UserAuthProviderEnum</code></td>
+<td style="text-align: left;">Defines the primary authentication method (e.g., Password, Google).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-security--access">🛡️ Security &amp; Access</h2>
+<p>The user identity is the foundation for the <strong>Four-Gate Flow</strong>:</p>
+<ol>
+<li><strong>Identity Gate</strong>: The system uses the <code>User.Id</code> via <code>IUserContext</code> to confirm a session exists.</li>
+<li><strong>Authorization Gate</strong>: Once identified, the user's permissions are evaluated against specific resources (e.g., <code>Project</code>, <code>Scene</code>) based on their memberships in <strong>Teams</strong> or <strong>Projects</strong>.</li>
+</ol>
+<h2 id="-technical-details">⚙️ Technical Details</h2>
+<ul>
+<li><strong>Authentication Providers</strong>: Supports standard password-based login and external providers like Google OAuth via <code>ProviderLinks</code>.</li>
+<li><strong>Account Status</strong>: Managed through the <code>IsActive</code> flag, which can be used to suspend access without deleting the identity.</li>
+<li><strong>Lifecycle</strong>: Tracks account creation (<code>CreatedAt</code>) and recent activity (<code>LastLogin</code>).</li>
+</ul>
+<hr>
+<p><em>Part of the <a href="./access/overview.md">Auth &amp; Team Domain</a></em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/access/user.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

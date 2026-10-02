@@ -18,12 +18,12 @@ items:
   type: Class
   source:
     remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: TokenUsageStats
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 79
+    path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
+    startLine: 5
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -55,12 +55,12 @@ items:
   type: Property
   source:
     remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: TotalUsage
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 85
+    path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
+    startLine: 10
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -86,12 +86,12 @@ items:
   type: Property
   source:
     remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: RemainingUsage
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 90
+    path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -117,12 +117,12 @@ items:
   type: Property
   source:
     remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: ExpiresAt
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 95
+    path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -148,12 +148,12 @@ items:
   type: Property
   source:
     remote:
-      path: src/Gadema.Core/Models/Access/ProjectToken.cs
+      path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
       branch: main
       repo: git@github.com:phinoox/Gadema.git
     id: IsExpired
-    path: src/Gadema.Core/Models/Access/ProjectToken.cs
-    startLine: 100
+    path: src/Gadema.Core/Models/Access/TokenUsageStats.cs
+    startLine: 25
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access

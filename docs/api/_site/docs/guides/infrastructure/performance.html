@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128640; Performance &amp; Infrastructure </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128640; Performance &amp; Infrastructure ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-performance--infrastructure">🚀 Performance &amp; Infrastructure</h1>
+
+<p>This guide defines all performance optimization strategies, caching patterns, query guidelines, and infrastructure requirements for Anima Lab. It ensures the application maintains high performance under load while minimizing database queries and memory footprint.</p>
+<p><strong>Target Audience</strong>: Developers, DevOps Engineers, System Administrators<br>
+<strong>Coverage</strong>: Query Optimization, Caching Strategy, Memory Management, API Response Time, Monitoring &amp; Health Checks, Deployment</p>
+<hr>
+<h2 id="1-database-query-optimization">1️⃣ Database Query Optimization</h2>
+<h3 id="11-eager-loading-with-include">1.1 Eager Loading with <code>Include()</code></h3>
+<h4 id="architecture">Architecture:</h4>
+<ul>
+<li>Always use <code>.Include()</code> for relationship queries to prevent the N+1 problem.</li>
+<li>Use <code>.ThenInclude()</code> for nested relationships (e.g., <code>MetaInfo</code> <span class="math">\(\rightarrow\)</span> <code>MediaAttachments</code>).</li>
+<li>Never query navigation properties separately inside loops.</li>
+</ul>
+<h4 id="implementation-pattern">Implementation Pattern:</h4>
+<pre><code class="lang-csharp">// ✅ CORRECT - Eager loading to avoid N+1 queries with ProjectTask entity
+public async Task&lt;MetaInfo&gt; GetMetaInfoWithFullDataAsync(Guid id, ViewModeEnum viewMode = ViewModeEnum.PrivateWriting)
+{
+    return await _context.MetaInfos
+        .Include(ci =&gt; ci.MediaAttachments)
+        .Include(ci =&gt; ci.ContentTags)
+            .ThenInclude(ct =&gt; ct.Tag)
+        .Include(ci =&gt; ci.ProjectTasks)
+            .ThenInclude(pt =&gt; pt.Comments)
+        .FirstOrDefaultAsync(ci =&gt; ci.Id == id);
+}
+
+// ❌ INCORRECT - N+1 problem (Looping and querying separately)
+foreach (var item in items)
+{
+    var tasks = await _context.ProjectTasks.Where(t =&gt; t.MetaInfoId == item.Id).ToListAsync();
+}
+</code></pre>
+<h3 id="12-pagination-best-practices">1.2 Pagination Best Practices</h3>
+<h4 id="architecture-1">Architecture:</h4>
+<ul>
+<li><strong>Default page size</strong>: 20 items (configurable up to 100).</li>
+<li>Always validate <code>pageSize</code> in controller actions.</li>
+<li>Use <code>Skip()</code> and <code>Take()</code> for efficient database-level pagination.</li>
+</ul>
+<hr>
+<h2 id="2-caching-strategy">2️⃣ Caching Strategy</h2>
+<h3 id="21-redis-cache-configuration">2.1 Redis Cache Configuration</h3>
+<h4 id="architecture-2">Architecture:</h4>
+<ul>
+<li>Use <strong>Redis</strong> for distributed caching in production environments.</li>
+<li>Implement <strong>Domain-Aware Key Patterns</strong> to avoid collisions (e.g., <code>tasks.{projectId}.{taskId}</code>).</li>
+<li>Set expiration based on content freshness:
+<ul>
+<li><strong>Draft Content</strong>: 5 minutes TTL (high frequency of updates).</li>
+<li><strong>Published Content</strong>: 1 hour TTL (low frequency of updates).</li>
+<li><strong>Static/System Data</strong>: 24 hours TTL.</li>
+</ul>
+</li>
+</ul>
+<h4 id="implementation-pattern-1">Implementation Pattern:</h4>
+<pre><code class="lang-csharp">// ✅ CORRECT - Redis caching with domain-aware key pattern and expiration
+var cacheKey = $&quot;tasks.{projectId}.{taskId}&quot;;
+return await _redisCache.GetOrCreateAsync(cacheKey, async entry =&gt;
+{
+    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1); // Published content TTL
+    return await _context.ProjectTasks.FindAsync(projectId, taskId);
+});
+</code></pre>
+<hr>
+<h2 id="3-file-upload--memory-management">3️⃣ File Upload &amp; Memory Management</h2>
+<h3 id="31-stream-based-processing">3.1 Stream-Based Processing</h3>
+<h4 id="architecture-3">Architecture:</h4>
+<ul>
+<li><strong>Stream large files</strong> directly to storage using <code>FileStream</code> instead of loading them into memory buffers.</li>
+<li>Validate file size <strong>before</strong> starting the upload process to prevent Out-Of-Memory (OOM) attacks.</li>
+<li>Use UUID-based filenames for security and collision avoidance.</li>
+</ul>
+<h4 id="implementation-pattern-2">Implementation Pattern:</h4>
+<pre><code class="lang-csharp">// ✅ CORRECT - Stream large file uploads
+await using var fileStream = new FileStream(filePath, FileMode.Create);
+await file.CopyToAsync(fileStream); // Memory-efficient streaming
+</code></pre>
+<h3 id="32-monitoring--health-checks">3.2 Monitoring &amp; Health Checks</h3>
+<h4 id="architecture-4">Architecture:</h4>
+<ul>
+<li>Monitor memory usage per instance (Target: <code>&lt; 512MB</code>).</li>
+<li>Implement a <code>/health</code> endpoint to monitor:
+<ul>
+<li>Database connectivity.</li>
+<li>Cache availability.</li>
+<li>Current memory/request metrics.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-deployment--infrastructure">4️⃣ Deployment &amp; Infrastructure</h2>
+<h3 id="41-caddy-reverse-proxy-configuration">4.1 Caddy Reverse Proxy Configuration</h3>
+<h4 id="architecture-5">Architecture:</h4>
+<ul>
+<li>Use <strong>Caddy</strong> for SSL auto-renewal and reverse proxying.</li>
+<li>Implement <strong>Rate Limiting</strong> at the proxy level to protect against DDoS and API abuse.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Endpoint Type</th>
+<th style="text-align: left;">Rate Limit</th>
+<th style="text-align: left;">Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">General API (<code>/api/*</code>)</td>
+<td style="text-align: left;">100 req/min</td>
+<td style="text-align: left;">Standard usage</td>
+</tr>
+<tr>
+<td style="text-align: left;">Auth Endpoints (<code>/auth/*</code>)</td>
+<td style="text-align: left;">1000 req/hour</td>
+<td style="text-align: left;">Protect against brute force</td>
+</tr>
+<tr>
+<td style="text-align: left;">Export Endpoints (<code>/export/*</code>)</td>
+<td style="text-align: left;">5 req/min</td>
+<td style="text-align: left;">High CPU/Resource intensity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-production-deployment-checklist">4.2 Production Deployment Checklist</h3>
+<ul>
+<li>[ ] Set <code>ASPNETCORE_ENVIRONMENT</code> to <code>Production</code>.</li>
+<li>[ ] Configure PostgreSQL connection string with TLS.</li>
+<li>[ ] Enable Redis distributed caching.</li>
+<li>[ ] Verify SSL certificates via Caddy.</li>
+<li>[ ] Ensure rate limits are active on the proxy.</li>
+</ul>
+<hr>
+<h2 id="5-performance-kpis">5️⃣ Performance KPIs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Target</th>
+<th style="text-align: left;">Measurement Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>GET Response Time</strong></td>
+<td style="text-align: left;">&lt; 500ms</td>
+<td style="text-align: left;">API Latency Monitoring</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>POST/PUT Latency</strong></td>
+<td style="text-align: left;">&lt; 2s</td>
+<td style="text-align: left;">API Latency Monitoring</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Database Query</strong></td>
+<td style="text-align: left;">&lt; 100ms</td>
+<td style="text-align: left;">EF Core / SQL Profiler</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Memory Usage</strong></td>
+<td style="text-align: left;">&lt; 512MB</td>
+<td style="text-align: left;">GC Counter / System Monitor</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/infrastructure/performance.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

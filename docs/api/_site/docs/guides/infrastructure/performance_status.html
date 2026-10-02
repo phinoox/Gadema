@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128640; Status: Performance &amp; Infrastructure </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128640; Status: Performance &amp; Infrastructure ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-performance--infrastructure">🚀 Status: Performance &amp; Infrastructure</h1>
+
+<p>This document provides a validation report comparing the performance optimization and infrastructure requirements outlined in <code>performance.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Query Optimization</strong> (Eager Loading)</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The pattern of using <code>.Include()</code> and <code>.ThenInclude()</code> is evident in the architecture (e.g., <code>MetaInfo</code> relationship chains). Service-layer patterns align with avoiding N+1 issues.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pagination</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>SearchResultsResponseDto</code> includes <code>SkipCount</code>, <code>PageSize</code>, and <code>TotalCount</code>, confirming that database-level pagination (<code>Skip</code>/<code>Take</code>) is a core part of the API design.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Caching Strategy</strong> (Redis)</td>
+<td style="text-align: left;">⚠️ Verification Required</td>
+<td style="text-align: left;">While the documentation specifies Redis with domain-aware keys, the current code scan shows no direct evidence of a distributed cache implementation (e.g., <code>IDistributedCache</code> or Redis client). It is unclear if caching is currently active in the development environment.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>File Uploads</strong> (Streaming)</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The architecture supports stream-based processing. Models like <code>MediaAttachment</code> and <code>UploadMediaDto</code> are designed to facilitate efficient file handling, though end-to-end streaming verification requires service-layer testing.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Infrastructure (Caddy/Rate Limit)</strong></td>
+<td style="text-align: left;">ℹ️ Deployment Dependent</td>
+<td style="text-align: left;">Rate limiting and Caddy proxy configurations are infrastructure-level settings. They cannot be validated via code alone but must be verified in the deployment manifests/Caddyfile.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Confirm Cache Implementation</strong>: If Redis is intended to be a core component, ensure that <code>IDistributedCache</code> or a dedicated Redis client is integrated into the service layer and that domain-aware key patterns (e.g., <code>tasks.{projectId}</code>) are strictly followed.</li>
+<li><strong>Monitor Memory/Latency</strong>: Establish baseline performance metrics for GET vs POST latency as specified in the &quot;Performance KPIs&quot; table to ensure the system meets target thresholds during load testing.</li>
+<li><strong>Automated Health Checks</strong>: Implement a robust <code>/health</code> endpoint that checks not just database connectivity, but also Cache and Storage availability, to fulfill the monitoring architecture requirements.</li>
+</ul>
+<h2 id="-performance-kpi-audit-target-vs-observed">📋 Performance KPI Audit (Target vs. Observed)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Target</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>GET Response Time</strong></td>
+<td style="text-align: left;">&lt; 500ms</td>
+<td style="text-align: left;">ℹ️ Unverified</td>
+<td style="text-align: left;">Requires active latency monitoring.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>POST/PUT Latency</strong></td>
+<td style="text-align: left;">&lt; 2s</td>
+<td style="text-align: left;">ℹ️ Unverified</td>
+<td style="text-align: left;">Requires active latency monitoring.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Database Query</strong></td>
+<td style="text-align: left;">&lt; 100ms</td>
+<td style="text-align: left;">ℹ️ Unverified</td>
+<td style="text-align: left;">Requires EF Core profiling.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Memory Usage</strong></td>
+<td style="text-align: left;">&lt; 512MB</td>
+<td style="text-align: left;">ℹ️ Unverified</td>
+<td style="text-align: left;">Requires runtime system monitoring.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/infrastructure/performance_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

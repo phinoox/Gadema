@@ -28,10 +28,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GameTriggerType
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 59
+    startLine: 64
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
+  summary: Defines the types of mechanical events that can be triggered within the narrative flow.
+  example: []
   syntax:
     content: public enum GameTriggerType
     content.vb: Public Enum GameTriggerType
@@ -55,7 +57,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: None
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 65
+    startLine: 67
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -83,7 +85,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GiveItem
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 67
+    startLine: 69
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -111,7 +113,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: RemoveItem
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 69
+    startLine: 71
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -139,7 +141,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: SetFlag
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 71
+    startLine: 73
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -167,7 +169,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ClearFlag
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 73
+    startLine: 75
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -195,7 +197,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TriggerCombat
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 75
+    startLine: 77
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -223,7 +225,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ChangeLocation
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 77
+    startLine: 79
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -251,7 +253,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: PlayAudio
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 79
+    startLine: 81
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration
@@ -279,7 +281,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Custom
     path: src/Gadema.Core/Models/Game/EngineIntegration/GameKeyEvent.cs
-    startLine: 81
+    startLine: 83
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.EngineIntegration

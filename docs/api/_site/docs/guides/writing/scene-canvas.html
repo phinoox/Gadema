@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>The Scene (The Writing Canvas) </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="The Scene (The Writing Canvas) ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="the-scene-the-writing-canvas">The Scene (The Writing Canvas)</h1>
+
+<p>The <code>Scene</code> is the fundamental unit of work within the GaDeMa system. It is the primary interface for the writer, acting as the &quot;canvas&quot; where raw narrative text meets structural markers and dynamic character state.</p>
+<h2 id="-implementation-details">🛠️ Implementation Details</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Id</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">Unique identifier for the scene.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>RawText</code></td>
+<td style="text-align: left;"><code>string</code></td>
+<td style="text-align: left;">The actual Markdown content of the scene.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>OrderIndex</code></td>
+<td style="text-align: left;"><code>int?</code></td>
+<td style="text-align: left;">The sequence of this scene within its parent chapter.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>StoryChapterId</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">Foreign Key to the parent <code>StoryChapter</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-the-three-pillars-of-a-scene">🏗️ The Three Pillars of a Scene</h2>
+<p>A scene in GaDeMa is more than just text; it serves three critical roles that drive the narrative forward:</p>
+<h3 id="1-the-canvas-content">1. The Canvas (Content)</h3>
+<p>The <code>RawText</code> property holds the primary prose, dialogue, or script. This is where the writer's creative work resides.</p>
+<h3 id="2-the-structural-markers-segments--beats">2. The Structural Markers (Segments &amp; Beats)</h3>
+<p>To prevent &quot;fragile text indexing&quot; (where a small change in text breaks all your links), scenes use two types of structural markers:</p>
+<ul>
+<li><strong>SceneSegments</strong>: These are non-textual markers that index interactive elements (like a specific dialogue choice or an action trigger) within the scene. They allow the system to &quot;know&quot; where things happen without parsing raw text every time.</li>
+<li><strong>StoryBeats</strong>: A scene can fulfill one or more <code>StoryBeat</code> milestones. This allows writers to anchor major narrative turning points (e.s., &quot;The Hero's Call to Adventure&quot;) directly to the scenes where they occur.</li>
+</ul>
+<h3 id="3-the-dynamic-driver-state--relations">3. The Dynamic Driver (State &amp; Relations)</h3>
+<p>The scene is the engine of character progression. As a story unfolds, the <code>Scene</code> records:</p>
+<ul>
+<li><strong>CharacterState</strong>: Changes in physical or mental status (e.g., &quot;Injured&quot;, &quot;Level Up&quot;).</li>
+<li><strong>CharacterRelation</strong>: Shifts in social dynamics (e.s., &quot;Becomes Allies&quot;, &quot;Develops Grudge&quot;).</li>
+</ul>
+<h2 id="-architectural-notes">⚠️ Architectural Notes</h2>
+<h3 id="the-nexus-pattern">The Nexus Pattern</h3>
+<p>The <code>Scene</code> acts as a nexus between the <strong>Static Narrative</strong> (the story arc and beats) and the <strong>Dynamic Reality</strong> (character states and relations). This design ensures that narrative progression is not just an abstract concept, but a measurable consequence of the scenes being written.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/scene-canvas.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#127917; Narrative Design Philosophy </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#127917; Narrative Design Philosophy ">
+    
+    
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-narrative-design-philosophy">🎭 Narrative Design Philosophy</h1>
+
+<blockquote>
+<p>&quot;Structure should serve the writer, not constrain them. The tool must support non-linear thinking without forcing a single path.&quot;</p>
+</blockquote>
+<p>This document outlines the core philosophy behind Anima Lab's approach to story authoring and game design. It explains why we chose a graph-based model over traditional hierarchies and how our architecture supports both the &quot;systems thinker&quot; and the &quot;discovery writer.&quot;</p>
+<hr>
+<h2 id="1-the-core-principle-graph-not-tree">1. The Core Principle: Graph, Not Tree</h2>
+<p>Traditional content management systems typically use a <strong>Tree Structure</strong>: a rigid, hierarchical parent-child relationship where every child must belong to exactly one parent (e.g., Chapter <span class="math">\(\rightarrow\)</span> Scene <span class="math">\(\rightarrow\)</span> Beat). This works for linear stories but creates massive friction for non-linear thinkers.</p>
+<p>Anima Lab uses a <strong>Graph-Based Model</strong>. In our system, relationships are links, not rigid constraints.</p>
+<h3 id="why-this-matters">Why this matters:</h3>
+<ul>
+<li><strong>No &quot;Wrong&quot; Entry Point</strong>: A writer can start with a single beat, a scene, or a high-level sequence. You don't have to build the foundation before you can add the roof.</li>
+<li><strong>Non-Linear Flexibility</strong>: A scene can be moved between sequences without breaking its internal structure or losing its associated beats.</li>
+<li><strong>Multi-Dimensionality</strong>: A single element (like a &quot;Red Thread&quot; motif) can be linked across multiple scenes, creating a web of connections rather than a simple list.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Rigid Tree Model</th>
+<th style="text-align: left;">Anima Lab Graph Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Structure</strong></td>
+<td style="text-align: left;">Forced hierarchy (Parent <span class="math">\(\rightarrow\)</span> Child)</td>
+<td style="text-align: left;">Flexible links (Many-to-Many)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Editing</strong></td>
+<td style="text-align: left;">Moving items risks breaking the tree</td>
+<td style="text-align: left;">Moving items is a simple re-link</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Entry Point</strong></td>
+<td style="text-align: left;">Must follow top-down path</td>
+<td style="text-align: left;">Enter anywhere, build outward</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-terminology--scale-invariance">2. Terminology &amp; Scale Invariance</h2>
+<p>To support both game designers and creative writers, we use scale-invariant terminology. This allows the same logic to apply whether you are organizing a game campaign or a novel.</p>
+<h3 id="the-hierarchy-of-intent">The Hierarchy of Intent</h3>
+<p>Regardless of the scale, content is organized into &quot;buckets&quot; of increasing complexity:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Term</th>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Scaling Example (Game)</th>
+<th style="text-align: left;">Scaling Example (Novel)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Story</strong></td>
+<td style="text-align: left;">The top-level container.</td>
+<td style="text-align: left;"><em>The Chronicles of Aethelgard</em></td>
+<td style="text-align: left;"><em>The Glass Garden</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sequence</strong></td>
+<td style="text-align: left;">An organizational bucket.</td>
+<td style="text-align: left;">Act I: The Awakening</td>
+<td style="text-align: left;">Chapter 1: The Discovery</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scene</strong></td>
+<td style="text-align: left;">The primary unit of work.</td>
+<td style="text-align: left;">Level 1: The Ruined Village</td>
+<td style="text-align: left;">Scene 1: The Basement</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Beat</strong></td>
+<td style="text-align: left;">A discrete moment or idea.</td>
+<td style="text-align: left;">Combat encounter, a plot twist</td>
+<td style="text-align: left;">A specific character realization</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key Insight</strong>: A &quot;Sequence&quot; is just an organizational tool. It is not a mandatory container. You can have beats and scenes that exist independently of any sequence, allowing for pure discovery writing.</p>
+</blockquote>
+<hr>
+<h2 id="3-the-two-primary-workflows">3. The Two Primary Workflows</h2>
+<p>The graph-based model enables two distinct modes of creation, catering to different cognitive styles.</p>
+<h3 id="3a-the-systems-approach-top-down">3A. The Systems Approach (Top-Down)</h3>
+<p>Typical for game designers who think in terms of pacing, acts, and levels.</p>
+<ul>
+<li><strong>Workflow</strong>: Define a Sequence <span class="math">\(\rightarrow\)</span> Populate with Scenes <span class="math">\(\rightarrow\)</span> Detail the Beats.</li>
+<li><strong>Goal</strong>: Building an intentional structure that governs player experience.</li>
+</ul>
+<h3 id="3b-the-discovery-approach-bottom-up">3B. The Discovery Approach (Bottom-Up)</h3>
+<p>Typical for creative writers who think in terms of character moments and imagery.</p>
+<ul>
+<li><strong>Workflow</strong>: Capture a Beat/Scene <span class="math">\(\rightarrow\)</span> Observe emerging patterns <span class="math">\(\rightarrow\)</span> Create a Sequence to group them.</li>
+<li><strong>Goal</strong>: Capturing inspiration without the pressure of immediate organization.</li>
+</ul>
+<hr>
+<h2 id="4-technical-foundations-the-how">4. Technical Foundations (The &quot;How&quot;)</h2>
+<p>To make this philosophy possible, our architecture adheres to several critical technical constraints:</p>
+<h3 id="-relationship-logic">🔗 Relationship Logic</h3>
+<p>Unlike traditional systems where a child belongs to one parent, Anima Lab uses <strong>explicit, bi-directional links</strong>.</p>
+<ul>
+<li><strong>[Implementation Note]</strong>: We utilize junction tables (e.g., <code>scene_beat_links</code>) and many-to-many relationships to allow a single beat to be referenced by multiple scenes or sequences.</li>
+</ul>
+<h3 id="-the-outline-as-an-annotation">📝 The Outline as an Annotation</h3>
+<p>In Anima Lab, an outline is not the structure itself—it is an <strong>attachment</strong>.</p>
+<ul>
+<li><strong>[Implementation Note]</strong>: Outlines are stored as optional metadata linked to a content item. This means you can write a scene first and add its &quot;plan&quot; later, or delete the plan without destroying the scene.</li>
+</ul>
+<h3 id="-seamless-re-organization">🔄 Seamless Re-organization</h3>
+<p>Because we use a graph, moving content does not cause &quot;cascading failures.&quot;</p>
+<ul>
+<li><strong>[Implementation Note]</strong>: Moving a scene from one sequence to another is a simple update of a foreign key or link. The internal beats and metadata move with it, untouched.</li>
+</ul>
+<hr>
+<h2 id="5-summary-the-design-goal">5. Summary: The Design Goal</h2>
+<p>The goal of Anima Lab is not to impose order on chaos, but to provide <strong>scaffolding that appears only when invited.</strong> By decoupling the <em>content</em> from its <em>structure</em>, we allow the tool to match the user's mental state—whether they are in a state of rapid-fire idea capture or deep, structured planning.</p>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/narrative-design.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

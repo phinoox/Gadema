@@ -2851,6 +2851,19 @@ references:
   isSpec: "True"
   fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.CheckAccessAsync
   nameWithType: IPermissionEngine.CheckAccessAsync
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  name: IsTargetInProjectAsync(Guid, Guid)
+  href: api_temp/Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  commentId: M:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync(System.Guid, System.Guid)
+  nameWithType: IPermissionEngine.IsTargetInProjectAsync(Guid, Guid)
+- uid: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync*
+  name: IsTargetInProjectAsync
+  href: api_temp/Gadema.Api.CoreServices.Interfaces.IPermissionEngine.html#Gadema_Api_CoreServices_Interfaces_IPermissionEngine_IsTargetInProjectAsync_
+  commentId: Overload:Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync
+  isSpec: "True"
+  fullName: Gadema.Api.CoreServices.Interfaces.IPermissionEngine.IsTargetInProjectAsync
+  nameWithType: IPermissionEngine.IsTargetInProjectAsync
 - uid: Gadema.Api.CoreServices.Services
   name: Gadema.Api.CoreServices.Services
   href: api_temp/Gadema.Api.CoreServices.Services.html
@@ -3941,6 +3954,19 @@ references:
   isSpec: "True"
   fullName: Gadema.Api.Services.Authorization.PermissionEngine.CheckAccessAsync
   nameWithType: PermissionEngine.CheckAccessAsync
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  name: IsTargetInProjectAsync(Guid, Guid)
+  href: api_temp/Gadema.Api.Services.Authorization.PermissionEngine.html#Gadema_Api_Services_Authorization_PermissionEngine_IsTargetInProjectAsync_System_Guid_System_Guid_
+  commentId: M:Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid,System.Guid)
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync(System.Guid, System.Guid)
+  nameWithType: PermissionEngine.IsTargetInProjectAsync(Guid, Guid)
+- uid: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync*
+  name: IsTargetInProjectAsync
+  href: api_temp/Gadema.Api.Services.Authorization.PermissionEngine.html#Gadema_Api_Services_Authorization_PermissionEngine_IsTargetInProjectAsync_
+  commentId: Overload:Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync
+  isSpec: "True"
+  fullName: Gadema.Api.Services.Authorization.PermissionEngine.IsTargetInProjectAsync
+  nameWithType: PermissionEngine.IsTargetInProjectAsync
 - uid: Gadema.Api.Services.Authorization.Strategies
   name: Gadema.Api.Services.Authorization.Strategies
   href: api_temp/Gadema.Api.Services.Authorization.Strategies.html
@@ -3997,15 +4023,15 @@ references:
   commentId: T:Gadema.Api.Services.Base.MetaInfo.CommentService
   fullName: Gadema.Api.Services.Base.MetaInfo.CommentService
   nameWithType: CommentService
-- uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  name: CommentService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  href: api_temp/Gadema.Api.Services.Base.MetaInfo.CommentService.html#Gadema_Api_Services_Base_MetaInfo_CommentService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_
-  commentId: M:Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  name.vb: New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
-  fullName: Gadema.Api.Services.Base.MetaInfo.CommentService.CommentService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>, Gadema.Api.CoreServices.CoreServicesProvider)
-  fullName.vb: Gadema.Api.Services.Base.MetaInfo.CommentService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService), Gadema.Api.CoreServices.CoreServicesProvider)
-  nameWithType: CommentService.CommentService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  nameWithType.vb: CommentService.New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
+- uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)
+  name: CommentService(CoreDbContext, ILogger<CommentService>, CoreServicesProvider)
+  href: api_temp/Gadema.Api.Services.Base.MetaInfo.CommentService.html#Gadema_Api_Services_Base_MetaInfo_CommentService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_MetaInfo_CommentService__Gadema_Api_CoreServices_CoreServicesProvider_
+  commentId: M:Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)
+  name.vb: New(CoreDbContext, ILogger(Of CommentService), CoreServicesProvider)
+  fullName: Gadema.Api.Services.Base.MetaInfo.CommentService.CommentService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.MetaInfo.CommentService>, Gadema.Api.CoreServices.CoreServicesProvider)
+  fullName.vb: Gadema.Api.Services.Base.MetaInfo.CommentService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.MetaInfo.CommentService), Gadema.Api.CoreServices.CoreServicesProvider)
+  nameWithType: CommentService.CommentService(CoreDbContext, ILogger<CommentService>, CoreServicesProvider)
+  nameWithType.vb: CommentService.New(CoreDbContext, ILogger(Of CommentService), CoreServicesProvider)
 - uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor*
   name: CommentService
   href: api_temp/Gadema.Api.Services.Base.MetaInfo.CommentService.html#Gadema_Api_Services_Base_MetaInfo_CommentService__ctor_
@@ -4525,15 +4551,15 @@ references:
   commentId: T:Gadema.Api.Services.Base.Projects.ProjectTagService
   fullName: Gadema.Api.Services.Base.Projects.ProjectTagService
   nameWithType: ProjectTagService
-- uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  name: ProjectTagService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  href: api_temp/Gadema.Api.Services.Base.Projects.ProjectTagService.html#Gadema_Api_Services_Base_Projects_ProjectTagService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_
-  commentId: M:Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  name.vb: New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
-  fullName: Gadema.Api.Services.Base.Projects.ProjectTagService.ProjectTagService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>, Gadema.Api.CoreServices.CoreServicesProvider)
-  fullName.vb: Gadema.Api.Services.Base.Projects.ProjectTagService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService), Gadema.Api.CoreServices.CoreServicesProvider)
-  nameWithType: ProjectTagService.ProjectTagService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  nameWithType.vb: ProjectTagService.New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
+- uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)
+  name: ProjectTagService(CoreDbContext, ILogger<ProjectTagService>, CoreServicesProvider)
+  href: api_temp/Gadema.Api.Services.Base.Projects.ProjectTagService.html#Gadema_Api_Services_Base_Projects_ProjectTagService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectTagService__Gadema_Api_CoreServices_CoreServicesProvider_
+  commentId: M:Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectTagService},Gadema.Api.CoreServices.CoreServicesProvider)
+  name.vb: New(CoreDbContext, ILogger(Of ProjectTagService), CoreServicesProvider)
+  fullName: Gadema.Api.Services.Base.Projects.ProjectTagService.ProjectTagService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectTagService>, Gadema.Api.CoreServices.CoreServicesProvider)
+  fullName.vb: Gadema.Api.Services.Base.Projects.ProjectTagService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectTagService), Gadema.Api.CoreServices.CoreServicesProvider)
+  nameWithType: ProjectTagService.ProjectTagService(CoreDbContext, ILogger<ProjectTagService>, CoreServicesProvider)
+  nameWithType.vb: ProjectTagService.New(CoreDbContext, ILogger(Of ProjectTagService), CoreServicesProvider)
 - uid: Gadema.Api.Services.Base.Projects.ProjectTagService.#ctor*
   name: ProjectTagService
   href: api_temp/Gadema.Api.Services.Base.Projects.ProjectTagService.html#Gadema_Api_Services_Base_Projects_ProjectTagService__ctor_
@@ -9630,19 +9656,19 @@ references:
   commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
   fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto
   nameWithType: ProjectTokenCreateDto
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenCreateDto_ExpirationDate
-  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate
-  nameWithType: ProjectTokenCreateDto.ExpirationDate
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate*
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenCreateDto_ExpirationDate_
-  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenCreateDto_ExpiresAt
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt
+  nameWithType: ProjectTokenCreateDto.ExpiresAt
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt*
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenCreateDto_ExpiresAt_
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt
   isSpec: "True"
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpirationDate
-  nameWithType: ProjectTokenCreateDto.ExpirationDate
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.ExpiresAt
+  nameWithType: ProjectTokenCreateDto.ExpiresAt
 - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.MaxRequests
   name: MaxRequests
   href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenCreateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenCreateDto_MaxRequests
@@ -9707,19 +9733,19 @@ references:
   commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
   fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto
   nameWithType: ProjectTokenResponseDto
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenResponseDto_ExpirationDate
-  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate
-  nameWithType: ProjectTokenResponseDto.ExpirationDate
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate*
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenResponseDto_ExpirationDate_
-  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenResponseDto_ExpiresAt
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt
+  nameWithType: ProjectTokenResponseDto.ExpiresAt
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt*
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenResponseDto_ExpiresAt_
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt
   isSpec: "True"
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpirationDate
-  nameWithType: ProjectTokenResponseDto.ExpirationDate
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.ExpiresAt
+  nameWithType: ProjectTokenResponseDto.ExpiresAt
 - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.IsRevoked
   name: IsRevoked
   href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenResponseDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenResponseDto_IsRevoked
@@ -9840,19 +9866,19 @@ references:
   commentId: T:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
   fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto
   nameWithType: ProjectTokenUpdateDto
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpirationDate
-  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  nameWithType: ProjectTokenUpdateDto.ExpirationDate
-- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate*
-  name: ExpirationDate
-  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpirationDate_
-  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpiresAt
+  commentId: P:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  nameWithType: ProjectTokenUpdateDto.ExpiresAt
+- uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt*
+  name: ExpiresAt
+  href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_ExpiresAt_
+  commentId: Overload:Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
   isSpec: "True"
-  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpirationDate
-  nameWithType: ProjectTokenUpdateDto.ExpirationDate
+  fullName: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.ExpiresAt
+  nameWithType: ProjectTokenUpdateDto.ExpiresAt
 - uid: Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.TokenType
   name: TokenType
   href: api_temp/Gadema.Core.Dtos.Base.Projects.ProjectTokenUpdateDto.html#Gadema_Core_Dtos_Base_Projects_ProjectTokenUpdateDto_TokenType
@@ -18394,19 +18420,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Access.ProjectToken.CreatedAt
   nameWithType: ProjectToken.CreatedAt
-- uid: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  name: CurrentUsage
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_CurrentUsage
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  fullName: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  nameWithType: ProjectToken.CurrentUsage
-- uid: Gadema.Core.Models.Access.ProjectToken.CurrentUsage*
-  name: CurrentUsage
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_CurrentUsage_
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Access.ProjectToken.CurrentUsage
-  nameWithType: ProjectToken.CurrentUsage
 - uid: Gadema.Core.Models.Access.ProjectToken.ExpiresAt
   name: ExpiresAt
   href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_ExpiresAt
@@ -18446,32 +18459,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Access.ProjectToken.IsActive
   nameWithType: ProjectToken.IsActive
-- uid: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  name: MaxRequests
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_MaxRequests
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  fullName: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  nameWithType: ProjectToken.MaxRequests
-- uid: Gadema.Core.Models.Access.ProjectToken.MaxRequests*
-  name: MaxRequests
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_MaxRequests_
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Access.ProjectToken.MaxRequests
-  nameWithType: ProjectToken.MaxRequests
-- uid: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  name: PermissionsJson
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_PermissionsJson
-  commentId: P:Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  fullName: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  nameWithType: ProjectToken.PermissionsJson
-- uid: Gadema.Core.Models.Access.ProjectToken.PermissionsJson*
-  name: PermissionsJson
-  href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_PermissionsJson_
-  commentId: Overload:Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Access.ProjectToken.PermissionsJson
-  nameWithType: ProjectToken.PermissionsJson
 - uid: Gadema.Core.Models.Access.ProjectToken.Project
   name: Project
   href: api_temp/Gadema.Core.Models.Access.ProjectToken.html#Gadema_Core_Models_Access_ProjectToken_Project
@@ -18763,45 +18750,19 @@ references:
   commentId: T:Gadema.Core.Models.Access.UserProviderLink
   fullName: Gadema.Core.Models.Access.UserProviderLink
   nameWithType: UserProviderLink
-- uid: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  name: ExternalSubjectId
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_ExternalSubjectId
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  fullName: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  nameWithType: UserProviderLink.ExternalSubjectId
-- uid: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId*
-  name: ExternalSubjectId
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_ExternalSubjectId_
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
+- uid: Gadema.Core.Models.Access.UserProviderLink.Id
+  name: Id
+  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Id
+  commentId: P:Gadema.Core.Models.Access.UserProviderLink.Id
+  fullName: Gadema.Core.Models.Access.UserProviderLink.Id
+  nameWithType: UserProviderLink.Id
+- uid: Gadema.Core.Models.Access.UserProviderLink.Id*
+  name: Id
+  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Id_
+  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.Id
   isSpec: "True"
-  fullName: Gadema.Core.Models.Access.UserProviderLink.ExternalSubjectId
-  nameWithType: UserProviderLink.ExternalSubjectId
-- uid: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  name: LinkedAtUtc
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_LinkedAtUtc
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  fullName: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  nameWithType: UserProviderLink.LinkedAtUtc
-- uid: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc*
-  name: LinkedAtUtc
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_LinkedAtUtc_
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Access.UserProviderLink.LinkedAtUtc
-  nameWithType: UserProviderLink.LinkedAtUtc
-- uid: Gadema.Core.Models.Access.UserProviderLink.Provider
-  name: Provider
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Provider
-  commentId: P:Gadema.Core.Models.Access.UserProviderLink.Provider
-  fullName: Gadema.Core.Models.Access.UserProviderLink.Provider
-  nameWithType: UserProviderLink.Provider
-- uid: Gadema.Core.Models.Access.UserProviderLink.Provider*
-  name: Provider
-  href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_Provider_
-  commentId: Overload:Gadema.Core.Models.Access.UserProviderLink.Provider
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Access.UserProviderLink.Provider
-  nameWithType: UserProviderLink.Provider
+  fullName: Gadema.Core.Models.Access.UserProviderLink.Id
+  nameWithType: UserProviderLink.Id
 - uid: Gadema.Core.Models.Access.UserProviderLink.User
   name: User
   href: api_temp/Gadema.Core.Models.Access.UserProviderLink.html#Gadema_Core_Models_Access_UserProviderLink_User
@@ -20767,19 +20728,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
   nameWithType: ReviewStatus.Status
-- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  name: TargetId
-  href: api_temp/Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_TargetId
-  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  nameWithType: ReviewStatus.TargetId
-- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId*
-  name: TargetId
-  href: api_temp/Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_TargetId_
-  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  nameWithType: ReviewStatus.TargetId
 - uid: Gadema.Core.Models.Base.MetaInfo.TagRelation`1
   name: TagRelation<T>
   href: api_temp/Gadema.Core.Models.Base.MetaInfo.TagRelation-1.html
@@ -21313,19 +21261,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfo
   nameWithType: Project.ProjectMetaInfo
-- uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  name: ProjectMetaInfoId
-  href: api_temp/Gadema.Core.Models.Base.Projects.Project.html#Gadema_Core_Models_Base_Projects_Project_ProjectMetaInfoId
-  commentId: P:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  nameWithType: Project.ProjectMetaInfoId
-- uid: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId*
-  name: ProjectMetaInfoId
-  href: api_temp/Gadema.Core.Models.Base.Projects.Project.html#Gadema_Core_Models_Base_Projects_Project_ProjectMetaInfoId_
-  commentId: Overload:Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Base.Projects.Project.ProjectMetaInfoId
-  nameWithType: Project.ProjectMetaInfoId
 - uid: Gadema.Core.Models.Base.Projects.Project.ProjectSeries
   name: ProjectSeries
   href: api_temp/Gadema.Core.Models.Base.Projects.Project.html#Gadema_Core_Models_Base_Projects_Project_ProjectSeries
@@ -21436,19 +21371,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfo
   nameWithType: ProjectSeries.ProjectSeriesMetaInfo
-- uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  name: ProjectSeriesMetaInfoId
-  href: api_temp/Gadema.Core.Models.Base.Projects.ProjectSeries.html#Gadema_Core_Models_Base_Projects_ProjectSeries_ProjectSeriesMetaInfoId
-  commentId: P:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  fullName: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  nameWithType: ProjectSeries.ProjectSeriesMetaInfoId
-- uid: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId*
-  name: ProjectSeriesMetaInfoId
-  href: api_temp/Gadema.Core.Models.Base.Projects.ProjectSeries.html#Gadema_Core_Models_Base_Projects_ProjectSeries_ProjectSeriesMetaInfoId_
-  commentId: Overload:Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Base.Projects.ProjectSeries.ProjectSeriesMetaInfoId
-  nameWithType: ProjectSeries.ProjectSeriesMetaInfoId
 - uid: Gadema.Core.Models.Base.Projects.ProjectSeries.Projects
   name: Projects
   href: api_temp/Gadema.Core.Models.Base.Projects.ProjectSeries.html#Gadema_Core_Models_Base_Projects_ProjectSeries_Projects
@@ -23550,19 +23472,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Identity.IdentityDefinition.DataType
   nameWithType: IdentityDefinition.DataType
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Description
-  name: Description
-  href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Description
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Description
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Description
-  nameWithType: IdentityDefinition.Description
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Description*
-  name: Description
-  href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Description_
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.Description
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Description
-  nameWithType: IdentityDefinition.Description
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.Id
   name: Id
   href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Id
@@ -23615,19 +23524,6 @@ references:
   isSpec: "True"
   fullName: Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId
   nameWithType: IdentityDefinition.MetaInfoId
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Name
-  name: Name
-  href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Name
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Name
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Name
-  nameWithType: IdentityDefinition.Name
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Name*
-  name: Name
-  href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Name_
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.Name
-  isSpec: "True"
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Name
-  nameWithType: IdentityDefinition.Name
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.Project
   name: Project
   href: api_temp/Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Project
@@ -28486,6 +28382,50 @@ references:
   commentId: N:Gadema.Data.Configurations.Writing.Narrative
   fullName: Gadema.Data.Configurations.Writing.Narrative
   nameWithType: Gadema.Data.Configurations.Writing.Narrative
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  name: CharacterRelationEntityTypeConfiguration
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.html
+  commentId: T:Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+  nameWithType: CharacterRelationEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Characters.CharacterRelation})
+  name: Configure(EntityTypeBuilder<CharacterRelation>)
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_CharacterRelationEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Characters_CharacterRelation__
+  commentId: M:Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Characters.CharacterRelation})
+  name.vb: Configure(EntityTypeBuilder(Of CharacterRelation))
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Gadema.Core.Models.Writing.Characters.CharacterRelation>)
+  fullName.vb: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder(Of Gadema.Core.Models.Writing.Characters.CharacterRelation))
+  nameWithType: CharacterRelationEntityTypeConfiguration.Configure(EntityTypeBuilder<CharacterRelation>)
+  nameWithType.vb: CharacterRelationEntityTypeConfiguration.Configure(EntityTypeBuilder(Of CharacterRelation))
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure*
+  name: Configure
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_CharacterRelationEntityTypeConfiguration_Configure_
+  commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure
+  isSpec: "True"
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.Configure
+  nameWithType: CharacterRelationEntityTypeConfiguration.Configure
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+  name: CharacterStateEntityTypeConfiguration
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.html
+  commentId: T:Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+  nameWithType: CharacterStateEntityTypeConfiguration
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Characters.CharacterState})
+  name: Configure(EntityTypeBuilder<CharacterState>)
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_CharacterStateEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Characters_CharacterState__
+  commentId: M:Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Characters.CharacterState})
+  name.vb: Configure(EntityTypeBuilder(Of CharacterState))
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Gadema.Core.Models.Writing.Characters.CharacterState>)
+  fullName.vb: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder(Of Gadema.Core.Models.Writing.Characters.CharacterState))
+  nameWithType: CharacterStateEntityTypeConfiguration.Configure(EntityTypeBuilder<CharacterState>)
+  nameWithType.vb: CharacterStateEntityTypeConfiguration.Configure(EntityTypeBuilder(Of CharacterState))
+- uid: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure*
+  name: Configure
+  href: api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_CharacterStateEntityTypeConfiguration_Configure_
+  commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure
+  isSpec: "True"
+  fullName: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.Configure
+  nameWithType: CharacterStateEntityTypeConfiguration.Configure
 - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
   name: DialogueBranchEntityTypeConfiguration
   href: api_temp/Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.html

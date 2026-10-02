@@ -221,7 +221,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateLocationAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/WorldLocationService.cs
-    startLine: 108
+    startLine: 109
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding
@@ -254,7 +254,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteLocationAsync
     path: src/Gadema.Api/Services/Writing/WorldBuilding/WorldLocationService.cs
-    startLine: 140
+    startLine: 141
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.WorldBuilding

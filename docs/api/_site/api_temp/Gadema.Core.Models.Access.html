@@ -79,8 +79,8 @@ Classes
       <section><p>Represents a user's membership and associated role within a specific project.</p>
 </section>
       <h4><a class="xref" href="Gadema.Core.Models.Access.ProjectToken.html">ProjectToken</a></h4>
-      <section><p>Represents a project-level API token for automation access.
-Tokens are hashed before storage for security.</p>
+      <section><p>Provides access credentials for a specific project context.
+Following Law I: This is a 1:1 extension, so Id == ProjectId.</p>
 </section>
       <h4><a class="xref" href="Gadema.Core.Models.Access.TokenUsageStats.html">TokenUsageStats</a></h4>
       <section><p>Provides statistics regarding the usage and remaining quota of a project token.</p>
@@ -90,8 +90,8 @@ Tokens are hashed before storage for security.</p>
 Supports multiple authentication methods including Google OAuth and standard password login.</p>
 </section>
       <h4><a class="xref" href="Gadema.Core.Models.Access.UserProviderLink.html">UserProviderLink</a></h4>
-      <section><p>Represents a link between a user account and an external authentication provider.
-This provides an audit trail of which providers are associated with a specific user.</p>
+      <section><p>An extension of the User identity, adding external provider data.
+Following Law I: This is a 1:1 extension, so Id == UserId.</p>
 </section>
     <h3 id="enums">
 Enums

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Orchestration &amp; Domain Services </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Orchestration &amp; Domain Services ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="orchestration--domain-services">Orchestration &amp; Domain Services</h1>
+
+<p>The GaDeMa architecture uses an orchestration layer to manage how different specialized engines interact with business logic. This is achieved through a combination of the <code>CoreServicesProvider</code> (the Gateway) and the <code>DomainService</code> (the Base implementation).</p>
+<p>This pattern ensures that domain-specific logic remains focused on &quot;what&quot; to do, while the infrastructure handles the &quot;how&quot; of auditing, authorization, and identity synchronization.</p>
+<hr>
+<h2 id="1-the-gateway-coreservicesprovider">1. The Gateway: <code>CoreServicesProvider</code></h2>
+<p>The <code>CoreServicesProvider</code> acts as a central registry for all cross-cutting infrastructure engines. It implements the <strong>Parameter Object</strong> (or Gateway) pattern to prevent &quot;Constructor Bloat&quot; in domain services.</p>
+<p>Instead of injecting five or six separate interfaces into every service, we inject this single provider which grants access to:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Service</th>
+<th style="text-align: left;">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>IAuditService</code></td>
+<td style="text-align: left;">Records business-level activity logs and audit trails.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IMetadataService</code></td>
+<td style="text-align: left;">Manages the lifecycle and synchronization of <code>MetaInfo</code> anchors.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IPermissionEngine</code></td>
+<td style="text-align: left;">Evaluates granular, scope-based permissions via strategies.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>IUserContext</code></td>
+<td style="text-align: left;">Provides identity (UserId, Roles) for the current request.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-the-base-domainservice">2. The Base: <code>DomainService</code></h2>
+<p>The <code>DomainService</code> is an abstract base class that all business logic implementations inherit from. It acts as the bridge between the raw infrastructure engines and the high-level API controllers.</p>
+<h3 id="role--responsibility">Role &amp; Responsibility</h3>
+<p>A <code>DomainService</code> is responsible for implementing the actual &quot;business rules&quot; of a specific domain (e.g., managing tasks, handling characters). It uses the <code>CoreServicesProvider</code> to wrap complex engine logic into simplified, readable helper methods.</p>
+<h3 id="key-patterns-implemented">Key Patterns Implemented</h3>
+<h4 id="a-the-wrapper-pattern-helper-methods">A. The Wrapper Pattern (Helper Methods)</h4>
+<p>To keep domain code clean and ensure consistent error responses, <code>DomainService</code> provides high-level wrappers for core operations:</p>
+<ul>
+<li><strong>Authorization Wrappers</strong>: Maps <code>IPermissionEngine</code> results into standardized <code>ApiResponseDto&lt;T&gt;</code> objects. It also handles <strong>Role Resolution</strong>—automatically determining that a request for <code>CanEdit</code> requires the <code>Editor</code> role.</li>
+<li><strong>Auditing Helpers</strong>: Provides a simple way to record events (e.g., <code>LogDbAsync</code>) without exposing the complexity of the audit engine.</li>
+<li><strong>Harmonization Wrappers</strong>: Provides access to the <code>IMetadataService.SyncAsync</code> method, allowing domain services to trigger identity updates through the Harmonization protocol.</li>
+</ul>
+<h4 id="b-the-nexus-pattern-scene-driven-state">B. The Nexus Pattern (Scene-Driven State)</h4>
+<p>In the context of narrative content, the <code>DomainService</code> manages the <code>Scene</code>, which acts as a <strong>Nexus</strong>. This is where static narrative structures (Beats/Sequences) intersect with dynamic character states and relations.</p>
+<hr>
+<h2 id="3-interaction-flow">3. Interaction Flow</h2>
+<p>The interaction between these components follows a structured flow:</p>
+<ol>
+<li><strong>Request</strong>: An API Controller calls a method on a <code>DomainService</code>.</li>
+<li><strong>Authorization</strong>: The <code>DomainService</code> uses the <code>_core.PermissionEngine</code> (via its internal wrapper) to check if the user has permission.</li>
+<li><strong>Execution</strong>: If authorized, the service performs its primary business logic (e.g., updating a character's stats).</li>
+<li><strong>Harmonization</strong>: If the change affects a core identity property, the <code>DomainService</code> calls <code>SyncIdentityAsync&lt;T&gt;</code> to ensure the <code>MetaInfo</code> anchor is synchronized.</li>
+<li><strong>Auditing</strong>: Finally, the service records the action via <code>LogDbAsync</code>.</li>
+</ol>
+<hr>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Reduced Boilerplate</strong>: Dramatically simplifies service constructors and error handling.</td>
+<td style="text-align: left;"><strong>Inheritance Coupling</strong>: All domain services are tightly bound to the <code>DomainService</code> base class.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Standardized API</strong>: Ensures that all authorization checks and audit logs follow a consistent format across the entire system.</td>
+<td style="text-align: left;"><strong>Abstraction Overhead</strong>: Can make it harder for developers to see exactly which underlying engine is being called without stepping into the code.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/systems/orchestration.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

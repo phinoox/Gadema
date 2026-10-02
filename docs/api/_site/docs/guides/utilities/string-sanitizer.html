@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>String Sanitization </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="String Sanitization ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="string-sanitization">String Sanitization</h1>
+
+<p>The <code>StringSanitizer</code> utility provides a standardized way to transform human-readable input into machine-friendly, URL-safe strings. This is primarily used for generating &quot;slugs&quot; (e.g., converting <code>&quot;My Awesome Story&quot;</code> into <code>&quot;my_awesome_story&quot;</code>) which are used as identifiers in URLs and internal routing.</p>
+<hr>
+<h2 id="1-the-normalize-method">1. The <code>Normalize</code> Method</h2>
+<p>The core functionality of the utility is contained within the <code>Normalize</code> method. It follows a strict transformation pipeline to ensure consistent output.</p>
+<h3 id="transformation-pipeline">Transformation Pipeline</h3>
+<ol>
+<li><strong>Case Normalization</strong>: Converts the entire input string to lowercase invariant.</li>
+<li><strong>Regex Cleaning</strong>: Uses a regular expression (<code>[^a-z0-9]+</code>) to identify any character that is not a lowercase letter or a digit.</li>
+<li><strong>Separator Replacement</strong>: Replaces all identified special characters and whitespace with a single underscore (<code>_</code>).</li>
+<li><strong>Trimming</strong>: Removes any leading or trailing underscores from the final result.</li>
+</ol>
+<hr>
+<h2 id="2-usage-examples">2. Usage Examples</h2>
+<p>The following table demonstrates how different inputs are processed by the <code>Normalize</code> method:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Input String</th>
+<th style="text-align: left;">Output (Slug)</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>&quot;Dark Tone&quot;</code></td>
+<td style="text-align: left;"><code>dark_tone</code></td>
+<td style="text-align: left;">Space replaced by underscore</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&quot;The Hero's Journey!&quot;</code></td>
+<td style="text-align: left;"><code>the_hero_s_journey</code></td>
+<td style="text-align: left;">Special characters removed/replaced</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&quot;  Space...  &quot;</code></td>
+<td style="text-align: left;"><code>space</code></td>
+<td style="text-align: left;">Leading/trailing underscores trimmed</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>&quot;123-ABC_xyz&quot;</code></td>
+<td style="text-align: left;"><code>123_abc_xyz</code></td>
+<td style="text-align: left;">Mixed alphanumeric and separators</td>
+</tr>
+</tbody>
+</table>
+<h3 id="code-implementation-example">Code Implementation Example</h3>
+<pre><code class="lang-csharp">// Basic usage in a controller or service
+string userInput = &quot;A New Adventure!&quot;;
+string slug = StringSanitizer.Normalize(userInput);
+
+// Result: &quot;a_new_adventure&quot;
+</code></pre>
+<hr>
+<h2 id="3-technical-constraints">3. Technical Constraints</h2>
+<ul>
+<li><strong>Character Set</strong>: The output is strictly limited to lowercase <code>a-z</code>, digits <code>0-9</code>, and the underscore <code>_</code>.</li>
+<li><strong>Empty Input</strong>: If the input is null, empty, or consists only of whitespace, the method returns an empty string (<code>string.Empty</code>).</li>
+<li><strong>Lossy Transformation</strong>: This process is &quot;lossy&quot;—once a string is normalized, you cannot perfectly reconstruct the original casing or special characters from the slug alone.</li>
+</ul>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Consistency</strong>: Ensures all URL slugs follow the same format across the entire system.</td>
+<td style="text-align: left;"><strong>Information Loss</strong>: Cannot preserve case sensitivity, accented characters, or punctuation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Safety</strong>: Produces strings that are safe for URLs and file systems, avoiding many injection/parsing issues.</td>
+<td style="text-align: left;"><strong>Single-Pass Logic</strong>: The regex approach is efficient but simple; it does not handle complex linguistic rules (e.transliteration).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/string-sanitizer.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

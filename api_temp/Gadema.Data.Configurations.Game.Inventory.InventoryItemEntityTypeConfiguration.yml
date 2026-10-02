@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: InventoryItemEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Game/Inventory/InventoryItemEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.Inventory
+  summary: Configuration for InventoryItem entity in game development management system.
+  example: []
   syntax:
     content: 'public class InventoryItemEntityTypeConfiguration : IEntityTypeConfiguration<InventoryItem>'
     content.vb: Public Class InventoryItemEntityTypeConfiguration Implements IEntityTypeConfiguration(Of InventoryItem)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Game/Inventory/InventoryItemEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.Inventory
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Game.Inventory.InventoryItem" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure InventoryItem entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<InventoryItem> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Game.Inventory.InventoryItem}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of InventoryItem))
   overload: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.Configure*
   implements:
@@ -437,12 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Game.Inventory.InventoryItem
-  commentId: T:Gadema.Core.Models.Game.Inventory.InventoryItem
-  href: Gadema.Core.Models.Game.Inventory.InventoryItem.html
-  name: InventoryItem
-  nameWithType: InventoryItem
-  fullName: Gadema.Core.Models.Game.Inventory.InventoryItem
 - uid: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.html#Gadema_Data_Configurations_Game_Inventory_InventoryItemEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Game_Inventory_InventoryItem__

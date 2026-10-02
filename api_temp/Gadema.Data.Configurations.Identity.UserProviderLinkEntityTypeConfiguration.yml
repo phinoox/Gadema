@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UserProviderLinkEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Identity/UserProviderLinkEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity
+  summary: Configuration for UserProviderLink entity.
+  example: []
   syntax:
     content: 'public class UserProviderLinkEntityTypeConfiguration : IEntityTypeConfiguration<UserProviderLink>'
     content.vb: Public Class UserProviderLinkEntityTypeConfiguration Implements IEntityTypeConfiguration(Of UserProviderLink)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Identity/UserProviderLinkEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Identity
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Access.UserProviderLink" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure UserProviderLink entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<UserProviderLink> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Access.UserProviderLink}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of UserProviderLink))
   overload: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.Configure*
   implements:
@@ -431,12 +432,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Access.UserProviderLink
-  commentId: T:Gadema.Core.Models.Access.UserProviderLink
-  href: Gadema.Core.Models.Access.UserProviderLink.html
-  name: UserProviderLink
-  nameWithType: UserProviderLink
-  fullName: Gadema.Core.Models.Access.UserProviderLink
 - uid: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.html#Gadema_Data_Configurations_Identity_UserProviderLinkEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Access_UserProviderLink__

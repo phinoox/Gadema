@@ -25,7 +25,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectMemberRoleEnum
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 7
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -54,7 +54,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Owner
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 10
+    startLine: 11
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -82,7 +82,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Admin
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -110,7 +110,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Editor
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -138,7 +138,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Reviewer
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 19
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -166,7 +166,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Viewer
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 22
+    startLine: 23
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -194,7 +194,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Default
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 25
+    startLine: 26
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access

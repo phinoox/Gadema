@@ -25,15 +25,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CharacterStoryProfileService
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 17
+    startLine: 13
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
-  summary: >-
-    Service for managing CharacterStoryProfile - the static backstory and personality of a character.
-
-    Access is validated via the parent Character's ContentMetaInfo.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -88,7 +83,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 21
+    startLine: 17
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -124,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetProfilesAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 51
+    startLine: 42
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -155,7 +150,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetProfileAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 71
+    startLine: 56
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -186,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateProfileAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 91
+    startLine: 72
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -221,7 +216,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateProfileAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 139
+    startLine: 113
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -254,7 +249,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteProfileAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStoryProfileService.cs
-    startLine: 176
+    startLine: 145
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters

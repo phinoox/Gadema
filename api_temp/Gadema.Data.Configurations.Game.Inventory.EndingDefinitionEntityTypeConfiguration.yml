@@ -20,7 +20,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: EndingDefinitionEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Game/Inventory/EndingDefinitionEntityTypeConfiguration.cs
-    startLine: 16
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.Inventory
@@ -59,7 +59,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Game/Inventory/EndingDefinitionEntityTypeConfiguration.cs
-    startLine: 21
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Game.Inventory

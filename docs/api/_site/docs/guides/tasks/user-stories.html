@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128203; User Stories &amp; Acceptance Criteria </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128203; User Stories &amp; Acceptance Criteria ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-user-stories--acceptance-criteria">📋 User Stories &amp; Acceptance Criteria</h1>
+
+<p>This guide provides a detailed breakdown of the user stories, acceptance criteria, and technical scope required for Anima Lab. These stories drive the development of our ADHD-friendly, non-linear content management system.</p>
+<h2 id="1-task-management--workflow-adhd-friendly-">1. Task Management &amp; Workflow (ADHD-Friendly) ⭐</h2>
+<p>These stories focus on reducing cognitive load through energy-matching and momentum building.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-01</strong></td>
+<td style="text-align: left;">Filter tasks by difficulty (Easy/Medium/Hard) to match energy levels.</td>
+<td style="text-align: left;">- Dropdown filter for difficulty<br>- Visual indicators per level<br>- Sort by estimated time</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ProjectTask</code> entity, Difficulty field</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-02</strong></td>
+<td style="text-align: left;">Mark tasks as &quot;Quick Wins&quot; to build momentum.</td>
+<td style="text-align: left;">- Quick Win badge for &lt;15m tasks<br>- Toggle status<br>- Sort by quick wins first</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>IsQuickWin</code> boolean flag</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-03</strong></td>
+<td style="text-align: left;">Use a Focus Mode view that hides distractions.</td>
+<td style="text-align: left;">- Hide sidebars/UI clutter<br>- Show only active task<br>- Timer integration</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;">Single Task View UI pattern</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-04</strong></td>
+<td style="text-align: left;">Move tasks through statuses (Backlog <span class="math">\(\rightarrow\)</span> Done).</td>
+<td style="text-align: left;">- Drag-and-drop transitions<br>- Status change audit logs<br>- Workflow visualization</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>TaskStatusEnum</code> implementation</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-05</strong></td>
+<td style="text-align: left;">Add comments to tasks for collaboration.</td>
+<td style="text-align: left;">- Rich text editor<br>- Visibility control (Private/Team)<br>- Threaded replies</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>TaskComments</code> &amp; <code>Comment</code> entities</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-06</strong></td>
+<td style="text-align: left;">Assign tasks to specific team members.</td>
+<td style="text-align: left;">- User selection dropdown<br>- Assignment audit trail<br>- Auto-assign option</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>AssignedToUserId</code> FK on <code>ProjectTask</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-07</strong></td>
+<td style="text-align: left;">Track task completion rates and streaks.</td>
+<td style="text-align: left;">- Completion percentage display<br>- Consecutive day streak counter</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;">Activity log &amp; Task history analysis</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJECT-TASK-08</strong></td>
+<td style="text-align: left;">Automatically archive completed tasks to reduce clutter.</td>
+<td style="text-align: left;">- Auto-archive after 7 days<br>- Manual archive option<br>- Archive search capability</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>ContentVersionLog</code> / Cleanup service</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-content-creation--management">2. Content Creation &amp; Management</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-01</strong></td>
+<td style="text-align: left;">Create content items with dedicated outlines.</td>
+<td style="text-align: left;">- Outline creation before/during content<br>- Markdown/HTML support</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>MetaInfo</code> + <code>StoryOutline</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-02</strong></td>
+<td style="text-align: left;">Toggle between &quot;PrivateWriting&quot; and &quot;Presentation&quot; modes.</td>
+<td style="text-align: left;">- Private: Full editor tools<br>- Presentation: Clean, read-only view</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ViewModeEnum</code> logic</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-03</strong></td>
+<td style="text-align: left;">Upload media (images/audio) for inspiration.</td>
+<td style="text-align: left;">- Drag-and-drop interface<br>- Up to 100MB file size<br>- MIME type validation</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>MediaAttachment</code> system</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-04</strong></td>
+<td style="text-align: left;">Auto-save snapshots and rollback versions.</td>
+<td style="text-align: left;">- Automatic snapshot on major changes<br>- Manual version creation<br>- Rollback capability</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ContentSnapshot</code> &amp; Versioning logic</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-05</strong></td>
+<td style="text-align: left;">Tag content for quick discovery.</td>
+<td style="text-align: left;">- Multi-select interface<br>- Pre-defined tag lists<br>- Tag suggestions</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>Tag</code> + <code>ContentTags</code> junction</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>CONTENT-06</strong></td>
+<td style="text-align: left;">Link to external resources (Notion, Pinterest).</td>
+<td style="text-align: left;">- URL validation<br>- Resource type tagging<br>- Thumbnail previews</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>ExternalReference</code> entity</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-narrative-structure--outlining">3. Narrative Structure &amp; Outlining</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SEQUENCE-01</strong></td>
+<td style="text-align: left;">Create story sequences (chapters/acts).</td>
+<td style="text-align: left;">- Chapter title input<br>- Slug auto-generation<br>- Order index management</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>StorySequence</code> entity</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SEQUENCE-02</strong></td>
+<td style="text-align: left;">Add beats (plot points) within sequences.</td>
+<td style="text-align: left;">- Beat title &amp; description<br>- Drag-and-drop reordering<br>- Parent-child mapping</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>StoryBeat</code> entity</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SEQUENCE-03</strong></td>
+<td style="text-align: left;">Manage lore entries for world building.</td>
+<td style="text-align: left;">- Lore category tagging<br>- Rich text editor<br>- Hierarchy support</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>LoreEntry</code> entity</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-team-collaboration--review">4. Team Collaboration &amp; Review</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>TEAM-01</strong></td>
+<td style="text-align: left;">Assign roles (Admin/Editor/Viewer) to members.</td>
+<td style="text-align: left;">- Role selection dropdown<br>- Permission enforcement per role</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>TeamMemberRoleEnum</code> &amp; RBAC</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TEAM-02</strong></td>
+<td style="text-align: left;">Review content before publishing.</td>
+<td style="text-align: left;">- Approval/Rejection workflow<br>- Mandatory review comments on rejection</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ReviewStatus</code> entity</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TEAM-03</strong></td>
+<td style="text-align: left;">Leave collaborative comments on content.</td>
+<td style="text-align: left;">- Threaded discussions<br>- Visibility control (Team vs Public)</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>Comment</code> entity</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TEAM-04</strong></td>
+<td style="text-align: left;">View a team activity feed.</td>
+<td style="text-align: left;">- Real-time activity updates<br>- Filter by event type</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>ActivityLog</code> entity</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-project-setup--configuration">5. Project Setup &amp; Configuration</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>PROJ-01</strong></td>
+<td style="text-align: left;">Create project from pre-defined templates.</td>
+<td style="text-align: left;">- Template selection<br>- Auto-population of structure</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ProjectTemplate</code> system</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJ-02</strong></td>
+<td style="text-align: left;">Organize projects into series.</td>
+<td style="text-align: left;">- Parent/Child relationship<br>- Series name tracking</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>SeriesId</code> FK on <code>Project</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJ-03</strong></td>
+<td style="text-align: left;">Control project visibility (Private/Public).</td>
+<td style="text-align: left;">- Private/Public toggle<br>- Role-based access control</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>ProjectVisibilityEnum</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>PROJ-04</strong></td>
+<td style="text-align: left;">Enable/Disable user self-registration.</td>
+<td style="text-align: left;">- Admin toggle for registration<br>- Feature flag implementation</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;">Project feature flags</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-export--engine-integration">6. Export &amp; Engine Integration</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>EXPORT-01</strong></td>
+<td style="text-align: left;">Export GDD as JSON for Unity.</td>
+<td style="text-align: left;">- Selectable content types<br>- Downloadable JSON file</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>EngineExportConfig</code> (JSON)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EXPORT-02</strong></td>
+<td style="text-align: left;">Export character data as CSV for Unity.</td>
+<td style="text-align: left;">- Character attribute mapping<br>- Downloadable CSV file</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>EngineFieldMapping</code> (CSV)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>EXPORT-03</strong></td>
+<td style="text-align: left;">Export XML for Unreal Engine.</td>
+<td style="text-align: left;">- Unreal-compatible XML structure<br>- Asset field mapping</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>EngineExportConfig</code> (XML)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="7-search--discovery">7. Search &amp; Discovery</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">User Story</th>
+<th style="text-align: left;">Acceptance Criteria</th>
+<th style="text-align: left;">Priority</th>
+<th style="text-align: left;">Technical Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>SEARCH-01</strong></td>
+<td style="text-align: left;">Full-text search across all content.</td>
+<td style="text-align: left;">- Title/Description/Slug search<br>- Content type filtering</td>
+<td style="text-align: left;"><strong>High</strong></td>
+<td style="text-align: left;"><code>MetaInfo</code> full-text indexing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SEARCH-02</strong></td>
+<td style="text-align: left;">Filtered task search.</td>
+<td style="text-align: left;">- Keyword search in tasks<br>- Difficulty/Status filtering</td>
+<td style="text-align: left;"><strong>Medium</strong></td>
+<td style="text-align: left;"><code>ProjectTask</code> indexing</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/tasks/user-stories.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

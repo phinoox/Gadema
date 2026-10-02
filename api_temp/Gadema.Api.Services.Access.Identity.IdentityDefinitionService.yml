@@ -220,7 +220,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateDefinitionAsync
     path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
-    startLine: 117
+    startLine: 115
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Access.Identity
@@ -253,7 +253,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteDefinitionAsync
     path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
-    startLine: 151
+    startLine: 149
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Access.Identity
@@ -284,7 +284,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetMatchesAsync
     path: src/Gadema.Api/Services/Access/Identity/IdentityDefinitionService.cs
-    startLine: 178
+    startLine: 176
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Access.Identity

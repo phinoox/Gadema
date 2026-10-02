@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Project Task MetaInfo </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Project Task MetaInfo ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-task-metainfo">Project Task MetaInfo</h1>
+
+<p><code>ProjectTaskMetaInfo</code> serves as the de <strong>Identity Anchor</strong> for a <code>ProjectTask</code>. It serves as the &quot;Soul&quot; of the task; changes here update the task's identity footprint across the system. It holds the core state, priority, and metadata required to manage task workflows within a project.</p>
+<h2 id="-identity--state">🧬 Identity &amp; State</h2>
+<p>While the <code>ProjectTask</code> represents the discrete unit of work, its identity and lifecycle are managed through this anchor.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Id</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">The unique identifier for the task's identity.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ProjectId</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;"><code>/</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Status</code></td>
+<td style="text-align: left;"><code>TaskStatusEnum</code></td>
+<td style="text-align: left;">The current lifecycle stage (e---g, Backlog, InProgress, Review, Done).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Priority</code></td>
+<td style="text-align: left;"><code>TaskPriorityEnum</code></td>
+<td style="text-align: left;">The current importance level within the project workflow.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-adhd-friendly-metadata">🧠 ADHD-Friendly Metadata</h2>
+<p>This anchor contains specific fields designed to reduce cognitive load and facilitate momentum:</p>
+<ul>
+<li><strong>Difficulty</strong>: The perceived cognitive effort required (<code>TaskDifficultyEnum</code>).</li>
+<li><strong>Quick Win</strong>: A boolean flag indicating if this is a small, low-effort achievement intended to boost motivation.</li>
+<li>
+<ul>
+<li><strong>Time Estimation</strong>: <code>EstimatedMinutes</code> provides a rough time requirement for planning.</li>
+</ul>
+</li>
+</ul>
+<h2 id="-technical-implementation">⚙️ Technical Implementation</h2>
+<ul>
+<li><p><strong>Identity Anchor Pattern</strong>: Acts as the &quot;Soul&quot; of the task; changes here update the task's identity footprint across the system.</p>
+</li>
+<li><p><strong>Relational Link</strong>: Maintains a required link to its parent <code>Project</code>.</p>
+</li>
+</ul>
+<hr>
+<p><em>Part of the <a href="./tasks/overview.md">Tasks &amp; Workflow Domain</a></em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/tasks/project-task-meta-info.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

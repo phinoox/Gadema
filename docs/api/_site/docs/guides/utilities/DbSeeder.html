@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>DbSeeder </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="DbSeeder ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dbseeder">DbSeeder</h1>
+
+<p>The <code>DbSeeder</code> is a specialized utility used within the test suite to populate the database with predictable, valid data. It automs the complex task of creating entity graphs by resolving Foreign Key dependencies and managing object instantiation through <strong>AutoFixture</strong>.</p>
+<h2 id="1-core-philosophy-automation-via-autofixture">1. Core Philosophy: Automation via AutoFixture</h2>
+<p>Instead of manually defining every property for every entity (which is error-prone and high-maintenance), <code>DbSeeder</code> uses <strong>AutoFixture</strong> to generate random, valid data for all non-required columns.</p>
+<h3 id="the-smart-seeding-process">The &quot;Smart&quot; Seeding Process</h3>
+<ol>
+<li><strong>Instantiation</strong>: Uses <code>_fixture.Create&lt;T&gt;()</code> to create an object with randomized but structurally valid properties.</li>
+<li><strong>Dependency Resolution</strong>: Uses the <code>DependencyResolver</code> to identify all parent entities required by the target type.
+3.s <strong>Ordered Creation</strong>: Seeds parents first, then children, ensuring that Foreign Key constraints are satisfied at every step.</li>
+<li><strong>FK Wiring</strong>: Automatically maps the IDs from the newly created parent entities into the appropriate Foreign Key properties of the child entity.</li>
+</ol>
+<hr>
+<h2 id="2-primary-methods">2. Primary Methods</h2>
+<h3 id="autoseedtiservicescope-scope-"><code>AutoSeed&lt;T&gt;(IServiceScope scope, ...)</code></h3>
+<p>The most powerful method in the seeder. It performs a &quot;deep seed&quot; by following the dependency graph.</p>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>Analy&lt;zes the target type <code>T</code> using the <code>DependencyResolver</code>.</li>
+<li>Finds all required ancestors (parents) needed for <code>T</code>.</li>
+<li>Seeds each ancestor in topological order.</li>
+<li>Uses a custom <code>SetFKProperties</code> logic to wire up the navigation properties and FK IDs of the new instance.</li>
+</ol>
+<pre><code class="lang-csharp">// Example: Automatically seeds a Task, including its Project parent
+var task = DbSeeder.AutoSeed&lt;ProjectTask&gt;(scope); 
+// Result: A Project is created first, then the task with its ProjectId set correctly.
+</code></pre>
+<h3 id="seedtiservicescope-scope-t-entity"><code>Seed&lt;T&gt;(IServiceScope scope, T entity)</code></h3>
+<p>Used for &quot;shallow&quot; seeding where you have already manually constructed an object (often using <code>DbSeeder.Create</code>) and want to persist it to the database.</p>
+<h3 id="createtactiont-customize--null"><code>Create&lt;T&gt;(Action&lt;T&gt;? customize = null)</code></h3>
+<p>A helper that leverages AutoFixture to create a new instance of type <code>T</code> with randomized data, allowing for optional customization via a lambda expression. This is perfect for setting only the properties relevant to your specific test case.</p>
+<pre><code class="lang-csharp">// Example: Create a User with a specific email but random everything else
+var user = DbSeeder.Create&lt;User&gt;(u =&gt; u.Email = &quot;special@example.com&quot;);
+</code></pre>
+<hr>
+<h2 id="3-advanced-features">3. Advanced Features</h2>
+<h3 id="enum-tag-seeding-seedenumtags">Enum Tag Seeding (<code>SeedEnumTags</code>)</h3>
+<p>Provides a way to seed the <code>MetaTag</code> table with entries derived from an enum. This is used to populate standard system tags (e.g., difficulty levels or story genres) that are defined as Enums in the core models.</p>
+<h3 id="intelligent-recursion-handling">Intelligent Recursion Handling</h3>
+<p>The seeder includes custom AutoFixture behaviors to handle circular references and collection nesting:</p>
+<ul>
+<li><strong>Omit on Recursion</strong>: Prevents infinite loops when entities have bi-directional relationships (e.g., <code>Team</code> <span class="math">\(\leftrightarrow\)</span> <code>Member</code>).</li>
+<li><strong>Domain Property Omitter</strong>: Ensures that complex object collections are not automatically populated with unattached, &quot;junk&quot; data that would violate database constraints.</li>
+</ul>
+<hr>
+<h2 id="4-summary-of-seeding-modes">4. Summary of Seeding Modes</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Mode</th>
+<th style="text-align: left;">Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>Create&lt;T&gt;</code></strong></td>
+<td style="text-align: left;">In-Memory</td>
+<td style="text-align: left;">Generating a single object for local setup/manipulation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Seed&lt;T&gt;(scope, entity)</code></strong></td>
+<td style="text-align: left;">Manual Persist</td>
+<td style="text-align: left;">Adding a pre-built object to the database.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>AutoSeed&lt;T&gt;(scope)</code></strong></td>
+<td style="text-align: left;">Deep Seed</td>
+<td style="text-align: left;">Creating an entire valid entity graph (Parent <span class="math">\(\rightarrow\)</span> Child) in one call.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Developer Velocity</strong>: Dramatically reduces the amount of setup code required for complex integration tests.</td>
+<td style="text-align: left;"><strong>Complexity</strong>: The <code>DependencyResolver</code> and FK wiring logic add internal complexity to the test suite.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Reliability</strong>: Ensures that all relational constraints are met by following a strict topological order.</td>
+<td style="text-align: left;"><strong>Hidden Magic</strong>: Over-reliance on <code>AutoSeed</code> can sometimes make it difficult for developers to see exactly what data is being used in a test.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/DbSeeder.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

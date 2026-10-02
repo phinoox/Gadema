@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>GaDeMa Architecture: Identity Sync &amp; Search Orchestration </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="GaDeMa Architecture: Identity Sync &amp; Search Orchestration ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>This document serves as the definitive architectural blueprint for the GaDeMa API. It defines how we handle <strong>Identity</strong>, <strong>Domain Data</strong>, and <strong>Discovery</strong> to ensure that as the system grows, it remains consistent, type-safe, and easy to search.</p>
+<h1 id="gadema-architecture-identity-sync--search-orchestration">GaDeMa Architecture: Identity Sync &amp; Search Orchestration</h1>
+<h2 id="1-the-core-hierarchy-root-vs-content">1. The Core Hierarchy: Root vs. Content</h2>
+<p>We distinguish between two types of &quot;Anchors&quot; in our world. This distinction dictates where data is stored and how it is searched.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;"><strong>Root Anchors (The Universe)</strong></th>
+<th style="text-align: left;"><strong>Content Anchors (The Data)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Examples</strong></td>
+<td style="text-align: left;"><code>Project</code></td>
+<td style="text-align: left;"><code>Character</code>, <code>Scene</code>, <code>LoreEntry</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity Layer</strong></td>
+<td style="text-align: left;"><code>ProjectMetaInfo</code></td>
+<td style="text-align: left;"><code>MetaInfo</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Search Scope</strong></td>
+<td style="text-align: left;">Global/Universe Discovery</td>
+<td style="text-align: left;">Scoped to a Project</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lifecycle</strong></td>
+<td style="text-align: left;">Defines the workspace</td>
+<td style="text-align: left;">Lives within a workspace</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="2-the-identity-sync-pattern-the-write-side">2. The Identity Sync Pattern (The &quot;Write&quot; Side)</h2>
+<p>To prevent &quot;Identity Bloat&quot; and ensure data integrity, we separate an entity's <strong>Identity</strong> (Title, Slug, Status) from its <strong>Domain Data</strong> (Genre, Age, Role).</p>
+<h3 id="the-mechanism-applyidentitysyncasync">The Mechanism: <code>ApplyIdentitySyncAsync</code></h3>
+<p>Instead of manual updates, all services use a standardized strategy-based approach. This ensures that when a user updates an identity, both the properties and the associated tags are synchronized atomically.</p>
+<h4 id="the-interface-iidentitysyncstrategy">The Interface: <code>IIdentitySyncStrategy</code></h4>
+<p>Every anchor type must have a strategy that defines how its specific identity is updated in the database.</p>
+<pre><code class="lang-csharp">public interface IIdentitySyncStrategy
+{
+    // Handles Title, Slug, Status, Visibility, ViewMode, and Tag synchronization
+    Task SyncAsync(Guid identityId, MetaInfoUpdateData updateData);
+}
+</code></pre>
+<h4 id="the-workflow-the-sync-logic">The Workflow (The &quot;Sync&quot; Logic)</h4>
+<ol>
+<li><strong>Client Sends</strong>: A <code>UpdateDto</code> containing both Domain data and a <code>MetaInfoUpdateDto</code> (which includes the full list of current <code>TagIds</code>).</li>
+<li><strong>Service Orchestrates</strong>: The domain service updates its own properties, then calls <code>ApplyIdentitySyncAsync</code>.</li>
+<li><strong>Strategy Executes</strong>: The strategy performs a <strong>Delta Calculation</strong> (calculates which tags to add and which to remove) and executes the changes within a transaction.</li>
+</ol>
+<hr>
+<h2 id="3-the-search-orchestrator-pattern-the-read-side">3. The Search Orchestrator Pattern (The &quot;Read&quot; Side)</h2>
+<p>To prevent &quot;Search Bloat&quot; and fragmented endpoints, we use an orchestration layer that aggregates results from multiple domain providers into a single, unified stream.</p>
+<h3 id="a-the-contract-isearchableprovider">A. The Contract: <code>ISearchableProvider</code></h3>
+<p>Every domain service (Project, Character, etc.) must implement this interface to be &quot;discoverable.&quot;</p>
+<pre><code class="lang-csharp">public interface ISearchableProvider
+{
+    // Returns the raw matches for a query within this provider's scope
+    Task&lt;IEnumerable&lt;SearchHitDto&gt;&gt; GetMatchesAsync(string query, Guid? projectId);
+}
+</code></pre>
+<h3 id="b-the-universal-response-searchhitdto">B. The Universal Response: <code>SearchHitDto</code></h3>
+<p>All search results must be mapped to this shape. This allows the client to handle any result type (Project or Character) using a single UI component.</p>
+<pre><code class="lang-csharp">public class SearchHitDto 
+{
+    public Guid ResourceId { get; set; }      // The actual entity ID
+    public string DisplayName { get; set; }   // Title/Name for display
+    public string Slug { get; set; }          // URL identifier
+    public string ResourceType { get { ... } } // &quot;Project&quot;, &quot;Character&quot;, etc.
+    public Guid? ScopeId { get; set; }        // Null for Root, ProjectId for Content
+    public string ResourceLink { get { ... } } // API endpoint to fetch details
+}
+</code></pre>
+<h3 id="c-the-engine-searchorchestrator">C. The Engine: <code>SearchOrchestrator</code></h3>
+<p>The Orchestrator is the single entry point for all search queries. It follows this pipeline:</p>
+<ol>
+<li><strong>Gather</strong>: Calls all registered <code>ISearchableProvider</code> implementations in parallel.</li>
+<li><strong>Merge</strong>: Combably aggregates all hits into one master list.</li>
+<li><strong>Paginate</strong>: Performs the final <code>Skip</code> and <code>Take</code> math on the merged collection.</li>
+</ol>
+<hr>
+<h2 id="4-summary-of-responsabilities">4. Summary of Responsabilities</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Responsibility</th>
+<th style="text-align: left;">Knowledge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Domain Service</strong></td>
+<td style="text-align: left;">Manages Domain Data + Orchestrates Identity Sync.</td>
+<td style="text-align: left;">Knows its own properties &amp; DB.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity Strategy</strong></td>
+<td style="text-align: left;">Handles the &quot;Delta&quot; logic for Title, Slug, and Tags.</td>
+<td style="text-align: left;">Knows how to write to identity tables.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Search Provider</strong></td>
+<td style="text-align: left;">Provides raw matches from a specific domain.</td>
+<td style="text-align: left;">Knows how to query its specific table.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Search Orchestrator</strong></td>
+<td style="text-align: left;">Merges results and applies global pagination.</td>
+<td style="text-align: left;">Knows nothing of domains; only knows <code>ISearchableProvider</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-developer-checklist-for-new-entities">5. Developer Checklist for New Entities</h2>
+<p>When adding a new entity (e.g., <code>WorldLocation</code>):</p>
+<ol>
+<li>[ ] Create the <strong>Model</strong> (Domain Data).</li>
+<li>[ ] Create/Update the <strong>MetaInfo</strong> (Identity Data).</li>
+<li>[ ] Implement <code>ISearchableProvider</code> in your service.</li>
+<li>[ ] Implement <code>IIdentitySyncStrategy</code> for its identity sync.</li>
+<li>[ ] Add it to the <code>SearchOrchestrator</code>'s provider list.</li>
+</ol>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/universe/IDENTITY_SYNC_SEARCH.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: FactionEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/FactionEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
+  summary: Configuration for Faction entity in game development management system.
+  example: []
   syntax:
     content: 'public class FactionEntityTypeConfiguration : IEntityTypeConfiguration<Faction>'
     content.vb: Public Class FactionEntityTypeConfiguration Implements IEntityTypeConfiguration(Of Faction)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/FactionEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.WorldBuilding.Faction" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure Faction entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<Faction> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.WorldBuilding.Faction}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of Faction))
   overload: Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration.Configure*
   implements:
@@ -437,13 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.WorldBuilding.Faction
-  commentId: T:Gadema.Core.Models.Writing.WorldBuilding.Faction
-  parent: Gadema.Core.Models.Writing.WorldBuilding
-  href: Gadema.Core.Models.Writing.WorldBuilding.Faction.html
-  name: Faction
-  nameWithType: Faction
-  fullName: Gadema.Core.Models.Writing.WorldBuilding.Faction
 - uid: Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_FactionEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_WorldBuilding_Faction__
@@ -528,41 +522,6 @@ references:
     name: Faction
     href: Gadema.Core.Models.Writing.WorldBuilding.Faction.html
   - name: )
-- uid: Gadema.Core.Models.Writing.WorldBuilding
-  commentId: N:Gadema.Core.Models.Writing.WorldBuilding
-  name: Gadema.Core.Models.Writing.WorldBuilding
-  nameWithType: Gadema.Core.Models.Writing.WorldBuilding
-  fullName: Gadema.Core.Models.Writing.WorldBuilding
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.WorldBuilding
-    name: WorldBuilding
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.WorldBuilding
-    name: WorldBuilding
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

@@ -210,7 +210,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteSeriesAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectSeriesService.cs
-    startLine: 85
+    startLine: 84
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -241,7 +241,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateSeriesAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectSeriesService.cs
-    startLine: 104
+    startLine: 103
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -274,7 +274,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetMatchesAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectSeriesService.cs
-    startLine: 134
+    startLine: 133
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects

@@ -27,7 +27,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: EndingDefinition
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 12
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -73,19 +73,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
   summary: Unique identifier for the ending definition.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Game.Inventory.EndingDefinition.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Game.Inventory.EndingDefinition.ProjectId
   commentId: P:Gadema.Core.Models.Game.Inventory.EndingDefinition.ProjectId
   id: ProjectId
@@ -104,7 +114,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectId
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 23
+    startLine: 21
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -145,7 +155,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Project
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 29
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -188,7 +198,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Title
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 35
+    startLine: 33
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -238,7 +248,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Slug
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 41
+    startLine: 39
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -290,7 +300,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Description
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 47
+    startLine: 45
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -333,7 +343,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ConditionsJson
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 53
+    startLine: 51
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory
@@ -376,7 +386,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Published
     path: src/Gadema.Core/Models/Game/Inventory/EndingDefinition.cs
-    startLine: 59
+    startLine: 57
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Game.Inventory

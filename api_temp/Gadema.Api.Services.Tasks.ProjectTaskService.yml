@@ -26,12 +26,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTaskService
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 20
+    startLine: 18
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
-  summary: Service for managing ProjectTasks - actionable items within a project workflow.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -86,7 +84,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 25
+    startLine: 23
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -122,7 +120,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetTasksAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 34
+    startLine: 28
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -153,7 +151,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetTaskAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 56
+    startLine: 46
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -184,7 +182,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateTaskAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 75
+    startLine: 60
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -217,7 +215,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateTaskAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 112
+    startLine: 91
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -250,7 +248,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteTaskAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 143
+    startLine: 115
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -281,7 +279,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetMatchesAsync
     path: src/Gadema.Api/Services/Tasks/ProjectTaskService.cs
-    startLine: 170
+    startLine: 132
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks

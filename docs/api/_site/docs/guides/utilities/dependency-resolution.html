@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Dependency Resolution &amp; Seeding </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Dependency Resolution &amp; Seeding ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dependency-resolution--seeding">Dependency Resolution &amp; Seeding</h1>
+
+<p>The GaDeMa ecosystem relies on a robust mechanism for managing data dependencies during testing and initialization. This is achieved through two complementary components: the <code>DependencyResolver</code>, which calculates the topological order of entities, and the <code>DbSeeder</code>, which executes the actual creation process.</p>
+<hr>
+<h2 id="1-the-dependency-graph">1. The Dependency Graph</h2>
+<p>In any relational database with Foreign Key (FK) constraints, data must be created in a specific order. You cannot create a &quot;Child&quot; entity until its &quot;Parent&quot; exists.</p>
+<p>The <code>DependencyResolver</code> automs this by building a directed graph of your models based on the <code>[ModelDependency]</code> attribute.</p>
+<h3 id="the-modeldependency-attribute">The <code>[ModelDependency]</code> Attribute</h3>
+<p>To participate in the dependency graph, a class must be decorated with this attribute, explicitly listing its required parent types.</p>
+<pre><code class="lang-csharp">// Example: A Task depends on a Project
+[ModelDependency(typeof(Project))]
+public class ProjectTask : ISoftDelete 
+{
+    public Guid ProjectId { get; set; } // The FK that the resolver tracks
+}
+</code></pre>
+<h3 id="topological-sorting-kahns-algorithm">Topological Sorting (Kahn's Algorithm)</h3>
+<p>The <code>DependencyResolver</code> uses <strong>Kahn's Algorithm</strong> to perform a topological sort. This process:</p>
+<ol>
+<li>Identifies &quot;root&quot; nodes (entities with zero dependencies).</li>
+<li>Iteratively removes these nodes from the graph and updates the in-degree of their neighbors.</li>
+<li>Produces a sorted list where every parent always appears before its children.</li>
+</ol>
+<hr>
+<h2 id="2-automated-seeding-dbseeder">2. Automated Seeding (<code>DbSeeder</code>)</h2>
+<p>The <code>DbSeeder</code> is a utility used within integration tests to populate the database with valid, relational data without manual boilerplate.</p>
+<h3 id="the-autoseedt-workflow">The <code>AutoSeed&lt;T&gt;</code> Workflow</h3>
+<p>When you call <code>DbSeeder.AutoSeed&lt;T&gt;(scope)</code>, the following sequence occurs:</p>
+<ol>
+<li><strong>Discovery</strong>: It uses the <code>DependencyResolver</code> to find all required ancestors for type <code>T</code>.</li>
+<li><strong>Ordered Execution</strong>: It iterates through the sorted list of ancestors, seeding each one first.</li>
+<li><strong>Instance Generation</strong>: It uses <strong>AutoFixture</strong> to generate randomized but structurally valid data for every property not explicitly customized.</li>
+<li><strong>FK Wiring</strong>: After a parent is seeded, it automatically maps the new parent's ID into the child's Foreign Key properties.</li>
+</ol>
+<pre><code class="lang-csharp">// Example: Seed a task and its required project hierarchy in one call
+var task = DbSeeder.AutoSeed&lt;ProjectTask&gt;(scope, t =&gt; {
+    t.Title = &quot;Target Task&quot;; // Customizing specific fields
+});
+</code></pre>
+<h3 id="the-createt-vs-seedt-methods">The <code>Create&lt;T&gt;</code> vs <code>Seed&lt;T&gt;</code> Methods</h3>
+<ul>
+<li><strong><code>Create&lt;T&gt;(Action&lt;T&gt;? customize)</code></strong>: Geners an object in memory using AutoFixture. It does <strong>not</strong> touch the database. Useful for setting up local test data.</li>
+<li><strong><code>Seed&lt;T&gt;(IServiceScope scope, T entity)</code></strong>: Persists a pre-built object into the database.</li>
+</ul>
+<hr>
+<h2 id="3-summary-of-workflow">3. Summary of Workflow</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Action</th>
+<th style="text-align: left;">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1. Scan</strong></td>
+<td style="text-align: left;">Build dependency graph via attributes</td>
+<td style="text-align: left;"><code>DependencyResolver</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2. Sort</strong></td>
+<td style="text-align: left;">Generate topological order (Parents <span class="math">\(\rightarrow\)</span> Children)</td>
+<td style="text-align: left;">Kahn's Algorithm</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3. Create</strong></td>
+<td style="text-align: left;">Generate randomized data for non-required fields</td>
+<td style="text-align: left;"><code>AutoFixture</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4. Link</strong></td>
+<td style="text-align: left;">Map Parent IDs to Child FK properties</td>
+<td style="text-align: left;"><code>DbSeeder</code> (FK Wiring)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Developer Velocity</strong>: Eliminates the need for manual, order-sensitive setup code in tests.</td>
+<td style="text-align: left;"><strong>Complexity</strong>: Requires maintaining the dependency graph via attributes; if an attribute is missing, seeding fails.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Data Integrity</strong>: Automatically ensures all Foreign Key constraints are satisfied during the seed process.</td>
+<td style="text-align: left;"><strong>Reflection Overhead</strong>: The scanning and wiring processes use reflection, which adds overhead to test startup.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/dependency-resolution.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

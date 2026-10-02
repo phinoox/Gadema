@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: OutlineSectionEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/OutlineSectionEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
+  summary: Configuration for OutlineSection entity in game development management system.
+  example: []
   syntax:
     content: 'public class OutlineSectionEntityTypeConfiguration : IEntityTypeConfiguration<OutlineSection>'
     content.vb: Public Class OutlineSectionEntityTypeConfiguration Implements IEntityTypeConfiguration(Of OutlineSection)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/OutlineSectionEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.OutlineSection" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure OutlineSection entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<OutlineSection> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.OutlineSection}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of OutlineSection))
   overload: Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration.Configure*
   implements:
@@ -437,12 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.OutlineSection
-  commentId: T:Gadema.Core.Models.Writing.Narrative.OutlineSection
-  href: Gadema.Core.Models.Writing.Narrative.OutlineSection.html
-  name: OutlineSection
-  nameWithType: OutlineSection
-  fullName: Gadema.Core.Models.Writing.Narrative.OutlineSection
 - uid: Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_OutlineSectionEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_OutlineSection__

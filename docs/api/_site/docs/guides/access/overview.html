@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Access &amp; Identity Domain </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Access &amp; Identity Domain ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="access--identity-domain">Access &amp; Identity Domain</h1>
+
+<p>The <strong>Access &amp; Identity</strong> domain defines how users are identified, how they belong to projects, and how automation interacts with the system. It is the foundation for the entire security model of GaDeMa.</p>
+<h2 id="-core-components">🧬 Core Components</h2>
+<p>This domain manages three primary entities that work together to establish a secure, scoped environment:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Entity</th>
+<th style="text-align: left;">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="user.html">User</a></td>
+<td style="text-align: left;">The central identity anchor representing an authenticated account.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="project-member.html">Project Member</a></td>
+<td style="text-align: left;">The bridge defining a user's specific role and access within a project.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="project-token.html">Project Token</a></td>
+<td style="text-align: left;">A secure, hashed key for automated or non-interactive access.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-authorization-model">🛡️ Authorization Model</h2>
+<p>GaDeMa utilizes a <strong>Decoupled, Multi-Dimensional Authorization Engine</strong>. Access is not just about <em>who</em> you are, but <em>where</em> you are acting.</p>
+<h3 id="the-four-gate-flow">The Four-Gate Flow</h3>
+<p>Every request passes through four distinct security gates:</p>
+<ol>
+<li><strong>Visibility Gate</strong>: Checks if the resource is marked as <code>IsPublic</code>.</li>
+<li><strong>Identity Gate</strong>: Verifies the user's authentication via <code>IUserContext</code>.</li>
+<li><strong>Authorization Gate</strong>: Uses the <code>IPermissionEngine</code> to check roles (e.g., Editor, Admin) within a specific project scope.</li>
+<li><strong>Execution Gate</strong>: Once authorized, the service performs the requested operation.</li>
+</ol>
+<hr>
+<p><em>Part of the <a href="./../hierarchy.md">Core Domain Hierarchy</a></em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/access/overview.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

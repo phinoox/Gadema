@@ -26,7 +26,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: TemplateIdentityDefinition
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 12
+    startLine: 9
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -72,19 +72,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 18
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
   summary: Unique identifier for the template identity definition.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Templates.TemplateIdentityDefinition.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Templates.TemplateIdentityDefinition.ProjectTemplateId
   commentId: P:Gadema.Core.Models.Templates.TemplateIdentityDefinition.ProjectTemplateId
   id: ProjectTemplateId
@@ -103,7 +113,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTemplateId
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 23
+    startLine: 21
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -155,7 +165,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTemplate
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 30
+    startLine: 28
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -198,7 +208,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityDefinitionId
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 36
+    startLine: 34
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -250,7 +260,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityDefinition
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 43
+    startLine: 41
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -293,7 +303,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Description
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 49
+    startLine: 47
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates
@@ -336,7 +346,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityName
     path: src/Gadema.Core/Models/Templates/TemplateIdentityDefinition.cs
-    startLine: 55
+    startLine: 53
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Templates

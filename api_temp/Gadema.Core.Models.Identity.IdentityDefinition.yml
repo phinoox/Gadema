@@ -7,12 +7,10 @@ items:
   children:
   - Gadema.Core.Models.Identity.IdentityDefinition.ContentMetaInfo
   - Gadema.Core.Models.Identity.IdentityDefinition.DataType
-  - Gadema.Core.Models.Identity.IdentityDefinition.Description
   - Gadema.Core.Models.Identity.IdentityDefinition.Id
   - Gadema.Core.Models.Identity.IdentityDefinition.IsActive
   - Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
   - Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId
-  - Gadema.Core.Models.Identity.IdentityDefinition.Name
   - Gadema.Core.Models.Identity.IdentityDefinition.Project
   - Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
   langs:
@@ -29,24 +27,18 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IdentityDefinition
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 12
+    startLine: 10
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
   summary: >-
-    Defines a template for identity types (e.g., Race, Faction, Alignment) within a project.
+    Defines the identity of an ability or property.
 
-    This configuration dictates what character traits can be assigned to content items.
+    Following Law I: This is a 1:1 extension of ContentMetaInfo, so Id == MetaInfoId.
   example: []
   syntax:
-    content: >-
-      [ModelDependency(new Type[] { typeof(ContentMetaInfo), typeof(Project) })]
-
-      public class IdentityDefinition
-    content.vb: >-
-      <ModelDependency(New Type() { GetType(ContentMetaInfo), GetType(Project) })>
-
-      Public Class IdentityDefinition
+    content: public class IdentityDefinition
+    content.vb: Public Class IdentityDefinition
   inheritance:
   - System.Object
   inheritedMembers:
@@ -75,19 +67,27 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 19
+    startLine: 12
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: Unique identifier for the identity definition.
-  example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Identity.IdentityDefinition.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId
   commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId
   id: MetaInfoId
@@ -106,12 +106,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: MetaInfoId
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 25
+    startLine: 15
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: The ID of the associated ContentMetaInfo entity.
-  example: []
   syntax:
     content: >-
       [Required]
@@ -147,12 +145,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ContentMetaInfo
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 31
+    startLine: 18
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: Navigation property for the content meta information anchor.
-  example: []
   syntax:
     content: >-
       [ForeignKey("MetaInfoId")]
@@ -172,6 +168,76 @@ items:
     arguments:
     - type: System.String
       value: MetaInfoId
+- uid: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
+  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
+  id: ProjectId
+  parent: Gadema.Core.Models.Identity.IdentityDefinition
+  langs:
+  - csharp
+  - vb
+  name: ProjectId
+  nameWithType: IdentityDefinition.ProjectId
+  fullName: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: ProjectId
+    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
+    startLine: 21
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Identity
+  syntax:
+    content: public Guid ProjectId { get; set; }
+    parameters: []
+    return:
+      type: System.Guid
+    content.vb: Public Property ProjectId As Guid
+  overload: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId*
+- uid: Gadema.Core.Models.Identity.IdentityDefinition.Project
+  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Project
+  id: Project
+  parent: Gadema.Core.Models.Identity.IdentityDefinition
+  langs:
+  - csharp
+  - vb
+  name: Project
+  nameWithType: IdentityDefinition.Project
+  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Project
+  type: Property
+  source:
+    remote:
+      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
+      branch: main
+      repo: git@github.com:phinoox/Gadema.git
+    id: Project
+    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
+    startLine: 23
+  assemblies:
+  - Gadema.Core
+  namespace: Gadema.Core.Models.Identity
+  syntax:
+    content: >-
+      [ForeignKey("ProjectId")]
+
+      public virtual Project Project { get; set; }
+    parameters: []
+    return:
+      type: Gadema.Core.Models.Base.Projects.Project
+    content.vb: >-
+      <ForeignKey("ProjectId")>
+
+      Public Overridable Property Project As Project
+  overload: Gadema.Core.Models.Identity.IdentityDefinition.Project*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ProjectId
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.DataType
   commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.DataType
   id: DataType
@@ -190,122 +256,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DataType
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 39
+    startLine: 25
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: The category of this identity (e.g., Race, Faction).
-  example: []
   syntax:
-    content: >-
-      [Required]
-
-      public IdentityDataTypeEnum DataType { get; set; }
+    content: public IdentityDataTypeEnum DataType { get; set; }
     parameters: []
     return:
       type: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
-    content.vb: >-
-      <Required>
-
-      Public Property DataType As IdentityDataTypeEnum
+    content.vb: Public Property DataType As IdentityDataTypeEnum
   overload: Gadema.Core.Models.Identity.IdentityDefinition.DataType*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
-    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
-    arguments: []
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Name
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Name
-  id: Name
-  parent: Gadema.Core.Models.Identity.IdentityDefinition
-  langs:
-  - csharp
-  - vb
-  name: Name
-  nameWithType: IdentityDefinition.Name
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Name
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: Name
-    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 45
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Identity
-  summary: The human-readable name for the definition (e.g., "Race", "Faction").
-  example: []
-  syntax:
-    content: >-
-      [MaxLength(128)]
-
-      [Required]
-
-      public string Name { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: >-
-      <MaxLength(128)>
-
-      <Required>
-
-      Public Property Name As String
-  overload: Gadema.Core.Models.Identity.IdentityDefinition.Name*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
-    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
-    arguments:
-    - type: System.Int32
-      value: 128
-  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
-    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
-    arguments: []
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Description
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Description
-  id: Description
-  parent: Gadema.Core.Models.Identity.IdentityDefinition
-  langs:
-  - csharp
-  - vb
-  name: Description
-  nameWithType: IdentityDefinition.Description
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Description
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: Description
-    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 51
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Identity
-  summary: A brief description of what this identity category represents.
-  example: []
-  syntax:
-    content: >-
-      [MaxLength(256)]
-
-      public string? Description { get; set; }
-    parameters: []
-    return:
-      type: System.String
-    content.vb: >-
-      <MaxLength(256)>
-
-      Public Property Description As String
-  overload: Gadema.Core.Models.Identity.IdentityDefinition.Description*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.MaxLengthAttribute
-    ctor: System.ComponentModel.DataAnnotations.MaxLengthAttribute.#ctor(System.Int32)
-    arguments:
-    - type: System.Int32
-      value: 256
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
   commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
   id: IsRequired
@@ -324,12 +285,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsRequired
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 57
+    startLine: 26
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: Indicates if an identity assignment is mandatory for content items using this definition.
-  example: []
   syntax:
     content: public bool IsRequired { get; set; }
     parameters: []
@@ -355,12 +314,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: IsActive
     path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 62
+    startLine: 27
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Identity
-  summary: Indicates whether this definition is currently active and available for selection.
-  example: []
   syntax:
     content: public bool IsActive { get; set; }
     parameters: []
@@ -368,90 +325,6 @@ items:
       type: System.Boolean
     content.vb: Public Property IsActive As Boolean
   overload: Gadema.Core.Models.Identity.IdentityDefinition.IsActive*
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
-  id: ProjectId
-  parent: Gadema.Core.Models.Identity.IdentityDefinition
-  langs:
-  - csharp
-  - vb
-  name: ProjectId
-  nameWithType: IdentityDefinition.ProjectId
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: ProjectId
-    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 67
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Identity
-  summary: The ID of the project this identity definition belongs to.
-  example: []
-  syntax:
-    content: >-
-      [Required]
-
-      public Guid ProjectId { get; set; }
-    parameters: []
-    return:
-      type: System.Guid
-    content.vb: >-
-      <Required>
-
-      Public Property ProjectId As Guid
-  overload: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
-    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
-    arguments: []
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Project
-  commentId: P:Gadema.Core.Models.Identity.IdentityDefinition.Project
-  id: Project
-  parent: Gadema.Core.Models.Identity.IdentityDefinition
-  langs:
-  - csharp
-  - vb
-  name: Project
-  nameWithType: IdentityDefinition.Project
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Project
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: Project
-    path: src/Gadema.Core/Models/Identity/IdentityDefinition.cs
-    startLine: 73
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Identity
-  summary: Navigation property for the associated project.
-  example: []
-  syntax:
-    content: >-
-      [ForeignKey("ProjectId")]
-
-      public virtual Project Project { get; set; }
-    parameters: []
-    return:
-      type: Gadema.Core.Models.Base.Projects.Project
-    content.vb: >-
-      <ForeignKey("ProjectId")>
-
-      Public Overridable Property Project As Project
-  overload: Gadema.Core.Models.Identity.IdentityDefinition.Project*
-  attributes:
-  - type: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute
-    ctor: System.ComponentModel.DataAnnotations.Schema.ForeignKeyAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: ProjectId
 references:
 - uid: Gadema.Core.Models.Identity
   commentId: N:Gadema.Core.Models.Identity
@@ -787,100 +660,6 @@ references:
   - name: .
   - uid: Gadema.Core.Models.Base.MetaInfo
     name: MetaInfo
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.DataType*
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.DataType
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_DataType
-  name: DataType
-  nameWithType: IdentityDefinition.DataType
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.DataType
-- uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
-  commentId: T:Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
-  parent: Gadema.Core.Models.Base.Enums
-  href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
-  name: IdentityDataTypeEnum
-  nameWithType: IdentityDataTypeEnum
-  fullName: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
-- uid: Gadema.Core.Models.Base.Enums
-  commentId: N:Gadema.Core.Models.Base.Enums
-  name: Gadema.Core.Models.Base.Enums
-  nameWithType: Gadema.Core.Models.Base.Enums
-  fullName: Gadema.Core.Models.Base.Enums
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Base
-    name: Base
-  - name: .
-  - uid: Gadema.Core.Models.Base.Enums
-    name: Enums
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Base
-    name: Base
-  - name: .
-  - uid: Gadema.Core.Models.Base.Enums
-    name: Enums
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Name*
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.Name
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Name
-  name: Name
-  nameWithType: IdentityDefinition.Name
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Name
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.Description*
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.Description
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_Description
-  name: Description
-  nameWithType: IdentityDefinition.Description
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.Description
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.IsRequired*
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_IsRequired
-  name: IsRequired
-  nameWithType: IdentityDefinition.IsRequired
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
-- uid: Gadema.Core.Models.Identity.IdentityDefinition.IsActive*
-  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.IsActive
-  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_IsActive
-  name: IsActive
-  nameWithType: IdentityDefinition.IsActive
-  fullName: Gadema.Core.Models.Identity.IdentityDefinition.IsActive
 - uid: Gadema.Core.Models.Identity.IdentityDefinition.ProjectId*
   commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.ProjectId
   href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_ProjectId
@@ -935,3 +714,74 @@ references:
   - name: .
   - uid: Gadema.Core.Models.Base.Projects
     name: Projects
+- uid: Gadema.Core.Models.Identity.IdentityDefinition.DataType*
+  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.DataType
+  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_DataType
+  name: DataType
+  nameWithType: IdentityDefinition.DataType
+  fullName: Gadema.Core.Models.Identity.IdentityDefinition.DataType
+- uid: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+  commentId: T:Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+  parent: Gadema.Core.Models.Base.Enums
+  href: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum.html
+  name: IdentityDataTypeEnum
+  nameWithType: IdentityDataTypeEnum
+  fullName: Gadema.Core.Models.Base.Enums.IdentityDataTypeEnum
+- uid: Gadema.Core.Models.Base.Enums
+  commentId: N:Gadema.Core.Models.Base.Enums
+  name: Gadema.Core.Models.Base.Enums
+  nameWithType: Gadema.Core.Models.Base.Enums
+  fullName: Gadema.Core.Models.Base.Enums
+  spec.csharp:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+  spec.vb:
+  - uid: Gadema
+    name: Gadema
+  - name: .
+  - uid: Gadema.Core
+    name: Core
+  - name: .
+  - uid: Gadema.Core.Models
+    name: Models
+  - name: .
+  - uid: Gadema.Core.Models.Base
+    name: Base
+  - name: .
+  - uid: Gadema.Core.Models.Base.Enums
+    name: Enums
+- uid: Gadema.Core.Models.Identity.IdentityDefinition.IsRequired*
+  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
+  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_IsRequired
+  name: IsRequired
+  nameWithType: IdentityDefinition.IsRequired
+  fullName: Gadema.Core.Models.Identity.IdentityDefinition.IsRequired
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Gadema.Core.Models.Identity.IdentityDefinition.IsActive*
+  commentId: Overload:Gadema.Core.Models.Identity.IdentityDefinition.IsActive
+  href: Gadema.Core.Models.Identity.IdentityDefinition.html#Gadema_Core_Models_Identity_IdentityDefinition_IsActive
+  name: IsActive
+  nameWithType: IdentityDefinition.IsActive
+  fullName: Gadema.Core.Models.Identity.IdentityDefinition.IsActive

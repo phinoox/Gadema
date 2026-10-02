@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Project Member </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Project Member ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-member">Project Member</h1>
+
+<p>The <code>ProjectMember</code> entity defines the relationship between a <code>User</code> and a <code>Project</code>. It acts as the authorization bridge, determining what actions a user can perform within a specific project's scope.</p>
+<h2 id="-access--roles">🛡️ Access &amp; Roles</h2>
+<p>Access is managed through a scoped role system. Instead of global permissions, a user's capabilities are determined by their membership in a particular project.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Role</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Owner</code></td>
+<td style="text-align: left;">Full administrative control and primary ownership of the project.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Admin</code></td>
+<td style="text-align: left;">High-level management privileges within the project scope.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Editor</code></td>
+<td style="text-align: left;">Capable of creating, editing, and managing content/tasks.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Reviewer</code></td>
+<td style="text-align: left;">Focused on reviewing progress and providing feedback.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Viewer</code></td>
+<td style="text-align: left;">Read-only access to all project contents.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-membership-details">🧬 Membership Details</h2>
+<p>A membership record links a user's identity to a project's workspace via the following data:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Id</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">Unique identifier for this membership instance.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ProjectId</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">The ID of the project being joined.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>UserId</code></td>
+<td style="text-align: left;"><code>Guid</code></td>
+<td style="text-align: left;">The ID of the user joining the project.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Role</code></td>
+<td style="text-align: left;"><code>ProjectMemberRoleEnum</code></td>
+<td style="text-align: left;">The assigned permission level within this scope.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>JoinedAt</code></td>
+<td style="text-align: left;"><code>DateTime</code></td>
+<td style="text-align: left;">Timestamp of when the membership was established.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-technical-implementation">⚙️ Technical implementation</h2>
+<ul>
+<li><strong>Scope Binding</strong>: This entity is the &quot;Muscle&quot; in the Four-Gate Flow, providing the context used by the <code>PermissionEngine</code> to resolve whether a user has the required role for a specific action.</li>
+<li><strong>Relational Integrity</strong>: Maintains strict links to both the <code>Project</code> and the <code>User</code> via Required navigation properties.</li>
+</ul>
+<hr>
+<p><em>Part of the <a href="./access/overview.md">Access &amp; Identity Domain</a></em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/access/project-member.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

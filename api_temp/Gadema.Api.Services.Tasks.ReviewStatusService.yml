@@ -22,12 +22,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewStatusService
     path: src/Gadema.Api/Services/Tasks/ReviewStatusService.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
-  summary: Service for managing content review workflow.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -82,7 +80,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Tasks/ReviewStatusService.cs
-    startLine: 19
+    startLine: 18
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -118,7 +116,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetReviewStatusAsync
     path: src/Gadema.Api/Services/Tasks/ReviewStatusService.cs
-    startLine: 39
+    startLine: 23
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks
@@ -151,7 +149,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ApproveContentAsync
     path: src/Gadema.Api/Services/Tasks/ReviewStatusService.cs
-    startLine: 62
+    startLine: 41
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Tasks

@@ -5,7 +5,7 @@ items:
   id: CommentService
   parent: Gadema.Api.Services.Base.MetaInfo
   children:
-  - Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
+  - Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)
   - Gadema.Api.Services.Base.MetaInfo.CommentService.CreateCommentAsync(System.Guid,Gadema.Core.Dtos.Writing.Social.CreateCommentDto)
   - Gadema.Api.Services.Base.MetaInfo.CommentService.DeleteCommentAsync(System.Guid)
   - Gadema.Api.Services.Base.MetaInfo.CommentService.GetCommentsByTargetAsync(System.Guid,System.Guid)
@@ -24,19 +24,13 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CommentService
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
   syntax:
-    content: >-
-      [ServiceLifetime(ServiceLifetime.Scoped)]
-
-      public class CommentService : DomainService
-    content.vb: >-
-      <ServiceLifetime(ServiceLifetime.Scoped)>
-
-      Public Class CommentService Inherits DomainService
+    content: 'public class CommentService : DomainService'
+    content.vb: Public Class CommentService Inherits DomainService
   inheritance:
   - System.Object
   - Gadema.Api.Services.Core.DomainService
@@ -58,22 +52,16 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-  attributes:
-  - type: Gadema.Api.Services.Core.ServiceLifetimeAttribute
-    ctor: Gadema.Api.Services.Core.ServiceLifetimeAttribute.#ctor(Microsoft.Extensions.DependencyInjection.ServiceLifetime)
-    arguments:
-    - type: Microsoft.Extensions.DependencyInjection.ServiceLifetime
-      value: 1
-- uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  commentId: M:Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)
-  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService},Gadema.Api.CoreServices.CoreServicesProvider)'
+- uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)
+  commentId: M:Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)
+  id: '#ctor(Gadema.Data.Database.Core.CoreDbContext,Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService},Gadema.Api.CoreServices.CoreServicesProvider)'
   parent: Gadema.Api.Services.Base.MetaInfo.CommentService
   langs:
   - csharp
   - vb
-  name: CommentService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  nameWithType: CommentService.CommentService(CoreDbContext, ILogger<ProjectService>, CoreServicesProvider)
-  fullName: Gadema.Api.Services.Base.MetaInfo.CommentService.CommentService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>, Gadema.Api.CoreServices.CoreServicesProvider)
+  name: CommentService(CoreDbContext, ILogger<CommentService>, CoreServicesProvider)
+  nameWithType: CommentService.CommentService(CoreDbContext, ILogger<CommentService>, CoreServicesProvider)
+  fullName: Gadema.Api.Services.Base.MetaInfo.CommentService.CommentService(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.MetaInfo.CommentService>, Gadema.Api.CoreServices.CoreServicesProvider)
   type: Constructor
   source:
     remote:
@@ -82,24 +70,24 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 16
+    startLine: 17
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
   syntax:
-    content: public CommentService(CoreDbContext db, ILogger<ProjectService> logger, CoreServicesProvider coreServices)
+    content: public CommentService(CoreDbContext db, ILogger<CommentService> logger, CoreServicesProvider coreServices)
     parameters:
     - id: db
       type: Gadema.Data.Database.Core.CoreDbContext
     - id: logger
-      type: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
+      type: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService}
     - id: coreServices
       type: Gadema.Api.CoreServices.CoreServicesProvider
-    content.vb: Public Sub New(db As CoreDbContext, logger As ILogger(Of ProjectService), coreServices As CoreServicesProvider)
+    content.vb: Public Sub New(db As CoreDbContext, logger As ILogger(Of CommentService), coreServices As CoreServicesProvider)
   overload: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor*
-  nameWithType.vb: CommentService.New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
-  fullName.vb: Gadema.Api.Services.Base.MetaInfo.CommentService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService), Gadema.Api.CoreServices.CoreServicesProvider)
-  name.vb: New(CoreDbContext, ILogger(Of ProjectService), CoreServicesProvider)
+  nameWithType.vb: CommentService.New(CoreDbContext, ILogger(Of CommentService), CoreServicesProvider)
+  fullName.vb: Gadema.Api.Services.Base.MetaInfo.CommentService.New(Gadema.Data.Database.Core.CoreDbContext, Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.MetaInfo.CommentService), Gadema.Api.CoreServices.CoreServicesProvider)
+  name.vb: New(CoreDbContext, ILogger(Of CommentService), CoreServicesProvider)
 - uid: Gadema.Api.Services.Base.MetaInfo.CommentService.GetCommentsByTargetAsync(System.Guid,System.Guid)
   commentId: M:Gadema.Api.Services.Base.MetaInfo.CommentService.GetCommentsByTargetAsync(System.Guid,System.Guid)
   id: GetCommentsByTargetAsync(System.Guid,System.Guid)
@@ -118,7 +106,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetCommentsByTargetAsync
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 35
+    startLine: 34
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
@@ -151,7 +139,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateCommentAsync
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 53
+    startLine: 50
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
@@ -184,7 +172,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateCommentAsync
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 79
+    startLine: 74
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
@@ -217,7 +205,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteCommentAsync
     path: src/Gadema.Api/Services/Base/MetaInfo/CommentService.cs
-    startLine: 102
+    startLine: 94
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.MetaInfo
@@ -887,7 +875,7 @@ references:
     name: Core
 - uid: Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor*
   commentId: Overload:Gadema.Api.Services.Base.MetaInfo.CommentService.#ctor
-  href: Gadema.Api.Services.Base.MetaInfo.CommentService.html#Gadema_Api_Services_Base_MetaInfo_CommentService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_Projects_ProjectService__Gadema_Api_CoreServices_CoreServicesProvider_
+  href: Gadema.Api.Services.Base.MetaInfo.CommentService.html#Gadema_Api_Services_Base_MetaInfo_CommentService__ctor_Gadema_Data_Database_Core_CoreDbContext_Microsoft_Extensions_Logging_ILogger_Gadema_Api_Services_Base_MetaInfo_CommentService__Gadema_Api_CoreServices_CoreServicesProvider_
   name: CommentService
   nameWithType: CommentService.CommentService
   fullName: Gadema.Api.Services.Base.MetaInfo.CommentService.CommentService
@@ -901,26 +889,26 @@ references:
   name: CoreDbContext
   nameWithType: CoreDbContext
   fullName: Gadema.Data.Database.Core.CoreDbContext
-- uid: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
-  commentId: T:Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.Projects.ProjectService}
+- uid: Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{Gadema.Api.Services.Base.MetaInfo.CommentService}
   parent: Microsoft.Extensions.Logging
   definition: Microsoft.Extensions.Logging.ILogger`1
   href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
-  name: ILogger<ProjectService>
-  nameWithType: ILogger<ProjectService>
-  fullName: Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.Projects.ProjectService>
-  nameWithType.vb: ILogger(Of ProjectService)
-  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.Projects.ProjectService)
-  name.vb: ILogger(Of ProjectService)
+  name: ILogger<CommentService>
+  nameWithType: ILogger<CommentService>
+  fullName: Microsoft.Extensions.Logging.ILogger<Gadema.Api.Services.Base.MetaInfo.CommentService>
+  nameWithType.vb: ILogger(Of CommentService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of Gadema.Api.Services.Base.MetaInfo.CommentService)
+  name.vb: ILogger(Of CommentService)
   spec.csharp:
   - uid: Microsoft.Extensions.Logging.ILogger`1
     name: ILogger
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
   - name: <
-  - uid: Gadema.Api.Services.Base.Projects.ProjectService
-    name: ProjectService
-    href: Gadema.Api.Services.Base.Projects.ProjectService.html
+  - uid: Gadema.Api.Services.Base.MetaInfo.CommentService
+    name: CommentService
+    href: Gadema.Api.Services.Base.MetaInfo.CommentService.html
   - name: '>'
   spec.vb:
   - uid: Microsoft.Extensions.Logging.ILogger`1
@@ -930,9 +918,9 @@ references:
   - name: (
   - name: Of
   - name: " "
-  - uid: Gadema.Api.Services.Base.Projects.ProjectService
-    name: ProjectService
-    href: Gadema.Api.Services.Base.Projects.ProjectService.html
+  - uid: Gadema.Api.Services.Base.MetaInfo.CommentService
+    name: CommentService
+    href: Gadema.Api.Services.Base.MetaInfo.CommentService.html
   - name: )
 - uid: Gadema.Api.CoreServices.CoreServicesProvider
   commentId: T:Gadema.Api.CoreServices.CoreServicesProvider

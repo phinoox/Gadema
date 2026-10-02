@@ -26,7 +26,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectMember
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 31
+    startLine: 32
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -69,19 +69,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 37
+    startLine: 38
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
   summary: Gets or sets the unique identifier for this membership record.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Access.ProjectMember.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Access.ProjectMember.ProjectId
   commentId: P:Gadema.Core.Models.Access.ProjectMember.ProjectId
   id: ProjectId
@@ -100,7 +110,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectId
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 42
+    startLine: 44
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -131,7 +141,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UserId
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 47
+    startLine: 49
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -162,7 +172,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Role
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 52
+    startLine: 54
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -193,7 +203,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: JoinedAt
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 57
+    startLine: 59
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -224,7 +234,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Project
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 63
+    startLine: 65
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access
@@ -265,7 +275,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: User
     path: src/Gadema.Core/Models/Access/ProjectMember.cs
-    startLine: 69
+    startLine: 71
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Access

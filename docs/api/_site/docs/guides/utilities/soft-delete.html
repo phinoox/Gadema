@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Soft Delete Pattern </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Soft Delete Pattern ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="soft-delete-pattern">Soft Delete Pattern</h1>
+
+<p>This guide explains the implementation of the <strong>Soft Delete</strong> pattern within GaDeMa, which allows entities to be logically removed from view without being physically deleted from the database. This preserves data integrity and provides a mechanism for audit trails or recovery.</p>
+<h2 id="1-the-interface-isoftdelete">1. The Interface (<code>ISoftDelete</code>)</h2>
+<p>Any entity that requires soft delete capabilities must implement the <code>ISoftDelete</code> interface found in <code>Gadema.Core.Models.Base</code>.</p>
+<pre><code class="lang-csharp">public interface ISoftDelete
+{
+    /// &lt;summary&gt;
+    /// Gets or sets a value indicating whether the entity has been logically deleted.
+    /// &lt;/summary&gt;
+    bool IsDeleted { get; set; }
+}
+</code></pre>
+<p><strong>Note</strong>: While the documentation summary previously mentioned <code>IsActive</code>, the actual implementation uses <code>IsDeleted</code>. Always follow the code.</p>
+<h2 id="2-global-query-filtering">2. Global Query Filtering</h2>
+<p>To ensure that &quot;deleted&quot; records do not appear in standard application queries, a <strong>Global Query Filter</strong> is automatically applied by the <code>GademaBaseContext</code>.</p>
+<h3 id="how-it-works">How it works</h3>
+<p>The <code>ApplySoftDeleteFilters</code> method within <code>GademaBaseContext.OnModelCreating</code> scans all entity types during model initialization. If an entity implements <code>ISoftDelete</code>, it applies an EF Core global query filter: <code>e =&gt; e.IsDeleted == false</code>.</p>
+<pre><code class="lang-csharp">// Logic applied automatically in GademaBaseContext
+private void ApplySoftDeleteFilters(ModelBuilder modelBuilder)
+{
+    foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+    {
+        if (typeof(ISoftDelete).IsAssignableFrom(entityType.ClrType))
+        {
+            // Build expression: e =&gt; e.IsDeleted == false
+            var parameter = Expression.Parameter(entityType.ClrType, &quot;e&quot;);
+            var property = Expression.Property(parameter, nameof(ISoftDelete.IsDeleted));
+            var falseConstant = Expression.Constant(false);
+            var equality = Expression.Equal(property, falseConstant);
+            var lambda = Expression.Lambda(equality, parameter);
+
+            modelBuilder.Entity(entityType.ClrType).HasQueryFilter(lambda);
+        }
+    }
+}
+</code></pre>
+<h3 id="consequences-of-global-filters">Consequences of Global Filters</h3>
+<ul>
+<li><strong>Automatic Filtering</strong>: Every <code>DbSet&lt;T&gt;</code> query (e.g., <code>_context.Users.ToList()</code>) will automatically exclude any record where <code>IsDeleted == true</code>.</li>
+<li><strong>Bypassing the Filter</strong>: If you explicitly need to include deleted items (for administrative or recovery purposes), use <code>.IgnoreQueryFilters()</code> in your LINQ query:
+<pre><code class="lang-csharp">// Retrieves ALL users, including those logically deleted.
+var allUsers = await _context.Users.IgnoreQueryFilters().ToListAsync();
+</code></pre>
+</li>
+</ul>
+<h2 id="3-implementation-checklist">3. Implementation Checklist</h2>
+<p>When adding a new entity that should support soft deletion:</p>
+<ol>
+<li>[ ] Implement the <code>ISoftDelete</code> interface on your model class.</li>
+<li>[ ] Add the <code>IsDeleted</code> property to your model.</li>
+<li>[ ] Ensure you use the <code>DbSet&lt;T&gt;</code> via <code>GademaBaseContext</code> so the filter is applied.</li>
+</ol>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Data Recovery</strong>: Allows for easy &quot;undelete&quot; operations.</td>
+<td style="text-align: left;"><strong>Storage Overhead</strong>: Deleted records still occupy space in the database.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Audit Trails</strong>: Preserves history and relational integrity (prevents orphaned FKs).</td>
+<td style="text-align: left;"><strong>Index Bloat</strong>: Large amounts of deleted data can slow down index scans if not managed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Relational Integrity</strong>: Prevents breaking foreign key constraints by keeping the record present.</td>
+<td style="text-align: left;"><strong>Query Complexity</strong>: Requires developers to be aware of <code>IgnoreQueryFilters()</code> for administrative tasks.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/soft-delete.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

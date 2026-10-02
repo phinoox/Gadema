@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Testing Helpers </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Testing Helpers ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="testing-helpers">Testing Helpers</h1>
+
+<p>Testing complex, permission-heavy logic requires a reliable way to simulate different user identities. The <code>Gadema.Tests.Helpers</code> namespace provides utilities to manage authentication state and identity context within integration tests.</p>
+<hr>
+<h2 id="1-identity-mocking-with-testusercontexthelper">1. Identity Mocking with <code>TestUserContextHelper</code></h2>
+<p>In integration tests using <code>ApiWebApplicationFactory</code>, you need a way to tell the system &quot;the current user is X&quot; without going through the full HTTP middleware stack for every test case. The <code>TestUserContextHelper</code> automates this by injecting identity into the scoped <code>IUserContext</code>.</p>
+<h3 id="how-it-works">How it Works</h3>
+<p>The helper retrieves the scoped <code>IUserContext</code> from your test factory and populates its properties (<code>UserId</code>, <code>CurrentUser</code>, and <code>Roles</code>) with a user retrieved from (or created in) the test database.</p>
+<pre><code class="lang-csharp">// Example: Setting up an authenticated Admin context for an integration test
+var scope = _factory.GetScope();
+var owner = DbSeeder.Seed&lt;User&gt;(scope); // Seed a real user via DbSeeder
+_userContext = TestUserContextHelper.CreateTestContext(_factory); 
+// Now, all services in this scope see 'owner' as the current user.
+</code></pre>
+<h3 id="critical-requirement-database-seeding">Critical Requirement: Database Seeding</h3>
+<p>The <code>TestUserContextHelper</code> relies on an existing identity in the database. To avoid &quot;Identity Mismatch&quot; errors (where a user exists in memory but not in the DB), you <strong>must</strong> ensure your test setup seeds at least one active user before calling this helper.</p>
+<hr>
+<h2 id="2-testing-patterns">2. Testing Patterns</h2>
+<h3 id="pattern-a-unit-testing-isolated">Pattern A: Unit Testing (Isolated)</h3>
+<p>For unit tests where you are testing a single service in isolation, do not use the <code>TestUserContextHelper</code>. Instead, use a mocking library (like Moq) to mock the <code>IUserContext</code> interface directly. This is faster and more deterministic for logic-only tests.</p>
+<pre><code class="lang-csharp">// Example: Mocking identity for a pure unit test
+var user = new User { Id = Guid.NewGuid(), UserName = &quot;TestUser&quot; };
+var mockContext = new Mock&lt;IUserContext&gt;();
+
+mockContext.SetupGet(x =&gt; x.UserId).Returns(user.Id);
+mockContext.SetupGet(x =&gt; x.CurrentUser).Returns(user);
+mockContext.SetupGet(x =&gt; x.Roles).Returns(new List&lt;string&gt; { &quot;Admin&quot; });
+
+// Inject the mock into your service
+var service = new ProjectService(..., mockContext.Object);
+</code></pre>
+<h3 id="pattern-b-integration-testing-full-stack">Pattern B: Integration Testing (Full Stack)</h3>
+<p>For integration tests that verify the interaction between services, middleware, and the database, use <code>TestUserContextHelper</code>. This ensures the identity flows through the actual dependency injection container used by your API.</p>
+<hr>
+<h2 id="3-summary-of-test-approaches">3. Summary of Test Approaches</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Unit Testing (Mocking)</th>
+<th style="text-align: left;">Integration Testing (Helper)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Speed</strong></td>
+<td style="text-align: left;">Extremely Fast</td>
+<td style="text-align: left;">Slower (DB/DI overhead)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Scope</strong></td>
+<td style="text-align: left;">Single class in isolation</td>
+<td style="text-align: left;">Full request pipeline</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Identity Source</strong></td>
+<td style="text-align: left;">In-memory mock objects</td>
+<td style="text-align: left;">Seeded database entities</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Use Case</strong></td>
+<td style="text-align: left;">Testing business logic rules</td>
+<td style="text-align: left;">Testing permission gates &amp; middleware</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Approach</th>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mocking</strong></td>
+<td style="text-align: left;">High speed and total control over identity state.</td>
+<td style="text-align: left;">Does not test the actual DI registration or Middleware population.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TestUserContextHelper</strong></td>
+<td style="text-align: left;">Tests the real authentication flow and DB constraints.</td>
+<td style="text-align: left;">Requires database seeding and is subject to &quot;identity leakage&quot; if scopes are mismanaged.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/testing-helpers.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

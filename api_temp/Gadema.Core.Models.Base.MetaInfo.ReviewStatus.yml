@@ -12,7 +12,6 @@ items:
   - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.ReviewedByUserId
   - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Reviewer
   - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
-  - Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
   langs:
   - csharp
   - vb
@@ -27,7 +26,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewStatus
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 9
+    startLine: 8
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -70,59 +69,28 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 15
+    startLine: 14
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: Unique identifier for this review record.
-  example: []
-  syntax:
-    content: public Guid Id { get; set; }
-    parameters: []
-    return:
-      type: System.Guid
-    content.vb: Public Property Id As Guid
-  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id*
-- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  id: TargetId
-  parent: Gadema.Core.Models.Base.MetaInfo.ReviewStatus
-  langs:
-  - csharp
-  - vb
-  name: TargetId
-  nameWithType: ReviewStatus.TargetId
-  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  type: Property
-  source:
-    remote:
-      path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-      branch: main
-      repo: git@github.com:phinoox/Gadema.git
-    id: TargetId
-    path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 19
-  assemblies:
-  - Gadema.Core
-  namespace: Gadema.Core.Models.Base.MetaInfo
-  summary: The ID of the content item being reviewed (the anchor).
+  summary: The unique identifier for this review, which is also the ID of the target content item (The Soul).
   example: []
   syntax:
     content: >-
-      [Required]
+      [Key]
 
-      public Guid TargetId { get; set; }
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
     content.vb: >-
-      <Required>
+      <Key>
 
-      Public Property TargetId As Guid
-  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId*
+      Public Property Id As Guid
+  overload: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Id*
   attributes:
-  - type: System.ComponentModel.DataAnnotations.RequiredAttribute
-    ctor: System.ComponentModel.DataAnnotations.RequiredAttribute.#ctor
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
     arguments: []
 - uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
   commentId: P:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
@@ -142,7 +110,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Status
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 25
+    startLine: 20
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -173,7 +141,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewedByUserId
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 30
+    startLine: 25
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -204,7 +172,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Reviewer
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 35
+    startLine: 30
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -247,7 +215,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewComment
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 41
+    startLine: 36
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -290,7 +258,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ReviewedAt
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 47
+    startLine: 42
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -321,7 +289,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreatedAt
     path: src/Gadema.Core/Models/Base/MetaInfo/ReviewStatus.cs
-    startLine: 52
+    startLine: 47
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.MetaInfo
@@ -621,12 +589,6 @@ references:
   name: Guid
   nameWithType: Guid
   fullName: System.Guid
-- uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId*
-  commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
-  href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_TargetId
-  name: TargetId
-  nameWithType: ReviewStatus.TargetId
-  fullName: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.TargetId
 - uid: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status*
   commentId: Overload:Gadema.Core.Models.Base.MetaInfo.ReviewStatus.Status
   href: Gadema.Core.Models.Base.MetaInfo.ReviewStatus.html#Gadema_Core_Models_Base_MetaInfo_ReviewStatus_Status

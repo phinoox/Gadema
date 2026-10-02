@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Dependency Resolver </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Dependency Resolver ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>I have analyzed the <code>DependencyResolver</code> and its role in the system.</p>
+<p>The <strong>Dependency Resolver</strong> is a specialized utility designed to solve the &quot;Topological Ordering&quot; problem inherent in relational databases with Foreign Key dependencies. It allows the system to understand which entities must be created first (the &quot;parents&quot;) before their dependent entities (the &quot;children&quot;) can be instantiated.</p>
+<p>Here is the documentation for the <code>DependencyResolver</code>.</p>
+<hr>
+<h1 id="dependency-resolver">Dependency Resolver</h1>
+<p>The <code>DependencyResolver</code> provides a mechanism for calculating the correct order of operations when seeding or managing data with complex Foreign Key dependencies. It uses <strong>Topological Sorting</strong> to determine the sequence in which entities must be created to satisfy all relational constraints.</p>
+<h2 id="1-core-concept-topological-ordering">1. Core Concept: Topological Ordering</h2>
+<p>In any system with Foreign Key (FK) relationships, you cannot create a &quot;Child&quot; entity until its &quot;Parent&quot; exists. For example, you cannot create a <code>ProjectTask</code> until the <code>Project</code> it belongs to has been persisted in the database.</p>
+<p>The <code>DependencyResolver</code> automs this by:</p>
+<ol>
+<li><strong>Scanning</strong>: Examining classes for the <code>[ModelDependency]</code> attribute.</li>
+<li><strong>Graph Building</strong>: Constructing a directed graph where an edge exists from a child to its parent (representing &quot;must exist before&quot;).</li>
+<li><strong>Sorting</strong>: Using <strong>Kahn's Algorithm</strong> to produce a list of types sorted such that all dependencies appear before the types that depend on them.</li>
+</ol>
+<h2 id="2-implementation-details">2. Implementation Details</h2>
+<h3 id="the-modeldependency-attribute">The <code>[ModelDependency]</code> Attribute</h3>
+<p>To participate in the dependency graph, a class must be decorated with the <code>[ModelDependency]</code> attribute, explicitly listing its required parent types.</p>
+<pre><code class="lang-csharp">// Example: A Task depends on a Project
+[ModelDependency(typeof(Project))]
+public class ProjectTask : ISoftDelete 
+{
+    public Guid ProjectId { get; set; } // The FK that the resolver tracks
+}
+</code></pre>
+<h3 id="the-resolution-process">The Resolution Process</h3>
+<p>The <code>ResolveDependencies</code> method performs the following steps:</p>
+<ol>
+<li><strong>Traversal</strong>: It uses a queue-based traversal to build a map of all types and their defined dependencies.</li>
+<li><strong>Graph Construction</strong>: It creates an adjacency list representing the directed edges between types.</li>
+<li><strong>Kahn's Algorithm</strong>:
+<ul>
+<li>It identifies &quot;root&quot; nodes (types with zero in-degree/no dependencies).</li>
+<li>It iteratively removes these nodes from the graph and updates the in-degrees of their neighbors.</li>
+<li>The order of removal forms the topological sort.</li>
+</ul>
+</li>
+<li><strong>Cycle Detection</strong>: If any types remain unprocessed after the algorithm completes, a circular dependency (e.g., <code>A -&gt; B -&gt; A</code>) has been detected.</li>
+</ol>
+<h2 id="3-key-methods">3. Key Methods</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ResolveDependencies()</code></td>
+<td style="text-align: left;">Scans the core models assembly and returns the sorted list of types and any detected cycles.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>GetRequiredAncestors(Type target)</code></td>
+<td style="text-align: left;">Returns only the subset of types required to satisfy a specific target type, sorted by dependency order. This is used by the <code>DbSeeder</code> to perform targeted seeding.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PrintHierarchy()</code></td>
+<td style="text-align: left;">A diagnostic utility that prints a visual tree representation of the dependency graph to the console.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-usage-in-data-seeding-dbseeder">4. Usage in Data Seeding (<code>DbSeeder</code>)</h2>
+<p>The <code>DbSeeder</code> utilizes the <code>DependencyResolver</code> to automate complex data setup:</p>
+<ol>
+<li><strong>Targeted Discovery</strong>: When <code>AutoSeed&lt;T&gt;</code> is called, it uses <code>GetRequiredAncestors(typeof(T))</code> to find every parent entity required for that specific object.</li>
+<li><strong>Ordered Execution</strong>: The seeder iterates through the returned list, seeding each parent first.</li>
+<li><strong>Automatic FK Wiring</strong>: After a parent is seeded, the resolver identifies which properties on the child are Foreign Keys and automatically pop{ulates them with the newly created parent's ID.</li>
+</ol>
+<h2 id="-trade-offs">⚖️ Trade-offs</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Pros</th>
+<th style="text-align: left;">Cons</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Automation</strong>: Eliminates manual management of seeding order for complex graphs.</td>
+<td style="text-align: left;"><strong>Complexity</strong>: Adds a layer of reflection-based logic that must be kept in sync with the actual database schema.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Safety</strong>: Detects circular dependencies at startup/test time rather than during runtime DB constraint errors.</td>
+<td style="text-align: left;"><strong>Overhead</strong>: The reflection-heavy scanning is intended for development/testing and should not be used in high-frequency production paths.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/utilities/DependencyResolver.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

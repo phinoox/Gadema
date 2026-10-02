@@ -152,7 +152,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetTokensAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTokenService.cs
-    startLine: 82
+    startLine: 80
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -183,7 +183,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteTokenAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTokenService.cs
-    startLine: 96
+    startLine: 94
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -214,7 +214,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: RevokeTokenAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTokenService.cs
-    startLine: 120
+    startLine: 118
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -245,7 +245,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetUsageStatsAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectTokenService.cs
-    startLine: 138
+    startLine: 136
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects

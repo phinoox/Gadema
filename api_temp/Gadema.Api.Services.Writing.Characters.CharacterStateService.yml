@@ -25,15 +25,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CharacterStateService
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 19
+    startLine: 15
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
-  summary: >-
-    Service for managing CharacterStates - tracking a character's state at a specific point in time.
-
-    Links characters to scenes via the scene trigger mechanism.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -88,7 +83,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 23
+    startLine: 19
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -124,7 +119,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetStatesAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 45
+    startLine: 36
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -155,7 +150,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetStateAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 65
+    startLine: 50
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -186,7 +181,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateCharacterStateAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 84
+    startLine: 65
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -221,7 +216,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateCharacterStateAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 136
+    startLine: 110
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -254,7 +249,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteCharacterStateAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterStateService.cs
-    startLine: 175
+    startLine: 143
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters

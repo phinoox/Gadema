@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title> </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content=" ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>&lt;|channel&gt;thought
+&lt;channel|&gt;# 🧬 The Law of Identity: Soul &amp; Body (The Anchor Pattern)</p>
+<h2 id="to-maintain-stability-in-a-complex-modular-world-every-entity-must-follow-the-law-of-identity-this-is-achieved-by-decoupling-an-entitys-permanent-essence-from-its-evolving-data">To maintain stability in a complex, modular world, every entity must follow the <strong>Law of Identity</strong>. This is achieved by decoupling an entity's permanent essence from its evolving data.</h2>
+<h2 id="-the-core-concept-soul-vs-body">⚖️ The Core Concept: Soul vs. Body</h2>
+<p>In Anima, we do not treat entities as monolithic blocks. Instead, we split them into two distinct parts to ensure scale-invariant stability.</p>
+<ul>
+<li><strong>The Anchor (the Soul)</strong>: This is the permanent identity of an entity (e.g., a Character's Name or a Setting's Title). It acts as the stable foundation that remains constant even as the world evolves.</li>
+<li><strong>The Body (the Modules)</strong>: These are the specialized, evolving parts of your creation (e.g., a <code>Story Profile</code> for narrative, or a <code>Game Profile</code> for mechanics).</li>
+</ul>
+<h2 id="by-separating-the-soul-from-the-body-we-ensure-that-any-change-to-the-body-can-be-correctly-reflected-in-the-soul-maintaining-structural-integrity-across-the-entire-system">By separating the <strong>Soul</strong> from the <strong>Body</strong>, we ensure that any change to the &quot;Body&quot; can be correctly reflected in the &quot;Soul,&quot; maintaining structural integrity across the entire system.</h2>
+<h2 id="-the-protocol-harmonization-the-sync-mechanism">🔄 The Protocol: Harmonization (The Sync Mechanism)</h2>
+<p>When a part of the <strong>Body</strong> is updated, the <strong>Anchor (the Soul)</strong> must be aligned to match. We do not perform manual updates; we use the <strong>Harmonization Protocol</strong>.</p>
+<h3 id="implementation-detail">Implementation Detail</h3>
+<p>To maintain this equilibrium, developers must use the <code>SyncIdentityAsync&lt;T&gt;</code> method provided by the <code>ICoreServices</code> gateway.</p>
+<p><strong>The Workflow:</strong></p>
+<ol>
+<li><strong>Update the Body</strong>: The domain service performs its primary business logic (e.g., updating a character's stats).</li>
+<li><strong>Invoke Harmonization</strong>: The service calls <code>SyncIdentityAsync&lt;T&gt;(id, updateData)</code>.</li>
+<li><strong>Execute Strategy</strong>: The system routes this call to a specialized <code>IIdentitySyncStrategy&lt;T&gt;</code>, which calculates the delta and updates the <code>MetaInfo</code> anchor accordingly.</li>
+</ol>
+<div class="IMPORTANT">
+<h5>Important</h5>
+</div>
+<h2 id="the-law-of-identity-never-attempt-to-manually-update-metainfo-properties-within-a-domain-service-always-use-the-harmonization-protocol-to-ensure-identity-stability"><strong>The Law of Identity</strong>: Never attempt to manually update <code>MetaInfo</code> properties within a domain service. Always use the <strong>Harmonization</strong> protocol to ensure identity stability.</h2>
+<h2 id="-technical-implementation-reference">🛠️ Technical Implementation Reference</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Interface / Class</th>
+<th style="text-align: left;">Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Identity Anchor</strong></td>
+<td style="text-align: left;"><code>MetaInfo</code></td>
+<td style="text-align: left;">The central, stable identity record.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Gateway</strong></td>
+<td style="text-align: left;"><code>ICoreServices</code></td>
+<td style="text-align: left;">The entry point for all identity operations.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>The Strategy</strong></td>
+<td style="text-align: left;"><code>IIdentitySyncStrategy&lt;T&gt;</code></td>
+<td style="text-align: left;">The logic that maps Body changes to Soul updates.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage-c">Example Usage (C#)</h3>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/architecture/identity-system.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

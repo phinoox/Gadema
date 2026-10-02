@@ -25,12 +25,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectService
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 20
+    startLine: 17
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
-  summary: Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -85,7 +83,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 25
+    startLine: 22
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -121,11 +119,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetMatchesAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 40
+    startLine: 31
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
-  summary: Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
   example: []
   syntax:
     content: public Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
@@ -159,7 +156,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 67
+    startLine: 54
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -190,7 +187,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 112
+    startLine: 103
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -223,7 +220,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 128
+    startLine: 118
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects
@@ -258,7 +255,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteAsync
     path: src/Gadema.Api/Services/Base/Projects/ProjectService.cs
-    startLine: 177
+    startLine: 163
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Base.Projects

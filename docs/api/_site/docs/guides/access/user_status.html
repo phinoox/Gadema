@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128100; Status: User </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128100; Status: User ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-user">👤 Status: User</h1>
+
+<p>This document provides a validation report comparing the user identity model outlined in <code>user.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Identity (Id, UserName, Email)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The core identification properties (<code>Id</code>, <code>UserName</code>, <code>Email</code>) are present and correctly typed in the <code>User</code> model.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Display Name</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>DisplayName</code> is implemented as an optional string.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Authentication Provider</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>Provider</code> (using <code>UserAuthProviderEnum</code>) is implemented, supporting both standard password and external providers via <code>ProviderLinks</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Account Status (<code>IsActive</code>)</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The <code>IsActive</code> flag is present in the model to allow for account suspension.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Lifecycle Tracking</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;">While <code>CreatedAt</code> is present, <code>LastLogin</code> implementation needs verification to ensure it is being updated correctly during the authentication lifecycle.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Verify Last Login Logic</strong>: Ensure that the <code>LastLogin</code> property is being updated in the <code>AuthService</code> or <code>JwtTokenService</code> whenever a successful authentication occurs.</li>
+<li><strong>Standardize Provider Link Schema</strong>: Since <code>ProviderLinks</code> are used for OAuth, ensure the schema for these links is consistent and easily extensible for future providers.</li>
+</ul>
+<h2 id="-developer-guide-audit">📋 Developer Guide Audit</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Step</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. Identity Mapping</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">Core identity properties match the documentation.</td>
+</tr>
+<tr>
+<td style="text-align: left;">2. Provider Support</td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>UserAuthProviderEnum</code> and <code>ProviderLinks</code> are implemented.</td>
+</tr>
+<tr>
+<td style="text-align: left;">3. Lifecycle Properties</td>
+<td style="text-align: left;">⚠️ Check</td>
+<td style="text-align: left;">Verify <code>LastLogin</code> update frequency and reliability.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/access/user_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

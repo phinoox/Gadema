@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width">
       <meta name="title" content="Class IdentityDefinition ">
     
-    <meta name="description" content="Defines a template for identity types (e.g., Race, Faction, Alignment) within a project. This configuration dictates what character traits can be assigned to content items.">
+    <meta name="description" content="Defines the identity of an ability or property. Following Law I: This is a 1:1 extension of ContentMetaInfo, so Id == MetaInfoId.">
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
       <link rel="stylesheet" href="../styles/docfx.css">
@@ -71,8 +71,8 @@
 
 
   <h1 id="Gadema_Core_Models_Identity_IdentityDefinition" data-uid="Gadema.Core.Models.Identity.IdentityDefinition" class="text-break">Class IdentityDefinition</h1>
-  <div class="markdown level0 summary"><p>Defines a template for identity types (e.g., Race, Faction, Alignment) within a project.
-This configuration dictates what character traits can be assigned to content items.</p>
+  <div class="markdown level0 summary"><p>Defines the identity of an ability or property.
+Following Law I: This is a 1:1 extension of ContentMetaInfo, so Id == MetaInfoId.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -108,8 +108,7 @@ This configuration dictates what character traits can be assigned to content ite
   <h6><strong>Assembly</strong>: Gadema.Core.dll</h6>
   <h5 id="Gadema_Core_Models_Identity_IdentityDefinition_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[ModelDependency(new Type[] { typeof(ContentMetaInfo), typeof(Project) })]
-public class IdentityDefinition</code></pre>
+    <pre><code class="lang-csharp hljs">public class IdentityDefinition</code></pre>
   </div>
   <h3 id="properties">Properties
 </h3>
@@ -118,12 +117,11 @@ public class IdentityDefinition</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_ContentMetaInfo.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.ContentMetaInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L32">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L19">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_ContentMetaInfo_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.ContentMetaInfo*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_ContentMetaInfo" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.ContentMetaInfo">ContentMetaInfo</h4>
-  <div class="markdown level1 summary"><p>Navigation property for the content meta information anchor.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -150,17 +148,15 @@ public virtual ContentMetaInfo ContentMetaInfo { get; set; }</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_DataType.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.DataType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L40">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L26">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_DataType_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.DataType*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_DataType" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.DataType">DataType</h4>
-  <div class="markdown level1 summary"><p>The category of this identity (e.g., Race, Faction).</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Required]
-public IdentityDataTypeEnum DataType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IdentityDataTypeEnum DataType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -179,51 +175,19 @@ public IdentityDataTypeEnum DataType { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_Description.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.Description%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L52">View Source</a>
-  </span>
-  <a id="Gadema_Core_Models_Identity_IdentityDefinition_Description_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Description*"></a>
-  <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_Description" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Description">Description</h4>
-  <div class="markdown level1 summary"><p>A brief description of what this identity category represents.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[MaxLength(256)]
-public string? Description { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_Id.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.Id%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L20">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L13">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_Id_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Id*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_Id" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Unique identifier for the identity definition.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Guid Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Key]
+public Guid Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -245,12 +209,11 @@ public string? Description { get; set; }</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_IsActive.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.IsActive%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L63">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L28">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_IsActive_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.IsActive*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_IsActive" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.IsActive">IsActive</h4>
-  <div class="markdown level1 summary"><p>Indicates whether this definition is currently active and available for selection.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -276,12 +239,11 @@ public string? Description { get; set; }</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_IsRequired.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.IsRequired%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L58">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L27">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_IsRequired_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.IsRequired*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_IsRequired" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.IsRequired">IsRequired</h4>
-  <div class="markdown level1 summary"><p>Indicates if an identity assignment is mandatory for content items using this definition.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -307,12 +269,11 @@ public string? Description { get; set; }</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_MetaInfoId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L26">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L16">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_MetaInfoId_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_MetaInfoId" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.MetaInfoId">MetaInfoId</h4>
-  <div class="markdown level1 summary"><p>The ID of the associated ContentMetaInfo entity.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -336,48 +297,14 @@ public Guid MetaInfoId { get; set; }</code></pre>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_Name.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.Name%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L46">View Source</a>
-  </span>
-  <a id="Gadema_Core_Models_Identity_IdentityDefinition_Name_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Name*"></a>
-  <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_Name" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Name">Name</h4>
-  <div class="markdown level1 summary"><p>The human-readable name for the definition (e.g., &quot;Race&quot;, &quot;Faction&quot;).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[MaxLength(128)]
-[Required]
-public string Name { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_Project.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.Project%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L74">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L24">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_Project_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Project*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_Project" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.Project">Project</h4>
-  <div class="markdown level1 summary"><p>Navigation property for the associated project.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -404,17 +331,15 @@ public virtual Project Project { get; set; }</code></pre>
     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition_ProjectId.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition.ProjectId%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L68">View Source</a>
+    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L22">View Source</a>
   </span>
   <a id="Gadema_Core_Models_Identity_IdentityDefinition_ProjectId_" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.ProjectId*"></a>
   <h4 id="Gadema_Core_Models_Identity_IdentityDefinition_ProjectId" data-uid="Gadema.Core.Models.Identity.IdentityDefinition.ProjectId">ProjectId</h4>
-  <div class="markdown level1 summary"><p>The ID of the project this identity definition belongs to.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Required]
-public Guid ProjectId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Guid ProjectId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-condensed">
@@ -443,7 +368,7 @@ public Guid ProjectId { get; set; }</code></pre>
                     <a href="https://github.com/phinoox/Gadema/new/main/apiSpec/new?filename=Gadema_Core_Models_Identity_IdentityDefinition.md&amp;value=---%0Auid%3A%20Gadema.Core.Models.Identity.IdentityDefinition%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/src/Gadema.Core/Models/Identity/IdentityDefinition.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

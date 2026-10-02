@@ -20,11 +20,11 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTaskCommentsEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Tasks/ProjectTaskCommentsEntityTypeConfiguration.cs
-    startLine: 15
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
-  summary: Configuration for ProjectTaskComments entity in game development management system.
+  summary: Configuration for ProjectTaskComment entity in game development management system.
   example: []
   syntax:
     content: 'public class ProjectTaskCommentsEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTaskComment>'
@@ -59,11 +59,11 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Tasks/ProjectTaskCommentsEntityTypeConfiguration.cs
-    startLine: 20
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Tasks
-  summary: Configure ProjectTaskComments entity properties and relationships.
+  summary: Configure ProjectTaskComment entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<ProjectTaskComment> builder)

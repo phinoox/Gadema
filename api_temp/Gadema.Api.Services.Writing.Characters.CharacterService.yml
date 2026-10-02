@@ -26,15 +26,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CharacterService
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 21
+    startLine: 17
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
-  summary: >-
-    Service for managing Characters - the central glue entity in the character domain.
-
-    Supports progressive creation: Identity (ContentMetaInfo + Character) first, then modular components.
-  example: []
   syntax:
     content: >-
       [ServiceLifetime(ServiceLifetime.Scoped)]
@@ -89,7 +84,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: .ctor
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 25
+    startLine: 21
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -125,11 +120,10 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetMatchesAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 34
+    startLine: 27
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
-  summary: Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
   example: []
   syntax:
     content: public Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
@@ -163,7 +157,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetCharactersAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 70
+    startLine: 55
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -194,7 +188,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: GetCharacterAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 91
+    startLine: 72
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -225,7 +219,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CreateCharacterAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 112
+    startLine: 89
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -258,7 +252,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: UpdateCharacterAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 150
+    startLine: 121
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters
@@ -291,7 +285,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: DeleteCharacterAsync
     path: src/Gadema.Api/Services/Writing/Characters/CharacterService.cs
-    startLine: 200
+    startLine: 163
   assemblies:
   - Gadema.Api
   namespace: Gadema.Api.Services.Writing.Characters

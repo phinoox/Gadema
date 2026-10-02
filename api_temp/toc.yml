@@ -1570,16 +1570,6 @@ items:
   - uid: Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration
     name: UserProviderLinkEntityTypeConfiguration
     type: Class
-- uid: Gadema.Data.Configurations.Narrative
-  name: Gadema.Data.Configurations.Narrative
-  type: Namespace
-  items:
-  - uid: Gadema.Data.Configurations.Narrative.CharacterRelationEntityTypeConfiguration
-    name: CharacterRelationEntityTypeConfiguration
-    type: Class
-  - uid: Gadema.Data.Configurations.Narrative.CharacterStateEntityTypeConfiguration
-    name: CharacterStateEntityTypeConfiguration
-    type: Class
 - uid: Gadema.Data.Configurations.Tasks
   name: Gadema.Data.Configurations.Tasks
   type: Namespace
@@ -1648,6 +1638,12 @@ items:
   name: Gadema.Data.Configurations.Writing.Narrative
   type: Namespace
   items:
+  - uid: Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration
+    name: CharacterRelationEntityTypeConfiguration
+    type: Class
+  - uid: Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration
+    name: CharacterStateEntityTypeConfiguration
+    type: Class
   - uid: Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration
     name: DialogueBranchEntityTypeConfiguration
     type: Class

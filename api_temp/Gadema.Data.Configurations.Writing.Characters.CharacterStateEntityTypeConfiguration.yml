@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: CharacterStateEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Characters/CharacterStateEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Characters
+  summary: Configuration for CharacterState entity in game development management system.
+  example: []
   syntax:
     content: 'public class CharacterStateEntityTypeConfiguration : IEntityTypeConfiguration<CharacterState>'
     content.vb: Public Class CharacterStateEntityTypeConfiguration Implements IEntityTypeConfiguration(Of CharacterState)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Characters/CharacterStateEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Characters
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Characters.CharacterState" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure CharacterState entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<CharacterState> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Characters.CharacterState}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of CharacterState))
   overload: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.Configure*
   implements:
@@ -437,13 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Characters.CharacterState
-  commentId: T:Gadema.Core.Models.Writing.Characters.CharacterState
-  parent: Gadema.Core.Models.Writing.Characters
-  href: Gadema.Core.Models.Writing.Characters.CharacterState.html
-  name: CharacterState
-  nameWithType: CharacterState
-  fullName: Gadema.Core.Models.Writing.Characters.CharacterState
 - uid: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Characters_CharacterStateEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Characters_CharacterState__
@@ -528,41 +522,6 @@ references:
     name: CharacterState
     href: Gadema.Core.Models.Writing.Characters.CharacterState.html
   - name: )
-- uid: Gadema.Core.Models.Writing.Characters
-  commentId: N:Gadema.Core.Models.Writing.Characters
-  name: Gadema.Core.Models.Writing.Characters
-  nameWithType: Gadema.Core.Models.Writing.Characters
-  fullName: Gadema.Core.Models.Writing.Characters
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Characters
-    name: Characters
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Characters
-    name: Characters
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

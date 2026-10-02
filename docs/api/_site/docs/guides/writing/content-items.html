@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>✍️ Content Items &amp; Narrative Structure </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="✍️ Content Items &amp; Narrative Structure ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-content-items--narrative-structure">✍️ Content Items &amp; Narrative Structure</h1>
+
+<p>This guide explains how Anima Lab manages diverse types of information using a unified polymorphic model, and how this content is organized into narrative hierarchies.</p>
+<h2 id="1-the-polymorphic-content-model-metainfo">1. The Polymorphic Content Model (<code>MetaInfo</code>)</h2>
+<p>Instead of creating separate tables for every type of thing you might want to document (Characters, Locations, Items, etc.), Anima Lab uses a single, central table called <code>MetaInfo</code>. This approach avoids &quot;table explosion&quot; and allows all content items to share common infrastructure like tagging, media attachments, and versioning.</p>
+<h3 id="11-the-core-entity-metainfo">1.1 The Core Entity: <code>MetaInfo</code></h3>
+<p>Every piece of content—whether it's a character profile, a world location, or a game mechanic—is a <code>MetaInfo</code> entry.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>ContentType</code></strong></td>
+<td style="text-align: left;">The &quot;Discriminator&quot; that defines what the item is (e.g., Character, World, Mechanic).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Title</code> &amp; <code>Slug</code></strong></td>
+<td style="text-align: left;">The primary identification and URL-friendly identifier for the item.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Status</code></strong></td>
+<td style="text-align: left;">Tracks the lifecycle: <code>Draft</code> <span class="math">\(\rightarrow\)</span> <code>InProgress</code> <span class="math">\(\rightarrow\)</span> <code>UnderReview</code> <span class="math">\(\rightarrow\)</span> <code>Published</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>ViewMode</code></strong></td>
+<td style="text-align: left;">Determines how the content is rendered: <code>PrivateWriting</code> (Editor) vs <code>Presentation</code> (Reader).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Version</code></strong></td>
+<td style="text-align: left;">An integer counter used to track revisions and support rollbacks.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-type-specific-data-polymorphism-in-action">1.2 Type-Specific Data (Polymorphism in Action)</h3>
+<p>While all items share a common base, specific details are stored in &quot;Child Tables&quot; linked via <code>MetaInfoId</code>. This prevents the main table from becoming too wide/bloated while allowing rich, specialized data.</p>
+<p><strong>Example: Character vs. World</strong></p>
+<ul>
+<li><strong>A Character item</strong>: The <code>MetaInfo</code> entry holds the name and title. Its specific properties (like <em>Race</em>, <em>Class</em>, or <em>Level</em>) are stored in the linked <code>CharacterDetails</code> table.</li>
+<li><strong>A World item</strong>: The <code>MetaInfo</code> entry holds the location name. Its specific properties (like <em>Climate</em> or <em>Geography</em>) are stored in associated <code>LoreEntry</code> tables.</li>
+</ul>
+<hr>
+<h2 id="2-narrative-hierarchy">2. Narrative Hierarchy</h2>
+<p>Anima Lab supports multiple ways to structure content, moving from broad containers down to atomic units of work.</p>
+<h3 id="21-the-hierarchy-chain">2.1 The Hierarchy Chain</h3>
+<p>The system follows a natural progression for storytellers:</p>
+<p><strong>Project <span class="math">\(\rightarrow\)</span> StorySequence <span class="math">\(\rightarrow\)</span> StoryBeat</strong></p>
+<ol>
+<li><strong>Project</strong>: The top-level container (e.g., &quot;The Dragon Chronicles&quot;).</li>
+<li><strong>StorySequence</strong>: An organizational bucket representing acts, chapters, or major movements (e.print <code>Act 1</code>, <code>Chapter 3</code>). Sequences can optionally have a parent sequence to create a nested tree.</li>
+<li><strong>StoryBeat</strong>: The atomic unit of work—a specific scene, moment, or beat within a sequence.</li>
+</ol>
+<h3 id="22-branching-narratives-dialogue-trees">2.2 Branching Narratives (Dialogue Trees)</h3>
+<p>For interactive content like dialogue, <code>MetaInfo</code> acts as the root for a branching structure:</p>
+<ul>
+<li>A <code>MetaInfo</code> entry of type <code>PlotPoint</code> can serve as the starting node for a tree of <code>DialogueNodes</code>.</li>
+<li>This allows writers to create complex, choice-driven narratives that are still managed under the umbrella of a single content item.</li>
+</ul>
+<hr>
+<h2 id="3-shared-infrastructure-cross-cutting-concerns">3. Shared Infrastructure (Cross-Cutting Concerns)</h2>
+<p>Regardless of their type, all content items benefit from these universal features:</p>
+<h3 id="31-media--external-references">3.1 Media &amp; External References</h3>
+<ul>
+<li><strong>Media Attachations</strong>: Every <code>MetaInfo</code> can have multiple files (images, PDFs, voice clips) attached to it.</li>
+<li><strong>External References</strong>: Link your content to the wider web, such as Pinterest boards, Google Docs, or research papers.</li>
+</ul>
+<h3 id="32-tagging-system">3.2 Tagging System</h3>
+<p>All items participate in a many-to-many relationship with <code>Tags</code>. This allows you to categorize disparate content (e.g., tagging both a &quot;Character&quot; and a &quot;Location&quot; with the tag `#HighFantasy&quot;).</p>
+<h3 id="33-versioning--audit-trail">3.3 Versioning &amp; Audit Trail</h3>
+<p>The system maintains an automatic history of changes:</p>
+<ul>
+<li><strong>Snapshots</strong>: Every major change creates a <code>ContentSnapshot</code> (a JSON blob of the entity's state).</li>
+<li><strong>Rollbacks</strong>: You can instantly revert a content item to any previous version using these snapshots.</li>
+</ul>
+<hr>
+<h2 id="4-summary-table-content-types">4. Summary Table: Content Types</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Typical Child Entities</th>
+<th style="text-align: left;">Primary Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Character</code></td>
+<td style="text-align: left;"><code>CharacterDetails</code>, <code>CharacterAttributes</code></td>
+<td style="text-align: left;">RPG-style character profiles and stats</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>World</code></td>
+<td style="text-align: left;"><code>StorySequence</code>, <code>LoreEntry</code></td>
+<td style="text-align: left;">Setting descriptions, locations, and geography</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Mechanic</code></td>
+<td style="text-align: left;"><code>ClassTemplate</code>, <code>AbilityDefinition</code></td>
+<td style="text-align: left;">Game rules, systems, and abilities</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PlotPoint</code></td>
+<td style="text-align: left;"><code>DialogueBranch/Node</code></td>
+<td style="text-align: left;">Narrative beats, quests, and branching dialogue</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>Last Updated: [Date]</em></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/content-items.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

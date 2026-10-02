@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectSeriesMetaInfoEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Core/ProjectSeriesMetaInfoEntityTypeConfiguration.cs
-    startLine: 5
+    startLine: 8
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Core
+  summary: Configuration for ProjectSeriesMetaInfo entity, which acts as the identity anchor for a Project Series.
+  example: []
   syntax:
     content: 'public class ProjectSeriesMetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<ProjectSeriesMetaInfo>'
     content.vb: Public Class ProjectSeriesMetaInfoEntityTypeConfiguration Implements IEntityTypeConfiguration(Of ProjectSeriesMetaInfo)
@@ -57,7 +59,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Core/ProjectSeriesMetaInfoEntityTypeConfiguration.cs
-    startLine: 7
+    startLine: 10
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Core

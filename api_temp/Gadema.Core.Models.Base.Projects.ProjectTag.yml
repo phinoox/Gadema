@@ -24,7 +24,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTag
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 5
+    startLine: 7
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -67,19 +67,29 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Id
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 11
+    startLine: 13
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
   summary: Unique identifier for the project tag.
   example: []
   syntax:
-    content: public Guid Id { get; set; }
+    content: >-
+      [Key]
+
+      public Guid Id { get; set; }
     parameters: []
     return:
       type: System.Guid
-    content.vb: Public Property Id As Guid
+    content.vb: >-
+      <Key>
+
+      Public Property Id As Guid
   overload: Gadema.Core.Models.Base.Projects.ProjectTag.Id*
+  attributes:
+  - type: System.ComponentModel.DataAnnotations.KeyAttribute
+    ctor: System.ComponentModel.DataAnnotations.KeyAttribute.#ctor
+    arguments: []
 - uid: Gadema.Core.Models.Base.Projects.ProjectTag.Name
   commentId: P:Gadema.Core.Models.Base.Projects.ProjectTag.Name
   id: Name
@@ -98,7 +108,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Name
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 16
+    startLine: 19
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -148,7 +158,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Slug
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 22
+    startLine: 25
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -191,7 +201,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ColorHex
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 28
+    startLine: 31
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects
@@ -234,7 +244,7 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: ProjectTags
     path: src/Gadema.Core/Models/Base/Projects/ProjectTag.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - Gadema.Core
   namespace: Gadema.Core.Models.Base.Projects

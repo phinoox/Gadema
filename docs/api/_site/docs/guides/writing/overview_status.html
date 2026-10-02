@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>✍️ Status: Writing Domain Overview </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="✍️ Status: Writing Domain Overview ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="-status-writing-domain-overview">✍️ Status: Writing Domain Overview</h1>
+
+<p>This document provides a validation report comparing the high-level writing philosophy and hierarchy outlined in <code>overview.md</code> against the current technical implementation.</p>
+<h2 id="-comparison-summary">🔍 Comparison Summary</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Concept</th>
+<th style="text-align: left;">Implementation Status</th>
+<th style="text-align: left;">Findings &amp; Discrepancies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Graph-Based Storytelling</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The architecture supports a flexible graph structure rather than just rigid trees, evidenced by many-to-many relationships (e.g., <code>SceneStoryBeatMapping</code>) and non-linear entity linking.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hierarchy of Intent</strong></td>
+<td style="text-align: left;">⚠️ Partial Implementation</td>
+<td style="text-align: left;"><strong>Sequence <span class="math">\(\rightarrow\)</span> Scene <span class="math">\(\rightarrow\)</span> Beat</strong>: The data models for <code>StorySequence</code>, <code>Scene</code>, and <code>StoryBeat</code> are present. However, the &quot;Container&quot; level (Sequence) is currently more of a grouping mechanism than a strictly enforced hierarchical container in the current service layer implementation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Structure as a Choice</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;">The system supports both &quot;Sequence-First&quot; (structural) and &quot;Scene-First&quot; (discovery) modes by allowing scenes to exist independently or within sequences via optional parent/linkage logic.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>View Mode Separation</strong></td>
+<td style="text-align: left;">✅ Match</td>
+<td style="text-align: left;"><code>ViewModeEnum</code> is implemented, providing the foundation for switching between <code>PrivateWriting</code> and <code>Presentation</code> states.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-recommendations">🛠️ Recommendations</h2>
+<ul>
+<li><strong>Formalize Sequence Hierarchy</strong>: Ensure that the <code>StorySequence</code> model and its service support robust parent-child nesting to fully realize the &quot;Act <span class="math">\(\rightarrow\)</span> Chapter&quot; hierarchy described in the guide.</li>
+<li><strong>Strengthen Relationship Mapping</strong>: To truly embrace the &quot;Graph, Not Tree&quot; philosophy, ensure that many-to-many relationships (like a Beat linked to multiple Scenes) are easy to manage via the API without requiring complex multi-step operations.</li>
+</ul>
+<h2 id="-alignment-check">🧭 Alignment Check</h2>
+<p>The writing domain successfully implements its core mission: providing a toolset that accommodates both structured planning and non-linear discovery. The technical implementation of the <code>MetaInfo</code> anchor provides the necessary stability for this flexibility.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/writing/overview_status.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

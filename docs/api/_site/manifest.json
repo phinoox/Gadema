@@ -1177,7 +1177,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Base.Projects.ProjectService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Base.Projects.ProjectService.yml\" sourcestartlinenumber=\"1\">Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1373,7 +1373,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Tasks.ProjectTaskCommentService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Tasks.ProjectTaskCommentService.yml\" sourcestartlinenumber=\"1\">Service for managing comments on tasks.\nComments are treated as leaf entities belonging to a ProjectTask.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1387,7 +1387,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Tasks.ProjectTaskService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Tasks.ProjectTaskService.yml\" sourcestartlinenumber=\"1\">Service for managing ProjectTasks - actionable items within a project workflow.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1401,7 +1401,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Tasks.ReviewStatusService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Tasks.ReviewStatusService.yml\" sourcestartlinenumber=\"1\">Service for managing content review workflow.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1457,7 +1457,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Characters.CharacterService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Characters.CharacterService.yml\" sourcestartlinenumber=\"1\">Service for managing Characters - the central glue entity in the character domain.\nSupports progressive creation: Identity (ContentMetaInfo + Character) first, then modular components.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1471,7 +1471,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Characters.CharacterStateService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Characters.CharacterStateService.yml\" sourcestartlinenumber=\"1\">Service for managing CharacterStates - tracking a character's state at a specific point in time.\nLinks characters to scenes via the scene trigger mechanism.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1485,7 +1485,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Characters.CharacterStoryProfileService.yml\" sourcestartlinenumber=\"1\">Service for managing CharacterStoryProfile - the static backstory and personality of a character.\nAccess is validated via the parent Character's ContentMetaInfo.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1583,7 +1583,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Narrative.SceneService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Narrative.SceneService.yml\" sourcestartlinenumber=\"1\">Service for managing Scenes within the narrative domain.\nHandles CRUD operations including ContentMetaInfo creation and authorization.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1611,7 +1611,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Narrative.StoryChapterService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Narrative.StoryChapterService.yml\" sourcestartlinenumber=\"1\">Service for managing StoryChapters within the narrative domain.\nHandles CRUD operations including ContentMetaInfo creation and authorization.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -1639,7 +1639,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Api.Services.Writing.Narrative.StoryService",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Api.Services.Writing.Narrative.StoryService.yml\" sourcestartlinenumber=\"1\">Service for managing Stories within the narrative domain.\nHandles CRUD operations including ContentMetaInfo creation and authorization.</p>\n"
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -4775,7 +4775,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Core.Models.Access.ProjectToken",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Access.ProjectToken.yml\" sourcestartlinenumber=\"1\">Represents a project-level API token for automation access.\nTokens are hashed before storage for security.</p>\n"
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Access.ProjectToken.yml\" sourcestartlinenumber=\"1\">Provides access credentials for a specific project context.\nFollowing Law I: This is a 1:1 extension, so Id == ProjectId.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -4817,7 +4817,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Core.Models.Access.UserProviderLink",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Access.UserProviderLink.yml\" sourcestartlinenumber=\"1\">Represents a link between a user account and an external authentication provider.\nThis provides an audit trail of which providers are associated with a specific user.</p>\n"
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Access.UserProviderLink.yml\" sourcestartlinenumber=\"1\">An extension of the User identity, adding external provider data.\nFollowing Law I: This is a 1:1 extension, so Id == UserId.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -5181,7 +5181,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Core.Models.Base.MetaInfo.Comment",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Base.MetaInfo.Comment.yml\" sourcestartlinenumber=\"1\">Represents a user-provided comment attached to a specific content item or entity.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -5755,7 +5755,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Core.Models.Game.EngineIntegration.GameTriggerType",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Game.EngineIntegration.GameTriggerType.yml\" sourcestartlinenumber=\"1\">Defines the types of mechanical events that can be triggered within the narrative flow.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -5839,7 +5839,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Core.Models.Identity.IdentityDefinition",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Identity.IdentityDefinition.yml\" sourcestartlinenumber=\"1\">Defines a template for identity types (e.g., Race, Faction, Alignment) within a project.\nThis configuration dictates what character traits can be assigned to content items.</p>\n"
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Core.Models.Identity.IdentityDefinition.yml\" sourcestartlinenumber=\"1\">Defines the identity of an ability or property.\nFollowing Law I: This is a 1:1 extension of ContentMetaInfo, so Id == MetaInfoId.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -6749,7 +6749,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Core.ProjectSeriesMetaInfoEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for ProjectSeriesMetaInfo entity, which acts as the identity anchor for a Project Series.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -6861,7 +6861,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Game.Inventory.InventoryItemEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for InventoryItem entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -6903,7 +6903,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Identity.IdentityDefinitionEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for IdentityDefinition entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -6917,7 +6917,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Identity.IdentityValueEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for IdentityValue entity.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -6945,7 +6945,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Identity.UserProviderLinkEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for UserProviderLink entity.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7029,7 +7029,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for ProjectTaskComments entity in game development management system.</p>\n"
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Tasks.ProjectTaskCommentsEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for ProjectTaskComment entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7043,7 +7043,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Tasks.ProjectTaskEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for ProjectTask entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7253,7 +7253,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Characters.CharacterStateEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for CharacterState entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7285,6 +7285,34 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration",
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterRelationEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for CharacterRelation entity in game development management system.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration",
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.CharacterStateEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for CharacterState entity in game development management system.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api_temp/Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.yml",
       "output": {
         ".html": {
@@ -7295,7 +7323,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.DialogueBranchEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for DialogueBranch entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7309,7 +7337,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.DialogueNodeEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.DialogueNodeEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for DialogueNode entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7323,7 +7351,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.FactionEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for Faction entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7351,7 +7379,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.OutlineSectionEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for OutlineSection entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7365,7 +7393,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.SceneEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.SceneEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for Scene entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7379,7 +7407,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.SceneSegmentEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for SceneSegment entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7393,7 +7421,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration",
-      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for SceneStoryBeatMapping junction entity in game development management system.\nEnables Many-to-Many relationship between Scene and StoryBeat.\nAllows a single scene to fulfill multiple narrative beats, and a beat to be referenced by many scenes.</p>\n"
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.SceneStoryBeatMappingEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for SceneStoryBeatMapping junction entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7407,7 +7435,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.StoryBeatEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.StoryBeatEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for StoryBeat entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7435,7 +7463,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for Story entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7449,7 +7477,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.StoryOutlineEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.StoryOutlineEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for StoryOutline entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7463,7 +7491,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Gadema.Data.Configurations.Writing.Narrative.WorldLocationEntityTypeConfiguration",
-      "Summary": null
+      "Summary": "<p sourcefile=\"api_temp/Gadema.Data.Configurations.Writing.Narrative.WorldLocationEntityTypeConfiguration.yml\" sourcestartlinenumber=\"1\">Configuration for WorldLocation entity in game development management system.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -7698,6 +7726,716 @@
         },
         ".json": {
           "relative_path": "api_temp/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/overview_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/overview_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/project-member.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/project-member.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/project-member_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/project-member_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/project-token.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/project-token.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/project-token_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/project-token_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/user.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/user.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/access/user_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/access/user_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/enums.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/enums_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/enums_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/identity-system.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/identity-system.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/permissions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/permissions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/permissions_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/permissions_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/schema.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/schema_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/schema_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/security.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/security.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/architecture/security_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/architecture/security_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/coding-standards.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/coding-standards.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/core_philosophy.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/core_philosophy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/core_philosophy_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/core_philosophy_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/infrastructure/performance.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/infrastructure/performance.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/infrastructure/performance_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/infrastructure/performance_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/mcpServer/setup.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/mcpServer/setup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/narrative-design.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/narrative-design.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/narrative-design_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/narrative-design_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/systems/authorization.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/systems/authorization.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/systems/orchestration.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/systems/orchestration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/systems/tagging.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/systems/tagging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task-comment.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task-comment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task-comment_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task-comment_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task-meta-info.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task-meta-info.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task-meta-info_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task-meta-info_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/project-task_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/project-task_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/user-stories.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/user-stories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/tasks/user-stories_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/tasks/user-stories_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/IDENTITY_SYNC_SEARCH.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/IDENTITY_SYNC_SEARCH.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/IDENTITY_SYNC_SEARCH_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/IDENTITY_SYNC_SEARCH_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/SYSTEM_ARCHITECTURE.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/SYSTEM_ARCHITECTURE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/SYSTEM_ARCHITECTURE_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/SYSTEM_ARCHITECTURE_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/fractal_universe_concept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/fractal_universe_concept.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/universe/fractal_universe_concept_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/universe/fractal_universe_concept_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/adhd-workflow.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/adhd-workflow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/adhd-workflow2.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/adhd-workflow2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/adhd-workflow_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/adhd-workflow_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/philosophy.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/philosophy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/philosophy2.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/philosophy2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/user-experience/philosophy_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/user-experience/philosophy_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/CoreServicesProvider.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/CoreServicesProvider.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/DbSeeder.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/DbSeeder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/DependencyResolver.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/DependencyResolver.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/DomainService.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/DomainService.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/IIdentitySyncStrategy.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/IIdentitySyncStrategy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/ServiceCollectionExtensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/ServiceCollectionExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/dependency-resolution.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/dependency-resolution.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/deterministic-ids.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/deterministic-ids.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/soft-delete.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/soft-delete.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/string-sanitizer.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/string-sanitizer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/testing-helpers.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/testing-helpers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/utilities/user-context.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/utilities/user-context.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/content-items.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/content-items.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/content-items_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/content-items_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/dialogue.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/dialogue.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/dialogue_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/dialogue_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/overview_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/overview_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/scene-canvas.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/scene-canvas.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/scene-canvas_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/scene-canvas_status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/structure.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/structure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/writing/structure_status.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/writing/structure_status.html"
         }
       },
       "version": ""

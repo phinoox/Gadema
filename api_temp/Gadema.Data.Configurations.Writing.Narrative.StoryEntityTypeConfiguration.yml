@@ -20,10 +20,12 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: StoryEntityTypeConfiguration
     path: src/Gadema.Data/Configurations/Writing/Narrative/StoryEntityTypeConfiguration.cs
-    startLine: 6
+    startLine: 9
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
+  summary: Configuration for Story entity in game development management system.
+  example: []
   syntax:
     content: 'public class StoryEntityTypeConfiguration : IEntityTypeConfiguration<Story>'
     content.vb: Public Class StoryEntityTypeConfiguration Implements IEntityTypeConfiguration(Of Story)
@@ -57,18 +59,17 @@ items:
       repo: git@github.com:phinoox/Gadema.git
     id: Configure
     path: src/Gadema.Data/Configurations/Writing/Narrative/StoryEntityTypeConfiguration.cs
-    startLine: 8
+    startLine: 14
   assemblies:
   - Gadema.Data
   namespace: Gadema.Data.Configurations.Writing.Narrative
-  summary: Configures the entity of type <xref href="Gadema.Core.Models.Writing.Narrative.Story" data-throw-if-not-resolved="false"></xref>.
+  summary: Configure Story entity properties and relationships.
   example: []
   syntax:
     content: public void Configure(EntityTypeBuilder<Story> builder)
     parameters:
     - id: builder
       type: Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Gadema.Core.Models.Writing.Narrative.Story}
-      description: The builder to be used to configure the entity type.
     content.vb: Public Sub Configure(builder As EntityTypeBuilder(Of Story))
   overload: Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration.Configure*
   implements:
@@ -437,13 +438,6 @@ references:
     name: EntityFrameworkCore
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore
-- uid: Gadema.Core.Models.Writing.Narrative.Story
-  commentId: T:Gadema.Core.Models.Writing.Narrative.Story
-  parent: Gadema.Core.Models.Writing.Narrative
-  href: Gadema.Core.Models.Writing.Narrative.Story.html
-  name: Story
-  nameWithType: Story
-  fullName: Gadema.Core.Models.Writing.Narrative.Story
 - uid: Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration.Configure*
   commentId: Overload:Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration.Configure
   href: Gadema.Data.Configurations.Writing.Narrative.StoryEntityTypeConfiguration.html#Gadema_Data_Configurations_Writing_Narrative_StoryEntityTypeConfiguration_Configure_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_Gadema_Core_Models_Writing_Narrative_Story__
@@ -528,41 +522,6 @@ references:
     name: Story
     href: Gadema.Core.Models.Writing.Narrative.Story.html
   - name: )
-- uid: Gadema.Core.Models.Writing.Narrative
-  commentId: N:Gadema.Core.Models.Writing.Narrative
-  name: Gadema.Core.Models.Writing.Narrative
-  nameWithType: Gadema.Core.Models.Writing.Narrative
-  fullName: Gadema.Core.Models.Writing.Narrative
-  spec.csharp:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
-  spec.vb:
-  - uid: Gadema
-    name: Gadema
-  - name: .
-  - uid: Gadema.Core
-    name: Core
-  - name: .
-  - uid: Gadema.Core.Models
-    name: Models
-  - name: .
-  - uid: Gadema.Core.Models.Writing
-    name: Writing
-  - name: .
-  - uid: Gadema.Core.Models.Writing.Narrative
-    name: Narrative
 - uid: Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   commentId: M:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration`1.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{`0})
   isExternal: true

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>&#128640; Gadema MCP Server Guide </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="&#128640; Gadema MCP Server Guide ">
+    
+    
+      <link rel="shortcut icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../../../styles/docfx.css">
+      <link rel="stylesheet" href="../../../styles/main.css">
+      <meta property="docfx:navrel" content="">
+      <meta property="docfx:tocrel" content="">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>Since we have built a professional, modular, and extensible architecture, you need documentation that explains how to use it as both a <strong>human</strong> (via CLI) and an <strong>agent</strong> (via Continue).</p>
+<p>Here is a comprehensive guide for your project. You can save this as <code>README_MCP.md</code> in your repository.</p>
+<hr>
+<h1 id="-gadema-mcp-server-guide">🚀 Gadema MCP Server Guide</h1>
+<p>This repository contains a custom <strong>Model Context Protocol (MCP)</strong> server implemented in C#. It provides high-performance, context-aware tools designed specifically for navigating and editing the Gadema codebase.</p>
+<h2 id="-the-vision-project-specific-intelligence">🧠 The Vision: &quot;Project-Specific Intelligence&quot;</h2>
+<p>Unlike generic AI tools, this server is built to live <em>inside</em> your project. It uses <strong>Reflection</strong> to automatically discover new tools added to the <code>Tools/</code> directory and provides a bridge between the LLM's reasoning and your local file system.</p>
+<hr>
+<h2 id="-setup--installation">🛠️ Setup &amp; Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download">.NET 10 SDK</a></li>
+<li><a href="https://code.visualstudio.com/">VS Code</a> with the <strong>Continue</strong> extension.</li>
+</ul>
+<h3 id="1-build-the-project">1. Build the Project</h3>
+<p>Ensure all dependencies are restored and the project is built:</p>
+<pre><code class="lang-bash">dotnet build Gadema.McpServer/Gadema.McpServer.csproj
+</code></pre>
+<h3 id="2-configure-continue">2. Configure Continue</h3>
+<p>To allow the AI to use these tools, add the following configuration to your <code>config.yaml</code> in the Continue extension settings:</p>
+<pre><code class="lang-yaml">mcpServers:
+  - name: gadema-server
+    command: dotnet
+    args:
+      - run
+      - --project
+      - ./Gadema.McpServer/Gadema.McpServer.csproj
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Replace <code>/absolute/path/to/your/project/</code> with the actual path on your machine.</p>
+</blockquote>
+<hr>
+<h2 id="-using-the-tools-in-ai-chat-agent-mode">🤖 Using the Tools in AI Chat (Agent Mode)</h2>
+<p>Once configured, you don't need to run commands manually. Simply talk to the AI. It will use the <code>gadema-server</code> tools automatically.</p>
+<h3 id="-capability-reading-changes">🔍 Capability: Reading Changes</h3>
+<p><strong>Tool:</strong> <code>diff_files</code><br>
+<strong>Use Case:</strong> Ask the AI to analyze what changed between two versions of a file.</p>
+<blockquote>
+<p><em>&quot;Compare the changes between <code>src/Models/User.cs</code> and <code>src/Models/User_old.cs</code>.&quot;</em></p>
+</blockquote>
+<h3 id="-capability-safe-editing-smart-refactoring">✍️ Capability: Safe Editing (Smart Refactoring)</h3>
+<p><strong>Tool:</strong> <code>apply_diff</code><br>
+<strong>Use Case:</strong> Ask the AI to apply a change. The tool uses <strong>Context-Based Matching</strong> to ensure it only applies the edit if the surrounding code matches perfectly, preventing &quot;Line Drift&quot; errors. Note: by now more of a simple find and replace</p>
+<blockquote>
+<p><em>&quot;Apply this hunk to <code>src/Models/User.cs</code>:</em></p>
+<pre><code class="lang-text">{
+-    public int id;
++    public Guid id;
+}
+```&quot;*
+</code></pre>
+</blockquote>
+<h3 id="-capability-connectivity-test">🧪 Capability: Connectivity Test</h3>
+<p><strong>Tool:</strong> <code>health_check</code><br>
+<strong>Use Case:</strong> Verify the connection between Continue and your C# server.</p>
+<blockquote>
+<p><em>&quot;Run a health check on the gadema-server.&quot;</em></p>
+</blockquote>
+<hr>
+<h2 id="-manual-testing-human-mode">💻 Manual Testing (Human Mode)</h2>
+<p>You can test any tool manually via your terminal without using an AI. This is highly recommended for debugging your logic.</p>
+<h3 id="1-view-the-auto-generated-help-menu">1. View the Auto-Generated Help Menu</h3>
+<p>The server automatically generates documentation based on your code's <code>[Description]</code> and <code>[Option]</code> attributes:</p>
+<pre><code class="lang-bash">dotnet run --project Gadema.McpServer/Gadema.McpServer.csproj -- --cli help
+</code></pre>
+<h3 id="2-execute-a-tool-manually">2. Execute a Tool Manually</h3>
+<p>Use the <code>--cli</code> flag followed by the command and its arguments:</p>
+<p><strong>Test Diffing:</strong></p>
+<pre><code class="lang-bash">dotnet run --project Gadema.McpServer/Gadema.McpServer.csproj -- --cli diff_files --file1=fileA.cs --file2=fileB.cs
+</code></pre>
+<p><strong>Test Applying a Hunk:</strong></p>
+<pre><code class="lang-bash">dotnet run --project Gadema.McpServer/Gadema.McpServer.csproj -- --cli apply_hunk --file_path=test.cs --hunk=&quot;context line\n-old line\n+new line&quot;
+</code></pre>
+<hr>
+<h2 id="-developer-guide-adding-new-tools">🏗️ Developer Guide: Adding New Tools</h2>
+<p>This system is designed for <strong>Zero-Maintenance Expansion</strong>. To add a new tool:</p>
+<ol>
+<li>Create a new class in <code>Gadema.McpServer/Tools/</code>.</li>
+<li>Implement the <code>IMcpTool</code> interface.</li>
+<li>Define your parameters and description.</li>
+<li><strong>That's it!</strong> The server will automatically detect, register, and document your tool on the next run.</li>
+</ol>
+<pre><code class="lang-csharp">public class MyNewTool : IMcpTool
+{
+    public string Name =&gt; &quot;my_tool&quot;;
+    public string Description =&gt; &quot;What this tool does.&quot;;
+    public Dictionary&lt;string, string&gt; GetParameterDescriptions() =&gt; new() { { &quot;arg1&quot;, &quot;desc&quot; } };
+
+    public async Task&lt;string&gt; ExecuteAsync(Dictionary&lt;string, string&gt; args)
+    {
+        // Your logic here
+        return &quot;Success&quot;;
+    }
+}
+</code></pre>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/phinoox/Gadema/blob/main/docs/guides/mcpServer/setup.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>
