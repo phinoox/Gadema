@@ -11,17 +11,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class ProjectTagService : DomainService
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class ProjectTagService : DomainService
 {
     private CoreDbContext _db;
 
     public ProjectTagService( CoreDbContext db,
-        ILogger<ProjectService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
-        : base(coreServices,logger)
-    {
-         _db = db;
-    }
+        ILogger<ProjectTagService> logger,  
+        CoreServicesProvider coreServices) 
+        : base(coreServices,logger) {  _db = db; }
 
     public async Task<ApiResponseDto<ListResponseDto<ProjectTagResponseDto>>> GetTagsAsync(Guid projectId)
     {
@@ -52,7 +50,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
         var tag = new ProjectTag
         {
-            Name = dto.Name,
+            Name = dto.Name, 
             Slug = dto.Slug ?? dto.Name.ToLower().Replace(" ", "-"),
             ColorHex = dto.ColorHex
         };
@@ -67,11 +65,6 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public async Task<ApiResponseDto<string>> AddTagsToProjectAsync(Guid projectMetaInfoId, AddTagsToProjectDto dto)
     {
-        // Note: ProjectMetaInfo is part of the Project scope. 
-        // We use the MetaInfo ID to check access against its parent project.
-        // For now, we assume checking permission on the meta info directly via the engine if possible, 
-        // or we need to resolve the project from the meta info first.
-        
         var meta = await _db.Set<BaseMetaInfo>().OfType<ProjectMetaInfo>().FirstOrDefaultAsync(m => m.Id == projectMetaInfoId);
         if (meta == null) return ApiResponseDto<string>.NotFound("Project metadata not found.");
 

@@ -1,23 +1,22 @@
 using Gadema.Api.CoreServices;
-using Gadema.Api.Services.Base.Projects;
+using Gadema.Api.CoreServices.Interfaces;
 using Gadema.Core.Dtos;
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Dtos.Writing.Social;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Access;
 using Gadema.Core.Models.Base.Permissions;
 using Gadema.Data.Database.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.MetaInfo;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class CommentService : DomainService
+public class CommentService : DomainService
 {
-    private CoreDbContext _db;
+    private readonly CoreDbContext _db;
 
-    public CommentService( CoreDbContext db,
-        ILogger<ProjectService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
-        : base(coreServices,logger)
+    public CommentService(CoreDbContext db, ILogger<CommentService> logger, CoreServicesProvider coreServices) 
+        : base(coreServices, logger)
     {
         _db = db;
     }
@@ -35,11 +34,9 @@ namespace Gadema.Api.Services.Base.MetaInfo;
 
     public async Task<ApiResponseDto<IEnumerable<CommentResponseDto>>> GetCommentsByTargetAsync(Guid projectId, Guid targetId)
     {
-        // 1. Check if user has permission to view the project scope
         var error = await CheckAccessAsync<IEnumerable<CommentResponseDto>>(projectId, Permission.CanView);
         if (error != null) return error;
 
-        // 2. Verify target exists within this project
         if (!await IsTargetInProjectAsync(projectId, targetId))
             return ApiResponseDto<IEnumerable<CommentResponseDto>>.BadRequest("Target content not found or access denied.");
 
@@ -53,11 +50,9 @@ namespace Gadema.Api.Services.Base.MetaInfo;
 
     public async Task<ApiResponseDto<CommentResponseDto>> CreateCommentAsync(Guid projectId, CreateCommentDto dto)
     {
-        // 1. Check if user has permission to edit the project scope
         var error = await CheckAccessAsync<CommentResponseDto>(projectId, Permission.CanEdit);
         if (error != null) return error;
 
-        // 2. Verify target exists within this project
         if (!await IsTargetInProjectAsync(projectId, dto.TargetId))
             return ApiResponseDto<CommentResponseDto>.BadRequest("Target content not found or access denied.");
 
@@ -82,15 +77,12 @@ namespace Gadema.Api.Services.Base.MetaInfo;
         var comment = await _db.Comments.FirstOrDefaultAsync(c => c.Id == id);
         if (comment is null) return ApiResponseDto<CommentResponseDto>.NotFound("Comment not found.");
 
-        // 1. Resolve the project from the target to check permissions
-        // We need to find if this comment's target belongs to a project
         var meta = await _db.Set<BaseMetaInfo>().OfType<ContentMetaInfo>()
             .FirstOrDefaultAsync(m => m.Id == comment.TargetId);
 
         if (meta == null) return ApiResponseDto<CommentResponseDto>.BadRequest("Target content not found.");
 
-        // 2. Check permission on the project scope
-        var error = await CheckAccessAsync<CommentResponseDto>(meta.ProjectId.Value, Permission.CanEdit);
+        var error = await CheckAccessAsync<CommentResponseDto>(meta.ProjectId ?? Guid.Empty, Permission.CanEdit);
         if (error != null) return error;
 
         if (!string.IsNullOrWhiteSpace(dto.CommentText)) comment.Text = dto.CommentText;
@@ -105,14 +97,12 @@ namespace Gadema.Api.Services.Base.MetaInfo;
         var comment = await _db.Comments.FirstOrDefaultAsync(c => c.Id == id);
         if (comment is null) return ApiResponseDto<string>.NotFound("Comment not found.");
 
-        // 1. Resolve project from target to check permissions
         var meta = await _db.Set<BaseMetaInfo>().OfType<ContentMetaInfo>()
             .FirstOrDefaultAsync(m => m.Id == comment.TargetId);
 
         if (meta == null) return ApiResponseDto<string>.BadRequest("Target content not found.");
 
-        // 2. Check permission on the project scope
-        var error = await CheckAccessAsync<string>(meta.ProjectId.Value, Permission.CanDelete);
+        var error = await CheckAccessAsync<string>(meta.ProjectId ?? Guid.Empty, Permission.CanDelete);
         if (error != null) return error;
 
         _db.Comments.Remove(comment);

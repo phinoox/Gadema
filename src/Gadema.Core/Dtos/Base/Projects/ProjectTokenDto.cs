@@ -45,7 +45,7 @@ public class ProjectTokenCreateDto : UpdateRequestDto
     /// Expiration date for the token. Defaults to 1 year from creation if not specified.
     /// Set to null for non-expiring tokens (not recommended).
     /// </summary>
-    public DateTime? ExpirationDate { get; set; }
+    public DateTime? ExpiresAt { get; set; }
 
     /// <summary>
     /// If true, the generated token value will be returned in the response.
@@ -79,7 +79,7 @@ public class ProjectTokenUpdateDto : UpdateRequestDto
     /// New expiration date. If null, the current expiration is preserved.
     /// Set to a past DateTime to effectively revoke the token without changing IsRevoked flag.
     /// </summary>
-    public DateTime? ExpirationDate { get; set; }
+    public DateTime? ExpiresAt { get; set; }
 
     // Note: Revoke action uses DELETE endpoint, not PUT.
 }
@@ -114,7 +114,7 @@ public class ProjectTokenResponseDto : MetaInfoResponseBaseDto
     /// <summary>
     /// The date/time when the token expires (or null for non-expiring).
     /// </summary>
-    public DateTime? ExpirationDate { get; set; }
+    public DateTime? ExpiresAt { get; set; }
     public string TokenName { get; set; }
 
     // Inherited from MetaInfoResponseBaseDto:

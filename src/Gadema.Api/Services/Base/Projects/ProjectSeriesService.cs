@@ -69,8 +69,7 @@ public class ProjectSeriesService : DomainService, ISearchableProvider
         // 2. Create the ProjectSeries entity (Body)
         var series = new ProjectSeries
         {
-          Id = Guid.NewGuid(),
-          ProjectSeriesMetaInfoId = meta.Id
+          Id = meta.Id
         };
 
         _db.ProjectSeries.Add(series);
@@ -92,7 +91,7 @@ public class ProjectSeriesService : DomainService, ISearchableProvider
         if (series == null)
             return ApiResponseDto<DeleteResponseDto>.NotFound($"Series with ID {id} not found.");
 
-        var meta = await _db.Set<ProjectSeriesMetaInfo>().FirstOrDefaultAsync(m => m.Id == series.ProjectSeriesMetaInfoId);
+        var meta = await _db.Set<ProjectSeriesMetaInfo>().FirstOrDefaultAsync(m => m.Id == series.Id);
         
         _db.ProjectSeries.Remove(series);
         if (meta != null) _db.Set<ProjectSeriesMetaInfo>().Remove(meta);
@@ -117,7 +116,7 @@ public class ProjectSeriesService : DomainService, ISearchableProvider
         // 2. Sync Identity via Strategy using the new DomainService method
         if (updateDto.MetaInfo != null)
         {
-            var success = await SyncIdentityAsync<ProjectSeriesIdentityStrategy>(series.ProjectSeriesMetaInfoId, updateDto.MetaInfo);
+            var success = await SyncIdentityAsync<ProjectSeriesIdentityStrategy>(series.Id, updateDto.MetaInfo);
             if (!success) return ApiResponseDto<ProjectSeriesResponseDto>.ServerError("Sync failed.");
         }
 

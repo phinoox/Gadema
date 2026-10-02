@@ -32,7 +32,7 @@ public class ProjectTokenService : DomainService
             TokenType = 1, 
             Token = null,  
             IsRevoked = !token.IsActive, 
-            ExpirationDate = token.ExpiresAt,
+            ExpiresAt = token.ExpiresAt,
             CreatedAt = token.CreatedAt,
         };
 
@@ -56,10 +56,8 @@ public class ProjectTokenService : DomainService
             ProjectId = projectId,
             TokenName = createDto.TokenName ?? "New API Token", 
             TokenHash = rawTokenValue, 
-            MaxRequests = createDto.MaxRequests, 
-            CurrentUsage = 0,                  
             IsActive = true,
-            ExpiresAt = createDto.ExpirationDate,
+            ExpiresAt = createDto.ExpiresAt,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -75,7 +73,7 @@ public class ProjectTokenService : DomainService
             TokenType = 1,
             Token = createDto.RevealToken ? rawTokenValue : null,
             IsRevoked = false,
-            ExpirationDate = token.ExpiresAt,
+            ExpiresAt = token.ExpiresAt,
             CreatedAt = token.CreatedAt
         });
     }
@@ -163,8 +161,6 @@ public class ProjectTokenService : DomainService
 
         return ApiResponseDto<TokenUsageStats>.Success(new TokenUsageStats
         {
-            TotalUsage = token.CurrentUsage,
-            RemainingUsage = token.MaxRequests > 0 ? Math.Max(0, token.MaxRequests - token.CurrentUsage) : 0,
             ExpiresAt = token.ExpiresAt,
             IsExpired = isExpired
         });

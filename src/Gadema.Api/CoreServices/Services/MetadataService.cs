@@ -23,6 +23,7 @@ public class MetadataService : IMetadataService
         T meta = Activator.CreateInstance<T>();
 
         // 2. Apply universal properties from createData
+        meta.Id = Guid.NewGuid();
         meta.Title = createData.Title;
         meta.Slug = string.IsNullOrWhiteSpace(createData.Slug)
             ? GenerateSlug(createData.Title)

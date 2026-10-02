@@ -10,6 +10,13 @@ using System.ComponentModel.DataAnnotations;
 public class Comment
 {
     /// <summary>
+    /// The ID of the target entity (e.g., a Scene or Character) this comment belongs to.
+    /// This acts as the anchor link for $1:N$ relationships.
+    /// </summary>
+    [Required]
+    public Guid TargetId { get; set; }
+
+    /// <summary>
     /// The unique identifier for this comment, which is also the ID of the target entity (The Soul).
     /// </summary>
     [Key]

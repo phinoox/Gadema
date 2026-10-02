@@ -23,4 +23,8 @@ public class IdentityDefinition
 
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; } = null!;
+    public IdentityDataTypeEnum DataType { get; set; }
+    public bool IsRequired { get; set; }
+    public bool IsActive { get; set; }
+    
 }

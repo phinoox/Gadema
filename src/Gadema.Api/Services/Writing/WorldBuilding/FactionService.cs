@@ -19,12 +19,8 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public FactionService( WritingDbContext db,
         ILogger<FactionService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
-
-    // ========================================================================
-    // GET - List all factions for a project
-    // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<FactionResponseDto>>> GetFactionsAsync(Guid projectId)
     {
@@ -55,10 +51,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         return ApiResponseDto<IEnumerable<FactionResponseDto>>.Success(factions);
     }
 
-    // ========================================================================
-    // GET - Single faction by ID
-    // ========================================================================
-
     public async Task<ApiResponseDto<FactionResponseDto>> GetFactionAsync(Guid id)
     {
         var faction = await _db.Factions
@@ -88,10 +80,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         });
     }
 
-    // ========================================================================
-    // POST - Create a new faction
-    // ========================================================================
-
     public async Task<ApiResponseDto<CreateResponseDto>> CreateFactionAsync(Guid projectId, FactionCreateDto createDto)
     {
         var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
@@ -105,7 +93,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
         var faction = new Faction
         {
-            Id = Guid.NewGuid(),
+            Id = contentMetaInfo.Id, // Law I: Unification - Body.Id == Soul.Id
             MetaInfoId = contentMetaInfo.Id,
             Ideology = createDto.Ideology,
             Goals = createDto.Goals,
@@ -122,10 +110,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
             ProjectId = projectId
         });
     }
-
-    // ========================================================================
-    // PUT - Partial update of a faction
-    // ========================================================================
 
     public async Task<ApiResponseDto<FactionResponseDto>> UpdateFactionAsync(Guid id, FactionUpdateDto updateDto)
     {
@@ -172,10 +156,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         });
     }
 
-    // ========================================================================
-    // DELETE - Remove a faction
-    // ========================================================================
-
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteFactionAsync(Guid id)
     {
         var faction = await _db.Factions
@@ -188,7 +168,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         var error = await CheckAccessAsync<DeleteResponseDto>(faction.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        
         _db.Factions.Remove(faction);
         await _db.SaveChangesAsync();
 

@@ -93,8 +93,6 @@ namespace Gadema.Api.Services.Access.Identity;
             MetaInfoId = meta.Id,
             ProjectId = projectId,
             DataType = createDto.DataType,
-            Name = createDto.Name,
-            Description = createDto.Description,
             IsRequired = createDto.IsRequired,
             IsActive = true
         };
@@ -135,8 +133,8 @@ namespace Gadema.Api.Services.Access.Identity;
         }
 
         // 2. Update Domain Properties
-        if (updateDto.Name != null) def.Name = updateDto.Name;
-        if (updateDto.Description != null) def.Description = updateDto.Description;
+        if (updateDto.Name != null) def.ContentMetaInfo.Title = updateDto.Name;
+        if (updateDto.Description != null) def.ContentMetaInfo.ShortDesc = updateDto.Description;
         if (updateDto.DataType.HasValue) def.DataType = updateDto.DataType.Value;
         if (updateDto.IsRequired.HasValue) def.IsRequired = updateDto.IsRequired.Value;
         if (updateDto.IsActive.HasValue) def.IsActive = updateDto.IsActive.Value;
@@ -187,7 +185,7 @@ namespace Gadema.Api.Services.Access.Identity;
 
         return await queryable
             .Where(id => id.ContentMetaInfo.Title.Contains(query) || 
-                         id.Name.Contains(query))
+                         id.ContentMetaInfo.Title.Contains(query))
             .Select(id => new SearchHitDto
             {
                 ResourceId = id.Id,
@@ -213,8 +211,8 @@ namespace Gadema.Api.Services.Access.Identity;
             CreatedAt = def.ContentMetaInfo.CreatedAt,
             // Domain properties
             DataType = def.DataType,
-            Name = def.Name,
-            Description = def.Description,
+            Name = def.ContentMetaInfo.Title,
+            Description = def.ContentMetaInfo.ShortDesc,
             IsRequired = def.IsRequired,
             ProjectId = def.ProjectId
         };

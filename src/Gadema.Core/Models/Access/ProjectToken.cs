@@ -17,4 +17,9 @@ public class ProjectToken
 
     [ForeignKey("ProjectId")]
     public virtual Project Project { get; set; } = null!;
+    public bool IsActive { get; set; }
+    public string TokenName { get; set; }
+    public DateTime? ExpiresAt { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public string TokenHash { get; set; }
 }

@@ -38,11 +38,8 @@ public abstract class DomainService
 
     protected async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
     {
-        return true;//ToDo: actual implementation. basemetainfo doesnt have it. maybe better to implement a seperate metainfo/contentitem validation service
-        // Check if the target is a piece of MetaInfo that belongs to the project
-        /*var exists = await _db.Set<BaseMetaInfo>()
-            .AnyAsync(m => m.Id == targetId && m.ProjectId == projectId);
-        return exists;*/
+        return await _core.PermissionEngine.IsTargetInProjectAsync(projectId,targetId);
+       
     }
 
 

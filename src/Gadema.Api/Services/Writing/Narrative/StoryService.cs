@@ -13,22 +13,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-/// <summary>
-/// Service for managing Stories within the narrative domain.
-/// Handles CRUD operations including ContentMetaInfo creation and authorization.
-/// </summary>
 [ServiceLifetime(ServiceLifetime.Scoped)] public class StoryService : DomainService
 {
     private WritingDbContext _db;
 
     public StoryService( WritingDbContext db,
         ILogger<StoryService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
-
-    // ========================================================================
-    // GET - List all stories for a project
-    // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<StoryResponseDto>>> GetStoriesAsync(Guid projectId)
     {
@@ -55,10 +47,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
         return ApiResponseDto<IEnumerable<StoryResponseDto>>.Success(stories);
     }
 
-    // ========================================================================
-    // GET - Single story by ID
-    // ========================================================================
-
     public async Task<ApiResponseDto<StoryResponseDto>> GetStoryAsync(Guid id)
     {
         var story = await _db.Stories
@@ -84,10 +72,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
         });
     }
 
-    // ========================================================================
-    // POST - Create a new story
-    // ========================================================================
-
     public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryAsync(Guid projectId, StoryCreateDto createDto)
     {
         var error = await CheckAccessAsync<CreateResponseDto>(projectId, Permission.CanEdit);
@@ -101,7 +85,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         var story = new Story
         {
-            Id = Guid.NewGuid(),
+            Id = contentMetaInfo.Id, // Law I: Unification - Body.Id == Soul.Id
             MetaInfoId = contentMetaInfo.Id,
             Name = createDto.CreateData.Title,
             Description = createDto.Description,
@@ -117,10 +101,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
             ProjectId = projectId
         });
     }
-
-    // ========================================================================
-    // PUT - Partial update of a story
-    // ========================================================================
 
     public async Task<ApiResponseDto<StoryResponseDto>> UpdateStoryAsync(Guid id, StoryUpdateDto updateDto)
     {
@@ -158,10 +138,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
         });
     }
 
-    // ========================================================================
-    // DELETE - Remove a story
-    // ========================================================================
-
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryAsync(Guid id)
     {
         var story = await _db.Stories
@@ -174,7 +150,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
         var error = await CheckAccessAsync<DeleteResponseDto>(story.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        
         _db.Stories.Remove(story);
         await _db.SaveChangesAsync();
 

@@ -20,7 +20,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public WorldLocationService( WritingDbContext db,
         ILogger<WorldLocationService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     private WorldLocationResponseDto CreateResponseDto(WorldLocation location)
@@ -86,9 +86,10 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
             m.ContentType = ContentTypeEnum.WorldLocation;
         });
 
+        // Law I: Unification - Body.Id == Soul.Id
         var location = new WorldLocation
         {
-            Id = Guid.NewGuid(),
+            Id = contentMetaInfo.Id, 
             MetaInfoId = contentMetaInfo.Id,
             LocationType = (LocationType)createDto.LocationType,
             ParentId = createDto.ParentId,
@@ -150,7 +151,6 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
         var error = await CheckAccessAsync<DeleteResponseDto>(location.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        
         _db.WorldLocations.Remove(location);
         await _db.SaveChangesAsync();
 

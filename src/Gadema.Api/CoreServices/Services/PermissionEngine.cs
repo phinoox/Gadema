@@ -59,5 +59,18 @@ public class PermissionEngine : IPermissionEngine
          return new AccessResult(AccessResultStatus.Allowed,"");;
     }
     
+    /// <summary>
+    /// checks if a given entity is in the given project
+    /// </summary>
+    /// <param name="projectId">the project id </param>
+    /// <param name="targetId">the contentmetainfoid</param>
+    /// <returns></returns>
+    public async Task<bool> IsTargetInProjectAsync(Guid projectId, Guid targetId)
+    {
+         var exists = await _db.Set<ContentMetaInfo>()
+            .AnyAsync(m => m.Id == targetId && m.ProjectId == projectId);
+
+        return exists;
+    }
 
 }

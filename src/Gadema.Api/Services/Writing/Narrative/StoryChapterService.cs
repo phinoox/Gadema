@@ -13,22 +13,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Narrative;
 
-/// <summary>
-/// Service for managing StoryChapters within the narrative domain.
-/// Handles CRUD operations including ContentMetaInfo creation and authorization.
-/// </summary>
 [ServiceLifetime(ServiceLifetime.Scoped)] public class StoryChapterService : DomainService
 {
     private WritingDbContext _db;
 
     public StoryChapterService( WritingDbContext db,
         ILogger<StoryChapterService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
-
-    // ========================================================================
-    // GET - List all story chapters for a project
-    // ========================================================================
 
     public async Task<ApiResponseDto<IEnumerable<StoryChapterResponseDto>>> GetStoryChaptersAsync(Guid projectId)
     {
@@ -39,27 +31,10 @@ namespace Gadema.Api.Services.Writing.Narrative;
             .Include(sc => sc.ContentMetaInfo)
             .Where(sc => sc.ContentMetaInfo.ProjectId == projectId)
             .OrderBy(sc => sc.OrderIndex)
-            .Select(sc => new StoryChapterResponseDto
-            {
-                Id = sc.Id,
-                MetaInfoId = sc.MetaInfoId,
-                MetaInfoTitle = sc.ContentMetaInfo.Title,
-                Status = sc.ContentMetaInfo.Status,
-                IsPublic = sc.ContentMetaInfo.IsPublic,
-                CreatedAt = sc.ContentMetaInfo.CreatedAt,
-                LastModifiedAt = sc.ContentMetaInfo.LastModifiedAt,
-                StoryId = sc.StoryId,
-                Description = sc.Description,
-                OrderIndex = sc.OrderIndex
-            })
             .ToListAsync();
 
-        return ApiResponseDto<IEnumerable<StoryChapterResponseDto>>.Success(chapters);
+        return ApiResponseDto<IEnumerable<StoryChapterResponseDto>>.Success(chapters.Select(CreateResponseDto));
     }
-
-    // ========================================================================
-    // GET - Single story chapter by ID
-    // ========================================================================
 
     public async Task<ApiResponseDto<StoryChapterResponseDto>> GetStoryChapterAsync(Guid id)
     {
@@ -73,24 +48,8 @@ namespace Gadema.Api.Services.Writing.Narrative;
         var error = await CheckAccessAsync<StoryChapterResponseDto>(chapter.ContentMetaInfo.ProjectId, Permission.CanView);
         if (error != null) return error;
 
-        return ApiResponseDto<StoryChapterResponseDto>.Success(new StoryChapterResponseDto
-        {
-            Id = chapter.Id,
-            MetaInfoId = chapter.MetaInfoId,
-            MetaInfoTitle = chapter.ContentMetaInfo.Title,
-            Status = chapter.ContentMetaInfo.Status,
-            IsPublic = chapter.ContentMetaInfo.IsPublic,
-            CreatedAt = chapter.ContentMetaInfo.CreatedAt,
-            LastModifiedAt = chapter.ContentMetaInfo.LastModifiedAt,
-            StoryId = chapter.StoryId,
-            Description = chapter.Description,
-            OrderIndex = chapter.OrderIndex
-        });
+        return ApiResponseDto<StoryChapterResponseDto>.Success(CreateResponseDto(chapter));
     }
-
-    // ========================================================================
-    // POST - Create a new story chapter
-    // ========================================================================
 
     public async Task<ApiResponseDto<CreateResponseDto>> CreateStoryChapterAsync(Guid projectId, StoryChapterCreateDto createDto)
     {
@@ -105,7 +64,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         var chapter = new StoryChapter
         {
-            Id = Guid.NewGuid(),
+            Id = contentMetaInfo.Id, // Law I: Unification - Body.Id == Soul.Id
             MetaInfoId = contentMetaInfo.Id,
             StoryId = createDto.StoryId,
             Description = createDto.Description,
@@ -122,10 +81,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
             ProjectId = projectId
         });
     }
-
-    // ========================================================================
-    // PUT - Partial update of a story chapter
-    // ========================================================================
 
     public async Task<ApiResponseDto<StoryChapterResponseDto>> UpdateStoryChapterAsync(Guid id, StoryChapterUpdateDto updateDto)
     {
@@ -156,24 +111,8 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
         await _db.SaveChangesAsync();
 
-        return ApiResponseDto<StoryChapterResponseDto>.Success(new StoryChapterResponseDto
-        {
-            Id = chapter.Id,
-            MetaInfoId = chapter.MetaInfoId,
-            MetaInfoTitle = chapter.ContentMetaInfo.Title,
-            Status = chapter.ContentMetaInfo.Status,
-            IsPublic = chapter.ContentMetaInfo.IsPublic,
-            CreatedAt = chapter.ContentMetaInfo.CreatedAt,
-            LastModifiedAt = chapter.ContentMetaInfo.LastModifiedAt,
-            StoryId = chapter.StoryId,
-            Description = chapter.Description,
-            OrderIndex = chapter.OrderIndex
-        });
+        return ApiResponseDto<StoryChapterResponseDto>.Success(CreateResponseDto(chapter));
     }
-
-    // ========================================================================
-    // DELETE - Remove a story chapter
-    // ========================================================================
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteStoryChapterAsync(Guid id)
     {
@@ -187,7 +126,6 @@ namespace Gadema.Api.Services.Writing.Narrative;
         var error = await CheckAccessAsync<DeleteResponseDto>(chapter.ContentMetaInfo.ProjectId, Permission.CanDelete);
         if (error != null) return error;
 
-        //_db.MetaInfos.Remove(chapter.ContentMetaInfo);
         _db.StoryChapters.Remove(chapter);
         await _db.SaveChangesAsync();
 
@@ -196,5 +134,22 @@ namespace Gadema.Api.Services.Writing.Narrative;
             EntityId = id,
             ProjectId = chapter.ContentMetaInfo.ProjectId.Value
         });
+    }
+
+    private StoryChapterResponseDto CreateResponseDto(StoryChapter chapter)
+    {
+        return new StoryChapterResponseDto
+        {
+            Id = chapter.Id,
+            MetaInfoId = chapter.MetaInfoId,
+            MetaInfoTitle = chapter.ContentMetaInfo.Title,
+            Status = chapter.ContentMetaInfo.Status,
+            IsPublic = chapter.ContentMetaInfo.IsPublic,
+            CreatedAt = chapter.ContentMetaInfo.CreatedAt,
+            LastModifiedAt = chapter.ContentMetaInfo.LastModifiedAt,
+            StoryId = chapter.StoryId,
+            Description = chapter.Description,
+            OrderIndex = chapter.OrderIndex
+        };
     }
 }

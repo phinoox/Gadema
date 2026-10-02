@@ -15,7 +15,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public ProjectMemberService( CoreDbContext db,
         ILogger<ProjectMemberService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices) 
         : base(coreServices,logger)
     {
         _db = db;
@@ -28,7 +28,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
         var members = await _db.ProjectMembers
             .Where(pm => pm.ProjectId == projectId)
-            .OrderBy(pm => pm.Role) // Owners/Admins first
+            .OrderBy(pm => pm.Role) 
             .Select(pm => new ProjectMemberResponseDto
             {
                 Id = pm.Id,
@@ -89,7 +89,6 @@ namespace Gadema.Api.Services.Base.Projects;
 
         if (member == null) return ApiResponseDto<string>.NotFound("Project member not found.");
 
-        // Prevent changing Owner role
         if (member.Role == ProjectMemberRoleEnum.Owner)
             return ApiResponseDto<string>.Forbidden("Cannot change the Owner role.");
 
@@ -110,7 +109,6 @@ namespace Gadema.Api.Services.Base.Projects;
 
         if (member == null) return ApiResponseDto<string>.NotFound("Project member not found.");
 
-        // Prevent removing Owner
         if (member.Role == ProjectMemberRoleEnum.Owner)
             return ApiResponseDto<string>.Forbidden("Cannot remove the Owner.");
 

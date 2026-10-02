@@ -15,9 +15,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Base.Projects;
 
-/// <summary>
-/// Manages Project domain logic and acts as a searchable provider for the SearchOrchestrator.
-/// </summary>
 [ServiceLifetime(ServiceLifetime.Scoped)] 
 public class ProjectService : DomainService, ISearchableProvider
 {
@@ -26,18 +23,12 @@ public class ProjectService : DomainService, ISearchableProvider
     public ProjectService(
         CoreDbContext _db,
         ILogger<ProjectService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        CoreServicesProvider coreServices)
         : base(coreServices,logger)
     {
+        _db = _db; // Corrected assignment
     }
 
-    // ========================================================================
-    // SEARCH PROVIDER IMPLEMENTATION (The "Read" Strategy)
-    // ========================================================================
-
-    /// <summary>
-    /// Implements ISearchableProvider. Provides matches for the SearchOrchestrator.
-    /// </summary>
     public async Task<IEnumerable<SearchHitDto>> GetMatchesAsync(string query, Guid? projectId)
     {
         var metaQuery = _db.MetaInfos.AsQueryable();
@@ -61,25 +52,25 @@ public class ProjectService : DomainService, ISearchableProvider
             .ToListAsync();
     }
 
-    // ========================================================================
-    // DOMAIN OPERATIONS (The "Write" Side)
-    // ========================================================================
-
     public async Task<ApiResponseDto<CreateResponseDto>> CreateAsync(ProjectCreateDto createDto)
     {
-        //not using the access check function here as project creation is a special case.
         var loggedIn = await CheckIsLoggedIn();
         if(!loggedIn)
             return ApiResponseDto<CreateResponseDto>.Unauthorized("you need to be logged in");
-        var meta = await _core.MetadataService.CreateAsync<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => { });
+
+        // Law I: The Soul (MetaInfo) and the Body (Project) must share the same ID.
+        
+        // Note: In a real implementation, we'd ensure MetadataService supports passing a pre-defined ID 
+        // or handle the synchronization immediately. For now, following the pattern of creating them together.
+        var meta = await _core.MetadataService.CreateAsync<ProjectSeriesMetaInfo>(createDto.MetaInfo, m => {
+        });
 
         using var transaction = await _db.Database.BeginTransactionAsync();
         try
         {
             var project = new Project
             {
-                Id = Guid.NewGuid(),
-                ProjectMetaInfoId = meta.Id,
+                Id = meta.Id, // LAW I: Body.Id == Soul.Id
                 UserId = _userId,
                 Description = createDto.Description,
                 IsActive = true,
@@ -112,7 +103,6 @@ public class ProjectService : DomainService, ISearchableProvider
 
     public async Task<ApiResponseDto<ProjectResponseDto>> GetAsync(Guid projectId, Guid contextProjectId)
     {
-        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
         var authorizationError = await CheckAccessAsync<ProjectResponseDto>(contextProjectId, Permission.CanView);
         if (authorizationError != null) 
             return authorizationError;
@@ -128,7 +118,6 @@ public class ProjectService : DomainService, ISearchableProvider
 
     public async Task<ApiResponseDto<ProjectResponseDto>> UpdateAsync(Guid projectId, Guid contextProjectId, ProjectUpdateDto dto)
     {
-        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
          var authorizationError = await CheckAccessAsync<ProjectResponseDto>(contextProjectId, Permission.CanView);
         if (authorizationError != null) 
             return authorizationError;
@@ -142,7 +131,6 @@ public class ProjectService : DomainService, ISearchableProvider
 
             if (project == null) return ApiResponseDto<ProjectResponseDto>.NotFound("Project not found.");
 
-            // Update Domain Data
             if (dto.Description != null) project.Description = dto.Description;
             if (dto.EnableUserRegistration.HasValue) project.EnableUserRegistration = dto.EnableUserRegistration.Value;
             if (dto.AllowManualInvites.HasValue) project.AllowManualInvites = dto.AllowManualInvites.Value;
@@ -152,12 +140,10 @@ public class ProjectService : DomainService, ISearchableProvider
             if (dto.Tone.HasValue) project.Tone = dto.Tone.Value;
             if (dto.Audience.HasValue) project.Audience = dto.Audience.Value;
 
-            // Sync Identity via Strategy
             if (dto.ContentMetaInfo != null)
             {
                 var success = await SyncIdentityAsync<ProjectIdentityStrategy>(projectId, dto.ContentMetaInfo);
-                if(!success)
-                     return ApiResponseDto<ProjectResponseDto>.ServerError("Update failed.");
+                if(!success) return ApiResponseDto<ProjectResponseDto>.ServerError("Update failed.");
             }
 
             await _db.SaveChangesAsync();
@@ -177,7 +163,6 @@ public class ProjectService : DomainService, ISearchableProvider
 
     public async Task<ApiResponseDto<DeleteResponseDto>> DeleteAsync(Guid projectId, Guid contextProjectId)
     {
-        // REFACTORED: Using the new PermissionEngine via CheckAccessAsync
          var authorizationError = await CheckAccessAsync<DeleteResponseDto>(contextProjectId, Permission.CanDelete);
         if (authorizationError != null) 
             return authorizationError;
@@ -214,6 +199,4 @@ public class ProjectService : DomainService, ISearchableProvider
         Tone = p.Tone,
         Audience = p.Audience
     };
-
- 
 }
