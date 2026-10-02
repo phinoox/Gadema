@@ -8,13 +8,16 @@ namespace Gadema.Data.Configurations.Tasks;
 /// </summary>
 public class CommentEntityTypeConfiguration : IEntityTypeConfiguration<Comment>
 {
+    /// <summary>
+    /// Configure Comment entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<Comment> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.TargetId).HasDatabaseName("IX_Comment_TargetId"); 
+        // Note: TargetId has been unified with Id under Law I, so we index the primary identity.
         builder.HasIndex(e => e.AuthorUserId).HasDatabaseName("IX_Comment_AuthorUserId"); 
         builder.HasIndex(e => e.CreatedAt);
         builder.HasIndex(e => e.ParentCommentId); 

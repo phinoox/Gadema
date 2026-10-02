@@ -4,10 +4,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Gadema.Data.Configurations.Game.Inventory;
 
+/// <summary>
+/// Configuration for InventoryItem entity in game development management system.
+/// </summary>
 public class InventoryItemEntityTypeConfiguration : IEntityTypeConfiguration<InventoryItem>
 {
+    /// <summary>
+    /// Configure InventoryItem entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<InventoryItem> builder)
     {
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
         // Properties configuration

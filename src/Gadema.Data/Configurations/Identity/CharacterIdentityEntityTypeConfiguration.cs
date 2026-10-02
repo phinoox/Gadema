@@ -14,26 +14,26 @@ public class CharacterIdentityEntityTypeConfiguration : IEntityTypeConfiguration
     /// </summary>
     public void Configure(EntityTypeBuilder<CharacterIdentity> builder)
     {
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
-        
         // Link to identity type definition
-        builder.HasOne(ci => ci.IdentityDefinition)  // Navigate to IdentityDefinition instead
-            .WithMany()  // If IDentityDefinition has collection, or remove if not
-            .HasForeignKey(ci => ci.IdentityDefinitionId)  // Use existing FK property
+        builder.HasOne(ci => ci.IdentityDefinition)
+            .WithMany()
+            .HasForeignKey(ci => ci.IdentityDefinitionId)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Link to identity value
         builder.HasOne(ci => ci.IdentityValue)
             .WithMany()
             .HasForeignKey(ci => ci.IdentityValueId)
-            .OnDelete(DeleteBehavior.SetNull);  // Allow multiple identity values over time
+            .OnDelete(DeleteBehavior.SetNull); 
 
         // Properties configuration
         builder.Property(e => e.MetaInfoId).IsRequired();
         builder.Property(e => e.IdentityTypeId).IsRequired();
         builder.Property(e => e.IdentityValueId).IsRequired();
 
-        builder.Property(e => e.IsPrimary).HasDefaultValue(false);  // Primary identity flag
+        builder.Property(e => e.IsPrimary).HasDefaultValue(false); 
     }
 }

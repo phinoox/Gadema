@@ -4,11 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Gadema.Data.Configurations.Identity;
 
+/// <summary>
+/// Configuration for IdentityValue entity.
+/// </summary>
 public class IdentityValueEntityTypeConfiguration : IEntityTypeConfiguration<IdentityValue>
 {
     public void Configure(EntityTypeBuilder<IdentityValue> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
         // Indexes for performance
@@ -24,7 +27,7 @@ public class IdentityValueEntityTypeConfiguration : IEntityTypeConfiguration<Ide
 
         // Relationship: Link back to the parent IdentityDefinition (The "Body")
         builder.HasOne(e => e.IdentityDefinition)
-            .WithMany() // One definition can have many values (e.g., Race has Human, Elf, etc.)
+            .WithMany() 
             .HasForeignKey(e => e.IdentityDefinitionId)
             .OnDelete(DeleteBehavior.Cascade);
 

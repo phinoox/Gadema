@@ -1,12 +1,5 @@
-// =============================================================================
-
-// Gadema.Core - Shared Domain Models & Interfaces
-
-// =============================================================================
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Gadema.Core.Models;
 using Gadema.Core.Models.Game.Inventory;
 
 namespace Gadema.Data.Configurations.Game.Inventory;
@@ -21,7 +14,7 @@ public class EndingDefinitionEntityTypeConfiguration : IEntityTypeConfiguration<
     /// </summary>
     public void Configure(EntityTypeBuilder<EndingDefinition> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
@@ -33,7 +26,7 @@ public class EndingDefinitionEntityTypeConfiguration : IEntityTypeConfiguration<
         builder.HasOne(ed => ed.Project)
             .WithMany()
             .HasForeignKey(ed => ed.ProjectId)
-            .OnDelete(DeleteBehavior.Cascade);  // Cascade delete endings when project deleted
+            .OnDelete(DeleteBehavior.Cascade);
         
         // Properties configuration
         builder.Property(e => e.Title).IsRequired();

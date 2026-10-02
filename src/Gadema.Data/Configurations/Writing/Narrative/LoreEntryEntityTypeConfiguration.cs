@@ -1,6 +1,6 @@
-using Gadema.Core.Models.Writing.Narrative;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Gadema.Core.Models.Writing.Narrative;
 
 namespace Gadema.Data.Configurations.Writing.Narrative;
 
@@ -9,22 +9,25 @@ namespace Gadema.Data.Configurations.Writing.Narrative;
 /// </summary>
 public class LoreEntryEntityTypeConfiguration : IEntityTypeConfiguration<LoreEntry>
 {
+    /// <summary>
+    /// Configure LoreEntry entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<LoreEntry> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
-        // Indexes for frequently filtered columns
+        // Indexes for performance
         builder.HasIndex(e => e.LoreType);
         builder.HasIndex(e => e.MetaInfoId);
 
-        // Navigation property: ContentMetaInfo (Cascade delete)
+        // Relationship: ContentMetaInfo (Cascade delete)
         builder.HasOne(le => le.ContentMetaInfo)
-                .WithMany()
-                .HasForeignKey(le => le.MetaInfoId)
-                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade through ContentMetaInfo (we delete manually in service)
+            .WithMany()
+            .HasForeignKey(le => le.MetaInfoId)
+            .OnDelete(DeleteBehavior.Cascade);
 
+        // Properties configuration
         builder.Property(e => e.RawText).HasMaxLength(4096);
-        builder.Property(e => e.LoreType).IsRequired();
     }
 }

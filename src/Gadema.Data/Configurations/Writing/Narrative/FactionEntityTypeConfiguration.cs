@@ -1,20 +1,31 @@
-using Gadema.Core.Models.Writing.WorldBuilding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Gadema.Core.Models.Writing.WorldBuilding;
 
 namespace Gadema.Data.Configurations.Writing.Narrative;
 
+/// <summary>
+/// Configuration for Faction entity in game development management system.
+/// </summary>
 public class FactionEntityTypeConfiguration : IEntityTypeConfiguration<Faction>
 {
+    /// <summary>
+    /// Configure Faction entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<Faction> builder)
     {
-        builder.ToTable("Factions");
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
+
+        builder.ToTable("Factions");
 
         // Indexes
         builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_Faction_MetaInfoId");
         
-        // Note: Project access is handled via the ContentMetaInfo in the Service layer
-        // builder.HasIndex(e => e.ProjectId).HasDatabaseName("IX_Faction_ProjectId"); // Removed per convention
+        // Relationship to WorldLocation (Optional)
+        builder.HasOne(f => f.Location)
+            .WithMany()
+            .HasForeignKey(f => f.LocationId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

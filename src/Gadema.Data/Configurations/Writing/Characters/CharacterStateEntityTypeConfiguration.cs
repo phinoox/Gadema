@@ -1,56 +1,49 @@
-using Gadema.Core.Models.Writing.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Gadema.Core.Models.Writing.Characters;
 
 namespace Gadema.Data.Configurations.Writing.Characters;
 
+/// <summary>
+/// Configuration for CharacterState entity in game development management system.
+/// </summary>
 public class CharacterStateEntityTypeConfiguration : IEntityTypeConfiguration<CharacterState>
 {
+    /// <summary>
+    /// Configure CharacterState entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<CharacterState> builder)
     {
-        // Index on MetaInfoId for fast lookups
-        builder.HasIndex(e => e.MetaInfoId)
-            .HasDatabaseName("IX_CharacterState_MetaInfoId");
+        // Primary key (The Soul ID)
+        builder.HasKey(e => e.Id);
 
-        // Index on FactionId for filtering by faction
-        builder.HasIndex(e => e.FactionId)
-            .HasDatabaseName("IX_CharacterState_FactionId");
+        // Indexes for performance
+        builder.HasIndex(e => e.MetaInfoId).HasDatabaseName("IX_CharacterState_MetaInfoId");
+        builder.HasIndex(e => e.FactionId).HasDatabaseName("IX_CharacterState_FactionId");
+        builder.HasIndex(e => e.LocationId).HasDatabaseName("IX_CharacterState_LocationId");
+        builder.HasIndex(e => e.Role).HasDatabaseName("IX_CharacterState_Role");
+        builder.HasIndex(e => e.LifeStatus).HasDatabaseName("IX_CharacterState_LifeStatus");
+        builder.HasIndex(e => e.TriggerSceneId).HasDatabaseName("IX_CharacterState_TriggerSceneId");
 
-        // Index on LocationId for filtering by location
-        builder.HasIndex(e => e.LocationId)
-            .HasDatabaseName("IX_CharacterState_LocationId");
-
-        // Index on Role for filtering by character role
-        builder.HasIndex(e => e.Role)
-            .HasDatabaseName("IX_CharacterState_Role");
-
-        // Index on LifeStatus for filtering by life status
-        builder.HasIndex(e => e.LifeStatus)
-            .HasDatabaseName("IX_CharacterState_LifeStatus");
-
-        // Index on TriggerSceneId for querying state changes per scene
-        builder.HasIndex(e => e.TriggerSceneId)
-            .HasDatabaseName("IX_CharacterState_TriggerSceneId");
-
-        // Restrict: if ContentMetaInfo is deleted, cascade the delete (state loses identity)
+        // Relationship: ContentMetaInfo (Cascade delete)
         builder.HasOne(e => e.ContentMetaInfo)
             .WithMany()
             .HasForeignKey(e => e.MetaInfoId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
-        // SetNull: Faction is optional — can be unaffiliated
+        // Relationship: Faction (SetNull)
         builder.HasOne(e => e.Faction)
             .WithMany(f => f.CharacterStates)
             .HasForeignKey(e => e.FactionId)
             .OnDelete(DeleteBehavior.SetNull);
 
-        // SetNull: Location is optional — whereabouts unknown
+        // Relationship: Location (SetNull)
         builder.HasOne(e => e.Location)
             .WithMany(l => l.CharacterStates)
             .HasForeignKey(e => e.LocationId)
             .OnDelete(DeleteBehavior.SetNull);
 
-        // SetNull: TriggerScene is optional — state created outside a scene context
+        // Relationship: TriggerScene (SetNull)
         builder.HasOne(e => e.TriggerScene)
             .WithMany()
             .HasForeignKey(e => e.TriggerSceneId)

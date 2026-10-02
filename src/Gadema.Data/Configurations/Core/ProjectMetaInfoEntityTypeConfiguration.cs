@@ -11,7 +11,7 @@ public class ProjectMetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<P
 {
     public void Configure(EntityTypeBuilder<ProjectMetaInfo> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
         // Identity properties
@@ -19,10 +19,11 @@ public class ProjectMetaInfoEntityTypeConfiguration : IEntityTypeConfiguration<P
         builder.Property(e => e.ViewMode).IsRequired();
 
         // Relationship to Project (1:1)
-        // This ensures that the MetaInfo is tied to its parent Project via ProjectId
+        // Law I: The Body's Id is its FK to the Soul. 
+        // In this case, ProjectMetaInfo is the "Body" and Project is the "Soul".
         builder.HasOne(mi => mi.Project)
             .WithOne(p => p.ProjectMetaInfo)
-            .HasForeignKey<ProjectMetaInfo>(mi => mi.ProjectId)
+            .HasForeignKey<ProjectMetaInfo>(mi => mi.Id) // Updated: PK/FK Unification
             .OnDelete(DeleteBehavior.Cascade);
 
         // Indexes for performance and uniqueness

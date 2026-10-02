@@ -1,32 +1,38 @@
-// src/Gadema.Data/Configurations/Writing/CharacterStateEntityTypeConfiguration.cs
-using Gadema.Core.Models.Writing.Characters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Gadema.Core.Models.Writing.Characters;
 
-namespace Gadema.Data.Configurations.Narrative;
+namespace Gadema.Data.Configurations.Writing.Narrative;
 
+/// <summary>
+/// Configuration for CharacterState entity in game development management system.
+/// </summary>
 public class CharacterStateEntityTypeConfiguration : IEntityTypeConfiguration<CharacterState>
 {
+    /// <summary>
+    /// Configure CharacterState entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<CharacterState> builder)
     {
-        builder.ToTable("CharacterStates");
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
+
+        builder.ToTable("CharacterStates");
 
         // Owned by Scene
         builder.HasOne(e => e.TriggerScene)
-               .WithMany(e => e.CharacterStates)
-               .HasForeignKey(e => e.TriggerSceneId)
-               .OnDelete(DeleteBehavior.Cascade);
+            .WithMany(s => s.CharacterStates)
+            .HasForeignKey(e => e.TriggerSceneId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Character Link
         builder.HasOne(e => e.Character)
-               .WithMany() // Adjust if Character has a collection
-               .HasForeignKey(e => e.CharacterId)
-               .OnDelete(DeleteBehavior.Restrict);
+            .WithMany()
+            .HasForeignKey(e => e.CharacterId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         // Indexes
         builder.HasIndex(e => e.TriggerSceneId).HasDatabaseName("IX_CharacterState_SceneId");
         builder.HasIndex(e => e.CharacterId).HasDatabaseName("IX_CharacterState_CharacterId");
-       
     }
 }

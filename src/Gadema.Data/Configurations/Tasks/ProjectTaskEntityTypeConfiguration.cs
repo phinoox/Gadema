@@ -4,11 +4,17 @@ using Gadema.Core.Models.Tasks;
 
 namespace Gadema.Data.Configurations.Tasks;
 
+/// <summary>
+/// Configuration for ProjectTask entity in game development management system.
+/// </summary>
 public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<ProjectTask>
 {
+    /// <summary>
+    /// Configure ProjectTask entity properties and relationships.
+    /// </summary>
     public void Configure(EntityTypeBuilder<ProjectTask> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
         // Indexes for performance
@@ -18,13 +24,13 @@ public class ProjectTaskEntityTypeConfiguration : IEntityTypeConfiguration<Proje
 
         // Relationship: Link to the Project (The parent context)
         builder.HasOne(e => e.Project)
-            .WithMany() // You can add ICollection<ProjectTask> to Project later if desired
+            .WithMany() 
             .HasForeignKey(e => e.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
         // Relationship: Link to the MetaInfo anchor (The "Soul")
         builder.HasOne(e => e.MetaInfo)
-            .WithMany() // One MetaInfo per task component
+            .WithMany() 
             .HasForeignKey(e => e.MetaInfoId)
             .OnDelete(DeleteBehavior.Cascade);
     }

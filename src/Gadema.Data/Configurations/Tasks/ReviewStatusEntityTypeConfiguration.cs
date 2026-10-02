@@ -1,5 +1,3 @@
-// ... existing imports ...
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -15,11 +13,11 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
     /// </summary>
     public void Configure(EntityTypeBuilder<ReviewStatus> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
         
         // Indexes for frequently filtered columns
-        builder.HasIndex(e => e.TargetId).HasDatabaseName("IX_ReviewStatus_TargetId"); // Replaced MetaInfoId
+        // Note: TargetId is now unified with Id (Law I), so we index the primary identity.
         builder.HasIndex(e => e.Status);  // Filter by status
         builder.HasIndex(e => e.ReviewedByUserId).HasDatabaseName("IX_ReviewStatus_ReviewerId"); // Fixed property name
         builder.HasIndex(e => e.ReviewedAt);  // Query recent reviews
@@ -27,7 +25,7 @@ public class ReviewStatusEntityTypeConfiguration : IEntityTypeConfiguration<Revi
         // Navigation property: Reviewer (Optional FK to User)
         builder.HasOne(rs => rs.Reviewer)
             .WithMany()
-            .HasForeignKey(rs => rs.ReviewedByUserId) // Fixed property name
+            .HasForeignKey(rs => rs.ReviewedByUserId)
             .OnDelete(DeleteBehavior.Restrict);
 
         // Properties configuration

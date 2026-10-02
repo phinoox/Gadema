@@ -15,7 +15,7 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
     /// </summary>
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        // Primary key
+        // Primary key (The Soul ID)
         builder.HasKey(e => e.Id);
 
         // Indexes for frequently filtered columns
@@ -27,7 +27,5 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(e => e.UserName).IsRequired().HasMaxLength(256);
         builder.Property(e => e.Email).IsRequired().HasMaxLength(256);
         builder.Property(u => u.Provider).HasDefaultValue(UserAuthProviderEnum.Password);
-        // Email is already [Required] + [MaxLength(256)] — ensure unique index:
-        builder.HasIndex(u => u.Email).IsUnique();
     }
 }
