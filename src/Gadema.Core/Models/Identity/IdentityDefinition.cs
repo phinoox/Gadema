@@ -2,6 +2,7 @@ namespace Gadema.Core.Models.Identity;
 
 using System.ComponentModel.DataAnnotations;
 using Gadema.Core.Models.Base.MetaInfo;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Defines the identity of an ability or property.

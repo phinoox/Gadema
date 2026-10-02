@@ -1,6 +1,7 @@
 namespace Gadema.Core.Models.Game.Attributes;
 
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a collection of attributes grouped together for a specific entity or template (e.g., "Core Stats", "Magic Attributes").

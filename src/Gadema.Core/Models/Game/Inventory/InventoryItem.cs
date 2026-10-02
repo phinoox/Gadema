@@ -1,6 +1,7 @@
 namespace Gadema.Core.Models.Game.Inventory;
 
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a collectible, key, achievement, or currency item within a project's inventory system.

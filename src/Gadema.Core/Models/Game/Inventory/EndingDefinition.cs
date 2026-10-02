@@ -1,6 +1,7 @@
 namespace Gadema.Core.Models.Game.Inventory;
 
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a predefined narrative ending within a project.

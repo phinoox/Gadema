@@ -1,6 +1,7 @@
 namespace Gadema.Core.Models.Game.Abilities;
 
 using System.ComponentModel.DataAnnotations;
+using Gadema.Core.Models.Base.Projects;
 
 /// <summary>
 /// Represents a collection of abilities grouped together (e.g., a "Mage Ability Set").
