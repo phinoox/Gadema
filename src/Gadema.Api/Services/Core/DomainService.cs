@@ -10,11 +10,11 @@ namespace Gadema.Api.Services.Core;
 
 public abstract class DomainService
 {
-    protected CoreServicesProvider _core;
+    protected ICoreServicesProvider _core;
     protected readonly ILogger _logger;
     protected Guid _userId;
 
-    public DomainService(CoreServicesProvider coreServices,ILogger logger)
+    public DomainService(ICoreServicesProvider coreServices,ILogger logger)
     {
         _core = coreServices;
         _userId = _core.UserContext == null ? Guid.Empty : _core.UserContext.UserId ?? Guid.Empty;

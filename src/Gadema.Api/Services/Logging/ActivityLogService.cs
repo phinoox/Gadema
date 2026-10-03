@@ -20,7 +20,7 @@ namespace Gadema.Api.Services.Logging;
 
     public ActivityLogService( CoreDbContext db,
         ILogger<ActivityLogService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db; }
 
     public async Task<ApiResponseDto<IEnumerable<ActivityLogResponseDto>>> GetLogsAsync(Guid projectId, int page = 1, int pageSize = 20)

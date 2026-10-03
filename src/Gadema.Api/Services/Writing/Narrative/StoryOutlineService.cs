@@ -24,7 +24,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public StoryOutlineService( WritingDbContext db,
         ILogger<StoryOutlineService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db; }
 
     // ========================================================================

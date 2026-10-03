@@ -19,7 +19,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public StoryChapterService( WritingDbContext db,
         ILogger<StoryChapterService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     public async Task<ApiResponseDto<IEnumerable<StoryChapterResponseDto>>> GetStoryChaptersAsync(Guid projectId)

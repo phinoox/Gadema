@@ -20,7 +20,7 @@ public class ProjectSeriesService : DomainService, ISearchableProvider
 
     public ProjectSeriesService(CoreDbContext db,
         ILogger<ProjectSeriesService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger)
     {
          _db = db;

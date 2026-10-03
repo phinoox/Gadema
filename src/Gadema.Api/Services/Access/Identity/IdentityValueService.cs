@@ -24,7 +24,7 @@ namespace Gadema.Api.Services.Access.Identity;
 
     public IdentityValueService( CoreDbContext db,
         ILogger<IdentityValueService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db; }
 
     // ========================================================================

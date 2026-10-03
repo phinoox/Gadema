@@ -18,7 +18,7 @@ public class ProjectTagService : DomainService
 
     public ProjectTagService( CoreDbContext db,
         ILogger<ProjectTagService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) {  _db = db; }
 
     public async Task<ApiResponseDto<ListResponseDto<ProjectTagResponseDto>>> GetTagsAsync(Guid projectId)

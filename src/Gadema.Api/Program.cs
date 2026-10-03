@@ -12,6 +12,8 @@ using Gadema.Api.Services.Authorization;
 using Gadema.Api.Services.Authorization.Strategies;
 using Gadema.Api.CoreServices.Interfaces;
 using Gadema.Api.CoreServices.Strategies;
+using Gadema.Api.CoreServices;
+using Gadema.Api.CoreServices.Services;
 
 namespace Gadema.Api;
 
@@ -32,10 +34,13 @@ public partial class Program
         // 3. Identity & Domain Services
         builder.Services.AddScoped<IIdentitySyncStrategy, ProjectIdentityStrategy>();
         builder.Services.AddScoped<IIdentitySyncStrategy, ContentIdentityStrategy>();
-        builder.Services.AddDomainServices();
+        
 
           // 2. Register the Permission Engine (The "Brain")
         builder.Services.AddScoped<IPermissionEngine, PermissionEngine>();
+        builder.Services.AddScoped<IAuditService,AuditService>();
+        builder.Services.AddScoped<IMetadataService,MetadataService>();
+        builder.Services.AddScoped<ICoreServicesProvider,CoreServicesProvider>();
 
         // 3. Register all Permission Strategies
         // This allows the PermissionEngine to inject IEnumerable<IPermissionStrategy>
@@ -51,9 +56,9 @@ public partial class Program
         // 5. Authentication & Security
         builder.Services.AddSingleton<JwtTokenService>();
         builder.Services.AddScoped<EmailPasswordAuthService>();
-        builder.Services.AddHttpClient("GoogleOAuth");
+        //builder.Services.AddHttpClient("GoogleOAuth");
         builder.Services.AddGademaAuthentication(builder.Configuration);
-
+        builder.Services.AddDomainServices();
         // 6. OpenAPI Configuration (Native Microsoft implementation)
         builder.Services.AddOpenApi();
 

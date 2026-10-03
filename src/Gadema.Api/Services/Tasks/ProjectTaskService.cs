@@ -23,7 +23,7 @@ public class ProjectTaskService : DomainService, ISearchableProvider
 
     public ProjectTaskService(TaskDbContext db,
         ILogger<ProjectTaskService> logger,
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices, logger) { _db = db; }
 
     public async Task<ApiResponseDto<ListResponseDto<ProjectTaskResponseDto>>> GetTasksAsync(Guid projectId)

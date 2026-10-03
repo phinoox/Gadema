@@ -15,7 +15,7 @@ public class CommentService : DomainService
 {
     private readonly CoreDbContext _db;
 
-    public CommentService(CoreDbContext db, ILogger<CommentService> logger, CoreServicesProvider coreServices) 
+    public CommentService(CoreDbContext db, ILogger<CommentService> logger, ICoreServicesProvider coreServices) 
         : base(coreServices, logger)
     {
         _db = db;

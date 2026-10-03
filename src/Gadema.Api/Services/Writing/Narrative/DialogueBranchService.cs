@@ -20,7 +20,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public DialogueBranchService( WritingDbContext db,
         ILogger<DialogueBranchService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) {_db = db; }
 
     // ========================================================================

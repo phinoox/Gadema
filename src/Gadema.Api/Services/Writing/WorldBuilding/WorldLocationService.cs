@@ -20,7 +20,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public WorldLocationService( WritingDbContext db,
         ILogger<WorldLocationService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     private WorldLocationResponseDto CreateResponseDto(WorldLocation location)

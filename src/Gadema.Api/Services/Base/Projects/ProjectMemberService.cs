@@ -15,7 +15,7 @@ namespace Gadema.Api.Services.Base.Projects;
 
     public ProjectMemberService( CoreDbContext db,
         ILogger<ProjectMemberService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger)
     {
         _db = db;

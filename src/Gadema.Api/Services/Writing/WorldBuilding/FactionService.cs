@@ -19,7 +19,7 @@ namespace Gadema.Api.Services.Writing.WorldBuilding;
 
     public FactionService( WritingDbContext db,
         ILogger<FactionService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     public async Task<ApiResponseDto<IEnumerable<FactionResponseDto>>> GetFactionsAsync(Guid projectId)

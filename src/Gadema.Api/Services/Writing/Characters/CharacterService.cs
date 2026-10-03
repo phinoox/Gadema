@@ -21,7 +21,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public CharacterService( WritingDbContext db,
         ILogger<CharacterService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
 

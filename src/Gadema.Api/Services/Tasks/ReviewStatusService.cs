@@ -18,7 +18,7 @@ namespace Gadema.Api.Services.Tasks;
 
     public ReviewStatusService( TaskDbContext db,
         ILogger<ReviewStatusService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     public async Task<ApiResponseDto<ReviewStatusResponseDto>> GetReviewStatusAsync(Guid projectId, Guid targetId)

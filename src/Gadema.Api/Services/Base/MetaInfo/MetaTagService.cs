@@ -16,7 +16,7 @@ public class MetaTagService : DomainService
 
     public MetaTagService( CoreDbContext db,
         ILogger<MetaTagService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) {  _db = db; }
 
     public async Task<ApiResponseDto<ListResponseDto<MetaTag>>> GetAllAsync()

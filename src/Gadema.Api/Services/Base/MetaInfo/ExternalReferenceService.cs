@@ -22,7 +22,7 @@ namespace Gadema.Api.Services.Base.MetaInfo;
 
     public ExternalReferenceService( CoreDbContext db,
         ILogger<ExternalReferenceService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger)
     {
         _db = db;

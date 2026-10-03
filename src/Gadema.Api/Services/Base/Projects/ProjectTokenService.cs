@@ -18,7 +18,7 @@ public class ProjectTokenService : DomainService
 
     public ProjectTokenService(CoreDbContext db,
         ILogger<ProjectTokenService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger)
     {
          _db = db;

@@ -23,7 +23,7 @@ namespace Gadema.Api.Services.Writing.Narrative;
 
     public LoreEntryService( WritingDbContext db,
         ILogger<LoreEntryService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db; }
 
     // ========================================================================

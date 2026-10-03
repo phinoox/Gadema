@@ -19,7 +19,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public CharacterStateService( WritingDbContext db,
         ILogger<CharacterStateService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     private CharacterStateResponseDto CreateResponseDto(CharacterState state)

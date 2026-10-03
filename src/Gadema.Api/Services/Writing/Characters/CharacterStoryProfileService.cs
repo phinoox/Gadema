@@ -17,7 +17,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public CharacterStoryProfileService( WritingDbContext db,
         ILogger<CharacterStoryProfileService> logger,  
-        CoreServicesProvider coreServices) 
+        ICoreServicesProvider coreServices) 
         : base(coreServices,logger) { _db = db; }
 
     private CharacterStoryProfileResponseDto CreateResponseDto(CharacterStoryProfile profile)

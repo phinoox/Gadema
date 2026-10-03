@@ -21,7 +21,7 @@ namespace Gadema.Api.Services.Writing.Characters;
 
     public CharacterRelationService( WritingDbContext db,
         ILogger<CharacterRelationService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db; }
 
     /// <summary>Creates a response DTO from a CharacterRelation entity.</summary>

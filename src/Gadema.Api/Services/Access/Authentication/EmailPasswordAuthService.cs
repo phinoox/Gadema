@@ -27,7 +27,7 @@ public class EmailPasswordAuthService : DomainService
     public EmailPasswordAuthService( CoreDbContext db,
         IConfiguration configuration,
         ILogger<EmailPasswordAuthService> logger,  
-        CoreServicesProvider coreServices) // Injected via CoreService constructor
+        ICoreServicesProvider coreServices) // Injected via CoreService constructor
         : base(coreServices,logger) { _db = db;_configuration = configuration;} 
 
 

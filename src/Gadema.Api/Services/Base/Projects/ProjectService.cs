@@ -23,7 +23,7 @@ public class ProjectService : DomainService, ISearchableProvider
     public ProjectService(
         CoreDbContext _db,
         ILogger<ProjectService> logger,  
-        CoreServicesProvider coreServices)
+        ICoreServicesProvider coreServices)
         : base(coreServices,logger)
     {
         _db = _db; // Corrected assignment
