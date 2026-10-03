@@ -32,28 +32,29 @@ public class SignInDto
 /// <summary>
 /// Represents the identity information of a user returned after successful authentication.
 /// </summary>
-public class UserResponse
+public class UserResponseDto
 {
     /// <summary>
     /// The unique identifier for the user.
     /// </summary>
-    public string Id { get; set; } = "";
+    public Guid Id { get; set; } 
 
     /// <summary>
     /// The full name of the user.
     /// </summary>
-    public string Name { get; set; } = "";
+    public string UserName { get; set; } = "";
 
     /// <summary>
     /// The primary email address associated with the account.
     /// </summary>
     public string Email { get; set; } = "";
+    public DateTime CreatedAt { get; set; }
 }
 
 /// <summary>
 /// A unified response containing security tokens and user context for all authentication methods.
 /// </summary>
-public class AuthResponse
+public class AuthResponseDto
 {
     /// <summary>
     /// The JWT bearer token or session identifier used for authenticated requests.
@@ -78,5 +79,5 @@ public class AuthResponse
     /// <summary>
     /// The user identity information associated with this authentication session.
     /// </summary>
-    public UserResponse User { get; set; } = null!;
+    public UserResponseDto User { get; set; } = null!;
 }

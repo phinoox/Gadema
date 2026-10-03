@@ -41,11 +41,7 @@ public class User
     [MaxLength(2048)]
     public string? RecoveryCodeHash { get; set; }
 
-    /// <summary>
-    /// Gets or sets the timestamp when the user account was created.
-    /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
+    
     /// <summary>
     /// Gets or sets the timestamp of the user's last successful login.
     /// </summary>

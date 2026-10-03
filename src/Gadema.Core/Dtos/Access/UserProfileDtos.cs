@@ -32,6 +32,7 @@ public class UserProfileResponseDto
     /// URL to the user's avatar image.
     /// </summary>
     public string? AvatarUrl { get; set; }
+    public DateTime CreatedAt { get; set; }
 }
 
 /// <summary>
