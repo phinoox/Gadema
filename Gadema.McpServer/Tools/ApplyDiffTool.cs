@@ -12,12 +12,12 @@ namespace Gadema.McpServer.Tools;
 public class ApplyDiffTool : IMcpTool
 {
     public string Name => "apply_diff";
-    public string Description => "Applies a hunk (diff) to a file by matching the original content block. Line Numbers are not needed";
+    public string Description => "Applies a (diff) to a file . Use this as more safe replacement for edit_existing_file. Use only the MINIMUM number of unique lines required to identify the insertion/replacement point(can also be just 1-2 lines).try to avoid whitespaces/empty lines. Lines need to be a continous unbroken sequence. no header needed and other marks needed. example: {\\n-    public int id;\\n+    public Guid id;\\n}";
 
     public Dictionary<string, string> GetParameterDescriptions() => new()
     {
         { "file_path", "The path to the target file." },
-        { "hunk", "A unified diff hunk. Format: lines of context, '-' for removed, '+' for added." }
+        { "hunk", "A unified diff hunk. Format: lines of context, '-' for removed, '+' for added with a @@ @@ header." }
     };
 
     public async Task<string> ExecuteAsync(Dictionary<string, string> args)
@@ -30,45 +30,56 @@ public class ApplyDiffTool : IMcpTool
 
         try
         {
-            if(string.IsNullOrWhiteSpace(hunkText))
+            if (string.IsNullOrWhiteSpace(hunkText))
                 return "Error: Hunk content is empty or invalid.";
             hunkText.Replace("\r\n", "\n");
+
+
             // 1. Parse the hunk into lines, ignoring the diff markers (+/-) and metadata (@@)
-            var parsedHunk = ParseHunk(hunkText);
-            if (parsedHunk == null)
-                return "Error: Hunk content is empty or invalid.";
+            var Hunkparts = Regex.Split(hunkText,"(@@.*@@)").ToList<string>();
+
+            if (Hunkparts.Count == 0)
+            {
+                Hunkparts.Add(hunkText); //in case we dont have @@ seperations
+            }
 
             string currentFileContent = await File.ReadAllTextAsync(filePath);
+            string finalContent = currentFileContent.Replace("\r\n", "\n");
 
-            // 2. Normalize file content for comparison: replace all \r\n with \n
-            string normalizedFileContent = currentFileContent.Replace("\r\n", "\n");
-            
-            // 3. Build the search string from original lines and the replacement string from final lines
-            string searchPattern = string.Join("\n", parsedHunk.OriginalLines);
-            string replacementContent = string.Join("\n", parsedHunk.FinalLines);
+            foreach (var hunk in Hunkparts)
+            {
+                if(string.IsNullOrWhiteSpace(hunk) || hunk.StartsWith("@@"))
+                    continue;
+                var parsedHunk = ParseHunk(hunk);
+                if (parsedHunk == null)
+                    return $"Error: Hunk content is empty or invalid.";
 
-            // 4. Perform the replacement on the normalized content
-            if (normalizedFileContent.Contains(searchPattern))
-            {
-                string updatedContent = normalizedFileContent.Replace(searchPattern, replacementContent);
-                
-                // 5. Restore original line endings if necessary or just write with standard \n/ \r\n
-                // For simplicity in this example, we'll use the system default for writing back
-                await File.WriteAllTextAsync(filePath, updatedContent);
-                return "Success: Hunk applied successfully.";
+                // 3. Build the search string from original lines and the replacement string from final lines
+                string searchPattern = string.Join("\n", parsedHunk.OriginalLines);
+                string replacementContent = string.Join("\n", parsedHunk.FinalLines);
+
+                // 4. Perform the replacement on the normalized content
+                if (finalContent.Contains(searchPattern))
+                {
+                    finalContent = finalContent.Replace(searchPattern, replacementContent);
+                }
+                else
+                {
+                    // Debugging info to help user see what went wrong
+                    return $"Error: Context mismatch. Could not find the following block in the file:\n\n{searchPattern}";
+                }
             }
-            else
-            {
-                // Debugging info to help user see what went wrong
-                return $"Error: Context mismatch. Could not find the following block in the file:\n\n{searchPattern}";
-                
-                
-            }
+
+            finalContent = finalContent.Replace("\n",Environment.NewLine);
+            await File.WriteAllTextAsync(filePath, finalContent);
+            return "Success: Hunk applied successfully.";
         }
         catch (Exception ex)
         {
             return $"Error during execution: {ex.Message}";
         }
+
+
     }
 
     private HunkResult ParseHunk(string hunkText)
@@ -82,7 +93,7 @@ public class ApplyDiffTool : IMcpTool
         foreach (var line in lines)
         {
             // Skip hunk headers
-            if (line.StartsWith("@@") || line.StartsWith("---") || line.StartsWith("+++")) 
+            if (line.StartsWith("@@") || line.StartsWith("---") || line.StartsWith("+++"))
                 continue;
 
             hasContent = true;
@@ -97,7 +108,7 @@ public class ApplyDiffTool : IMcpTool
                 originalLines.Add(line[1..]); // Content after '-'
                 // Note: we don't add to finalLines here
             }
-            else 
+            else
             {
                 // Context line: strip the single leading space used by diff tools
                 string contextLine = line.Length > 0 && line[0] == ' ' ? line[1..] : line;
