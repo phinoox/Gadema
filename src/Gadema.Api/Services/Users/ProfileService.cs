@@ -42,7 +42,8 @@ public class ProfileService : DomainService
             Title = user.MetaInfo.Title,
             ShortDesc = user.MetaInfo.ShortDesc,
             Slug = user.MetaInfo.Slug,
-            AvatarUrl = user.MetaInfo.AvatarUrl
+            AvatarUrl = user.MetaInfo.AvatarUrl,
+            CreatedAt = user.MetaInfo.CreatedAt
         };
 
         return ApiResponseDto<UserProfileResponseDto>.Success(profile);

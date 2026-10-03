@@ -15,7 +15,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gadema.Api.Services.Writing.Characters;
 
-[ServiceLifetime(ServiceLifetime.Scoped)] public class CharacterService : DomainService, ISearchableProvider
+[ServiceLifetime(ServiceLifetime.Scoped)] 
+public class CharacterService : DomainService, ISearchableProvider
 {
     private WritingDbContext _db;
 

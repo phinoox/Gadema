@@ -23,7 +23,7 @@ public class EmailPasswordAuthController : ControllerBase
     }
 
   
-    private IActionResult ToResult(ApiResponseDto<AuthResponse> r) => r.Successful
+    private IActionResult ToResult(ApiResponseDto<AuthResponseDto> r) => r.Successful
         ? StatusCode((int)r.StatusCode, r)
         : Problem(statusCode: (int)r.StatusCode, detail: r.Message);
 }

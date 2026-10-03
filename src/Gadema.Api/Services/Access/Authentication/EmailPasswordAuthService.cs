@@ -35,11 +35,11 @@ public class EmailPasswordAuthService : DomainService
     // POST - Register a new user (email + password)
     // ========================================================================
 
-    public async Task<ApiResponseDto<AuthResponse>> RegisterAsync(RegisterDto registerDto)
+    public async Task<ApiResponseDto<AuthResponseDto>> RegisterAsync(RegisterDto registerDto)
     {
         var existingUser = await _db.Users.FirstOrDefaultAsync(u => u.Email == registerDto.Email);
         if (existingUser != null)
-            return ApiResponseDto<AuthResponse>.Conflict($"A user with email '{registerDto.Email}' already exists.");
+            return ApiResponseDto<AuthResponseDto>.Conflict($"A user with email '{registerDto.Email}' already exists.");
 
         var userId = Guid.NewGuid();
 
@@ -67,51 +67,53 @@ public class EmailPasswordAuthService : DomainService
         await _db.SaveChangesAsync();
 
         var expiryDate = DateTime.UtcNow.AddHours(24);
-        var authResponse = new AuthResponse
+        var authResponse = new AuthResponseDto
         {
             AccessToken = GenerateJwtToken(user.Id, user.Email),
             TokenType = "Bearer",
             ExpiresInSeconds = (int)(expiryDate - DateTime.UtcNow).TotalSeconds,
-            User = new UserResponse 
+            User = new UserResponseDto 
             { 
-                Id = user.Id.ToString(), 
+                Id = user.Id, 
                 Email = user.Email, 
-                Name = user.UserName // Using UserName as Name for now
+                UserName = user.UserName, // Using UserName as Name for now
+                CreatedAt = metaInfo.CreatedAt
             }
         };
 
-        return ApiResponseDto<AuthResponse>.Success(authResponse);
+        return ApiResponseDto<AuthResponseDto>.Success(authResponse);
     }
 
     // ========================================================================
     // POST - Sign in with email + password
     // ========================================================================
 
-    public async Task<ApiResponseDto<AuthResponse>> SignInAsync(SignInDto signInDto)
+    public async Task<ApiResponseDto<AuthResponseDto>> SignInAsync(SignInDto signInDto)
     {
        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == signInDto.Email);
 
         if (user == null)
-            return ApiResponseDto<AuthResponse>.Unauthorized("Invalid email or password.");
+            return ApiResponseDto<AuthResponseDto>.Unauthorized("Invalid email or password.");
 
         var isValidPassword = PasswordHasher.Verify(signInDto.Password, user.PasswordHash);
         if (!isValidPassword)
-            return ApiResponseDto<AuthResponse>.Unauthorized("Invalid email or password.");
+            return ApiResponseDto<AuthResponseDto>.Unauthorized("Invalid email or password.");
         var expiryDate = DateTime.UtcNow.AddHours(24);
-        var authResponse = new AuthResponse
+        var authResponse = new AuthResponseDto
         {
             AccessToken = GenerateJwtToken(user.Id, user.Email),
             TokenType = "Bearer",
             ExpiresInSeconds = (int)(expiryDate - DateTime.UtcNow).TotalSeconds,
-            User = new UserResponse 
+            User = new UserResponseDto 
             { 
-                Id = user.Id.ToString(), 
+                Id = user.Id, 
                 Email = user.Email, 
-                Name = user.UserName 
+                UserName = user.UserName, 
+                CreatedAt = user.MetaInfo.CreatedAt
             }
         };
 
-        return ApiResponseDto<AuthResponse>.Success(authResponse);
+        return ApiResponseDto<AuthResponseDto>.Success(authResponse);
     }
 
     // ... existing RequestPasswordResetAsync and ResetPasswordAsync methods ...
