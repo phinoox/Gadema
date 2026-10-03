@@ -1,11 +1,10 @@
-namespace Gadema.Core.Dtos.Base.Projects;
 
 using Gadema.Core.Dtos.Base.Infrastructure;
 
 // 1. Identity Data for creation
-using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Projects.Enums;
 
-
+namespace Gadema.Core.Dtos.Base.Projects;
 /// <summary>
 /// Metadata required to initialize a new project.
 /// </summary>

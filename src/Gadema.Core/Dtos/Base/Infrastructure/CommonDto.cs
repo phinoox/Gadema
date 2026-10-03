@@ -1,6 +1,6 @@
 namespace Gadema.Core.Dtos.Base.Infrastructure;
 
-using Gadema.Core.Enums;
+using Gadema.Core.Models.Base.Projects.Enums;
 
 
 /// <summary>

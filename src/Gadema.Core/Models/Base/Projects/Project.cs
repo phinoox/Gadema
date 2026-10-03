@@ -1,8 +1,7 @@
 // =============================================================================
-using Gadema.Core.Enums;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Access;
-using Gadema.Core.Utils;
+using Gadema.Core.Models.Base.Projects.Enums;
 
 namespace Gadema.Core.Models.Base.Projects;
 

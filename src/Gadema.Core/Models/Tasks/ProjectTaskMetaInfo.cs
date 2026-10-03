@@ -1,5 +1,5 @@
-using Gadema.Core.Enums;
 using Gadema.Core.Models.Base.Projects;
+using Gadema.Core.Models.Tasks.Enums;
 
 namespace Gadema.Core.Models.Tasks;
 
