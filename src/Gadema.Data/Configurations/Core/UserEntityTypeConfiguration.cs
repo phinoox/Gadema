@@ -3,7 +3,7 @@ using Gadema.Core.Models.Access.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Gadema.Data.Configurations.Identity;
+namespace Gadema.Data.Configurations.Core;
 
 /// <summary>
 /// Configuration for User entity in game development management system.
@@ -27,5 +27,11 @@ public class UserEntityTypeConfiguration : IEntityTypeConfiguration<User>
         builder.Property(e => e.UserName).IsRequired().HasMaxLength(256);
         builder.Property(e => e.Email).IsRequired().HasMaxLength(256);
         builder.Property(u => u.Provider).HasDefaultValue(UserAuthProviderEnum.Password);
+
+        // 1:1 relationship with UserMetaInfo sharing the same ID
+        builder.HasOne(u => u.MetaInfo)
+               .WithOne()
+               .HasForeignKey<UserMetaInfo>(m => m.Id)
+               .OnDelete(DeleteBehavior.Cascade); // If user is deleted, meta info is also deleted
     }
 }

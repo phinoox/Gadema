@@ -41,15 +41,29 @@ public class EmailPasswordAuthService : DomainService
         if (existingUser != null)
             return ApiResponseDto<AuthResponse>.Conflict($"A user with email '{registerDto.Email}' already exists.");
 
+        var userId = Guid.NewGuid();
+
         var user = new User
         {
-            Id = Guid.NewGuid(),
+            Id = userId,
+            UserName = registerDto.UserName,
             Email = registerDto.Email,
             PasswordHash = PasswordHasher.Hash(registerDto.Password),
             EmailConfirmed = true, // Setting to true for simplified flow ToDO: change for production
         };
 
+        var metaInfo = new UserMetaInfo
+        {
+            Id = userId,
+            Title = registerDto.UserName,
+            IsPublic = false,
+            CreatedAt = DateTime.UtcNow,
+            LastModifiedAt = DateTime.UtcNow
+        };
+
         _db.Users.Add(user);
+        _db.UserMetaInfos.Add(metaInfo); // Assuming UserMetaInfo is registered in DbContext
+
         await _db.SaveChangesAsync();
 
         var expiryDate = DateTime.UtcNow.AddHours(24);
@@ -62,7 +76,7 @@ public class EmailPasswordAuthService : DomainService
             { 
                 Id = user.Id.ToString(), 
                 Email = user.Email, 
-                Name = user.DisplayName ?? "" 
+                Name = user.UserName // Using UserName as Name for now
             }
         };
 
@@ -93,7 +107,7 @@ public class EmailPasswordAuthService : DomainService
             { 
                 Id = user.Id.ToString(), 
                 Email = user.Email, 
-                Name = user.DisplayName ?? "" 
+                Name = user.UserName 
             }
         };
 
@@ -131,5 +145,3 @@ public class EmailPasswordAuthService : DomainService
 
     // Removed 2FA helper methods (Verify2FACodeAsync, GenerateRecoveryCodes)
 }
-   
-  

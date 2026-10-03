@@ -1,5 +1,6 @@
 using Gadema.Core.Dtos.Base.Infrastructure;
 using Gadema.Core.Interfaces;
+using Gadema.Core.Models.Base.Projects.Enums;
 using Gadema.Data.Database;
 using Gadema.Data.Database.Core;
 using Gadema.Data.Database.Game;

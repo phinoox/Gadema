@@ -33,7 +33,7 @@ namespace Gadema.Api.Services.Base.Projects;
             {
                 Id = pm.Id,
                 UserId = pm.UserId,
-                UserName = pm.User.DisplayName ?? pm.User.UserName,
+                UserName = pm.User.UserName,
                 Email = pm.User.Email,
                 Role = pm.Role,
                 JoinedAt = pm.JoinedAt
@@ -71,7 +71,7 @@ namespace Gadema.Api.Services.Base.Projects;
         {
             Id = newMember.Id,
             UserId = newMember.UserId,
-            UserName = user.DisplayName ?? user.UserName,
+            UserName = user.UserName,
             Email = user.Email,
             Role = newMember.Role,
             JoinedAt = newMember.JoinedAt

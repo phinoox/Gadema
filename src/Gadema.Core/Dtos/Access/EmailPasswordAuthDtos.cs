@@ -1,5 +1,34 @@
 namespace Gadema.Core.Dtos.Access;
 
+using System.ComponentModel.DataAnnotations;
+
+/// <summary>
+/// Data required to register a new user via email/password.
+/// </summary>
+public class RegisterDto
+{
+    [Required, EmailAddress]
+    public string Email { get; set; } = "";
+
+    [Required, MinLength(8)]
+    public string Password { get; set; } = "";
+
+    [Required]
+    public string UserName { get; set; } = "";
+}
+
+/// <summary>
+/// Data required to sign in a user via email/password.
+/// </summary>
+public class SignInDto
+{
+    [Required, EmailAddress]
+    public string Email { get; set; } = "";
+
+    [Required]
+    public string Password { get; set; } = "";
+}
+
 /// <summary>
 /// Represents the identity information of a user returned after successful authentication.
 /// </summary>
@@ -19,7 +48,6 @@ public class UserResponse
     /// The primary email address associated with the account.
     /// </summary>
     public string Email { get; set; } = "";
-  
 }
 
 /// <summary>
@@ -27,31 +55,28 @@ public class UserResponse
 /// </summary>
 public class AuthResponse
 {
-// ... existing code ...
     /// <summary>
     /// The JWT bearer token or session identifier used for authenticated requests.
     /// </summary>
-    public string AccessToken { get; set; }    // JWT token (Bearer) or session ID
+    public string AccessToken { get; set; } = "";
 
     /// <summary>
-    /// The type of authentication mechanism being used (e.g., "Bearer", "Session").
+    /// The type of the token (e.g., "Bearer").
     /// </summary>
-    public string TokenType { get; set; }     // "Bearer" | "Session" | "RefreshToken"
+    public string TokenType { get; set; } = "";
 
     /// <summary>
     /// The time-to-live for the token in seconds.
     /// </summary>
-    public int ExpiresInSeconds { get; set; }  // TTL for the returned token
+    public int ExpiresInSeconds { get; set; }
 
     /// <summary>
-    /// An optional human-readable message providing context on success or failure.
+    /// An optional human-readable message providing context success or failure.
     /// </summary>
-    public string? Message { get; set; }       // Optional human-readable message on success/failure
-                                        // add to existing AuthResponse:
-   
+    public string? Message { get; set; }
+
     /// <summary>
     /// The user identity information associated with this authentication session.
     /// </summary>
-    public UserResponse User {get;set;}   
+    public UserResponse User { get; set; } = null!;
 }
-

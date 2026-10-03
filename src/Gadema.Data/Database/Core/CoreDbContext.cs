@@ -21,6 +21,8 @@ public class CoreDbContext : GademaBaseContext
 
     public DbSet<User> Users {get;set;}
 
+    public DbSet<UserMetaInfo> UserMetaInfos {get;set;}
+
     public DbSet<ProjectTag> ProjectTags {get;set;}
 
     public DbSet<MetaTag> MetaTags {get;set;}
@@ -48,7 +50,6 @@ public class CoreDbContext : GademaBaseContext
     // Cross-cutting attachments and references
     public DbSet<MediaAttachment> MediaAttachments { get; set; }
     public DbSet<ExternalReference> ExternalReferences { get; set; }
-    public DbSet<UserProviderLink> UserProviderLinks { get; set; }
 
     public DbSet<IdentityDefinition> IdentityDefinitions {get;set;}
 
