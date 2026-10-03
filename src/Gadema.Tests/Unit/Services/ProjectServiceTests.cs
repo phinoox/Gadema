@@ -3,7 +3,6 @@ using Gadema.Core.Dtos.Base.Projects;
 using Gadema.Core.Enums;
 using Gadema.Core.Models.Base.Projects;
 using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
 using FluentAssertions;
 using Xunit;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +13,7 @@ using Gadema.Data.Database;
 using Gadema.Core.Interfaces;
 using Gadema.Core.Models.Base.MetaInfo;
 using Gadema.Data.Database.Core;
+using Gadema.MockData.Seeder;
 
 namespace Gadema.Tests.Unit.Services;
 

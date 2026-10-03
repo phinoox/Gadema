@@ -2,8 +2,8 @@
 using Gadema.Core.DependencyTracking;
 using Gadema.Core.Models;
 using Gadema.Core.Models.Access;
+using Gadema.MockData.Seeder;
 using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
 using Microsoft.Extensions.DependencyInjection;
 
 

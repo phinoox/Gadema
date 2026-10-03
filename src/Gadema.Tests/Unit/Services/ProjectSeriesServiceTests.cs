@@ -10,10 +10,10 @@ using Xunit;
 using Microsoft.EntityFrameworkCore;
 using Gadema.Tests.Factory;
 using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
 using Gadema.Core.Interfaces;
 using Gadema.Data.Database.Game;
 using Gadema.Data.Database.Core;
+using Gadema.MockData.Seeder;
 
 namespace Gadema.Tests.Unit.Services;
 

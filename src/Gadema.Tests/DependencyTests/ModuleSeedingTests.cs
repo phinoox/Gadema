@@ -1,16 +1,7 @@
 using System.Reflection;
 using Gadema.Core.DependencyTracking;
-using Gadema.Core.Models.Access;
-using Gadema.Core.Models.Base;
-using Gadema.Core.Models.Game;
-using Gadema.Core.Models.Identity;
-using Gadema.Core.Models.Tasks;
-using Gadema.Core.Models.Writing;
+using Gadema.MockData.Seeder;
 using Gadema.Tests.Factory;
-using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

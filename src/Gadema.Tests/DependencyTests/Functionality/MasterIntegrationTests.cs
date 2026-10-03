@@ -1,9 +1,9 @@
 using System.Reflection;
 using Gadema.Core.DependencyTracking;
 using Gadema.Core.Models.Access;
+using Gadema.MockData.Seeder;
 using Gadema.Tests.Factory;
 using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;

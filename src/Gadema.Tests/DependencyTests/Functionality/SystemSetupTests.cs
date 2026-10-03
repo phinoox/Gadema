@@ -4,9 +4,9 @@ using Gadema.Core.Models.Game.Attributes;
 using Gadema.Core.Models.Writing.Narrative;
 using Gadema.Data.Database;
 using Gadema.Data.Database.Core;
+using Gadema.MockData.Seeder;
 using Gadema.Tests.Factory;
 using Gadema.Tests.Helpers;
-using Gadema.Tests.Seeders;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

@@ -9,6 +9,7 @@
   <ItemGroup>
     <!-- Project References -->
     <PackageReference Include="AutoFixture" Version="4.18.1" />
+    <ProjectReference Include="../Gadema.MockData/Gadema.MockData.csproj" />
     <ProjectReference Include="..\Gadema.Core\Gadema.Core.csproj" />
     <ProjectReference Include="..\Gadema.Api\Gadema.Api.csproj" />
     
